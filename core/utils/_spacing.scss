@@ -1,0 +1,67 @@
+// ============================================================
+//  utils/_spacing.scss
+//  Clases utilitarias de spacing (margin, padding, gap).
+// ============================================================
+
+@use '../abstracts/tokens-spacing' as *;
+
+$_spaces: (
+  '0':   $space-0,
+  '4':   $space-4,
+  '8':   $space-8,
+  '12':  $space-12,
+  '16':  $space-16,
+  '24':  $space-24,
+  '32':  $space-32,
+  '48':  $space-48,
+  '64':  $space-64,
+  '80':  $space-80,
+  '96':  $space-96,
+  '128': $space-128,
+);
+
+$_sides: (
+  '':  '',
+  't': '-top',
+  'r': '-right',
+  'b': '-bottom',
+  'l': '-left',
+  'x': '',   // horizontal — tratado abajo
+  'y': '',   // vertical   — tratado abajo
+);
+
+// Genera .p-{n}, .pt-{n}, .pr-{n}, .pb-{n}, .pl-{n}
+// y     .m-{n}, .mt-{n}, .mr-{n}, .mb-{n}, .ml-{n}
+@each $key, $value in $_spaces {
+  .p-#{$key}  { padding:        $value !important; }
+  .pt-#{$key} { padding-top:    $value !important; }
+  .pr-#{$key} { padding-right:  $value !important; }
+  .pb-#{$key} { padding-bottom: $value !important; }
+  .pl-#{$key} { padding-left:   $value !important; }
+  .px-#{$key} { padding-left:   $value !important; padding-right:  $value !important; }
+  .py-#{$key} { padding-top:    $value !important; padding-bottom: $value !important; }
+
+  .m-#{$key}  { margin:        $value !important; }
+  .mt-#{$key} { margin-top:    $value !important; }
+  .mr-#{$key} { margin-right:  $value !important; }
+  .mb-#{$key} { margin-bottom: $value !important; }
+  .ml-#{$key} { margin-left:   $value !important; }
+  .mx-#{$key} { margin-left:   $value !important; margin-right:  $value !important; }
+  .my-#{$key} { margin-top:    $value !important; margin-bottom: $value !important; }
+
+  .gap-#{$key}   { gap:         $value !important; }
+  .gap-x-#{$key} { column-gap:  $value !important; }
+  .gap-y-#{$key} { row-gap:     $value !important; }
+}
+
+// ── Stack pattern (flujo vertical entre hijos) ───────────
+@each $key, $value in $_spaces {
+  .stack-#{$key} > * + * { margin-top: $value !important; }
+}
+
+// ── Auto margins ─────────────────────────────────────────
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.ml-auto { margin-left: auto !important; }
+.mr-auto { margin-right: auto !important; }
+.mt-auto { margin-top: auto !important; }
+.mb-auto { margin-bottom: auto !important; }

@@ -1,0 +1,40 @@
+<section class="section" id="badges">
+  <div class="section-header">
+    <div class="section-eyebrow">Componentes</div>
+    <h1 class="section-title">Badges</h1>
+    <p class="section-desc">Indicadores de estado usando los tokens semánticos de color.</p>
+  </div>
+
+  <div class="component-preview">
+    <div class="preview-bar"><span class="preview-label">Estados</span></div>
+    <div class="preview-canvas">
+      <span class="badge badge-success">● Activo</span>
+      <span class="badge badge-warning">● Pendiente</span>
+      <span class="badge badge-error">● Error</span>
+      <span class="badge badge-info">● Información</span>
+      <span class="badge badge-neutral">● Inactivo</span>
+    </div>
+  </div>
+
+  <div class="code-block">
+    <div class="code-tabs">
+      <button class="code-tab active" onclick="switchTab(this,'badge-html')">HTML / Drupal</button>
+      <button class="code-tab" onclick="switchTab(this,'badge-css')">CSS</button>
+    </div>
+    <div class="code-content">
+      <button class="copy-btn" onclick="copyCode(this)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+      <pre class="active" id="badge-html">&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"badge badge-success"</span>&gt;Activo&lt;/<span class="kw">span</span>&gt;
+&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"badge badge-warning"</span>&gt;Pendiente&lt;/<span class="kw">span</span>&gt;
+&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"badge badge-error"</span>&gt;Error&lt;/<span class="kw">span</span>&gt;
+&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"badge badge-info"</span>&gt;Información&lt;/<span class="kw">span</span>&gt;</pre>
+      <pre id="badge-css"><span class="sel">.badge</span>         { <span class="prop">display</span>: <span class="val">inline-flex</span>; <span class="prop">padding</span>: <span class="val">3px 10px</span>; <span class="prop">border-radius</span>: <span class="val">20px</span>; <span class="prop">font-size</span>: <span class="val">11px</span>; <span class="prop">font-weight</span>: <span class="val">700</span>; }
+<span class="sel">.badge-success</span> { <span class="prop">background</span>: <span class="val">var(--base-green-40)</span>;  <span class="prop">color</span>: <span class="val">var(--base-green-80)</span>; }
+<span class="sel">.badge-warning</span> { <span class="prop">background</span>: <span class="val">var(--base-yellow-40)</span>; <span class="prop">color</span>: <span class="val">var(--base-yellow-80)</span>; }
+<span class="sel">.badge-error</span>   { <span class="prop">background</span>: <span class="val">var(--base-red-40)</span>;    <span class="prop">color</span>: <span class="val">var(--base-red-80)</span>; }
+<span class="sel">.badge-info</span>    { <span class="prop">background</span>: <span class="val">var(--base-blue-40)</span>;   <span class="prop">color</span>: <span class="val">var(--base-blue-80)</span>; }</pre>
+    </div>
+  </div>
+</section>

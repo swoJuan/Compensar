@@ -1,0 +1,70 @@
+// ============================================================
+//  _icons.scss
+//  Sistema de iconos: IcoMoon (primario) + Google Font Icons (fallback)
+//  Uso:
+//    <i class="icon icon-warning icon-24" aria-hidden="true"></i>
+//    <span class="material-symbols-rounded" aria-hidden="true">warning</span>
+// ============================================================
+
+@use '../abstracts/mixins' as *;
+@use '../abstracts/tokens-typography' as *;
+
+// ── @font-face: IcoMoon CompensarIcons ───────────────────
+@font-face {
+  font-family: 'CompensarIcons';
+  src: url('../icons/fonts/compensar-icons.woff2') format('woff2'),
+       url('../icons/fonts/compensar-icons.woff')  format('woff'),
+       url('../icons/fonts/compensar-icons.ttf')   format('truetype');
+  font-weight: normal;
+  font-style:  normal;
+  font-display: block;
+}
+
+// ── Clase base IcoMoon ───────────────────────────────────
+.icon {
+  @include icon-base;
+  color: currentColor;  // hereda el color del contexto
+}
+
+// ── Tamaños de icono ─────────────────────────────────────
+.icon-12 { font-size: 12px; }
+.icon-16 { font-size: 16px; }
+.icon-20 { font-size: 20px; }
+.icon-24 { font-size: 24px; }   // ← tamaño estándar recomendado
+.icon-32 { font-size: 32px; }
+.icon-40 { font-size: 40px; }
+.icon-48 { font-size: 48px; }
+.icon-64 { font-size: 64px; }
+
+// ── Colores semánticos de icono ──────────────────────────
+.icon-primary   { color: var(--color-primary) !important; }
+.icon-secondary { color: var(--color-secondary) !important; }
+.icon-success   { color: var(--color-success-icon) !important; }
+.icon-error     { color: var(--color-error-icon) !important; }
+.icon-warning   { color: var(--color-warning-icon) !important; }
+.icon-info      { color: var(--color-info-icon) !important; }
+.icon-muted     { color: var(--color-text-tertiary) !important; }
+
+// ── Iconos en botones / inline ───────────────────────────
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375em;  // espacio relativo entre icono y texto
+}
+
+// ── Google Font Icons (fallback / secondary) ─────────────
+// Se carga vía _google-icons.scss (vendors).
+// Uso: <span class="material-symbols-rounded" aria-hidden="true">home</span>
+.material-symbols-rounded,
+.material-symbols-outlined,
+.material-icons {
+  color: currentColor;
+  user-select: none;
+  vertical-align: middle;
+  font-size: inherit;
+  line-height: 1;
+}
+
+// ── Regla: NO usar Google Icons como primera opción ───────
+// Usar .icon + clase IcoMoon siempre que exista el icono.
+// Google Icons solo si el icono no existe en CompensarIcons.

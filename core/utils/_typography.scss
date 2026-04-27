@@ -1,0 +1,110 @@
+// =============================================================================
+// core/utils/_typography.scss
+// Typography utility classes — text alignment, size, weight, decoration, etc.
+// Consumes only CSS custom properties (semantic tokens).
+// =============================================================================
+
+@use '../abstracts/tokens-typography' as *;
+@use '../abstracts/mixins' as mx;
+
+// ── Text alignment ─────────────────────────────────────────────────────────
+.u-text-left   { text-align: left   !important; }
+.u-text-center { text-align: center !important; }
+.u-text-right  { text-align: right  !important; }
+
+@include mx.sm {
+  .u-text-sm-left   { text-align: left   !important; }
+  .u-text-sm-center { text-align: center !important; }
+  .u-text-sm-right  { text-align: right  !important; }
+}
+@include mx.md {
+  .u-text-md-left   { text-align: left   !important; }
+  .u-text-md-center { text-align: center !important; }
+  .u-text-md-right  { text-align: right  !important; }
+}
+@include mx.lg {
+  .u-text-lg-left   { text-align: left   !important; }
+  .u-text-lg-center { text-align: center !important; }
+  .u-text-lg-right  { text-align: right  !important; }
+}
+
+// ── Text transform ──────────────────────────────────────────────────────────
+.u-uppercase   { text-transform: uppercase   !important; }
+.u-lowercase   { text-transform: lowercase   !important; }
+.u-capitalize  { text-transform: capitalize  !important; }
+.u-normal-case { text-transform: none        !important; }
+
+// ── Font weight ─────────────────────────────────────────────────────────────
+.u-fw-light    { font-weight: $fw-light    !important; }
+.u-fw-regular  { font-weight: $fw-regular  !important; }
+.u-fw-medium   { font-weight: $fw-medium   !important; }
+.u-fw-semibold { font-weight: $fw-semibold !important; }
+.u-fw-bold     { font-weight: $fw-bold     !important; }
+
+// ── Font size (semantic scale, maps to CSS vars) ────────────────────────────
+.u-fs-xs   { font-size: var(--font-size-xs)   !important; }
+.u-fs-sm   { font-size: var(--font-size-sm)   !important; }
+.u-fs-md   { font-size: var(--font-size-md)   !important; }
+.u-fs-lg   { font-size: var(--font-size-lg)   !important; }
+.u-fs-xl   { font-size: var(--font-size-xl)   !important; }
+.u-fs-2xl  { font-size: var(--font-size-2xl)  !important; }
+.u-fs-3xl  { font-size: var(--font-size-3xl)  !important; }
+.u-fs-4xl  { font-size: var(--font-size-4xl)  !important; }
+
+// ── Line height ─────────────────────────────────────────────────────────────
+.u-lh-none   { line-height: $lh-none   !important; }
+.u-lh-tight  { line-height: $lh-tight  !important; }
+.u-lh-snug   { line-height: $lh-snug   !important; }
+.u-lh-normal { line-height: $lh-normal !important; }
+.u-lh-relaxed{ line-height: $lh-relaxed!important; }
+.u-lh-loose  { line-height: $lh-loose  !important; }
+
+// ── Letter spacing ──────────────────────────────────────────────────────────
+.u-ls-tight  { letter-spacing: $ls-tight  !important; }
+.u-ls-normal { letter-spacing: $ls-normal !important; }
+.u-ls-wide   { letter-spacing: $ls-wide   !important; }
+.u-ls-wider  { letter-spacing: $ls-wider  !important; }
+.u-ls-widest { letter-spacing: $ls-widest !important; }
+
+// ── Text decoration ─────────────────────────────────────────────────────────
+.u-underline     { text-decoration: underline    !important; }
+.u-line-through  { text-decoration: line-through !important; }
+.u-no-underline  { text-decoration: none         !important; }
+
+// ── Text color (semantic) ───────────────────────────────────────────────────
+.u-text-primary   { color: var(--color-text-primary)   !important; }
+.u-text-secondary { color: var(--color-text-secondary) !important; }
+.u-text-muted     { color: var(--color-text-muted)     !important; }
+.u-text-disabled  { color: var(--color-text-disabled)  !important; }
+.u-text-inverse   { color: var(--color-text-inverse)   !important; }
+.u-text-link      { color: var(--color-primary)        !important; }
+.u-text-success   { color: var(--color-success-text)   !important; }
+.u-text-error     { color: var(--color-error-text)     !important; }
+.u-text-warning   { color: var(--color-warning-text)   !important; }
+.u-text-info      { color: var(--color-info-text)      !important; }
+
+// ── Truncation & clamping ───────────────────────────────────────────────────
+.u-truncate {
+  @include mx.truncate;
+}
+
+.u-line-clamp-1 { @include mx.line-clamp(1); }
+.u-line-clamp-2 { @include mx.line-clamp(2); }
+.u-line-clamp-3 { @include mx.line-clamp(3); }
+.u-line-clamp-4 { @include mx.line-clamp(4); }
+
+// ── Whitespace ──────────────────────────────────────────────────────────────
+.u-whitespace-normal  { white-space: normal   !important; }
+.u-whitespace-nowrap  { white-space: nowrap   !important; }
+.u-whitespace-pre     { white-space: pre      !important; }
+.u-whitespace-pre-line{ white-space: pre-line !important; }
+.u-whitespace-pre-wrap{ white-space: pre-wrap !important; }
+
+// ── Font style ──────────────────────────────────────────────────────────────
+.u-italic      { font-style: italic !important; }
+.u-not-italic  { font-style: normal !important; }
+
+// ── Word break ──────────────────────────────────────────────────────────────
+.u-break-word   { word-break: break-word  !important; overflow-wrap: anywhere !important; }
+.u-break-all    { word-break: break-all   !important; }
+.u-break-normal { word-break: normal      !important; }

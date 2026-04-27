@@ -1,0 +1,93 @@
+// ============================================================
+//  _variables.scss
+//  Sobreescrituras de Bootstrap 5 + variables globales.
+//  DEBE importarse ANTES que Bootstrap.
+// ============================================================
+
+@use 'tokens-colors'     as *;
+@use 'tokens-typography' as *;
+@use 'tokens-spacing'    as *;
+@use 'tokens-radius'     as *;
+@use 'tokens-shadows'    as *;
+
+// ── Bootstrap: colores principales ──────────────────────
+$primary:   $color-brand-80       !default;  // #ff6600
+$secondary: $color-violet-70      !default;  // #4e3199
+$success:   $color-green1-80      !default;  // #0b853d
+$info:      $color-cyan-blue-60   !default;  // #5286bc
+$warning:   $color-yellow-70      !default;  // #ffc154
+$danger:    $color-red-70         !default;  // #d14434
+$light:     $color-neutral-10     !default;  // #f5f5f5
+$dark:      $color-neutral-100    !default;  // #111111
+
+// ── Bootstrap: tipografía ────────────────────────────────
+$font-family-sans-serif: $font-body     !default;
+$font-family-monospace:  $font-code     !default;
+$font-size-base:         $fs-body-l     !default;  // 1rem
+$font-size-sm:           $fs-body-m     !default;  // 0.875rem
+$font-size-lg:           $fs-body-xl    !default;  // 1.125rem
+$font-weight-normal:     $fw-regular    !default;
+$font-weight-medium:     $fw-medium     !default;
+$font-weight-bold:       $fw-bold       !default;
+$line-height-base:       $lh-body       !default;  // 1.3
+
+// ── Bootstrap: headings ──────────────────────────────────
+$h1-font-size: $fs-h1 !default;
+$h2-font-size: $fs-h2 !default;
+$h3-font-size: $fs-h3 !default;
+$h4-font-size: $fs-h4 !default;
+$h5-font-size: $fs-h5 !default;
+$h6-font-size: $fs-h6 !default;
+$headings-font-family: $font-heading !default;
+$headings-font-weight: $fw-bold      !default;
+$headings-line-height: $lh-h1-h4     !default;
+
+// ── Bootstrap: border-radius ─────────────────────────────
+$border-radius:    $radius-xs  !default;
+$border-radius-sm: $radius-xs  !default;
+$border-radius-lg: $radius-sm  !default;
+$border-radius-xl: $radius-md  !default;
+$border-radius-pill: $radius-full !default;
+
+// ── Bootstrap: espaciado ─────────────────────────────────
+$spacer: $space-16 !default;
+
+// ── Bootstrap: sombras ───────────────────────────────────
+$box-shadow:    $shadow-1 !default;
+$box-shadow-sm: $shadow-1 !default;
+$box-shadow-lg: $shadow-3 !default;
+
+// ── Bootstrap: grid ──────────────────────────────────────
+$grid-columns:      12     !default;
+$grid-gutter-width: $space-24 !default;
+$container-padding-x: $space-16 !default;
+
+// ── Bootstrap: transiciones ──────────────────────────────
+$transition-base: all 0.15s ease-in-out !default;
+$transition-fade: opacity 0.15s linear  !default;
+
+// ── Bootstrap: z-index ───────────────────────────────────
+$zindex-dropdown:  1000 !default;
+$zindex-sticky:    1020 !default;
+$zindex-fixed:     1030 !default;
+$zindex-modal-backdrop: 1040 !default;
+$zindex-offcanvas: 1045 !default;
+$zindex-modal:     1050 !default;
+$zindex-popover:   1070 !default;
+$zindex-tooltip:   1080 !default;
+
+// ── Globales propios ─────────────────────────────────────
+$body-bg:    var(--color-surface-page) !default;
+$body-color: var(--color-text-primary) !default;
+$link-color: var(--color-text-link)    !default;
+$link-hover-color: var(--color-primary-hover) !default;
+
+// ── Breakpoints (igual que Bootstrap, explícito) ─────────
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;

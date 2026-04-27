@@ -1,0 +1,177 @@
+// =============================================================================
+// EXAMPLE — How a component consumes the token system
+// File: core/components/_plan-card.scss
+//
+// This file shows the correct authoring pattern for any new component.
+// Copy this template, replace the selector names, and follow the rules below.
+// =============================================================================
+
+// ── Step 1: @use only what you need ─────────────────────────────────────────
+// Always use namespaces to avoid accidental collisions with Bootstrap or other
+// libraries. Bring in only the partials whose Sass variables/mixins you'll use.
+// CSS custom properties (--color-*, --space-*, etc.) are global — no @use needed.
+
+@use '../abstracts/tokens-typography' as *;   // $fw-semibold, $lh-normal …
+@use '../abstracts/tokens-spacing'    as *;   // $space-16 …
+@use '../abstracts/mixins'            as mx;  // mx.focus-ring, mx.card-base …
+
+// ── Step 2: Component root — consume SEMANTIC CSS vars, not raw tokens ───────
+// Rule: a component NEVER references raw Sass color variables like $color-brand-80.
+//       It always consumes CSS custom properties so dark/high-contrast themes
+//       work automatically without any @media or duplicate rules.
+
+.plan-card {
+  // Layout
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-16);
+  padding:        var(--space-20) var(--space-24);
+
+  // Visual
+  background:     var(--color-surface-default);   // ← semantic, not #fff
+  border:         1px solid var(--color-border-subtle);
+  border-radius:  var(--radius-md);
+  box-shadow:     var(--shadow-sm);
+
+  // Typography inherits body defaults; only override where intentional
+  color:          var(--color-text-primary);
+  font-size:      var(--font-size-md);
+
+  // Transition for interactive state
+  transition: box-shadow 200ms ease, border-color 200ms ease, transform 100ms ease;
+
+  // ── Modifier: featured / highlighted ──────────────────────────────────────
+  &--featured {
+    border-color: var(--color-primary);
+    box-shadow:   var(--shadow-md), 0 0 0 1px var(--color-primary);
+  }
+
+  // ── Modifier: disabled ────────────────────────────────────────────────────
+  &--disabled {
+    opacity:        0.5;
+    pointer-events: none;
+    cursor:         not-allowed;
+  }
+
+  // ── Interactive state ─────────────────────────────────────────────────────
+  &:hover {
+    border-color: var(--color-border-default);
+    box-shadow:   var(--shadow-md);
+    transform:    translateY(-2px);
+  }
+
+  // ── Focus (keyboard navigation) ───────────────────────────────────────────
+  // Use the mixin — never write raw outline/box-shadow for focus manually.
+  &:focus-visible {
+    @include mx.focus-ring;
+  }
+
+  // ────────────────────────────────────────────────────────────────────────
+  // Child elements
+  // Rule: child selectors use BEM element notation inside the parent block.
+  //       Avoid deep nesting (max 3 levels).
+  // ────────────────────────────────────────────────────────────────────────
+
+  &__badge {
+    align-self:     flex-start;
+    background:     var(--color-primary-surface);
+    color:          var(--color-primary);
+    border:         1px solid var(--color-primary-border);
+    border-radius:  var(--radius-full);
+    font-size:      var(--font-size-xs);
+    font-weight:    $fw-semibold;
+    padding:        2px var(--space-8);
+    letter-spacing: 0.04em;
+  }
+
+  &__title {
+    font-size:   var(--font-size-xl);
+    font-weight: $fw-semibold;
+    line-height: $lh-tight;
+    color:       var(--color-text-primary);
+    margin:      0;
+  }
+
+  &__price {
+    display:     flex;
+    align-items: baseline;
+    gap:         var(--space-4);
+
+    strong {
+      font-size:   var(--font-size-3xl);
+      font-weight: $fw-bold;
+      color:       var(--color-text-primary);
+    }
+
+    span {
+      font-size: var(--font-size-sm);
+      color:     var(--color-text-muted);
+    }
+  }
+
+  &__features {
+    list-style:    none;
+    padding:       0;
+    margin:        0;
+    display:       flex;
+    flex-direction: column;
+    gap:           var(--space-8);
+    flex:          1;              // pushes CTA to bottom of card
+  }
+
+  &__feature-item {
+    display:     flex;
+    align-items: flex-start;
+    gap:         var(--space-8);
+    font-size:   var(--font-size-sm);
+    color:       var(--color-text-secondary);
+
+    // Icon prefix — using the .icon system
+    > .icon {
+      flex-shrink: 0;
+      margin-top:  2px;           // optical alignment with text cap-height
+      color:       var(--color-success-text);
+    }
+
+    &--unavailable {
+      color: var(--color-text-disabled);
+      > .icon { color: var(--color-text-disabled); }
+    }
+  }
+
+  &__cta {
+    margin-top: var(--space-8);   // extra gap before button
+  }
+}
+
+// ── Step 3: Responsive adjustments ──────────────────────────────────────────
+// Use project mixins — never write raw media queries inline.
+@include mx.mobile-only {
+  .plan-card {
+    padding: var(--space-16);
+  }
+}
+
+// ── Example HTML ─────────────────────────────────────────────────────────────
+//
+// <article class="plan-card plan-card--featured">
+//   <span class="plan-card__badge">Más popular</span>
+//   <h3 class="plan-card__title">Plan Familiar Plus</h3>
+//   <div class="plan-card__price">
+//     <strong>$320,000</strong>
+//     <span>/ mes</span>
+//   </div>
+//   <ul class="plan-card__features">
+//     <li class="plan-card__feature-item">
+//       <i class="icon icon-check icon-20" aria-hidden="true"></i>
+//       Consultas médicas ilimitadas
+//     </li>
+//     <li class="plan-card__feature-item plan-card__feature-item--unavailable">
+//       <i class="icon icon-close icon-20" aria-hidden="true"></i>
+//       Cobertura internacional
+//     </li>
+//   </ul>
+//   <div class="plan-card__cta">
+//     <button class="btn btn-primary u-w-full">Seleccionar plan</button>
+//   </div>
+// </article>

@@ -1,0 +1,20 @@
+// ============================================================
+//  _tokens-radius.scss
+// ============================================================
+
+$radius-none: 0;
+$radius-xs:   0.5rem;   //  8px — inputs, badges
+$radius-sm:   1rem;     // 16px — cards, modales pequeños
+$radius-md:   1.5rem;   // 24px — cards grandes, sheets
+$radius-lg:   2rem;     // 32px — pills, full-rounded large
+$radius-full: 9999px;   // pill completo
+
+// ── Mapa para Bootstrap $border-radius-* ─────────────────
+$border-radii: (
+  'none': $radius-none,
+  'xs':   $radius-xs,
+  'sm':   $radius-sm,
+  'md':   $radius-md,
+  'lg':   $radius-lg,
+  'full': $radius-full,
+) !default;

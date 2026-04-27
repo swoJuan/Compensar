@@ -1,0 +1,28 @@
+// ============================================================
+//  utils/_colors.scss
+//  Clases de background y color de texto semánticos.
+// ============================================================
+
+// ── Fondos ───────────────────────────────────────────────
+.bg-surface       { background-color: var(--color-surface) !important; }
+.bg-surface-alt   { background-color: var(--color-surface-alt) !important; }
+.bg-surface-page  { background-color: var(--color-surface-page) !important; }
+.bg-primary       { background-color: var(--color-primary) !important; color: #fff !important; }
+.bg-primary-subtle { background-color: var(--color-primary-subtle) !important; }
+.bg-secondary     { background-color: var(--color-secondary) !important; color: #fff !important; }
+.bg-secondary-subtle { background-color: var(--color-secondary-subtle) !important; }
+.bg-success       { background-color: var(--color-success-bg) !important; }
+.bg-error         { background-color: var(--color-error-bg) !important; }
+.bg-warning       { background-color: var(--color-warning-bg) !important; }
+.bg-info          { background-color: var(--color-info-bg) !important; }
+.bg-violet        { background-color: var(--color-surface-violet) !important; }
+.bg-green         { background-color: var(--color-surface-green) !important; }
+
+// ── Bordes ───────────────────────────────────────────────
+.border-default { border-color: var(--color-border) !important; }
+.border-strong  { border-color: var(--color-border-strong) !important; }
+.border-subtle  { border-color: var(--color-border-subtle) !important; }
+.border-primary { border-color: var(--color-primary) !important; }
+.border-success { border-color: var(--color-success-border) !important; }
+.border-error   { border-color: var(--color-error-border) !important; }
+.border-warning { border-color: var(--color-warning-border) !important; }

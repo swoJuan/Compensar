@@ -1,0 +1,81 @@
+<section class="section" id="inputs">
+  <div class="section-header">
+    <div class="section-eyebrow">Componentes</div>
+    <h1 class="section-title">Inputs</h1>
+    <p class="section-desc">Campos de texto con estados: default, focus, error y disabled.</p>
+  </div>
+
+  <div class="component-preview">
+    <div class="preview-bar"><span class="preview-label">Estados del input</span></div>
+    <div class="preview-canvas col">
+      <div class="input-group">
+        <label class="input-label">Nombre completo</label>
+        <input class="input-field" type="text" placeholder="Ej. Juan García">
+        <span class="input-helper">Ingresa tu nombre como aparece en tu documento</span>
+      </div>
+      <div class="input-group">
+        <label class="input-label">Correo electrónico</label>
+        <input class="input-field error" type="email" value="juan@">
+        <span class="input-helper error">✕ Correo electrónico inválido</span>
+      </div>
+      <div class="input-group">
+        <label class="input-label">N° de afiliación</label>
+        <input class="input-field" type="text" placeholder="0000-0000" disabled>
+        <span class="input-helper">Campo deshabilitado</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-block">
+    <div class="code-tabs">
+      <button class="code-tab active" onclick="switchTab(this,'input-html')">HTML / Drupal</button>
+      <button class="code-tab" onclick="switchTab(this,'input-angular')">Angular</button>
+      <button class="code-tab" onclick="switchTab(this,'input-css')">CSS</button>
+    </div>
+    <div class="code-content">
+      <button class="copy-btn" onclick="copyCode(this)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+      <pre class="active" id="input-html">&lt;<span class="kw">div</span> <span class="prop">class</span>=<span class="str">"input-group"</span>&gt;
+  &lt;<span class="kw">label</span> <span class="prop">class</span>=<span class="str">"input-label"</span>&gt;Nombre&lt;/<span class="kw">label</span>&gt;
+  &lt;<span class="kw">input</span> <span class="prop">class</span>=<span class="str">"input-field"</span> <span class="prop">type</span>=<span class="str">"text"</span> <span class="prop">placeholder</span>=<span class="str">"Tu nombre"</span>&gt;
+  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"input-helper"</span>&gt;Texto de ayuda&lt;/<span class="kw">span</span>&gt;
+&lt;/<span class="kw">div</span>&gt;
+
+<span class="cmt">&lt;!-- Estado error --&gt;</span>
+&lt;<span class="kw">input</span> <span class="prop">class</span>=<span class="str">"input-field error"</span> ...&gt;
+&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"input-helper error"</span>&gt;Mensaje de error&lt;/<span class="kw">span</span>&gt;</pre>
+      <pre id="input-angular"><span class="cmt">&lt;!-- Angular Reactive Forms --&gt;</span>
+&lt;<span class="kw">div</span> <span class="prop">class</span>=<span class="str">"input-group"</span>&gt;
+  &lt;<span class="kw">label</span> <span class="prop">class</span>=<span class="str">"input-label"</span>&gt;{{ label }}&lt;/<span class="kw">label</span>&gt;
+  &lt;<span class="kw">input</span>
+    <span class="prop">class</span>=<span class="str">"input-field"</span>
+    [<span class="prop">class.error</span>]=<span class="str">"control.invalid && control.touched"</span>
+    [<span class="prop">formControl</span>]=<span class="str">"control"</span>&gt;
+  &lt;<span class="kw">span</span> *<span class="prop">ngIf</span>=<span class="str">"control.invalid && control.touched"</span>
+    <span class="prop">class</span>=<span class="str">"input-helper error"</span>&gt;
+    {{ errorMessage }}
+  &lt;/<span class="kw">span</span>&gt;
+&lt;/<span class="kw">div</span>&gt;</pre>
+      <pre id="input-css"><span class="sel">.input-field</span> {
+  <span class="prop">padding</span>: <span class="val">10px var(--space-4)</span>;
+  <span class="prop">border</span>: <span class="val">1.5px solid var(--ui-border)</span>;
+  <span class="prop">border-radius</span>: <span class="val">8px</span>;
+  <span class="prop">font-family</span>: <span class="val">var(--font-body)</span>;
+  <span class="prop">font-size</span>: <span class="val">14px</span>;
+  <span class="prop">width</span>: <span class="val">100%</span>;
+}
+
+<span class="sel">.input-field:focus</span> {
+  <span class="prop">border-color</span>: <span class="val">var(--base-brand-80)</span>;
+  <span class="prop">box-shadow</span>: <span class="val">0 0 0 3px rgba(255,102,0,.15)</span>;
+}
+
+<span class="sel">.input-field.error</span> {
+  <span class="prop">border-color</span>: <span class="val">var(--base-red-70)</span>;
+  <span class="prop">box-shadow</span>: <span class="val">0 0 0 3px rgba(209,68,52,.15)</span>;
+}</pre>
+    </div>
+  </div>
+</section>

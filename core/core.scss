@@ -1,0 +1,124 @@
+// =============================================================================
+// core/core.scss — Main entry point
+// Compensar Medicina Prepagada · Design System · Core Layer
+//
+// IMPORT ORDER (must be preserved):
+//   1. Abstracts  — variables, tokens, functions, mixins (no CSS output)
+//   2. Vendors    — Bootstrap variables override BEFORE Bootstrap import
+//   3. Bootstrap  — generates its CSS using our overrides
+//   4. Base       — theme tokens, reset, typography, icons, accessibility
+//   5. Components — reusable UI patterns
+//   6. Utils      — atomic utility classes (high specificity, !important)
+//   7. Vendor     — post-Bootstrap overrides and Google Icons
+//
+// Usage from a component or page:
+//   @use 'core/abstracts/tokens-colors' as *;
+//   @use 'core/abstracts/mixins' as mx;
+//
+// This file is compiled once and served as core.css.
+// Individual component files @use their needed partials directly.
+// =============================================================================
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 1. ABSTRACTS  (Sass only, zero CSS output)
+// ─────────────────────────────────────────────────────────────────────────────
+@use 'abstracts/tokens-colors';
+@use 'abstracts/tokens-typography';
+@use 'abstracts/tokens-spacing';
+@use 'abstracts/tokens-radius';
+@use 'abstracts/tokens-shadows';
+@use 'abstracts/functions';   // strip-unit, rem, tint, shade, space(), z()
+@use 'abstracts/mixins';      // typography, breakpoints, focus-ring, etc.
+@use 'abstracts/variables';   // Bootstrap $variable !default overrides
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 2. BOOTSTRAP — import after variables so overrides take effect
+//    Requires Bootstrap 5 to be installed:  npm install bootstrap
+//    Adjust path if using node_modules directly.
+// ─────────────────────────────────────────────────────────────────────────────
+// Option A: full Bootstrap
+// @use 'bootstrap/scss/bootstrap';
+
+// Option B: à-la-carte (recommended — smaller output)
+@use 'bootstrap/scss/functions'   as bs-fn;
+@use 'bootstrap/scss/variables'   as bs-var;
+@use 'bootstrap/scss/variables-dark' as bs-dark;
+@use 'bootstrap/scss/maps'        as bs-maps;
+@use 'bootstrap/scss/mixins'      as bs-mx;
+@use 'bootstrap/scss/utilities'   as bs-utils;
+
+// Bootstrap base layers
+@use 'bootstrap/scss/root';
+@use 'bootstrap/scss/reboot';
+@use 'bootstrap/scss/type';
+@use 'bootstrap/scss/images';
+@use 'bootstrap/scss/containers';
+@use 'bootstrap/scss/grid';
+
+// Bootstrap components (cherry-pick what the project needs)
+@use 'bootstrap/scss/tables';
+@use 'bootstrap/scss/forms';
+@use 'bootstrap/scss/buttons';
+@use 'bootstrap/scss/transitions';
+@use 'bootstrap/scss/dropdown';
+@use 'bootstrap/scss/button-group';
+@use 'bootstrap/scss/nav';
+@use 'bootstrap/scss/navbar';
+@use 'bootstrap/scss/card';
+@use 'bootstrap/scss/accordion';
+@use 'bootstrap/scss/breadcrumb';
+@use 'bootstrap/scss/pagination';
+@use 'bootstrap/scss/badge';
+@use 'bootstrap/scss/alert';
+@use 'bootstrap/scss/progress';
+@use 'bootstrap/scss/list-group';
+@use 'bootstrap/scss/close';
+@use 'bootstrap/scss/toasts';
+@use 'bootstrap/scss/modal';
+@use 'bootstrap/scss/tooltip';
+@use 'bootstrap/scss/popover';
+@use 'bootstrap/scss/spinners';
+@use 'bootstrap/scss/offcanvas';
+@use 'bootstrap/scss/placeholders';
+
+// Bootstrap helpers + utilities API
+@use 'bootstrap/scss/helpers';
+@use 'bootstrap/scss/utilities/api';
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 3. BASE  (global resets, theme tokens, typography, icons)
+// ─────────────────────────────────────────────────────────────────────────────
+@use 'base/theme';          // CSS custom properties (light / dark / high-contrast)
+@use 'base/reset';          // Opinionated resets on top of Bootstrap reboot
+@use 'base/typography';     // .mp-h1 … .mp-placeholder classes
+@use 'base/icons';          // CompensarIcons @font-face, .icon, .icon-{n}
+@use 'base/accessibility';  // .sr-only, .skip-link, focus-visible, reduced-motion
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 4. COMPONENTS
+// ─────────────────────────────────────────────────────────────────────────────
+@use 'components/buttons';  // .btn-primary, .btn-ghost, .btn-loading …
+@use 'components/inputs';   // .field, .input, .select, .toggle …
+@use 'components/alerts';   // .alert-success, .alert-error …
+@use 'components/cards';    // .card, .card-flat, .card-interactive …
+@use 'components/tables';   // .table, .table-striped, .table-badge …
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 5. UTILITIES  (atomic helpers — always last non-vendor to allow overrides)
+// ─────────────────────────────────────────────────────────────────────────────
+@use 'utils/spacing';       // .p-{n}, .m-{n}, .gap-{n}, .stack-{n}
+@use 'utils/colors';        // .bg-surface, .border-default …
+@use 'utils/typography';    // .u-text-center, .u-fw-bold, .u-truncate …
+@use 'utils/display';       // .u-flex, .u-grid, .u-hidden, .u-cursor-pointer …
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 6. VENDOR OVERRIDES  (must come after Bootstrap to win specificity battles)
+// ─────────────────────────────────────────────────────────────────────────────
+@use 'vendors/bootstrap-overrides';  // Remap BS CSS vars, fix focus, forms, dark mode
+@use 'vendors/google-icons';         // Material Symbols Rounded fallback

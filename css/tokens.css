@@ -1,0 +1,522 @@
+/* ============================================================
+   DESIGN TOKENS — Compensar Medicina Prepagada
+   v2.1 — Sistema unificado: --base-* / --use-* / --color-* / --ui-*
+
+   Jerarquía:
+     1. --base-*    → paleta primitiva (valores crudos, sin semántica)
+     2. --use-*     → tokens semánticos legacy (texto, tablas, complementarios)
+     3. --color-*   → aliases semánticos Sass-aligned (nueva capa, usa var() refs)
+     4. --ui-*      → tokens del shell de documentación (sidebar, header, code)
+     5. Espaciado, tipografía, radio, sombras, z-index
+
+   Los --color-* apuntan a --use-* o --ui-* mediante var(). Esto significa
+   que los temas dark/high-contrast se heredan automáticamente sin redefinirlos.
+   ============================================================ */
+
+:root {
+
+  /* ══════════════════════════════════════════════════════════
+     1. PALETA BASE — valores primitivos sin semántica
+     ══════════════════════════════════════════════════════════ */
+
+  /* Neutral */
+  --base-neutral-100: #111111;
+  --base-neutral-90:  #292929;
+  --base-neutral-80:  #333333;
+  --base-neutral-70:  #666666;
+  --base-neutral-60:  #7f7f7f;
+  --base-neutral-50:  #a4a4a4;
+  --base-neutral-40:  #b8b8b8;
+  --base-neutral-30:  #cccccc;
+  --base-neutral-20:  #e0e0e0;
+  --base-neutral-10:  #f5f5f5;
+  --base-neutral-white: #ffffff;
+
+  /* Brand / Primary (Naranja) */
+  --base-brand-80:   #ff6600;
+  --base-primary-30: #e65c00;
+  --base-primary-20: #cc5200;
+
+  /* Green */
+  --base-green-100: #0d3d1f;
+  --base-green-90:  #166936;
+  --base-green-80:  #0b853d;
+  --base-green-70:  #22a152;
+  --base-green-60:  #44bd75;
+  --base-green-50:  #9fe0b8;
+  --base-green-40:  #e6f7e8;
+  --base-green-30:  #f7faf8;
+
+  /* Yellow */
+  --base-yellow-100: #634a1a;
+  --base-yellow-90:  #967229;
+  --base-yellow-80:  #bf9034;
+  --base-yellow-70:  #ffc154;
+  --base-yellow-60:  #fcce72;
+  --base-yellow-50:  #fce1ac;
+  --base-yellow-40:  #fff2d9;
+  --base-yellow-30:  #fff9ef;
+
+  /* Blue */
+  --base-blue-100: #2d4a67;
+  --base-blue-90:  #18428f;
+  --base-blue-80:  #1f53b5;
+  --base-blue-70:  #296ff0;
+  --base-blue-60:  #5c91f2;
+  --base-blue-50:  #9fbef5;
+  --base-blue-40:  #d4e2fa;
+  --base-blue-30:  #e6f1fb;
+
+  /* Red */
+  --base-red-100: #521a14;
+  --base-red-90:  #7d291f;
+  --base-red-80:  #9e3328;
+  --base-red-70:  #d14434;
+  --base-red-60:  #db7165;
+  --base-red-50:  #ebada7;
+  --base-red-40:  #f2d8d5;
+  --base-red-30:  #f7eeed;
+
+  /* Product Accent (Turquesa) */
+  --product-accent-100: #03838a;
+  --product-accent-90:  #24939d;
+  --product-accent-80:  #47a4af;
+  --product-accent-70:  #6bb4c0;
+  --product-accent-60:  #8fc5d0;
+  --product-accent-50:  #b3d7e0;
+  --product-accent-40:  #e1f7fe;
+  --product-accent-30:  #f2fcff;
+
+  /* Extended palette — Naranja */
+  --colors-naranja-600: #ff6600;
+
+  /* Extended palette — Turquesa */
+  --colors-turquesa-50:   #ebfffe;
+  --colors-turquesa-100:  #d0fffd;
+  --colors-turquesa-200:  #a0fffc;
+  --colors-turquesa-300:  #71fffa;
+  --colors-turquesa-400:  #41fff8;
+  --colors-turquesa-500:  #12fff7;
+  --colors-turquesa-600:  #00e1d9;
+  --colors-turquesa-700:  #00c0b9;
+  --colors-turquesa-800:  #009f99;
+  --colors-turquesa-900:  #007d79;
+  --colors-turquesa-1000: #005c59;
+
+  /* Extended palette — Violeta */
+  --colors-violeta-50:   #efecf9;
+  --colors-violeta-100:  #e0d9f3;
+  --colors-violeta-200:  #c1b3e7;
+  --colors-violeta-300:  #a28dda;
+  --colors-violeta-400:  #8367ce;
+  --colors-violeta-500:  #6d4cc5;
+  --colors-violeta-600:  #5b3ab4;
+  --colors-violeta-700:  #4e3199;
+  --colors-violeta-800:  #40297e;
+  --colors-violeta-900:  #322064;
+  --colors-violeta-1000: #251749;
+
+  /* Extended palette — Gris */
+  --colors-gris-50:   #f8f7f7;
+  --colors-gris-100:  #eceaea;
+  --colors-gris-200:  #d9d5d5;
+  --colors-gris-300:  #c6c1c0;
+  --colors-gris-400:  #b3acab;
+  --colors-gris-500:  #a09796;
+  --colors-gris-600:  #8c8280;
+  --colors-gris-700:  #786e6c;
+  --colors-gris-800:  #635a59;
+  --colors-gris-900:  #4d4746;
+  --colors-gris-1000: #383333;
+
+  /* ══════════════════════════════════════════════════════════
+     2. TOKENS SEMÁNTICOS LEGACY — --use-* y complementarios
+     ══════════════════════════════════════════════════════════ */
+
+  /* Texto */
+  --use-text-primary: #111111;
+  --use-text-heading: #111111;
+  --use-text-h2:      #383b3b;
+  --use-text-h3-h5:   #515151;
+  --use-text-label:   #111111;
+  --use-text-link:    #ff6600;
+  --use-text-eyebrow: #9e9e9e;
+
+  /* Tablas */
+  --use-tables-filter:  #e3e7ed;
+  --use-tables-stripes: #f5f5f7;
+  --use-tables-head:    #a5d7d5;
+
+  /* Complementarios */
+  --complementarios-bg:      #ffffff;
+  --complementarios-dark:    #1c1f2b;
+  --complementarios-verde:   #f6fcef;
+  --complementarios-naranja: #ffe5cc;
+  --complementarios-violeta: #f7f1fd;
+  --complementarios-cyan:    #defaf9;
+
+  /* Main Colors (legacy) */
+  --main-naranja-claro: #ff7e06;
+  --main-naranja-dark:  #ff6600;
+  --main-amarillo:      #ff980d;
+  --main-rojo-claro:    #f25106;
+  --main-dark:          #ff9d5c;
+
+  /* ══════════════════════════════════════════════════════════
+     3. SHELL UI — tokens del sistema de documentación
+     ══════════════════════════════════════════════════════════ */
+
+  --ui-bg:          #f8f7f7;
+  --ui-surface:     #ffffff;
+  --ui-surface-alt: #f5f5f5;
+  --ui-border:      #e0e0e0;
+  --ui-text:        #111111;
+  --ui-text-muted:  #666666;
+  --ui-accent:      #ff6600;
+  --ui-accent-dark: #cc5200;
+  --ui-tag-bg:      #fff3ea;
+  --ui-tag-text:    #cc5200;
+  --ui-code-bg:     #1c1f2b;
+  --ui-code-text:   #e8eaf0;
+  --ui-sidebar-w:   260px;
+  --ui-header-h:    60px;
+
+  /* ══════════════════════════════════════════════════════════
+     4. ALIASES --color-* — capa Sass-aligned
+        Apuntan a tokens existentes via var(). Heredan temas
+        dark/HC automáticamente sin redefinir en cada bloque.
+     ══════════════════════════════════════════════════════════ */
+
+  /* Marca / Acción */
+  --color-primary:         var(--base-brand-80);
+  --color-primary-dark:    var(--base-primary-30);
+  --color-primary-darker:  var(--base-primary-20);
+  --color-secondary:       var(--product-accent-100);
+  --color-secondary-dark:  var(--product-accent-90);
+
+  /* Texto semántico */
+  --color-text-primary:    var(--use-text-primary);
+  --color-text-heading:    var(--use-text-heading);
+  --color-text-muted:      var(--ui-text-muted);
+  --color-text-link:       var(--use-text-link);
+  --color-text-eyebrow:    var(--use-text-eyebrow);
+  --color-text-on-primary: #ffffff;
+
+  /* Superficies */
+  --color-bg:              var(--ui-bg);
+  --color-surface:         var(--ui-surface);
+  --color-surface-alt:     var(--ui-surface-alt);
+  --color-surface-inverse: var(--complementarios-dark);
+
+  /* Bordes */
+  --color-border:          var(--ui-border);
+  --color-border-focus:    var(--base-brand-80);
+  --color-border-error:    var(--base-red-70);
+
+  /* Feedback — Success */
+  --color-success:         var(--base-green-80);
+  --color-success-light:   var(--base-green-40);
+  --color-success-text:    var(--base-green-90);
+
+  /* Feedback — Warning */
+  --color-warning:         var(--base-yellow-70);
+  --color-warning-light:   var(--base-yellow-40);
+  --color-warning-text:    var(--base-yellow-80);
+
+  /* Feedback — Error */
+  --color-error:           var(--base-red-70);
+  --color-error-light:     var(--base-red-40);
+  --color-error-text:      var(--base-red-80);
+
+  /* Feedback — Info */
+  --color-info:            var(--base-blue-70);
+  --color-info-light:      var(--base-blue-40);
+  --color-info-text:       var(--base-blue-80);
+
+  /* Code blocks */
+  --color-code-bg:         var(--ui-code-bg);
+  --color-code-text:       var(--ui-code-text);
+
+  /* Tags / Badges */
+  --color-tag-bg:          var(--ui-tag-bg);
+  --color-tag-text:        var(--ui-tag-text);
+
+  /* ══════════════════════════════════════════════════════════
+     5. ESPACIADO — sistema 8pt dual
+        --space-N    : escala numerada legacy (1–12)
+        --space-{px} : escala px-named nueva (más descriptiva)
+     ══════════════════════════════════════════════════════════ */
+
+  /* Legacy numerado */
+  --space-1:  2px;
+  --space-2:  4px;
+  --space-3:  8px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+  --space-11: 192px;
+  --space-12: 256px;
+
+  /* Nuevo sistema px-named (Sass-aligned) */
+  --space-2px:  2px;
+  --space-4px:  4px;
+  --space-8px:  8px;
+  --space-12px: 12px;
+  --space-16px: 16px;
+  --space-20px: 20px;
+  --space-24px: 24px;
+  --space-32px: 32px;
+  --space-40px: 40px;
+  --space-48px: 48px;
+  --space-56px: 56px;
+  --space-64px: 64px;
+  --space-80px: 80px;
+  --space-96px: 96px;
+  --space-128px: 128px;
+  --space-160px: 160px;
+  --space-192px: 192px;
+  --space-256px: 256px;
+
+  /* ══════════════════════════════════════════════════════════
+     6. BORDER RADIUS
+     ══════════════════════════════════════════════════════════ */
+
+  --radius-xs:   8px;   /* inputs compactos, tags */
+  --radius-sm:   16px;  /* botones, inputs, controles */
+  --radius-md:   24px;  /* cards, modales */
+  --radius-lg:   32px;  /* superficies grandes, hero */
+  --radius-full: 9999px; /* píldoras, avatares circulares */
+
+  /* ══════════════════════════════════════════════════════════
+     7. SOMBRAS / ELEVACIÓN
+     ══════════════════════════════════════════════════════════ */
+
+  --shadow-1:                    2px 5px 16px rgba(0,0,0,.15);
+  --shadow-2:                    0px 8px 24px rgba(0,0,0,.15);
+  --shadow-3:                    0px 16px 40px rgba(0,0,0,.2);
+  --shadow-4:                    0px 20px 50px rgba(0,0,0,.2);
+  --shadow-header:               0px 4px 4px rgba(0,0,0,.25);
+  --shadow-button-hover:         2px 2px 3px rgba(255,157,92,1);
+  --shadow-button-special-hover: 2px 2px 3px rgba(162,141,218,1);
+  --shadow-button-pressed:       inset 0px 4px 4px rgba(0,0,0,.25);
+  --sombra-1:                    0px 4px 4px rgba(0,0,0,.25);
+
+  /* Aliases de elevación */
+  --elevation-0: none;
+  --elevation-1: var(--shadow-1);
+  --elevation-2: var(--shadow-2);
+  --elevation-3: var(--shadow-3);
+  --elevation-4: var(--shadow-4);
+
+  /* ══════════════════════════════════════════════════════════
+     8. TIPOGRAFÍA
+     ══════════════════════════════════════════════════════════ */
+
+  /* Familias */
+  --font-heading: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --font-code:    'Roboto Mono', monospace;
+
+  /* Pesos */
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-bold:    700;
+  --font-weight-black:   900;
+
+  /* Escala de tamaños Figma */
+  --display-xl:  3.5rem;    /* 56px */
+  --display-m:   3rem;      /* 48px */
+  --display-mob-xl: 2.5rem; /* 40px */
+  --display-mob-l:  2.25rem;/* 36px */
+  --display-mob-m:  2rem;   /* 32px */
+
+  --font-size-h1: 3rem;     /* 48px */
+  --font-size-h2: 2.5rem;   /* 40px */
+  --font-size-h3: 2.25rem;  /* 36px */
+  --font-size-h4: 1.75rem;  /* 28px */
+  --font-size-h5: 1.5rem;   /* 24px */
+  --font-size-h6: 1.125rem; /* 18px */
+
+  --font-size-eyebrow: 1.125rem; /* 18px */
+  --font-size-xl:      1.125rem; /* 18px */
+  --font-size-lg:      1rem;     /* 16px */
+  --font-size-md:      0.875rem; /* 14px — base UI */
+  --font-size-sm:      0.75rem;  /* 12px */
+  --font-size-xs:      0.625rem; /* 10px */
+
+  --font-size-body-2xl: 1.5rem;   /* 24px */
+  --font-size-body-xl:  1.125rem; /* 18px */
+  --font-size-body-l:   1rem;     /* 16px — base */
+  --font-size-body-m:   0.875rem; /* 14px */
+  --font-size-body-s:   0.75rem;  /* 12px */
+  --font-size-body-xs:  0.625rem; /* 10px */
+
+  --font-size-btn:         1rem;     /* 16px */
+  --font-size-label:       1rem;     /* 16px */
+  --font-size-hint:        0.875rem; /* 14px */
+  --font-size-placeholder: 1rem;     /* 16px */
+
+  /* Alias legacy (compatibilidad con fragments existentes) */
+  --display---display--m:            var(--display-m);
+  --display---display--l:            var(--display-xl);
+  --display--mobile---display--x-l:  var(--display-mob-xl);
+  --display--mobile---display--l:    var(--display-mob-l);
+  --display--mobile---display--m:    var(--display-mob-m);
+  --heading--h1:                     var(--font-size-h1);
+  --heading--h2:                     var(--font-size-h2);
+  --heading--h3:                     var(--font-size-h3);
+  --heading--h4:                     var(--font-size-h4);
+  --heading--h5:                     var(--font-size-h5);
+  --heading--h6:                     var(--font-size-h6);
+  --title--eyebrow:                  var(--font-size-eyebrow);
+  --title---paragraph--x-l:         var(--font-size-xl);
+  --title---paragraph--l:           var(--font-size-lg);
+  --body--2xl:                       var(--font-size-body-2xl);
+  --body---xl:                       var(--font-size-body-xl);
+  --body---l:                        var(--font-size-body-l);
+  --body---m:                        var(--font-size-body-m);
+  --body---s:                        var(--font-size-body-s);
+  --body---x-s:                      var(--font-size-body-xs);
+  --comun---boton:                   var(--font-size-btn);
+  --comun---label:                   var(--font-size-label);
+  --comun---hint:                    var(--font-size-hint);
+  --comun---placeholder:             var(--font-size-placeholder);
+
+  /* Interlineado */
+  --line-height-tight:  1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Tracking */
+  --letter-spacing-tight:  -0.02em;
+  --letter-spacing-normal:  0;
+  --letter-spacing-wide:    0.05em;
+  --letter-spacing-wider:   0.1em;
+
+  /* ══════════════════════════════════════════════════════════
+     9. Z-INDEX — escala de capas
+     ══════════════════════════════════════════════════════════ */
+
+  --z-behind:   -1;
+  --z-base:      0;
+  --z-raised:    10;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-header:    300;
+  --z-overlay:   400;
+  --z-modal:     500;
+  --z-toast:     600;
+  --z-tooltip:   700;
+  --z-top:       9999;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DARK MODE — solo se redefinen los --ui-* y --use-* primitivos.
+   Los --color-* se actualizan automáticamente vía var() chain.
+   ══════════════════════════════════════════════════════════════ */
+[data-theme="dark"] {
+  /* Shell */
+  --ui-bg:          #111318;
+  --ui-surface:     #1c1f2b;
+  --ui-surface-alt: #252836;
+  --ui-border:      #333647;
+  --ui-text:        #f0f0f0;
+  --ui-text-muted:  #a0a0b0;
+  --ui-accent:      #ff7e06;
+  --ui-accent-dark: #ff6600;
+  --ui-tag-bg:      #2a1f10;
+  --ui-tag-text:    #ff9d5c;
+  --ui-code-bg:     #0d0f16;
+  --ui-code-text:   #c9d1d9;
+
+  /* Semánticos */
+  --use-text-primary: #f0f0f0;
+  --use-text-heading: #ffffff;
+  --use-text-h2:      #d0d0d0;
+  --use-text-h3-h5:   #b0b0b0;
+  --use-text-link:    #ff9d5c;
+  --complementarios-bg: #1c1f2b;
+
+  /* Sombras adaptadas al fondo oscuro */
+  --shadow-1: 2px 5px 16px rgba(0,0,0,.4);
+  --shadow-2: 0px 8px 24px rgba(0,0,0,.4);
+  --shadow-3: 0px 16px 40px rgba(0,0,0,.5);
+  --shadow-4: 0px 20px 50px rgba(0,0,0,.55);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ALTO CONTRASTE — accesibilidad WCAG AAA
+   ══════════════════════════════════════════════════════════════ */
+[data-theme="high-contrast"] {
+  /* Shell */
+  --ui-bg:          #000000;
+  --ui-surface:     #000000;
+  --ui-surface-alt: #1a1a1a;
+  --ui-border:      #ffffff;
+  --ui-text:        #ffffff;
+  --ui-text-muted:  #ffffff;
+  --ui-accent:      #ffff00;
+  --ui-accent-dark: #ffcc00;
+  --ui-tag-bg:      #000000;
+  --ui-tag-text:    #ffff00;
+  --ui-code-bg:     #000000;
+  --ui-code-text:   #ffffff;
+
+  /* Semánticos */
+  --use-text-primary: #ffffff;
+  --use-text-heading: #ffffff;
+  --use-text-h2:      #ffffff;
+  --use-text-link:    #ffff00;
+  --complementarios-bg: #000000;
+
+  /* Texto: todos los niveles deben ser blanco en HC */
+  --use-text-h3-h5:   #ffffff;
+  --use-text-eyebrow: #ffffff;
+  --use-text-label:   #ffffff;
+
+  /* Tablas: header oscuro para que el texto blanco sea legible */
+  --use-tables-head:    #1a1a1a;   /* blanco sobre esto = 17.4:1 ✅ AAA */
+  --use-tables-filter:  #1a1a1a;
+  --use-tables-stripes: #0d0d0d;
+
+  /* Complementarios: pasteles → superficies oscuras (eran ~1:1 con texto blanco) */
+  --complementarios-bg:      #000000;
+  --complementarios-dark:    #000000;
+  --complementarios-verde:   #0d1a10;   /* dark green tint, borde verde para contexto */
+  --complementarios-naranja: #1a0d00;   /* dark orange tint */
+  --complementarios-violeta: #0d0a1a;   /* dark violet tint */
+  --complementarios-cyan:    #001a1a;   /* dark cyan tint */
+
+  /* Product accent: turquesa → versión brillante AAA */
+  --product-accent-100: #00d4de;   /* 11.5:1 sobre negro ✅ AAA */
+  --product-accent-90:  #00bbc4;
+  --product-accent-40:  #001a1a;   /* bg claro → bg oscuro */
+  --product-accent-30:  #001212;
+
+  /* Primitivos redefinidos para garantizar contraste */
+  --base-brand-80:   #ffff00;
+  --base-primary-30: #ffcc00;
+  --base-red-70:     #ff6b6b;
+  --base-green-80:   #00ff88;
+  --base-blue-70:    #66b3ff;
+  --base-yellow-70:  #ffdd00;
+
+  /* Focus ring explícito */
+  --color-focus-ring:        #ffff00;
+  --color-focus-ring-width:  3px;
+  --color-focus-ring-offset: 2px;
+
+  /* Sombras eliminadas en HC */
+  --shadow-1: none;
+  --shadow-2: none;
+  --shadow-3: none;
+  --shadow-4: none;
+  --elevation-1: none;
+  --elevation-2: none;
+  --elevation-3: none;
+  --elevation-4: none;
+}

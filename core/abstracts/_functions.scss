@@ -1,0 +1,72 @@
+// ============================================================
+//  _functions.scss
+// ============================================================
+
+// ── Strip unit ───────────────────────────────────────────
+@function strip-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+// ── px → rem ─────────────────────────────────────────────
+@function rem($px, $base: 16) {
+  @return math.div($px, $base) * 1rem;
+}
+
+// ── rem → px ─────────────────────────────────────────────
+@function px($rem, $base: 16) {
+  @return $rem * $base * 1px;
+}
+
+// ── Tint (mezcla con blanco) ─────────────────────────────
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+// ── Shade (mezcla con negro) ─────────────────────────────
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// ── Contraste automático (blanco o negro) ────────────────
+@function contrast-color($bg, $light: #ffffff, $dark: #111111) {
+  @if (lightness($bg) > 55%) {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}
+
+// ── Spacing desde mapa ───────────────────────────────────
+@use 'tokens-spacing' as *;
+
+@function space($key) {
+  @if map-has-key($spacers, $key) {
+    @return map-get($spacers, $key);
+  }
+  @warn "Space key `#{$key}` not found in $spacers.";
+  @return null;
+}
+
+// ── Color desde mapa (futuro) ────────────────────────────
+// @function color($key) { @return map-get($color-map, $key); }
+
+// ── z-index desde mapa ───────────────────────────────────
+$z-layers: (
+  'base':    0,
+  'raised':  10,
+  'dropdown': 1000,
+  'sticky':  1020,
+  'fixed':   1030,
+  'overlay': 1040,
+  'modal':   1050,
+  'popover': 1070,
+  'toast':   1090,
+) !default;
+
+@function z($layer) {
+  @if map-has-key($z-layers, $layer) {
+    @return map-get($z-layers, $layer);
+  }
+  @warn "z-index layer `#{$layer}` not found in $z-layers.";
+  @return 0;
+}

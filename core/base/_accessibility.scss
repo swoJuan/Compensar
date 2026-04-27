@@ -1,0 +1,79 @@
+// ============================================================
+//  _accessibility.scss
+// ============================================================
+
+@use '../abstracts/mixins' as *;
+
+// ── Visually hidden ──────────────────────────────────────
+.sr-only,
+.visually-hidden { @include visually-hidden; }
+
+.sr-only-focusable {
+  @include visually-hidden;
+  &:focus, &:focus-within {
+    position: static !important;
+    width: auto !important; height: auto !important;
+    overflow: visible !important; clip: auto !important;
+    white-space: normal !important;
+  }
+}
+
+// ── Skip link ────────────────────────────────────────────
+.skip-link {
+  @include visually-hidden;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-xs);
+  z-index: 9999;
+
+  &:focus {
+    position: fixed !important;
+    top: 1rem !important; left: 1rem !important;
+    width: auto !important; height: auto !important;
+    overflow: visible !important; clip: auto !important;
+    white-space: normal !important;
+  }
+}
+
+// ── Focus ring ───────────────────────────────────────────
+:focus-visible {
+  outline: 2px solid var(--color-focus-outline);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+// ── Reduced motion ───────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// ── Alto contraste del sistema ───────────────────────────
+@media (forced-colors: active) {
+  .icon, .icon::before { forced-color-adjust: auto; }
+}
+
+// ── ARIA states ──────────────────────────────────────────
+[aria-disabled='true'],
+[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+[aria-busy='true'] { cursor: wait; }
+
+// ── Área táctil mínima (44×44px WCAG 2.5.5) ─────────────
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

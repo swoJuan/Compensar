@@ -1,0 +1,20 @@
+{
+  "name": "compensar-design-system",
+  "version": "2.1.0",
+  "description": "Design System — Compensar Medicina Prepagada",
+  "private": true,
+  "scripts": {
+    "sass:build": "sass core/core.scss css/core.css --style=compressed --load-path=node_modules",
+    "sass:watch": "sass core/core.scss css/core.css --watch --style=expanded --load-path=node_modules",
+    "sass:dev":   "sass core/core.scss css/core.css --style=expanded --source-map --load-path=node_modules",
+    "build":      "npm run sass:build",
+    "dev":        "npm run sass:watch"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0",
+    "bootstrap": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

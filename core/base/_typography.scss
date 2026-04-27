@@ -1,0 +1,81 @@
+// ============================================================
+//  _typography.scss
+//  Clases utilitarias de tipografía del sistema.
+//  Convención: .mp-{estilo}
+// ============================================================
+
+@use '../abstracts/mixins' as *;
+@use '../abstracts/tokens-typography' as *;
+
+// ── Google Fonts (carga diferida) ────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap');
+
+// ── Display ──────────────────────────────────────────────
+.mp-display-l      { @include ty-display-l; }
+.mp-display-m      { @include ty-display-m; }
+.mp-display-mob    { @include ty-display-mob; }
+
+// ── Headings ─────────────────────────────────────────────
+.mp-h1 { @include ty-h1; }
+.mp-h2 { @include ty-h2; }
+.mp-h3 { @include ty-h3; }
+.mp-h4 { @include ty-h4; }
+.mp-h5 { @include ty-h5; }
+.mp-h6 { @include ty-h6; }
+
+// ── Titles / Párrafos ────────────────────────────────────
+.mp-eyebrow      { @include ty-eyebrow; }
+.mp-paragraph-xl { @include ty-paragraph-xl; }
+.mp-paragraph-l  { @include ty-paragraph-l; }
+
+// ── Body ─────────────────────────────────────────────────
+.mp-body-2xl { @include ty-body-2xl; }
+.mp-body-xl  { @include ty-body-xl; }
+.mp-body-l   { @include ty-body-l; }
+.mp-body-m   { @include ty-body-m; }
+.mp-body-s   { @include ty-body-s; }
+.mp-body-xs  { @include ty-body-xs; }
+
+// ── UI ───────────────────────────────────────────────────
+.mp-button      { @include ty-button; }
+.mp-label       { @include ty-label; }
+.mp-hint        { @include ty-hint;        color: var(--color-text-tertiary); }
+.mp-placeholder { @include ty-placeholder; color: var(--color-text-disabled); }
+
+// ── Código ───────────────────────────────────────────────
+.mp-code {
+  font-family: var(--font-code);
+  font-size: $fs-body-m;
+  background: var(--color-code-bg);
+  color: var(--color-code-text);
+  padding: 0.125em 0.375em;
+  border-radius: var(--radius-xs);
+}
+
+// ── Alineación ───────────────────────────────────────────
+.mp-text-left    { text-align: left !important; }
+.mp-text-center  { text-align: center !important; }
+.mp-text-right   { text-align: right !important; }
+
+// ── Colores de texto semánticos ──────────────────────────
+.mp-text-primary   { color: var(--color-text-primary) !important; }
+.mp-text-secondary { color: var(--color-text-secondary) !important; }
+.mp-text-tertiary  { color: var(--color-text-tertiary) !important; }
+.mp-text-disabled  { color: var(--color-text-disabled) !important; }
+.mp-text-link      { color: var(--color-text-link) !important; }
+.mp-text-success   { color: var(--color-success-icon) !important; }
+.mp-text-error     { color: var(--color-error-icon) !important; }
+.mp-text-warning   { color: var(--color-warning-icon) !important; }
+.mp-text-info      { color: var(--color-info-icon) !important; }
+
+// ── Truncate ─────────────────────────────────────────────
+.mp-truncate { @include truncate; }
+.mp-clamp-2  { @include line-clamp(2); }
+.mp-clamp-3  { @include line-clamp(3); }
+
+// ── Responsive: headings con clamp ───────────────────────
+@include md {
+  .mp-h1 { @include ty-responsive($fs-h3, $fs-h1); }
+  .mp-h2 { @include ty-responsive($fs-h4, $fs-h2); }
+  .mp-h3 { @include ty-responsive($fs-h5, $fs-h3); }
+}

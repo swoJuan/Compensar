@@ -1,0 +1,1819 @@
+<section class="section" id="iconos-libreria">
+
+<div class="section-header">
+  <div class="section-eyebrow">1.8.3</div>
+  <h1 class="section-title">Librería de iconos</h1>
+  <p class="section-desc">955 iconos del sistema Compensar. Busca por nombre en español o inglés, filtra por categoría y copia el snippet HTML directamente desde el popover.</p>
+</div>
+
+<!-- JSZip para la descarga ZIP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<link rel="stylesheet" href="icons/icons.css">
+<link rel="preload" href="icons/fonts/compensar-icons.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- ── DESCARGA ─────────────────────────────────────────── -->
+<div class="ct-downloads" style="margin-bottom:var(--space-6)">
+  <span class="ct-downloads-label"><span class="material-symbols-rounded">download</span> Descargar</span>
+  <button class="ct-download-btn" onclick="icDownloadZIP()"><span class="material-symbols-rounded">folder_zip</span> ZIP completo</button>
+  <button class="ct-download-btn" onclick="icDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
+  <button class="ct-download-btn" onclick="icDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
+  <button class="ct-download-btn" onclick="icCopySnippet()"><span class="material-symbols-rounded">content_copy</span> Copiar snippet base</button>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     5 · LIBRERÍA DE ICONOS
+════════════════════════════════════════════════════════ -->
+
+<!-- Stats strip -->
+<div class="ic-stats-strip">
+  <div class="ic-stat">
+    <span class="ic-stat-num" id="ic-count-badge">955</span>
+    <span class="ic-stat-lbl">iconos</span>
+  </div>
+  <div class="ic-stat-div"></div>
+  <div class="ic-stat">
+    <span class="ic-stat-num">1</span>
+    <span class="ic-stat-lbl">familia tipográfica</span>
+  </div>
+  <div class="ic-stat-div"></div>
+  <div class="ic-stat">
+    <span class="ic-stat-num">8</span>
+    <span class="ic-stat-lbl">tamaños disponibles</span>
+  </div>
+  <div class="ic-stat-spacer"></div>
+  <div class="ic-stat-hint"><span class="material-symbols-rounded">touch_app</span> Clic en cualquier icono para ver detalles y copiar</div>
+</div>
+
+<!-- Search bar -->
+<div class="ic-search-wrap">
+  <div class="ic-search-bar">
+    <span class="material-symbols-rounded ic-search-ico">search</span>
+    <input type="text" id="ic-search" class="ic-search-input"
+           placeholder="Buscar icono — nombre, unicode o sinónimo (ej: casa, salud, usuario)…"
+           oninput="icSearch(this.value)" autocomplete="off" spellcheck="false">
+    <button class="ic-search-clear" id="ic-search-clear" onclick="icClearSearch()" style="display:none" aria-label="Limpiar búsqueda">
+      <span class="material-symbols-rounded">close</span>
+    </button>
+  </div>
+  <div class="ic-search-footer">
+    <span id="ic-results-count" class="ic-results-count">955 resultados</span>
+    <div class="ic-cat-pills" id="ic-cat-pills">
+      <button class="ic-cat-pill active" onclick="icFilterCat(this,'')">Todos</button>
+      <button class="ic-cat-pill" onclick="icFilterCat(this,'security')">Seguridad</button>
+      <button class="ic-cat-pill" onclick="icFilterCat(this,'health')">Salud</button>
+      <button class="ic-cat-pill" onclick="icFilterCat(this,'user')">Usuario</button>
+      <button class="ic-cat-pill" onclick="icFilterCat(this,'arrow')">Flechas</button>
+      <button class="ic-cat-pill" onclick="icFilterCat(this,'file')">Archivos</button>
+      <button class="ic-cat-pill" onclick="icFilterCat(this,'chart')">Gráficas</button>
+      <button class="ic-cat-pill" onclick="icFilterCat(this,'map')">Mapas</button>
+      <button class="ic-cat-pill" onclick="icFilterCat(this,'device')">Dispositivos</button>
+    </div>
+  </div>
+</div>
+
+<!-- Grid -->
+<div class="ic-grid" id="ic-grid"></div>
+
+<!-- Empty state -->
+<div class="ic-empty" id="ic-empty" style="display:none">
+  <span class="material-symbols-rounded">search_off</span>
+  <div class="ic-empty-title">Sin resultados</div>
+  <div class="ic-empty-sub">Intenta con otro término o revisa la ortografía</div>
+  <button class="ic-empty-reset" onclick="icClearSearch()">Ver todos los iconos</button>
+</div>
+
+<!-- Popover -->
+<div class="ic-popover" id="ic-popover" style="display:none">
+  <div class="ic-pop-header">
+    <div class="ic-pop-preview-wrap">
+      <div class="ic-pop-preview" id="ic-pop-preview-box">
+        <i class="icon ic-pop-icon icon-40" id="ic-pop-icon"></i>
+      </div>
+      <div class="ic-pop-size-strip">
+        <button class="ic-pop-sz active" data-sz="icon-20" onclick="icPopSize(this)">20</button>
+        <button class="ic-pop-sz" data-sz="icon-32" onclick="icPopSize(this)">32</button>
+        <button class="ic-pop-sz" data-sz="icon-40" onclick="icPopSize(this)">40</button>
+        <button class="ic-pop-sz" data-sz="icon-48" onclick="icPopSize(this)">48</button>
+        <button class="ic-pop-sz" data-sz="icon-64" onclick="icPopSize(this)">64</button>
+      </div>
+    </div>
+    <div class="ic-pop-meta">
+      <div class="ic-pop-name" id="ic-pop-name"></div>
+      <div class="ic-pop-tags">
+        <code class="ic-pop-tag ic-pop-tag--unicode" id="ic-pop-unicode"></code>
+        <code class="ic-pop-tag ic-pop-tag--cls" id="ic-pop-cls"></code>
+      </div>
+    </div>
+    <button class="ic-pop-close" onclick="icClosePopover()" aria-label="Cerrar">
+      <span class="material-symbols-rounded">close</span>
+    </button>
+  </div>
+  <div class="ic-pop-snippet" id="ic-pop-snippet"></div>
+  <div class="ic-pop-actions">
+    <button class="ic-pop-btn ic-pop-btn--primary" onclick="icCopyPopHTML()">
+      <span class="material-symbols-rounded">content_copy</span> Copiar HTML
+    </button>
+    <button class="ic-pop-btn" onclick="icCopyPopUnicode()">
+      <span class="material-symbols-rounded">tag</span> Unicode
+    </button>
+    <button class="ic-pop-btn" onclick="icCopyPopCls()">
+      <span class="material-symbols-rounded">code</span> Clase
+    </button>
+  </div>
+</div>
+<div class="ic-popover-overlay" id="ic-pop-overlay" onclick="icClosePopover()"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     6 · ACCESIBILIDAD
+════════════════════════════════════════════════════════ -->
+<div class="sp-access-block" style="margin-top:var(--space-7)">
+  <div class="sp-access-icon"><span class="material-symbols-rounded">accessibility_new</span></div>
+  <div class="sp-access-content">
+    <div class="sp-access-title">Accesibilidad</div>
+    <p class="ic-body" style="font-size:13px;margin-bottom:var(--space-4)">Los iconos deben complementar el contenido, no reemplazarlo.</p>
+    <div class="sp-access-grid">
+      <div>
+        <div class="sp-access-sub">Iconos decorativos</div>
+        <ul class="sp-access-list">
+          <li>Usar <code>aria-hidden="true"</code></li>
+          <li>No añaden información semántica</li>
+          <li>Acompañan texto visible</li>
+        </ul>
+      </div>
+      <div>
+        <div class="sp-access-sub">Iconos interactivos</div>
+        <ul class="sp-access-list">
+          <li>Usar <code>aria-label</code> descriptivo</li>
+          <li>El label debe describir la acción</li>
+          <li>Área táctil mínima: <strong>44×44px</strong></li>
+        </ul>
+      </div>
+      <div>
+        <div class="sp-access-sub">Buenas prácticas</div>
+        <ul class="sp-access-list">
+          <li>No usar iconos como única información</li>
+          <li>Incluir etiquetas o texto cuando la acción no sea evidente</li>
+          <li>Mantener contraste adecuado entre icono y fondo</li>
+        </ul>
+      </div>
+      <div>
+        <div class="sp-access-sub">Evitar</div>
+        <ul class="sp-access-list">
+          <li>Iconos sin texto en acciones no obvias</li>
+          <li>Mezcla de estilos (outline + filled)</li>
+          <li>Tamaños fuera de la escala del sistema</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</section>
+
+<style>
+/* ── Icon font ─────────────────────────────────────────── */
+@font-face {
+  font-family: "CompensarIcons";
+  src: url("./icons/fonts/compensar-icons.woff2") format("woff2"),
+       url("./icons/fonts/compensar-icons.woff")  format("woff"),
+       url("./icons/fonts/compensar-icons.ttf")   format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+.icon {
+  font-family: "CompensarIcons" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  display: inline-block;
+  speak: never;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* ── Tamaños de icono ──────────────────────────────────── */
+/* Uso: <span class="icon icon-16">&#xf3b2;</span>         */
+.icon-12 { font-size: 12px; }
+.icon-16 { font-size: 16px; }
+.icon-20 { font-size: 20px; }
+.icon-24 { font-size: 24px; }
+.icon-32 { font-size: 32px; }
+.icon-40 { font-size: 40px; }
+.icon-48 { font-size: 48px; }
+.icon-64 { font-size: 64px; }
+
+
+/* ── Section label ─────────────────────────────────────── */
+.ic-section-label {
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;color:var(--ui-text-muted);
+  letter-spacing:.08em;text-transform:uppercase;
+  margin:var(--space-7) 0 var(--space-5);
+  border-bottom:1px solid var(--ui-border);padding-bottom:var(--space-3);
+}
+.ic-section-label .material-symbols-rounded{font-size:15px;color:var(--ui-accent)}
+.ic-count-badge{margin-left:auto;font-size:10px;background:var(--ui-surface-alt);border:1px solid var(--ui-border);border-radius:20px;padding:2px 10px;letter-spacing:0;text-transform:none;font-weight:600}
+
+/* ── Two-col layout ────────────────────────────────────── */
+.ic-two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);margin-bottom:var(--space-5)}
+.ic-body{font-size:13.5px;color:var(--ui-text);line-height:1.6;margin-bottom:var(--space-3)}
+.ic-list{margin:0 0 var(--space-3);padding-left:18px;font-size:13px;color:var(--ui-text);line-height:2}
+
+/* ── Alert blocks ──────────────────────────────────────── */
+.ic-alert{display:flex;gap:10px;border-radius:10px;padding:var(--space-4) var(--space-5);font-size:12.5px;line-height:1.6}
+.ic-alert--amber{background:#fff9ec;border:1px solid #f5d07a;color:#7a5c00}
+.ic-alert--amber .material-symbols-rounded{color:#c98a00;flex-shrink:0;font-size:18px;margin-top:1px}
+.ic-alert--blue{background:#e6f1fb;border:1px solid #9fbef5;color:#1a3a6b}
+.ic-alert--blue .material-symbols-rounded{color:#296ff0;flex-shrink:0;font-size:18px;margin-top:1px}
+.ic-alert-list{margin:6px 0 0;padding-left:16px}
+.ic-alert-list li{margin-bottom:2px}
+
+/* ── Preview grid (style sample) ──────────────────────── */
+.ic-preview-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-3);background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;padding:var(--space-4);align-content:start}
+.ic-preview-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:var(--space-3);border-radius:8px;background:var(--ui-surface-alt)}
+.ic-preview-item .icon{font-size:24px;color:var(--ui-text)}
+
+/* ── Order cards ───────────────────────────────────────── */
+.ic-order-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-5)}
+.ic-order-card{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;padding:var(--space-5);display:flex;gap:var(--space-4)}
+.ic-order-card--1{border-top:3px solid var(--ui-accent)}
+.ic-order-card--2{border-top:3px solid var(--base-blue-70)}
+.ic-order-card--3{border-top:3px solid var(--ui-text-muted)}
+.ic-order-num{font-size:2rem;font-weight:900;color:var(--ui-accent);min-width:32px;line-height:1;margin-top:2px}
+.ic-order-card--2 .ic-order-num{color:var(--base-blue-70)}
+.ic-order-card--3 .ic-order-num{color:var(--ui-text-muted)}
+.ic-order-title{font-size:13px;font-weight:700;color:var(--ui-text);margin-bottom:var(--space-3)}
+.ic-order-desc{font-size:12.5px;color:var(--ui-text-muted);line-height:1.6;margin-bottom:var(--space-3)}
+.ic-order-badge{display:inline-flex;align-items:center;gap:5px;background:var(--base-green-40);color:var(--base-green-90);border:1px solid var(--base-green-50);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700}
+.ic-order-badge .material-symbols-rounded{font-size:13px}
+.ic-order-config{background:var(--ui-surface-alt);border-radius:8px;padding:var(--space-3) var(--space-4);margin-top:var(--space-2)}
+
+/* ── Sizes ─────────────────────────────────────────────── */
+.ic-sizes-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);margin-bottom:var(--space-5)}
+.ic-sizes-title{font-size:13px;font-weight:700;color:var(--ui-text);margin:0 0 var(--space-4)}
+.ic-sizes-preview{display:flex;align-items:flex-end;gap:var(--space-5);margin-bottom:var(--space-4)}
+.ic-size-demo{display:flex;flex-direction:column;align-items:center;gap:4px}
+.ic-size-label{font-size:10px;color:var(--ui-text-muted);font-family:var(--font-code)}
+.ic-sizes-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:var(--space-3)}
+.ic-sizes-table th{background:var(--ui-surface-alt);padding:7px 12px;text-align:left;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ui-text-muted);border:1px solid var(--ui-border)}
+.ic-sizes-table td{padding:8px 12px;border:1px solid var(--ui-border);color:var(--ui-text)}
+.ic-touch-demo{display:flex;align-items:center;gap:var(--space-5);margin:var(--space-4) 0}
+.ic-touch-target{display:flex;flex-direction:column;align-items:center;gap:4px}
+.ic-touch-box{width:88px;height:88px;border:2px dashed var(--ui-accent);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative}
+.ic-touch-label{font-size:10px;color:var(--ui-accent);font-weight:600;text-align:center;padding:4px}
+
+/* ── Implementation cards ──────────────────────────────── */
+.ic-impl-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);margin-bottom:var(--space-5)}
+.ic-impl-card{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;overflow:hidden}
+.ic-impl-card-head{display:flex;align-items:center;gap:8px;background:var(--ui-surface-alt);border-bottom:1px solid var(--ui-border);padding:var(--space-3) var(--space-5);font-size:12px;font-weight:700;color:var(--ui-text)}
+.ic-impl-card-head .material-symbols-rounded{font-size:15px;color:var(--ui-accent)}
+.ic-impl-desc-list{padding:var(--space-4) var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)}
+.ic-impl-desc-row{display:flex;align-items:baseline;gap:var(--space-3);font-size:12.5px}
+.ic-impl-desc-row code{font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);padding:1px 6px;border-radius:4px;color:var(--ui-accent);flex-shrink:0}
+.ic-impl-desc-row span{color:var(--ui-text-muted)}
+.ic-steps{margin:var(--space-4) var(--space-5);padding-left:20px;font-size:12.5px;line-height:2;color:var(--ui-text)}
+.ic-steps code{font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);padding:1px 5px;border-radius:4px;color:var(--ui-accent)}
+.ic-steps a{color:var(--ui-accent)}
+
+/* ── Code blocks ───────────────────────────────────────── */
+.ic-code-tabs-bar{display:flex;gap:3px;background:var(--ui-surface-alt);padding:3px;border-bottom:1px solid var(--ui-border)}
+.ic-code-tab{background:none;border:none;border-radius:5px;padding:4px 12px;font-size:11.5px;font-weight:500;color:var(--ui-text-muted);cursor:pointer;transition:background .12s,color .12s}
+.ic-code-tab.active{background:var(--ui-surface);color:var(--ui-accent);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.ic-code-block{position:relative;background:var(--ui-code-bg)}
+.ic-code-copy{position:absolute;top:6px;right:8px;display:inline-flex;align-items:center;gap:3px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:2px 8px;font-size:10px;color:#aaa;cursor:pointer;transition:background .12s,color .12s;z-index:1}
+.ic-code-copy:hover{background:rgba(255,255,255,.14);color:#fff}
+.ic-code-copy .material-symbols-rounded{font-size:11px}
+.ic-code-pre{font-family:var(--font-code);font-size:11px;line-height:1.7;color:var(--ui-code-text);padding:28px 14px 14px;margin:0;overflow-x:auto;white-space:pre;display:none}
+.ic-code-pre.ic-code-active{display:block}
+
+/* ── Stats strip ───────────────────────────────────────── */
+.ic-stats-strip{display:flex;align-items:center;gap:var(--space-4);background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:14px;padding:var(--space-4) var(--space-5);margin-bottom:var(--space-5)}
+.ic-stat{display:flex;flex-direction:column;align-items:center;min-width:56px}
+.ic-stat-num{font-size:1.25rem;font-weight:800;color:var(--ui-accent);line-height:1}
+.ic-stat-lbl{font-size:10px;color:var(--ui-text-muted);margin-top:2px;white-space:nowrap}
+.ic-stat-div{width:1px;height:28px;background:var(--ui-border);flex-shrink:0}
+.ic-stat-spacer{flex:1}
+.ic-stat-hint{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--ui-text-muted);background:var(--ui-surface-alt);border:1px solid var(--ui-border);border-radius:8px;padding:5px 12px}
+.ic-stat-hint .material-symbols-rounded{font-size:14px}
+
+/* ── Search bar ────────────────────────────────────────── */
+.ic-search-wrap{margin-bottom:var(--space-5)}
+.ic-search-bar{display:flex;align-items:center;gap:10px;background:var(--ui-surface);border:1.5px solid var(--ui-border);border-radius:12px;padding:10px var(--space-5);transition:border-color .15s,box-shadow .15s}
+.ic-search-bar:focus-within{border-color:var(--ui-accent);box-shadow:0 0 0 3px rgba(var(--ui-accent-rgb,90,116,225),.12)}
+.ic-search-ico{font-size:20px;color:var(--ui-text-muted);flex-shrink:0}
+.ic-search-input{border:none;background:none;font-size:14px;color:var(--ui-text);outline:none;flex:1;min-width:120px;font-family:var(--font-body)}
+.ic-search-input::placeholder{color:var(--ui-text-muted)}
+.ic-search-clear{background:none;border:none;cursor:pointer;color:var(--ui-text-muted);display:flex;align-items:center;padding:2px;border-radius:4px}
+.ic-search-clear:hover{color:var(--ui-text);background:var(--ui-surface-alt)}
+.ic-search-clear .material-symbols-rounded{font-size:16px}
+.ic-search-footer{display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-2) 0;flex-wrap:wrap;gap:var(--space-3)}
+.ic-results-count{font-size:11.5px;color:var(--ui-text-muted);font-family:var(--font-code);flex-shrink:0}
+
+/* ── Category pills ────────────────────────────────────── */
+.ic-cat-pills{display:flex;gap:5px;flex-wrap:wrap}
+.ic-cat-pill{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:20px;padding:3px 12px;font-size:11.5px;color:var(--ui-text-muted);cursor:pointer;transition:background .12s,border-color .12s,color .12s;font-family:var(--font-body);white-space:nowrap}
+.ic-cat-pill:hover{border-color:var(--ui-accent);color:var(--ui-accent)}
+.ic-cat-pill.active{background:var(--ui-accent);border-color:var(--ui-accent);color:#fff;font-weight:600}
+
+/* ── Icon grid ─────────────────────────────────────────── */
+.ic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px;margin-bottom:var(--space-7)}
+.ic-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px 10px;background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;cursor:pointer;transition:background .12s,border-color .15s,box-shadow .15s,transform .12s;text-align:center;position:relative;overflow:hidden}
+.ic-card:hover{background:var(--ui-surface-alt);border-color:var(--ui-accent);box-shadow:0 2px 12px rgba(0,0,0,.08);transform:translateY(-2px)}
+.ic-card:active{transform:translateY(0);box-shadow:none}
+.ic-card .icon{font-size:26px;color:var(--ui-text);pointer-events:none;transition:color .12s,transform .12s}
+.ic-card:hover .icon{color:var(--ui-accent);transform:scale(1.1)}
+.ic-card-name{font-size:9px;color:var(--ui-text-muted);line-height:1.3;pointer-events:none;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.01em}
+.ic-card-uni{position:absolute;bottom:0;left:0;right:0;background:var(--ui-accent);color:#fff;font-size:8.5px;font-family:var(--font-code);padding:2px 4px;transform:translateY(100%);transition:transform .14s;text-align:center}
+.ic-card:hover .ic-card-uni{transform:translateY(0)}
+
+/* ── Empty state ───────────────────────────────────────── */
+.ic-empty{text-align:center;padding:var(--space-10) var(--space-5);color:var(--ui-text-muted)}
+.ic-empty .material-symbols-rounded{font-size:48px;display:block;margin-bottom:var(--space-4);color:var(--ui-border)}
+.ic-empty-title{font-size:15px;font-weight:700;color:var(--ui-text);margin-bottom:6px}
+.ic-empty-sub{font-size:13px;margin-bottom:var(--space-5)}
+.ic-empty-reset{background:var(--ui-accent);color:#fff;border:none;border-radius:8px;padding:8px 20px;font-size:12.5px;cursor:pointer;font-family:var(--font-body);font-weight:500}
+
+/* ── Popover ───────────────────────────────────────────── */
+.ic-popover-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1000;backdrop-filter:blur(2px)}
+.ic-popover-overlay.open{display:block}
+.ic-popover{position:fixed;z-index:1001;background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:20px;width:300px;box-shadow:0 16px 48px rgba(0,0,0,.22);overflow:hidden}
+.ic-pop-header{display:grid;grid-template-columns:auto 1fr auto;gap:var(--space-4);align-items:start;padding:var(--space-5);background:var(--ui-surface-alt);border-bottom:1px solid var(--ui-border)}
+.ic-pop-preview-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
+.ic-pop-preview{width:72px;height:72px;background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:14px;display:flex;align-items:center;justify-content:center;transition:background .12s}
+.ic-pop-icon{color:var(--ui-text)}
+.ic-pop-size-strip{display:flex;gap:3px}
+.ic-pop-sz{background:none;border:1px solid var(--ui-border);border-radius:4px;padding:1px 5px;font-size:9px;color:var(--ui-text-muted);cursor:pointer;font-family:var(--font-code);transition:background .1s,color .1s,border-color .1s}
+.ic-pop-sz.active{background:var(--ui-accent);border-color:var(--ui-accent);color:#fff;font-weight:700}
+.ic-pop-meta{display:flex;flex-direction:column;gap:6px;min-width:0;padding-top:2px}
+.ic-pop-name{font-size:13px;font-weight:700;color:var(--ui-text);line-height:1.3;word-break:break-word}
+.ic-pop-tags{display:flex;flex-direction:column;gap:4px}
+.ic-pop-tag{font-family:var(--font-code);font-size:10px;padding:2px 8px;border-radius:5px;display:inline-block;width:fit-content}
+.ic-pop-tag--unicode{background:var(--ui-surface);border:1px solid var(--ui-border);color:var(--ui-accent)}
+.ic-pop-tag--cls{background:var(--ui-surface);border:1px solid var(--ui-border);color:var(--colors-violeta-500,#7c5cbf)}
+.ic-pop-close{background:none;border:1px solid var(--ui-border);border-radius:8px;width:30px;height:30px;cursor:pointer;color:var(--ui-text-muted);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .12s,color .12s}
+.ic-pop-close:hover{background:var(--ui-surface);color:var(--ui-text)}
+.ic-pop-close .material-symbols-rounded{font-size:16px}
+.ic-pop-snippet{margin:0 var(--space-5) 0;padding:var(--space-3) var(--space-4);background:var(--ui-code-bg);border-bottom:1px solid rgba(255,255,255,.06)}
+.ic-pop-snippet pre{font-family:var(--font-code);font-size:10px;color:var(--ui-code-text);margin:0;white-space:pre-wrap;word-break:break-all;line-height:1.7}
+.ic-pop-actions{display:flex;gap:6px;padding:var(--space-4) var(--space-5) var(--space-5)}
+.ic-pop-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:4px;border:1px solid var(--ui-border);border-radius:9px;padding:7px 8px;font-size:10.5px;cursor:pointer;background:var(--ui-surface-alt);color:var(--ui-text);transition:background .12s,border-color .12s,color .12s;font-family:var(--font-body)}
+.ic-pop-btn:hover{border-color:var(--ui-accent);color:var(--ui-accent);background:var(--ui-surface)}
+.ic-pop-btn--primary{background:var(--ui-accent);color:#fff;border-color:var(--ui-accent)}
+.ic-pop-btn--primary:hover{background:var(--ui-accent-dark,#3a5bd9);border-color:var(--ui-accent-dark,#3a5bd9);color:#fff}
+.ic-pop-btn .material-symbols-rounded{font-size:12px}
+
+/* Mobile bottom sheet */
+@media(max-width:640px){
+  .ic-popover{width:100%;left:0!important;top:auto!important;bottom:0;border-radius:24px 24px 0 0;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,1,.23,1)}
+  .ic-popover.sheet-open{transform:translateY(0)}
+  .ic-stats-strip{flex-wrap:wrap}
+  .ic-stat-spacer{display:none}
+  .ic-stat-hint{width:100%}
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media(max-width:900px){
+  .ic-two-col{grid-template-columns:1fr}
+  .ic-order-grid{grid-template-columns:1fr}
+  .ic-sizes-grid{grid-template-columns:1fr}
+  .ic-impl-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .ic-grid{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}
+}
+</style>
+
+</style>
+<script>
+
+const ICONS=[
+  {n:"WarningOctagon",c:"icon-warning-octagon",u:"f398"},
+  {n:"WarningCircle",c:"icon-warning-circle",u:"f399"},
+  {n:"Warning",c:"icon-warning",u:"f39a"},
+  {n:"Wall",c:"icon-wall",u:"f39b"},
+  {n:"Vault",c:"icon-vault",u:"f39c"},
+  {n:"ShieldWarning",c:"icon-shield-warning",u:"f39d"},
+  {n:"ShieldStar",c:"icon-shield-star",u:"f39e"},
+  {n:"ShieldSlash",c:"icon-shield-slash",u:"f39f"},
+  {n:"ShieldPlus",c:"icon-shield-plus",u:"f3a0"},
+  {n:"ShieldChevron",c:"icon-shield-chevron",u:"f3a1"},
+  {n:"ShieldCheckered",c:"icon-shield-checkered",u:"f3a2"},
+  {n:"ShieldCheck",c:"icon-shield-check",u:"f3a3"},
+  {n:"Shield",c:"icon-shield",u:"f3a4"},
+  {n:"Question",c:"icon-question",u:"f3a5"},
+  {n:"ProhibitInset",c:"icon-prohibit-inset",u:"f3a6"},
+  {n:"Prohibit",c:"icon-prohibit",u:"f3a7"},
+  {n:"Password",c:"icon-password",u:"f3a8"},
+  {n:"LockSimpleOpen",c:"icon-lock-simple-open",u:"f3a9"},
+  {n:"LockSimple",c:"icon-lock-simple",u:"f3aa"},
+  {n:"LockOpen",c:"icon-lock-open",u:"f3ab"},
+  {n:"LockLaminatedOpen",c:"icon-lock-laminated-open",u:"f3ac"},
+  {n:"LockLaminated",c:"icon-lock-laminated",u:"f3ad"},
+  {n:"LockKeyOpen",c:"icon-lock-key-open",u:"f3ae"},
+  {n:"LockKey",c:"icon-lock-key",u:"f3af"},
+  {n:"Lock",c:"icon-lock",u:"f3b0"},
+  {n:"Keyhole",c:"icon-keyhole",u:"f3b1"},
+  {n:"Key",c:"icon-key",u:"f3b2"},
+  {n:"Info",c:"icon-info",u:"f3b3"},
+  {n:"FingerprintSimple",c:"icon-fingerprint-simple",u:"f3b4"},
+  {n:"Fingerprint",c:"icon-fingerprint",u:"f3b5"},
+  {n:"Detective",c:"icon-detective",u:"f3b6"},
+  {n:"CircleWavyWarning",c:"icon-circle-wavy-warning",u:"f3b7"},
+  {n:"CircleWavyQuestion",c:"icon-circle-wavy-question",u:"f3b8"},
+  {n:"CircleWavyCheck",c:"icon-circle-wavy-check",u:"f3b9"},
+  {n:"CircleWavy",c:"icon-circle-wavy",u:"f3ba"},
+  {n:"Truck",c:"icon-truck",u:"f366"},
+  {n:"TrainSimple",c:"icon-train-simple",u:"f367"},
+  {n:"TrainRegional",c:"icon-train-regional",u:"f368"},
+  {n:"Train",c:"icon-train",u:"f369"},
+  {n:"TrafficSignal",c:"icon-traffic-signal",u:"f36a"},
+  {n:"TrafficSign",c:"icon-traffic-sign",u:"f36b"},
+  {n:"TrafficCone",c:"icon-traffic-cone",u:"f36c"},
+  {n:"Taxi",c:"icon-taxi",u:"f36d"},
+  {n:"SuitcaseSimple",c:"icon-suitcase-simple",u:"f36e"},
+  {n:"Suitcase",c:"icon-suitcase",u:"f36f"},
+  {n:"Signpost",c:"icon-signpost",u:"f370"},
+  {n:"RocketLaunch",c:"icon-rocket-launch",u:"f371"},
+  {n:"Rocket",c:"icon-rocket",u:"f372"},
+  {n:"PoliceCar",c:"icon-police-car",u:"f373"},
+  {n:"Path",c:"icon-path",u:"f374"},
+  {n:"NavigationArrow",c:"icon-navigation-arrow",u:"f375"},
+  {n:"MapTrifold",c:"icon-map-trifold",u:"f376"},
+  {n:"MapPinLine",c:"icon-map-pin-line",u:"f377"},
+  {n:"MapPin",c:"icon-map-pin",u:"f378"},
+  {n:"Jeep",c:"icon-jeep",u:"f379"},
+  {n:"HouseSimple",c:"icon-house-simple",u:"f37a"},
+  {n:"HouseLine",c:"icon-house-line",u:"f37b"},
+  {n:"House",c:"icon-house",u:"f37c"},
+  {n:"Headlights",c:"icon-headlights",u:"f37d"},
+  {n:"GlobeStand",c:"icon-globe-stand",u:"f37e"},
+  {n:"GlobeSimple",c:"icon-globe-simple",u:"f37f"},
+  {n:"GlobeHemisphereWest",c:"icon-globe-hemisphere-west",u:"f380"},
+  {n:"GlobeHemisphereEast",c:"icon-globe-hemisphere-east",u:"f381"},
+  {n:"Globe",c:"icon-globe",u:"f382"},
+  {n:"GasPump",c:"icon-gas-pump",u:"f383"},
+  {n:"FlagCheckered",c:"icon-flag-checkered",u:"f384"},
+  {n:"FlagBanner",c:"icon-flag-banner",u:"f385"},
+  {n:"Flag",c:"icon-flag",u:"f386"},
+  {n:"Door",c:"icon-door",u:"f387"},
+  {n:"CrosshairSimple",c:"icon-crosshair-simple",u:"f388"},
+  {n:"Crosshair",c:"icon-crosshair",u:"f389"},
+  {n:"Compass",c:"icon-compass",u:"f38a"},
+  {n:"CarSimple",c:"icon-car-simple",u:"f38b"},
+  {n:"Car",c:"icon-car",u:"f38c"},
+  {n:"bus",c:"icon-bus",u:"f38d"},
+  {n:"Boat",c:"icon-boat",u:"f38e"},
+  {n:"Bicycle",c:"icon-bicycle",u:"f38f"},
+  {n:"Barricade",c:"icon-barricade",u:"f390"},
+  {n:"AnchorSimple",c:"icon-anchor-simple",u:"f391"},
+  {n:"Anchor",c:"icon-anchor",u:"f392"},
+  {n:"AirplaneTilt",c:"icon-airplane-tilt",u:"f393"},
+  {n:"AirplaneTakeoff",c:"icon-airplane-takeoff",u:"f394"},
+  {n:"AirplaneLanding",c:"icon-airplane-landing",u:"f395"},
+  {n:"AirplaneInFlight",c:"icon-airplane-in-flight",u:"f396"},
+  {n:"Airplane",c:"icon-airplane",u:"f397"},
+  {n:"Watch",c:"icon-watch",u:"f352"},
+  {n:"Timer",c:"icon-timer",u:"f353"},
+  {n:"HourglassSimpleMedium",c:"icon-hourglass-simple-medium",u:"f354"},
+  {n:"HourglassSimpleLow",c:"icon-hourglass-simple-low",u:"f355"},
+  {n:"HourglassSimpleHigh",c:"icon-hourglass-simple-high",u:"f356"},
+  {n:"HourglassSimple",c:"icon-hourglass-simple",u:"f357"},
+  {n:"HourglassMedium",c:"icon-hourglass-medium",u:"f358"},
+  {n:"HourglassLow",c:"icon-hourglass-low",u:"f359"},
+  {n:"HourglassHigh",c:"icon-hourglass-high",u:"f35a"},
+  {n:"Hourglass",c:"icon-hourglass",u:"f35b"},
+  {n:"ClockCounterClockwise",c:"icon-clock-counter-clockwise",u:"f35c"},
+  {n:"ClockClockwise",c:"icon-clock-clockwise",u:"f35d"},
+  {n:"ClockAfternoon",c:"icon-clock-afternoon",u:"f35e"},
+  {n:"Clock",c:"icon-clock",u:"f35f"},
+  {n:"CalendarX",c:"icon-calendar-x",u:"f360"},
+  {n:"CalendarPlus",c:"icon-calendar-plus",u:"f361"},
+  {n:"CalendarCheck",c:"icon-calendar-check",u:"f362"},
+  {n:"CalendarBlank",c:"icon-calendar-blank",u:"f363"},
+  {n:"Calendar",c:"icon-calendar",u:"f364"},
+  {n:"Alarm",c:"icon-alarm",u:"f365"},
+  {n:"Wheelchair",c:"icon-wheelchair",u:"f323"},
+  {n:"UserSwitch",c:"icon-user-switch",u:"f324"},
+  {n:"UsersThree",c:"icon-users-three",u:"f325"},
+  {n:"UserSquare",c:"icon-user-square",u:"f326"},
+  {n:"UsersFour",c:"icon-users-four",u:"f327"},
+  {n:"Users",c:"icon-users",u:"f328"},
+  {n:"UserRectangle",c:"icon-user-rectangle",u:"f329"},
+  {n:"UserPlus",c:"icon-user-plus",u:"f32a"},
+  {n:"UserMinus",c:"icon-user-minus",u:"f32b"},
+  {n:"UserList",c:"icon-user-list",u:"f32c"},
+  {n:"UserGear",c:"icon-user-gear",u:"f32d"},
+  {n:"UserFocus",c:"icon-user-focus",u:"f32e"},
+  {n:"UserCirclePlus",c:"icon-user-circle-plus",u:"f32f"},
+  {n:"UserCircleMinus",c:"icon-user-circle-minus",u:"f330"},
+  {n:"UserCircleGear",c:"icon-user-circle-gear",u:"f331"},
+  {n:"UserCircle",c:"icon-user-circle",u:"f332"},
+  {n:"User",c:"icon-user",u:"f333"},
+  {n:"SmileyXEyes",c:"icon-smiley-x-eyes",u:"f334"},
+  {n:"SmileyWink",c:"icon-smiley-wink",u:"f335"},
+  {n:"SmileySticker",c:"icon-smiley-sticker",u:"f336"},
+  {n:"SmileySad",c:"icon-smiley-sad",u:"f337"},
+  {n:"SmileyNervous",c:"icon-smiley-nervous",u:"f338"},
+  {n:"SmileyMeh",c:"icon-smiley-meh",u:"f339"},
+  {n:"SmileyBlank",c:"icon-smiley-blank",u:"f33a"},
+  {n:"Smiley",c:"icon-smiley",u:"f33b"},
+  {n:"PersonSimpleWalk",c:"icon-person-simple-walk",u:"f33c"},
+  {n:"PersonSimpleRun",c:"icon-person-simple-run",u:"f33d"},
+  {n:"PersonSimple",c:"icon-person-simple",u:"f33e"},
+  {n:"Person",c:"icon-person",u:"f33f"},
+  {n:"IdentificationCard",c:"icon-identification-card",u:"f340"},
+  {n:"IdentificationBadge",c:"icon-identification-badge",u:"f341"},
+  {n:"HandWaving",c:"icon-hand-waving",u:"f342"},
+  {n:"Handshake",c:"icon-handshake",u:"f343"},
+  {n:"HandsClapping",c:"icon-hands-clapping",u:"f344"},
+  {n:"HandPointing",c:"icon-hand-pointing",u:"f345"},
+  {n:"HandPalm",c:"icon-hand-palm",u:"f346"},
+  {n:"HandGrabbing",c:"icon-hand-grabbing",u:"f347"},
+  {n:"HandFist",c:"icon-hand-fist",u:"f348"},
+  {n:"HandEye",c:"icon-hand-eye",u:"f349"},
+  {n:"Hand",c:"icon-hand",u:"f34a"},
+  {n:"GenderTransgender",c:"icon-gender-transgender",u:"f34b"},
+  {n:"GenderNonbinary",c:"icon-gender-nonbinary",u:"f34c"},
+  {n:"GenderNeuter",c:"icon-gender-neuter",u:"f34d"},
+  {n:"GenderMale",c:"icon-gender-male",u:"f34e"},
+  {n:"GenderIntersex",c:"icon-gender-intersex",u:"f34f"},
+  {n:"GenderFemale",c:"icon-gender-female",u:"f350"},
+  {n:"Baby",c:"icon-baby",u:"f351"},
+  {n:"Webcam",c:"icon-webcam",u:"f2cd"},
+  {n:"WaveTriangle",c:"icon-wave-triangle",u:"f2ce"},
+  {n:"WaveSquare",c:"icon-wave-square",u:"f2cf"},
+  {n:"WaveSine",c:"icon-wave-sine",u:"f2d0"},
+  {n:"WaveSawtooth",c:"icon-wave-sawtooth",u:"f2d1"},
+  {n:"VideoCameraSlash",c:"icon-video-camera-slash",u:"f2d2"},
+  {n:"VideoCamera",c:"icon-video-camera",u:"f2d3"},
+  {n:"TelevisionSimple",c:"icon-television-simple",u:"f2d4"},
+  {n:"Television",c:"icon-television",u:"f2d5"},
+  {n:"StopCircle",c:"icon-stop-circle",u:"f2d6"},
+  {n:"Stop",c:"icon-stop",u:"f2d7"},
+  {n:"SpeakerX",c:"icon-speaker-x",u:"f2d8"},
+  {n:"SpeakerSlash",c:"icon-speaker-slash",u:"f2d9"},
+  {n:"SpeakerSimpleX",c:"icon-speaker-simple-x",u:"f2da"},
+  {n:"SpeakerSimpleSlash",c:"icon-speaker-simple-slash",u:"f2db"},
+  {n:"SpeakerSimpleNone",c:"icon-speaker-simple-none",u:"f2dc"},
+  {n:"SpeakerSimpleLow",c:"icon-speaker-simple-low",u:"f2dd"},
+  {n:"SpeakerSimpleHigh",c:"icon-speaker-simple-high",u:"f2de"},
+  {n:"SpeakerNone",c:"icon-speaker-none",u:"f2df"},
+  {n:"SpeakerLow",c:"icon-speaker-low",u:"f2e0"},
+  {n:"SpeakerHigh",c:"icon-speaker-high",u:"f2e1"},
+  {n:"SlidersHorizontal",c:"icon-sliders-horizontal",u:"f2e2"},
+  {n:"Sliders",c:"icon-sliders",u:"f2e3"},
+  {n:"SkipForwardCircle",c:"icon-skip-forward-circle",u:"f2e4"},
+  {n:"SkipForward",c:"icon-skip-forward",u:"f2e5"},
+  {n:"SkipBackCircle",c:"icon-skip-back-circle",u:"f2e6"},
+  {n:"SkipBack",c:"icon-skip-back",u:"f2e7"},
+  {n:"ShuffleSimple",c:"icon-shuffle-simple",u:"f2e8"},
+  {n:"ShuffleAngular",c:"icon-shuffle-angular",u:"f2e9"},
+  {n:"Shuffle",c:"icon-shuffle",u:"f2ea"},
+  {n:"Screencast",c:"icon-screencast",u:"f2eb"},
+  {n:"RewindCircle",c:"icon-rewind-circle",u:"f2ec"},
+  {n:"Rewind",c:"icon-rewind",u:"f2ed"},
+  {n:"RepeatOnce",c:"icon-repeat-once",u:"f2ee"},
+  {n:"Repeat",c:"icon-repeat",u:"f2ef"},
+  {n:"Record",c:"icon-record",u:"f2f0"},
+  {n:"Queue",c:"icon-queue",u:"f2f1"},
+  {n:"Playlist",c:"icon-playlist",u:"f2f2"},
+  {n:"PlayCircle",c:"icon-play-circle",u:"f2f3"},
+  {n:"Play",c:"icon-play",u:"f2f4"},
+  {n:"PictureInPicture",c:"icon-picture-in-picture",u:"f2f5"},
+  {n:"PianoKeys",c:"icon-piano-keys",u:"f2f6"},
+  {n:"PauseCircle",c:"icon-pause-circle",u:"f2f7"},
+  {n:"Pause",c:"icon-pause",u:"f2f8"},
+  {n:"NewspaperClipping",c:"icon-newspaper-clipping",u:"f2f9"},
+  {n:"Newspaper",c:"icon-newspaper",u:"f2fa"},
+  {n:"MusicNotesSimple",c:"icon-music-notes-simple",u:"f2fb"},
+  {n:"MusicNotesPlus",c:"icon-music-notes-plus",u:"f2fc"},
+  {n:"MusicNoteSimple",c:"icon-music-note-simple",u:"f2fd"},
+  {n:"MusicNotes",c:"icon-music-notes",u:"f2fe"},
+  {n:"MusicNote",c:"icon-music-note",u:"f2ff"},
+  {n:"MicrophoneStage",c:"icon-microphone-stage",u:"f300"},
+  {n:"MicrophoneSlash",c:"icon-microphone-slash",u:"f301"},
+  {n:"Microphone",c:"icon-microphone",u:"f302"},
+  {n:"ImageSquare",c:"icon-image-square",u:"f303"},
+  {n:"Image",c:"icon-image",u:"f304"},
+  {n:"Headset",c:"icon-headset",u:"f305"},
+  {n:"Headphones",c:"icon-headphones",u:"f306"},
+  {n:"Gif",c:"icon-gif",u:"f307"},
+  {n:"FrameCorners",c:"icon-frame-corners",u:"f308"},
+  {n:"FilmStrip",c:"icon-film-strip",u:"f309"},
+  {n:"FilmSlate",c:"icon-film-slate",u:"f30a"},
+  {n:"FilmScript",c:"icon-film-script",u:"f30b"},
+  {n:"FastForwardCircle",c:"icon-fast-forward-circle",u:"f30c"},
+  {n:"FastForward",c:"icon-fast-forward",u:"f30d"},
+  {n:"FadersHorizontal",c:"icon-faders-horizontal",u:"f30e"},
+  {n:"Faders",c:"icon-faders",u:"f30f"},
+  {n:"Equalizer",c:"icon-equalizer",u:"f310"},
+  {n:"EjectSimple",c:"icon-eject-simple",u:"f311"},
+  {n:"Eject",c:"icon-eject",u:"f312"},
+  {n:"EarSlash",c:"icon-ear-slash",u:"f313"},
+  {n:"Ear",c:"icon-ear",u:"f314"},
+  {n:"Disc",c:"icon-disc",u:"f315"},
+  {n:"CornersOut",c:"icon-corners-out",u:"f316"},
+  {n:"CornersIn",c:"icon-corners-in",u:"f317"},
+  {n:"Copyright",c:"icon-copyright",u:"f318"},
+  {n:"Copyleft",c:"icon-copyleft",u:"f319"},
+  {n:"ClosedCaptioning",c:"icon-closed-captioning",u:"f31a"},
+  {n:"CameraSlash",c:"icon-camera-slash",u:"f31b"},
+  {n:"CameraRotate",c:"icon-camera-rotate",u:"f31c"},
+  {n:"Camera",c:"icon-camera",u:"f31d"},
+  {n:"ArticleNyTimes",c:"icon-article-ny-times",u:"f31e"},
+  {n:"ArticleMedium",c:"icon-article-medium",u:"f31f"},
+  {n:"Article",c:"icon-article",u:"f320"},
+  {n:"Aperture",c:"icon-aperture",u:"f321"},
+  {n:"Airplay",c:"icon-airplay",u:"f322"},
+  {n:"XSquare",c:"icon-x-square",u:"f294"},
+  {n:"XCircle",c:"icon-x-circle",u:"f295"},
+  {n:"X",c:"icon-x",u:"f296"},
+  {n:"TrendUp",c:"icon-trend-up",u:"f297"},
+  {n:"TrendDown",c:"icon-trend-down",u:"f298"},
+  {n:"Table",c:"icon-table",u:"f299"},
+  {n:"Radical",c:"icon-radical",u:"f29a"},
+  {n:"PlusMinus",c:"icon-plus-minus",u:"f29b"},
+  {n:"PlusCircle",c:"icon-plus-circle",u:"f29c"},
+  {n:"Plus",c:"icon-plus",u:"f29d"},
+  {n:"Percent",c:"icon-percent",u:"f29e"},
+  {n:"NumberZero",c:"icon-number-zero",u:"f29f"},
+  {n:"NumberTwo",c:"icon-number-two",u:"f2a0"},
+  {n:"NumberThree",c:"icon-number-three",u:"f2a1"},
+  {n:"NumberSquareZero",c:"icon-number-square-zero",u:"f2a2"},
+  {n:"NumberSquareTwo",c:"icon-number-square-two",u:"f2a3"},
+  {n:"NumberSquareThree",c:"icon-number-square-three",u:"f2a4"},
+  {n:"NumberSquareSix",c:"icon-number-square-six",u:"f2a5"},
+  {n:"NumberSquareSeven",c:"icon-number-square-seven",u:"f2a6"},
+  {n:"NumberSquareOne",c:"icon-number-square-one",u:"f2a7"},
+  {n:"NumberSquareNine",c:"icon-number-square-nine",u:"f2a8"},
+  {n:"NumberSquareFour",c:"icon-number-square-four",u:"f2a9"},
+  {n:"NumberSquareFive",c:"icon-number-square-five",u:"f2aa"},
+  {n:"NumberSquareEight",c:"icon-number-square-eight",u:"f2ab"},
+  {n:"NumberSix",c:"icon-number-six",u:"f2ac"},
+  {n:"NumberSeven",c:"icon-number-seven",u:"f2ad"},
+  {n:"NumberOne",c:"icon-number-one",u:"f2ae"},
+  {n:"NumberNine",c:"icon-number-nine",u:"f2af"},
+  {n:"NumberFour",c:"icon-number-four",u:"f2b0"},
+  {n:"NumberFive",c:"icon-number-five",u:"f2b1"},
+  {n:"NumberEight",c:"icon-number-eight",u:"f2b2"},
+  {n:"NumberCircleZero",c:"icon-number-circle-zero",u:"f2b3"},
+  {n:"NumberCircleTwo",c:"icon-number-circle-two",u:"f2b4"},
+  {n:"NumberCircleThree",c:"icon-number-circle-three",u:"f2b5"},
+  {n:"NumberCircleSix",c:"icon-number-circle-six",u:"f2b6"},
+  {n:"NumberCircleSeven",c:"icon-number-circle-seven",u:"f2b7"},
+  {n:"NumberCircleOne",c:"icon-number-circle-one",u:"f2b8"},
+  {n:"NumberCircleNine",c:"icon-number-circle-nine",u:"f2b9"},
+  {n:"NumberCircleFour",c:"icon-number-circle-four",u:"f2ba"},
+  {n:"NumberCircleFive",c:"icon-number-circle-five",u:"f2bb"},
+  {n:"NumberCircleEight",c:"icon-number-circle-eight",u:"f2bc"},
+  {n:"MinusCircle",c:"icon-minus-circle",u:"f2bd"},
+  {n:"Minus",c:"icon-minus",u:"f2be"},
+  {n:"MathOperations",c:"icon-math-operations",u:"f2bf"},
+  {n:"Infinity",c:"icon-infinity",u:"f2c0"},
+  {n:"Graph",c:"icon-graph",u:"f2c1"},
+  {n:"Function",c:"icon-function",u:"f2c2"},
+  {n:"Equals",c:"icon-equals",u:"f2c3"},
+  {n:"Divide",c:"icon-divide",u:"f2c4"},
+  {n:"ChartPieSlice",c:"icon-chart-pie-slice",u:"f2c5"},
+  {n:"ChartPie",c:"icon-chart-pie",u:"f2c6"},
+  {n:"ChartLineUp",c:"icon-chart-line-up",u:"f2c7"},
+  {n:"ChartLine",c:"icon-chart-line",u:"f2c8"},
+  {n:"ChartBarHorizontal",c:"icon-chart-bar-horizontal",u:"f2c9"},
+  {n:"ChartBar",c:"icon-chart-bar",u:"f2ca"},
+  {n:"Calculator",c:"icon-calculator",u:"f2cb"},
+  {n:"Bank",c:"icon-bank",u:"f2cc"},
+  {n:"uiw_eye",c:"icon-uiw_eye",u:"f27d"},
+  {n:"uiw_eye-o",c:"icon-uiw_eye-o",u:"f27e"},
+  {n:"ToiletPaper",c:"icon-toilet-paper",u:"f27f"},
+  {n:"Toilet",c:"icon-toilet",u:"f280"},
+  {n:"TestTube",c:"icon-test-tube",u:"f281"},
+  {n:"Syringe",c:"icon-syringe",u:"f282"},
+  {n:"Prescription",c:"icon-prescription",u:"f283"},
+  {n:"Pill",c:"icon-pill",u:"f284"},
+  {n:"Lifebuoy",c:"icon-lifebuoy",u:"f285"},
+  {n:"humbleicons_eye-close",c:"icon-humbleicons_eye-close",u:"f286"},
+  {n:"Heartbeat",c:"icon-heartbeat",u:"f287"},
+  {n:"HandSoap",c:"icon-hand-soap",u:"f288"},
+  {n:"fluent_eye-20-filled",c:"icon-fluent_eye-20-filled",u:"f289"},
+  {n:"Flask",c:"icon-flask",u:"f28a"},
+  {n:"FirstAidKit",c:"icon-first-aid-kit",u:"f28b"},
+  {n:"FirstAid",c:"icon-first-aid",u:"f28c"},
+  {n:"FaceMask",c:"icon-face-mask",u:"f28d"},
+  {n:"eye-o",c:"icon-eye-o",u:"f28e"},
+  {n:"Brain",c:"icon-brain",u:"f28f"},
+  {n:"Bed",c:"icon-bed",u:"f290"},
+  {n:"Barbell",c:"icon-barbell",u:"f291"},
+  {n:"Bandaids",c:"icon-bandaids",u:"f292"},
+  {n:"Activity",c:"icon-activity",u:"f293"},
+  {n:"Volleyball",c:"icon-volleyball",u:"f252"},
+  {n:"Trophy",c:"icon-trophy",u:"f253"},
+  {n:"TennisBall",c:"icon-tennis-ball",u:"f254"},
+  {n:"Target",c:"icon-target",u:"f255"},
+  {n:"Sword",c:"icon-sword",u:"f256"},
+  {n:"Strategy",c:"icon-strategy",u:"f257"},
+  {n:"Spiral",c:"icon-spiral",u:"f258"},
+  {n:"Spade",c:"icon-spade",u:"f259"},
+  {n:"SoccerBall",c:"icon-soccer-ball",u:"f25a"},
+  {n:"Skull",c:"icon-skull",u:"f25b"},
+  {n:"Scroll",c:"icon-scroll",u:"f25c"},
+  {n:"PuzzlePiece",c:"icon-puzzle-piece",u:"f25d"},
+  {n:"PokerChip",c:"icon-poker-chip",u:"f25e"},
+  {n:"Pinwheel",c:"icon-pinwheel",u:"f25f"},
+  {n:"Parachute",c:"icon-parachute",u:"f260"},
+  {n:"Medal",c:"icon-medal",u:"f261"},
+  {n:"MaskSad",c:"icon-mask-sad",u:"f262"},
+  {n:"MaskHappy",c:"icon-mask-happy",u:"f263"},
+  {n:"Horse",c:"icon-horse",u:"f264"},
+  {n:"HeartStraightBreak",c:"icon-heart-straight-break",u:"f265"},
+  {n:"HeartStraight",c:"icon-heart-straight",u:"f266"},
+  {n:"hearthcolor",c:"icon-hearthcolor",u:"f267"},
+  {n:"HeartBreak",c:"icon-heart-break",u:"f268"},
+  {n:"Heart",c:"icon-heart",u:"f269"},
+  {n:"Ghost",c:"icon-ghost",u:"f26a"},
+  {n:"GameController",c:"icon-game-controller",u:"f26b"},
+  {n:"Football",c:"icon-football",u:"f26c"},
+  {n:"FlyingSaucer",c:"icon-flying-saucer",u:"f26d"},
+  {n:"FinnTheHuman",c:"icon-finn-the-human",u:"f26e"},
+  {n:"DiceTwo",c:"icon-dice-two",u:"f26f"},
+  {n:"DiceThree",c:"icon-dice-three",u:"f270"},
+  {n:"DiceSix",c:"icon-dice-six",u:"f271"},
+  {n:"DiceOne",c:"icon-dice-one",u:"f272"},
+  {n:"DiceFour",c:"icon-dice-four",u:"f273"},
+  {n:"DiceFive",c:"icon-dice-five",u:"f274"},
+  {n:"Diamond",c:"icon-diamond",u:"f275"},
+  {n:"CrownSimple",c:"icon-crown-simple",u:"f276"},
+  {n:"Crown",c:"icon-crown",u:"f277"},
+  {n:"Confetti",c:"icon-confetti",u:"f278"},
+  {n:"Club",c:"icon-club",u:"f279"},
+  {n:"Basketball",c:"icon-basketball",u:"f27a"},
+  {n:"Baseball",c:"icon-baseball",u:"f27b"},
+  {n:"Alien",c:"icon-alien",u:"f27c"},
+  {n:"Student",c:"icon-student",u:"f244"},
+  {n:"GraduationCap",c:"icon-graduation-cap",u:"f245"},
+  {n:"Exam",c:"icon-exam",u:"f246"},
+  {n:"ChalkboardTeacher",c:"icon-chalkboard-teacher",u:"f247"},
+  {n:"ChalkboardSimple",c:"icon-chalkboard-simple",u:"f248"},
+  {n:"Chalkboard",c:"icon-chalkboard",u:"f249"},
+  {n:"Books",c:"icon-books",u:"f24a"},
+  {n:"BookOpen",c:"icon-book-open",u:"f24b"},
+  {n:"BookmarksSimple",c:"icon-bookmarks-simple",u:"f24c"},
+  {n:"BookmarkSimple",c:"icon-bookmark-simple",u:"f24d"},
+  {n:"Bookmarks",c:"icon-bookmarks",u:"f24e"},
+  {n:"Bookmark",c:"icon-bookmark",u:"f24f"},
+  {n:"BookBookmark",c:"icon-book-bookmark",u:"f250"},
+  {n:"Book",c:"icon-book",u:"f251"},
+  {n:"Plug",c:"icon-plug",u:"f1c7"},
+  {n:"Option",c:"icon-option",u:"f1c8"},
+  {n:"Nut",c:"icon-nut",u:"f1c9"},
+  {n:"Notification",c:"icon-notification",u:"f1ca"},
+  {n:"MouseSimple",c:"icon-mouse-simple",u:"f1cb"},
+  {n:"Mouse",c:"icon-mouse",u:"f1cc"},
+  {n:"MonitorPlay",c:"icon-monitor-play",u:"f1cd"},
+  {n:"Monitor",c:"icon-monitor",u:"f1ce"},
+  {n:"MagnifyingGlassPlus",c:"icon-magnifying-glass-plus",u:"f1cf"},
+  {n:"MagnifyingGlassMinus",c:"icon-magnifying-glass-minus",u:"f1d0"},
+  {n:"MagnifyingGlass",c:"icon-magnifying-glass",u:"f1d1"},
+  {n:"LinkSimpleHorizontalBreak",c:"icon-link-simple-horizontal-break",u:"f1d2"},
+  {n:"LinkSimpleHorizontal",c:"icon-link-simple-horizontal",u:"f1d3"},
+  {n:"LinkSimpleBreak",c:"icon-link-simple-break",u:"f1d4"},
+  {n:"LinkSimple",c:"icon-link-simple",u:"f1d5"},
+  {n:"LinkBreak",c:"icon-link-break",u:"f1d6"},
+  {n:"Link",c:"icon-link",u:"f1d7"},
+  {n:"LightningSlash",c:"icon-lightning-slash",u:"f1d8"},
+  {n:"Lightning",c:"icon-lightning",u:"f1d9"},
+  {n:"LightbulbFilament",c:"icon-lightbulb-filament",u:"f1da"},
+  {n:"Lightbulb",c:"icon-lightbulb",u:"f1db"},
+  {n:"Laptop",c:"icon-laptop",u:"f1dc"},
+  {n:"KeyReturn",c:"icon-key-return",u:"f1dd"},
+  {n:"Keyboard",c:"icon-keyboard",u:"f1de"},
+  {n:"HardDrives",c:"icon-hard-drives",u:"f1df"},
+  {n:"HardDrive",c:"icon-hard-drive",u:"f1e0"},
+  {n:"GearSix",c:"icon-gear-six",u:"f1e1"},
+  {n:"Gear",c:"icon-gear",u:"f1e2"},
+  {n:"Gauge",c:"icon-gauge",u:"f1e3"},
+  {n:"Flashlight",c:"icon-flashlight",u:"f1e4"},
+  {n:"finger-print",c:"icon-finger-print",u:"f1e5"},
+  {n:"finger-print-outline",c:"icon-finger-print-outline",u:"f1e6"},
+  {n:"DownloadSimple",c:"icon-download-simple",u:"f1e7"},
+  {n:"Download",c:"icon-download",u:"f1e8"},
+  {n:"DotsThreeVertical",c:"icon-dots-three-vertical",u:"f1e9"},
+  {n:"DotsThreeOutlineVertical",c:"icon-dots-three-outline-vertical",u:"f1ea"},
+  {n:"DotsThreeOutline",c:"icon-dots-three-outline",u:"f1eb"},
+  {n:"DotsThreeCircleVertical",c:"icon-dots-three-circle-vertical",u:"f1ec"},
+  {n:"DotsThreeCircle",c:"icon-dots-three-circle",u:"f1ed"},
+  {n:"DotsThree",c:"icon-dots-three",u:"f1ee"},
+  {n:"DotsSixVertical",c:"icon-dots-six-vertical",u:"f1ef"},
+  {n:"DotsSix",c:"icon-dots-six",u:"f1f0"},
+  {n:"DotsNine",c:"icon-dots-nine",u:"f1f1"},
+  {n:"DeviceTabletSpeaker",c:"icon-device-tablet-speaker",u:"f1f2"},
+  {n:"DeviceTabletCamera",c:"icon-device-tablet-camera",u:"f1f3"},
+  {n:"DeviceTablet",c:"icon-device-tablet",u:"f1f4"},
+  {n:"DeviceMobileSpeaker",c:"icon-device-mobile-speaker",u:"f1f5"},
+  {n:"DeviceMobileCamera",c:"icon-device-mobile-camera",u:"f1f6"},
+  {n:"DeviceMobile",c:"icon-device-mobile",u:"f1f7"},
+  {n:"DesktopTower",c:"icon-desktop-tower",u:"f1f8"},
+  {n:"Desktop",c:"icon-desktop",u:"f1f9"},
+  {n:"Cursor",c:"icon-cursor",u:"f1fa"},
+  {n:"ComputerTower",c:"icon-computer-tower",u:"f1fb"},
+  {n:"Command",c:"icon-command",u:"f1fc"},
+  {n:"CloudSlash",c:"icon-cloud-slash",u:"f1fd"},
+  {n:"CloudCheck",c:"icon-cloud-check",u:"f1fe"},
+  {n:"CloudArrowUp",c:"icon-cloud-arrow-up",u:"f1ff"},
+  {n:"CloudArrowDown",c:"icon-cloud-arrow-down",u:"f200"},
+  {n:"CheckSquareOffset",c:"icon-check-square-offset",u:"f201"},
+  {n:"CheckSquare",c:"icon-check-square",u:"f202"},
+  {n:"Checks",c:"icon-checks",u:"f203"},
+  {n:"CheckCircle",c:"icon-check-circle",u:"f204"},
+  {n:"Check",c:"icon-check",u:"f205"},
+  {n:"CellSignalX",c:"icon-cell-signal-x",u:"f206"},
+  {n:"CellSignalSlash",c:"icon-cell-signal-slash",u:"f207"},
+  {n:"CellSignalNone",c:"icon-cell-signal-none",u:"f208"},
+  {n:"CellSignalMedium",c:"icon-cell-signal-medium",u:"f209"},
+  {n:"CellSignalLow",c:"icon-cell-signal-low",u:"f20a"},
+  {n:"CellSignalHigh",c:"icon-cell-signal-high",u:"f20b"},
+  {n:"CellSignalFull",c:"icon-cell-signal-full",u:"f20c"},
+  {n:"Browsers",c:"icon-browsers",u:"f20d"},
+  {n:"Browser",c:"icon-browser",u:"f20e"},
+  {n:"BluetoothX",c:"icon-bluetooth-x",u:"f20f"},
+  {n:"BluetoothSlash",c:"icon-bluetooth-slash",u:"f210"},
+  {n:"BluetoothConnected",c:"icon-bluetooth-connected",u:"f211"},
+  {n:"Wrench",c:"icon-wrench",u:"f212"},
+  {n:"Bluetooth",c:"icon-bluetooth",u:"f213"},
+  {n:"WifiX",c:"icon-wifi-x",u:"f214"},
+  {n:"BellZ",c:"icon-bell-z",u:"f215"},
+  {n:"WifiSlash",c:"icon-wifi-slash",u:"f216"},
+  {n:"BellSlash",c:"icon-bell-slash",u:"f217"},
+  {n:"WifiNone",c:"icon-wifi-none",u:"f218"},
+  {n:"BellSimpleZ",c:"icon-bell-simple-z",u:"f219"},
+  {n:"WifiMedium",c:"icon-wifi-medium",u:"f21a"},
+  {n:"BellSimpleSlash",c:"icon-bell-simple-slash",u:"f21b"},
+  {n:"WifiLow",c:"icon-wifi-low",u:"f21c"},
+  {n:"BellSimpleRinging",c:"icon-bell-simple-ringing",u:"f21d"},
+  {n:"WifiHigh",c:"icon-wifi-high",u:"f21e"},
+  {n:"BellSimple",c:"icon-bell-simple",u:"f21f"},
+  {n:"Vibrate",c:"icon-vibrate",u:"f220"},
+  {n:"BellRinging",c:"icon-bell-ringing",u:"f221"},
+  {n:"UploadSimple",c:"icon-upload-simple",u:"f222"},
+  {n:"Bell",c:"icon-bell",u:"f223"},
+  {n:"Upload",c:"icon-upload",u:"f224"},
+  {n:"BatteryWarningVertical",c:"icon-battery-warning-vertical",u:"f225"},
+  {n:"ToggleRight",c:"icon-toggle-right",u:"f226"},
+  {n:"BatteryWarning",c:"icon-battery-warning",u:"f227"},
+  {n:"ToggleLeft",c:"icon-toggle-left",u:"f228"},
+  {n:"BatteryPlus",c:"icon-battery-plus",u:"f229"},
+  {n:"Tabs",c:"icon-tabs",u:"f22a"},
+  {n:"BatteryMedium",c:"icon-battery-medium",u:"f22b"},
+  {n:"Swap",c:"icon-swap",u:"f22c"},
+  {n:"BatteryLow",c:"icon-battery-low",u:"f22d"},
+  {n:"SpinnerGap",c:"icon-spinner-gap",u:"f22e"},
+  {n:"BatteryHigh",c:"icon-battery-high",u:"f22f"},
+  {n:"Spinner",c:"icon-spinner",u:"f230"},
+  {n:"BatteryFull",c:"icon-battery-full",u:"f231"},
+  {n:"SimCard",c:"icon-sim-card",u:"f232"},
+  {n:"BatteryEmpty",c:"icon-battery-empty",u:"f233"},
+  {n:"SignOut",c:"icon-sign-out",u:"f234"},
+  {n:"BatteryChargingVertical",c:"icon-battery-charging-vertical",u:"f235"},
+  {n:"SignIn",c:"icon-sign-in",u:"f236"},
+  {n:"BatteryCharging",c:"icon-battery-charging",u:"f237"},
+  {n:"Scan",c:"icon-scan",u:"f238"},
+  {n:"Backspace",c:"icon-backspace",u:"f239"},
+  {n:"RadioButton",c:"icon-radio-button",u:"f23a"},
+  {n:"AppWindow",c:"icon-app-window",u:"f23b"},
+  {n:"QrCode",c:"icon-qr-code",u:"f23c"},
+  {n:"align-right",c:"icon-align-right",u:"f23d"},
+  {n:"Power",c:"icon-power",u:"f23e"},
+  {n:"align-left",c:"icon-align-left",u:"f23f"},
+  {n:"PlugsConnected",c:"icon-plugs-connected",u:"f240"},
+  {n:"align-justify",c:"icon-align-justify",u:"f241"},
+  {n:"Plugs",c:"icon-plugs",u:"f242"},
+  {n:"align-center",c:"icon-align-center",u:"f243"},
+  {n:"Vignette",c:"icon-vignette",u:"f16f"},
+  {n:"Triangle",c:"icon-triangle",u:"f170"},
+  {n:"Swatches",c:"icon-swatches",u:"f171"},
+  {n:"Stamp",c:"icon-stamp",u:"f172"},
+  {n:"StackSimple",c:"icon-stack-simple",u:"f173"},
+  {n:"Stack",c:"icon-stack",u:"f174"},
+  {n:"SquaresFour",c:"icon-squares-four",u:"f175"},
+  {n:"SquareHalfBottom",c:"icon-square-half-bottom",u:"f176"},
+  {n:"SquareHalf",c:"icon-square-half",u:"f177"},
+  {n:"Square",c:"icon-square",u:"f178"},
+  {n:"SidebarSimple",c:"icon-sidebar-simple",u:"f179"},
+  {n:"Sidebar",c:"icon-sidebar",u:"f17a"},
+  {n:"SelectionSlash",c:"icon-selection-slash",u:"f17b"},
+  {n:"SelectionPlus",c:"icon-selection-plus",u:"f17c"},
+  {n:"SelectionInverse",c:"icon-selection-inverse",u:"f17d"},
+  {n:"SelectionForeground",c:"icon-selection-foreground",u:"f17e"},
+  {n:"SelectionBackground",c:"icon-selection-background",u:"f17f"},
+  {n:"SelectionAll",c:"icon-selection-all",u:"f180"},
+  {n:"Selection",c:"icon-selection",u:"f181"},
+  {n:"ScribbleLoop",c:"icon-scribble-loop",u:"f182"},
+  {n:"Scissors",c:"icon-scissors",u:"f183"},
+  {n:"Ruler",c:"icon-ruler",u:"f184"},
+  {n:"Rows",c:"icon-rows",u:"f185"},
+  {n:"Rectangle",c:"icon-rectangle",u:"f186"},
+  {n:"Polygon",c:"icon-polygon",u:"f187"},
+  {n:"Placeholder",c:"icon-placeholder",u:"f188"},
+  {n:"Perspective",c:"icon-perspective",u:"f189"},
+  {n:"PenNibStraight",c:"icon-pen-nib-straight",u:"f18a"},
+  {n:"PenNib",c:"icon-pen-nib",u:"f18b"},
+  {n:"PencilSimpleLine",c:"icon-pencil-simple-line",u:"f18c"},
+  {n:"PencilSimple",c:"icon-pencil-simple",u:"f18d"},
+  {n:"PencilLine",c:"icon-pencil-line",u:"f18e"},
+  {n:"PencilCircle",c:"icon-pencil-circle",u:"f18f"},
+  {n:"Pencil",c:"icon-pencil",u:"f190"},
+  {n:"Pen",c:"icon-pen",u:"f191"},
+  {n:"Palette",c:"icon-palette",u:"f192"},
+  {n:"PaintRoller",c:"icon-paint-roller",u:"f193"},
+  {n:"PaintBucket",c:"icon-paint-bucket",u:"f194"},
+  {n:"PaintBrushHousehold",c:"icon-paint-brush-household",u:"f195"},
+  {n:"PaintBrushBroad",c:"icon-paint-brush-broad",u:"f196"},
+  {n:"PaintBrush",c:"icon-paint-brush",u:"f197"},
+  {n:"Octagon",c:"icon-octagon",u:"f198"},
+  {n:"MarkerCircle",c:"icon-marker-circle",u:"f199"},
+  {n:"MagicWand",c:"icon-magic-wand",u:"f19a"},
+  {n:"LineSegments",c:"icon-line-segments",u:"f19b"},
+  {n:"LineSegment",c:"icon-line-segment",u:"f19c"},
+  {n:"Layout",c:"icon-layout",u:"f19d"},
+  {n:"Intersect",c:"icon-intersect",u:"f19e"},
+  {n:"HighlighterCircle",c:"icon-highlighter-circle",u:"f19f"},
+  {n:"Hexagon",c:"icon-hexagon",u:"f1a0"},
+  {n:"GridFour",c:"icon-grid-four",u:"f1a1"},
+  {n:"Gradient",c:"icon-gradient",u:"f1a2"},
+  {n:"FlowArrow",c:"icon-flow-arrow",u:"f1a3"},
+  {n:"EyeSlash",c:"icon-eye-slash",u:"f1a4"},
+  {n:"EyedropperSample",c:"icon-eyedropper-sample",u:"f1a5"},
+  {n:"Eyedropper",c:"icon-eyedropper",u:"f1a6"},
+  {n:"EyeClosed",c:"icon-eye-closed",u:"f1a7"},
+  {n:"Eye",c:"icon-eye",u:"f1a8"},
+  {n:"Eraser",c:"icon-eraser",u:"f1a9"},
+  {n:"DropHalfBottom",c:"icon-drop-half-bottom",u:"f1aa"},
+  {n:"DropHalf",c:"icon-drop-half",u:"f1ab"},
+  {n:"DiamondsFour",c:"icon-diamonds-four",u:"f1ac"},
+  {n:"Cylinder",c:"icon-cylinder",u:"f1ad"},
+  {n:"Cube",c:"icon-cube",u:"f1ae"},
+  {n:"Crop",c:"icon-crop",u:"f1af"},
+  {n:"Columns",c:"icon-columns",u:"f1b0"},
+  {n:"CirclesThreePlus",c:"icon-circles-three-plus",u:"f1b1"},
+  {n:"CirclesThree",c:"icon-circles-three",u:"f1b2"},
+  {n:"CirclesFour",c:"icon-circles-four",u:"f1b3"},
+  {n:"CircleNotch",c:"icon-circle-notch",u:"f1b4"},
+  {n:"CircleHalfTilt",c:"icon-circle-half-tilt",u:"f1b5"},
+  {n:"CircleHalf",c:"icon-circle-half",u:"f1b6"},
+  {n:"CircleDashed",c:"icon-circle-dashed",u:"f1b7"},
+  {n:"Circle",c:"icon-circle",u:"f1b8"},
+  {n:"BoundingBox",c:"icon-bounding-box",u:"f1b9"},
+  {n:"BezierCurve",c:"icon-bezier-curve",u:"f1ba"},
+  {n:"AlignTopSimple",c:"icon-align-top-simple",u:"f1bb"},
+  {n:"AlignTop",c:"icon-align-top",u:"f1bc"},
+  {n:"AlignRightSimple",c:"icon-align-right-simple",u:"f1bd"},
+  {n:"AlignRight",c:"icon-align-right",u:"f1be"},
+  {n:"AlignLeftSimple",c:"icon-align-left-simple",u:"f1bf"},
+  {n:"AlignLeft",c:"icon-align-left",u:"f1c0"},
+  {n:"AlignCenterVerticalSimple",c:"icon-align-center-vertical-simple",u:"f1c1"},
+  {n:"AlignCenterVertical",c:"icon-align-center-vertical",u:"f1c2"},
+  {n:"AlignCenterHorizontalSimple",c:"icon-align-center-horizontal-simple",u:"f1c3"},
+  {n:"AlignCenterHorizontal",c:"icon-align-center-horizontal",u:"f1c4"},
+  {n:"AlignBottomSimple",c:"icon-align-bottom-simple",u:"f1c5"},
+  {n:"AlignBottom",c:"icon-align-bottom",u:"f1c6"},
+  {n:"YinYang",c:"icon-yin-yang",u:"f13a"},
+  {n:"Voicemail",c:"icon-voicemail",u:"f13b"},
+  {n:"Translate",c:"icon-translate",u:"f13c"},
+  {n:"ThumbsUp",c:"icon-thumbs-up",u:"f13d"},
+  {n:"ThumbsDown",c:"icon-thumbs-down",u:"f13e"},
+  {n:"Sticker",c:"icon-sticker",u:"f13f"},
+  {n:"StarHalf",c:"icon-star-half",u:"f140"},
+  {n:"Star",c:"icon-star",u:"f141"},
+  {n:"ShareNetwork",c:"icon-share-network",u:"f142"},
+  {n:"Share",c:"icon-share",u:"f143"},
+  {n:"RssSimple",c:"icon-rss-simple",u:"f144"},
+  {n:"Rss",c:"icon-rss",u:"f145"},
+  {n:"Radio",c:"icon-radio",u:"f146"},
+  {n:"Quotes",c:"icon-quotes",u:"f147"},
+  {n:"PhoneX",c:"icon-phone-x",u:"f148"},
+  {n:"PhoneOutgoing",c:"icon-phone-outgoing",u:"f149"},
+  {n:"PhoneIncoming",c:"icon-phone-incoming",u:"f14a"},
+  {n:"PhoneDisconnect",c:"icon-phone-disconnect",u:"f14b"},
+  {n:"PhoneCall",c:"icon-phone-call",u:"f14c"},
+  {n:"Phone",c:"icon-phone",u:"f14d"},
+  {n:"Peace",c:"icon-peace",u:"f14e"},
+  {n:"PaperPlaneTilt",c:"icon-paper-plane-tilt",u:"f14f"},
+  {n:"PaperPlaneRight",c:"icon-paper-plane-right",u:"f150"},
+  {n:"PaperPlane",c:"icon-paper-plane",u:"f151"},
+  {n:"MegaphoneSimple",c:"icon-megaphone-simple",u:"f152"},
+  {n:"Megaphone",c:"icon-megaphone",u:"f153"},
+  {n:"HashStraight",c:"icon-hash-straight",u:"f154"},
+  {n:"Hash",c:"icon-hash",u:"f155"},
+  {n:"Export",c:"icon-export",u:"f156"},
+  {n:"EnvelopeSimpleOpen",c:"icon-envelope-simple-open",u:"f157"},
+  {n:"EnvelopeSimple",c:"icon-envelope-simple",u:"f158"},
+  {n:"EnvelopeOpen",c:"icon-envelope-open",u:"f159"},
+  {n:"Envelope",c:"icon-envelope",u:"f15a"},
+  {n:"ChatText",c:"icon-chat-text",u:"f15b"},
+  {n:"ChatTeardropText",c:"icon-chat-teardrop-text",u:"f15c"},
+  {n:"ChatTeardropDots",c:"icon-chat-teardrop-dots",u:"f15d"},
+  {n:"ChatTeardrop",c:"icon-chat-teardrop",u:"f15e"},
+  {n:"ChatsTeardrop",c:"icon-chats-teardrop",u:"f15f"},
+  {n:"ChatsCircle",c:"icon-chats-circle",u:"f160"},
+  {n:"Chats",c:"icon-chats",u:"f161"},
+  {n:"ChatDots",c:"icon-chat-dots",u:"f162"},
+  {n:"ChatCircleText",c:"icon-chat-circle-text",u:"f163"},
+  {n:"ChatCircleDots",c:"icon-chat-circle-dots",u:"f164"},
+  {n:"ChatCircle",c:"icon-chat-circle",u:"f165"},
+  {n:"ChatCenteredText",c:"icon-chat-centered-text",u:"f166"},
+  {n:"ChatCenteredDots",c:"icon-chat-centered-dots",u:"f167"},
+  {n:"ChatCentered",c:"icon-chat-centered",u:"f168"},
+  {n:"Chat",c:"icon-chat",u:"f169"},
+  {n:"Broadcast",c:"icon-broadcast",u:"f16a"},
+  {n:"At",c:"icon-at",u:"f16b"},
+  {n:"AsteriskSimple",c:"icon-asterisk-simple",u:"f16c"},
+  {n:"Asterisk",c:"icon-asterisk",u:"f16d"},
+  {n:"AddressBook",c:"icon-address-book",u:"f16e"},
+  {n:"Wine",c:"icon-wine",u:"f0f1"},
+  {n:"Wallet",c:"icon-wallet",u:"f0f2"},
+  {n:"TShirt",c:"icon-t-shirt",u:"f0f3"},
+  {n:"TrademarkRegistered",c:"icon-trademark-registered",u:"f0f4"},
+  {n:"ToteSimple",c:"icon-tote-simple",u:"f0f5"},
+  {n:"Tote",c:"icon-tote",u:"f0f6"},
+  {n:"Ticket",c:"icon-ticket",u:"f0f7"},
+  {n:"TagSimple",c:"icon-tag-simple",u:"f0f8"},
+  {n:"TagChevron",c:"icon-tag-chevron",u:"f0f9"},
+  {n:"Tag",c:"icon-tag",u:"f0fa"},
+  {n:"Sunglasses",c:"icon-sunglasses",u:"f0fb"},
+  {n:"Storefront",c:"icon-storefront",u:"f0fc"},
+  {n:"soup",c:"icon-soup",u:"f0fd"},
+  {n:"Shower",c:"icon-shower",u:"f0fe"},
+  {n:"ShoppingCartSimple",c:"icon-shopping-cart-simple",u:"f0ff"},
+  {n:"ShoppingCart",c:"icon-shopping-cart",u:"f100"},
+  {n:"ShoppingBagOpen",c:"icon-shopping-bag-open",u:"f101"},
+  {n:"ShoppingBag",c:"icon-shopping-bag",u:"f102"},
+  {n:"Scales",c:"icon-scales",u:"f103"},
+  {n:"Rug",c:"icon-rug",u:"f104"},
+  {n:"Receipt",c:"icon-receipt",u:"f105"},
+  {n:"Popcorn",c:"icon-popcorn",u:"f106"},
+  {n:"Pizza",c:"icon-pizza",u:"f107"},
+  {n:"Package",c:"icon-package",u:"f108"},
+  {n:"Needle",c:"icon-needle",u:"f109"},
+  {n:"Money",c:"icon-money",u:"f10a"},
+  {n:"Martini",c:"icon-martini",u:"f10b"},
+  {n:"Lamp",c:"icon-lamp",u:"f10c"},
+  {n:"LadderSimple",c:"icon-ladder-simple",u:"f10d"},
+  {n:"Ladder",c:"icon-ladder",u:"f10e"},
+  {n:"Knife",c:"icon-knife",u:"f10f"},
+  {n:"HandbagSimple",c:"icon-handbag-simple",u:"f110"},
+  {n:"Handbag",c:"icon-handbag",u:"f111"},
+  {n:"Hamburger",c:"icon-hamburger",u:"f112"},
+  {n:"Gift",c:"icon-gift",u:"f113"},
+  {n:"ForkKnife",c:"icon-fork-knife",u:"f114"},
+  {n:"Factory",c:"icon-factory",u:"f115"},
+  {n:"Eyeglasses",c:"icon-eyeglasses",u:"f116"},
+  {n:"EggCrack",c:"icon-egg-crack",u:"f117"},
+  {n:"Egg",c:"icon-egg",u:"f118"},
+  {n:"CurrencyRub",c:"icon-currency-rub",u:"f119"},
+  {n:"CurrencyNgn",c:"icon-currency-ngn",u:"f11a"},
+  {n:"CurrencyKzt",c:"icon-currency-kzt",u:"f11b"},
+  {n:"CurrencyKrw",c:"icon-currency-krw",u:"f11c"},
+  {n:"CurrencyJpy",c:"icon-currency-jpy",u:"f11d"},
+  {n:"CurrencyInr",c:"icon-currency-inr",u:"f11e"},
+  {n:"CurrencyGbp",c:"icon-currency-gbp",u:"f11f"},
+  {n:"CurrencyEur",c:"icon-currency-eur",u:"f120"},
+  {n:"CurrencyEth",c:"icon-currency-eth",u:"f121"},
+  {n:"CurrencyDollarSimple",c:"icon-currency-dollar-simple",u:"f122"},
+  {n:"CurrencyDollar",c:"icon-currency-dollar",u:"f123"},
+  {n:"CurrencyCny",c:"icon-currency-cny",u:"f124"},
+  {n:"CurrencyCircleDollar",c:"icon-currency-circle-dollar",u:"f125"},
+  {n:"CurrencyBtc",c:"icon-currency-btc",u:"f126"},
+  {n:"CreditCard",c:"icon-credit-card",u:"f127"},
+  {n:"Cookie",c:"icon-cookie",u:"f128"},
+  {n:"CoinVertical",c:"icon-coin-vertical",u:"f129"},
+  {n:"Coins",c:"icon-coins",u:"f12a"},
+  {n:"Coin",c:"icon-coin",u:"f12b"},
+  {n:"Coffee",c:"icon-coffee",u:"f12c"},
+  {n:"CoatHanger",c:"icon-coat-hanger",u:"f12d"},
+  {n:"Cardholder",c:"icon-cardholder",u:"f12e"},
+  {n:"Cake",c:"icon-cake",u:"f12f"},
+  {n:"Brandy",c:"icon-brandy",u:"f130"},
+  {n:"Binoculars",c:"icon-binoculars",u:"f131"},
+  {n:"BeerBottle",c:"icon-beer-bottle",u:"f132"},
+  {n:"Bathtub",c:"icon-bathtub",u:"f133"},
+  {n:"Barcode",c:"icon-barcode",u:"f134"},
+  {n:"Balloon",c:"icon-balloon",u:"f135"},
+  {n:"BagSimple",c:"icon-bag-simple",u:"f136"},
+  {n:"Bag",c:"icon-bag",u:"f137"},
+  {n:"Backpack",c:"icon-backpack",u:"f138"},
+  {n:"Armchair",c:"icon-armchair",u:"f139"},
+  {n:"YoutubeLogo",c:"icon-youtube-logo",u:"f0c0"},
+  {n:"xLogo",c:"icon-x-logo",u:"f0c1"},
+  {n:"WindowsLogo",c:"icon-windows-logo",u:"f0c2"},
+  {n:"WhatsappLogo",c:"icon-whatsapp-logo",u:"f0c3"},
+  {n:"TwitterLogo",c:"icon-twitter-logo",u:"f0c4"},
+  {n:"TwitchLogo",c:"icon-twitch-logo",u:"f0c5"},
+  {n:"TiktokLogo",c:"icon-tiktok-logo",u:"f0c6"},
+  {n:"TelegramLogo",c:"icon-telegram-logo",u:"f0c7"},
+  {n:"StripeLogo",c:"icon-stripe-logo",u:"f0c8"},
+  {n:"StackOverflowLogo",c:"icon-stack-overflow-logo",u:"f0c9"},
+  {n:"SquareLogo",c:"icon-square-logo",u:"f0ca"},
+  {n:"SpotifyLogo",c:"icon-spotify-logo",u:"f0cb"},
+  {n:"SnapchatLogo",c:"icon-snapchat-logo",u:"f0cc"},
+  {n:"SlackLogo",c:"icon-slack-logo",u:"f0cd"},
+  {n:"SketchLogo",c:"icon-sketch-logo",u:"f0ce"},
+  {n:"RedditLogo",c:"icon-reddit-logo",u:"f0cf"},
+  {n:"PinterestLogo",c:"icon-pinterest-logo",u:"f0d0"},
+  {n:"PhosphorLogo",c:"icon-phosphor-logo",u:"f0d1"},
+  {n:"NyTimesLogo",c:"icon-ny-times-logo",u:"f0d2"},
+  {n:"MicrosoftWordLogo",c:"icon-microsoft-word-logo",u:"f0d3"},
+  {n:"MicrosoftTeamsLogo",c:"icon-microsoft-teams-logo",u:"f0d4"},
+  {n:"MicrosoftPowerpointLogo",c:"icon-microsoft-powerpoint-logo",u:"f0d5"},
+  {n:"MicrosoftExcelLogo",c:"icon-microsoft-excel-logo",u:"f0d6"},
+  {n:"MessengerLogo",c:"icon-messenger-logo",u:"f0d7"},
+  {n:"MediumLogo",c:"icon-medium-logo",u:"f0d8"},
+  {n:"LinuxLogo",c:"icon-linux-logo",u:"f0d9"},
+  {n:"LinkedinLogo",c:"icon-linkedin-logo",u:"f0da"},
+  {n:"InstagramLogo",c:"icon-instagram-logo",u:"f0db"},
+  {n:"GooglePodcastsLogo",c:"icon-google-podcasts-logo",u:"f0dc"},
+  {n:"GooglePlayLogo",c:"icon-google-play-logo",u:"f0dd"},
+  {n:"GooglePhotosLogo",c:"icon-google-photos-logo",u:"f0de"},
+  {n:"GoogleLogo",c:"icon-google-logo",u:"f0df"},
+  {n:"GoogleChromeLogo",c:"icon-google-chrome-logo",u:"f0e0"},
+  {n:"GitlabLogoSimple",c:"icon-gitlab-logo-simple",u:"f0e1"},
+  {n:"GitlabLogo",c:"icon-gitlab-logo",u:"f0e2"},
+  {n:"GithubLogo",c:"icon-github-logo",u:"f0e3"},
+  {n:"FramerLogo",c:"icon-framer-logo",u:"f0e4"},
+  {n:"FigmaLogo",c:"icon-figma-logo",u:"f0e5"},
+  {n:"FacebookLogo",c:"icon-facebook-logo",u:"f0e6"},
+  {n:"DribbbleLogo",c:"icon-dribbble-logo",u:"f0e7"},
+  {n:"DiscordLogo",c:"icon-discord-logo",u:"f0e8"},
+  {n:"CodesandboxLogo",c:"icon-codesandbox-logo",u:"f0e9"},
+  {n:"CodepenLogo",c:"icon-codepen-logo",u:"f0ea"},
+  {n:"BehanceLogo",c:"icon-behance-logo",u:"f0eb"},
+  {n:"AppStoreLogo",c:"icon-app-store-logo",u:"f0ec"},
+  {n:"ApplePodcastsLogo",c:"icon-apple-podcasts-logo",u:"f0ed"},
+  {n:"AppleLogo",c:"icon-apple-logo",u:"f0ee"},
+  {n:"AngularLogo",c:"icon-angular-logo",u:"f0ef"},
+  {n:"AndroidLogo",c:"icon-android-logo",u:"f0f0"},
+  {n:"CaretCircleLeft",c:"icon-caret-circle-left",u:"f051"},
+  {n:"CaretCircleDown",c:"icon-caret-circle-down",u:"f052"},
+  {n:"CaretCircleDoubleUp",c:"icon-caret-circle-double-up",u:"f053"},
+  {n:"CaretCircleDoubleRight",c:"icon-caret-circle-double-right",u:"f054"},
+  {n:"CaretCircleDoubleLeft",c:"icon-caret-circle-double-left",u:"f055"},
+  {n:"CaretCircleDoubleDown",c:"icon-caret-circle-double-down",u:"f056"},
+  {n:"ArrowUUpRight",c:"icon-arrow-u-up-right",u:"f057"},
+  {n:"ArrowUUpLeft",c:"icon-arrow-u-up-left",u:"f058"},
+  {n:"ArrowURightUp",c:"icon-arrow-u-right-up",u:"f059"},
+  {n:"ArrowURightDown",c:"icon-arrow-u-right-down",u:"f05a"},
+  {n:"ArrowUpRight",c:"icon-arrow-up-right",u:"f05b"},
+  {n:"ArrowUpLeft",c:"icon-arrow-up-left",u:"f05c"},
+  {n:"ArrowUp",c:"icon-arrow-up",u:"f05d"},
+  {n:"ArrowULeftUp",c:"icon-arrow-u-left-up",u:"f05e"},
+  {n:"ArrowULeftDown",c:"icon-arrow-u-left-down",u:"f05f"},
+  {n:"ArrowUDownRight",c:"icon-arrow-u-down-right",u:"f060"},
+  {n:"ArrowUDownLeft",c:"icon-arrow-u-down-left",u:"f061"},
+  {n:"ArrowsVertical",c:"icon-arrows-vertical",u:"f062"},
+  {n:"ArrowSquareUpRight",c:"icon-arrow-square-up-right",u:"f063"},
+  {n:"ArrowSquareUpLeft",c:"icon-arrow-square-up-left",u:"f064"},
+  {n:"ArrowSquareUp",c:"icon-arrow-square-up",u:"f065"},
+  {n:"ArrowSquareRight",c:"icon-arrow-square-right",u:"f066"},
+  {n:"ArrowSquareOut",c:"icon-arrow-square-out",u:"f067"},
+  {n:"ArrowSquareLeft",c:"icon-arrow-square-left",u:"f068"},
+  {n:"ArrowSquareIn",c:"icon-arrow-square-in",u:"f069"},
+  {n:"ArrowSquareDownRight",c:"icon-arrow-square-down-right",u:"f06a"},
+  {n:"ArrowSquareDownLeft",c:"icon-arrow-square-down-left",u:"f06b"},
+  {n:"ArrowSquareDown",c:"icon-arrow-square-down",u:"f06c"},
+  {n:"ArrowsOutSimple",c:"icon-arrows-out-simple",u:"f06d"},
+  {n:"ArrowsOutLineVertical",c:"icon-arrows-out-line-vertical",u:"f06e"},
+  {n:"ArrowsOutLineHorizontal",c:"icon-arrows-out-line-horizontal",u:"f06f"},
+  {n:"ArrowsOutCardinal",c:"icon-arrows-out-cardinal",u:"f070"},
+  {n:"ArrowsOut",c:"icon-arrows-out",u:"f071"},
+  {n:"ArrowsLeftRight",c:"icon-arrows-left-right",u:"f072"},
+  {n:"ArrowsInSimple",c:"icon-arrows-in-simple",u:"f073"},
+  {n:"ArrowsInLineVertical",c:"icon-arrows-in-line-vertical",u:"f074"},
+  {n:"ArrowsInLineHorizontal",c:"icon-arrows-in-line-horizontal",u:"f075"},
+  {n:"ArrowsInCardinal",c:"icon-arrows-in-cardinal",u:"f076"},
+  {n:"ArrowsIn",c:"icon-arrows-in",u:"f077"},
+  {n:"ArrowsHorizontal",c:"icon-arrows-horizontal",u:"f078"},
+  {n:"ArrowsDownUp",c:"icon-arrows-down-up",u:"f079"},
+  {n:"ArrowsCounterClockwise",c:"icon-arrows-counter-clockwise",u:"f07a"},
+  {n:"ArrowsClockwise",c:"icon-arrows-clockwise",u:"f07b"},
+  {n:"ArrowRight",c:"icon-arrow-right",u:"f07c"},
+  {n:"ArrowLineUpRight",c:"icon-arrow-line-up-right",u:"f07d"},
+  {n:"ArrowLineUpLeft",c:"icon-arrow-line-up-left",u:"f07e"},
+  {n:"ArrowLineUp",c:"icon-arrow-line-up",u:"f07f"},
+  {n:"ArrowLineRight",c:"icon-arrow-line-right",u:"f080"},
+  {n:"ArrowLineLeft",c:"icon-arrow-line-left",u:"f081"},
+  {n:"ArrowLineDownRight",c:"icon-arrow-line-down-right",u:"f082"},
+  {n:"ArrowLineDownLeft",c:"icon-arrow-line-down-left",u:"f083"},
+  {n:"ArrowLineDown",c:"icon-arrow-line-down",u:"f084"},
+  {n:"ArrowLeft",c:"icon-arrow-left",u:"f085"},
+  {n:"ArrowFatUp",c:"icon-arrow-fat-up",u:"f086"},
+  {n:"ArrowFatRight",c:"icon-arrow-fat-right",u:"f087"},
+  {n:"ArrowFatLineUp",c:"icon-arrow-fat-line-up",u:"f088"},
+  {n:"ArrowFatLinesUp",c:"icon-arrow-fat-lines-up",u:"f089"},
+  {n:"ArrowFatLinesRight",c:"icon-arrow-fat-lines-right",u:"f08a"},
+  {n:"ArrowFatLinesLeft",c:"icon-arrow-fat-lines-left",u:"f08b"},
+  {n:"ArrowFatLinesDown",c:"icon-arrow-fat-lines-down",u:"f08c"},
+  {n:"ArrowFatLineRight",c:"icon-arrow-fat-line-right",u:"f08d"},
+  {n:"ArrowFatLineLeft",c:"icon-arrow-fat-line-left",u:"f08e"},
+  {n:"ArrowFatLineDown",c:"icon-arrow-fat-line-down",u:"f08f"},
+  {n:"ArrowFatLeft",c:"icon-arrow-fat-left",u:"f090"},
+  {n:"ArrowFatDown",c:"icon-arrow-fat-down",u:"f091"},
+  {n:"ArrowElbowUpRight",c:"icon-arrow-elbow-up-right",u:"f092"},
+  {n:"ArrowElbowUpLeft",c:"icon-arrow-elbow-up-left",u:"f093"},
+  {n:"ArrowElbowRightUp",c:"icon-arrow-elbow-right-up",u:"f094"},
+  {n:"ArrowElbowRightDown",c:"icon-arrow-elbow-right-down",u:"f095"},
+  {n:"ArrowElbowRight",c:"icon-arrow-elbow-right",u:"f096"},
+  {n:"ArrowElbowLeftUp",c:"icon-arrow-elbow-left-up",u:"f097"},
+  {n:"ArrowElbowLeftDown",c:"icon-arrow-elbow-left-down",u:"f098"},
+  {n:"ArrowElbowLeft",c:"icon-arrow-elbow-left",u:"f099"},
+  {n:"ArrowElbowDownRight",c:"icon-arrow-elbow-down-right",u:"f09a"},
+  {n:"ArrowElbowDownLeft",c:"icon-arrow-elbow-down-left",u:"f09b"},
+  {n:"ArrowDownRight",c:"icon-arrow-down-right",u:"f09c"},
+  {n:"ArrowDownLeft",c:"icon-arrow-down-left",u:"f09d"},
+  {n:"ArrowDown",c:"icon-arrow-down",u:"f09e"},
+  {n:"ArrowCounterClockwise",c:"icon-arrow-counter-clockwise",u:"f09f"},
+  {n:"ArrowClockwise",c:"icon-arrow-clockwise",u:"f0a0"},
+  {n:"ArrowCircleUpRight",c:"icon-arrow-circle-up-right",u:"f0a1"},
+  {n:"ArrowCircleUpLeft",c:"icon-arrow-circle-up-left",u:"f0a2"},
+  {n:"ArrowCircleUp",c:"icon-arrow-circle-up",u:"f0a3"},
+  {n:"ArrowCircleRight",c:"icon-arrow-circle-right",u:"f0a4"},
+  {n:"ArrowCircleLeft",c:"icon-arrow-circle-left",u:"f0a5"},
+  {n:"ArrowCircleDownRight",c:"icon-arrow-circle-down-right",u:"f0a6"},
+  {n:"ArrowCircleDownLeft",c:"icon-arrow-circle-down-left",u:"f0a7"},
+  {n:"ArrowCircleDown",c:"icon-arrow-circle-down",u:"f0a8"},
+  {n:"ArrowBendUpRight",c:"icon-arrow-bend-up-right",u:"f0a9"},
+  {n:"Recycle",c:"icon-recycle",u:"f0aa"},
+  {n:"ArrowBendUpLeft",c:"icon-arrow-bend-up-left",u:"f0ab"},
+  {n:"CaretUp",c:"icon-caret-up",u:"f0ac"},
+  {n:"ArrowBendRightUp",c:"icon-arrow-bend-right-up",u:"f0ad"},
+  {n:"CaretRight",c:"icon-caret-right",u:"f0ae"},
+  {n:"ArrowBendRightDown",c:"icon-arrow-bend-right-down",u:"f0af"},
+  {n:"CaretLeft",c:"icon-caret-left",u:"f0b0"},
+  {n:"ArrowBendLeftUp",c:"icon-arrow-bend-left-up",u:"f0b1"},
+  {n:"CaretDown",c:"icon-caret-down",u:"f0b2"},
+  {n:"ArrowBendLeftDown",c:"icon-arrow-bend-left-down",u:"f0b3"},
+  {n:"CaretDoubleUp",c:"icon-caret-double-up",u:"f0b4"},
+  {n:"ArrowBendDownRight",c:"icon-arrow-bend-down-right",u:"f0b5"},
+  {n:"CaretDoubleRight",c:"icon-caret-double-right",u:"f0b6"},
+  {n:"ArrowBendDownLeft",c:"icon-arrow-bend-down-left",u:"f0b7"},
+  {n:"CaretDoubleLeft",c:"icon-caret-double-left",u:"f0b8"},
+  {n:"ArrowBendDoubleUpRight",c:"icon-arrow-bend-double-up-right",u:"f0b9"},
+  {n:"CaretDoubleDown",c:"icon-caret-double-down",u:"f0ba"},
+  {n:"ArrowBendDoubleUpLeft",c:"icon-arrow-bend-double-up-left",u:"f0bb"},
+  {n:"CaretCircleUp",c:"icon-caret-circle-up",u:"f0bc"},
+  {n:"ArrowArcRight",c:"icon-arrow-arc-right",u:"f0bd"},
+  {n:"CaretCircleRight",c:"icon-caret-circle-right",u:"f0be"},
+  {n:"ArrowArcLeft",c:"icon-arrow-arc-left",u:"f0bf"},
+  {n:"x-ray",c:"icon-x-ray",u:"f000"},
+  {n:"wheelchair",c:"icon-wheelchair",u:"f001"},
+  {n:"vaccine",c:"icon-vaccine",u:"f002"},
+  {n:"treatment",c:"icon-treatment",u:"f003"},
+  {n:"tongue",c:"icon-tongue",u:"f004"},
+  {n:"tissue-paper",c:"icon-tissue-paper",u:"f005"},
+  {n:"thread",c:"icon-thread",u:"f006"},
+  {n:"thermometer",c:"icon-thermometer",u:"f007"},
+  {n:"stethoscope",c:"icon-stethoscope",u:"f008"},
+  {n:"stethoscope-02",c:"icon-stethoscope-02",u:"f009"},
+  {n:"sperm",c:"icon-sperm",u:"f00a"},
+  {n:"skull",c:"icon-skull",u:"f00b"},
+  {n:"safe",c:"icon-safe",u:"f00c"},
+  {n:"pulse-rectangle-02",c:"icon-pulse-rectangle-02",u:"f00d"},
+  {n:"pulse-rectangle-01",c:"icon-pulse-rectangle-01",u:"f00e"},
+  {n:"pulse-02",c:"icon-pulse-02",u:"f00f"},
+  {n:"pulse-01",c:"icon-pulse-01",u:"f010"},
+  {n:"protection-mask",c:"icon-protection-mask",u:"f011"},
+  {n:"prescription",c:"icon-prescription",u:"f012"},
+  {n:"patient",c:"icon-patient",u:"f013"},
+  {n:"nose",c:"icon-nose",u:"f014"},
+  {n:"mortar",c:"icon-mortar",u:"f015"},
+  {n:"medicine-syrup",c:"icon-medicine-syrup",u:"f016"},
+  {n:"medicine-bottle-02",c:"icon-medicine-bottle-02",u:"f017"},
+  {n:"medicine-bottle-01",c:"icon-medicine-bottle-01",u:"f018"},
+  {n:"medicine-02",c:"icon-medicine-02",u:"f019"},
+  {n:"medicine-01",c:"icon-medicine-01",u:"f01a"},
+  {n:"medical-file",c:"icon-medical-file",u:"f01b"},
+  {n:"mask",c:"icon-mask",u:"f01c"},
+  {n:"mask-love",c:"icon-mask-love",u:"f01d"},
+  {n:"Lungs",c:"icon-lungs",u:"f01e"},
+  {n:"liver",c:"icon-liver",u:"f01f"},
+  {n:"labs",c:"icon-labs",u:"f020"},
+  {n:"kidneys",c:"icon-kidneys",u:"f021"},
+  {n:"injection",c:"icon-injection",u:"f022"},
+  {n:"hospital-location",c:"icon-hospital-location",u:"f023"},
+  {n:"hospital-bed-02",c:"icon-hospital-bed-02",u:"f024"},
+  {n:"hospital-bed-01",c:"icon-hospital-bed-01",u:"f025"},
+  {n:"hospital-02",c:"icon-hospital-02",u:"f026"},
+  {n:"hospital-01",c:"icon-hospital-01",u:"f027"},
+  {n:"heroicons_finger-print-solid",c:"icon-heroicons_finger-print-solid",u:"f028"},
+  {n:"heroicons_finger-print-20-solid",c:"icon-heroicons_finger-print-20-solid",u:"f029"},
+  {n:"healtcare",c:"icon-healtcare",u:"f02a"},
+  {n:"healt",c:"icon-healt",u:"f02b"},
+  {n:"hand-sanitizer",c:"icon-hand-sanitizer",u:"f02c"},
+  {n:"give-pill",c:"icon-give-pill",u:"f02d"},
+  {n:"give-blood",c:"icon-give-blood",u:"f02e"},
+  {n:"first-aid-kit",c:"icon-first-aid-kit",u:"f02f"},
+  {n:"eye",c:"icon-eye",u:"f030"},
+  {n:"ear",c:"icon-ear",u:"f031"},
+  {n:"dropper",c:"icon-dropper",u:"f032"},
+  {n:"doctor-03",c:"icon-doctor-03",u:"f033"},
+  {n:"doctor-02",c:"icon-doctor-02",u:"f034"},
+  {n:"doctor-01",c:"icon-doctor-01",u:"f035"},
+  {n:"dna",c:"icon-dna",u:"f036"},
+  {n:"disability-02",c:"icon-disability-02",u:"f037"},
+  {n:"disability-01",c:"icon-disability-01",u:"f038"},
+  {n:"digestion",c:"icon-digestion",u:"f039"},
+  {n:"dental-tooth",c:"icon-dental-tooth",u:"f03a"},
+  {n:"dental-care",c:"icon-dental-care",u:"f03b"},
+  {n:"dental-broken-tooth",c:"icon-dental-broken-tooth",u:"f03c"},
+  {n:"dental-braces",c:"icon-dental-braces",u:"f03d"},
+  {n:"covid-info",c:"icon-covid-info",u:"f03e"},
+  {n:"clinic",c:"icon-clinic",u:"f03f"},
+  {n:"cardiogram-02",c:"icon-cardiogram-02",u:"f040"},
+  {n:"cardiogram-01",c:"icon-cardiogram-01",u:"f041"},
+  {n:"caduceus",c:"icon-caduceus",u:"f042"},
+  {n:"building",c:"icon-building",u:"f043"},
+  {n:"broken-bone",c:"icon-broken-bone",u:"f044"},
+  {n:"brain-02",c:"icon-brain-02",u:"f045"},
+  {n:"brain-01",c:"icon-brain-01",u:"f046"},
+  {n:"bone-02",c:"icon-bone-02",u:"f047"},
+  {n:"bone-01",c:"icon-bone-01",u:"f048"},
+  {n:"blood",c:"icon-blood",u:"f049"},
+  {n:"blood-type",c:"icon-blood-type",u:"f04a"},
+  {n:"blood-pressure",c:"icon-blood-pressure",u:"f04b"},
+  {n:"blood-bottle",c:"icon-blood-bottle",u:"f04c"},
+  {n:"blood-bag",c:"icon-blood-bag",u:"f04d"},
+  {n:"bandage",c:"icon-bandage",u:"f04e"},
+  {n:"ampoule",c:"icon-ampoule",u:"f04f"},
+  {n:"aids",c:"icon-aids",u:"f050"}
+];
+
+(function(){
+
+/* ── Synonyms dictionary ───────────────────────────────── */
+const SYN = {
+  'casa':['house','home'],'inicio':['house','home','start'],
+  'usuario':['user','person','profile'],'persona':['user','person'],
+  'perfil':['user','person'],'cuenta':['user','person','lock'],
+  'buscar':['magnifying','search'],'búsqueda':['magnifying','search'],
+  'lupa':['magnifying'],'encontrar':['magnifying','search'],
+  'calendario':['calendar','date'],'fecha':['calendar','date'],
+  'corazón':['heart'],'favorito':['star','heart','bookmark'],
+  'salud':['heart','medical','hospital','pill','syringe'],
+  'hospital':['hospital','medical','first-aid','cross'],
+  'doctor':['stethoscope','doctor'],'médico':['stethoscope','pill'],
+  'medicina':['pill','syringe','medical','hospital'],
+  'dinero':['money','currency','dollar','coin','wallet'],
+  'pago':['credit-card','money','currency','dollar'],
+  'tarjeta':['credit-card'],'banco':['bank'],
+  'flecha':['arrow'],'siguiente':['arrow','caret-right'],
+  'anterior':['arrow','caret-left'],'arriba':['arrow-up','caret-up'],
+  'abajo':['arrow-down','caret-down'],
+  'ajustes':['gear','settings','sliders'],'configuración':['gear','settings'],
+  'email':['envelope','mail','at'],'correo':['envelope','mail'],
+  'teléfono':['phone','device-mobile'],'celular':['phone','device-mobile'],
+  'documento':['file','paper','clipboard'],'archivo':['file','folder'],
+  'carpeta':['folder'],'pdf':['file'],'hoja':['file','paper'],
+  'notificación':['bell'],'alerta':['warning','bell'],
+  'cerrar':['x','close'],'salir':['sign-out','door'],
+  'añadir':['plus','add'],'agregar':['plus','add'],
+  'eliminar':['trash','x','minus'],'borrar':['trash','eraser','x'],
+  'editar':['pencil','pen','note'],'escribir':['pencil','pen'],
+  'guardar':['floppy','save'],'descargar':['download','arrow-down'],
+  'subir':['upload','arrow-up'],'imprimir':['printer'],
+  'seguridad':['lock','shield','key'],'contraseña':['password','lock','key'],
+  'mapa':['map','globe','navigation'],'ubicación':['map-pin','navigation'],
+  'cámara':['camera'],'imagen':['image','photo','camera'],
+  'video':['video','camera-video','film'],
+  'chat':['chat','message','speech'],'mensaje':['chat','envelope'],
+  'enlace':['link'],'compartir':['share'],'red':['share','network'],
+  'estrella':['star'],'información':['info'],
+  'pregunta':['question'],'ayuda':['question','life-buoy'],
+  'check':['check'],'correcto':['check'],'ok':['check'],
+  'error':['x','warning'],'problema':['warning','x'],
+  'tiempo':['clock','hourglass','timer'],'reloj':['clock','alarm'],
+  'lista':['list','rows'],'tabla':['table'],
+  'gráfico':['chart','graph'],'estadística':['chart'],
+  'sol':['sun'],'luna':['moon'],'nube':['cloud'],
+  'bloquear':['lock'],'desbloquear':['lock-open'],
+  'privado':['lock','eye-slash'],'público':['globe','eye'],
+  'carrito':['shopping-cart'],'bolsa':['shopping-bag','handbag'],
+  'paquete':['package','archive'],'envío':['truck','package'],
+  'ubicar':['map-pin','gps','navigation'],
+  'pantalla':['monitor','desktop','screen'],
+  'móvil':['phone','device-mobile'],'tablet':['device-tablet'],
+  'computadora':['laptop','desktop','monitor'],
+  'impresora':['printer'],'escáner':['scan'],
+  'wifi':['wifi'],'batería':['battery'],'carga':['battery','charge'],
+  'brillo':['sun','brightness'],'oscuro':['moon','eye-slash'],
+  'música':['music-note','speaker'],'audio':['speaker','microphone'],
+  'bocina':['speaker'],'micrófono':['microphone'],
+  'libro':['book','bookmarks'],'leer':['book'],
+  'escuela':['graduation','student','book'],
+  'regalo':['gift'],'paquete':['gift','package'],
+  'globo':['globe','earth'],'mundo':['globe','earth'],
+  'idioma':['globe','translate'],'traducir':['translate'],
+  'paleta':['paint','brush','palette'],'color':['paint','palette'],
+  'diseño':['pen-nib','bezier','ruler'],'fuente':['text-t'],
+  'código':['code','brackets','terminal'],'programar':['code','terminal'],
+};
+
+function normStr(s){ return s.toLowerCase().replace(/[áàä]/g,'a').replace(/[éèë]/g,'e').replace(/[íìï]/g,'i').replace(/[óòö]/g,'o').replace(/[úùü]/g,'u').replace(/ñ/g,'n'); }
+
+/* ── Style preview sample ──────────────────────────────── */
+const SAMPLE_UNICODES = [
+  'f3b2','f3b3','f398','f3a5','f3c1','f2c2','f34c','f4e9','f4a6','f44a',
+  'f3d2','f2a5'
+];
+function renderStylePreview(){
+  const el = document.getElementById('ic-style-preview');
+  if(!el) return;
+  SAMPLE_UNICODES.forEach(u=>{
+    const d = document.createElement('div');
+    d.className = 'ic-preview-item';
+    d.innerHTML = `<span class="icon" aria-hidden="true">&#x${u};</span>`;
+    el.appendChild(d);
+  });
+}
+
+/* ── Grid rendering ────────────────────────────────────── */
+let currentIcons = ICONS;
+let activePopIcon = null;
+
+function renderGrid(list){
+  const grid  = document.getElementById('ic-grid');
+  const empty = document.getElementById('ic-empty');
+  if(!grid) return;
+
+  const count = list.length;
+  document.getElementById('ic-results-count').textContent = count.toLocaleString() + ' resultado' + (count !== 1 ? 's' : '');
+  document.getElementById('ic-count-badge').textContent   = count.toLocaleString();
+
+  if(count === 0){
+    grid.style.display = 'none';
+    if(empty) empty.style.display = 'block';
+    return;
+  }
+  grid.style.display = '';
+  if(empty) empty.style.display = 'none';
+
+  const frag = document.createDocumentFragment();
+  list.forEach(ic => {
+    const card = document.createElement('div');
+    card.className = 'ic-card';
+    card.setAttribute('title', ic.n + ' · \\' + ic.u);
+    card.innerHTML =
+      `<i class="icon ${ic.c} ic-card-icon" aria-hidden="true"></i>` +
+      `<span class="ic-card-name">${ic.n}</span>` +
+      `<span class="ic-card-uni">.${ic.c}</span>`;
+    card.addEventListener('click', () => openPopover(ic, card));
+    frag.appendChild(card);
+  });
+  grid.innerHTML = '';
+  grid.appendChild(frag);
+}
+
+/* ── Search ────────────────────────────────────────────── */
+window.icSearch = function(q){
+  const clearBtn = document.getElementById('ic-search-clear');
+  clearBtn.style.display = q ? 'flex' : 'none';
+  
+  if(!q.trim()){
+    renderGrid(ICONS);
+    return;
+  }
+  
+  const norm = normStr(q.trim());
+  
+  // Check synonyms → expand to search terms
+  let terms = [norm];
+  for(const [es, enList] of Object.entries(SYN)){
+    if(normStr(es).includes(norm) || norm.includes(normStr(es))){
+      terms = terms.concat(enList);
+    }
+  }
+  
+  const results = ICONS.filter(ic=>{
+    const name = normStr(ic.n);
+    const cls  = normStr(ic.c);
+    const uni  = ic.u.toLowerCase();
+    return terms.some(t=> name.includes(t) || cls.includes(t) || uni.includes(t));
+  });
+  
+  renderGrid(results);
+};
+
+window.icClearSearch = function(){
+  document.getElementById('ic-search').value = '';
+  document.getElementById('ic-search-clear').style.display = 'none';
+  renderGrid(ICONS);
+};
+
+/* ── Category filter ───────────────────────────────────── */
+let activeCat = '';
+window.icFilterCat = function(btn, cat){
+  activeCat = cat;
+  document.querySelectorAll('.ic-cat-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('ic-search').value = '';
+  document.getElementById('ic-search-clear').style.display = 'none';
+  if(!cat){
+    renderGrid(ICONS);
+    return;
+  }
+  const filtered = ICONS.filter(ic => normStr(ic.n + ' ' + ic.c).includes(normStr(cat)));
+  renderGrid(filtered);
+};
+
+/* ── Popover size picker ────────────────────────────────── */
+window.icPopSize = function(btn){
+  const pop = document.getElementById('ic-popover');
+  pop.querySelectorAll('.ic-pop-sz').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if(activePopIcon){
+    document.getElementById('ic-pop-icon').className =
+      `icon ic-pop-icon ${activePopIcon.c} ${btn.dataset.sz}`;
+  }
+};
+
+/* ── Copy class name ────────────────────────────────────── */
+window.icCopyPopCls = function(){
+  if(!activePopIcon) return;
+  const btn = document.querySelector('.ic-pop-btn:last-child');
+  copyText(activePopIcon.c, btn);
+};
+
+/* ── Popover ───────────────────────────────────────────── */
+function openPopover(ic, cardEl){
+  activePopIcon = ic;
+  const pop     = document.getElementById('ic-popover');
+  const overlay = document.getElementById('ic-pop-overlay');
+
+  const popIcon = document.getElementById('ic-pop-icon');
+  popIcon.className = `icon ic-pop-icon ${ic.c} icon-40`;
+  // reset size strip
+  const szBtns = document.getElementById('ic-popover').querySelectorAll('.ic-pop-sz');
+  szBtns.forEach(b => b.classList.remove('active'));
+  if(szBtns[0]){ szBtns[0].classList.add('active');
+    popIcon.className = `icon ic-pop-icon ${ic.c} ` + szBtns[0].dataset.sz; }
+  document.getElementById('ic-pop-name').textContent   = ic.n;
+  document.getElementById('ic-pop-unicode').textContent = `\\${ic.u}`;
+  document.getElementById('ic-pop-cls').textContent    = ic.c;
+
+
+
+  // Snippet
+  const snip = document.getElementById('ic-pop-snippet');
+  snip.innerHTML = `<pre>&lt;i class="icon ${ic.c} icon-24" aria-hidden="true"&gt;&lt;/i&gt;</pre>`;
+
+  pop.style.display = 'block';
+  overlay.classList.add('open');
+
+  // Desktop positioning
+  const isMobile = window.innerWidth <= 640;
+  if(!isMobile){
+    const rect = cardEl.getBoundingClientRect();
+    const pw = 300, ph = 340;
+    let left = rect.right + 12;
+    let top  = rect.top;
+    if(left + pw > window.innerWidth - 16) left = rect.left - pw - 12;
+    if(left < 16) left = 16;
+    if(top + ph > window.innerHeight - 16) top = window.innerHeight - ph - 16;
+    if(top < 16) top = 16;
+    pop.style.left = left + 'px';
+    pop.style.top  = top  + 'px';
+    pop.style.bottom = 'auto';
+  } else {
+    pop.style.left = '0'; pop.style.top = 'auto';
+    requestAnimationFrame(() => pop.classList.add('sheet-open'));
+  }
+}
+
+window.icClosePopover = function(){
+  const pop = document.getElementById('ic-popover');
+  const overlay = document.getElementById('ic-pop-overlay');
+  pop.style.display = 'none';
+  pop.classList.remove('sheet-open');
+  overlay.classList.remove('open');
+  activePopIcon = null;
+};
+
+window.icCopyPopHTML = function(){
+  if(!activePopIcon) return;
+  const html = `<i class="icon ${activePopIcon.c} icon-24" aria-hidden="true"></i>`;
+  copyText(html, document.querySelector('.ic-pop-btn--primary'));
+};
+
+window.icCopyPopUnicode = function(){
+  if(!activePopIcon) return;
+  copyText(activePopIcon.u, document.querySelectorAll('.ic-pop-btn')[1]);
+};
+
+function escHTML(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ── Code tabs ─────────────────────────────────────────── */
+window.icCodeTab = function(btn, panelId){
+  const wrap = btn.closest('.ic-impl-card') || btn.closest('div');
+  const allTabs = btn.closest('.ic-code-tabs-bar').querySelectorAll('.ic-code-tab');
+  const allPre  = wrap.querySelectorAll('.ic-code-pre');
+  allTabs.forEach(b=>b.classList.remove('active'));
+  allPre.forEach(p=>p.classList.remove('ic-code-active'));
+  btn.classList.add('active');
+  const target = document.getElementById(panelId+'-pre');
+  if(target) target.classList.add('ic-code-active');
+};
+
+window.icCopyCode = function(preId, btn){
+  const el = document.getElementById(preId);
+  if(el) copyText(el.textContent, btn);
+};
+
+/* ── Copy helpers ──────────────────────────────────────── */
+function copyText(text, btn){
+  navigator.clipboard.writeText(text).then(()=>{
+    if(!btn) return;
+    const ico = btn.querySelector('.material-symbols-rounded');
+    if(ico){ const o=ico.textContent; ico.textContent='check'; setTimeout(()=>ico.textContent=o,1400); }
+    else { const o=btn.textContent; btn.textContent='✓'; setTimeout(()=>btn.textContent=o,1400); }
+  });
+}
+
+window.icCopySnippet = function(){
+  copyText('<i class="icon icon-warning icon-24" aria-hidden="true"></i>', document.querySelector('[onclick="icCopySnippet()"]'));
+};
+
+/* ── CSS font-face block ───────────────────────────────── */
+const FONT_CSS = `@font-face {
+  font-family: "CompensarIcons";
+  src: url("./icons/fonts/compensar-icons.woff2") format("woff2"),
+       url("./icons/fonts/compensar-icons.woff")  format("woff"),
+       url("./icons/fonts/compensar-icons.ttf")   format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.icon {
+  font-family: "CompensarIcons" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tamaños — uso: <i class="icon icon-nombre icon-24"></i> */
+.icon-12 { font-size: 12px; }
+.icon-16 { font-size: 16px; }
+.icon-20 { font-size: 20px; }
+.icon-24 { font-size: 24px; }
+.icon-32 { font-size: 32px; }
+.icon-40 { font-size: 40px; }
+.icon-48 { font-size: 48px; }
+.icon-64 { font-size: 64px; }
+`;
+
+/* ── Download CSS ──────────────────────────────────────── */
+window.icDownloadCSS = function(){
+  let css = `/* ============================================================
+   ICON SYSTEM — Compensar Medicina Prepagada
+   Fuente: IcoMoon · 955 iconos
+   ============================================================ */
+
+` + FONT_CSS + `
+/* Named classes (convenience) */
+`;
+  ICONS.forEach(ic=>{
+    css += `.${ic.c}::before { content: "\\${ic.u}"; }\n`;
+  });
+  const blob = new Blob([css],{type:'text/css'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='compensar-icon-system.css'; a.click();
+};
+
+/* ── Download JSON ─────────────────────────────────────── */
+window.icDownloadJSON = function(){
+  const syns = {};
+  for(const [es,enList] of Object.entries(SYN)){
+    enList.forEach(en=>{
+      if(!syns[en]) syns[en]=[];
+      syns[en].push(es);
+    });
+  }
+  const out = { icons: ICONS.map(ic=>({
+    name: ic.n, class: ic.c, unicode: ic.u,
+    htmlEntity: `&#x${ic.u};`,
+    synonyms: (() => {
+      const s = [];
+      for(const [es,enList] of Object.entries(SYN)){
+        if(enList.some(en=>ic.n.toLowerCase().includes(en))) s.push(es);
+      }
+      return s;
+    })()
+  }))};
+  const blob = new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='compensar-icon-system.json'; a.click();
+};
+
+/* ── Download ZIP ──────────────────────────────────────── */
+window.icDownloadZIP = async function(){
+  const btn = document.querySelector('[onclick="icDownloadZIP()"]');
+  if(btn){ const o=btn.innerHTML; btn.innerHTML='<span class="material-symbols-rounded">hourglass_empty</span> Generando…'; setTimeout(()=>btn.innerHTML=o,5000); }
+
+  if(typeof JSZip === 'undefined'){
+    alert('JSZip no disponible. Descarga CSS y JSON por separado.');
+    return;
+  }
+  const zip = new JSZip();
+  const folder = zip.folder('icons');
+  const fontsFolder = folder.folder('fonts');
+
+  // Try to fetch font files
+  const fonts = [
+    { name:'compensar-icons.woff2', url:'./icons/fonts/compensar-icons.woff2' },
+    { name:'compensar-icons.woff', url:'./icons/fonts/compensar-icons.woff' },
+    { name:'compensar-icons.ttf',   url:'./icons/fonts/compensar-icons.ttf'   },
+  ];
+  for(const font of fonts){
+    try {
+      const res = await fetch(font.url);
+      const buf = await res.arrayBuffer();
+      fontsFolder.file(font.name, buf);
+    } catch(e){ /* skip if not accessible */ }
+  }
+
+  // CSS
+  let css = `/* Icon System — Compensar Medicina Prepagada */\n\n` + FONT_CSS;
+  ICONS.forEach(ic=>{ css += `.${ic.c}::before { content: "\\${ic.u}"; }\n`; });
+  folder.file('icons.css', css);
+
+  // JSON
+  const jsonData = { icons: ICONS.map(ic=>({name:ic.n,class:ic.c,unicode:ic.u,htmlEntity:`&#x${ic.u};`})) };
+  folder.file('icon-system.json', JSON.stringify(jsonData,null,2));
+
+  // README
+  const readme = `ICON SYSTEM — Compensar Medicina Prepagada
+==========================================
+Generado con IcoMoon · ${ICONS.length} iconos
+
+ESTRUCTURA
+----------
+icons/
+├── fonts/
+│   ├── compensar-icons.woff2   (fuente principal)
+│   ├── compensar-icons.woff  (fallback)
+│   └── compensar-icons.ttf     (fallback legacy)
+├── icons.css            (@font-face + clase base + tamaños + 955 clases)
+└── icon-system.json     (datos de todos los iconos)
+
+INSTALACIÓN
+-----------
+1. Copia la carpeta icons/ a tu proyecto.
+
+2. Enlaza el CSS en tu HTML:
+   <link rel="stylesheet" href="icons/icons.css">
+   <link rel="preload" href="icons/fonts/compensar-icons.woff2"
+         as="font" type="font/woff2" crossorigin="anonymous">
+
+3. Usa el icono con clase nombrada y tamaño:
+   <i class="icon icon-heart icon-24" aria-hidden="true"></i>
+
+   O directamente con el unicode:
+   <span class="icon icon-24" aria-hidden="true">&#xf398;</span>
+
+ACCESIBILIDAD
+-------------
+- Iconos decorativos: aria-hidden="true"
+- Iconos interactivos: aria-label="Descripción de la acción"
+- Área táctil mínima para iconos interactivos: 44x44px
+
+ACTUALIZAR EL SET
+-----------------
+1. Ir a https://icomoon.io/app
+2. Importar selection.json
+3. Agregar/quitar iconos
+4. Exportar y reemplazar archivos
+`;
+  folder.file('README.txt', readme);
+
+  const blob = await zip.generateAsync({type:'blob'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='compensar-icon-system.zip'; a.click();
+};
+
+/* ── Init ──────────────────────────────────────────────── */
+function icInit() {
+  renderGrid(ICONS);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', icInit);
+} else {
+  icInit();
+}
+
+})();
+
+
+</script>

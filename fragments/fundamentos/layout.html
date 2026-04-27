@@ -1,0 +1,932 @@
+<section class="section" id="layout">
+
+  <!-- ── 1. HEADER ──────────────────────────────────────────── -->
+  <div class="lys-header">
+    <div class="section-eyebrow">Fundamentos</div>
+    <h1 class="section-title">Layout System</h1>
+    <p class="lys-lead">Estructura macro de las interfaces. Bootstrap 5 · 12 columnas · Gutter 24px · Totalmente responsive.</p>
+    <div class="lys-pills">
+      <span class="lys-pill lys-pill--blue">Bootstrap 5</span>
+      <span class="lys-pill lys-pill--purple">12 columnas</span>
+      <span class="lys-pill lys-pill--gray">Gutter 24px</span>
+      <span class="lys-pill lys-pill--green">Responsive</span>
+    </div>
+  </div>
+
+  <!-- ── 2. BASE ESTRUCTURAL + GRID TOGGLE ──────────────────── -->
+  <div class="lys-card lys-grid-section">
+    <div class="lys-grid-info">
+      <h2 class="lys-card-title">Base estructural</h2>
+      <div class="lys-fact-list">
+        <div class="lys-fact">
+          <span class="lys-fact-num">12</span>
+          <span class="lys-fact-label">columnas</span>
+        </div>
+        <div class="lys-fact-divider"></div>
+        <div class="lys-fact">
+          <span class="lys-fact-num">24px</span>
+          <span class="lys-fact-label">gutter</span>
+        </div>
+        <div class="lys-fact-divider"></div>
+        <div class="lys-fact">
+          <span class="lys-fact-num">B5</span>
+          <span class="lys-fact-label">Bootstrap</span>
+        </div>
+      </div>
+      <ul class="lys-rules-mini">
+        <li><span class="lys-check">✓</span> No modificar cantidad de columnas</li>
+        <li><span class="lys-check">✓</span> No crear grids fuera del sistema</li>
+        <li><span class="lys-check">✓</span> Siempre respetar el gutter de 24px</li>
+      </ul>
+      <button class="lys-toggle-btn" id="lys-grid-toggle" onclick="lysToggleGrid()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Mostrar grid
+      </button>
+    </div>
+
+    <!-- Grid visual interactivo -->
+    <div class="lys-grid-canvas" id="lys-grid-canvas">
+      <!-- Página demo -->
+      <div class="lys-page-demo">
+        <div class="lys-pd-nav"></div>
+        <div class="lys-pd-hero">
+          <div class="lys-pd-hero-text">
+            <div class="lys-pd-line lys-pd-line--lg"></div>
+            <div class="lys-pd-line lys-pd-line--md"></div>
+            <div class="lys-pd-line lys-pd-line--sm"></div>
+            <div class="lys-pd-cta"></div>
+          </div>
+          <div class="lys-pd-hero-img"></div>
+        </div>
+        <div class="lys-pd-cards">
+          <div class="lys-pd-card"></div>
+          <div class="lys-pd-card"></div>
+          <div class="lys-pd-card"></div>
+          <div class="lys-pd-card"></div>
+        </div>
+      </div>
+      <!-- Grid overlay (12 cols) -->
+      <div class="lys-grid-overlay" id="lys-grid-overlay">
+        <div class="lys-go-col"></div><div class="lys-go-col"></div><div class="lys-go-col"></div>
+        <div class="lys-go-col"></div><div class="lys-go-col"></div><div class="lys-go-col"></div>
+        <div class="lys-go-col"></div><div class="lys-go-col"></div><div class="lys-go-col"></div>
+        <div class="lys-go-col"></div><div class="lys-go-col"></div><div class="lys-go-col"></div>
+      </div>
+      <!-- Col numbers -->
+      <div class="lys-col-nums" id="lys-col-nums">
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. CONTAINER VS FLUID ──────────────────────────────── -->
+  <h2 class="lys-section-title">Container</h2>
+  <p class="lys-section-desc">Elige el tipo de container según el contexto de uso.</p>
+
+  <div class="lys-compare">
+
+    <!-- Container -->
+    <div class="lys-compare-card lys-compare-card--container">
+      <div class="lys-compare-header">
+        <span class="lys-compare-badge lys-compare-badge--purple">Portal · Drupal</span>
+        <h3 class="lys-compare-title">.container</h3>
+        <p class="lys-compare-sub">Ancho máximo · centrado automáticamente</p>
+      </div>
+      <div class="lys-compare-visual">
+        <div class="lys-cv-screen">
+          <div class="lys-cv-bg"></div>
+          <div class="lys-cv-box lys-cv-box--centered">
+            <span class="lys-cv-label">container</span>
+          </div>
+        </div>
+        <div class="lys-cv-arrows">
+          <div class="lys-cv-margin"></div>
+          <div class="lys-cv-content-bar">max-width</div>
+          <div class="lys-cv-margin"></div>
+        </div>
+      </div>
+      <ul class="lys-compare-list">
+        <li>Landings y páginas informativas</li>
+        <li>Contenido editorial</li>
+        <li>Secciones de marketing</li>
+      </ul>
+      <div class="lys-compare-widths">
+        <span class="lys-compare-label-small">Anchos máximos</span>
+        <div class="lys-bpw-list">
+          <div class="lys-bpw"><span>SM</span><code>540px</code></div>
+          <div class="lys-bpw"><span>MD</span><code>720px</code></div>
+          <div class="lys-bpw"><span>LG</span><code>960px</code></div>
+          <div class="lys-bpw"><span>XL</span><code>1140px</code></div>
+          <div class="lys-bpw"><span>XXL</span><code>1320px</code></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VS divider -->
+    <div class="lys-vs">VS</div>
+
+    <!-- Container-fluid -->
+    <div class="lys-compare-card lys-compare-card--fluid">
+      <div class="lys-compare-header">
+        <span class="lys-compare-badge lys-compare-badge--orange">Zona transaccional</span>
+        <h3 class="lys-compare-title">.container-fluid</h3>
+        <p class="lys-compare-sub">100% del ancho · sin límite</p>
+      </div>
+      <div class="lys-compare-visual">
+        <div class="lys-cv-screen">
+          <div class="lys-cv-bg"></div>
+          <div class="lys-cv-box lys-cv-box--fluid">
+            <span class="lys-cv-label">container-fluid</span>
+          </div>
+        </div>
+        <div class="lys-cv-arrows">
+          <div class="lys-cv-content-bar lys-cv-content-bar--full">100% del ancho</div>
+        </div>
+      </div>
+      <ul class="lys-compare-list">
+        <li>Formularios extensos</li>
+        <li>Tablas de datos</li>
+        <li>Paneles administrativos</li>
+      </ul>
+      <div class="lys-compare-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        En desktop mantener jerarquía visual clara y alineación a la izquierda.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. USO EN CARDS ────────────────────────────────────── -->
+  <div class="lys-use-grid">
+    <div class="lys-use-card">
+      <div class="lys-use-icon lys-use-icon--purple">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+      </div>
+      <span class="lys-use-label">Landings</span>
+      <span class="lys-use-token">.container</span>
+    </div>
+    <div class="lys-use-card">
+      <div class="lys-use-icon lys-use-icon--purple">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <span class="lys-use-label">Contenido editorial</span>
+      <span class="lys-use-token">.container</span>
+    </div>
+    <div class="lys-use-card">
+      <div class="lys-use-icon lys-use-icon--orange">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+      </div>
+      <span class="lys-use-label">Tablas de datos</span>
+      <span class="lys-use-token">.container-fluid</span>
+    </div>
+    <div class="lys-use-card">
+      <div class="lys-use-icon lys-use-icon--orange">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      </div>
+      <span class="lys-use-label">Paneles admin</span>
+      <span class="lys-use-token">.container-fluid</span>
+    </div>
+    <div class="lys-use-card">
+      <div class="lys-use-icon lys-use-icon--orange">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      </div>
+      <span class="lys-use-label">Formularios extensos</span>
+      <span class="lys-use-token">.container-fluid</span>
+    </div>
+    <div class="lys-use-card">
+      <div class="lys-use-icon lys-use-icon--purple">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <span class="lys-use-label">Secciones marketing</span>
+      <span class="lys-use-token">.container</span>
+    </div>
+  </div>
+
+  <!-- ── 5. DO / DON'T ─────────────────────────────────────── -->
+  <h2 class="lys-section-title">Reglas clave</h2>
+  <div class="lys-rules-grid">
+    <div class="lys-rule lys-rule--do">
+      <div class="lys-rule-icon">✓</div>
+      <p>Usar <code>.container</code> para centrar contenido con max-width</p>
+    </div>
+    <div class="lys-rule lys-rule--dont">
+      <div class="lys-rule-icon">✗</div>
+      <p>No usar anchos arbitrarios (<code>width: 900px</code>, etc.)</p>
+    </div>
+    <div class="lys-rule lys-rule--do">
+      <div class="lys-rule-icon">✓</div>
+      <p>Usar <code>.container-fluid</code> en interfaces operativas y dashboards</p>
+    </div>
+    <div class="lys-rule lys-rule--dont">
+      <div class="lys-rule-icon">✗</div>
+      <p>No mezclar containers sin intención ni documentar el motivo</p>
+    </div>
+    <div class="lys-rule lys-rule--do">
+      <div class="lys-rule-icon">✓</div>
+      <p>Siempre usar <code>.row</code> + <code>.col-*</code> para la distribución interna</p>
+    </div>
+    <div class="lys-rule lys-rule--dont">
+      <div class="lys-rule-icon">✗</div>
+      <p>No crear grids personalizados con CSS fuera del sistema Bootstrap</p>
+    </div>
+  </div>
+
+  <!-- ── 6. BREAKPOINTS ─────────────────────────────────────── -->
+  <h2 class="lys-section-title">Responsive — breakpoints</h2>
+  <p class="lys-section-desc">El layout responde por breakpoints, no por dispositivos específicos.</p>
+
+  <div class="lys-bp-visual">
+    <div class="lys-bp-bar-track">
+      <div class="lys-bp-item lys-bp-xs">
+        <div class="lys-bp-bar"></div>
+        <span class="lys-bp-name">xs</span>
+        <span class="lys-bp-range">&lt; 576px</span>
+        <span class="lys-bp-uso">Móvil pequeño</span>
+      </div>
+      <div class="lys-bp-item lys-bp-sm">
+        <div class="lys-bp-bar"></div>
+        <span class="lys-bp-name">sm</span>
+        <span class="lys-bp-range">≥ 576px</span>
+        <span class="lys-bp-uso">Móvil grande</span>
+      </div>
+      <div class="lys-bp-item lys-bp-md">
+        <div class="lys-bp-bar"></div>
+        <span class="lys-bp-name">md</span>
+        <span class="lys-bp-range">≥ 768px</span>
+        <span class="lys-bp-uso">Tablet</span>
+      </div>
+      <div class="lys-bp-item lys-bp-lg">
+        <div class="lys-bp-bar"></div>
+        <span class="lys-bp-name">lg</span>
+        <span class="lys-bp-range">≥ 992px</span>
+        <span class="lys-bp-uso">Desktop sm</span>
+      </div>
+      <div class="lys-bp-item lys-bp-xl">
+        <div class="lys-bp-bar"></div>
+        <span class="lys-bp-name">xl</span>
+        <span class="lys-bp-range">≥ 1200px</span>
+        <span class="lys-bp-uso">Desktop std</span>
+      </div>
+      <div class="lys-bp-item lys-bp-xxl">
+        <div class="lys-bp-bar"></div>
+        <span class="lys-bp-name">xxl</span>
+        <span class="lys-bp-range">≥ 1400px</span>
+        <span class="lys-bp-uso">Desktop amplio</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 7. CÓMO SE ADAPTA ──────────────────────────────────── -->
+  <div class="lys-adapt-grid">
+    <div class="lys-adapt-card">
+      <div class="lys-adapt-device lys-adapt-device--mobile">
+        <div class="lys-ad-screen">
+          <div class="lys-ad-col-full"></div>
+          <div class="lys-ad-col-full lys-ad-col--alt"></div>
+          <div class="lys-ad-col-full"></div>
+        </div>
+      </div>
+      <span class="lys-adapt-label">Mobile</span>
+      <span class="lys-adapt-sub">1 columna</span>
+      <code class="lys-adapt-code">col-12</code>
+    </div>
+    <div class="lys-adapt-arrow">→</div>
+    <div class="lys-adapt-card">
+      <div class="lys-adapt-device lys-adapt-device--tablet">
+        <div class="lys-ad-screen">
+          <div class="lys-ad-row">
+            <div class="lys-ad-col-half"></div>
+            <div class="lys-ad-col-half lys-ad-col--alt"></div>
+          </div>
+          <div class="lys-ad-col-full lys-ad-col--sm"></div>
+        </div>
+      </div>
+      <span class="lys-adapt-label">Tablet</span>
+      <span class="lys-adapt-sub">2 columnas</span>
+      <code class="lys-adapt-code">col-md-6</code>
+    </div>
+    <div class="lys-adapt-arrow">→</div>
+    <div class="lys-adapt-card">
+      <div class="lys-adapt-device lys-adapt-device--desktop">
+        <div class="lys-ad-screen">
+          <div class="lys-ad-row">
+            <div class="lys-ad-col-third"></div>
+            <div class="lys-ad-col-third lys-ad-col--alt"></div>
+            <div class="lys-ad-col-third"></div>
+          </div>
+          <div class="lys-ad-row">
+            <div class="lys-ad-col-third lys-ad-col--alt"></div>
+            <div class="lys-ad-col-third"></div>
+            <div class="lys-ad-col-third lys-ad-col--alt"></div>
+          </div>
+        </div>
+      </div>
+      <span class="lys-adapt-label">Desktop</span>
+      <span class="lys-adapt-sub">3–4 columnas</span>
+      <code class="lys-adapt-code">col-xl-4</code>
+    </div>
+  </div>
+
+  <!-- ── 8. VALIDACIÓN RÁPIDA QA ───────────────────────────── -->
+  <div class="lys-qa-block">
+    <div class="lys-qa-title-row">
+      <div class="lys-qa-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <h2 class="lys-section-title lys-section-title--inline">Validación rápida</h2>
+    </div>
+
+    <div class="lys-qa-grid">
+      <div class="lys-qa-item">
+        <span class="lys-qa-num">1</span>
+        <div>
+          <strong>Revisar en 3 viewports</strong>
+          <span>375px · 768px · 1280px — mínimo obligatorio</span>
+        </div>
+      </div>
+      <div class="lys-qa-item">
+        <span class="lys-qa-num">2</span>
+        <div>
+          <strong>Sin scroll horizontal</strong>
+          <span>En ningún breakpoint. Bloqueante para aprobación.</span>
+        </div>
+      </div>
+      <div class="lys-qa-item">
+        <span class="lys-qa-num">3</span>
+        <div>
+          <strong>Usar DevTools responsive</strong>
+          <span>F12 → modo dispositivo → cambiar viewports manualmente</span>
+        </div>
+      </div>
+      <div class="lys-qa-item">
+        <span class="lys-qa-num">4</span>
+        <div>
+          <strong>Respetar grilla de 12 col</strong>
+          <span>Activar grid overlay para verificar alineación</span>
+        </div>
+      </div>
+      <div class="lys-qa-item">
+        <span class="lys-qa-num">5</span>
+        <div>
+          <strong>Probar con contenido real</strong>
+          <span>No usar Lorem ipsum. Textos largos y cortos.</span>
+        </div>
+      </div>
+      <div class="lys-qa-item">
+        <span class="lys-qa-num">6</span>
+        <div>
+          <strong>iOS Safari obligatorio</strong>
+          <span>Inputs ≥ 16px para evitar zoom automático</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dispositivos prioritarios -->
+    <div class="lys-devices-row">
+      <div class="lys-dev-chip lys-dev-chip--p1">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+        iPhone SE · 375px
+      </div>
+      <div class="lys-dev-chip lys-dev-chip--p1">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+        iPhone 14 · 393px
+      </div>
+      <div class="lys-dev-chip lys-dev-chip--p2">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/></svg>
+        iPad Air · 820px
+      </div>
+      <div class="lys-dev-chip lys-dev-chip--p2">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Laptop 1280px
+      </div>
+      <div class="lys-dev-chip lys-dev-chip--p3">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Monitor 1920px
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CÓDIGO ─────────────────────────────────────────────── -->
+  <div class="code-block">
+    <div class="code-tabs">
+      <button class="code-tab active" onclick="switchTab(this,'lys-css-tab')">HTML / Drupal</button>
+      <button class="code-tab" onclick="switchTab(this,'lys-scss-tab')">Angular</button>
+    </div>
+    <div class="code-content">
+      <button class="copy-btn" onclick="copyCode(this)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+      <pre class="active" id="lys-css-tab"><span class="cmt">&lt;!-- Portal (Drupal) — contenido centrado --&gt;</span>
+<span class="sel">&lt;div</span> <span class="val">class="container"</span><span class="sel">&gt;</span>
+  <span class="sel">&lt;div</span> <span class="val">class="row"</span><span class="sel">&gt;</span>
+    <span class="sel">&lt;div</span> <span class="val">class="col-12 col-md-6 col-xl-4"</span><span class="sel">&gt;</span>
+      <span class="cmt">&lt;!-- Contenido --&gt;</span>
+    <span class="sel">&lt;/div&gt;</span>
+  <span class="sel">&lt;/div&gt;</span>
+<span class="sel">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- Zona transaccional — ancho completo --&gt;</span>
+<span class="sel">&lt;div</span> <span class="val">class="container-fluid"</span><span class="sel">&gt;</span>
+  <span class="sel">&lt;div</span> <span class="val">class="row"</span><span class="sel">&gt;</span>
+    <span class="sel">&lt;div</span> <span class="val">class="col-12 col-md-3"</span><span class="sel">&gt;</span><span class="cmt">&lt;!-- Sidebar --&gt;</span><span class="sel">&lt;/div&gt;</span>
+    <span class="sel">&lt;div</span> <span class="val">class="col-12 col-md-9"</span><span class="sel">&gt;</span><span class="cmt">&lt;!-- Contenido --&gt;</span><span class="sel">&lt;/div&gt;</span>
+  <span class="sel">&lt;/div&gt;</span>
+<span class="sel">&lt;/div&gt;</span></pre>
+      <pre id="lys-scss-tab"><span class="cmt">// Angular — en el template del componente</span>
+
+<span class="cmt">// Landing o sección informativa</span>
+<span class="sel">&lt;section</span> <span class="val">class="container"</span><span class="sel">&gt;</span>
+  <span class="sel">&lt;div</span> <span class="val">class="row g-3"</span><span class="sel">&gt;</span>
+    <span class="sel">&lt;div</span> <span class="val">class="col-12 col-md-4"</span>
+         <span class="val">*ngFor="let item of items"</span><span class="sel">&gt;</span>
+      <span class="sel">&lt;app-card</span> <span class="val">[data]="item"</span> <span class="sel">/&gt;</span>
+    <span class="sel">&lt;/div&gt;</span>
+  <span class="sel">&lt;/div&gt;</span>
+<span class="sel">&lt;/section&gt;</span>
+
+<span class="cmt">// Dashboard / zona transaccional</span>
+<span class="sel">&lt;main</span> <span class="val">class="container-fluid"</span><span class="sel">&gt;</span>
+  <span class="sel">&lt;div</span> <span class="val">class="row g-0"</span><span class="sel">&gt;</span>
+    <span class="sel">&lt;aside</span> <span class="val">class="col-md-3"</span><span class="sel">&gt;</span><span class="sel">&lt;app-sidebar /&gt;</span><span class="sel">&lt;/aside&gt;</span>
+    <span class="sel">&lt;div</span>   <span class="val">class="col-md-9"</span><span class="sel">&gt;</span><span class="sel">&lt;router-outlet /&gt;</span><span class="sel">&lt;/div&gt;</span>
+  <span class="sel">&lt;/div&gt;</span>
+<span class="sel">&lt;/main&gt;</span></pre>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<style>
+/* ── Layout System ────────────────────────────────────────── */
+
+/* Header */
+.lys-header { margin-bottom: 36px; }
+.lys-lead {
+  font-size: 1.0625rem; color: var(--text-secondary,#555);
+  line-height: 1.6; margin: 8px 0 16px;
+}
+.lys-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.lys-pill {
+  font-size: 0.75rem; font-weight: 600;
+  padding: 4px 12px; border-radius: 100px;
+}
+.lys-pill--blue   { background: #e8f0fe; color: #1a73e8; }
+.lys-pill--purple { background: #f3eefb; color: #6b3faa; }
+.lys-pill--gray   { background: #f0f0f0; color: #555; }
+.lys-pill--green  { background: #e6f4ea; color: #1e7e34; }
+
+/* Section titles */
+.lys-section-title {
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--text-primary,#111);
+  margin: 40px 0 6px;
+}
+.lys-section-title--inline { margin: 0; }
+.lys-section-desc {
+  font-size: 1rem; color: var(--text-secondary,#555);
+  margin: 0 0 20px; line-height: 1.5;
+}
+
+/* Card base */
+.lys-card {
+  background: var(--surface-white,#fff);
+  border: 1px solid var(--border-default,#e5e7eb);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.lys-card-title {
+  font-size: 1.25rem; font-weight: 700;
+  color: var(--text-primary,#111); margin: 0 0 20px;
+}
+
+/* ── Base estructural ──────────────────────────── */
+.lys-grid-section {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+}
+@media (max-width: 800px) {
+  .lys-grid-section { grid-template-columns: 1fr; }
+}
+
+.lys-grid-info {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border-default,#e5e7eb);
+  display: flex; flex-direction: column; gap: 20px;
+}
+
+/* Facts */
+.lys-fact-list { display: flex; align-items: center; gap: 0; }
+.lys-fact { text-align: center; flex: 1; }
+.lys-fact-num {
+  display: block; font-size: 1.75rem; font-weight: 800;
+  color: var(--brand-primary,#0057A8); line-height: 1;
+}
+.lys-fact-label {
+  display: block; font-size: 0.75rem;
+  color: var(--text-secondary,#666); margin-top: 2px;
+}
+.lys-fact-divider {
+  width: 1px; height: 36px;
+  background: var(--border-default,#e5e7eb);
+}
+
+/* Rules mini */
+.lys-rules-mini { list-style: none; margin: 0; padding: 0; }
+.lys-rules-mini li {
+  font-size: 0.875rem; color: var(--text-secondary,#555);
+  padding: 4px 0; display: flex; gap: 6px; align-items: flex-start;
+}
+.lys-check { color: #1da462; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+/* Toggle button */
+.lys-toggle-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 14px; border-radius: 8px;
+  border: 1px solid var(--border-default,#e0e0e0);
+  background: var(--surface-secondary,#f5f5f5);
+  font-size: 0.875rem; font-weight: 600;
+  color: var(--text-primary,#111);
+  cursor: pointer; transition: all 0.15s; width: fit-content;
+}
+.lys-toggle-btn:hover { border-color: var(--brand-primary,#0057A8); color: var(--brand-primary,#0057A8); }
+.lys-toggle-btn.active { background: var(--brand-primary,#0057A8); color: #fff; border-color: var(--brand-primary,#0057A8); }
+
+/* Grid canvas */
+.lys-grid-canvas {
+  position: relative;
+  background: #f8f9fa;
+  padding: 20px;
+  min-height: 240px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Page demo */
+.lys-page-demo {
+  width: 100%; max-width: 560px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.lys-pd-nav {
+  height: 32px; background: #f0f0f0;
+  border-bottom: 1px solid #e0e0e0;
+}
+.lys-pd-hero {
+  display: flex; gap: 12px; align-items: center;
+  padding: 16px; background: #fff;
+}
+.lys-pd-hero-text { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.lys-pd-hero-img { width: 80px; height: 60px; background: #ede9f8; border-radius: 6px; flex-shrink: 0; }
+.lys-pd-line { height: 8px; background: #e8e8e8; border-radius: 4px; }
+.lys-pd-line--lg { width: 80%; }
+.lys-pd-line--md { width: 60%; }
+.lys-pd-line--sm { width: 45%; }
+.lys-pd-cta { width: 64px; height: 22px; background: #c5b8e8; border-radius: 100px; margin-top: 4px; }
+.lys-pd-cards {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 8px;
+  padding: 10px 16px 16px; background: #fafafa;
+}
+.lys-pd-card { height: 36px; background: #ede9f8; border-radius: 6px; opacity: 0.7; }
+
+/* Grid overlay */
+.lys-grid-overlay {
+  position: absolute;
+  top: 20px; bottom: 20px;
+  left: calc(50% - 280px); right: calc(50% - 280px);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.lys-grid-overlay.visible { opacity: 1; }
+.lys-go-col {
+  background: rgba(130,104,203,0.18);
+  border: 1px solid rgba(130,104,203,0.35);
+  border-radius: 3px;
+}
+/* Col numbers */
+.lys-col-nums {
+  position: absolute;
+  top: 26px;
+  left: calc(50% - 280px); right: calc(50% - 280px);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.lys-col-nums.visible { opacity: 1; }
+.lys-col-nums span {
+  font-size: 0.6rem; font-weight: 700;
+  color: rgba(100,70,180,0.9);
+  text-align: center; line-height: 1;
+}
+
+/* ── Container compare ───────────────────────── */
+.lys-compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 32px;
+}
+@media (max-width: 820px) {
+  .lys-compare { grid-template-columns: 1fr; }
+  .lys-vs { display: none; }
+}
+
+.lys-compare-card {
+  border: 1px solid var(--border-default,#e5e7eb);
+  border-radius: 14px; overflow: hidden;
+  background: #fff;
+}
+.lys-compare-card--container { border-top: 3px solid #8268cb; }
+.lys-compare-card--fluid     { border-top: 3px solid #ff7e06; }
+
+.lys-compare-header { padding: 20px 20px 0; }
+.lys-compare-badge {
+  font-size: 0.7rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 100px;
+  display: inline-block; margin-bottom: 8px;
+}
+.lys-compare-badge--purple { background: #f3eefb; color: #6b3faa; }
+.lys-compare-badge--orange { background: #fff3e0; color: #b84c00; }
+.lys-compare-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 4px; font-family: 'Roboto Mono',monospace; }
+.lys-compare-sub   { font-size: 0.875rem; color: var(--text-secondary,#666); margin: 0; }
+
+.lys-compare-visual { padding: 16px 20px; }
+.lys-cv-screen {
+  width: 100%; height: 80px;
+  background: #f5f5f5; border-radius: 8px;
+  position: relative; overflow: hidden;
+  border: 1px solid #e0e0e0; margin-bottom: 8px;
+}
+.lys-cv-bg { position: absolute; inset: 0; background: #f8f8f8; }
+.lys-cv-box {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  height: 70%; border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+}
+.lys-cv-box--centered {
+  width: 65%; left: 50%; transform: translate(-50%,-50%);
+  background: rgba(130,104,203,0.2);
+  border: 2px dashed rgba(130,104,203,0.5);
+}
+.lys-cv-box--fluid {
+  inset: 6px; width: auto; height: auto;
+  background: rgba(255,126,6,0.15);
+  border: 2px dashed rgba(255,126,6,0.5);
+}
+.lys-cv-label {
+  font-family: 'Roboto Mono',monospace; font-size: 0.72rem;
+  font-weight: 700; color: #40297e;
+}
+.lys-cv-box--fluid .lys-cv-label { color: #b84c00; }
+.lys-cv-arrows { display: flex; align-items: center; gap: 4px; font-size: 0.75rem; }
+.lys-cv-margin { flex: 1; height: 2px; background: #ddd; }
+.lys-cv-content-bar {
+  flex: 3; text-align: center;
+  background: rgba(130,104,203,0.12);
+  border-radius: 4px; padding: 3px 6px;
+  font-size: 0.72rem; font-weight: 600; color: #6b3faa;
+}
+.lys-cv-content-bar--full {
+  flex: 1;
+  background: rgba(255,126,6,0.12); color: #b84c00;
+}
+
+.lys-compare-list {
+  margin: 0; padding: 0 20px 16px 36px;
+  font-size: 0.875rem; line-height: 1.7;
+  color: var(--text-primary,#111);
+}
+.lys-compare-widths {
+  padding: 14px 20px; background: #fafafa;
+  border-top: 1px solid #f0f0f0;
+}
+.lys-compare-label-small {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text-secondary,#888);
+  display: block; margin-bottom: 10px;
+}
+.lys-bpw-list { display: flex; gap: 8px; flex-wrap: wrap; }
+.lys-bpw { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.lys-bpw span { font-size: 0.7rem; font-weight: 700; color: #888; }
+.lys-bpw code { font-size: 0.72rem; background: #ede9f8; color: #6b3faa; padding: 2px 6px; border-radius: 4px; }
+.lys-compare-note {
+  padding: 10px 16px; background: #fff8f0;
+  border-top: 1px solid #ffe0b2;
+  font-size: 0.8125rem; color: #7a4200;
+  display: flex; gap: 6px; align-items: flex-start;
+}
+
+.lys-vs {
+  font-size: 0.875rem; font-weight: 700;
+  color: var(--text-secondary,#aaa);
+  background: var(--surface-secondary,#f5f5f5);
+  border-radius: 50%; width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  align-self: center; flex-shrink: 0;
+  border: 1px solid var(--border-default,#e0e0e0);
+}
+
+/* ── Use cards ───────────────────────────────── */
+.lys-use-grid {
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+}
+@media (max-width: 900px) { .lys-use-grid { grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 560px) { .lys-use-grid { grid-template-columns: repeat(2,1fr); } }
+
+.lys-use-card {
+  border: 1px solid var(--border-default,#e5e7eb);
+  border-radius: 12px; padding: 16px 12px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  background: #fff; text-align: center;
+  transition: box-shadow 0.15s;
+}
+.lys-use-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+.lys-use-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.lys-use-icon--purple { background: #f3eefb; color: #6b3faa; }
+.lys-use-icon--orange { background: #fff3e0; color: #b84c00; }
+.lys-use-label { font-size: 0.8125rem; font-weight: 600; color: var(--text-primary,#111); line-height: 1.3; }
+.lys-use-token { font-family: 'Roboto Mono',monospace; font-size: 0.7rem; color: var(--text-secondary,#888); background: #f5f5f5; padding: 2px 6px; border-radius: 4px; }
+
+/* ── Do / Don't ──────────────────────────────── */
+.lys-rules-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 40px;
+}
+@media (max-width: 680px) { .lys-rules-grid { grid-template-columns: 1fr; } }
+
+.lys-rule {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 16px; border-radius: 10px;
+  font-size: 0.875rem; line-height: 1.5;
+}
+.lys-rule code { font-family: 'Roboto Mono',monospace; font-size: 0.8em; background: rgba(0,0,0,0.06); padding: 1px 5px; border-radius: 3px; }
+.lys-rule--do   { background: #f0faf4; border: 1px solid #b7dfc8; color: #1a4d2e; }
+.lys-rule--dont { background: #fff4f4; border: 1px solid #f5c2c2; color: #5c1a1a; }
+.lys-rule-icon {
+  flex-shrink: 0; width: 24px; height: 24px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.875rem;
+}
+.lys-rule--do   .lys-rule-icon { background: #1da462; color: #fff; }
+.lys-rule--dont .lys-rule-icon { background: #e53935; color: #fff; }
+
+/* ── Breakpoints visual ──────────────────────── */
+.lys-bp-bar-track {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  margin: 20px 0 40px;
+  padding: 24px;
+  background: var(--surface-secondary,#f8f9fa);
+  border-radius: 14px;
+  border: 1px solid var(--border-default,#e5e7eb);
+  overflow-x: auto;
+}
+.lys-bp-item {
+  flex: 1; min-width: 72px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
+}
+.lys-bp-bar {
+  width: 100%; border-radius: 6px 6px 0 0;
+  transition: background 0.2s;
+}
+.lys-bp-xs  .lys-bp-bar { height: 30px;  background: #cbd5e1; }
+.lys-bp-sm  .lys-bp-bar { height: 50px;  background: #a5b4fc; }
+.lys-bp-md  .lys-bp-bar { height: 70px;  background: #818cf8; }
+.lys-bp-lg  .lys-bp-bar { height: 90px;  background: #6366f1; }
+.lys-bp-xl  .lys-bp-bar { height: 110px; background: #4f46e5; }
+.lys-bp-xxl .lys-bp-bar { height: 130px; background: #3730a3; }
+
+.lys-bp-name  { font-size: 0.875rem; font-weight: 800; color: var(--text-primary,#111); }
+.lys-bp-range { font-size: 0.7rem; font-family: 'Roboto Mono',monospace; color: var(--text-secondary,#666); }
+.lys-bp-uso   { font-size: 0.75rem; color: var(--text-secondary,#888); text-align: center; }
+
+/* ── Adapt (mobile → tablet → desktop) ──────── */
+.lys-adapt-grid {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 40px; flex-wrap: wrap; justify-content: center;
+}
+.lys-adapt-arrow { font-size: 1.5rem; color: var(--text-secondary,#bbb); flex-shrink: 0; }
+.lys-adapt-card {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  flex: 1; min-width: 120px; max-width: 200px;
+}
+.lys-adapt-device {
+  border: 2px solid #ddd; border-radius: 10px;
+  background: #fff; overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+}
+.lys-adapt-device--mobile  { width: 80px; }
+.lys-adapt-device--tablet  { width: 120px; }
+.lys-adapt-device--desktop { width: 180px; }
+
+.lys-ad-screen { padding: 8px; display: flex; flex-direction: column; gap: 5px; background: #fafafa; }
+.lys-ad-row { display: flex; gap: 4px; }
+.lys-ad-col-full  { height: 18px; background: #ede9f8; border-radius: 3px; }
+.lys-ad-col-half  { flex: 1; height: 28px; background: #ede9f8; border-radius: 3px; }
+.lys-ad-col-third { flex: 1; height: 28px; background: #ede9f8; border-radius: 3px; }
+.lys-ad-col--alt  { background: #d8d0f0; }
+.lys-ad-col--sm   { height: 12px; }
+
+.lys-adapt-label { font-weight: 700; font-size: 0.9rem; color: var(--text-primary,#111); }
+.lys-adapt-sub   { font-size: 0.8rem; color: var(--text-secondary,#666); }
+.lys-adapt-code  { font-family: 'Roboto Mono',monospace; font-size: 0.72rem; background: #f3eefb; color: #6b3faa; padding: 2px 7px; border-radius: 4px; }
+
+/* ── QA block ────────────────────────────────── */
+.lys-qa-block {
+  background: linear-gradient(135deg,#f0f7ff 0%,#f5f0fc 100%);
+  border: 1px solid #d5e8fb;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 32px;
+}
+.lys-qa-title-row {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+}
+.lys-qa-icon-wrap {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--brand-primary,#0057A8);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; flex-shrink: 0;
+}
+.lys-qa-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin-bottom: 24px;
+}
+@media (max-width: 680px) { .lys-qa-grid { grid-template-columns: 1fr; } }
+
+.lys-qa-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: rgba(255,255,255,0.7);
+  border-radius: 10px; padding: 12px 14px;
+  border: 1px solid rgba(0,87,168,0.1);
+}
+.lys-qa-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--brand-primary,#0057A8); color: #fff;
+  font-weight: 800; font-size: 0.8rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.lys-qa-item div { display: flex; flex-direction: column; gap: 2px; }
+.lys-qa-item strong { font-size: 0.9rem; color: var(--text-primary,#111); }
+.lys-qa-item span   { font-size: 0.8125rem; color: var(--text-secondary,#666); line-height: 1.4; }
+
+/* Device chips */
+.lys-devices-row {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,87,168,0.1);
+}
+.lys-dev-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.78rem; font-weight: 600;
+  padding: 5px 11px; border-radius: 100px;
+}
+.lys-dev-chip--p1 { background: #e6f4ea; color: #1e5631; border: 1px solid #b7dfc8; }
+.lys-dev-chip--p2 { background: #fff8e1; color: #7a4200; border: 1px solid #ffe082; }
+.lys-dev-chip--p3 { background: #f3f4f6; color: #555; border: 1px solid #ddd; }
+</style>
+
+<script>
+(function () {
+  var gridOn = false;
+
+  function lysToggleGrid() {
+    gridOn = !gridOn;
+    var overlay = document.getElementById('lys-grid-overlay');
+    var nums    = document.getElementById('lys-col-nums');
+    var btn     = document.getElementById('lys-grid-toggle');
+    if (overlay) overlay.classList.toggle('visible', gridOn);
+    if (nums)    nums.classList.toggle('visible', gridOn);
+    if (btn) {
+      btn.classList.toggle('active', gridOn);
+      btn.innerHTML = gridOn
+        ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Ocultar grid'
+        : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Mostrar grid';
+    }
+  }
+  window.lysToggleGrid = lysToggleGrid;
+})();
+</script>

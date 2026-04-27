@@ -1,0 +1,74 @@
+// ============================================================
+//  _alerts.scss
+// ============================================================
+
+@use '../abstracts/mixins'         as *;
+@use '../abstracts/tokens-spacing' as *;
+@use '../abstracts/tokens-radius'  as *;
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-12;
+  padding: $space-16;
+  border-radius: $radius-xs;
+  border: 1px solid transparent;
+  @include ty-body-m;
+
+  .icon, .material-symbols-rounded {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  &-title { @include ty-h6; margin-bottom: $space-4; }
+  &-body  { @include ty-body-m; }
+}
+
+.alert-success {
+  background: var(--color-success-bg);
+  border-color: var(--color-success-border);
+  color: var(--color-success-text);
+  .icon, .material-symbols-rounded { color: var(--color-success-icon); }
+}
+
+.alert-error {
+  background: var(--color-error-bg);
+  border-color: var(--color-error-border);
+  color: var(--color-error-text);
+  .icon, .material-symbols-rounded { color: var(--color-error-icon); }
+}
+
+.alert-warning {
+  background: var(--color-warning-bg);
+  border-color: var(--color-warning-border);
+  color: var(--color-warning-text);
+  .icon, .material-symbols-rounded { color: var(--color-warning-icon); }
+}
+
+.alert-info {
+  background: var(--color-info-bg);
+  border-color: var(--color-info-border);
+  color: var(--color-info-text);
+  .icon, .material-symbols-rounded { color: var(--color-info-icon); }
+}
+
+// ── Dismissible ──────────────────────────────────────────
+.alert-dismissible {
+  position: relative;
+  padding-right: $space-48;
+
+  .alert-close {
+    position: absolute;
+    top: $space-12; right: $space-12;
+    background: none; border: none;
+    cursor: pointer; padding: $space-4;
+    border-radius: $radius-xs;
+    color: inherit; opacity: 0.6;
+    line-height: 1;
+    &:hover { opacity: 1; }
+    .icon, .material-symbols-rounded { font-size: 18px; }
+  }
+}
+
+$space-48: 3rem;

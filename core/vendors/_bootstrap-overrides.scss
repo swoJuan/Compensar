@@ -1,0 +1,321 @@
+// =============================================================================
+// core/vendors/_bootstrap-overrides.scss
+// Post-Bootstrap overrides: surgically correct Bootstrap-generated styles that
+// conflict with the Compensar Design System. Import AFTER Bootstrap.
+//
+// Rule: prefer semantic tokens (CSS vars) over raw values.
+//       Every rule here must have a comment explaining WHY it overrides.
+// =============================================================================
+
+@use '../abstracts/tokens-colors'     as *;
+@use '../abstracts/tokens-spacing'    as *;
+@use '../abstracts/tokens-radius'     as *;
+@use '../abstracts/tokens-typography' as *;
+@use '../abstracts/mixins'            as mx;
+
+// ── Reset Bootstrap's hardcoded root vars ───────────────────────────────────
+// Bootstrap 5.3+ sets its own CSS vars on :root. We re-point them to our
+// semantic tokens so Bootstrap components inherit our theme automatically.
+:root {
+  --bs-primary:           var(--color-primary);
+  --bs-primary-rgb:       var(--color-primary-rgb);    // expose for BS opacity helpers
+  --bs-secondary:         var(--color-secondary);
+  --bs-success:           var(--color-success);
+  --bs-danger:            var(--color-error);
+  --bs-warning:           var(--color-warning);
+  --bs-info:              var(--color-info);
+  --bs-body-bg:           var(--color-surface-page);
+  --bs-body-color:        var(--color-text-primary);
+  --bs-body-font-family:  var(--font-family-sans);
+  --bs-body-font-size:    var(--font-size-md);
+  --bs-body-line-height:  var(--font-line-height-normal);
+  --bs-border-radius:     var(--radius-md);
+  --bs-border-radius-sm:  var(--radius-sm);
+  --bs-border-radius-lg:  var(--radius-lg);
+  --bs-border-radius-xl:  var(--radius-lg);
+  --bs-border-radius-xxl: var(--radius-full);
+  --bs-border-color:      var(--color-border-default);
+  --bs-link-color:        var(--color-primary);
+  --bs-link-hover-color:  var(--color-primary-hover);
+  --bs-focus-ring-color:  var(--color-focus-ring);
+}
+
+// ── Focus ring ──────────────────────────────────────────────────────────────
+// Replace Bootstrap's blue outline with our design token focus ring.
+.btn:focus-visible,
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus-ring) !important;
+}
+
+// ── Buttons ─────────────────────────────────────────────────────────────────
+// Bootstrap generates btn-primary, btn-secondary, etc. from $primary/$secondary.
+// We ensure the font and radius always match our tokens, regardless of theme.
+.btn {
+  font-family:    var(--font-family-sans);
+  font-weight:    $fw-semibold;
+  border-radius:  var(--radius-sm);
+  letter-spacing: $ls-wide;
+  transition: background-color 200ms ease, box-shadow 200ms ease, transform 100ms ease;
+
+  &:active { transform: translateY(1px); }
+}
+
+// Override Bootstrap's hardcoded padding scale
+.btn-sm { padding: calc(var(--space-4) - 2px) var(--space-12); }
+.btn-lg { padding: var(--space-12)             var(--space-24); }
+
+// ── Forms ───────────────────────────────────────────────────────────────────
+// Bootstrap's form controls use rgba($primary,.25) for focus shadow.
+// We unify with our own token.
+.form-control,
+.form-select,
+.form-floating > .form-control,
+.form-floating > .form-select {
+  background-color: var(--color-surface-default);
+  border-color:     var(--color-border-default);
+  color:            var(--color-text-primary);
+  border-radius:    var(--radius-sm);
+
+  &::placeholder {
+    color:   var(--color-text-muted);
+    opacity: 1;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: var(--color-surface-disabled);
+    color:            var(--color-text-disabled);
+    border-color:     var(--color-border-subtle);
+    cursor:           not-allowed;
+  }
+}
+
+.form-check-input {
+  border-color: var(--color-border-default);
+
+  &:checked {
+    background-color: var(--color-primary);
+    border-color:     var(--color-primary);
+  }
+}
+
+.form-label {
+  font-size:   var(--font-size-sm);
+  font-weight: $fw-medium;
+  color:       var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+// ── Cards ───────────────────────────────────────────────────────────────────
+.card {
+  background-color: var(--color-surface-default);
+  border-color:     var(--color-border-subtle);
+  border-radius:    var(--radius-md);
+  color:            var(--color-text-primary);
+  box-shadow:       var(--shadow-sm);
+}
+
+.card-header,
+.card-footer {
+  background-color: var(--color-surface-alt);
+  border-color:     var(--color-border-subtle);
+}
+
+// ── Modals ──────────────────────────────────────────────────────────────────
+.modal-content {
+  background-color: var(--color-surface-default);
+  border:           1px solid var(--color-border-subtle);
+  border-radius:    var(--radius-lg);
+  box-shadow:       var(--shadow-xl);
+}
+
+.modal-header {
+  border-bottom-color: var(--color-border-subtle);
+}
+.modal-footer {
+  border-top-color: var(--color-border-subtle);
+}
+.modal-backdrop.show {
+  opacity: 0.4;
+}
+
+// ── Dropdowns ───────────────────────────────────────────────────────────────
+.dropdown-menu {
+  background-color: var(--color-surface-default);
+  border:           1px solid var(--color-border-subtle);
+  border-radius:    var(--radius-md);
+  box-shadow:       var(--shadow-lg);
+  color:            var(--color-text-primary);
+  padding:          var(--space-4) 0;
+}
+
+.dropdown-item {
+  color:         var(--color-text-primary);
+  padding:       var(--space-8) var(--space-16);
+  border-radius: var(--radius-sm);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-surface-hover);
+    color:            var(--color-text-primary);
+  }
+
+  &:active,
+  &.active {
+    background-color: var(--color-primary);
+    color:            #fff;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: var(--color-text-disabled);
+  }
+}
+
+.dropdown-divider { border-color: var(--color-border-subtle); }
+
+// ── Tooltips ─────────────────────────────────────────────────────────────────
+.tooltip-inner {
+  background-color: var(--color-surface-inverse);
+  color:            var(--color-text-inverse);
+  border-radius:    var(--radius-sm);
+  font-size:        var(--font-size-xs);
+  padding:          var(--space-4) var(--space-8);
+}
+.bs-tooltip-auto[data-popper-placement^='top'] .tooltip-arrow::before,
+.bs-tooltip-top .tooltip-arrow::before  { border-top-color:    var(--color-surface-inverse); }
+.bs-tooltip-auto[data-popper-placement^='bottom'] .tooltip-arrow::before,
+.bs-tooltip-bottom .tooltip-arrow::before { border-bottom-color: var(--color-surface-inverse); }
+.bs-tooltip-auto[data-popper-placement^='left'] .tooltip-arrow::before,
+.bs-tooltip-start .tooltip-arrow::before  { border-left-color:  var(--color-surface-inverse); }
+.bs-tooltip-auto[data-popper-placement^='right'] .tooltip-arrow::before,
+.bs-tooltip-end .tooltip-arrow::before    { border-right-color: var(--color-surface-inverse); }
+
+// ── Badges ───────────────────────────────────────────────────────────────────
+.badge {
+  border-radius: var(--radius-full);
+  font-weight:   $fw-semibold;
+  font-size:     var(--font-size-xs);
+  letter-spacing: $ls-wide;
+}
+
+// ── Alerts ───────────────────────────────────────────────────────────────────
+// Bootstrap's .alert-* uses generated colors from the palette. We remap to
+// our semantic surface/text tokens for full dark-mode support.
+.alert-success {
+  --bs-alert-bg:            var(--color-success-surface);
+  --bs-alert-border-color:  var(--color-success-border);
+  --bs-alert-color:         var(--color-success-text);
+}
+.alert-danger {
+  --bs-alert-bg:            var(--color-error-surface);
+  --bs-alert-border-color:  var(--color-error-border);
+  --bs-alert-color:         var(--color-error-text);
+}
+.alert-warning {
+  --bs-alert-bg:            var(--color-warning-surface);
+  --bs-alert-border-color:  var(--color-warning-border);
+  --bs-alert-color:         var(--color-warning-text);
+}
+.alert-info {
+  --bs-alert-bg:            var(--color-info-surface);
+  --bs-alert-border-color:  var(--color-info-border);
+  --bs-alert-color:         var(--color-info-text);
+}
+
+// ── Pagination ───────────────────────────────────────────────────────────────
+.page-link {
+  color:            var(--color-primary);
+  background-color: var(--color-surface-default);
+  border-color:     var(--color-border-default);
+
+  &:hover {
+    color:            var(--color-primary-hover);
+    background-color: var(--color-surface-hover);
+    border-color:     var(--color-border-default);
+  }
+}
+.page-item.active .page-link {
+  background-color: var(--color-primary);
+  border-color:     var(--color-primary);
+  color: #fff;
+}
+.page-item.disabled .page-link {
+  color:            var(--color-text-disabled);
+  background-color: var(--color-surface-default);
+  border-color:     var(--color-border-subtle);
+}
+
+// ── Navs / Tabs ──────────────────────────────────────────────────────────────
+.nav-tabs {
+  border-bottom-color: var(--color-border-default);
+
+  .nav-link {
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+
+    &:hover { color: var(--color-text-primary); }
+    &.active {
+      color:            var(--color-primary);
+      background-color: var(--color-surface-default);
+      border-color:     var(--color-border-default) var(--color-border-default) var(--color-surface-default);
+    }
+  }
+}
+
+// ── Tables ───────────────────────────────────────────────────────────────────
+.table {
+  --bs-table-bg:            transparent;
+  --bs-table-border-color:  var(--color-border-subtle);
+  --bs-table-color:         var(--color-text-primary);
+  --bs-table-striped-bg:    var(--color-surface-alt);
+  --bs-table-hover-bg:      var(--color-surface-hover);
+  --bs-table-active-bg:     var(--color-primary-surface);
+
+  > thead > tr > th {
+    color:         var(--color-text-secondary);
+    font-weight:   $fw-semibold;
+    font-size:     var(--font-size-sm);
+    letter-spacing: $ls-wide;
+    border-bottom: 2px solid var(--color-border-default);
+  }
+}
+
+// ── Breadcrumbs ──────────────────────────────────────────────────────────────
+.breadcrumb-item {
+  + .breadcrumb-item::before { color: var(--color-text-muted); }
+  &.active { color: var(--color-text-muted); }
+}
+
+// ── Progress bars ────────────────────────────────────────────────────────────
+.progress {
+  background-color: var(--color-surface-alt);
+  border-radius:    var(--radius-full);
+}
+.progress-bar {
+  background-color: var(--color-primary);
+}
+
+// ── Accordion ────────────────────────────────────────────────────────────────
+.accordion {
+  --bs-accordion-bg:                    var(--color-surface-default);
+  --bs-accordion-border-color:          var(--color-border-subtle);
+  --bs-accordion-btn-color:             var(--color-text-primary);
+  --bs-accordion-btn-bg:                var(--color-surface-default);
+  --bs-accordion-active-color:          var(--color-primary);
+  --bs-accordion-active-bg:             var(--color-primary-surface);
+  --bs-accordion-btn-focus-box-shadow:  0 0 0 3px var(--color-focus-ring);
+  --bs-accordion-body-padding-x:        var(--space-16);
+  --bs-accordion-body-padding-y:        var(--space-12);
+}
+
+// ── Dark mode adjustments for Bootstrap ─────────────────────────────────────
+// Bootstrap 5.3 has its own [data-bs-theme='dark'] but we use [data-theme='dark'].
+// Mirror the same remapping for completeness.
+[data-theme='dark'] {
+  --bs-body-bg:    var(--color-surface-page);
+  --bs-body-color: var(--color-text-primary);
+}

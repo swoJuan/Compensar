@@ -1,0 +1,659 @@
+<section class="section" id="sombras">
+  <div class="section-header">
+    <div class="section-eyebrow">1.4</div>
+    <h1 class="section-title">Sombras</h1>
+    <p class="section-desc">Tokens de elevación e interacción. Comunican profundidad y respuesta táctil sin usar bordes. Siempre usar el token — nunca valores hardcoded.</p>
+  </div>
+
+  <div class="sh-figma-bar">
+    <span class="material-symbols-rounded">tips_and_updates</span>
+    <span>Nunca escribir <code>box-shadow: 0px 8px 24px …</code> directo. Siempre <code>var(--shadow-2)</code>.</span>
+    <a class="ct-figma-link" href="https://www.figma.com/proto/1zVGMpzqBgiBUqhmfFEAoT/Compensar-v2---Sistema-de-dise%C3%B1o?node-id=3916-20404&page-id=3909%3A20350" target="_blank" rel="noopener">
+      <span class="material-symbols-rounded">open_in_new</span> Ver en Figma
+    </a>
+  </div>
+
+  <!-- DESCARGAS -->
+  <div class="ct-downloads" style="margin-bottom:var(--space-6)">
+    <span class="ct-downloads-label"><span class="material-symbols-rounded">download</span> Descargar tokens</span>
+    <button class="ct-download-btn" onclick="shDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
+    <button class="ct-download-btn" onclick="shDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
+    <button class="ct-download-btn" onclick="shDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
+    <button class="ct-download-btn" onclick="shCopyVars()"><span class="material-symbols-rounded">content_copy</span> Copiar variables</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       GRUPO 1 · ELEVACIÓN
+  ══════════════════════════════════════════════════════ -->
+  <div class="sh-group-label">
+    <span class="material-symbols-rounded">layers</span> Elevación
+  </div>
+  <p class="sh-group-desc">Jerarquía de profundidad para superficies. A mayor número, mayor elevación percibida.</p>
+
+  <div class="sh-elevation-grid">
+
+    <div class="sh-card">
+      <div class="sh-preview-wrap">
+        <div class="sh-preview-card" style="box-shadow:2px 5px 16px rgba(0,0,0,0.15)">
+          <span class="sh-preview-label">Tarjeta</span>
+        </div>
+      </div>
+      <div class="sh-card-body">
+        <div class="sh-card-level">Nivel 1</div>
+        <div class="sh-card-name">Shadow 1</div>
+        <div class="sh-card-use">Tarjetas, contenedores base</div>
+        <div class="sh-token-row">
+          <code class="sh-chip" onclick="copyToClipboard('--shadow-1','Token copiado')">--shadow-1</code>
+          <button class="sh-copy-val" onclick="copyToClipboard('2px 5px 16px rgba(0,0,0,0.15)','Valor copiado')" title="Copiar valor">
+            <span class="material-symbols-rounded">content_copy</span>
+          </button>
+        </div>
+        <code class="sh-value">2px 5px 16px rgba(0,0,0,0.15)</code>
+      </div>
+    </div>
+
+    <div class="sh-card">
+      <div class="sh-preview-wrap">
+        <div class="sh-preview-card" style="box-shadow:0px 8px 24px rgba(0,0,0,0.15)">
+          <span class="sh-preview-label">Modal</span>
+        </div>
+      </div>
+      <div class="sh-card-body">
+        <div class="sh-card-level">Nivel 2</div>
+        <div class="sh-card-name">Shadow 2</div>
+        <div class="sh-card-use">Modales, dropdowns, popovers</div>
+        <div class="sh-token-row">
+          <code class="sh-chip" onclick="copyToClipboard('--shadow-2','Token copiado')">--shadow-2</code>
+          <button class="sh-copy-val" onclick="copyToClipboard('0px 8px 24px rgba(0,0,0,0.15)','Valor copiado')" title="Copiar valor">
+            <span class="material-symbols-rounded">content_copy</span>
+          </button>
+        </div>
+        <code class="sh-value">0px 8px 24px rgba(0,0,0,0.15)</code>
+      </div>
+    </div>
+
+    <div class="sh-card">
+      <div class="sh-preview-wrap">
+        <div class="sh-preview-card" style="box-shadow:0px 16px 40px rgba(0,0,0,0.2)">
+          <span class="sh-preview-label">Drawer</span>
+        </div>
+      </div>
+      <div class="sh-card-body">
+        <div class="sh-card-level">Nivel 3</div>
+        <div class="sh-card-name">Shadow 3</div>
+        <div class="sh-card-use">Drawers, sidebars, paneles laterales</div>
+        <div class="sh-token-row">
+          <code class="sh-chip" onclick="copyToClipboard('--shadow-3','Token copiado')">--shadow-3</code>
+          <button class="sh-copy-val" onclick="copyToClipboard('0px 16px 40px rgba(0,0,0,0.2)','Valor copiado')" title="Copiar valor">
+            <span class="material-symbols-rounded">content_copy</span>
+          </button>
+        </div>
+        <code class="sh-value">0px 16px 40px rgba(0,0,0,0.2)</code>
+      </div>
+    </div>
+
+    <div class="sh-card">
+      <div class="sh-preview-wrap">
+        <div class="sh-preview-card" style="box-shadow:0px 20px 50px rgba(0,0,0,0.2)">
+          <span class="sh-preview-label">Overlay</span>
+        </div>
+      </div>
+      <div class="sh-card-body">
+        <div class="sh-card-level">Nivel 4</div>
+        <div class="sh-card-name">Shadow 4</div>
+        <div class="sh-card-use">Menús flotantes, overlays máximos</div>
+        <div class="sh-token-row">
+          <code class="sh-chip" onclick="copyToClipboard('--shadow-4','Token copiado')">--shadow-4</code>
+          <button class="sh-copy-val" onclick="copyToClipboard('0px 20px 50px rgba(0,0,0,0.2)','Valor copiado')" title="Copiar valor">
+            <span class="material-symbols-rounded">content_copy</span>
+          </button>
+        </div>
+        <code class="sh-value">0px 20px 50px rgba(0,0,0,0.2)</code>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       GRUPO 2 · COMPONENTES UI
+  ══════════════════════════════════════════════════════ -->
+  <div class="sh-group-label" style="margin-top:var(--space-8)">
+    <span class="material-symbols-rounded">web</span> Componentes UI
+  </div>
+  <p class="sh-group-desc">Sombras específicas de la shell de la aplicación.</p>
+
+  <div class="sh-list">
+
+    <div class="sh-list-row">
+      <div class="sh-list-preview" style="box-shadow:0px 4px 4px rgba(0,0,0,0.25)"></div>
+      <div class="sh-list-meta">
+        <div class="sh-list-name">Header</div>
+        <div class="sh-list-use">Barra de navegación fija superior</div>
+        <div class="sh-token-row">
+          <code class="sh-chip" onclick="copyToClipboard('--shadow-header','Token copiado')">--shadow-header</code>
+          <button class="sh-copy-val" onclick="copyToClipboard('0px 4px 4px rgba(0,0,0,0.25)','Valor copiado')">
+            <span class="material-symbols-rounded">content_copy</span>
+          </button>
+        </div>
+        <code class="sh-value">0px 4px 4px rgba(0,0,0,0.25)</code>
+      </div>
+    </div>
+
+    <div class="sh-list-row">
+      <div class="sh-list-preview" style="box-shadow:0px 4px 4px rgba(0,0,0,0.25)"></div>
+      <div class="sh-list-meta">
+        <div class="sh-list-name">Sombra 1 <span class="sh-alias-badge">alias</span></div>
+        <div class="sh-list-use">Alias genérico — mismo valor que <code>--shadow-header</code></div>
+        <div class="sh-token-row">
+          <code class="sh-chip" onclick="copyToClipboard('--sombra-1','Token copiado')">--sombra-1</code>
+          <button class="sh-copy-val" onclick="copyToClipboard('0px 4px 4px rgba(0,0,0,0.25)','Valor copiado')">
+            <span class="material-symbols-rounded">content_copy</span>
+          </button>
+        </div>
+        <code class="sh-value">0px 4px 4px rgba(0,0,0,0.25)</code>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       GRUPO 3 · INTERACCIÓN – BOTONES
+  ══════════════════════════════════════════════════════ -->
+  <div class="sh-group-label" style="margin-top:var(--space-8)">
+    <span class="material-symbols-rounded">touch_app</span> Interacción — Botones
+  </div>
+  <p class="sh-group-desc">Respuesta visual a estados de hover y pressed. Refuerzan el feedback táctil del componente.</p>
+
+  <div class="sh-interaction-grid">
+
+    <div class="sh-int-card">
+      <div class="sh-int-preview">
+        <button class="sh-btn-demo sh-btn-naranja" style="box-shadow:2px 2px 3px rgba(255,157,92,1)">
+          Hover naranja
+        </button>
+      </div>
+      <div class="sh-card-body">
+        <div class="sh-card-name">Botón hover</div>
+        <div class="sh-card-use">Botón primario naranja — estado hover</div>
+        <div class="sh-token-row">
+          <code class="sh-chip" onclick="copyToClipboard('--shadow-boton--hover','Token copiado')">--shadow-boton--hover</code>
+          <button class="sh-copy-val" onclick="copyToClipboard('2px 2px 3px rgba(255,157,92,1)','Valor copiado')">
+            <span class="material-symbols-rounded">content_copy</span>
+          </button>
+        </div>
+        <code class="sh-value">2px 2px 3px rgba(255,157,92,1)</code>
+      </div>
+    </div>
+
+    <div class="sh-int-card">
+      <div class="sh-int-preview">
+        <button class="sh-btn-demo sh-btn-violeta" style="box-shadow:2px 2px 3px rgba(162,141,218,1)">
+          Hover especial
+        </button>
+      </div>
+      <div class="sh-card-body">
+        <div class="sh-card-name">Botón especial hover</div>
+        <div class="sh-card-use">Botón especial violeta — estado hover</div>
+        <div class="sh-token-row">
+          <code class="sh-chip" onclick="copyToClipboard('--shadow-button-especial-hover','Token copiado')">--shadow-button-especial-hover</code>
+          <button class="sh-copy-val" onclick="copyToClipboard('2px 2px 3px rgba(162,141,218,1)','Valor copiado')">
+            <span class="material-symbols-rounded">content_copy</span>
+          </button>
+        </div>
+        <code class="sh-value">2px 2px 3px rgba(162,141,218,1)</code>
+      </div>
+    </div>
+
+    <div class="sh-int-card">
+      <div class="sh-int-preview">
+        <button class="sh-btn-demo sh-btn-pressed" style="box-shadow:inset 0px 4px 4px rgba(0,0,0,0.25)">
+          Pressed
+        </button>
+      </div>
+      <div class="sh-card-body">
+        <div class="sh-card-name">Botón pressed</div>
+        <div class="sh-card-use">Cualquier botón — estado activo / presionado</div>
+        <div class="sh-token-row">
+          <code class="sh-chip" onclick="copyToClipboard('--shadow--boton--pressed','Token copiado')">--shadow--boton--pressed</code>
+          <button class="sh-copy-val" onclick="copyToClipboard('inset 0px 4px 4px rgba(0,0,0,0.25)','Valor copiado')">
+            <span class="material-symbols-rounded">content_copy</span>
+          </button>
+        </div>
+        <code class="sh-value">inset 0px 4px 4px rgba(0,0,0,0.25)</code>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       CÓDIGO DE USO
+  ══════════════════════════════════════════════════════ -->
+  <div class="sh-group-label" style="margin-top:var(--space-8)">
+    <span class="material-symbols-rounded">code</span> Uso en código
+  </div>
+
+  <div class="code-block">
+    <div class="code-tabs">
+      <button class="code-tab active" onclick="switchTab(this,'sh-css')">CSS / Drupal</button>
+      <button class="code-tab" onclick="switchTab(this,'sh-scss')">Angular (SCSS)</button>
+    </div>
+    <div class="code-content">
+      <button class="copy-btn" onclick="copyCode(this)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+      <pre class="active" id="sh-css"><span class="comm">/* Tarjeta básica */</span>
+<span class="sel">.card</span> {
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-1)</span>;
+  <span class="prop">transition</span>: <span class="val">box-shadow 0.2s ease</span>;
+}
+<span class="sel">.card:hover</span> {
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-2)</span>;
+}
+
+<span class="comm">/* Modal / Diálogo */</span>
+<span class="sel">.modal</span> {
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-3)</span>;
+}
+
+<span class="comm">/* Header fijo */</span>
+<span class="sel">.site-header</span> {
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-header)</span>;
+}
+
+<span class="comm">/* Botones con estados */</span>
+<span class="sel">.btn-primary:hover</span>   { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-boton--hover)</span>; }
+<span class="sel">.btn-primary:active</span>  { <span class="prop">box-shadow</span>: <span class="val">var(--shadow--boton--pressed)</span>; }
+<span class="sel">.btn-especial:hover</span>  { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-especial-hover)</span>; }</pre>
+      <pre id="sh-scss"><span class="comm">// Tarjeta básica</span>
+<span class="sel">.cmp-card</span> {
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-1)</span>;
+  <span class="prop">transition</span>: <span class="val">box-shadow 0.2s ease</span>;
+
+  <span class="kw">&:hover</span> { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-2)</span>; }
+}
+
+<span class="comm">// Modal Angular Material override</span>
+<span class="sel">.mat-dialog-container</span> {
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-3) !important</span>;
+}
+
+<span class="comm">// Botón con estados</span>
+<span class="sel">.cmp-btn--primary</span> {
+  <span class="kw">&:hover</span>  { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-boton--hover)</span>; }
+  <span class="kw">&:active</span> { <span class="prop">box-shadow</span>: <span class="val">var(--shadow--boton--pressed)</span>; }
+}
+
+<span class="sel">.cmp-btn--especial</span> {
+  <span class="kw">&:hover</span> { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-especial-hover)</span>; }
+}</pre>
+    </div>
+  </div>
+
+
+<script>
+(function(){
+
+var SH_TOKENS = [
+  { token:'shadow/elevation-1',   var:'--shadow-1',                     value:'2px 5px 16px rgba(0,0,0,0.15)',          cls:'shadow-1',                    group:'Elevación',   use:'Tarjetas, contenedores base' },
+  { token:'shadow/elevation-2',   var:'--shadow-2',                     value:'0px 8px 24px rgba(0,0,0,0.15)',           cls:'shadow-2',                    group:'Elevación',   use:'Modales, dropdowns, popovers' },
+  { token:'shadow/elevation-3',   var:'--shadow-3',                     value:'0px 16px 40px rgba(0,0,0,0.2)',           cls:'shadow-3',                    group:'Elevación',   use:'Drawers, sidebars, paneles laterales' },
+  { token:'shadow/elevation-4',   var:'--shadow-4',                     value:'0px 20px 50px rgba(0,0,0,0.2)',           cls:'shadow-4',                    group:'Elevación',   use:'Overlays de mayor importancia' },
+  { token:'shadow/header',        var:'--shadow-header',                 value:'0px 4px 4px rgba(0,0,0,0.25)',           cls:'shadow-header',               group:'UI',          use:'Header de navegación' },
+  { token:'shadow/generic',       var:'--sombra-1',                     value:'0px 4px 4px rgba(0,0,0,0.25)',           cls:'sombra-1',                    group:'UI',          use:'Alias genérico de sombra fija' },
+  { token:'shadow/button-hover',  var:'--shadow-boton--hover',          value:'2px 2px 3px rgba(255,157,92,1)',         cls:'shadow-btn-hover',            group:'Interacción', use:'Botón primario — estado hover' },
+  { token:'shadow/button-especial-hover', var:'--shadow-button-especial-hover', value:'2px 2px 3px rgba(162,141,218,1)', cls:'shadow-btn-especial-hover', group:'Interacción', use:'Botón especial — estado hover' },
+  { token:'shadow/button-pressed',var:'--shadow--boton--pressed',       value:'inset 0px 4px 4px rgba(0,0,0,0.25)',    cls:'shadow-btn-pressed',          group:'Interacción', use:'Botón — estado pressed (inset)' },
+];
+
+function shTrigger(content, filename, type) {
+  var blob = new Blob([content], { type: type });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+window.shDownloadCSS = function() {
+  var d = new Date().toISOString().split('T')[0];
+  var lines = [
+    '/* ════════════════════════════════════════════════════════════════════',
+    '   SHADOW TOKENS — Compensar Medicina Prepagada · Design System v2',
+    '   ────────────────────────────────────────────────────────────────────',
+    '   Fuente    : Figma · Compensar v2 – Sistema de diseño',
+    '   Generado  : ' + d,
+    '   Archivo   : shadow-tokens.css',
+    '',
+    '   CONTENIDO',
+    '   ─────────',
+    '   1. Custom properties :root  — --shadow-1 … --shadow-focus',
+    '   2. Clases utilitarias       — .shadow-1 … .shadow-focus',
+    '   3. Alias de elevación       — .elevation-1 … .elevation-4',
+    '',
+    '   REGLA DE USO',
+    '   ────────────',
+    '   ✓  box-shadow: var(--shadow-2);',
+    '   ✓  class="shadow-card"',
+    '   ✗  Nunca valores hardcoded: box-shadow: 0px 8px 24px rgba(0,0,0,.12)',
+    '',
+    '   INSTALACIÓN',
+    '   ───────────',
+    '   <link rel="stylesheet" href="shadow-tokens.css">',
+    '   ════════════════════════════════════════════════════════════════════ */',
+    '',
+    '/* ─────────────────────────────────────────────────────────────────────',
+    '   1. CUSTOM PROPERTIES',
+    '   ──────────────────────────────────────────────────────────────────── */',
+    ':root {'
+  ];
+  var lastGroup = '';
+  SH_TOKENS.forEach(function(t) {
+    if (t.group !== lastGroup) {
+      lines.push('');
+      lines.push('  /* ── ' + t.group + ' */');
+      lastGroup = t.group;
+    }
+    lines.push('  ' + t.var + ': ' + t.value + ';  /* ' + t.use + ' */');
+  });
+  lines.push('}');
+  lines.push('');
+  lines.push('/* ─────────────────────────────────────────────────────────────────────');
+  lines.push('   2. CLASES UTILITARIAS');
+  lines.push('   Aplica la sombra directamente con una clase CSS.');
+  lines.push('   Ej: <div class="shadow-card"> o <button class="shadow-btn">');
+  lines.push('   ──────────────────────────────────────────────────────────────────── */');
+  SH_TOKENS.forEach(function(t) {
+    lines.push('.' + t.cls + ' { box-shadow: var(' + t.var + '); }  /* ' + t.use + ' */');
+  });
+  lines.push('');
+  lines.push('/* ─────────────────────────────────────────────────────────────────────');
+  lines.push('   3. ALIAS DE ELEVACIÓN');
+  lines.push('   Comunicar profundidad de forma abstracta (nivel 1–4).');
+  lines.push('   Permite remapear la escala de elevación sin tocar los componentes.');
+  lines.push('   ──────────────────────────────────────────────────────────────────── */');
+  lines.push('.elevation-0 { box-shadow: none; }                        /* Plano */');
+  lines.push('.elevation-1 { box-shadow: var(--shadow-1); }             /* Tarjeta base */');
+  lines.push('.elevation-2 { box-shadow: var(--shadow-2); }             /* Tarjeta hover */');
+  lines.push('.elevation-3 { box-shadow: var(--shadow-3); }             /* Dropdown, popover */');
+  lines.push('.elevation-4 { box-shadow: var(--shadow-4); }             /* Modal, drawer */');
+  lines.push('');
+  lines.push('/* ── FIN: shadow-tokens.css ─── Compensar Medicina Prepagada ── */');
+  shTrigger(lines.join('\n'), 'shadow-tokens.css', 'text/css');
+};
+
+window.shDownloadSCSS = function() {
+  var d = new Date().toISOString().split('T')[0];
+  var lines = [
+    '// ════════════════════════════════════════════════════════════════════',
+    '// SHADOW TOKENS — Compensar Medicina Prepagada · Design System v2',
+    '// ────────────────────────────────────────────────────────────────────',
+    '// Fuente    : Figma · Compensar v2 – Sistema de diseño',
+    '// Generado  : ' + d,
+    '// Archivo   : _shadow-tokens.scss',
+    '//',
+    '// CONTENIDO',
+    '// ─────────',
+    '// 1. Variables Sass  ($shadow-1: …)',
+    '// 2. CSS custom properties en :root',
+    '// 3. Mixins  (@mixin shadow-card)',
+    '// 4. Mapa de elevación + generación de clases',
+    '//',
+    '// USO',
+    '// ───',
+    '// @use "shadow-tokens" as *;',
+    '//',
+    '// .mi-componente {',
+    '//   box-shadow: var(--shadow-card);     ← en CSS puro',
+    '//   @include shadow-card;               ← con el mixin',
+    '// }',
+    '// ════════════════════════════════════════════════════════════════════',
+    ''
+  ];
+  var lastGroup = '';
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  lines.push('// 1. VARIABLES SASS');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  SH_TOKENS.forEach(function(t) {
+    if (t.group !== lastGroup) {
+      lines.push('');
+      lines.push('// ── ' + t.group);
+      lastGroup = t.group;
+    }
+    lines.push('$' + t.cls + ': ' + t.value + ';  // ' + t.use);
+  });
+  lines.push('');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  lines.push('// 2. CSS CUSTOM PROPERTIES');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  lines.push(':root {');
+  var lastGroup2 = '';
+  SH_TOKENS.forEach(function(t) {
+    if (t.group !== lastGroup2) {
+      lines.push('');
+      lines.push('  // ── ' + t.group);
+      lastGroup2 = t.group;
+    }
+    lines.push('  ' + t.var + ': #{$' + t.cls + '};');
+  });
+  lines.push('}');
+  lines.push('');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  lines.push('// 3. MIXINS');
+  lines.push('// Uso: @include shadow-card; dentro de un bloque CSS');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  SH_TOKENS.forEach(function(t) {
+    lines.push('@mixin ' + t.cls + ' { box-shadow: $' + t.cls + '; }  // ' + t.use);
+  });
+  lines.push('');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  lines.push('// 4. MAPA DE ELEVACIÓN');
+  lines.push('// Permite referenciar el nivel de elevación de forma semántica.');
+  lines.push('// @include elevation(2) → aplica la sombra de nivel 2.');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  lines.push('$elevation: (');
+  lines.push('  0: none,');
+  lines.push('  1: $shadow-1,');
+  lines.push('  2: $shadow-2,');
+  lines.push('  3: $shadow-3,');
+  lines.push('  4: $shadow-4,');
+  lines.push(');');
+  lines.push('');
+  lines.push('@mixin elevation($level) {');
+  lines.push('  box-shadow: map-get($elevation, $level);');
+  lines.push('}');
+  lines.push('');
+  lines.push('@each $level, $val in $elevation {');
+  lines.push('  .elevation-#{$level} { box-shadow: $val; }');
+  lines.push('}');
+  lines.push('');
+  lines.push('// ── FIN: _shadow-tokens.scss ─── Compensar Medicina Prepagada ──');
+  shTrigger(lines.join('\n'), '_shadow-tokens.scss', 'text/plain');
+};
+
+window.shDownloadJSON = function() {
+  var d = new Date().toISOString().split('T')[0];
+  var out = {
+    metadata: {
+      title:       'Shadow Tokens — Compensar Medicina Prepagada',
+      version:     '2.0',
+      generatedAt: d,
+      source:      'Figma · Compensar v2 – Sistema de diseño',
+      description: 'Tokens de elevación e interacción. Comunican profundidad y respuesta táctil sin usar bordes.',
+      usage: {
+        correct:   'box-shadow: var(--shadow-card)',
+        incorrect: 'box-shadow: 0px 8px 24px rgba(0,0,0,.12)  ←  nunca hardcoded',
+        rule:      'Usar siempre el token. Nunca valores box-shadow directos.'
+      },
+      groups: ['Elevación', 'UI Components', 'Interacción', 'Focus']
+    },
+    tokens: SH_TOKENS.map(function(t) {
+      return {
+        token:       t.token,
+        cssVariable: t.var,
+        sassVariable: '$' + t.cls,
+        cssClass:    '.' + t.cls,
+        value:       t.value,
+        group:       t.group,
+        usage:       t.use
+      };
+    })
+  };
+  shTrigger(JSON.stringify(out, null, 2), 'shadow-tokens.json', 'application/json');
+};
+
+window.shCopyVars = function() {
+  var lines = [':root {'];
+  SH_TOKENS.forEach(function(t) {
+    lines.push('  ' + t.var + ': ' + t.value + ';');
+  });
+  lines.push('}');
+  navigator.clipboard.writeText(lines.join('\n')).then(function() {
+    var btn = document.querySelector('[onclick="shCopyVars()"]');
+    if (btn) {
+      var orig = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-rounded">check</span> ¡Copiado!';
+      setTimeout(function() { btn.innerHTML = orig; }, 1600);
+    }
+  });
+};
+
+})();
+</script>
+
+</section>
+
+<style>
+/* ═══ SOMBRAS ═══════════════════════════════════════════ */
+.sh-figma-bar {
+  display:flex;align-items:center;gap:var(--space-3);
+  background:var(--ui-surface-alt);border-left:3px solid var(--ui-accent);
+  border-radius:0 8px 8px 0;padding:var(--space-3) var(--space-5);
+  font-size:13px;color:var(--ui-text);margin-bottom:var(--space-6);flex-wrap:wrap;
+}
+.sh-figma-bar .material-symbols-rounded {color:var(--ui-accent);flex-shrink:0}
+.sh-figma-bar code {font-family:var(--font-code);font-size:11.5px;background:var(--ui-surface);padding:1px 5px;border-radius:4px;color:var(--ui-accent)}
+.sh-figma-bar .ct-figma-link {margin-left:auto;white-space:nowrap}
+
+.sh-group-label {
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;
+  color:var(--ui-text-muted);letter-spacing:.08em;text-transform:uppercase;
+  margin:0 0 var(--space-3);
+  border-bottom:1px solid var(--ui-border);padding-bottom:var(--space-3);
+}
+.sh-group-label .material-symbols-rounded {font-size:15px;color:var(--ui-accent)}
+.sh-group-desc {font-size:13px;color:var(--ui-text-muted);margin:0 0 var(--space-5)}
+
+/* ── Grid elevación ──────────────── */
+.sh-elevation-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:var(--space-5);
+}
+.sh-card {
+  background:var(--ui-surface);border:1px solid var(--ui-border);
+  border-radius:14px;overflow:hidden;
+  transition:border-color .15s;
+}
+.sh-card:hover {border-color:var(--ui-accent)}
+.sh-preview-wrap {
+  background:var(--ui-surface-alt);
+  padding:var(--space-7) var(--space-5);
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--ui-border);
+  min-height:110px;
+}
+.sh-preview-card {
+  background:var(--ui-surface);border-radius:10px;
+  padding:var(--space-4) var(--space-6);
+  font-size:12px;font-weight:500;color:var(--ui-text-muted);
+  text-align:center;
+}
+.sh-card-body {padding:var(--space-4) var(--space-5)}
+.sh-card-level {font-size:10px;font-weight:700;color:var(--ui-accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.sh-card-name {font-size:14px;font-weight:600;color:var(--ui-text);margin-bottom:4px}
+.sh-card-use {font-size:11.5px;color:var(--ui-text-muted);margin-bottom:var(--space-3);line-height:1.4}
+.sh-alias-badge {
+  display:inline-block;font-size:9px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;background:var(--ui-tag-bg);color:var(--ui-tag-text);
+  padding:1px 5px;border-radius:4px;margin-left:4px;vertical-align:middle;
+}
+
+/* ── Token row ───────────────────── */
+.sh-token-row {display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.sh-chip {
+  font-family:var(--font-code);font-size:10.5px;
+  background:var(--ui-surface-alt);color:var(--ui-accent);
+  padding:2px 7px;border-radius:5px;cursor:pointer;
+  border:1px solid transparent;transition:border-color .15s,background .15s;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px;
+  display:inline-block;
+}
+.sh-chip:hover {border-color:var(--ui-accent);background:var(--ui-tag-bg)}
+.sh-copy-val {
+  background:none;border:1px solid var(--ui-border);border-radius:6px;
+  cursor:pointer;padding:3px 5px;color:var(--ui-text-muted);
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background .15s,color .15s;flex-shrink:0;
+}
+.sh-copy-val:hover {background:var(--ui-tag-bg);color:var(--ui-accent)}
+.sh-copy-val .material-symbols-rounded {font-size:13px}
+.sh-value {
+  font-family:var(--font-code);font-size:10px;color:var(--ui-text-muted);
+  display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+/* ── Lista UI Components ─────────── */
+.sh-list {display:flex;flex-direction:column;gap:var(--space-3)}
+.sh-list-row {
+  display:flex;align-items:center;gap:var(--space-5);
+  background:var(--ui-surface);border:1px solid var(--ui-border);
+  border-radius:12px;padding:var(--space-4) var(--space-5);
+  transition:border-color .15s;
+}
+.sh-list-row:hover {border-color:var(--ui-accent)}
+.sh-list-preview {
+  width:60px;height:60px;border-radius:10px;
+  background:var(--ui-surface);flex-shrink:0;
+}
+.sh-list-meta {flex:1;display:flex;flex-direction:column;gap:4px}
+.sh-list-name {font-size:14px;font-weight:600;color:var(--ui-text)}
+.sh-list-use {font-size:11.5px;color:var(--ui-text-muted)}
+.sh-list-use code {
+  font-family:var(--font-code);font-size:10.5px;
+  background:var(--ui-surface-alt);padding:1px 4px;
+  border-radius:3px;color:var(--ui-accent);
+}
+
+/* ── Grid interacción ────────────── */
+.sh-interaction-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:var(--space-5);
+}
+.sh-int-card {
+  background:var(--ui-surface);border:1px solid var(--ui-border);
+  border-radius:14px;overflow:hidden;transition:border-color .15s;
+}
+.sh-int-card:hover {border-color:var(--ui-accent)}
+.sh-int-preview {
+  background:var(--ui-surface-alt);
+  padding:var(--space-6) var(--space-5);
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--ui-border);
+  min-height:96px;
+}
+.sh-btn-demo {
+  padding:10px 22px;border-radius:8px;
+  font-size:13px;font-weight:500;font-family:var(--font-body);
+  cursor:default;border:none;letter-spacing:.01em;
+}
+.sh-btn-naranja {background:#ff6600;color:#fff}
+.sh-btn-violeta {background:#6d4cc5;color:#fff}
+.sh-btn-pressed {
+  background:var(--ui-surface);color:var(--ui-text);
+  border:1px solid var(--ui-border)!important;
+}
+</style>
+<script>// globals from app.js</script>

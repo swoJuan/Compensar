@@ -1,0 +1,264 @@
+<section class="section" id="principios">
+  <div class="section-header">
+    <div class="section-eyebrow">1.1</div>
+    <h1 class="section-title">Principios del Sistema</h1>
+    <p class="section-desc">
+      Este sistema guía todas las decisiones de diseño para el Portal Público y el Portal Transaccional de Medicina Prepagada. Cada componente debe alinearse con estos principios.
+    </p>
+  </div>
+
+  <div class="principles-grid">
+
+    <!-- 01 Claridad -->
+    <div class="principle-card">
+      <div class="principle-number">01</div>
+      <div class="principle-body">
+        <div class="principle-icon-wrap">
+          <span class="material-symbols-rounded">visibility</span>
+        </div>
+        <h2 class="principle-title">Claridad</h2>
+        <p class="principle-desc">
+          La información debe presentarse de forma comprensible, directa y sin ambigüedades.
+        </p>
+        <div class="principle-rule">
+          <span class="material-symbols-rounded">arrow_forward</span>
+          Evitar tecnicismos innecesarios y textos extensos en procesos médicos.
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 Jerarquía funcional -->
+    <div class="principle-card">
+      <div class="principle-number">02</div>
+      <div class="principle-body">
+        <div class="principle-icon-wrap">
+          <span class="material-symbols-rounded">account_tree</span>
+        </div>
+        <h2 class="principle-title">Jerarquía funcional</h2>
+        <p class="principle-desc">
+          Cada pantalla debe guiar al usuario hacia la acción correcta sin distracciones.
+        </p>
+        <div class="principle-rule">
+          <span class="material-symbols-rounded">arrow_forward</span>
+          Una acción primaria clara por vista.
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 Accesibilidad por defecto -->
+    <div class="principle-card">
+      <div class="principle-number">03</div>
+      <div class="principle-body">
+        <div class="principle-icon-wrap">
+          <span class="material-symbols-rounded">accessibility_new</span>
+        </div>
+        <h2 class="principle-title">Accesibilidad por defecto</h2>
+        <p class="principle-desc">
+          La accesibilidad no es opcional ni posterior; es parte del diseño desde el inicio.
+        </p>
+        <div class="principle-rule">
+          <span class="material-symbols-rounded">arrow_forward</span>
+          Todo componente debe cumplir WCAG 2.2 AA en Light, Dark y Alto Contraste.
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 Consistencia sistemática -->
+    <div class="principle-card">
+      <div class="principle-number">04</div>
+      <div class="principle-body">
+        <div class="principle-icon-wrap">
+          <span class="material-symbols-rounded">grid_view</span>
+        </div>
+        <h2 class="principle-title">Consistencia sistemática</h2>
+        <p class="principle-desc">
+          Los patrones deben repetirse de forma coherente para reducir carga cognitiva.
+        </p>
+        <div class="principle-rule">
+          <span class="material-symbols-rounded">arrow_forward</span>
+          No crear variantes si ya existe un patrón aprobado.
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Empatía estructurada -->
+    <div class="principle-card principle-card--wide">
+      <div class="principle-number">05</div>
+      <div class="principle-body">
+        <div class="principle-icon-wrap">
+          <span class="material-symbols-rounded">favorite</span>
+        </div>
+        <h2 class="principle-title">Empatía estructurada</h2>
+        <p class="principle-desc">
+          En procesos sensibles, el sistema debe comunicar con claridad y respeto.
+        </p>
+        <div class="principle-rule">
+          <span class="material-symbols-rounded">arrow_forward</span>
+          Los mensajes críticos deben orientar y ofrecer acción siguiente.
+        </div>
+      </div>
+    </div>
+
+    <!-- Nota obligatoria -->
+    <div class="principle-note">
+      <div class="principle-note-icon">
+        <span class="material-symbols-rounded">info</span>
+      </div>
+      <p>
+        Estos principios son obligatorios para diseño, desarrollo y QA.
+        Cualquier excepción <strong>debe ser validada por UX.</strong>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ——— PRINCIPLES GRID ———————————————————————————————————— */
+.principles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.principle-card {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 14px;
+  padding: var(--space-6);
+  position: relative;
+  transition: box-shadow .15s, transform .15s;
+  overflow: hidden;
+}
+
+.principle-card:hover {
+  box-shadow: var(--elevation-2);
+  transform: translateY(-2px);
+}
+
+/* Fondo decorativo sutil */
+.principle-card::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 100px; height: 100px;
+  background: var(--complementarios-naranja);
+  border-radius: 50%;
+  opacity: .4;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .principle-card::before { opacity: .08; }
+[data-theme="high-contrast"] .principle-card::before { display: none; }
+
+.principle-card--wide {
+  grid-column: 1;
+}
+
+/* Número */
+.principle-number {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--ui-accent);
+  letter-spacing: .08em;
+  margin-bottom: var(--space-3);
+}
+
+/* Ícono */
+.principle-icon-wrap {
+  width: 36px; height: 36px;
+  background: var(--ui-tag-bg);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: var(--space-3);
+}
+
+.principle-icon-wrap .material-symbols-rounded {
+  font-size: 20px;
+  color: var(--ui-accent);
+}
+
+/* Título */
+.principle-title {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ui-accent);
+  margin-bottom: var(--space-3);
+}
+
+/* Descripción */
+.principle-desc {
+  font-size: 13.5px;
+  color: var(--ui-text);
+  line-height: 1.65;
+  margin-bottom: var(--space-4);
+}
+
+/* Regla */
+.principle-rule {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  background: var(--ui-surface-alt);
+  border-radius: 8px;
+  padding: var(--space-3) var(--space-4);
+  font-size: 12.5px;
+  color: var(--ui-text-muted);
+  line-height: 1.5;
+}
+
+.principle-rule .material-symbols-rounded {
+  font-size: 15px;
+  color: var(--ui-accent);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ——— NOTA ——————————————————————————————————————————————— */
+.principle-note {
+  grid-column: 2;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  background: var(--product-accent-40);
+  border: 1px solid var(--product-accent-50);
+  border-radius: 14px;
+  padding: var(--space-5) var(--space-6);
+  align-self: end;
+}
+
+[data-theme="dark"] .principle-note {
+  background: rgba(3,131,138,.15);
+  border-color: rgba(3,131,138,.3);
+}
+
+[data-theme="high-contrast"] .principle-note {
+  background: #000;
+  border-color: #fff;
+}
+
+.principle-note-icon {
+  width: 36px; height: 36px;
+  background: var(--product-accent-100);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.principle-note-icon .material-symbols-rounded {
+  font-size: 20px;
+  color: #fff;
+}
+
+.principle-note p {
+  font-size: 13.5px;
+  color: var(--use-text-primary);
+  line-height: 1.6;
+}
+
+.principle-note strong {
+  color: var(--ui-text);
+}
+</style>

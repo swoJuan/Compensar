@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compensar — Design System · Drupal / ZT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-brand">
+    <a href="index.html" class="ds-back-link" title="Volver al portal">
+      <span class="material-symbols-rounded" style="font-size:18px;color:var(--ui-text-muted)">arrow_back</span>
+    </a>
+    <div class="logo-mark">C</div>
+    <span class="brand-name">Design System</span>
+    <span class="brand-tag">Drupal · ZT</span>
+  </div>
+  <div class="header-right">
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Buscar tokens, componentes…">
+    </div>
+    <div class="theme-switcher">
+      <button id="btn-light" onclick="setTheme('light')" class="active">☀ Claro</button>
+      <button id="btn-dark"  onclick="setTheme('dark')">🌙 Oscuro</button>
+      <button id="btn-hc"    onclick="setTheme('high-contrast')">◑ Alto contraste</button>
+    </div>
+  </div>
+</header>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Inicio</div>
+      <a class="sidebar-link" href="#introduccion">
+        <span class="material-symbols-rounded">home</span> Introducción
+      </a>
+      <a class="sidebar-link" href="#principios">
+        <span class="material-symbols-rounded">star</span> Principios
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Fundamentos</div>
+
+      <!-- Colores (acordeón) -->
+      <button class="sidebar-link sidebar-accordion" data-group="colores">
+        <span class="material-symbols-rounded">palette</span>
+        <span class="sidebar-accordion-label">Colores</span>
+        <span class="material-symbols-rounded sidebar-accordion-arrow">expand_more</span>
+      </button>
+      <div class="sidebar-subnav" id="subnav-colores">
+        <a class="sidebar-link sidebar-sublink" href="#colores-base">
+          <span class="material-symbols-rounded">circle</span> Base
+        </a>
+        <a class="sidebar-link sidebar-sublink" href="#colores-producto">
+          <span class="material-symbols-rounded">circle</span> Producto
+        </a>
+        <a class="sidebar-link sidebar-sublink" href="#colores-uso">
+          <span class="material-symbols-rounded">circle</span> Uso
+        </a>
+        <a class="sidebar-link sidebar-sublink" href="#colores-utilidades">
+          <span class="material-symbols-rounded">circle</span> Utilidades
+        </a>
+      </div>
+
+      <a class="sidebar-link" href="#tipografia">
+        <span class="material-symbols-rounded">text_fields</span> Tipografía
+      </a>
+      <a class="sidebar-link" href="#espaciado">
+        <span class="material-symbols-rounded">space_bar</span> Espaciado
+      </a>
+      <a class="sidebar-link" href="#border-radius">
+        <span class="material-symbols-rounded">rounded_corner</span> Border radius
+      </a>
+      <a class="sidebar-link" href="#layout">
+        <span class="material-symbols-rounded">grid_view</span> Layout System
+      </a>
+      <a class="sidebar-link" href="#sombras">
+        <span class="material-symbols-rounded">layers</span> Sombras
+      </a>
+
+      <!-- Icon System (acordeón) -->
+      <button class="sidebar-link sidebar-accordion" data-group="iconos">
+        <span class="material-symbols-rounded">interests</span>
+        <span class="sidebar-accordion-label">Icon System</span>
+        <span class="material-symbols-rounded sidebar-accordion-arrow">expand_more</span>
+      </button>
+      <div class="sidebar-subnav" id="subnav-iconos">
+        <a class="sidebar-link sidebar-sublink" href="#iconos-intro">
+          <span class="material-symbols-rounded">circle</span> Introducción
+        </a>
+        <a class="sidebar-link sidebar-sublink" href="#iconos-conectar">
+          <span class="material-symbols-rounded">circle</span> Implementación
+        </a>
+        <a class="sidebar-link sidebar-sublink" href="#iconos-libreria">
+          <span class="material-symbols-rounded">circle</span> Librería
+        </a>
+      </div>
+
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Componentes</div>
+      <a class="sidebar-link" href="#botones">
+        <span class="material-symbols-rounded">smart_button</span> Botones
+      </a>
+      <a class="sidebar-link" href="#inputs">
+        <span class="material-symbols-rounded">input</span> Inputs
+      </a>
+      <a class="sidebar-link" href="#badges">
+        <span class="material-symbols-rounded">label</span> Badges
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Tokens semánticos</div>
+      <a class="sidebar-link" href="#tokens-texto">
+        <span class="material-symbols-rounded">title</span> Texto
+      </a>
+      <a class="sidebar-link" href="#tokens-tablas">
+        <span class="material-symbols-rounded">table</span> Tablas
+      </a>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <main class="main">
+    <div id="content">
+      <div class="fragment-loading">
+        <div class="fragment-loading-spinner"></div>
+        <span class="fragment-loading-text">Cargando…</span>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<style>
+.ds-back-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  text-decoration: none;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.ds-back-link:hover { background: var(--ui-surface-alt); }
+</style>
+
+<!-- SCRIPTS -->
+<script type="module">
+  import { init } from './js/app.js';
+  import { initRouter } from './js/loader.js';
+  init();
+  initRouter();
+</script>
+
+</body>
+</html>

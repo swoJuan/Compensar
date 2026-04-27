@@ -1,0 +1,43 @@
+// ============================================================
+//  _tokens-spacing.scss
+//  Escala px-based. Múltiplos de 4 y 8.
+//  Uso: margin, padding, gap, grid gaps.
+// ============================================================
+
+$space-0:   0;
+$space-2:   0.125rem;  //  2px — uso restringido
+$space-4:   0.25rem;   //  4px — uso restringido
+$space-8:   0.5rem;    //  8px
+$space-12:  0.75rem;   // 12px — uso restringido
+$space-16:  1rem;      // 16px ← base
+$space-24:  1.5rem;    // 24px
+$space-32:  2rem;      // 32px
+$space-48:  3rem;      // 48px
+$space-64:  4rem;      // 64px
+$space-80:  5rem;      // 80px
+$space-96:  6rem;      // 96px
+$space-128: 8rem;      // 128px
+
+// ── Mapa para utilidades y Bootstrap $spacers ────────────
+$spacers: (
+  0:   $space-0,
+  1:   $space-4,
+  2:   $space-8,
+  3:   $space-16,
+  4:   $space-24,
+  5:   $space-32,
+  6:   $space-48,
+  7:   $space-64,
+  8:   $space-80,
+  9:   $space-96,
+  10:  $space-128,
+) !default;
+
+// ── Alias semánticos ─────────────────────────────────────
+$space-xs:  $space-4;
+$space-sm:  $space-8;
+$space-md:  $space-16;
+$space-lg:  $space-24;
+$space-xl:  $space-32;
+$space-2xl: $space-48;
+$space-3xl: $space-64;

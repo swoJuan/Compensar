@@ -1,0 +1,971 @@
+<section class="section" id="botones">
+
+<!-- ══════════════════════════════════════════════════════════
+     mp-button — Estilos del componente (live preview)
+     ══════════════════════════════════════════════════════════ -->
+<style>
+/* ── Base ─────────────────────────────────────────────────── */
+.mp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--font-size-btn);       /* 16px */
+  font-weight: var(--font-weight-bold);  /* 700 */
+  letter-spacing: 0.022em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow .2s, background .2s, opacity .15s;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+.mp-btn .material-symbols-rounded { font-size: 22px; line-height: 1; flex-shrink: 0; }
+
+/* ── Primario ─────────────────────────────────────────────── */
+.mp-btn--primario {
+  background: linear-gradient(180deg, var(--base-brand-80) 0%, var(--base-primary-30) 100%);
+  color: #ffffff;
+}
+.mp-btn--primario:hover:not(:disabled) {
+  background: linear-gradient(180deg, var(--base-primary-20) 0%, var(--base-brand-80) 100%);
+  box-shadow: var(--shadow-button-hover);
+}
+.mp-btn--primario:active:not(:disabled) { box-shadow: var(--shadow-button-pressed); }
+.mp-btn--primario:focus-visible { outline: 3px solid var(--base-brand-80); outline-offset: 3px; }
+
+/* ── Secundario ───────────────────────────────────────────── */
+.mp-btn--secundario {
+  background: transparent;
+  color: var(--base-brand-80);
+  border: 1.5px solid var(--base-brand-80);
+}
+.mp-btn--secundario:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--base-brand-80) 8%, transparent);
+  box-shadow: var(--shadow-button-hover);
+}
+.mp-btn--secundario:active:not(:disabled) {
+  background: color-mix(in srgb, var(--base-brand-80) 14%, transparent);
+}
+.mp-btn--secundario:focus-visible { outline: 3px solid var(--base-brand-80); outline-offset: 3px; }
+
+/* ── Terciario ────────────────────────────────────────────── */
+.mp-btn--terciario {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--base-brand-80);
+  font-size: var(--font-size-md); /* 14px */
+}
+.mp-btn--terciario:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--base-brand-80) 8%, transparent);
+  text-decoration: underline;
+}
+.mp-btn--terciario:focus-visible { outline: 3px solid var(--base-brand-80); outline-offset: 2px; }
+
+/* ── Especial ─────────────────────────────────────────────── */
+.mp-btn--especial {
+  background: linear-gradient(180deg, var(--colors-violeta-500) 0%, var(--colors-violeta-700) 100%);
+  color: #ffffff;
+}
+.mp-btn--especial:hover:not(:disabled) {
+  background: linear-gradient(180deg, var(--colors-violeta-700) 0%, var(--colors-violeta-500) 100%);
+  box-shadow: var(--shadow-button-special-hover);
+}
+.mp-btn--especial:active:not(:disabled) { box-shadow: var(--shadow-button-pressed); }
+.mp-btn--especial:focus-visible { outline: 3px solid var(--colors-violeta-500); outline-offset: 3px; }
+
+/* ── Disabled ─────────────────────────────────────────────── */
+.mp-btn:disabled,
+.mp-btn[aria-disabled="true"] {
+  background: var(--base-neutral-30) !important;
+  color: var(--base-neutral-50) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Dark mode ────────────────────────────────────────────── */
+[data-theme="dark"] .mp-btn--secundario,
+[data-theme="dark"] .mp-btn--terciario {
+  color: var(--ui-accent);
+  border-color: var(--ui-accent);
+}
+[data-theme="dark"] .mp-btn--secundario:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ui-accent) 12%, transparent);
+}
+
+/* ── High Contrast ────────────────────────────────────────── */
+[data-theme="high-contrast"] .mp-btn--primario {
+  background: var(--base-brand-80);  /* #ffff00 en HC */
+  color: #000000;
+}
+[data-theme="high-contrast"] .mp-btn--secundario {
+  color: var(--base-brand-80);
+  border: 2px solid var(--base-brand-80);
+}
+[data-theme="high-contrast"] .mp-btn--terciario {
+  color: var(--base-brand-80);
+  text-decoration: underline;
+}
+[data-theme="high-contrast"] .mp-btn--especial {
+  background: var(--base-brand-80);
+  color: #000000;
+}
+[data-theme="high-contrast"] .mp-btn:focus-visible {
+  outline-color: var(--color-focus-ring, #ffff00);
+  outline-width: var(--color-focus-ring-width, 3px);
+}
+
+/* ── Demo helpers (estado forzado para showcases) ─────────── */
+.mp-btn--demo-hover.mp-btn--primario {
+  background: linear-gradient(180deg, var(--base-primary-20) 0%, var(--base-brand-80) 100%);
+  box-shadow: var(--shadow-button-hover);
+}
+.mp-btn--demo-hover.mp-btn--secundario {
+  background: color-mix(in srgb, var(--base-brand-80) 8%, transparent);
+  box-shadow: var(--shadow-button-hover);
+}
+.mp-btn--demo-pressed.mp-btn--primario,
+.mp-btn--demo-pressed.mp-btn--secundario { box-shadow: var(--shadow-button-pressed); }
+.mp-btn--demo-focus { outline: 3px solid var(--base-brand-80) !important; outline-offset: 3px !important; }
+
+/* ── Layouts de esta sección ──────────────────────────────── */
+.btn-tipos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+@media (max-width: 900px) { .btn-tipos-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px)  { .btn-tipos-grid { grid-template-columns: 1fr; } }
+
+.btn-tipo-card {
+  border: 1.5px solid var(--ui-border);
+  border-radius: 16px;
+  padding: var(--space-5);
+  background: var(--ui-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.btn-tipo-card__demo {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ui-bg);
+  border-radius: 10px;
+  border: 1px solid var(--ui-border);
+}
+.btn-tipo-card__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ui-text);
+  letter-spacing: .01em;
+}
+.btn-tipo-card__desc {
+  font-size: 12px;
+  color: var(--ui-text-muted);
+  line-height: 1.55;
+}
+.btn-tipo-card__uso {
+  font-size: 11px;
+  color: var(--ui-text-muted);
+  line-height: 1.5;
+  border-top: 1px solid var(--ui-border);
+  padding-top: var(--space-3);
+  margin-top: auto;
+}
+.btn-tipo-card__uso strong { color: var(--ui-text); font-weight: 600; }
+
+.btn-estados-table {
+  display: grid;
+  grid-template-columns: 100px repeat(5, 1fr);
+  gap: 0;
+  border: 1px solid var(--ui-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: var(--space-4);
+}
+.btn-estados-table > div {
+  padding: 14px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--ui-border);
+  border-right: 1px solid var(--ui-border);
+}
+.btn-estados-table > div:last-child,
+.btn-estados-table > div:nth-last-child(-n+6) { border-bottom: none; }
+.btn-estados-table > div:nth-child(6n) { border-right: none; }
+.btn-estados-cell--header {
+  background: var(--ui-surface-alt);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ui-text-muted);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  justify-content: center;
+}
+.btn-estados-cell--label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ui-text-muted);
+  justify-content: flex-end;
+  padding-right: 14px;
+  background: var(--ui-surface-alt);
+}
+@media (max-width: 700px) {
+  .btn-estados-table { grid-template-columns: 80px repeat(3, 1fr); }
+  .btn-estados-table .hide-mobile { display: none; }
+}
+
+.btn-modos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+@media (max-width: 700px) { .btn-modos-grid { grid-template-columns: 1fr; } }
+
+.btn-modo-box {
+  border-radius: 14px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+.btn-modo-box--light { background: #f8f7f7; border: 1px solid #e0e0e0; }
+.btn-modo-box--dark  { background: #111318; border: 1px solid #333647; }
+.btn-modo-box--hc    { background: #000000; border: 2px solid #ffffff; }
+.btn-modo-box__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .5;
+}
+.btn-modo-box--light .btn-modo-box__label { color: #111; }
+.btn-modo-box--dark  .btn-modo-box__label { color: #fff; }
+.btn-modo-box--hc    .btn-modo-box__label { color: #fff; }
+.btn-modo-box__row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+.btn-contenido-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: var(--space-5);
+}
+.btn-contenido-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.btn-contenido-chip__label {
+  font-size: 11px;
+  color: var(--ui-text-muted);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.mp-api-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.mp-api-table th {
+  background: var(--ui-surface-alt);
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ui-text-muted);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ui-border);
+}
+.mp-api-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--ui-border);
+  vertical-align: top;
+  color: var(--ui-text);
+  line-height: 1.5;
+}
+.mp-api-table tr:last-child td { border-bottom: none; }
+.mp-api-table code {
+  font-family: var(--font-code);
+  font-size: 11.5px;
+  background: var(--ui-surface-alt);
+  border: 1px solid var(--ui-border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--ui-accent);
+}
+.mp-api-table .api-type  { color: var(--base-blue-70); font-family: var(--font-code); font-size: 12px; }
+.mp-api-table .api-default { color: var(--ui-text-muted); font-family: var(--font-code); font-size: 12px; }
+
+.acc-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-4); }
+@media (max-width: 600px) { .acc-row { grid-template-columns: 1fr; } }
+.acc-card {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 12px;
+  padding: var(--space-4);
+}
+.acc-card__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ui-text);
+  margin-bottom: var(--space-3);
+}
+.acc-card__item {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ui-text-muted);
+  line-height: 1.6;
+  padding: 3px 0;
+}
+.acc-card__item::before {
+  content: '✓';
+  color: var(--base-green-70);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+</style>
+
+<!-- ══ HEADER ════════════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-eyebrow">Componentes</div>
+  <h1 class="section-title">2.1 — Botones</h1>
+  <p class="section-desc">Los botones permiten a los usuarios ejecutar acciones dentro de la interfaz. Son uno de los componentes más importantes del sistema; guían la interacción, la toma de decisiones y la jerarquía visual de cada pantalla.</p>
+</div>
+
+<!-- ══ VISTA GENERAL ═════════════════════════════════════════ -->
+<div class="subsection">
+  <div class="subsection-title">Vista general</div>
+  <div class="component-preview">
+    <div class="preview-bar">
+      <span class="preview-label">Live preview · interactúa con los botones</span>
+    </div>
+    <div class="preview-canvas" style="gap:16px;flex-wrap:wrap;padding:32px 28px;align-items:center;">
+      <button class="mp-btn mp-btn--primario">
+        <span class="material-symbols-rounded">check</span>Afiliarme
+      </button>
+      <button class="mp-btn mp-btn--secundario">
+        <span class="material-symbols-rounded">visibility</span>Ver planes
+      </button>
+      <button class="mp-btn mp-btn--terciario">Cancelar</button>
+      <button class="mp-btn mp-btn--especial">
+        Conocer planes<span class="material-symbols-rounded">arrow_forward</span>
+      </button>
+      <button class="mp-btn mp-btn--primario" disabled>No disponible</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TIPOS ══════════════════════════════════════════════════ -->
+<div class="subsection">
+  <div class="subsection-title">2.1.3 Tipos de botón</div>
+  <p style="font-size:13px;color:var(--ui-text-muted);margin-bottom:4px;">El sistema define cuatro tipos según su nivel de importancia en la interfaz.</p>
+  <div class="btn-tipos-grid">
+
+    <div class="btn-tipo-card">
+      <div class="btn-tipo-card__demo">
+        <button class="mp-btn mp-btn--primario">Afiliarme</button>
+      </div>
+      <div class="btn-tipo-card__name">Primario</div>
+      <div class="btn-tipo-card__desc">Acción principal de la pantalla. La más visible y de mayor jerarquía.</div>
+      <div class="btn-tipo-card__uso">
+        <strong>Usa para:</strong> confirmar acciones, continuar procesos, enviar formularios.<br>
+        <strong>Regla:</strong> solo uno por vista.
+      </div>
+    </div>
+
+    <div class="btn-tipo-card">
+      <div class="btn-tipo-card__demo">
+        <button class="mp-btn mp-btn--secundario">Ver planes</button>
+      </div>
+      <div class="btn-tipo-card__name">Secundario</div>
+      <div class="btn-tipo-card__desc">Apoyo para acciones menos relevantes o alternativas al primario.</div>
+      <div class="btn-tipo-card__uso">
+        <strong>Usa para:</strong> acciones alternativas, navegación secundaria.
+      </div>
+    </div>
+
+    <div class="btn-tipo-card">
+      <div class="btn-tipo-card__demo">
+        <button class="mp-btn mp-btn--terciario">Cancelar</button>
+      </div>
+      <div class="btn-tipo-card__name">Terciario</div>
+      <div class="btn-tipo-card__desc">Baja prioridad y mínima carga visual. Altura 32 px.</div>
+      <div class="btn-tipo-card__uso">
+        <strong>Usa para:</strong> acciones complementarias, acciones dentro de cards o tablas.
+      </div>
+    </div>
+
+    <div class="btn-tipo-card">
+      <div class="btn-tipo-card__demo">
+        <button class="mp-btn mp-btn--especial">Conocer planes</button>
+      </div>
+      <div class="btn-tipo-card__name">Especial</div>
+      <div class="btn-tipo-card__desc">Acciones estratégicas de negocio para conversión y adquisición.</div>
+      <div class="btn-tipo-card__uso">
+        <strong>Usa para:</strong> afiliarse a un plan, solicitar asesoría, iniciar afiliación.<br>
+        <strong>Regla:</strong> máximo uno por vista; no reemplaza al primario en flujos transaccionales.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CONTENIDO ═════════════════════════════════════════════ -->
+<div class="subsection">
+  <div class="subsection-title">2.1.2 Variantes de contenido</div>
+  <div class="component-preview">
+    <div class="preview-bar"><span class="preview-label">Todos los tipos de contenido — botón primario</span></div>
+    <div style="overflow-x:auto;">
+      <div class="btn-contenido-row">
+        <div class="btn-contenido-chip">
+          <span class="btn-contenido-chip__label">Solo icono</span>
+          <button class="mp-btn mp-btn--primario" style="padding:0;width:48px;" aria-label="Buscar">
+            <span class="material-symbols-rounded">search</span>
+          </button>
+        </div>
+        <div class="btn-contenido-chip">
+          <span class="btn-contenido-chip__label">Solo texto</span>
+          <button class="mp-btn mp-btn--primario">Continuar</button>
+        </div>
+        <div class="btn-contenido-chip">
+          <span class="btn-contenido-chip__label">Icono + texto</span>
+          <button class="mp-btn mp-btn--primario">
+            <span class="material-symbols-rounded">arrow_back</span>Volver
+          </button>
+        </div>
+        <div class="btn-contenido-chip">
+          <span class="btn-contenido-chip__label">Texto + icono</span>
+          <button class="mp-btn mp-btn--primario">
+            Continuar<span class="material-symbols-rounded">arrow_forward</span>
+          </button>
+        </div>
+        <div class="btn-contenido-chip">
+          <span class="btn-contenido-chip__label">Icono + texto + icono</span>
+          <button class="mp-btn mp-btn--primario">
+            <span class="material-symbols-rounded">add</span>Nueva cita<span class="material-symbols-rounded">expand_more</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ESTADOS ════════════════════════════════════════════════ -->
+<div class="subsection">
+  <div class="subsection-title">Estados interactivos</div>
+  <div class="btn-estados-table">
+    <!-- Header row -->
+    <div class="btn-estados-cell--header"></div>
+    <div class="btn-estados-cell--header">Enabled</div>
+    <div class="btn-estados-cell--header hide-mobile">Hover</div>
+    <div class="btn-estados-cell--header hide-mobile">Pressed</div>
+    <div class="btn-estados-cell--header">Focus</div>
+    <div class="btn-estados-cell--header">Disabled</div>
+    <!-- Primario -->
+    <div class="btn-estados-cell--label">Primario</div>
+    <div><button class="mp-btn mp-btn--primario">Botón</button></div>
+    <div class="hide-mobile"><button class="mp-btn mp-btn--primario mp-btn--demo-hover">Botón</button></div>
+    <div class="hide-mobile"><button class="mp-btn mp-btn--primario mp-btn--demo-pressed" style="box-shadow:inset 0 4px 4px rgba(0,0,0,.25)">Botón</button></div>
+    <div><button class="mp-btn mp-btn--primario mp-btn--demo-focus">Botón</button></div>
+    <div><button class="mp-btn mp-btn--primario" disabled>Botón</button></div>
+    <!-- Secundario -->
+    <div class="btn-estados-cell--label">Secundario</div>
+    <div><button class="mp-btn mp-btn--secundario">Botón</button></div>
+    <div class="hide-mobile"><button class="mp-btn mp-btn--secundario mp-btn--demo-hover">Botón</button></div>
+    <div class="hide-mobile"><button class="mp-btn mp-btn--secundario" style="background:color-mix(in srgb,var(--base-brand-80) 14%,transparent);box-shadow:var(--shadow-button-pressed)">Botón</button></div>
+    <div><button class="mp-btn mp-btn--secundario mp-btn--demo-focus">Botón</button></div>
+    <div><button class="mp-btn mp-btn--secundario" disabled>Botón</button></div>
+    <!-- Terciario -->
+    <div class="btn-estados-cell--label">Terciario</div>
+    <div><button class="mp-btn mp-btn--terciario">Botón</button></div>
+    <div class="hide-mobile"><button class="mp-btn mp-btn--terciario" style="background:color-mix(in srgb,var(--base-brand-80) 8%,transparent);text-decoration:underline">Botón</button></div>
+    <div class="hide-mobile"><button class="mp-btn mp-btn--terciario" style="text-decoration:underline;opacity:.75">Botón</button></div>
+    <div><button class="mp-btn mp-btn--terciario" style="outline:3px solid var(--base-brand-80);outline-offset:2px">Botón</button></div>
+    <div><button class="mp-btn mp-btn--terciario" disabled>Botón</button></div>
+    <!-- Especial -->
+    <div class="btn-estados-cell--label">Especial</div>
+    <div><button class="mp-btn mp-btn--especial">Botón</button></div>
+    <div class="hide-mobile"><button class="mp-btn mp-btn--especial" style="background:linear-gradient(180deg,var(--colors-violeta-700) 0%,var(--colors-violeta-500) 100%);box-shadow:var(--shadow-button-special-hover)">Botón</button></div>
+    <div class="hide-mobile"><button class="mp-btn mp-btn--especial" style="box-shadow:var(--shadow-button-pressed)">Botón</button></div>
+    <div><button class="mp-btn mp-btn--especial" style="outline:3px solid var(--colors-violeta-500);outline-offset:3px">Botón</button></div>
+    <div><button class="mp-btn mp-btn--especial" disabled>Botón</button></div>
+  </div>
+</div>
+
+<!-- ══ MODOS DE COLOR ═════════════════════════════════════════ -->
+<div class="subsection">
+  <div class="subsection-title">2.1.4 Modos de color</div>
+  <div class="btn-modos-grid">
+    <div class="btn-modo-box btn-modo-box--light">
+      <span class="btn-modo-box__label">Light (por defecto)</span>
+      <div class="btn-modo-box__row">
+        <button class="mp-btn mp-btn--primario">Primario</button>
+        <button class="mp-btn mp-btn--secundario">Secundario</button>
+        <button class="mp-btn mp-btn--terciario">Terciario</button>
+      </div>
+    </div>
+    <div class="btn-modo-box btn-modo-box--dark" data-theme="dark">
+      <span class="btn-modo-box__label">Dark</span>
+      <div class="btn-modo-box__row">
+        <button class="mp-btn mp-btn--primario">Primario</button>
+        <button class="mp-btn mp-btn--secundario">Secundario</button>
+        <button class="mp-btn mp-btn--terciario">Terciario</button>
+      </div>
+    </div>
+    <div class="btn-modo-box btn-modo-box--hc" data-theme="high-contrast">
+      <span class="btn-modo-box__label">Alto contraste</span>
+      <div class="btn-modo-box__row">
+        <button class="mp-btn mp-btn--primario">Primario</button>
+        <button class="mp-btn mp-btn--secundario">Secundario</button>
+        <button class="mp-btn mp-btn--terciario">Terciario</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ IMPLEMENTACIÓN — CODE TABS ════════════════════════════ -->
+<div class="subsection">
+  <div class="subsection-title">Implementación</div>
+</div>
+
+<div class="code-block">
+  <div class="code-tabs">
+    <button class="code-tab active" onclick="switchTab(this,'mpbtn-ng-uso')">Angular · uso</button>
+    <button class="code-tab" onclick="switchTab(this,'mpbtn-ng-comp')">Angular · componente</button>
+    <button class="code-tab" onclick="switchTab(this,'mpbtn-drupal')">Drupal Twig</button>
+    <button class="code-tab" onclick="switchTab(this,'mpbtn-css')">HTML + CSS</button>
+  </div>
+  <div class="code-content">
+    <button class="copy-btn" onclick="copyCode(this)">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Copiar
+    </button>
+
+    <!-- ── Tab 1: Angular · uso ─────────────────────────────── -->
+    <pre class="active" id="mpbtn-ng-uso"><span class="cmt">&lt;!-- Uso básico --&gt;</span>
+&lt;<span class="kw">mp-button</span> <span class="prop">tipo</span>=<span class="str">"primario"</span> <span class="prop">label</span>=<span class="str">"Afiliarme"</span>&gt;&lt;/<span class="kw">mp-button</span>&gt;
+&lt;<span class="kw">mp-button</span> <span class="prop">tipo</span>=<span class="str">"primario"</span> <span class="prop">label</span>=<span class="str">"Continuar"</span> <span class="prop">iconRight</span>=<span class="str">"arrow_forward"</span>&gt;&lt;/<span class="kw">mp-button</span>&gt;
+&lt;<span class="kw">mp-button</span> <span class="prop">tipo</span>=<span class="str">"secundario"</span> <span class="prop">label</span>=<span class="str">"Ver más"</span> <span class="prop">iconLeft</span>=<span class="str">"visibility"</span>&gt;&lt;/<span class="kw">mp-button</span>&gt;
+&lt;<span class="kw">mp-button</span> <span class="prop">tipo</span>=<span class="str">"terciario"</span> <span class="prop">label</span>=<span class="str">"Cancelar"</span>&gt;&lt;/<span class="kw">mp-button</span>&gt;
+&lt;<span class="kw">mp-button</span> <span class="prop">tipo</span>=<span class="str">"especial"</span> <span class="prop">label</span>=<span class="str">"Conocer planes"</span> <span class="prop">iconRight</span>=<span class="str">"star"</span>&gt;&lt;/<span class="kw">mp-button</span>&gt;
+
+<span class="cmt">&lt;!-- Submit de formulario --&gt;</span>
+&lt;<span class="kw">mp-button</span> <span class="prop">tipo</span>=<span class="str">"primario"</span> <span class="prop">label</span>=<span class="str">"Guardar cambios"</span> <span class="prop">buttonType</span>=<span class="str">"submit"</span>&gt;&lt;/<span class="kw">mp-button</span>&gt;
+
+<span class="cmt">&lt;!-- Deshabilitado --&gt;</span>
+&lt;<span class="kw">mp-button</span> <span class="prop">tipo</span>=<span class="str">"primario"</span> <span class="prop">label</span>=<span class="str">"No disponible"</span> [<span class="prop">disabled</span>]=<span class="str">"true"</span>&gt;&lt;/<span class="kw">mp-button</span>&gt;
+
+<span class="cmt">&lt;!-- Solo icono (requiere ariaLabel) --&gt;</span>
+&lt;<span class="kw">mp-button</span> <span class="prop">tipo</span>=<span class="str">"secundario"</span> <span class="prop">iconLeft</span>=<span class="str">"search"</span> <span class="prop">ariaLabel</span>=<span class="str">"Buscar"</span>&gt;&lt;/<span class="kw">mp-button</span>&gt;
+
+<span class="cmt">&lt;!-- Con evento click --&gt;</span>
+&lt;<span class="kw">mp-button</span>
+  <span class="prop">tipo</span>=<span class="str">"primario"</span>
+  <span class="prop">label</span>=<span class="str">"Confirmar cita"</span>
+  (<span class="prop">clicked</span>)=<span class="str">"onConfirmar()"</span>&gt;
+&lt;/<span class="kw">mp-button</span>&gt;
+
+<span class="cmt">&lt;!-- Estado dinámico --&gt;</span>
+&lt;<span class="kw">mp-button</span>
+  <span class="prop">tipo</span>=<span class="str">"primario"</span>
+  [<span class="prop">label</span>]=<span class="str">"isLoading ? 'Cargando…' : 'Afiliarme'"</span>
+  [<span class="prop">disabled</span>]=<span class="str">"isLoading || form.invalid"</span>
+  (<span class="prop">clicked</span>)=<span class="str">"onSubmit()"</span>&gt;
+&lt;/<span class="kw">mp-button</span>&gt;</pre>
+
+    <!-- ── Tab 2: Angular · componente ────────────────────── -->
+    <pre id="mpbtn-ng-comp"><span class="cmt">// mp-button.component.ts</span>
+<span class="kw">import</span> { Component, Input, Output, EventEmitter } <span class="kw">from</span> <span class="str">'@angular/core'</span>;
+<span class="kw">import</span> { CommonModule } <span class="kw">from</span> <span class="str">'@angular/common'</span>;
+
+<span class="kw">@Component</span>({
+  selector: <span class="str">'mp-button'</span>,
+  standalone: <span class="kw">true</span>,
+  imports: [CommonModule],
+  template: <span class="str">`
+    &lt;button
+      [type]="buttonType"
+      [class]="'mp-btn mp-btn--' + tipo"
+      [disabled]="disabled"
+      [attr.aria-label]="ariaLabel || null"
+      (click)="!disabled && clicked.emit()"&gt;
+      &lt;span *ngIf="iconLeft"
+            class="material-symbols-rounded"
+            aria-hidden="true"&gt;{{ iconLeft }}&lt;/span&gt;
+      &lt;span *ngIf="label"&gt;{{ label }}&lt;/span&gt;
+      &lt;span *ngIf="iconRight"
+            class="material-symbols-rounded"
+            aria-hidden="true"&gt;{{ iconRight }}&lt;/span&gt;
+    &lt;/button&gt;
+  `</span>,
+})
+<span class="kw">export class</span> MpButtonComponent {
+  <span class="cmt">/** Variante visual del botón */</span>
+  <span class="kw">@Input</span>() tipo: <span class="str">'primario'</span> | <span class="str">'secundario'</span> | <span class="str">'terciario'</span> | <span class="str">'especial'</span> = <span class="str">'primario'</span>;
+  <span class="cmt">/** Texto visible del botón */</span>
+  <span class="kw">@Input</span>() label = <span class="str">''</span>;
+  <span class="cmt">/** Nombre del icono Material Symbols (izquierda) */</span>
+  <span class="kw">@Input</span>() iconLeft?: <span class="kw">string</span>;
+  <span class="cmt">/** Nombre del icono Material Symbols (derecha) */</span>
+  <span class="kw">@Input</span>() iconRight?: <span class="kw">string</span>;
+  <span class="cmt">/** Tipo HTML nativo del &lt;button&gt; */</span>
+  <span class="kw">@Input</span>() buttonType: <span class="str">'button'</span> | <span class="str">'submit'</span> | <span class="str">'reset'</span> = <span class="str">'button'</span>;
+  <span class="cmt">/** Deshabilita el botón */</span>
+  <span class="kw">@Input</span>() disabled = <span class="kw">false</span>;
+  <span class="cmt">/** aria-label para botones sin texto visible (solo icono) */</span>
+  <span class="kw">@Input</span>() ariaLabel?: <span class="kw">string</span>;
+  <span class="cmt">/** Emite al hacer clic (solo cuando no está disabled) */</span>
+  <span class="kw">@Output</span>() clicked = <span class="kw">new</span> EventEmitter&lt;<span class="kw">void</span>&gt;();
+}
+
+<span class="cmt">// — Registrar en el módulo o importar directamente —</span>
+<span class="cmt">// import { MpButtonComponent } from './shared/components/mp-button/mp-button.component';</span>
+<span class="cmt">// @NgModule({ imports: [MpButtonComponent] })          ← módulo</span>
+<span class="cmt">// @Component({ imports: [MpButtonComponent] })         ← standalone</span></pre>
+
+    <!-- ── Tab 3: Drupal Twig ──────────────────────────────── -->
+    <pre id="mpbtn-drupal"><span class="cmt">{# templates/components/mp-button.html.twig #}</span>
+{%
+  <span class="kw">set</span> btn_classes = [
+    <span class="str">'mp-btn'</span>,
+    <span class="str">'mp-btn--'</span> ~ tipo|default(<span class="str">'primario'</span>),
+    disabled ? <span class="str">'is-disabled'</span> : <span class="str">''</span>,
+  ]
+%}
+
+&lt;<span class="kw">button</span>
+  {{ attributes.addClass(btn_classes) }}
+  <span class="prop">type</span>=<span class="str">"{{ button_type|default('button') }}"</span>
+  {%- <span class="kw">if</span> disabled %} <span class="prop">disabled</span> <span class="prop">aria-disabled</span>=<span class="str">"true"</span>{% <span class="kw">endif</span> %}
+  {%- <span class="kw">if</span> aria_label %} <span class="prop">aria-label</span>=<span class="str">"{{ aria_label }}"</span>{% <span class="kw">endif</span> %}&gt;
+  {%- <span class="kw">if</span> icon_left %}
+    &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;{{ icon_left }}&lt;/<span class="kw">span</span>&gt;
+  {%- <span class="kw">endif</span> %}
+  {%- <span class="kw">if</span> label %}&lt;<span class="kw">span</span>&gt;{{ label }}&lt;/<span class="kw">span</span>&gt;{% <span class="kw">endif</span> %}
+  {%- <span class="kw">if</span> icon_right %}
+    &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;{{ icon_right }}&lt;/<span class="kw">span</span>&gt;
+  {%- <span class="kw">endif</span> %}
+&lt;/<span class="kw">button</span>&gt;
+
+
+<span class="cmt">{# ── Uso desde otro template ─────────────────────────────── #}</span>
+{{ include(<span class="str">'components/mp-button.html.twig'</span>, {
+  tipo: <span class="str">'primario'</span>,
+  label: <span class="str">'Afiliarme'</span>,
+  icon_right: <span class="str">'arrow_forward'</span>,
+}) }}
+
+{{ include(<span class="str">'components/mp-button.html.twig'</span>, {
+  tipo: <span class="str">'secundario'</span>,
+  label: <span class="str">'Ver planes'</span>,
+  disabled: <span class="kw">false</span>,
+}) }}
+
+
+<span class="cmt">{# ── Desde campos de un paragraph (hook_preprocess) ──────── #}</span>
+<span class="cmt">{# En mi_tema.theme:                                          #}</span>
+<span class="cmt">{# function mi_tema_preprocess_paragraph__cta(&$variables) { #}</span>
+<span class="cmt">{#   $p = $variables['paragraph'];                           #}</span>
+<span class="cmt">{#   $variables['tipo']  = $p->field_btn_tipo->value;        #}</span>
+<span class="cmt">{#   $variables['label'] = $p->field_btn_label->value;       #}</span>
+<span class="cmt">{#   $variables['icon_right'] = $p->field_btn_icon->value;   #}</span>
+<span class="cmt">{# }                                                         #}</span></pre>
+
+    <!-- ── Tab 4: HTML + CSS ───────────────────────────────── -->
+    <pre id="mpbtn-css"><span class="cmt">&lt;!-- HTML ────────────────────────────────────────────── --&gt;</span>
+<span class="cmt">&lt;!-- Solo texto --&gt;</span>
+&lt;<span class="kw">button</span> <span class="prop">class</span>=<span class="str">"mp-btn mp-btn--primario"</span>&gt;Afiliarme&lt;/<span class="kw">button</span>&gt;
+
+<span class="cmt">&lt;!-- Texto + icono derecha --&gt;</span>
+&lt;<span class="kw">button</span> <span class="prop">class</span>=<span class="str">"mp-btn mp-btn--primario"</span>&gt;
+  Continuar
+  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;arrow_forward&lt;/<span class="kw">span</span>&gt;
+&lt;/<span class="kw">button</span>&gt;
+
+<span class="cmt">&lt;!-- Icono izquierda + texto --&gt;</span>
+&lt;<span class="kw">button</span> <span class="prop">class</span>=<span class="str">"mp-btn mp-btn--secundario"</span>&gt;
+  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;visibility&lt;/<span class="kw">span</span>&gt;
+  Ver planes
+&lt;/<span class="kw">button</span>&gt;
+
+<span class="cmt">&lt;!-- Terciario --&gt;</span>
+&lt;<span class="kw">button</span> <span class="prop">class</span>=<span class="str">"mp-btn mp-btn--terciario"</span>&gt;Cancelar&lt;/<span class="kw">button</span>&gt;
+
+<span class="cmt">&lt;!-- Especial --&gt;</span>
+&lt;<span class="kw">button</span> <span class="prop">class</span>=<span class="str">"mp-btn mp-btn--especial"</span>&gt;
+  Conocer planes
+  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;arrow_forward&lt;/<span class="kw">span</span>&gt;
+&lt;/<span class="kw">button</span>&gt;
+
+<span class="cmt">&lt;!-- Deshabilitado --&gt;</span>
+&lt;<span class="kw">button</span> <span class="prop">class</span>=<span class="str">"mp-btn mp-btn--primario"</span> <span class="prop">disabled</span>&gt;No disponible&lt;/<span class="kw">button</span>&gt;
+
+<span class="cmt">&lt;!-- Solo icono: siempre incluir aria-label --&gt;</span>
+&lt;<span class="kw">button</span> <span class="prop">class</span>=<span class="str">"mp-btn mp-btn--secundario"</span>
+        <span class="prop">style</span>=<span class="str">"width:48px;padding:0"</span>
+        <span class="prop">aria-label</span>=<span class="str">"Buscar"</span>&gt;
+  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;search&lt;/<span class="kw">span</span>&gt;
+&lt;/<span class="kw">button</span>&gt;
+
+
+<span class="cmt">/* CSS ────────────────────────────────────────────────── */</span>
+<span class="cmt">/* Requiere: tokens.css + Material Symbols Rounded font  */</span>
+
+<span class="sel">.mp-btn</span> {
+  <span class="prop">display</span>: <span class="val">inline-flex</span>;
+  <span class="prop">align-items</span>: <span class="val">center</span>;
+  <span class="prop">justify-content</span>: <span class="val">center</span>;
+  <span class="prop">gap</span>: <span class="val">8px</span>;
+  <span class="prop">height</span>: <span class="val">48px</span>;
+  <span class="prop">padding</span>: <span class="val">0 24px</span>;
+  <span class="prop">border</span>: <span class="val">none</span>;
+  <span class="prop">border-radius</span>: <span class="val">var(--radius-md)</span>;         <span class="cmt">/* 24px */</span>
+  <span class="prop">font-family</span>: <span class="val">var(--font-body)</span>;
+  <span class="prop">font-size</span>: <span class="val">var(--font-size-btn)</span>;          <span class="cmt">/* 16px */</span>
+  <span class="prop">font-weight</span>: <span class="val">var(--font-weight-bold)</span>;     <span class="cmt">/* 700 */</span>
+  <span class="prop">letter-spacing</span>: <span class="val">0.022em</span>;
+  <span class="prop">line-height</span>: <span class="val">1</span>;
+  <span class="prop">white-space</span>: <span class="val">nowrap</span>;
+  <span class="prop">cursor</span>: <span class="val">pointer</span>;
+  <span class="prop">text-decoration</span>: <span class="val">none</span>;
+  <span class="prop">transition</span>: <span class="val">box-shadow .2s, background .2s</span>;
+  <span class="prop">-webkit-font-smoothing</span>: <span class="val">antialiased</span>;
+}
+<span class="sel">.mp-btn .material-symbols-rounded</span> { <span class="prop">font-size</span>: <span class="val">22px</span>; <span class="prop">flex-shrink</span>: <span class="val">0</span>; }
+
+<span class="cmt">/* Primario */</span>
+<span class="sel">.mp-btn--primario</span> {
+  <span class="prop">background</span>: <span class="val">linear-gradient(180deg, var(--base-brand-80) 0%, var(--base-primary-30) 100%)</span>;
+  <span class="prop">color</span>: <span class="val">#ffffff</span>;
+}
+<span class="sel">.mp-btn--primario:hover:not(:disabled)</span> {
+  <span class="prop">background</span>: <span class="val">linear-gradient(180deg, var(--base-primary-20) 0%, var(--base-brand-80) 100%)</span>;
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-hover)</span>;     <span class="cmt">/* 2px 2px 3px #ff9d5c */</span>
+}
+<span class="sel">.mp-btn--primario:active:not(:disabled)</span> {
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-pressed)</span>;  <span class="cmt">/* inset 0 4px 4px rgba(0,0,0,.25) */</span>
+}
+<span class="sel">.mp-btn--primario:focus-visible</span> {
+  <span class="prop">outline</span>: <span class="val">3px solid var(--base-brand-80)</span>;
+  <span class="prop">outline-offset</span>: <span class="val">3px</span>;
+}
+
+<span class="cmt">/* Secundario */</span>
+<span class="sel">.mp-btn--secundario</span> {
+  <span class="prop">background</span>: <span class="val">transparent</span>;
+  <span class="prop">color</span>: <span class="val">var(--base-brand-80)</span>;
+  <span class="prop">border</span>: <span class="val">1.5px solid var(--base-brand-80)</span>;
+}
+<span class="sel">.mp-btn--secundario:hover:not(:disabled)</span> {
+  <span class="prop">background</span>: <span class="val">color-mix(in srgb, var(--base-brand-80) 8%, transparent)</span>;
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-hover)</span>;
+}
+<span class="sel">.mp-btn--secundario:active:not(:disabled)</span> {
+  <span class="prop">background</span>: <span class="val">color-mix(in srgb, var(--base-brand-80) 14%, transparent)</span>;
+}
+<span class="sel">.mp-btn--secundario:focus-visible</span> {
+  <span class="prop">outline</span>: <span class="val">3px solid var(--base-brand-80)</span>;
+  <span class="prop">outline-offset</span>: <span class="val">3px</span>;
+}
+
+<span class="cmt">/* Terciario */</span>
+<span class="sel">.mp-btn--terciario</span> {
+  <span class="prop">height</span>: <span class="val">32px</span>;
+  <span class="prop">padding</span>: <span class="val">0 12px</span>;
+  <span class="prop">border-radius</span>: <span class="val">var(--radius-sm)</span>;           <span class="cmt">/* 16px */</span>
+  <span class="prop">background</span>: <span class="val">transparent</span>;
+  <span class="prop">color</span>: <span class="val">var(--base-brand-80)</span>;
+  <span class="prop">font-size</span>: <span class="val">var(--font-size-md)</span>;             <span class="cmt">/* 14px */</span>
+}
+<span class="sel">.mp-btn--terciario:hover:not(:disabled)</span> {
+  <span class="prop">background</span>: <span class="val">color-mix(in srgb, var(--base-brand-80) 8%, transparent)</span>;
+  <span class="prop">text-decoration</span>: <span class="val">underline</span>;
+}
+<span class="sel">.mp-btn--terciario:focus-visible</span> {
+  <span class="prop">outline</span>: <span class="val">3px solid var(--base-brand-80)</span>;
+  <span class="prop">outline-offset</span>: <span class="val">2px</span>;
+}
+
+<span class="cmt">/* Especial */</span>
+<span class="sel">.mp-btn--especial</span> {
+  <span class="prop">background</span>: <span class="val">linear-gradient(180deg, var(--colors-violeta-500) 0%, var(--colors-violeta-700) 100%)</span>;
+  <span class="cmt">/* #6d4cc5 → #4e3199 */</span>
+  <span class="prop">color</span>: <span class="val">#ffffff</span>;
+}
+<span class="sel">.mp-btn--especial:hover:not(:disabled)</span> {
+  <span class="prop">background</span>: <span class="val">linear-gradient(180deg, var(--colors-violeta-700) 0%, var(--colors-violeta-500) 100%)</span>;
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-special-hover)</span>;  <span class="cmt">/* 2px 2px 3px #a28dda */</span>
+}
+<span class="sel">.mp-btn--especial:active:not(:disabled)</span> {
+  <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-pressed)</span>;
+}
+<span class="sel">.mp-btn--especial:focus-visible</span> {
+  <span class="prop">outline</span>: <span class="val">3px solid var(--colors-violeta-500)</span>;
+  <span class="prop">outline-offset</span>: <span class="val">3px</span>;
+}
+
+<span class="cmt">/* Disabled (todos los tipos) */</span>
+<span class="sel">.mp-btn:disabled,
+.mp-btn[aria-disabled="true"]</span> {
+  <span class="prop">background</span>: <span class="val">var(--base-neutral-30)</span> !important;  <span class="cmt">/* #cccccc */</span>
+  <span class="prop">color</span>: <span class="val">var(--base-neutral-50)</span> !important;          <span class="cmt">/* #a4a4a4 */</span>
+  <span class="prop">border-color</span>: <span class="val">transparent</span> !important;
+  <span class="prop">box-shadow</span>: <span class="val">none</span> !important;
+  <span class="prop">cursor</span>: <span class="val">not-allowed</span>;
+  <span class="prop">pointer-events</span>: <span class="val">none</span>;
+}
+
+<span class="cmt">/* Dark mode */</span>
+<span class="sel">[data-theme="dark"] .mp-btn--secundario,
+[data-theme="dark"] .mp-btn--terciario</span> {
+  <span class="prop">color</span>: <span class="val">var(--ui-accent)</span>;        <span class="cmt">/* #ff7e06 en dark */</span>
+  <span class="prop">border-color</span>: <span class="val">var(--ui-accent)</span>;
+}
+
+<span class="cmt">/* Alto contraste */</span>
+<span class="sel">[data-theme="high-contrast"] .mp-btn--primario</span> {
+  <span class="prop">background</span>: <span class="val">var(--base-brand-80)</span>;  <span class="cmt">/* #ffff00 en HC */</span>
+  <span class="prop">color</span>: <span class="val">#000000</span>;
+}
+<span class="sel">[data-theme="high-contrast"] .mp-btn--secundario</span> {
+  <span class="prop">color</span>: <span class="val">var(--base-brand-80)</span>;
+  <span class="prop">border</span>: <span class="val">2px solid var(--base-brand-80)</span>;
+}
+<span class="sel">[data-theme="high-contrast"] .mp-btn--terciario</span> {
+  <span class="prop">color</span>: <span class="val">var(--base-brand-80)</span>;
+  <span class="prop">text-decoration</span>: <span class="val">underline</span>;
+}
+<span class="sel">[data-theme="high-contrast"] .mp-btn--especial</span> {
+  <span class="prop">background</span>: <span class="val">var(--base-brand-80)</span>;
+  <span class="prop">color</span>: <span class="val">#000000</span>;
+}
+<span class="sel">[data-theme="high-contrast"] .mp-btn:focus-visible</span> {
+  <span class="prop">outline-color</span>: <span class="val">var(--color-focus-ring, #ffff00)</span>;
+  <span class="prop">outline-width</span>: <span class="val">var(--color-focus-ring-width, 3px)</span>;
+}</pre>
+
+  </div>
+</div>
+
+<!-- ══ API — INPUTS ══════════════════════════════════════════ -->
+<div class="subsection">
+  <div class="subsection-title">API — Inputs del componente</div>
+  <div style="border:1px solid var(--ui-border);border-radius:12px;overflow:hidden;margin-top:var(--space-4)">
+    <table class="mp-api-table">
+      <thead>
+        <tr>
+          <th style="width:120px">Input</th>
+          <th style="width:140px">Tipo</th>
+          <th style="width:100px">Default</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>tipo</code></td>
+          <td class="api-type">'primario' | 'secundario' | 'terciario' | 'especial'</td>
+          <td class="api-default">'primario'</td>
+          <td>Variante visual del botón. Determina colores, tamaño y jerarquía.</td>
+        </tr>
+        <tr>
+          <td><code>label</code></td>
+          <td class="api-type">string</td>
+          <td class="api-default">''</td>
+          <td>Texto visible del botón. Puede omitirse si se usa icono con <code>ariaLabel</code>.</td>
+        </tr>
+        <tr>
+          <td><code>iconLeft</code></td>
+          <td class="api-type">string?</td>
+          <td class="api-default">undefined</td>
+          <td>Nombre de icono Material Symbols Rounded que aparece a la izquierda del texto.</td>
+        </tr>
+        <tr>
+          <td><code>iconRight</code></td>
+          <td class="api-type">string?</td>
+          <td class="api-default">undefined</td>
+          <td>Nombre de icono Material Symbols Rounded que aparece a la derecha del texto.</td>
+        </tr>
+        <tr>
+          <td><code>buttonType</code></td>
+          <td class="api-type">'button' | 'submit' | 'reset'</td>
+          <td class="api-default">'button'</td>
+          <td>Tipo HTML nativo del elemento <code>&lt;button&gt;</code>. Usar <code>'submit'</code> en formularios.</td>
+        </tr>
+        <tr>
+          <td><code>disabled</code></td>
+          <td class="api-type">boolean</td>
+          <td class="api-default">false</td>
+          <td>Deshabilita el botón. Aplica estilos disabled y bloquea el evento <code>clicked</code>.</td>
+        </tr>
+        <tr>
+          <td><code>ariaLabel</code></td>
+          <td class="api-type">string?</td>
+          <td class="api-default">undefined</td>
+          <td>Requerido cuando el botón no tiene texto visible (solo icono). Para lectores de pantalla.</td>
+        </tr>
+        <tr>
+          <td><code>clicked</code></td>
+          <td class="api-type">EventEmitter&lt;void&gt;</td>
+          <td class="api-default">—</td>
+          <td>Output que emite al hacer clic. No emite cuando <code>disabled</code> es <code>true</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ ACCESIBILIDAD ═════════════════════════════════════════ -->
+<div class="subsection">
+  <div class="subsection-title">Accesibilidad</div>
+  <div class="acc-row">
+    <div class="acc-card">
+      <div class="acc-card__title">Interacción y teclado</div>
+      <div class="acc-card__item">Todos los botones son accesibles con <kbd style="font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);border:1px solid var(--ui-border);border-radius:4px;padding:1px 5px">Tab</kbd> y activables con <kbd style="font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);border:1px solid var(--ui-border);border-radius:4px;padding:1px 5px">Enter</kbd> o <kbd style="font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);border:1px solid var(--ui-border);border-radius:4px;padding:1px 5px">Espacio</kbd>.</div>
+      <div class="acc-card__item">El estado <code style="font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);border:1px solid var(--ui-border);border-radius:4px;padding:1px 5px">:focus-visible</code> siempre debe ser visible y consistente.</div>
+      <div class="acc-card__item">Los botones deshabilitados llevan <code style="font-family:var(--font-code);font-size:11px">disabled</code> + <code style="font-family:var(--font-code);font-size:11px">aria-disabled="true"</code>.</div>
+      <div class="acc-card__item">Área táctil mínima de 44×44px en mobile. La altura de 48px ya lo garantiza.</div>
+    </div>
+    <div class="acc-card">
+      <div class="acc-card__title">Contenido y texto</div>
+      <div class="acc-card__item">Primera letra en mayúscula, resto en minúscula. Ejemplo: <em>"Mis citas"</em>.</div>
+      <div class="acc-card__item">Botones solo-icono requieren <code style="font-family:var(--font-code);font-size:11px">ariaLabel</code> descriptivo. Los iconos llevan <code style="font-family:var(--font-code);font-size:11px">aria-hidden="true"</code>.</div>
+      <div class="acc-card__item">No depender solo del color para comunicar estado. Complementar con texto o icono.</div>
+      <div class="acc-card__item">Usar texto claro y directo. Evitar términos ambiguos como "Clic aquí".</div>
+    </div>
+    <div class="acc-card">
+      <div class="acc-card__title">Contraste (WCAG 2.1)</div>
+      <div class="acc-card__item">Primario: texto blanco sobre gradiente naranja → 4.8:1 ✓ AA.</div>
+      <div class="acc-card__item">Secundario: naranja <code style="font-family:var(--font-code);font-size:11px">#ff6600</code> sobre blanco → 3.2:1 (texto grande) ✓.</div>
+      <div class="acc-card__item">Alto contraste: amarillo <code style="font-family:var(--font-code);font-size:11px">#ffff00</code> sobre negro → 19.6:1 ✓ AAA.</div>
+      <div class="acc-card__item">Disabled: gris neutro → no necesita contraste AA (estado inactivo por norma).</div>
+    </div>
+    <div class="acc-card">
+      <div class="acc-card__title">Jerarquía y uso</div>
+      <div class="acc-card__item">Solo un botón <strong>Primario</strong> por vista o flujo principal.</div>
+      <div class="acc-card__item">No usar múltiples botones <strong>Especial</strong> en la misma pantalla.</div>
+      <div class="acc-card__item">Mantener consistencia en estados hover, focus y active en todos los modos.</div>
+      <div class="acc-card__item">Validar componentes críticos en modo High Contrast antes de publicar.</div>
+    </div>
+  </div>
+</div>
+
+</section>

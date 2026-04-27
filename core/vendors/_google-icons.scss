@@ -1,0 +1,122 @@
+// =============================================================================
+// core/vendors/_google-icons.scss
+// Google Material Symbols — fallback / supplementary icon font.
+//
+// Policy:
+//   PRIMARY   → CompensarIcons  (IcoMoon, custom glyph set)
+//   FALLBACK  → Material Symbols Rounded  (Google, for symbols not in IcoMoon)
+//
+// Usage:
+//   <span class="material-symbols-rounded gs-icon">favorite</span>
+//   <span class="material-symbols-rounded gs-icon gs-icon--24">search</span>
+//
+// When NOT to use the fallback:
+//   If a matching icon exists in CompensarIcons, use .icon.icon-name instead.
+//   The fallback is for extend-only situations (icons not yet added to IcoMoon).
+// =============================================================================
+
+// ── Variable-font axis defaults ─────────────────────────────────────────────
+// Controls the visual style of Material Symbols variable font axes:
+//   FILL  0 = outline, 1 = filled
+//   wght  100–700 (weight)
+//   GRAD  -50–200 (grade / visual weight)
+//   opsz  20, 24, 40, 48 (optical size — should match icon px size)
+//
+// We expose these as CSS custom properties so consuming components can
+// override axes locally without touching the global class.
+:root {
+  --gs-fill:  0;       // outline by default
+  --gs-wght:  300;     // light weight
+  --gs-grad:  0;
+  --gs-opsz:  24;      // 24 px optical size
+}
+
+// ── Base class ───────────────────────────────────────────────────────────────
+// .gs-icon wraps the ligature-based rendering with our axis settings.
+// The host app must load the Google Font itself (CDN link in <head>):
+//   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" rel="stylesheet">
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded', sans-serif;
+  font-style:  normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+
+  // Variable font axes via CSS custom properties
+  font-variation-settings:
+    'FILL' var(--gs-fill),
+    'wght' var(--gs-wght),
+    'GRAD' var(--gs-grad),
+    'opsz' var(--gs-opsz);
+}
+
+// ── Filled variant ───────────────────────────────────────────────────────────
+.gs-filled,
+.material-symbols-rounded.gs-filled {
+  --gs-fill: 1;
+}
+
+// ── Size utilities ───────────────────────────────────────────────────────────
+// Mirrors the .icon-{n} scale from icon-style.css / core/base/_icons.scss.
+.gs-icon--12, .material-symbols-rounded.gs-icon--12 { font-size: 12px; --gs-opsz: 20; }
+.gs-icon--16, .material-symbols-rounded.gs-icon--16 { font-size: 16px; --gs-opsz: 20; }
+.gs-icon--20, .material-symbols-rounded.gs-icon--20 { font-size: 20px; --gs-opsz: 20; }
+.gs-icon--24, .material-symbols-rounded.gs-icon--24 { font-size: 24px; --gs-opsz: 24; }
+.gs-icon--32, .material-symbols-rounded.gs-icon--32 { font-size: 32px; --gs-opsz: 40; }
+.gs-icon--40, .material-symbols-rounded.gs-icon--40 { font-size: 40px; --gs-opsz: 40; }
+.gs-icon--48, .material-symbols-rounded.gs-icon--48 { font-size: 48px; --gs-opsz: 48; }
+.gs-icon--64, .material-symbols-rounded.gs-icon--64 { font-size: 64px; --gs-opsz: 48; }
+
+// ── Semantic color classes ────────────────────────────────────────────────────
+// Same API as .icon-primary / .icon-success from _icons.scss so they are
+// interchangeable regardless of which font the icon comes from.
+.material-symbols-rounded {
+  &.gs-primary   { color: var(--color-primary);        }
+  &.gs-secondary { color: var(--color-secondary);      }
+  &.gs-success   { color: var(--color-success-text);   }
+  &.gs-error,
+  &.gs-danger    { color: var(--color-error-text);     }
+  &.gs-warning   { color: var(--color-warning-text);   }
+  &.gs-info      { color: var(--color-info-text);      }
+  &.gs-muted     { color: var(--color-text-muted);     }
+  &.gs-disabled  { color: var(--color-text-disabled);  }
+  &.gs-inverse   { color: var(--color-text-inverse);   }
+  &.gs-inherit   { color: currentColor;                }
+}
+
+// ── Weight overrides ─────────────────────────────────────────────────────────
+.gs-w100 { --gs-wght: 100; }
+.gs-w200 { --gs-wght: 200; }
+.gs-w300 { --gs-wght: 300; }
+.gs-w400 { --gs-wght: 400; }
+.gs-w500 { --gs-wght: 500; }
+.gs-w600 { --gs-wght: 600; }
+.gs-w700 { --gs-wght: 700; }
+
+// ── Dark mode ────────────────────────────────────────────────────────────────
+// Slightly boost grade in dark mode to compensate for halo effect on dark bg.
+[data-theme='dark'] {
+  --gs-grad: 0; // keep at 0; let individual usage boost if needed
+}
+
+// ── High contrast ────────────────────────────────────────────────────────────
+[data-theme='high-contrast'] .material-symbols-rounded {
+  --gs-fill: 1;      // filled icons read better at high contrast
+  --gs-wght: 700;
+}
+
+// ── Accessibility: decorative icons ──────────────────────────────────────────
+// Icons used purely for decoration must carry aria-hidden="true".
+// Informational standalone icons need a visually hidden label sibling.
+//
+// <span class="material-symbols-rounded" aria-hidden="true">search</span>
+// <span class="sr-only">Buscar</span>
