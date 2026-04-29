@@ -38,54 +38,8 @@
 //    Requires Bootstrap 5 to be installed:  npm install bootstrap
 //    Adjust path if using node_modules directly.
 // ─────────────────────────────────────────────────────────────────────────────
-// Option A: full Bootstrap
-// @use 'bootstrap/scss/bootstrap';
-
-// Option B: à-la-carte (recommended — smaller output)
-@use 'bootstrap/scss/functions'   as bs-fn;
-@use 'bootstrap/scss/variables'   as bs-var;
-@use 'bootstrap/scss/variables-dark' as bs-dark;
-@use 'bootstrap/scss/maps'        as bs-maps;
-@use 'bootstrap/scss/mixins'      as bs-mx;
-@use 'bootstrap/scss/utilities'   as bs-utils;
-
-// Bootstrap base layers
-@use 'bootstrap/scss/root';
-@use 'bootstrap/scss/reboot';
-@use 'bootstrap/scss/type';
-@use 'bootstrap/scss/images';
-@use 'bootstrap/scss/containers';
-@use 'bootstrap/scss/grid';
-
-// Bootstrap components (cherry-pick what the project needs)
-@use 'bootstrap/scss/tables';
-@use 'bootstrap/scss/forms';
-@use 'bootstrap/scss/buttons';
-@use 'bootstrap/scss/transitions';
-@use 'bootstrap/scss/dropdown';
-@use 'bootstrap/scss/button-group';
-@use 'bootstrap/scss/nav';
-@use 'bootstrap/scss/navbar';
-@use 'bootstrap/scss/card';
-@use 'bootstrap/scss/accordion';
-@use 'bootstrap/scss/breadcrumb';
-@use 'bootstrap/scss/pagination';
-@use 'bootstrap/scss/badge';
-@use 'bootstrap/scss/alert';
-@use 'bootstrap/scss/progress';
-@use 'bootstrap/scss/list-group';
-@use 'bootstrap/scss/close';
-@use 'bootstrap/scss/toasts';
-@use 'bootstrap/scss/modal';
-@use 'bootstrap/scss/tooltip';
-@use 'bootstrap/scss/popover';
-@use 'bootstrap/scss/spinners';
-@use 'bootstrap/scss/offcanvas';
-@use 'bootstrap/scss/placeholders';
-
-// Bootstrap helpers + utilities API
-@use 'bootstrap/scss/helpers';
-@use 'bootstrap/scss/utilities/api';
+// Option A: full Bootstrap (recommended for stability)
+@use '../node_modules/bootstrap/scss/bootstrap';
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -101,11 +55,11 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // 4. COMPONENTS
 // ─────────────────────────────────────────────────────────────────────────────
-@use 'components/buttons';  // .btn-primary, .btn-ghost, .btn-loading …
-@use 'components/inputs';   // .field, .input, .select, .toggle …
-@use 'components/alerts';   // .alert-success, .alert-error …
-@use 'components/cards';    // .card, .card-flat, .card-interactive …
-@use 'components/tables';   // .table, .table-striped, .table-badge …
+// Web components
+@use 'components/web';      // buttons, inputs, alerts, cards, tables
+
+// App components (platform-specific variants)
+@use 'components/app';      // Placeholder for iOS/Android specific components
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -113,7 +67,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 @use 'utils/spacing';       // .p-{n}, .m-{n}, .gap-{n}, .stack-{n}
 @use 'utils/colors';        // .bg-surface, .border-default …
-@use 'utils/typography';    // .u-text-center, .u-fw-bold, .u-truncate …
+@use 'utils/typography' as util-typography;    // .u-text-center, .u-fw-bold, .u-truncate …
 @use 'utils/display';       // .u-flex, .u-grid, .u-hidden, .u-cursor-pointer …
 
 

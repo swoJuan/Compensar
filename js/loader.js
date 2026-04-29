@@ -6,34 +6,34 @@ import { onSectionReady } from './app.js';
 
 // ── Mapa de rutas: id-sección → ruta del fragmento ──────────
 const ROUTES = {
-  'introduccion':     'fragments/intro.html',
-  'principios':       'fragments/principles.html',
+  'introduccion':     'docs/intro.html',
+  'principios':       'docs/principles.html',
 
   // Colores: todas las sub-secciones apuntan al mismo fragmento unificado
-  'colores-base':         'fragments/fundamentos/colors.html',
-  'colores-producto':     'fragments/fundamentos/colors.html',
-  'colores-uso':          'fragments/fundamentos/colors.html',
-  'colores-utilidades':   'fragments/fundamentos/colors.html',
+  'colores-base':         'docs/app/fundamentos/colors.html',
+  'colores-producto':     'docs/app/fundamentos/colors.html',
+  'colores-uso':          'docs/app/fundamentos/colors.html',
+  'colores-utilidades':   'docs/app/fundamentos/colors.html',
 
-  'tipografia':     'fragments/fundamentos/typography.html',
-  'espaciado':      'fragments/fundamentos/spacing.html',
-  'border-radius':  'fragments/fundamentos/border-radius.html',
-  'layout':         'fragments/fundamentos/layout.html',
-  'sombras':        'fragments/fundamentos/shadows.html',
+  'tipografia':     'docs/app/fundamentos/typography.html',
+  'espaciado':      'docs/app/fundamentos/spacing.html',
+  'border-radius':  'docs/app/fundamentos/border-radius.html',
+  'layout':         'docs/app/fundamentos/layout.html',
+  'sombras':        'docs/app/fundamentos/shadows.html',
 
-  'iconos-intro':    'fragments/components/icons-intro.html',
-  'iconos-conectar': 'fragments/components/icons-connect.html',
-  'iconos-libreria': 'fragments/components/icons-library.html',
+  'iconos-intro':    'docs/web/components/icons-intro.html',
+  'iconos-conectar': 'docs/web/components/icons-connect.html',
+  'iconos-libreria': 'docs/web/components/icons-library.html',
 
-  'botones':       'fragments/components/buttons.html',
-  'inputs':        'fragments/components/inputs.html',
-  'badges':        'fragments/components/badges.html',
+  'botones':       'docs/web/components/buttons.html',
+  'inputs':        'docs/web/components/inputs.html',
+  'badges':        'docs/web/components/badges.html',
 
-  'tokens-texto':  'fragments/tokens/tokens-text.html',
-  'tokens-tablas': 'fragments/tokens/tokens-tables.html',
+  'tokens-texto':  'docs/tokens/tokens-text.html',
+  'tokens-tablas': 'docs/tokens/tokens-tables.html',
 };
 
-// ── Targets de scroll dentro de fragments compartidos ────────
+// ── Targets de scroll dentro de docs compartidos ────────
 // Cuando varias rutas comparten el mismo fragmento, scroll al
 // elemento con ese id después de cargar (o de forma inmediata
 // si el fragmento ya estaba cargado).

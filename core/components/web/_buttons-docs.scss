@@ -1,0 +1,293 @@
+// ============================================================
+//  _buttons.scss
+//  Consume SOLO tokens semánticos. Nunca colores base directos.
+// ============================================================
+
+@use '../../abstracts/mixins'           as *;
+@use '../../abstracts/tokens-spacing'   as *;
+@use '../../abstracts/tokens-radius'    as *;
+
+// ────────────────────────────────────────────────────────────
+// mp-button — Design System button component
+// Source of truth for documentation and Angular-friendly HTML examples.
+// ────────────────────────────────────────────────────────────
+.mp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 1.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--font-size-btn);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.022em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow .2s, background .2s, opacity .15s;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+
+  .material-symbols-rounded {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  &:has(.material-symbols-rounded) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    background: var(--base-neutral-30) !important;
+    color: var(--base-neutral-50) !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.mp-btn--primario {
+  background: linear-gradient(180deg, var(--base-brand-80) 0%, var(--base-primary-30) 100%);
+  color: #ffffff;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(180deg, var(--base-primary-20) 0%, var(--base-brand-80) 100%);
+    box-shadow: var(--shadow-button-hover);
+  }
+
+  &:active:not(:disabled) {
+    box-shadow: var(--shadow-button-pressed);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--base-brand-80);
+    outline-offset: 3px;
+  }
+}
+
+.mp-btn--secundario {
+  background: transparent;
+  color: var(--base-brand-80);
+  border: 1.5px solid var(--base-brand-80);
+
+  &:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--base-brand-80) 8%, transparent);
+    box-shadow: var(--shadow-button-hover);
+  }
+
+  &:active:not(:disabled) {
+    background: color-mix(in srgb, var(--base-brand-80) 14%, transparent);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--base-brand-80);
+    outline-offset: 3px;
+  }
+}
+
+.mp-btn--terciario {
+  height: 32px;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--base-brand-80);
+  font-size: var(--font-size-md);
+
+  &:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--base-brand-80) 8%, transparent);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--base-brand-80);
+    outline-offset: 2px;
+  }
+}
+
+.mp-btn--especial {
+  background: linear-gradient(180deg, var(--colors-violeta-500) 0%, var(--colors-violeta-700) 100%);
+  color: #ffffff;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(180deg, var(--colors-violeta-700) 0%, var(--colors-violeta-500) 100%);
+    box-shadow: var(--shadow-button-special-hover);
+  }
+
+  &:active:not(:disabled) {
+    box-shadow: var(--shadow-button-pressed);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--colors-violeta-500);
+    outline-offset: 3px;
+  }
+}
+
+[data-theme='dark'] {
+  .mp-btn--secundario,
+  .mp-btn--terciario {
+    color: var(--ui-accent);
+    border-color: var(--ui-accent);
+  }
+
+  .mp-btn--secundario:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--ui-accent) 12%, transparent);
+  }
+}
+
+[data-theme='high-contrast'] {
+  .mp-btn--primario {
+    background: var(--base-brand-80);
+    color: #000000;
+  }
+
+  .mp-btn--secundario {
+    color: var(--base-brand-80);
+    border: 2px solid var(--base-brand-80);
+  }
+
+  .mp-btn--terciario {
+    color: var(--base-brand-80);
+    text-decoration: underline;
+  }
+
+  .mp-btn--especial {
+    background: var(--base-brand-80);
+    color: #000000;
+  }
+
+  .mp-btn:focus-visible {
+    outline-color: var(--color-focus-ring, #ffff00);
+    outline-width: var(--color-focus-ring-width, 3px);
+  }
+}
+
+// ── Base ─────────────────────────────────────────────────
+.btn {
+  @include ty-button;
+  @include focus-visible-ring;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-8;
+  padding: $space-12 $space-24;
+  border-radius: $radius-xs;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+              box-shadow 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+
+  .icon { font-size: 20px; color: currentColor; }
+
+  &:disabled, &[aria-disabled='true'] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// ── Variantes ────────────────────────────────────────────
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+
+  &:hover  { background: var(--color-primary-hover);  border-color: var(--color-primary-hover); box-shadow: var(--shadow-btn-hover, #{0 2px 8px rgba(255,102,0,.35)}); }
+  &:active { background: var(--color-primary-active); border-color: var(--color-primary-active); box-shadow: inset 0 4px 4px rgba(0,0,0,.2); }
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: #fff;
+  border-color: var(--color-secondary);
+
+  &:hover  { background: var(--color-secondary-hover); border-color: var(--color-secondary-hover); box-shadow: 2px 2px 3px rgba(162,141,218,1); }
+  &:active { background: var(--color-secondary-active); }
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+
+  &:hover  { background: var(--color-primary-subtle); }
+  &:active { background: var(--color-primary-subtle); box-shadow: inset 0 4px 4px rgba(0,0,0,.1); }
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+
+  &:hover  { background: var(--color-surface-alt); border-color: var(--color-border-strong); }
+  &:active { background: var(--color-surface-subtle); }
+}
+
+.btn-danger {
+  background: var(--color-error-icon);
+  color: #fff;
+  border-color: var(--color-error-icon);
+
+  &:hover  { background: var(--color-error-border); }
+  &:active { background: var(--color-error-text); }
+}
+
+// ── Tamaños ──────────────────────────────────────────────
+.btn-sm {
+  @include ty-hint;
+  padding: $space-4 $space-16;
+  border-radius: $radius-xs;
+  .icon { font-size: 16px; }
+}
+
+.btn-lg {
+  font-size: 1.0625rem;
+  padding: $space-16 $space-32;
+  .icon { font-size: 24px; }
+}
+
+// ── Solo icono ───────────────────────────────────────────
+.btn-icon {
+  padding: $space-8;
+  border-radius: $radius-xs;
+  min-width: 44px;
+  min-height: 44px;
+
+  .icon { font-size: 22px; margin: 0; }
+
+  &.btn-icon-sm { padding: $space-4; min-width: 32px; min-height: 32px; .icon { font-size: 18px; } }
+  &.btn-icon-lg { padding: $space-12; min-width: 52px; min-height: 52px; .icon { font-size: 26px; } }
+}
+
+// ── Loading state ────────────────────────────────────────
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+  color: transparent !important;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    border: 2px solid rgba(255,255,255,.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btn-spin 0.6s linear infinite;
+  }
+}
+
+@keyframes btn-spin { to { transform: rotate(360deg); } }
+
+// ── Full width ───────────────────────────────────────────
+.btn-block { width: 100%; }

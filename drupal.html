@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/core.css">
 </head>
 <body>
 
@@ -17,7 +18,7 @@
 <header class="header">
   <div class="header-brand">
     <a href="index.html" class="ds-back-link" title="Volver al portal">
-      <span class="material-symbols-rounded" style="font-size:18px;color:var(--ui-text-muted)">arrow_back</span>
+      <span class="material-symbols-rounded ds-back-link__icon">arrow_back</span>
     </a>
     <div class="logo-mark">C</div>
     <span class="brand-name">Design System</span>
@@ -149,20 +150,6 @@
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<style>
-.ds-back-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 7px;
-  text-decoration: none;
-  transition: background .15s;
-  flex-shrink: 0;
-}
-.ds-back-link:hover { background: var(--ui-surface-alt); }
-</style>
 
 <!-- SCRIPTS -->
 <script>window.DS_PLATFORM = 'drupal';</script>

@@ -35,11 +35,11 @@
 .u-normal-case { text-transform: none        !important; }
 
 // ── Font weight ─────────────────────────────────────────────────────────────
-.u-fw-light    { font-weight: $fw-light    !important; }
-.u-fw-regular  { font-weight: $fw-regular  !important; }
-.u-fw-medium   { font-weight: $fw-medium   !important; }
-.u-fw-semibold { font-weight: $fw-semibold !important; }
-.u-fw-bold     { font-weight: $fw-bold     !important; }
+.u-fw-light    { font-weight: var(--font-weight-light)    !important; }
+.u-fw-regular  { font-weight: var(--font-weight-regular)  !important; }
+.u-fw-medium   { font-weight: var(--font-weight-medium)   !important; }
+.u-fw-semibold { font-weight: var(--font-weight-semibold) !important; }
+.u-fw-bold     { font-weight: var(--font-weight-bold)     !important; }
 
 // ── Font size (semantic scale, maps to CSS vars) ────────────────────────────
 .u-fs-xs   { font-size: var(--font-size-xs)   !important; }
@@ -52,19 +52,19 @@
 .u-fs-4xl  { font-size: var(--font-size-4xl)  !important; }
 
 // ── Line height ─────────────────────────────────────────────────────────────
-.u-lh-none   { line-height: $lh-none   !important; }
-.u-lh-tight  { line-height: $lh-tight  !important; }
-.u-lh-snug   { line-height: $lh-snug   !important; }
-.u-lh-normal { line-height: $lh-normal !important; }
-.u-lh-relaxed{ line-height: $lh-relaxed!important; }
-.u-lh-loose  { line-height: $lh-loose  !important; }
+.u-lh-none   { line-height: var(--line-height-none)    !important; }
+.u-lh-tight  { line-height: var(--line-height-tight)   !important; }
+.u-lh-snug   { line-height: var(--line-height-snug)    !important; }
+.u-lh-normal { line-height: var(--line-height-normal)  !important; }
+.u-lh-relaxed{ line-height: var(--line-height-relaxed) !important; }
+.u-lh-loose  { line-height: var(--line-height-loose)   !important; }
 
 // ── Letter spacing ──────────────────────────────────────────────────────────
-.u-ls-tight  { letter-spacing: $ls-tight  !important; }
-.u-ls-normal { letter-spacing: $ls-normal !important; }
-.u-ls-wide   { letter-spacing: $ls-wide   !important; }
-.u-ls-wider  { letter-spacing: $ls-wider  !important; }
-.u-ls-widest { letter-spacing: $ls-widest !important; }
+.u-ls-tight  { letter-spacing: var(--letter-spacing-tight)  !important; }
+.u-ls-normal { letter-spacing: var(--letter-spacing-normal) !important; }
+.u-ls-wide   { letter-spacing: var(--letter-spacing-wide)   !important; }
+.u-ls-wider  { letter-spacing: var(--letter-spacing-wider)  !important; }
+.u-ls-widest { letter-spacing: var(--letter-spacing-widest) !important; }
 
 // ── Text decoration ─────────────────────────────────────────────────────────
 .u-underline     { text-decoration: underline    !important; }

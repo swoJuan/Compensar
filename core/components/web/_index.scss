@@ -1,0 +1,11 @@
+// ============================================================
+//  core/components/web/_index.scss
+//  Web-specific components
+// ============================================================
+
+@forward 'buttons';
+@forward 'inputs';
+@forward 'alerts';
+@forward 'cards';
+@forward 'tables';
+@forward 'buttons-docs';

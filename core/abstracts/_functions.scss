@@ -2,6 +2,8 @@
 //  _functions.scss
 // ============================================================
 
+@use 'tokens-spacing' as *;
+
 // ── Strip unit ───────────────────────────────────────────
 @function strip-unit($value) {
   @return math.div($value, $value * 0 + 1);
@@ -37,7 +39,6 @@
 }
 
 // ── Spacing desde mapa ───────────────────────────────────
-@use 'tokens-spacing' as *;
 
 @function space($key) {
   @if map-has-key($spacers, $key) {

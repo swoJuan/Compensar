@@ -396,6 +396,7 @@
   --letter-spacing-normal:  0;
   --letter-spacing-wide:    0.05em;
   --letter-spacing-wider:   0.1em;
+  --letter-spacing-widest:  0.15em;
 
   /* ══════════════════════════════════════════════════════════
      9. Z-INDEX — escala de capas

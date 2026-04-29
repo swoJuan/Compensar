@@ -55,17 +55,10 @@
 // We ensure the font and radius always match our tokens, regardless of theme.
 .btn {
   font-family:    var(--font-family-sans);
-  font-weight:    $fw-semibold;
+  font-weight:    var(--font-weight-semibold);
   border-radius:  var(--radius-sm);
-  letter-spacing: $ls-wide;
-  transition: background-color 200ms ease, box-shadow 200ms ease, transform 100ms ease;
-
-  &:active { transform: translateY(1px); }
-}
-
-// Override Bootstrap's hardcoded padding scale
-.btn-sm { padding: calc(var(--space-4) - 2px) var(--space-12); }
-.btn-lg { padding: var(--space-12)             var(--space-24); }
+    letter-spacing: var(--letter-spacing-wide);
+  }
 
 // ── Forms ───────────────────────────────────────────────────────────────────
 // Bootstrap's form controls use rgba($primary,.25) for focus shadow.
@@ -104,7 +97,7 @@
 
 .form-label {
   font-size:   var(--font-size-sm);
-  font-weight: $fw-medium;
+  font-weight: var(--font-weight-medium);
   color:       var(--color-text-secondary);
   margin-bottom: var(--space-4);
 }
@@ -197,13 +190,11 @@
 // ── Badges ───────────────────────────────────────────────────────────────────
 .badge {
   border-radius: var(--radius-full);
-  font-weight:   $fw-semibold;
+  font-weight:   var(--font-weight-semibold);
   font-size:     var(--font-size-xs);
-  letter-spacing: $ls-wide;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
-// ── Alerts ───────────────────────────────────────────────────────────────────
-// Bootstrap's .alert-* uses generated colors from the palette. We remap to
 // our semantic surface/text tokens for full dark-mode support.
 .alert-success {
   --bs-alert-bg:            var(--color-success-surface);
@@ -277,9 +268,9 @@
 
   > thead > tr > th {
     color:         var(--color-text-secondary);
-    font-weight:   $fw-semibold;
+    font-weight:   var(--font-weight-semibold);
     font-size:     var(--font-size-sm);
-    letter-spacing: $ls-wide;
+    letter-spacing: var(--letter-spacing-wide);
     border-bottom: 2px solid var(--color-border-default);
   }
 }
