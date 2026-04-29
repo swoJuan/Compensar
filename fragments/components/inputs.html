@@ -1,81 +1,1048 @@
 <section class="section" id="inputs">
-  <div class="section-header">
-    <div class="section-eyebrow">Componentes</div>
-    <h1 class="section-title">Inputs</h1>
-    <p class="section-desc">Campos de texto con estados: default, focus, error y disabled.</p>
+
+<!-- ══════════════════════════════════════════════════════════
+     mp-input — Estilos del componente (live preview)
+     ══════════════════════════════════════════════════════════ -->
+<style>
+/* ── Base ─────────────────────────────────────────────────── */
+.mp-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.mp-input-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ui-text);
+  line-height: 1.3;
+}
+.mp-input-label .mp-input-required {
+  color: var(--base-red-70);
+  margin-left: 2px;
+}
+
+.mp-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mp-input-field {
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--space-4);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ui-text);
+  background: var(--ui-surface);
+  border: 1.5px solid var(--ui-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color .18s, box-shadow .18s, background .15s;
+  -webkit-appearance: none;
+}
+.mp-input-field::placeholder { color: var(--ui-text-muted); opacity: .7; }
+
+.mp-input-field:hover:not(:disabled):not(.error) {
+  border-color: var(--base-neutral-60);
+}
+.mp-input-field:focus:not(:disabled) {
+  border-color: var(--base-brand-80);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--base-brand-80) 18%, transparent);
+}
+.mp-input-field.error {
+  border-color: var(--base-red-70);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--base-red-70) 15%, transparent);
+}
+.mp-input-field.error:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--base-red-70) 22%, transparent);
+}
+.mp-input-field:disabled {
+  background: var(--ui-surface-alt);
+  color: var(--ui-text-muted);
+  border-color: var(--ui-border);
+  cursor: not-allowed;
+  opacity: .65;
+}
+.mp-input-field.filled:not(:focus):not(.error) {
+  border-color: var(--base-neutral-60);
+}
+
+/* ── Con ícono ────────────────────────────────────────────── */
+.mp-input-field.has-icon-left  { padding-left: 44px; }
+.mp-input-field.has-icon-right { padding-right: 44px; }
+
+.mp-input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ui-text-muted);
+  font-size: 20px;
+  pointer-events: none;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+.mp-input-icon--left  { left: 12px; }
+.mp-input-icon--right { right: 12px; }
+.mp-input-icon--right.interactive {
+  pointer-events: auto;
+  cursor: pointer;
+  color: var(--ui-text-muted);
+  transition: color .15s;
+}
+.mp-input-icon--right.interactive:hover { color: var(--ui-text); }
+
+/* ── Textarea ─────────────────────────────────────────────── */
+.mp-input-field.mp-textarea {
+  height: auto;
+  min-height: 112px;
+  padding: var(--space-3) var(--space-4);
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* ── Select ───────────────────────────────────────────────── */
+.mp-input-field.mp-select {
+  padding-right: 44px;
+  cursor: pointer;
+  appearance: none;
+}
+
+/* ── Helper / Error ───────────────────────────────────────── */
+.mp-input-helper {
+  font-size: 12px;
+  color: var(--ui-text-muted);
+  line-height: 1.45;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+.mp-input-helper.error {
+  color: var(--base-red-70);
+  font-weight: 500;
+}
+.mp-input-helper.success {
+  color: var(--base-green-80);
+}
+
+/* ── Dark mode ────────────────────────────────────────────── */
+[data-theme="dark"] .mp-input-field {
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  border-color: var(--ui-border);
+}
+[data-theme="dark"] .mp-input-field:focus:not(:disabled) {
+  border-color: var(--ui-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-accent) 20%, transparent);
+}
+
+/* ── High Contrast ────────────────────────────────────────── */
+[data-theme="high-contrast"] .mp-input-field {
+  border-width: 2px;
+  border-color: #ffffff;
+  background: #000000;
+  color: #ffffff;
+}
+[data-theme="high-contrast"] .mp-input-field:focus:not(:disabled) {
+  outline: var(--color-focus-ring-width, 3px) solid var(--color-focus-ring, #ffff00);
+  outline-offset: var(--color-focus-ring-offset, 2px);
+  box-shadow: none;
+}
+[data-theme="high-contrast"] .mp-input-field.error {
+  border-color: var(--base-red-70);
+}
+[data-theme="high-contrast"] .mp-input-label { color: #ffffff; }
+[data-theme="high-contrast"] .mp-input-helper.error { color: var(--base-red-70); }
+
+/* ── Layouts de esta sección ──────────────────────────────── */
+.inp-estados-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+}
+@media (max-width: 700px) { .inp-estados-grid { grid-template-columns: 1fr; } }
+
+.inp-tipos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+}
+@media (max-width: 700px) { .inp-tipos-grid { grid-template-columns: 1fr; } }
+
+.inp-tipo-card {
+  border: 1.5px solid var(--ui-border);
+  border-radius: 16px;
+  padding: var(--space-5);
+  background: var(--ui-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.inp-tipo-card__demo {
+  background: var(--ui-bg);
+  border-radius: 10px;
+  border: 1px solid var(--ui-border);
+  padding: var(--space-4);
+}
+.inp-tipo-card__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ui-text);
+  letter-spacing: .01em;
+}
+.inp-tipo-card__desc {
+  font-size: 12px;
+  color: var(--ui-text-muted);
+  line-height: 1.55;
+}
+.inp-tipo-card__uso {
+  font-size: 11px;
+  color: var(--ui-text-muted);
+  line-height: 1.5;
+  border-top: 1px solid var(--ui-border);
+  padding-top: var(--space-3);
+  margin-top: auto;
+}
+.inp-tipo-card__uso strong { color: var(--ui-text); font-weight: 600; }
+
+.inp-modos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+@media (max-width: 700px) { .inp-modos-grid { grid-template-columns: 1fr; } }
+
+.inp-modo-box {
+  border-radius: 16px;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.inp-modo-box[data-theme="light"]         { background: #f5f5f5; border: 1.5px solid #e0e0e0; }
+.inp-modo-box[data-theme="dark"]          { background: #1a1a2e; border: 1.5px solid #2d2d4e; }
+.inp-modo-box[data-theme="high-contrast"] { background: #000000; border: 2px solid #ffffff; }
+
+.inp-modo-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  opacity: .55;
+}
+</style>
+
+<!-- ── Encabezado ─────────────────────────────────────────── -->
+<div class="section-header">
+  <div class="section-eyebrow">Componentes</div>
+  <h1 class="section-title">Input</h1>
+  <p class="section-desc">Campos de texto para captura de información. Soporta texto, email, número, contraseña, textarea y select con estados interactivos completos.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     1 · PREVIEW RÁPIDO
+     ══════════════════════════════════════════════════════════ -->
+<div class="component-preview">
+  <div class="preview-bar"><span class="preview-label">Estados principales</span></div>
+  <div class="preview-canvas" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:32px 24px;">
+
+    <div class="mp-input-group">
+      <label class="mp-input-label">Nombre completo</label>
+      <div class="mp-input-wrapper">
+        <input class="mp-input-field" type="text" placeholder="Ej. Ana Torres">
+      </div>
+      <span class="mp-input-helper">Ingresa tu nombre como en tu documento</span>
+    </div>
+
+    <div class="mp-input-group">
+      <label class="mp-input-label">Correo electrónico <span class="mp-input-required">*</span></label>
+      <div class="mp-input-wrapper">
+        <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+        <input class="mp-input-field has-icon-left filled" type="email" value="ana@compensar.com">
+      </div>
+      <span class="mp-input-helper success">✓ Correo válido</span>
+    </div>
+
+    <div class="mp-input-group">
+      <label class="mp-input-label">Número de afiliación</label>
+      <div class="mp-input-wrapper">
+        <input class="mp-input-field error" type="text" value="A-00">
+      </div>
+      <span class="mp-input-helper error">✕ Formato inválido. Ej: AF-12345</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     2 · ESTADOS
+     ══════════════════════════════════════════════════════════ -->
+<div class="section-subtitle-row" style="margin-top:var(--space-7);margin-bottom:0;">
+  <h2 class="section-sub">Estados</h2>
+</div>
+
+<div class="inp-estados-grid">
+
+  <!-- Default -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">Label</label>
+        <div class="mp-input-wrapper">
+          <input class="mp-input-field" type="text" placeholder="Placeholder">
+        </div>
+        <span class="mp-input-helper">Texto de ayuda</span>
+      </div>
+    </div>
+    <div class="inp-tipo-card__name">Default</div>
+    <div class="inp-tipo-card__desc">Estado de reposo. Borde neutro, placeholder visible, campo editable.</div>
   </div>
 
-  <div class="component-preview">
-    <div class="preview-bar"><span class="preview-label">Estados del input</span></div>
-    <div class="preview-canvas col">
-      <div class="input-group">
-        <label class="input-label">Nombre completo</label>
-        <input class="input-field" type="text" placeholder="Ej. Juan García">
-        <span class="input-helper">Ingresa tu nombre como aparece en tu documento</span>
+  <!-- Focus (simulado) -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">Label</label>
+        <div class="mp-input-wrapper">
+          <input class="mp-input-field" type="text" placeholder="Placeholder"
+            style="border-color:var(--base-brand-80);box-shadow:0 0 0 3px color-mix(in srgb,var(--base-brand-80) 18%,transparent);">
+        </div>
+        <span class="mp-input-helper">Texto de ayuda</span>
       </div>
-      <div class="input-group">
-        <label class="input-label">Correo electrónico</label>
-        <input class="input-field error" type="email" value="juan@">
-        <span class="input-helper error">✕ Correo electrónico inválido</span>
+    </div>
+    <div class="inp-tipo-card__name">Focus</div>
+    <div class="inp-tipo-card__desc">Al hacer clic o tab. Borde naranja marca y ring de 3 px para accesibilidad.</div>
+  </div>
+
+  <!-- Filled -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">Label</label>
+        <div class="mp-input-wrapper">
+          <input class="mp-input-field filled" type="text" value="Contenido ingresado">
+        </div>
+        <span class="mp-input-helper">Texto de ayuda</span>
       </div>
-      <div class="input-group">
-        <label class="input-label">N° de afiliación</label>
-        <input class="input-field" type="text" placeholder="0000-0000" disabled>
-        <span class="input-helper">Campo deshabilitado</span>
+    </div>
+    <div class="inp-tipo-card__name">Filled</div>
+    <div class="inp-tipo-card__desc">Campo con valor. Borde levemente más oscuro para diferenciar de vacío.</div>
+  </div>
+
+  <!-- Error -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">Label</label>
+        <div class="mp-input-wrapper">
+          <input class="mp-input-field error" type="text" value="Valor inválido">
+        </div>
+        <span class="mp-input-helper error">✕ Mensaje de error</span>
       </div>
+    </div>
+    <div class="inp-tipo-card__name">Error</div>
+    <div class="inp-tipo-card__desc">Borde rojo + ring de error. El mensaje debajo describe la corrección necesaria.</div>
+  </div>
+
+  <!-- Success -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">Label</label>
+        <div class="mp-input-wrapper">
+          <input class="mp-input-field filled" type="text" value="juan@compensar.com">
+        </div>
+        <span class="mp-input-helper success">✓ Valor confirmado</span>
+      </div>
+    </div>
+    <div class="inp-tipo-card__name">Success</div>
+    <div class="inp-tipo-card__desc">Validación superada. Helper en verde confirma el dato ingresado correctamente.</div>
+  </div>
+
+  <!-- Disabled -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label" style="opacity:.45;">Label</label>
+        <div class="mp-input-wrapper">
+          <input class="mp-input-field" type="text" placeholder="No disponible" disabled>
+        </div>
+        <span class="mp-input-helper">Campo deshabilitado</span>
+      </div>
+    </div>
+    <div class="inp-tipo-card__name">Disabled</div>
+    <div class="inp-tipo-card__desc">No interactivo. Fondo gris, cursor no-allowed, no recibe focus ni validaciones.</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     3 · TIPOS / VARIANTES
+     ══════════════════════════════════════════════════════════ -->
+<div class="section-subtitle-row" style="margin-top:var(--space-7);margin-bottom:0;">
+  <h2 class="section-sub">Tipos</h2>
+</div>
+
+<div class="inp-tipos-grid">
+
+  <!-- Solo texto -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">N° de documento</label>
+        <div class="mp-input-wrapper">
+          <input class="mp-input-field" type="text" placeholder="1234567890">
+        </div>
+      </div>
+    </div>
+    <div class="inp-tipo-card__name">Texto simple</div>
+    <div class="inp-tipo-card__desc">Variante base. Sin íconos, sin prefijos. Ideal para nombres, documentos, campos alfanuméricos.</div>
+    <div class="inp-tipo-card__uso"><strong>Usa cuando:</strong> la etiqueta ya explica el contenido esperado.</div>
+  </div>
+
+  <!-- Ícono izquierda -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">Buscar</label>
+        <div class="mp-input-wrapper">
+          <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">search</span>
+          <input class="mp-input-field has-icon-left" type="search" placeholder="Buscar servicios…">
+        </div>
+      </div>
+    </div>
+    <div class="inp-tipo-card__name">Con ícono izquierdo</div>
+    <div class="inp-tipo-card__desc">Ícono decorativo que refuerza el tipo de dato esperado (correo, búsqueda, teléfono).</div>
+    <div class="inp-tipo-card__uso"><strong>Usa cuando:</strong> el contexto visual ayuda a entender el campo rápidamente.</div>
+  </div>
+
+  <!-- Ícono derecha interactivo -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">Contraseña</label>
+        <div class="mp-input-wrapper">
+          <input class="mp-input-field has-icon-right" type="password" value="secreto123">
+          <span class="material-symbols-rounded mp-input-icon mp-input-icon--right interactive" aria-hidden="true">visibility</span>
+        </div>
+        <span class="mp-input-helper">Mín. 8 caracteres</span>
+      </div>
+    </div>
+    <div class="inp-tipo-card__name">Con ícono derecho interactivo</div>
+    <div class="inp-tipo-card__desc">Ícono accionable (mostrar/ocultar contraseña, limpiar campo). Debe tener <code>aria-label</code>.</div>
+    <div class="inp-tipo-card__uso"><strong>Usa cuando:</strong> hay una acción disponible relacionada con el campo.</div>
+  </div>
+
+  <!-- Ambos íconos -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">Monto</label>
+        <div class="mp-input-wrapper">
+          <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">attach_money</span>
+          <input class="mp-input-field has-icon-left has-icon-right" type="number" placeholder="0.00">
+          <span class="material-symbols-rounded mp-input-icon mp-input-icon--right" aria-hidden="true">info</span>
+        </div>
+        <span class="mp-input-helper">En pesos colombianos</span>
+      </div>
+    </div>
+    <div class="inp-tipo-card__name">Con íconos dobles</div>
+    <div class="inp-tipo-card__desc">Ícono contextual izquierdo + acción o información a la derecha.</div>
+    <div class="inp-tipo-card__uso"><strong>Usa cuando:</strong> necesitas ambos contexto visual y acción secundaria.</div>
+  </div>
+
+  <!-- Textarea -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">Observaciones</label>
+        <div class="mp-input-wrapper">
+          <textarea class="mp-input-field mp-textarea" placeholder="Describe tu solicitud…" rows="3"></textarea>
+        </div>
+        <span class="mp-input-helper">Máximo 500 caracteres</span>
+      </div>
+    </div>
+    <div class="inp-tipo-card__name">Textarea</div>
+    <div class="inp-tipo-card__desc">Área de texto redimensionable para contenido extenso.</div>
+    <div class="inp-tipo-card__uso"><strong>Usa cuando:</strong> el usuario necesita ingresar más de una línea de texto.</div>
+  </div>
+
+  <!-- Select -->
+  <div class="inp-tipo-card">
+    <div class="inp-tipo-card__demo">
+      <div class="mp-input-group">
+        <label class="mp-input-label">Tipo de afiliación <span class="mp-input-required">*</span></label>
+        <div class="mp-input-wrapper">
+          <select class="mp-input-field mp-select">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option>Trabajador</option>
+            <option>Independiente</option>
+            <option>Pensionado</option>
+          </select>
+          <span class="material-symbols-rounded mp-input-icon mp-input-icon--right" aria-hidden="true">expand_more</span>
+        </div>
+      </div>
+    </div>
+    <div class="inp-tipo-card__name">Select</div>
+    <div class="inp-tipo-card__desc">Lista desplegable nativa con ícono de flecha. Misma apariencia que el input de texto.</div>
+    <div class="inp-tipo-card__uso"><strong>Usa cuando:</strong> hay un conjunto fijo y reducido de opciones (&lt; 7 ítems).</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     4 · MODOS DE COLOR
+     ══════════════════════════════════════════════════════════ -->
+<div class="section-subtitle-row" style="margin-top:var(--space-7);margin-bottom:0;">
+  <h2 class="section-sub">Modos de color</h2>
+</div>
+
+<div class="inp-modos-grid">
+
+  <div class="inp-modo-box" data-theme="light">
+    <div class="inp-modo-label">Light</div>
+    <div class="mp-input-group">
+      <label class="mp-input-label">Correo</label>
+      <div class="mp-input-wrapper">
+        <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+        <input class="mp-input-field has-icon-left" type="email" placeholder="usuario@compensar.com">
+      </div>
+    </div>
+    <div class="mp-input-group">
+      <label class="mp-input-label">Campo con error</label>
+      <div class="mp-input-wrapper">
+        <input class="mp-input-field error" type="text" value="valor@">
+      </div>
+      <span class="mp-input-helper error">✕ Formato incorrecto</span>
     </div>
   </div>
 
-  <div class="code-block">
-    <div class="code-tabs">
-      <button class="code-tab active" onclick="switchTab(this,'input-html')">HTML / Drupal</button>
-      <button class="code-tab" onclick="switchTab(this,'input-angular')">Angular</button>
-      <button class="code-tab" onclick="switchTab(this,'input-css')">CSS</button>
+  <div class="inp-modo-box" data-theme="dark">
+    <div class="inp-modo-label" style="color:#aaa;">Dark</div>
+    <div class="mp-input-group">
+      <label class="mp-input-label">Correo</label>
+      <div class="mp-input-wrapper">
+        <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+        <input class="mp-input-field has-icon-left" type="email" placeholder="usuario@compensar.com">
+      </div>
     </div>
-    <div class="code-content">
-      <button class="copy-btn" onclick="copyCode(this)">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        Copiar
-      </button>
-      <pre class="active" id="input-html">&lt;<span class="kw">div</span> <span class="prop">class</span>=<span class="str">"input-group"</span>&gt;
-  &lt;<span class="kw">label</span> <span class="prop">class</span>=<span class="str">"input-label"</span>&gt;Nombre&lt;/<span class="kw">label</span>&gt;
-  &lt;<span class="kw">input</span> <span class="prop">class</span>=<span class="str">"input-field"</span> <span class="prop">type</span>=<span class="str">"text"</span> <span class="prop">placeholder</span>=<span class="str">"Tu nombre"</span>&gt;
-  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"input-helper"</span>&gt;Texto de ayuda&lt;/<span class="kw">span</span>&gt;
+    <div class="mp-input-group">
+      <label class="mp-input-label">Campo con error</label>
+      <div class="mp-input-wrapper">
+        <input class="mp-input-field error" type="text" value="valor@">
+      </div>
+      <span class="mp-input-helper error">✕ Formato incorrecto</span>
+    </div>
+  </div>
+
+  <div class="inp-modo-box" data-theme="high-contrast">
+    <div class="inp-modo-label" style="color:#aaa;">High Contrast</div>
+    <div class="mp-input-group">
+      <label class="mp-input-label">Correo</label>
+      <div class="mp-input-wrapper">
+        <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+        <input class="mp-input-field has-icon-left" type="email" placeholder="usuario@compensar.com">
+      </div>
+    </div>
+    <div class="mp-input-group">
+      <label class="mp-input-label">Campo con error</label>
+      <div class="mp-input-wrapper">
+        <input class="mp-input-field error" type="text" value="valor@">
+      </div>
+      <span class="mp-input-helper error">✕ Formato incorrecto</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     5 · CÓDIGO
+     ══════════════════════════════════════════════════════════ -->
+<div class="code-block" style="margin-top:var(--space-7);">
+  <div class="code-tabs">
+    <button class="code-tab active" onclick="switchTab(this,'inp-ng-uso')">Angular · Uso</button>
+    <button class="code-tab" onclick="switchTab(this,'inp-ng-comp')">Angular · Componente</button>
+    <button class="code-tab" onclick="switchTab(this,'inp-drupal')">Drupal · Twig</button>
+    <button class="code-tab" onclick="switchTab(this,'inp-html')">HTML + CSS</button>
+  </div>
+  <div class="code-content">
+    <button class="copy-btn" onclick="copyCode(this)">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Copiar
+    </button>
+
+    <!-- Angular · Uso -->
+    <pre class="active" id="inp-ng-uso"><span class="cmt">&lt;!-- Input simple --&gt;</span>
+&lt;<span class="kw">mp-input</span>
+  <span class="prop">label</span>=<span class="str">"Nombre completo"</span>
+  <span class="prop">placeholder</span>=<span class="str">"Ej. Ana Torres"</span>
+  [<span class="prop">formControl</span>]=<span class="str">"nombreCtrl"</span>
+  <span class="prop">helperText</span>=<span class="str">"Ingresa tu nombre como en tu documento"</span>
+&gt;&lt;/<span class="kw">mp-input</span>&gt;
+
+<span class="cmt">&lt;!-- Con ícono izquierdo --&gt;</span>
+&lt;<span class="kw">mp-input</span>
+  <span class="prop">label</span>=<span class="str">"Correo electrónico"</span>
+  <span class="prop">type</span>=<span class="str">"email"</span>
+  <span class="prop">iconLeft</span>=<span class="str">"mail"</span>
+  [<span class="prop">formControl</span>]=<span class="str">"emailCtrl"</span>
+  [<span class="prop">required</span>]=<span class="str">"true"</span>
+&gt;&lt;/<span class="kw">mp-input</span>&gt;
+
+<span class="cmt">&lt;!-- Contraseña con toggle --&gt;</span>
+&lt;<span class="kw">mp-input</span>
+  <span class="prop">label</span>=<span class="str">"Contraseña"</span>
+  <span class="prop">type</span>=<span class="str">"password"</span>
+  <span class="prop">iconRight</span>=<span class="str">"visibility"</span>
+  [<span class="prop">iconRightAction</span>]=<span class="str">"true"</span>
+  [<span class="prop">formControl</span>]=<span class="str">"passCtrl"</span>
+  <span class="prop">helperText</span>=<span class="str">"Mínimo 8 caracteres"</span>
+&gt;&lt;/<span class="kw">mp-input</span>&gt;
+
+<span class="cmt">&lt;!-- Textarea --&gt;</span>
+&lt;<span class="kw">mp-input</span>
+  <span class="prop">tipo</span>=<span class="str">"textarea"</span>
+  <span class="prop">label</span>=<span class="str">"Observaciones"</span>
+  [<span class="prop">rows</span>]=<span class="str">"4"</span>
+  <span class="prop">helperText</span>=<span class="str">"Máximo 500 caracteres"</span>
+  [<span class="prop">formControl</span>]=<span class="str">"obsCtrl"</span>
+&gt;&lt;/<span class="kw">mp-input</span>&gt;
+
+<span class="cmt">&lt;!-- Select --&gt;</span>
+&lt;<span class="kw">mp-input</span>
+  <span class="prop">tipo</span>=<span class="str">"select"</span>
+  <span class="prop">label</span>=<span class="str">"Tipo de afiliación"</span>
+  [<span class="prop">options</span>]=<span class="str">"afiliacionOpts"</span>
+  [<span class="prop">formControl</span>]=<span class="str">"tipoCtrl"</span>
+  [<span class="prop">required</span>]=<span class="str">"true"</span>
+&gt;&lt;/<span class="kw">mp-input</span>&gt;</pre>
+
+    <!-- Angular · Componente -->
+    <pre id="inp-ng-comp"><span class="cmt">// mp-input.component.ts</span>
+<span class="kw">import</span> { Component, Input, OnInit, Self, Optional } <span class="kw">from</span> <span class="str">'@angular/core'</span>;
+<span class="kw">import</span> { CommonModule } <span class="kw">from</span> <span class="str">'@angular/common'</span>;
+<span class="kw">import</span> { ReactiveFormsModule, ControlValueAccessor,
+         NgControl, AbstractControl } <span class="kw">from</span> <span class="str">'@angular/forms'</span>;
+
+<span class="kw">@Component</span>({
+  <span class="prop">selector</span>: <span class="str">'mp-input'</span>,
+  <span class="prop">standalone</span>: <span class="val">true</span>,
+  <span class="prop">imports</span>: [CommonModule, ReactiveFormsModule],
+  <span class="prop">template</span>: <span class="str">`
+&lt;div class="mp-input-group"&gt;
+  &lt;label *ngIf="label" class="mp-input-label" [for]="inputId"&gt;
+    {{ label }}
+    &lt;span *ngIf="required" class="mp-input-required" aria-hidden="true"&gt;*&lt;/span&gt;
+  &lt;/label&gt;
+
+  &lt;div class="mp-input-wrapper"&gt;
+
+    &lt;!-- Textarea --&gt;
+    &lt;textarea *ngIf="tipo === 'textarea'"
+      [id]="inputId"
+      class="mp-input-field mp-textarea"
+      [class.error]="hasError"
+      [class.filled]="hasValue"
+      [rows]="rows"
+      [placeholder]="placeholder"
+      [disabled]="isDisabled"
+      [attr.aria-describedby]="helperId"
+      [attr.aria-invalid]="hasError || null"
+      (input)="onInput($event)"
+      (blur)="onTouched()"
+    &gt;&lt;/textarea&gt;
+
+    &lt;!-- Select --&gt;
+    &lt;ng-container *ngIf="tipo === 'select'"&gt;
+      &lt;select
+        [id]="inputId"
+        class="mp-input-field mp-select"
+        [class.error]="hasError"
+        [class.filled]="hasValue"
+        [disabled]="isDisabled"
+        [attr.aria-describedby]="helperId"
+        [attr.aria-invalid]="hasError || null"
+        (change)="onInput($event)"
+        (blur)="onTouched()"
+      &gt;
+        &lt;option value="" disabled [selected]="!value"&gt;{{ placeholder }}&lt;/option&gt;
+        &lt;option *ngFor="let opt of options" [value]="opt.value"&gt;
+          {{ opt.label }}
+        &lt;/option&gt;
+      &lt;/select&gt;
+      &lt;span class="material-symbols-rounded mp-input-icon mp-input-icon--right" aria-hidden="true"&gt;expand_more&lt;/span&gt;
+    &lt;/ng-container&gt;
+
+    &lt;!-- Text / Email / Password / Number --&gt;
+    &lt;ng-container *ngIf="tipo !== 'textarea' &amp;&amp; tipo !== 'select'"&gt;
+      &lt;span *ngIf="iconLeft" class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true"&gt;
+        {{ iconLeft }}
+      &lt;/span&gt;
+      &lt;input
+        [id]="inputId"
+        class="mp-input-field"
+        [class.has-icon-left]="iconLeft"
+        [class.has-icon-right]="iconRight"
+        [class.error]="hasError"
+        [class.filled]="hasValue"
+        [type]="currentType"
+        [placeholder]="placeholder"
+        [disabled]="isDisabled"
+        [attr.aria-describedby]="helperId"
+        [attr.aria-invalid]="hasError || null"
+        (input)="onInput($event)"
+        (blur)="onTouched()"
+      &gt;
+      &lt;button *ngIf="iconRight &amp;&amp; iconRightAction"
+        type="button"
+        class="mp-input-icon mp-input-icon--right interactive"
+        [attr.aria-label]="iconRightLabel"
+        (click)="onIconRightClick()"
+      &gt;
+        &lt;span class="material-symbols-rounded" aria-hidden="true"&gt;{{ currentIconRight }}&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;span *ngIf="iconRight &amp;&amp; !iconRightAction"
+        class="material-symbols-rounded mp-input-icon mp-input-icon--right" aria-hidden="true"&gt;
+        {{ iconRight }}
+      &lt;/span&gt;
+    &lt;/ng-container&gt;
+
+  &lt;/div&gt;
+
+  &lt;span *ngIf="helperText || hasError" [id]="helperId"
+    class="mp-input-helper"
+    [class.error]="hasError"
+    [class.success]="!hasError &amp;&amp; showSuccess"&gt;
+    {{ hasError ? errorMessage : helperText }}
+  &lt;/span&gt;
+&lt;/div&gt;
+  `</span>
+})
+<span class="kw">export class</span> MpInputComponent <span class="kw">implements</span> ControlValueAccessor, OnInit {
+  <span class="prop">@Input()</span> tipo: <span class="str">'text'</span> | <span class="str">'email'</span> | <span class="str">'password'</span> | <span class="str">'number'</span> | <span class="str">'search'</span> | <span class="str">'textarea'</span> | <span class="str">'select'</span> = <span class="str">'text'</span>;
+  <span class="prop">@Input()</span> label = <span class="str">''</span>;
+  <span class="prop">@Input()</span> placeholder = <span class="str">''</span>;
+  <span class="prop">@Input()</span> helperText = <span class="str">''</span>;
+  <span class="prop">@Input()</span> iconLeft?: <span class="kw">string</span>;
+  <span class="prop">@Input()</span> iconRight?: <span class="kw">string</span>;
+  <span class="prop">@Input()</span> iconRightAction = <span class="val">false</span>;
+  <span class="prop">@Input()</span> iconRightLabel = <span class="str">'Acción'</span>;
+  <span class="prop">@Input()</span> required = <span class="val">false</span>;
+  <span class="prop">@Input()</span> rows = <span class="val">3</span>;
+  <span class="prop">@Input()</span> options: <span class="kw">Array</span>&lt;{ value: <span class="kw">string</span>; label: <span class="kw">string</span> }&gt; = [];
+  <span class="prop">@Input()</span> showSuccess = <span class="val">false</span>;
+
+  value = <span class="str">''</span>;
+  isDisabled = <span class="val">false</span>;
+  isPasswordVisible = <span class="val">false</span>;
+  inputId = <span class="str">`mp-input-`</span> + Math.random().toString(<span class="val">36</span>).slice(<span class="val">2</span>);
+  helperId = <span class="str">`mp-input-help-`</span> + Math.random().toString(<span class="val">36</span>).slice(<span class="val">2</span>);
+
+  onChange = (_: <span class="kw">any</span>) => {};
+  onTouched = () => {};
+
+  <span class="kw">constructor</span>(@Self() @Optional() <span class="kw">public</span> ngControl: NgControl) {
+    <span class="kw">if</span> (ngControl) ngControl.valueAccessor = <span class="kw">this</span>;
+  }
+
+  <span class="kw">get</span> hasValue() { <span class="kw">return</span> !!<span class="kw">this</span>.value; }
+  <span class="kw">get</span> hasError() { <span class="kw">return</span> <span class="kw">this</span>.ngControl?.invalid && <span class="kw">this</span>.ngControl?.touched; }
+  <span class="kw">get</span> errorMessage() { <span class="kw">return</span> Object.values(<span class="kw">this</span>.ngControl?.errors ?? {})[<span class="val">0</span>] ?? <span class="str">'Campo inválido'</span>; }
+  <span class="kw">get</span> currentType() { <span class="kw">return</span> <span class="kw">this</span>.tipo === <span class="str">'password'</span> ? (<span class="kw">this</span>.isPasswordVisible ? <span class="str">'text'</span> : <span class="str">'password'</span>) : <span class="kw">this</span>.tipo; }
+  <span class="kw">get</span> currentIconRight() { <span class="kw">return</span> <span class="kw">this</span>.tipo === <span class="str">'password'</span> ? (<span class="kw">this</span>.isPasswordVisible ? <span class="str">'visibility_off'</span> : <span class="str">'visibility'</span>) : <span class="kw">this</span>.iconRight; }
+
+  writeValue(v: <span class="kw">any</span>) { <span class="kw">this</span>.value = v ?? <span class="str">''</span>; }
+  registerOnChange(fn: <span class="kw">any</span>) { <span class="kw">this</span>.onChange = fn; }
+  registerOnTouched(fn: <span class="kw">any</span>) { <span class="kw">this</span>.onTouched = fn; }
+  setDisabledState(d: <span class="kw">boolean</span>) { <span class="kw">this</span>.isDisabled = d; }
+
+  onInput(e: Event) {
+    <span class="kw">const</span> el = e.target <span class="kw">as</span> HTMLInputElement;
+    <span class="kw">this</span>.value = el.value;
+    <span class="kw">this</span>.onChange(<span class="kw">this</span>.value);
+  }
+
+  onIconRightClick() {
+    <span class="kw">if</span> (<span class="kw">this</span>.tipo === <span class="str">'password'</span>) <span class="kw">this</span>.isPasswordVisible = !<span class="kw">this</span>.isPasswordVisible;
+  }
+
+  ngOnInit() {}
+}</pre>
+
+    <!-- Drupal Twig -->
+    <pre id="inp-drupal"><span class="cmt">{# templates/components/mp-input.html.twig #}</span>
+<span class="cmt">{# Variables: label, type, placeholder, helper_text, icon_left, icon_right,</span>
+<span class="cmt">             icon_right_action, required, disabled, error_message, options #}</span>
+
+<span class="cmt">{%- set input_id   = 'mp-input-' ~ random() %}</span>
+<span class="cmt">{%- set helper_id  = 'mp-helper-' ~ random() %}</span>
+<span class="cmt">{%- set has_error  = error_message is not empty %}</span>
+<span class="cmt">{%- set input_type = type|default('text') %}</span>
+
+&lt;<span class="kw">div</span> <span class="prop">class</span>=<span class="str">"mp-input-group"</span>&gt;
+
+  {%- <span class="kw">if</span> label %}
+  &lt;<span class="kw">label</span> <span class="prop">class</span>=<span class="str">"mp-input-label"</span> <span class="prop">for</span>=<span class="str">"{{ input_id }}"</span>&gt;
+    {{ label }}
+    {%- <span class="kw">if</span> required %}&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-input-required"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;*&lt;/<span class="kw">span</span>&gt;{%- <span class="kw">endif</span> %}
+  &lt;/<span class="kw">label</span>&gt;
+  {%- <span class="kw">endif</span> %}
+
+  &lt;<span class="kw">div</span> <span class="prop">class</span>=<span class="str">"mp-input-wrapper"</span>&gt;
+
+    {%- <span class="kw">if</span> input_type == 'textarea' %}
+    &lt;<span class="kw">textarea</span>
+      {{ attributes.addClass('mp-input-field mp-textarea', has_error ? 'error') }}
+      <span class="prop">id</span>=<span class="str">"{{ input_id }}"</span>
+      <span class="prop">placeholder</span>=<span class="str">"{{ placeholder }}"</span>
+      <span class="prop">aria-describedby</span>=<span class="str">"{{ helper_id }}"</span>
+      {% <span class="kw">if</span> has_error %}<span class="prop">aria-invalid</span>=<span class="str">"true"</span>{% <span class="kw">endif</span> %}
+      {% <span class="kw">if</span> disabled %}<span class="prop">disabled</span>{% <span class="kw">endif</span> %}
+    &gt;{{ value }}&lt;/<span class="kw">textarea</span>&gt;
+
+    {%- <span class="kw">elseif</span> input_type == 'select' %}
+    &lt;<span class="kw">select</span>
+      {{ attributes.addClass('mp-input-field mp-select', has_error ? 'error') }}
+      <span class="prop">id</span>=<span class="str">"{{ input_id }}"</span>
+      <span class="prop">aria-describedby</span>=<span class="str">"{{ helper_id }}"</span>
+      {% <span class="kw">if</span> has_error %}<span class="prop">aria-invalid</span>=<span class="str">"true"</span>{% <span class="kw">endif</span> %}
+      {% <span class="kw">if</span> disabled %}<span class="prop">disabled</span>{% <span class="kw">endif</span> %}
+    &gt;
+      &lt;<span class="kw">option</span> <span class="prop">value</span>=<span class="str">""</span> <span class="prop">disabled</span> <span class="prop">selected</span>&gt;{{ placeholder|default('Selecciona…') }}&lt;/<span class="kw">option</span>&gt;
+      {%- <span class="kw">for</span> opt <span class="kw">in</span> options %}
+      &lt;<span class="kw">option</span> <span class="prop">value</span>=<span class="str">"{{ opt.value }}"</span> {% <span class="kw">if</span> value == opt.value %}<span class="prop">selected</span>{% <span class="kw">endif</span> %}&gt;{{ opt.label }}&lt;/<span class="kw">option</span>&gt;
+      {%- <span class="kw">endfor</span> %}
+    &lt;/<span class="kw">select</span>&gt;
+    &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded mp-input-icon mp-input-icon--right"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;expand_more&lt;/<span class="kw">span</span>&gt;
+
+    {%- <span class="kw">else</span> %}
+    {%- <span class="kw">if</span> icon_left %}
+    &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded mp-input-icon mp-input-icon--left"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;{{ icon_left }}&lt;/<span class="kw">span</span>&gt;
+    {%- <span class="kw">endif</span> %}
+    &lt;<span class="kw">input</span>
+      {{ attributes.addClass(
+           'mp-input-field',
+           icon_left   ? 'has-icon-left',
+           icon_right  ? 'has-icon-right',
+           has_error   ? 'error'
+         ) }}
+      <span class="prop">id</span>=<span class="str">"{{ input_id }}"</span>
+      <span class="prop">type</span>=<span class="str">"{{ input_type }}"</span>
+      <span class="prop">placeholder</span>=<span class="str">"{{ placeholder }}"</span>
+      <span class="prop">value</span>=<span class="str">"{{ value }}"</span>
+      <span class="prop">aria-describedby</span>=<span class="str">"{{ helper_id }}"</span>
+      {% <span class="kw">if</span> has_error %}<span class="prop">aria-invalid</span>=<span class="str">"true"</span>{% <span class="kw">endif</span> %}
+      {% <span class="kw">if</span> required %}<span class="prop">required</span> <span class="prop">aria-required</span>=<span class="str">"true"</span>{% <span class="kw">endif</span> %}
+      {% <span class="kw">if</span> disabled %}<span class="prop">disabled</span>{% <span class="kw">endif</span> %}
+    &gt;
+    {%- <span class="kw">if</span> icon_right %}
+    &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded mp-input-icon mp-input-icon--right"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;{{ icon_right }}&lt;/<span class="kw">span</span>&gt;
+    {%- <span class="kw">endif</span> %}
+    {%- <span class="kw">endif</span> %}
+
+  &lt;/<span class="kw">div</span>&gt;
+
+  {%- <span class="kw">if</span> helper_text or has_error %}
+  &lt;<span class="kw">span</span> <span class="prop">id</span>=<span class="str">"{{ helper_id }}"</span> <span class="prop">class</span>=<span class="str">"mp-input-helper{{ has_error ? ' error' }}"</span>&gt;
+    {{ has_error ? error_message : helper_text }}
+  &lt;/<span class="kw">span</span>&gt;
+  {%- <span class="kw">endif</span> %}
+
+&lt;/<span class="kw">div</span>&gt;
+
+<span class="cmt">{# Hook de preprocesamiento (mp.theme o módulo):
+function mp_preprocess_mp_input(&$vars) {
+  $vars['input_id']  = 'mp-input-' . uniqid();
+  $vars['helper_id'] = 'mp-helper-' . uniqid();
+} #}</span></pre>
+
+    <!-- HTML + CSS -->
+    <pre id="inp-html"><span class="cmt">&lt;!-- Input simple --&gt;</span>
+&lt;<span class="kw">div</span> <span class="prop">class</span>=<span class="str">"mp-input-group"</span>&gt;
+  &lt;<span class="kw">label</span> <span class="prop">class</span>=<span class="str">"mp-input-label"</span> <span class="prop">for</span>=<span class="str">"inp1"</span>&gt;Nombre&lt;/<span class="kw">label</span>&gt;
+  &lt;<span class="kw">div</span> <span class="prop">class</span>=<span class="str">"mp-input-wrapper"</span>&gt;
+    &lt;<span class="kw">input</span> <span class="prop">class</span>=<span class="str">"mp-input-field"</span> <span class="prop">id</span>=<span class="str">"inp1"</span> <span class="prop">type</span>=<span class="str">"text"</span>
+           <span class="prop">placeholder</span>=<span class="str">"Tu nombre"</span>&gt;
+  &lt;/<span class="kw">div</span>&gt;
+  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-input-helper"</span>&gt;Texto de ayuda&lt;/<span class="kw">span</span>&gt;
+&lt;/<span class="kw">div</span>&gt;
+
+<span class="cmt">&lt;!-- Con ícono izquierdo --&gt;</span>
+&lt;<span class="kw">div</span> <span class="prop">class</span>=<span class="str">"mp-input-wrapper"</span>&gt;
+  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded mp-input-icon mp-input-icon--left"</span>
+        <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;mail&lt;/<span class="kw">span</span>&gt;
+  &lt;<span class="kw">input</span> <span class="prop">class</span>=<span class="str">"mp-input-field has-icon-left"</span> <span class="prop">type</span>=<span class="str">"email"</span>&gt;
 &lt;/<span class="kw">div</span>&gt;
 
 <span class="cmt">&lt;!-- Estado error --&gt;</span>
-&lt;<span class="kw">input</span> <span class="prop">class</span>=<span class="str">"input-field error"</span> ...&gt;
-&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"input-helper error"</span>&gt;Mensaje de error&lt;/<span class="kw">span</span>&gt;</pre>
-      <pre id="input-angular"><span class="cmt">&lt;!-- Angular Reactive Forms --&gt;</span>
-&lt;<span class="kw">div</span> <span class="prop">class</span>=<span class="str">"input-group"</span>&gt;
-  &lt;<span class="kw">label</span> <span class="prop">class</span>=<span class="str">"input-label"</span>&gt;{{ label }}&lt;/<span class="kw">label</span>&gt;
-  &lt;<span class="kw">input</span>
-    <span class="prop">class</span>=<span class="str">"input-field"</span>
-    [<span class="prop">class.error</span>]=<span class="str">"control.invalid && control.touched"</span>
-    [<span class="prop">formControl</span>]=<span class="str">"control"</span>&gt;
-  &lt;<span class="kw">span</span> *<span class="prop">ngIf</span>=<span class="str">"control.invalid && control.touched"</span>
-    <span class="prop">class</span>=<span class="str">"input-helper error"</span>&gt;
-    {{ errorMessage }}
-  &lt;/<span class="kw">span</span>&gt;
-&lt;/<span class="kw">div</span>&gt;</pre>
-      <pre id="input-css"><span class="sel">.input-field</span> {
-  <span class="prop">padding</span>: <span class="val">10px var(--space-4)</span>;
+&lt;<span class="kw">input</span> <span class="prop">class</span>=<span class="str">"mp-input-field error"</span> <span class="prop">aria-invalid</span>=<span class="str">"true"</span>
+       <span class="prop">aria-describedby</span>=<span class="str">"err1"</span>&gt;
+&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-input-helper error"</span> <span class="prop">id</span>=<span class="str">"err1"</span>&gt;✕ Mensaje de error&lt;/<span class="kw">span</span>&gt;
+
+<span class="cmt">&lt;!-- Select --&gt;</span>
+&lt;<span class="kw">div</span> <span class="prop">class</span>=<span class="str">"mp-input-wrapper"</span>&gt;
+  &lt;<span class="kw">select</span> <span class="prop">class</span>=<span class="str">"mp-input-field mp-select"</span>&gt;
+    &lt;<span class="kw">option</span> <span class="prop">value</span>=<span class="str">""</span> <span class="prop">disabled</span> <span class="prop">selected</span>&gt;Selecciona…&lt;/<span class="kw">option</span>&gt;
+    &lt;<span class="kw">option</span>&gt;Opción A&lt;/<span class="kw">option</span>&gt;
+  &lt;/<span class="kw">select</span>&gt;
+  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded mp-input-icon mp-input-icon--right"</span>
+        <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;expand_more&lt;/<span class="kw">span</span>&gt;
+&lt;/<span class="kw">div</span>&gt;
+
+<span class="sel">/* ── CSS ──────────────────────────────── */</span>
+<span class="sel">.mp-input-field</span> {
+  <span class="prop">height</span>: <span class="val">48px</span>;
+  <span class="prop">padding</span>: <span class="val">0 var(--space-4)</span>;
   <span class="prop">border</span>: <span class="val">1.5px solid var(--ui-border)</span>;
   <span class="prop">border-radius</span>: <span class="val">8px</span>;
-  <span class="prop">font-family</span>: <span class="val">var(--font-body)</span>;
   <span class="prop">font-size</span>: <span class="val">14px</span>;
   <span class="prop">width</span>: <span class="val">100%</span>;
+  <span class="prop">outline</span>: <span class="val">none</span>;
+  <span class="prop">transition</span>: <span class="val">border-color .18s, box-shadow .18s</span>;
 }
-
-<span class="sel">.input-field:focus</span> {
+<span class="sel">.mp-input-field:focus</span> {
   <span class="prop">border-color</span>: <span class="val">var(--base-brand-80)</span>;
-  <span class="prop">box-shadow</span>: <span class="val">0 0 0 3px rgba(255,102,0,.15)</span>;
+  <span class="prop">box-shadow</span>: <span class="val">0 0 0 3px color-mix(in srgb,var(--base-brand-80) 18%,transparent)</span>;
 }
-
-<span class="sel">.input-field.error</span> {
+<span class="sel">.mp-input-field.error</span> {
   <span class="prop">border-color</span>: <span class="val">var(--base-red-70)</span>;
-  <span class="prop">box-shadow</span>: <span class="val">0 0 0 3px rgba(209,68,52,.15)</span>;
+  <span class="prop">box-shadow</span>: <span class="val">0 0 0 3px color-mix(in srgb,var(--base-red-70) 15%,transparent)</span>;
+}
+<span class="sel">.mp-input-field:disabled</span> {
+  <span class="prop">background</span>: <span class="val">var(--ui-surface-alt)</span>;
+  <span class="prop">opacity</span>: <span class="val">.65</span>;
+  <span class="prop">cursor</span>: <span class="val">not-allowed</span>;
 }</pre>
-    </div>
   </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     6 · API
+     ══════════════════════════════════════════════════════════ -->
+<div class="section-subtitle-row" style="margin-top:var(--space-7);margin-bottom:var(--space-4);">
+  <h2 class="section-sub">API del componente</h2>
+</div>
+
+<table class="mp-api-table">
+  <thead>
+    <tr>
+      <th>Propiedad</th>
+      <th>Tipo</th>
+      <th>Default</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>tipo</code></td>
+      <td><code>'text' | 'email' | 'password' | 'number' | 'search' | 'textarea' | 'select'</code></td>
+      <td><code>'text'</code></td>
+      <td>Variante del campo. Define el tipo de input HTML o el elemento a renderizar.</td>
+    </tr>
+    <tr>
+      <td><code>label</code></td>
+      <td><code>string</code></td>
+      <td><code>''</code></td>
+      <td>Texto de la etiqueta asociada al campo.</td>
+    </tr>
+    <tr>
+      <td><code>placeholder</code></td>
+      <td><code>string</code></td>
+      <td><code>''</code></td>
+      <td>Texto de ejemplo cuando el campo está vacío.</td>
+    </tr>
+    <tr>
+      <td><code>helperText</code></td>
+      <td><code>string</code></td>
+      <td><code>''</code></td>
+      <td>Texto de ayuda bajo el campo. Si hay error, se reemplaza por el mensaje de error.</td>
+    </tr>
+    <tr>
+      <td><code>iconLeft</code></td>
+      <td><code>string</code></td>
+      <td>—</td>
+      <td>Nombre del ícono Material Symbols a mostrar a la izquierda (decorativo).</td>
+    </tr>
+    <tr>
+      <td><code>iconRight</code></td>
+      <td><code>string</code></td>
+      <td>—</td>
+      <td>Nombre del ícono a mostrar a la derecha. Combinar con <code>iconRightAction</code> para hacerlo interactivo.</td>
+    </tr>
+    <tr>
+      <td><code>iconRightAction</code></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Si es <code>true</code>, el ícono derecho se renderiza como botón. En campos password, alterna visibilidad automáticamente.</td>
+    </tr>
+    <tr>
+      <td><code>required</code></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Agrega asterisco visual, atributo <code>required</code> y <code>aria-required="true"</code>.</td>
+    </tr>
+    <tr>
+      <td><code>rows</code></td>
+      <td><code>number</code></td>
+      <td><code>3</code></td>
+      <td>Número de filas visibles. Solo aplica cuando <code>tipo="textarea"</code>.</td>
+    </tr>
+    <tr>
+      <td><code>options</code></td>
+      <td><code>Array&lt;{value,label}&gt;</code></td>
+      <td><code>[]</code></td>
+      <td>Opciones del select. Solo aplica cuando <code>tipo="select"</code>.</td>
+    </tr>
+    <tr>
+      <td><code>showSuccess</code></td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+      <td>Muestra el helper en verde cuando el campo es válido y no tiene error.</td>
+    </tr>
+    <tr>
+      <td><code>formControl</code></td>
+      <td><code>FormControl</code></td>
+      <td>—</td>
+      <td>Control reactivo de Angular. El error se infiere automáticamente desde <code>ngControl.errors</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ══════════════════════════════════════════════════════════
+     7 · ACCESIBILIDAD
+     ══════════════════════════════════════════════════════════ -->
+<div class="section-subtitle-row" style="margin-top:var(--space-7);margin-bottom:var(--space-4);">
+  <h2 class="section-sub">Accesibilidad</h2>
+</div>
+
+<div class="a11y-grid">
+  <div class="a11y-card">
+    <div class="a11y-card__icon">🏷️</div>
+    <div class="a11y-card__title">Label explícito</div>
+    <div class="a11y-card__desc">Cada campo tiene un <code>&lt;label for="…"&gt;</code> asociado. Nunca uses solo el placeholder como único identificador visual.</div>
+  </div>
+  <div class="a11y-card">
+    <div class="a11y-card__icon">🔴</div>
+    <div class="a11y-card__title">Errores accesibles</div>
+    <div class="a11y-card__desc"><code>aria-invalid="true"</code> + <code>aria-describedby</code> conectan el mensaje de error al campo para lectores de pantalla.</div>
+  </div>
+  <div class="a11y-card">
+    <div class="a11y-card__icon">🔑</div>
+    <div class="a11y-card__title">Campos requeridos</div>
+    <div class="a11y-card__desc">El asterisco (*) es visual y <code>aria-hidden="true"</code>. El atributo nativo <code>required</code> + <code>aria-required="true"</code> comunican la obligatoriedad a AT.</div>
+  </div>
+  <div class="a11y-card">
+    <div class="a11y-card__icon">👁️</div>
+    <div class="a11y-card__title">Íconos interactivos</div>
+    <div class="a11y-card__desc">Los íconos de acción (ver contraseña, limpiar campo) se renderizan como <code>&lt;button&gt;</code> con <code>aria-label</code> descriptivo. Los decorativos llevan <code>aria-hidden="true"</code>.</div>
+  </div>
+</div>
+
 </section>

@@ -1,0 +1,808 @@
+<section class="section" id="tipografia">
+  <div class="section-header">
+    <div class="section-eyebrow">1.3</div>
+    <h1 class="section-title">Tipografía</h1>
+    <p class="section-desc">El sistema usa exclusivamente <strong>Roboto</strong> en todos los contextos. Base tipográfica: <strong>1sp = 1pt</strong> (escala con Dynamic Type en iOS y font size del sistema en Android). Cada estilo expone variables semánticas y un <code>Style</code> XAML (<code>StaticResource mp-*</code>) listo para producción.</p>
+  </div>
+
+  <div class="ty-figma-bar">
+    <span class="material-symbols-rounded">tips_and_updates</span>
+    <span>Nunca uses valores hardcoded. Usa <code>.mp-h1</code>, <code>.mp-body-l</code>, etc., o las variables <code>var(--mp-h1-size)</code>.</span>
+    <a class="ct-figma-link" href="https://www.figma.com/proto/1zVGMpzqBgiBUqhmfFEAoT/Compensar-v2---Sistema-de-dise%C3%B1o?node-id=3916-20388&page-id=3909%3A20350" target="_blank" rel="noopener">
+      <span class="material-symbols-rounded">open_in_new</span> Ver en Figma
+    </a>
+  </div>
+
+  <!-- DESCARGAS -->
+  <div class="ct-downloads" style="margin-bottom:var(--space-5)">
+    <span class="ct-downloads-label"><span class="material-symbols-rounded">download</span> Descargar tokens</span>
+    <button class="ct-download-btn" onclick="tyDownloadCSS()"><span class="material-symbols-rounded">code</span> JSON tokens</button>
+    <button class="ct-download-btn" onclick="tyDownloadSCSS()"><span class="material-symbols-rounded">style</span> XAML styles</button>
+    <button class="ct-download-btn" onclick="tyDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
+  </div>
+
+  <!-- TOGGLE DESKTOP / MOBILE -->
+  <div class="ty-toggle-bar">
+    <span class="ty-toggle-label"><span class="material-symbols-rounded">devices</span> Vista previa</span>
+    <div class="ty-toggle-btns">
+      <button id="ty-btn-desk" class="ty-toggle-btn active" onclick="tySetMode('desktop')">
+        <span class="material-symbols-rounded">desktop_mac</span> Desktop
+      </button>
+      <button id="ty-btn-mob" class="ty-toggle-btn" onclick="tySetMode('mobile')">
+        <span class="material-symbols-rounded">smartphone</span> Mobile
+      </button>
+    </div>
+    <span class="ty-toggle-hint" id="ty-mode-hint">Mostrando tamaños desktop</span>
+  </div>
+
+  <!-- 1 · FAMILIA -->
+  <div class="ty-section-label"><span class="material-symbols-rounded">font_download</span> Familia — Roboto</div>
+  <div class="ty-font-card-single">
+    <div class="ty-font-card-head">
+      <div>
+        <div class="ty-font-name" style="font-family:Roboto,sans-serif;font-weight:700">Roboto</div>
+        <div class="ty-font-role">Todas las vistas — titulares, cuerpo, labels y UI</div>
+      </div>
+      <div class="ty-font-actions">
+        <button class="ty-token-copy" onclick="tyCopy('var(--font-body)',this)"><code>--font-body</code><span class="material-symbols-rounded">content_copy</span></button>
+        <button class="ty-token-copy" onclick="tyCopy('var(--font-heading)',this)"><code>--font-heading</code><span class="material-symbols-rounded">content_copy</span></button>
+        <a class="ty-gfonts-link" href="https://fonts.google.com/specimen/Roboto" target="_blank" rel="noopener"><span class="material-symbols-rounded">open_in_new</span></a>
+      </div>
+    </div>
+    <div class="ty-alphabet" style="font-family:Roboto,sans-serif">
+      Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz &nbsp;&middot;&nbsp; 0 1 2 3 4 5 6 7 8 9 &nbsp;&middot;&nbsp; ! @ # $ % &amp; ( )
+    </div>
+    <div class="ty-weights-grid">
+      <div class="ty-w-row"><span class="ty-w-label">100</span><span class="ty-w-name">Thin</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:100">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">300</span><span class="ty-w-name">Light</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:300">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">400</span><span class="ty-w-name">Regular</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:400">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">500</span><span class="ty-w-name">Medium</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:500">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">700</span><span class="ty-w-name">Bold</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:700">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">900</span><span class="ty-w-name">Black</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:900">Compensar Medicina Prepagada</span></div>
+    </div>
+  </div>
+
+  <!-- 2 · ESCALA -->
+  <div class="ty-section-label" style="margin-top:var(--space-8)"><span class="material-symbols-rounded">format_size</span> Escala tipográfica &middot; base 1rem = 16px</div>
+  <div id="ty-scale-root"></div>
+
+</section>
+
+<style>
+/* ═══ TIPOGRAFÍA v2 ══════════════════════════════════════ */
+
+/* ── Token vars (semánticos .mp-*) ─────────────────────── */
+:root {
+  /* Display Desktop */
+  --mp-display-l-size:   3.5rem;  --mp-display-l-lh:1.1; --mp-display-l-weight:900;
+  --mp-display-m-size:   3rem;    --mp-display-m-lh:1.2; --mp-display-m-weight:900;
+  /* Display Mobile */
+  --mp-display-xl-mob-size:2.5rem; --mp-display-xl-mob-lh:1.1; --mp-display-xl-mob-weight:700;
+  --mp-display-l-mob-size:2.25rem; --mp-display-l-mob-lh:1.1; --mp-display-l-mob-weight:700;
+  --mp-display-m-mob-size:2rem;    --mp-display-m-mob-lh:1.1; --mp-display-m-mob-weight:700;
+  /* Headings */
+  --mp-h1-size:3rem;   --mp-h1-lh:1.2; --mp-h1-weight:700;
+  --mp-h2-size:2.5rem; --mp-h2-lh:1.2; --mp-h2-weight:700;
+  --mp-h3-size:2.25rem;--mp-h3-lh:1.2; --mp-h3-weight:700;
+  --mp-h4-size:1.75rem;--mp-h4-lh:1.2; --mp-h4-weight:500;
+  --mp-h5-size:1.5rem; --mp-h5-lh:1.3; --mp-h5-weight:500;
+  --mp-h6-size:1.125rem;--mp-h6-lh:1.3;--mp-h6-weight:500;
+  /* Titles */
+  --mp-eyebrow-size:1.125rem;  --mp-eyebrow-lh:1.3; --mp-eyebrow-weight:500;
+  --mp-parrafo-xl-size:1.125rem;--mp-parrafo-xl-lh:1.5;--mp-parrafo-xl-weight:400;
+  --mp-parrafo-l-size:1rem;    --mp-parrafo-l-lh:1.5; --mp-parrafo-l-weight:400;
+  /* Body */
+  --mp-body-2xl-size:1.5rem;   --mp-body-2xl-lh:1.3; --mp-body-2xl-weight:400;
+  --mp-body-xl-size:1.125rem;  --mp-body-xl-lh:1.3;  --mp-body-xl-weight:400;
+  --mp-body-l-size:1rem;       --mp-body-l-lh:1.3;   --mp-body-l-weight:400;
+  --mp-body-m-size:0.875rem;   --mp-body-m-lh:1.5;   --mp-body-m-weight:400;
+  --mp-body-s-size:0.75rem;    --mp-body-s-lh:1.3;   --mp-body-s-weight:400;
+  --mp-body-xs-size:0.625rem;  --mp-body-xs-lh:1.3;  --mp-body-xs-weight:400;
+  /* UI */
+  --mp-btn-size:1rem;          --mp-btn-lh:1.0;       --mp-btn-weight:500;
+  --mp-label-size:1rem;        --mp-label-lh:1.0;     --mp-label-weight:700;
+  --mp-hint-size:0.875rem;     --mp-hint-lh:1.0;      --mp-hint-weight:400;
+  --mp-placeholder-size:1rem;  --mp-placeholder-lh:1.0;--mp-placeholder-weight:400;
+}
+
+/* ── MAUI utility styles (referencia visual) ───────── */
+.mp-display-l    { font-size:var(--mp-display-l-size);   line-height:var(--mp-display-l-lh);   font-weight:var(--mp-display-l-weight);   font-family:var(--font-heading); }
+.mp-display-m    { font-size:var(--mp-display-m-size);   line-height:var(--mp-display-m-lh);   font-weight:var(--mp-display-m-weight);   font-family:var(--font-heading); }
+.mp-display-xl-mob{font-size:var(--mp-display-xl-mob-size);line-height:var(--mp-display-xl-mob-lh);font-weight:var(--mp-display-xl-mob-weight);font-family:var(--font-heading);}
+.mp-display-l-mob{font-size:var(--mp-display-l-mob-size); line-height:var(--mp-display-l-mob-lh); font-weight:var(--mp-display-l-mob-weight); font-family:var(--font-heading);}
+.mp-display-m-mob{font-size:var(--mp-display-m-mob-size); line-height:var(--mp-display-m-mob-lh); font-weight:var(--mp-display-m-mob-weight); font-family:var(--font-heading);}
+.mp-h1  { font-size:var(--mp-h1-size);  line-height:var(--mp-h1-lh);  font-weight:var(--mp-h1-weight);  font-family:var(--font-heading); }
+.mp-h2  { font-size:var(--mp-h2-size);  line-height:var(--mp-h2-lh);  font-weight:var(--mp-h2-weight);  font-family:var(--font-heading); }
+.mp-h3  { font-size:var(--mp-h3-size);  line-height:var(--mp-h3-lh);  font-weight:var(--mp-h3-weight);  font-family:var(--font-heading); }
+.mp-h4  { font-size:var(--mp-h4-size);  line-height:var(--mp-h4-lh);  font-weight:var(--mp-h4-weight);  font-family:var(--font-heading); }
+.mp-h5  { font-size:var(--mp-h5-size);  line-height:var(--mp-h5-lh);  font-weight:var(--mp-h5-weight);  font-family:var(--font-heading); }
+.mp-h6  { font-size:var(--mp-h6-size);  line-height:var(--mp-h6-lh);  font-weight:var(--mp-h6-weight);  font-family:var(--font-heading); }
+.mp-eyebrow    { font-size:var(--mp-eyebrow-size);     line-height:var(--mp-eyebrow-lh);     font-weight:var(--mp-eyebrow-weight);     font-family:var(--font-body); letter-spacing:0.1em; text-transform:uppercase; }
+.mp-parrafo-xl { font-size:var(--mp-parrafo-xl-size);  line-height:var(--mp-parrafo-xl-lh);  font-weight:var(--mp-parrafo-xl-weight);  font-family:var(--font-body); }
+.mp-parrafo-l  { font-size:var(--mp-parrafo-l-size);   line-height:var(--mp-parrafo-l-lh);   font-weight:var(--mp-parrafo-l-weight);   font-family:var(--font-body); }
+.mp-body-2xl   { font-size:var(--mp-body-2xl-size);    line-height:var(--mp-body-2xl-lh);    font-weight:var(--mp-body-2xl-weight);    font-family:var(--font-body); }
+.mp-body-xl    { font-size:var(--mp-body-xl-size);     line-height:var(--mp-body-xl-lh);     font-weight:var(--mp-body-xl-weight);     font-family:var(--font-body); }
+.mp-body-l     { font-size:var(--mp-body-l-size);      line-height:var(--mp-body-l-lh);      font-weight:var(--mp-body-l-weight);      font-family:var(--font-body); }
+.mp-body-m     { font-size:var(--mp-body-m-size);      line-height:var(--mp-body-m-lh);      font-weight:var(--mp-body-m-weight);      font-family:var(--font-body); }
+.mp-body-s     { font-size:var(--mp-body-s-size);      line-height:var(--mp-body-s-lh);      font-weight:var(--mp-body-s-weight);      font-family:var(--font-body); }
+.mp-body-xs    { font-size:var(--mp-body-xs-size);     line-height:var(--mp-body-xs-lh);     font-weight:var(--mp-body-xs-weight);     font-family:var(--font-body); }
+.mp-btn         { font-size:var(--mp-btn-size);         line-height:var(--mp-btn-lh);         font-weight:var(--mp-btn-weight);         font-family:var(--font-body); }
+.mp-label       { font-size:var(--mp-label-size);       line-height:var(--mp-label-lh);       font-weight:var(--mp-label-weight);       font-family:var(--font-body); letter-spacing:0.08em; text-transform:uppercase; }
+.mp-hint        { font-size:var(--mp-hint-size);        line-height:var(--mp-hint-lh);        font-weight:var(--mp-hint-weight);        font-family:var(--font-body); }
+.mp-placeholder { font-size:var(--mp-placeholder-size); line-height:var(--mp-placeholder-lh); font-weight:var(--mp-placeholder-weight); font-family:var(--font-body); }
+
+/* ── Toggle bar ──────────────────────────────────────── */
+.ty-toggle-bar {
+  display:flex;align-items:center;gap:var(--space-4);
+  background:var(--ui-surface);border:1px solid var(--ui-border);
+  border-radius:12px;padding:var(--space-3) var(--space-5);
+  margin-bottom:var(--space-6);flex-wrap:wrap;
+}
+.ty-toggle-label {
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;color:var(--ui-text-muted);
+  letter-spacing:.06em;text-transform:uppercase;
+}
+.ty-toggle-label .material-symbols-rounded {font-size:15px;color:var(--ui-accent)}
+.ty-toggle-btns {display:flex;gap:4px;background:var(--ui-surface-alt);border-radius:8px;padding:3px}
+.ty-toggle-btn {
+  display:inline-flex;align-items:center;gap:5px;
+  background:none;border:none;border-radius:6px;padding:5px 12px;
+  font-size:12px;font-weight:500;color:var(--ui-text-muted);cursor:pointer;
+  transition:background .15s,color .15s;
+}
+.ty-toggle-btn .material-symbols-rounded {font-size:14px}
+.ty-toggle-btn.active {background:var(--ui-surface);color:var(--ui-accent);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.ty-toggle-hint {font-size:11px;color:var(--ui-text-muted);margin-left:auto}
+
+/* ── Figma bar ───────────────────────────────────────── */
+.ty-figma-bar {
+  display:flex;align-items:center;gap:var(--space-3);
+  background:var(--ui-surface-alt);border-left:3px solid var(--ui-accent);
+  border-radius:0 8px 8px 0;padding:var(--space-3) var(--space-5);
+  font-size:13px;color:var(--ui-text);margin-bottom:var(--space-5);flex-wrap:wrap;
+}
+.ty-figma-bar .material-symbols-rounded{color:var(--ui-accent);flex-shrink:0}
+.ty-figma-bar code{font-family:var(--font-code);font-size:11.5px;background:var(--ui-surface);padding:1px 5px;border-radius:4px;color:var(--ui-accent)}
+.ty-figma-bar .ct-figma-link{margin-left:auto;white-space:nowrap}
+
+/* ── Section label ───────────────────────────────────── */
+.ty-section-label {
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--font-body);font-size:11px;font-weight:700;
+  color:var(--ui-text-muted);letter-spacing:.08em;text-transform:uppercase;
+  margin:var(--space-7) 0 var(--space-5);
+  border-bottom:1px solid var(--ui-border);padding-bottom:var(--space-3);
+}
+.ty-section-label .material-symbols-rounded{font-size:15px;color:var(--ui-accent)}
+
+/* ── Roboto card ─────────────────────────────────────── */
+.ty-font-card-single{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:14px;padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-5)}
+.ty-font-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap}
+.ty-font-name{font-size:28px;font-weight:700;color:var(--ui-text);margin-bottom:4px}
+.ty-font-role{font-size:12px;color:var(--ui-text-muted)}
+.ty-font-actions{display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap}
+.ty-token-copy{display:inline-flex;align-items:center;gap:5px;background:var(--ui-surface-alt);border:1px solid var(--ui-border);border-radius:6px;padding:4px 8px;cursor:pointer;color:var(--ui-text-muted);transition:background .15s,color .15s}
+.ty-token-copy:hover{background:var(--ui-tag-bg);color:var(--ui-accent)}
+.ty-token-copy code{font-family:var(--font-code);font-size:10px;color:var(--ui-accent)}
+.ty-token-copy .material-symbols-rounded,.ty-gfonts-link .material-symbols-rounded{font-size:13px}
+.ty-gfonts-link{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--ui-border);border-radius:6px;color:var(--ui-text-muted);text-decoration:none;transition:background .15s,color .15s}
+.ty-gfonts-link:hover{background:var(--ui-tag-bg);color:var(--ui-accent)}
+.ty-alphabet{font-size:14px;color:var(--ui-text-muted);line-height:2;letter-spacing:.03em;border-bottom:1px solid var(--ui-border);padding-bottom:var(--space-4)}
+.ty-weights-grid{display:flex;flex-direction:column;gap:10px}
+.ty-w-row{display:flex;align-items:baseline;gap:var(--space-4)}
+.ty-w-label{font-family:var(--font-code);font-size:10px;color:var(--ui-text-muted);min-width:36px}
+.ty-w-name{font-size:11px;color:var(--ui-text-muted);min-width:60px}
+.ty-w-sample{font-size:16px;color:var(--ui-text)}
+
+/* ── Scale table ─────────────────────────────────────── */
+.ty-scale-wrapper{display:flex;flex-direction:column;gap:var(--space-5)}
+.ty-cat-group{border:1px solid var(--ui-border);border-radius:12px;overflow:hidden}
+.ty-cat-header{background:var(--ui-surface-alt);padding:var(--space-4) var(--space-5);border-bottom:1px solid var(--ui-border);display:flex;align-items:center;gap:var(--space-3)}
+.ty-cat-title{font-size:12px;font-weight:700;color:var(--ui-text)}
+.ty-cat-desc{font-size:11.5px;color:var(--ui-text-muted);margin-left:auto}
+
+/* Scale row */
+.ty-row {border-bottom:1px solid var(--ui-border);background:var(--ui-surface);transition:background .1s}
+.ty-row:last-child{border-bottom:none}
+.ty-row:hover{background:var(--ui-surface-alt)}
+.ty-row-main{display:grid;grid-template-columns:1fr 320px;gap:var(--space-4);align-items:start;padding:var(--space-5)}
+.ty-preview-wrap{padding-right:var(--space-3);overflow:hidden;word-break:break-word}
+.ty-preview-text{transition:font-size .2s;display:block}
+
+/* Meta panel */
+.ty-meta{border-left:1px solid var(--ui-border);padding-left:var(--space-5)}
+.ty-row-name{font-size:10.5px;font-weight:700;color:var(--ui-accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:var(--space-2)}
+.ty-specs{display:flex;flex-direction:column;gap:3px;margin-bottom:var(--space-3)}
+.ty-spec-row{display:flex;align-items:center;gap:6px}
+.ty-spec-lbl{font-size:10px;color:var(--ui-text-muted);min-width:72px;flex-shrink:0}
+.ty-spec-val{font-family:var(--font-code);font-size:10.5px;background:var(--ui-surface-alt);padding:1px 5px;border-radius:4px;color:var(--ui-text)}
+.ty-spec-val.accent{color:var(--ui-accent);font-weight:600}
+.ty-spec-sep{color:var(--ui-text-muted);font-size:9px}
+
+/* Token chips */
+.ty-tokens-block{display:flex;flex-direction:column;gap:5px;padding:var(--space-3) 0;border-top:1px solid var(--ui-border);border-bottom:1px solid var(--ui-border);margin-bottom:var(--space-3)}
+.ty-token-line{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.ty-token-lbl{font-size:9.5px;color:var(--ui-text-muted);min-width:52px;flex-shrink:0;font-weight:600;letter-spacing:.03em}
+.ty-chip{font-family:var(--font-code);font-size:9.5px;background:var(--ui-surface-alt);padding:2px 6px;border-radius:4px;cursor:pointer;color:var(--ui-accent);border:1px solid transparent;transition:background .12s,border-color .12s;white-space:nowrap}
+.ty-chip:hover{background:var(--ui-tag-bg);border-color:var(--ui-accent)}
+.ty-chip.cls{color:var(--colors-violeta-500)}
+.ty-chip.clamp{color:var(--base-green-70);font-size:9px}
+.ty-chip-copy{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:none;background:none;cursor:pointer;color:var(--ui-text-muted);flex-shrink:0;border-radius:3px;padding:0;transition:color .12s}
+.ty-chip-copy:hover{color:var(--ui-accent)}
+.ty-chip-copy .material-symbols-rounded{font-size:12px}
+
+/* Code accordion */
+.ty-code-toggle{display:flex;align-items:center;gap:5px;background:none;border:none;font-size:11px;color:var(--ui-text-muted);cursor:pointer;padding:0;margin-bottom:4px;transition:color .12s}
+.ty-code-toggle:hover{color:var(--ui-accent)}
+.ty-code-toggle .material-symbols-rounded{font-size:13px;transition:transform .2s}
+.ty-code-toggle.open .material-symbols-rounded.arrow{transform:rotate(90deg)}
+.ty-code-panel{display:none;flex-direction:column;gap:var(--space-2)}
+.ty-code-panel.open{display:flex}
+.ty-code-block{position:relative;background:var(--ui-code-bg);border-radius:8px;overflow:hidden}
+.ty-code-lang{position:absolute;top:6px;left:10px;font-family:var(--font-code);font-size:9px;color:var(--ui-text-muted);letter-spacing:.06em;text-transform:uppercase;pointer-events:none}
+.ty-code-copy{position:absolute;top:4px;right:6px;display:inline-flex;align-items:center;gap:3px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:5px;padding:2px 7px;font-size:9.5px;color:#aaa;cursor:pointer;transition:background .12s,color .12s}
+.ty-code-copy:hover{background:rgba(255,255,255,.12);color:#fff}
+.ty-code-copy .material-symbols-rounded{font-size:11px}
+.ty-code-pre{font-family:var(--font-code);font-size:11px;line-height:1.6;color:var(--ui-code-text);padding:22px 10px 10px;margin:0;overflow-x:auto;white-space:pre}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media(max-width:680px){
+  .ty-row-main{grid-template-columns:1fr;gap:var(--space-3)}
+  .ty-meta{border-left:none;padding-left:0;border-top:1px solid var(--ui-border);padding-top:var(--space-4)}
+}
+</style>
+
+<script>
+(function(){
+
+/* ── Data ────────────────────────────────────────────── */
+const CATS = [
+  {
+    id:'display-desktop', title:'Display — Desktop',
+    desc:'Heroes, banners y portadas en pantallas grandes.',
+    items:[
+      { name:'Display L', cls:'mp-display-l', token:'--display---display--l',
+        desk:{rem:'3.5rem',px:56}, mob:{rem:'2.25rem',px:36},
+        clamp:'clamp(2.25rem, 3vw + 1rem, 3.5rem)',
+        w:900, wn:'Black', lh:1.1, color:'--use-text-heading',
+        preview:'Compensar Medicina Prepagada', html:'&lt;Label Style="{StaticResource mp-display-l}" Text="Título principal" /&gt;' },
+      { name:'Display M', cls:'mp-display-m', token:'--display---display--m',
+        desk:{rem:'3rem',px:48}, mob:{rem:'2rem',px:32},
+        clamp:'clamp(2rem, 2.5vw + 1rem, 3rem)',
+        w:900, wn:'Black', lh:1.2, color:'--use-text-heading',
+        preview:'Cobertura médica completa', html:'&lt;Label Style="{StaticResource mp-display-m}" Text="Título hero" /&gt;' },
+    ]
+  },
+  {
+    id:'display-mobile', title:'Display — Mobile',
+    desc:'Tamaños de display adaptados para pantallas pequeñas.',
+    items:[
+      { name:'Display XL mob.', cls:'mp-display-xl-mob', token:'--display--mobile---display--x-l',
+        desk:{rem:'2.5rem',px:40}, mob:{rem:'2.5rem',px:40},
+        clamp:'2.5rem',
+        w:700, wn:'Bold', lh:1.1, color:'--use-text-heading',
+        preview:'Compensar', html:'&lt;Label Style="{StaticResource mp-display-xl-mob}" Text="Compensar" /&gt;' },
+      { name:'Display L mob.', cls:'mp-display-l-mob', token:'--display--mobile---display--l',
+        desk:{rem:'2.25rem',px:36}, mob:{rem:'2.25rem',px:36},
+        clamp:'2.25rem',
+        w:700, wn:'Bold', lh:1.1, color:'--use-text-heading',
+        preview:'Medicina Prepagada', html:'&lt;Label Style="{StaticResource mp-display-l-mob}" Text="Medicina Prepagada" /&gt;' },
+      { name:'Display M mob.', cls:'mp-display-m-mob', token:'--display--mobile---display--m',
+        desk:{rem:'2rem',px:32}, mob:{rem:'2rem',px:32},
+        clamp:'2rem',
+        w:700, wn:'Bold', lh:1.1, color:'--use-text-heading',
+        preview:'Planes de salud', html:'&lt;Label Style="{StaticResource mp-display-m-mob}" Text="Planes de salud" /&gt;' },
+    ]
+  },
+  {
+    id:'headings', title:'Headings H1–H6',
+    desc:'Jerarquía de títulos de contenido. Usar tags semánticos h1–h6.',
+    items:[
+      { name:'H1', cls:'mp-h1', token:'--heading--h1',
+        desk:{rem:'3rem',px:48}, mob:{rem:'2rem',px:32},
+        clamp:'clamp(2rem, 4vw, 3rem)',
+        w:700, wn:'Bold', lh:1.2, color:'--use-text-heading',
+        preview:'Accede a tu plan de salud', html:'&lt;Label Style="{StaticResource mp-h1}" Text="Accede a tu plan" /&gt;' },
+      { name:'H2', cls:'mp-h2', token:'--heading--h2',
+        desk:{rem:'2.5rem',px:40}, mob:{rem:'1.75rem',px:28},
+        clamp:'clamp(1.75rem, 3.5vw, 2.5rem)',
+        w:700, wn:'Bold', lh:1.2, color:'--use-text-h2',
+        preview:'Medicina Prepagada', html:'&lt;Label Style="{StaticResource mp-h2}" Text="Medicina Prepagada" /&gt;' },
+      { name:'H3', cls:'mp-h3', token:'--heading--h3',
+        desk:{rem:'2.25rem',px:36}, mob:{rem:'1.5rem',px:24},
+        clamp:'clamp(1.5rem, 3vw, 2.25rem)',
+        w:700, wn:'Bold', lh:1.2, color:'--use-text-h3-h5',
+        preview:'Coberturas y beneficios', html:'&lt;Label Style="{StaticResource mp-h3}" Text="Coberturas y beneficios" /&gt;' },
+      { name:'H4', cls:'mp-h4', token:'--heading--h4',
+        desk:{rem:'1.75rem',px:28}, mob:{rem:'1.25rem',px:20},
+        clamp:'clamp(1.25rem, 2.5vw, 1.75rem)',
+        w:500, wn:'Medium', lh:1.2, color:'--use-text-h3-h5',
+        preview:'Servicios especializados', html:'&lt;Label Style="{StaticResource mp-h4}" Text="Servicios especializados" /&gt;' },
+      { name:'H5', cls:'mp-h5', token:'--heading--h5',
+        desk:{rem:'1.5rem',px:24}, mob:{rem:'1.125rem',px:18},
+        clamp:'clamp(1.125rem, 2vw, 1.5rem)',
+        w:500, wn:'Medium', lh:1.3, color:'--use-text-h3-h5',
+        preview:'Atención al afiliado', html:'&lt;Label Style="{StaticResource mp-h5}" Text="Atención al afiliado" /&gt;' },
+      { name:'H6', cls:'mp-h6', token:'--heading--h6',
+        desk:{rem:'1.125rem',px:18}, mob:{rem:'1rem',px:16},
+        clamp:'clamp(1rem, 1.5vw, 1.125rem)',
+        w:500, wn:'Medium', lh:1.3, color:'--use-text-h3-h5',
+        preview:'Contacto y soporte', html:'&lt;Label Style="{StaticResource mp-h6}" Text="Contacto y soporte" /&gt;' },
+    ]
+  },
+  {
+    id:'titles', title:'Titles / Párrafos',
+    desc:'Eyebrow, textos introductorios y subtítulos de sección.',
+    items:[
+      { name:'Eyebrow', cls:'mp-eyebrow', token:'--title--eyebrow',
+        desk:{rem:'1.125rem',px:18}, mob:{rem:'1.125rem',px:18},
+        clamp:'1.125rem',
+        w:500, wn:'Medium', lh:1.3, color:'--use-text-eyebrow',
+        extra:'letter-spacing:0.1em;text-transform:uppercase;',
+        preview:'FUNDAMENTOS · TIPOGRAFÍA', html:'&lt;Label Style="{StaticResource mp-eyebrow}" Text="SECCIÓN · SUBSECCIÓN" /&gt;' },
+      { name:'Párrafo XL', cls:'mp-parrafo-xl', token:'--title---paragraph--x-l',
+        desk:{rem:'1.125rem',px:18}, mob:{rem:'1.125rem',px:18},
+        clamp:'1.125rem',
+        w:400, wn:'Regular', lh:1.5, color:'--use-text-primary',
+        preview:'Accede a la red de especialistas con cobertura completa.', html:'&lt;Label Style="{StaticResource mp-parrafo-xl}" Text="Texto introductorio destacado." /&gt;' },
+      { name:'Párrafo L', cls:'mp-parrafo-l', token:'--title---paragraph--l',
+        desk:{rem:'1rem',px:16}, mob:{rem:'1rem',px:16},
+        clamp:'1rem',
+        w:400, wn:'Regular', lh:1.5, color:'--use-text-primary',
+        preview:'Tu salud es nuestra prioridad en cada consulta médica.', html:'&lt;Label Style="{StaticResource mp-parrafo-l}" Text="Párrafo de cuerpo estándar." /&gt;' },
+    ]
+  },
+  {
+    id:'body', title:'Body',
+    desc:'Escala de texto de cuerpo. Base: --mp-body-l-size = 1rem (16px).',
+    items:[
+      { name:'Body 2XL', cls:'mp-body-2xl', token:'--body--2xl',
+        desk:{rem:'1.5rem',px:24}, mob:{rem:'1.25rem',px:20},
+        clamp:'clamp(1.25rem, 2vw, 1.5rem)',
+        w:400, wn:'Regular', lh:1.3, color:'--use-text-primary',
+        preview:'Consultas, hospitalizaciones y cirugías cubiertas.', html:'&lt;Label Style="{StaticResource mp-body-2xl}" Text="Texto de cuerpo grande." /&gt;' },
+      { name:'Body XL', cls:'mp-body-xl', token:'--body---xl',
+        desk:{rem:'1.125rem',px:18}, mob:{rem:'1rem',px:16},
+        clamp:'clamp(1rem, 1.5vw, 1.125rem)',
+        w:400, wn:'Regular', lh:1.3, color:'--use-text-primary',
+        preview:'Planes de medicina prepagada para ti y tu familia.', html:'&lt;Label Style="{StaticResource mp-body-xl}" Text="Texto de cuerpo grande." /&gt;' },
+      { name:'Body L (base)', cls:'mp-body-l', token:'--body---l',
+        desk:{rem:'1rem',px:16}, mob:{rem:'1rem',px:16},
+        clamp:'1rem',
+        w:400, wn:'Regular', lh:1.3, color:'--use-text-primary',
+        preview:'Última actualización: abril 2026.', html:'&lt;Label Style="{StaticResource mp-body-l}" Text="Texto base del sistema." /&gt;' },
+      { name:'Body M', cls:'mp-body-m', token:'--body---m',
+        desk:{rem:'0.875rem',px:14}, mob:{rem:'0.875rem',px:14},
+        clamp:'0.875rem',
+        w:400, wn:'Regular', lh:1.5, color:'--use-text-primary',
+        preview:'* Aplica términos y condiciones del contrato de medicina prepagada.', html:'&lt;Label Style="{StaticResource mp-body-m}" Text="Texto secundario o nota." /&gt;' },
+      { name:'Body S', cls:'mp-body-s', token:'--body---s',
+        desk:{rem:'0.75rem',px:12}, mob:{rem:'0.75rem',px:12},
+        clamp:'0.75rem',
+        w:400, wn:'Regular', lh:1.3, color:'--use-text-primary',
+        preview:'Información adicional del plan contratado.', html:'&lt;Label Style="{StaticResource mp-body-s}" Text="Texto pequeño / caption." /&gt;' },
+      { name:'Body XS', cls:'mp-body-xs', token:'--body---x-s',
+        desk:{rem:'0.625rem',px:10}, mob:{rem:'0.625rem',px:10},
+        clamp:'0.625rem',
+        w:400, wn:'Regular', lh:1.3, color:'--use-text-primary',
+        preview:'Nota legal al pie de página.', html:'&lt;Label Style="{StaticResource mp-body-xs}" Text="Microcopy / legal." /&gt;' },
+    ]
+  },
+  {
+    id:'ui', title:'Común / UI',
+    desc:'Botones, labels, hints y placeholders para formularios.',
+    items:[
+      { name:'Botón', cls:'mp-btn', token:'--comun---boton',
+        desk:{rem:'1rem',px:16}, mob:{rem:'1rem',px:16},
+        clamp:'1rem',
+        w:500, wn:'Medium', lh:1.0, color:'--use-text-primary',
+        preview:'Contratar plan', html:'&lt;Label Style="{StaticResource mp-btn}" Text="Contratar plan" /&gt;' },
+      { name:'Label', cls:'mp-label', token:'--comun---label',
+        desk:{rem:'1rem',px:16}, mob:{rem:'1rem',px:16},
+        clamp:'1rem',
+        w:700, wn:'Bold', lh:1.0, color:'--use-text-label',
+        extra:'letter-spacing:0.08em;text-transform:uppercase;',
+        preview:'SELECCIONA TU PLAN', html:'&lt;Label Style="{StaticResource mp-label}" Text="SELECCIONA TU PLAN" /&gt;' },
+      { name:'Hint', cls:'mp-hint', token:'--comun---hint',
+        desk:{rem:'0.875rem',px:14}, mob:{rem:'0.875rem',px:14},
+        clamp:'0.875rem',
+        w:400, wn:'Regular', lh:1.0, color:'--use-text-primary',
+        preview:'Mínimo 8 caracteres', html:'&lt;Label Style="{StaticResource mp-hint}" Text="Mínimo 8 caracteres" /&gt;' },
+      { name:'Placeholder', cls:'mp-placeholder', token:'--comun---placeholder',
+        desk:{rem:'1rem',px:16}, mob:{rem:'1rem',px:16},
+        clamp:'1rem',
+        w:400, wn:'Regular', lh:1.0, color:'--use-text-primary',
+        preview:'Ingresa tu nombre completo', html:'<input placeholder="Ingresa tu nombre" class="mp-placeholder">' },
+    ]
+  },
+];
+
+let tyMode = 'desktop';
+
+function tyCopy(text, el){
+  navigator.clipboard.writeText(text).then(()=>{
+    if(!el) return;
+    const orig = el.textContent;
+    el.textContent = '✓';
+    setTimeout(()=>{ el.textContent = orig; }, 1200);
+  });
+}
+window.tyCopy = tyCopy;
+
+function tySetMode(mode){
+  tyMode = mode;
+  document.getElementById('ty-btn-desk').classList.toggle('active', mode==='desktop');
+  document.getElementById('ty-btn-mob').classList.toggle('active', mode==='mobile');
+  document.getElementById('ty-mode-hint').textContent =
+    mode==='desktop' ? 'Mostrando tamaños desktop' : 'Mostrando tamaños mobile';
+  document.querySelectorAll('[data-ty-desk][data-ty-mob]').forEach(el=>{
+    const size = mode==='desktop' ? el.dataset.tyDesk : el.dataset.tyMob;
+    el.style.fontSize = size;
+    el.closest('.ty-row')?.querySelector('.ty-size-desk')?.classList.toggle('active', mode==='desktop');
+    el.closest('.ty-row')?.querySelector('.ty-size-mob')?.classList.toggle('active', mode==='mobile');
+  });
+}
+window.tySetMode = tySetMode;
+
+function makeCSSText(item){
+  const extra = item.extra ? '\n  ' + item.extra.replace(/;/g,';\n  ').trim() : '';
+  return `.${item.cls} {\n  font-size: var(--${item.cls.replace(/-/g,'-').split('').join('')}-size); /* ${item.desk.rem} / ${item.desk.px}px */\n  font-weight: var(--${item.cls}-weight); /* ${item.w} ${item.wn} */\n  line-height: var(--${item.cls}-lh); /* ${item.lh} */\n  font-family: var(--font-body);${extra}\n  color: var(${item.color});\n}`;
+}
+
+function makeClampCSS(item){
+  return `.${item.cls} {\n  /* Responsive con clamp() */\n  font-size: ${item.clamp};\n  font-weight: ${item.w};\n  line-height: ${item.lh};\n  font-family: var(--font-body);\n  color: var(${item.color});\n}`;
+}
+
+function escape(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function renderItem(item){
+  const clsId = item.cls.replace(/-/g,'_');
+  const extra = item.extra || '';
+  const cssSnippet = `.${item.cls} {\n  font-size: var(--${item.cls}-size); /* ${item.desk.rem} / ${item.desk.px}px */\n  font-weight: var(--${item.cls}-weight); /* ${item.w} */\n  line-height: var(--${item.cls}-lh); /* ${item.lh} */\n  font-family: var(--font-body);\n${item.extra ? '  '+item.extra.replace(/;(\s*)/g,';\n  ').trim()+'\n' : ''}  color: var(${item.color});\n}`;
+  const clampSnippet = `.${item.cls} {\n  font-size: ${item.clamp};\n  font-weight: ${item.w};\n  line-height: ${item.lh};\n  font-family: var(--font-body);\n  color: var(${item.color});\n}`;
+
+  return `
+<div class="ty-row" id="tr-${clsId}">
+  <div class="ty-row-main">
+    <div class="ty-preview-wrap">
+      <span class="ty-preview-text" data-ty-desk="${item.desk.rem}" data-ty-mob="${item.mob.rem}"
+        style="font-size:${item.desk.rem};font-weight:${item.w};line-height:${item.lh};font-family:var(--font-body);color:var(${item.color});display:block;${extra}">${item.preview}</span>
+    </div>
+    <div class="ty-meta">
+      <div class="ty-row-name">${item.name}</div>
+      <div class="ty-specs">
+        <div class="ty-spec-row">
+          <span class="ty-spec-lbl">Tamaño desk</span>
+          <span class="ty-spec-val accent ty-size-desk active">${item.desk.rem}</span>
+          <span class="ty-spec-sep">/</span>
+          <span class="ty-spec-val" style="color:var(--ui-text-muted)">${item.desk.px}px</span>
+        </div>
+        ${item.desk.rem !== item.mob.rem ? `<div class="ty-spec-row">
+          <span class="ty-spec-lbl">Tamaño mob</span>
+          <span class="ty-spec-val ty-size-mob" style="color:var(--base-green-70)">${item.mob.rem}</span>
+          <span class="ty-spec-sep">/</span>
+          <span class="ty-spec-val" style="color:var(--ui-text-muted)">${item.mob.px}px</span>
+        </div>` : ''}
+        <div class="ty-spec-row">
+          <span class="ty-spec-lbl">Grosor</span>
+          <span class="ty-spec-val">${item.w} ${item.wn}</span>
+        </div>
+        <div class="ty-spec-row">
+          <span class="ty-spec-lbl">Line height</span>
+          <span class="ty-spec-val">${item.lh}</span>
+        </div>
+      </div>
+
+      <div class="ty-tokens-block">
+        <div class="ty-token-line">
+          <span class="ty-token-lbl">Figma</span>
+          <code class="ty-chip" onclick="tyCopy('${item.token}',this)">${item.token}</code>
+        </div>
+        <div class="ty-token-line">
+          <span class="ty-token-lbl">Size</span>
+          <code class="ty-chip" onclick="tyCopy('var(--${item.cls}-size)',this)">--${item.cls}-size</code>
+          <button class="ty-chip-copy" onclick="tyCopy('var(--${item.cls}-size)',this)"><span class="material-symbols-rounded">content_copy</span></button>
+        </div>
+        <div class="ty-token-line">
+          <span class="ty-token-lbl">Weight</span>
+          <code class="ty-chip" onclick="tyCopy('var(--${item.cls}-weight)',this)">--${item.cls}-weight</code>
+          <button class="ty-chip-copy" onclick="tyCopy('var(--${item.cls}-weight)',this)"><span class="material-symbols-rounded">content_copy</span></button>
+        </div>
+        <div class="ty-token-line">
+          <span class="ty-token-lbl">LH</span>
+          <code class="ty-chip" onclick="tyCopy('var(--${item.cls}-lh)',this)">--${item.cls}-lh</code>
+          <button class="ty-chip-copy" onclick="tyCopy('var(--${item.cls}-lh)',this)"><span class="material-symbols-rounded">content_copy</span></button>
+        </div>
+        <div class="ty-token-line">
+          <span class="ty-token-lbl">Clase</span>
+          <code class="ty-chip cls" onclick="tyCopy('.${item.cls}',this)">.${item.cls}</code>
+          <button class="ty-chip-copy" onclick="tyCopy('.${item.cls}',this)"><span class="material-symbols-rounded">content_copy</span></button>
+        </div>
+        ${item.clamp !== item.desk.rem ? `<div class="ty-token-line">
+          <span class="ty-token-lbl">clamp()</span>
+          <code class="ty-chip clamp" onclick="tyCopy('${item.clamp}',this)">${item.clamp}</code>
+          <button class="ty-chip-copy" onclick="tyCopy('${item.clamp}',this)"><span class="material-symbols-rounded">content_copy</span></button>
+        </div>` : ''}
+      </div>
+
+      <button class="ty-code-toggle" id="code-tog-${clsId}" onclick="tyToggleCode('${clsId}')">
+        <span class="material-symbols-rounded arrow">chevron_right</span>
+        <span class="material-symbols-rounded">code</span> Ver código
+      </button>
+      <div class="ty-code-panel" id="code-pan-${clsId}">
+        <div class="ty-code-block">
+          <span class="ty-code-lang">XAML</span>
+          <button class="ty-code-copy" onclick="tyCopy(${JSON.stringify(item.html)},this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
+          <pre class="ty-code-pre">${escape(item.html)}</pre>
+        </div>
+        <div class="ty-code-block">
+          <span class="ty-code-lang">XAML Resource</span>
+          <button class="ty-code-copy" onclick="tyCopy(${JSON.stringify(cssSnippet)},this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
+          <pre class="ty-code-pre">${escape(cssSnippet)}</pre>
+        </div>
+        ${item.desk.rem !== item.mob.rem ? `<div class="ty-code-block">
+          <span class="ty-code-lang">Fluid type</span>
+          <button class="ty-code-copy" onclick="tyCopy(${JSON.stringify(clampSnippet)},this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
+          <pre class="ty-code-pre">${escape(clampSnippet)}</pre>
+        </div>` : ''}
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+function tyToggleCode(id){
+  const tog = document.getElementById('code-tog-'+id);
+  const pan = document.getElementById('code-pan-'+id);
+  tog.classList.toggle('open');
+  pan.classList.toggle('open');
+}
+window.tyToggleCode = tyToggleCode;
+
+function renderAll(){
+  const root = document.getElementById('ty-scale-root');
+  if(!root) return;
+  let html = '<div class="ty-scale-wrapper">';
+  CATS.forEach(cat=>{
+    html += `<div class="ty-cat-group">
+      <div class="ty-cat-header">
+        <span class="ty-cat-title">${cat.title}</span>
+        <span class="ty-cat-desc">${cat.desc}</span>
+      </div>`;
+    cat.items.forEach(item=>{ html += renderItem(item); });
+    html += '</div>';
+  });
+  html += '</div>';
+  root.innerHTML = html;
+}
+
+renderAll();
+
+/* ── Download helpers ────────────────────────────────── */
+function tyDownloadCSS(){
+  const d = new Date().toISOString().split('T')[0];
+  let lines = [
+`/* ════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY TOKENS — Compensar Medicina Prepagada · Design System v2
+   ────────────────────────────────────────────────────────────────────
+   Fuente    : Figma · Compensar v2 – Sistema de diseño
+   Generado  : ${d}
+   Archivo   : typography-tokens.css
+   Fuente    : Roboto (Google Fonts)
+   Base rem  : 1rem = 16px
+
+   CONTENIDO
+   ─────────
+   1. Custom properties :root  — --mp-h1-size, --mp-h1-lh, --mp-h1-weight…
+   2. Clases utilitarias .mp-* — .mp-h1, .mp-body-l, .mp-eyebrow…
+   3. Clamp responsive         — font-size: clamp(min, fluid, max)
+   4. Fuente: @import Google Fonts
+
+   REGLA DE USO
+   ────────────
+   ✓  <h1 class="mp-h1">Título</h1>
+   ✓  font-size: var(--mp-h1-size);
+   ✗  Nunca font-size: 32px (valor hardcoded)
+
+   INSTALACIÓN
+   ───────────
+   1. Importar Roboto:
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+   2. Importar tokens:
+      <link rel="stylesheet" href="typography-tokens.css">
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ─── Google Fonts ──────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+
+/* ─────────────────────────────────────────────────────────────────────
+   1. CUSTOM PROPERTIES
+   Cada estilo expone 3 variables: -size, -lh (line-height), -weight.
+   ──────────────────────────────────────────────────────────────────── */
+:root {
+  --font-body: 'Roboto', sans-serif;
+  --font-code: 'Roboto Mono', monospace;
+`];
+  CATS.forEach(cat=>{
+    lines.push(`\n  /* ── ${cat.title} */`);
+    cat.items.forEach(it=>{
+      lines.push(`  --${it.cls}-size:   ${it.desk.rem};   /* ${it.desk.px}px */`);
+      lines.push(`  --${it.cls}-lh:     ${it.lh};`);
+      lines.push(`  --${it.cls}-weight: ${it.w};             /* ${it.wn} */`);
+    });
+  });
+  lines.push(
+`}
+
+/* ─────────────────────────────────────────────────────────────────────
+   2. CLASES .mp-*
+   Uso: <h2 class="mp-h2">Encabezado</h2>
+   Cada clase aplica las 3 propiedades tipográficas del token.
+   ──────────────────────────────────────────────────────────────────── */`);
+  CATS.forEach(cat=>{
+    lines.push(`\n/* ── ${cat.title} */`);
+    cat.items.forEach(it=>{
+      const extra = it.extra ? '\n  ' + it.extra.replace(/;(\s*)/g,';\n  ').trim() : '';
+      const clamp = it.clamp ? `\n  /* Responsive clamp: ${it.clamp} */\n  font-size: ${it.clamp};` : '';
+      lines.push(`.${it.cls} {\n  font-size:   var(--${it.cls}-size);  /* ${it.desk.px}px desktop */${clamp}\n  font-weight: var(--${it.cls}-weight);\n  line-height: var(--${it.cls}-lh);\n  font-family: var(--font-body);${extra}\n}`);
+    });
+  });
+  lines.push('\n/* ── FIN: typography-tokens.css ─── Compensar Medicina Prepagada ── */');
+  const blob = new Blob([lines.join('\n')],{type:'text/css'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'typography-tokens.css'; a.click();
+}
+
+function tyDownloadSCSS(){
+  const d = new Date().toISOString().split('T')[0];
+  let lines = [
+`// ════════════════════════════════════════════════════════════════════
+// TYPOGRAPHY TOKENS — Compensar Medicina Prepagada · Design System v2
+// ────────────────────────────────────────────────────────────────────
+// Fuente    : Figma · Compensar v2 – Sistema de diseño
+// Generado  : ${d}
+// Archivo   : _typography-tokens.scss
+// Fuente    : Roboto (Google Fonts)
+// Base rem  : 1rem = 16px
+//
+// CONTENIDO
+// ─────────
+// 1. Variables Sass  ($mp-h1-size: 2rem)
+// 2. CSS custom properties en :root
+// 3. Mixins  (@mixin mp-h1)
+// 4. Mapa de tipos  ($type-scale)
+//
+// USO
+// ───
+// @use "typography-tokens" as *;
+//
+// .mi-componente-titulo {
+//   @include mp-h2;                  ← aplica las 3 propiedades
+//   color: var(--use-text-primary);  ← color del tema
+// }
+//
+// REGLA
+// ─────
+// ✓  @include mp-h1  o  var(--mp-h1-size)
+// ✗  font-size: 32px  ←  nunca valores hardcoded
+// ════════════════════════════════════════════════════════════════════
+
+$font-body: 'Roboto', sans-serif;
+$font-code: 'Roboto Mono', monospace;
+`];
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  lines.push('// 1. VARIABLES SASS');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  CATS.forEach(cat=>{
+    lines.push(`\n// ── ${cat.title}`);
+    cat.items.forEach(it=>{
+      lines.push(`$${it.cls}-size:   ${it.desk.rem};    // ${it.desk.px}px desktop | móvil: ${it.mob.px}px`);
+      lines.push(`$${it.cls}-lh:     ${it.lh};`);
+      lines.push(`$${it.cls}-weight: ${it.w};            // ${it.wn}`);
+    });
+  });
+  lines.push('\n// ─────────────────────────────────────────────────────────────────────');
+  lines.push('// 2. CSS CUSTOM PROPERTIES');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  lines.push(':root {');
+  lines.push('  --font-body: #{$font-body};');
+  lines.push('  --font-code: #{$font-code};');
+  CATS.forEach(cat=>{
+    lines.push(`\n  // ── ${cat.title}`);
+    cat.items.forEach(it=>{
+      lines.push(`  --${it.cls}-size:   #{$${it.cls}-size};`);
+      lines.push(`  --${it.cls}-lh:     #{$${it.cls}-lh};`);
+      lines.push(`  --${it.cls}-weight: #{$${it.cls}-weight};`);
+    });
+  });
+  lines.push('}');
+  lines.push('\n// ─────────────────────────────────────────────────────────────────────');
+  lines.push('// 3. MIXINS');
+  lines.push('// Uso: @include mp-h1;  dentro de un bloque CSS.');
+  lines.push('// Aplica font-size, font-weight, line-height y font-family en una línea.');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  CATS.forEach(cat=>{
+    lines.push(`\n// ── ${cat.title}`);
+    cat.items.forEach(it=>{
+      const clampPart = it.clamp ? ` font-size: ${it.clamp};` : '';
+      lines.push(`@mixin ${it.cls} {`);
+      lines.push(`  font-size:   $${it.cls}-size;  //${clampPart} ${it.desk.px}px`);
+      lines.push(`  font-weight: $${it.cls}-weight; // ${it.wn}`);
+      lines.push(`  line-height: $${it.cls}-lh;`);
+      lines.push(`  font-family: $font-body;`);
+      lines.push(`}`);
+    });
+  });
+  lines.push('\n// ─────────────────────────────────────────────────────────────────────');
+  lines.push('// 4. MAPA DE ESCALA TIPOGRÁFICA');
+  lines.push('// Permite iterar sobre todos los estilos con @each.');
+  lines.push('// ─────────────────────────────────────────────────────────────────────');
+  lines.push('$type-scale: (');
+  CATS.forEach(cat=>{
+    cat.items.forEach(it=>{
+      lines.push(`  '${it.cls}': (size: $${it.cls}-size, lh: $${it.cls}-lh, weight: $${it.cls}-weight),`);
+    });
+  });
+  lines.push(');');
+  lines.push('\n// ── FIN: _typography-tokens.scss ─── Compensar Medicina Prepagada ──');
+  const blob = new Blob([lines.join('\n')],{type:'text/plain'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = '_typography-tokens.scss'; a.click();
+}
+
+function tyDownloadJSON(){
+  const d = new Date().toISOString().split('T')[0];
+  const categories = {};
+  CATS.forEach(cat=>{
+    categories[cat.title] = cat.items.map(it=>({
+      token:         it.cls,
+      cssClass:      '.' + it.cls,
+      figmaToken:    it.token,
+      desktop: {
+        fontSize:    it.desk.rem,
+        fontSizePx:  it.desk.px
+      },
+      mobile: {
+        fontSize:    it.mob.rem,
+        fontSizePx:  it.mob.px
+      },
+      clamp:         it.clamp || null,
+      lineHeight:    it.lh,
+      fontWeight:    it.w,
+      fontWeightName: it.wn,
+      cssVariables: {
+        size:   '--' + it.cls + '-size',
+        lh:     '--' + it.cls + '-lh',
+        weight: '--' + it.cls + '-weight'
+      }
+    }));
+  });
+  const out = {
+    metadata: {
+      title:       'Typography Tokens — Compensar Medicina Prepagada',
+      version:     '2.0',
+      generatedAt: d,
+      source:      'Figma · Compensar v2 – Sistema de diseño',
+      fontFamily:  'Roboto (Google Fonts)',
+      baseRem:     '1rem = 16px',
+      description: 'Escala tipográfica completa del Design System. Cada token expone size, line-height y font-weight.',
+      usage: {
+        html:    '<h1 class="mp-h1">Título</h1>',
+        css:     'font-size: var(--mp-h1-size);',
+        sass:    '@include mp-h1;',
+        rule:    'Nunca usar valores hardcoded (font-size: 32px). Siempre token o clase .mp-*.'
+      }
+    },
+    categories
+  };
+  const blob = new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'typography-tokens.json'; a.click();
+}
+window.tyDownloadCSS = tyDownloadCSS;
+window.tyDownloadSCSS = tyDownloadSCSS;
+window.tyDownloadJSON = tyDownloadJSON;
+
+})();
+</script>

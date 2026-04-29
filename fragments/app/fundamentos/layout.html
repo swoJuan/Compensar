@@ -1,0 +1,1443 @@
+<section class="section" id="layout">
+
+  <!-- ── 1. HEADER ──────────────────────────────────────────── -->
+  <div class="lys-header">
+    <div class="section-eyebrow">Fundamentos</div>
+    <h1 class="section-title">Navigation &amp; Layout System</h1>
+    <p class="lys-lead">Estructura de navegación y composición de pantallas en <strong>.NET MAUI</strong>. Shell · Grid · StackLayout · FlexLayout · Safe Areas.</p>
+    <div class="lys-pills">
+      <span class="lys-pill lys-pill--teal">.NET MAUI</span>
+      <span class="lys-pill lys-pill--blue">Shell Navigation</span>
+      <span class="lys-pill lys-pill--purple">Grid + StackLayout</span>
+      <span class="lys-pill lys-pill--gray">iOS · Android</span>
+    </div>
+  </div>
+
+  <!-- ── 2. DISPOSITIVO DE REFERENCIA QA ───────────────────── -->
+  <div class="maui-qa-hero">
+    <div class="maui-qa-hero-badge">
+      <span class="material-symbols-rounded">verified</span>
+      Dispositivo de referencia QA
+    </div>
+    <h2 class="maui-qa-hero-title">Prueba en 2 dispositivos.<br>No en todos.</h2>
+    <p class="maui-qa-hero-sub">Para optimizar el tiempo de QA, el equipo prueba en <strong>un dispositivo por plataforma</strong>. Estos dos cubren el 90 % de las pantallas reales en producción.</p>
+
+    <div class="maui-qa-devices">
+
+      <!-- iOS — iPhone 14 -->
+      <div class="maui-qa-device maui-qa-device--ios">
+        <div class="maui-qa-device-header">
+          <span class="maui-qa-platform-badge maui-qa-platform-badge--ios">
+            <span class="material-symbols-rounded">phone_iphone</span> iOS
+          </span>
+          <span class="maui-qa-primary-tag">Referencia principal</span>
+        </div>
+
+        <div class="maui-qa-phone-visual">
+          <div class="maui-qa-phone maui-qa-phone--ios">
+            <div class="maui-qa-notch"></div>
+            <div class="maui-qa-screen">
+              <div class="maui-qa-status-bar maui-qa-status-bar--ios"></div>
+              <div class="maui-qa-content-area">
+                <div class="maui-qa-nav-bar maui-qa-nav-bar--ios"></div>
+                <div class="maui-qa-body-sim">
+                  <div class="maui-qa-line maui-qa-line--lg"></div>
+                  <div class="maui-qa-line maui-qa-line--md"></div>
+                  <div class="maui-qa-line maui-qa-line--sm"></div>
+                  <div class="maui-qa-card-row">
+                    <div class="maui-qa-card-sm"></div>
+                    <div class="maui-qa-card-sm"></div>
+                  </div>
+                </div>
+                <div class="maui-qa-tab-bar maui-qa-tab-bar--ios"></div>
+              </div>
+            </div>
+            <div class="maui-qa-home-indicator"></div>
+          </div>
+        </div>
+
+        <div class="maui-qa-device-name">iPhone 14</div>
+        <div class="maui-qa-specs">
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Tamaño lógico</span>
+            <span class="maui-qa-spec-val">390 × 844 pt</span>
+          </div>
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Resolución física</span>
+            <span class="maui-qa-spec-val">1170 × 2532 px</span>
+          </div>
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Pixel ratio</span>
+            <span class="maui-qa-spec-val maui-qa-spec-val--highlight">@3x — 460 PPI</span>
+          </div>
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">iOS mínimo</span>
+            <span class="maui-qa-spec-val">iOS 16+</span>
+          </div>
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Aspect ratio</span>
+            <span class="maui-qa-spec-val">19.5 : 9</span>
+          </div>
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Safe area top</span>
+            <span class="maui-qa-spec-val">59 pt (Dynamic Island)</span>
+          </div>
+        </div>
+
+        <div class="maui-qa-why">
+          <span class="material-symbols-rounded">info</span>
+          Tamaño dominante en la base instalada iOS. Representa el 40 % de sesiones en producción.
+        </div>
+      </div>
+
+      <!-- VS divider -->
+      <div class="maui-qa-vs">
+        <div class="maui-qa-vs-line"></div>
+        <span>+</span>
+        <div class="maui-qa-vs-line"></div>
+      </div>
+
+      <!-- Android — Pixel 7 -->
+      <div class="maui-qa-device maui-qa-device--android">
+        <div class="maui-qa-device-header">
+          <span class="maui-qa-platform-badge maui-qa-platform-badge--android">
+            <span class="material-symbols-rounded">phone_android</span> Android
+          </span>
+          <span class="maui-qa-primary-tag">Referencia principal</span>
+        </div>
+
+        <div class="maui-qa-phone-visual">
+          <div class="maui-qa-phone maui-qa-phone--android">
+            <div class="maui-qa-camera-hole"></div>
+            <div class="maui-qa-screen">
+              <div class="maui-qa-status-bar maui-qa-status-bar--android"></div>
+              <div class="maui-qa-content-area">
+                <div class="maui-qa-nav-bar maui-qa-nav-bar--android"></div>
+                <div class="maui-qa-body-sim">
+                  <div class="maui-qa-line maui-qa-line--lg"></div>
+                  <div class="maui-qa-line maui-qa-line--md"></div>
+                  <div class="maui-qa-line maui-qa-line--sm"></div>
+                  <div class="maui-qa-card-row">
+                    <div class="maui-qa-card-sm"></div>
+                    <div class="maui-qa-card-sm"></div>
+                  </div>
+                </div>
+                <div class="maui-qa-tab-bar maui-qa-tab-bar--android"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="maui-qa-device-name">Google Pixel 7</div>
+        <div class="maui-qa-specs">
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Tamaño lógico</span>
+            <span class="maui-qa-spec-val">412 × 915 dp</span>
+          </div>
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Resolución física</span>
+            <span class="maui-qa-spec-val">1080 × 2400 px</span>
+          </div>
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Densidad</span>
+            <span class="maui-qa-spec-val maui-qa-spec-val--highlight">420 dpi (~2.6x)</span>
+          </div>
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Android mínimo</span>
+            <span class="maui-qa-spec-val">Android 13</span>
+          </div>
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Aspect ratio</span>
+            <span class="maui-qa-spec-val">20 : 9</span>
+          </div>
+          <div class="maui-qa-spec">
+            <span class="maui-qa-spec-label">Safe area top</span>
+            <span class="maui-qa-spec-val">~24 dp (status bar)</span>
+          </div>
+        </div>
+
+        <div class="maui-qa-why">
+          <span class="material-symbols-rounded">info</span>
+          Dispositivo de referencia oficial de Google para MAUI. Comportamiento más cercano al estándar Android puro.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Regla de escalado -->
+    <div class="maui-qa-rule">
+      <div class="maui-qa-rule-icon">
+        <span class="material-symbols-rounded">rule</span>
+      </div>
+      <div>
+        <strong>Regla de escalado QA</strong>
+        <span>Si pasa en iPhone 14 + Pixel 7, pasa en el 90 % de los dispositivos. Solo escala a otros si hay un reporte específico de bug en ese equipo.</span>
+      </div>
+    </div>
+
+    <!-- Cuándo escalar a otros dispositivos -->
+    <div class="maui-qa-escalate">
+      <div class="maui-qa-escalate-title">
+        <span class="material-symbols-rounded">expand_circle_down</span>
+        ¿Cuándo sí probar en otros dispositivos?
+      </div>
+      <div class="maui-qa-escalate-grid">
+        <div class="maui-qa-escalate-item">
+          <span class="maui-qa-escalate-icon maui-qa-escalate-icon--warn">
+            <span class="material-symbols-rounded">screen_rotation</span>
+          </span>
+          <div>
+            <strong>Pantalla muy pequeña</strong>
+            <span>iPhone SE (375 pt) — para validar que el layout no se rompe en pantallas pequeñas</span>
+          </div>
+        </div>
+        <div class="maui-qa-escalate-item">
+          <span class="maui-qa-escalate-icon maui-qa-escalate-icon--warn">
+            <span class="material-symbols-rounded">text_increase</span>
+          </span>
+          <div>
+            <strong>Texto grande (Accesibilidad)</strong>
+            <span>Activar Dynamic Type tamaño XXL en iOS — verifica que los layouts no se quiebren</span>
+          </div>
+        </div>
+        <div class="maui-qa-escalate-item">
+          <span class="maui-qa-escalate-icon maui-qa-escalate-icon--warn">
+            <span class="material-symbols-rounded">tablet_android</span>
+          </span>
+          <div>
+            <strong>Tablet / iPad</strong>
+            <span>Solo si la app soporta iPad — validar con iPad Air 11" (820 pt)</span>
+          </div>
+        </div>
+        <div class="maui-qa-escalate-item">
+          <span class="maui-qa-escalate-icon maui-qa-escalate-icon--warn">
+            <span class="material-symbols-rounded">bug_report</span>
+          </span>
+          <div>
+            <strong>Bug reportado</strong>
+            <span>Cuando un usuario reporta un problema específico en un dispositivo o versión de SO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. CONTENEDORES DE LAYOUT ──────────────────────────── -->
+  <h2 class="lys-section-title">Contenedores de layout</h2>
+  <p class="lys-section-desc">MAUI ofrece 5 contenedores principales. Elegir el correcto reduce código y mejora el rendimiento.</p>
+
+  <div class="maui-containers-grid">
+
+    <div class="maui-container-card maui-container-card--primary">
+      <div class="maui-container-header">
+        <div class="maui-container-icon maui-container-icon--grid">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/>
+            <rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/>
+          </svg>
+        </div>
+        <div>
+          <span class="maui-container-name">Grid</span>
+          <span class="maui-container-tag">Más versátil</span>
+        </div>
+      </div>
+      <p class="maui-container-desc">Filas y columnas. Permite alineación precisa, spans y superposición de elementos.</p>
+      <div class="maui-container-uses">
+        <span class="maui-container-use">Formularios</span>
+        <span class="maui-container-use">Cards de detalle</span>
+        <span class="maui-container-use">Pantallas complejas</span>
+      </div>
+      <code class="maui-container-tag-code">&lt;Grid ColumnDefinitions="*,*"&gt;</code>
+    </div>
+
+    <div class="maui-container-card">
+      <div class="maui-container-header">
+        <div class="maui-container-icon maui-container-icon--vstack">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="4" rx="1"/><rect x="3" y="10" width="18" height="4" rx="1"/><rect x="3" y="17" width="18" height="4" rx="1"/>
+          </svg>
+        </div>
+        <span class="maui-container-name">VerticalStackLayout</span>
+      </div>
+      <p class="maui-container-desc">Apila elementos verticalmente con espaciado uniforme. Más eficiente que StackLayout.</p>
+      <div class="maui-container-uses">
+        <span class="maui-container-use">Listas de items</span>
+        <span class="maui-container-use">Formularios simples</span>
+      </div>
+      <code class="maui-container-tag-code">&lt;VerticalStackLayout Spacing="16"&gt;</code>
+    </div>
+
+    <div class="maui-container-card">
+      <div class="maui-container-header">
+        <div class="maui-container-icon maui-container-icon--hstack">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="4" height="18" rx="1"/><rect x="10" y="3" width="4" height="18" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/>
+          </svg>
+        </div>
+        <span class="maui-container-name">HorizontalStackLayout</span>
+      </div>
+      <p class="maui-container-desc">Apila elementos en fila. Ideal para barras de iconos, chips y filas de botones.</p>
+      <div class="maui-container-uses">
+        <span class="maui-container-use">Toolbars</span>
+        <span class="maui-container-use">Chips / Tags</span>
+      </div>
+      <code class="maui-container-tag-code">&lt;HorizontalStackLayout Spacing="8"&gt;</code>
+    </div>
+
+    <div class="maui-container-card">
+      <div class="maui-container-header">
+        <div class="maui-container-icon maui-container-icon--flex">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M3 12h18M3 18h18"/><circle cx="9" cy="6" r="2" fill="currentColor"/><circle cx="15" cy="12" r="2" fill="currentColor"/><circle cx="7" cy="18" r="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <span class="maui-container-name">FlexLayout</span>
+      </div>
+      <p class="maui-container-desc">Equivalente a CSS Flexbox. Soporta Wrap, justificación y alineación flexibles.</p>
+      <div class="maui-container-uses">
+        <span class="maui-container-use">Grids de fotos</span>
+        <span class="maui-container-use">Tags con wrap</span>
+      </div>
+      <code class="maui-container-tag-code">&lt;FlexLayout Wrap="Wrap"&gt;</code>
+    </div>
+
+    <div class="maui-container-card">
+      <div class="maui-container-header">
+        <div class="maui-container-icon maui-container-icon--abs">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="4 2"/>
+            <rect x="10" y="8" width="8" height="8" rx="1"/>
+          </svg>
+        </div>
+        <span class="maui-container-name">AbsoluteLayout</span>
+      </div>
+      <p class="maui-container-desc">Posicionamiento absoluto dentro de un contenedor. Para overlays y elementos flotantes.</p>
+      <div class="maui-container-uses">
+        <span class="maui-container-use">Badges</span>
+        <span class="maui-container-use">FAB (botón flotante)</span>
+      </div>
+      <code class="maui-container-tag-code">&lt;AbsoluteLayout&gt;</code>
+    </div>
+
+  </div>
+
+  <!-- ── 4. GRID — USO DETALLADO ────────────────────────────── -->
+  <h2 class="lys-section-title">Grid — el layout principal</h2>
+  <p class="lys-section-desc">El contenedor más usado en la app. Dominar Grid resuelve el 80 % de los layouts.</p>
+
+  <div class="maui-grid-explainer">
+    <div class="maui-grid-defs">
+      <h3 class="maui-grid-defs-title">Definición de columnas y filas</h3>
+      <div class="maui-grid-def-table">
+        <div class="maui-grid-def-row maui-grid-def-header">
+          <span>Valor</span><span>Significado</span><span>Ejemplo de uso</span>
+        </div>
+        <div class="maui-grid-def-row">
+          <code>*</code>
+          <span>Espacio restante (proporcional)</span>
+          <span>Columna que crece — como <code>flex: 1</code></span>
+        </div>
+        <div class="maui-grid-def-row">
+          <code>2*</code>
+          <span>Doble del espacio restante</span>
+          <span>Columna que ocupa el doble que <code>*</code></span>
+        </div>
+        <div class="maui-grid-def-row">
+          <code>Auto</code>
+          <span>Tamaño del contenido</span>
+          <span>Label, ícono — se ajusta al contenido</span>
+        </div>
+        <div class="maui-grid-def-row">
+          <code>56</code>
+          <span>Valor fijo en dp / pt</span>
+          <span>Barra de tabs, botón de altura fija</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="maui-grid-visual">
+      <h3 class="maui-grid-defs-title">Layout típico de pantalla</h3>
+      <div class="maui-grid-phone-demo">
+        <div class="maui-grid-demo-screen">
+          <!-- Header — Auto -->
+          <div class="maui-grid-demo-row maui-grid-demo-row--auto maui-grid-demo-row--header">
+            <span class="maui-grid-demo-label">RowDef: Auto</span>
+            <div class="maui-grid-demo-bar">NavBar / Header</div>
+          </div>
+          <!-- Content — * -->
+          <div class="maui-grid-demo-row maui-grid-demo-row--star maui-grid-demo-row--content">
+            <span class="maui-grid-demo-label">RowDef: *</span>
+            <div class="maui-grid-demo-cols">
+              <div class="maui-grid-demo-col maui-grid-demo-col--half">Col 1</div>
+              <div class="maui-grid-demo-col maui-grid-demo-col--half">Col 2</div>
+            </div>
+          </div>
+          <!-- Footer — 56 -->
+          <div class="maui-grid-demo-row maui-grid-demo-row--fixed maui-grid-demo-row--footer">
+            <span class="maui-grid-demo-label">RowDef: 56</span>
+            <div class="maui-grid-demo-bar">Tab Bar / Botón</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. CÓDIGO XAML ─────────────────────────────────────── -->
+  <div class="code-block">
+    <div class="code-tabs">
+      <button class="code-tab active" onclick="switchTab(this,'maui-grid-tab')">Grid</button>
+      <button class="code-tab" onclick="switchTab(this,'maui-vstack-tab')">VerticalStackLayout</button>
+      <button class="code-tab" onclick="switchTab(this,'maui-flex-tab')">FlexLayout</button>
+    </div>
+    <div class="code-content">
+      <button class="copy-btn" onclick="copyCode(this)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+      <pre class="active" id="maui-grid-tab"><span class="cmt">&lt;!-- Pantalla típica: header + contenido + footer --&gt;</span>
+<span class="sel">&lt;Grid</span>
+    <span class="val">RowDefinitions</span><span class="sel">="</span><span class="val">Auto,*,56</span><span class="sel">"</span>
+    <span class="val">ColumnDefinitions</span><span class="sel">="</span><span class="val">*,*</span><span class="sel">"</span>
+    <span class="val">RowSpacing</span><span class="sel">="</span><span class="val">0</span><span class="sel">"</span>
+    <span class="val">ColumnSpacing</span><span class="sel">="</span><span class="val">16</span><span class="sel">"</span><span class="sel">&gt;</span>
+
+    <span class="cmt">&lt;!-- Header: ocupa toda la fila 0, ambas columnas --&gt;</span>
+    <span class="sel">&lt;Label</span>
+        <span class="val">Grid.Row</span><span class="sel">="</span><span class="val">0</span><span class="sel">"</span> <span class="val">Grid.Column</span><span class="sel">="</span><span class="val">0</span><span class="sel">"</span> <span class="val">Grid.ColumnSpan</span><span class="sel">="</span><span class="val">2</span><span class="sel">"</span>
+        <span class="val">Text</span><span class="sel">="</span><span class="val">Título de la pantalla</span><span class="sel">"</span>
+        <span class="val">Style</span><span class="sel">="{</span><span class="val">StaticResource mp-h2</span><span class="sel">}" /&gt;</span>
+
+    <span class="cmt">&lt;!-- Contenido: fila 1, col 0 --&gt;</span>
+    <span class="sel">&lt;ScrollView</span> <span class="val">Grid.Row</span><span class="sel">="</span><span class="val">1</span><span class="sel">"</span> <span class="val">Grid.Column</span><span class="sel">="</span><span class="val">0</span><span class="sel">"</span><span class="sel">&gt;</span>
+        <span class="sel">&lt;VerticalStackLayout</span> <span class="val">Spacing</span><span class="sel">="</span><span class="val">16</span><span class="sel">"</span> <span class="val">Padding</span><span class="sel">="</span><span class="val">16</span><span class="sel">"</span><span class="sel">&gt;</span>
+            <span class="cmt">&lt;!-- Items --&gt;</span>
+        <span class="sel">&lt;/VerticalStackLayout&gt;</span>
+    <span class="sel">&lt;/ScrollView&gt;</span>
+
+    <span class="cmt">&lt;!-- Footer fijo: fila 2, ambas columnas --&gt;</span>
+    <span class="sel">&lt;Button</span>
+        <span class="val">Grid.Row</span><span class="sel">="</span><span class="val">2</span><span class="sel">"</span> <span class="val">Grid.Column</span><span class="sel">="</span><span class="val">0</span><span class="sel">"</span> <span class="val">Grid.ColumnSpan</span><span class="sel">="</span><span class="val">2</span><span class="sel">"</span>
+        <span class="val">Text</span><span class="sel">="</span><span class="val">Confirmar</span><span class="sel">"</span>
+        <span class="val">Style</span><span class="sel">="{</span><span class="val">StaticResource mp-btn-primary</span><span class="sel">}" /&gt;</span>
+
+<span class="sel">&lt;/Grid&gt;</span></pre>
+
+      <pre id="maui-vstack-tab"><span class="cmt">&lt;!-- Lista de items con espaciado del sistema --&gt;</span>
+<span class="sel">&lt;ScrollView&gt;</span>
+    <span class="sel">&lt;VerticalStackLayout</span>
+        <span class="val">Spacing</span><span class="sel">="</span><span class="val">16</span><span class="sel">"</span>
+        <span class="val">Padding</span><span class="sel">="</span><span class="val">16</span><span class="sel">"</span><span class="sel">&gt;</span>
+
+        <span class="sel">&lt;Label</span> <span class="val">Text</span><span class="sel">="</span><span class="val">Mi plan de salud</span><span class="sel">"</span>
+               <span class="val">Style</span><span class="sel">="{</span><span class="val">StaticResource mp-h2</span><span class="sel">}" /&gt;</span>
+
+        <span class="sel">&lt;BoxView</span> <span class="val">HeightRequest</span><span class="sel">="</span><span class="val">1</span><span class="sel">"</span>
+                  <span class="val">Color</span><span class="sel">="{</span><span class="val">StaticResource ui-border</span><span class="sel">}" /&gt;</span>
+
+        <span class="sel">&lt;Label</span> <span class="val">Text</span><span class="sel">="</span><span class="val">Descripción del plan...</span><span class="sel">"</span>
+               <span class="val">Style</span><span class="sel">="{</span><span class="val">StaticResource mp-body-l</span><span class="sel">}" /&gt;</span>
+
+        <span class="sel">&lt;Button</span> <span class="val">Text</span><span class="sel">="</span><span class="val">Ver detalles</span><span class="sel">"</span>
+                <span class="val">Style</span><span class="sel">="{</span><span class="val">StaticResource mp-btn-primary</span><span class="sel">}" /&gt;</span>
+
+    <span class="sel">&lt;/VerticalStackLayout&gt;</span>
+<span class="sel">&lt;/ScrollView&gt;</span></pre>
+
+      <pre id="maui-flex-tab"><span class="cmt">&lt;!-- Grid de tags / chips con wrap automático --&gt;</span>
+<span class="sel">&lt;FlexLayout</span>
+    <span class="val">Wrap</span><span class="sel">="</span><span class="val">Wrap</span><span class="sel">"</span>
+    <span class="val">JustifyContent</span><span class="sel">="</span><span class="val">Start</span><span class="sel">"</span>
+    <span class="val">AlignItems</span><span class="sel">="</span><span class="val">Center</span><span class="sel">"</span>
+    <span class="val">Padding</span><span class="sel">="</span><span class="val">16</span><span class="sel">"</span><span class="sel">&gt;</span>
+
+    <span class="sel">&lt;Label</span> <span class="val">Text</span><span class="sel">="</span><span class="val">Hospitalizaciones</span><span class="sel">"</span>
+           <span class="val">Style</span><span class="sel">="{</span><span class="val">StaticResource mp-badge-teal</span><span class="sel">}"</span>
+           <span class="val">Margin</span><span class="sel">="</span><span class="val">0,0,8,8</span><span class="sel">}" /&gt;</span>
+    <span class="sel">&lt;Label</span> <span class="val">Text</span><span class="sel">="</span><span class="val">Urgencias</span><span class="sel">"</span>
+           <span class="val">Style</span><span class="sel">="{</span><span class="val">StaticResource mp-badge-teal</span><span class="sel">}"</span>
+           <span class="val">Margin</span><span class="sel">="</span><span class="val">0,0,8,8</span><span class="sel">}" /&gt;</span>
+    <span class="sel">&lt;Label</span> <span class="val">Text</span><span class="sel">="</span><span class="val">Consultas externas</span><span class="sel">"</span>
+           <span class="val">Style</span><span class="sel">="{</span><span class="val">StaticResource mp-badge-teal</span><span class="sel">}"</span>
+           <span class="val">Margin</span><span class="sel">="</span><span class="val">0,0,8,8</span><span class="sel">}" /&gt;</span>
+
+<span class="sel">&lt;/FlexLayout&gt;</span></pre>
+    </div>
+  </div>
+
+  <!-- ── 6. SHELL NAVIGATION ───────────────────────────────── -->
+  <h2 class="lys-section-title">Shell Navigation</h2>
+  <p class="lys-section-desc">Shell es la estructura de navegación de la app. Define la jerarquía de pantallas, tabs y menú lateral de forma declarativa.</p>
+
+  <div class="maui-shell-grid">
+    <div class="maui-shell-card maui-shell-card--tabs">
+      <div class="maui-shell-card-header">
+        <div class="maui-shell-icon"><span class="material-symbols-rounded">tab</span></div>
+        <div>
+          <span class="maui-shell-card-name">Tab Bar</span>
+          <span class="maui-shell-card-sub">Navegación principal — máx. 5 tabs</span>
+        </div>
+      </div>
+      <div class="maui-shell-visual maui-shell-visual--tabs">
+        <div class="maui-sv-screen">
+          <div class="maui-sv-content"></div>
+          <div class="maui-sv-tabs">
+            <div class="maui-sv-tab maui-sv-tab--active">
+              <div class="maui-sv-tab-icon maui-sv-tab-icon--filled"></div>
+              <div class="maui-sv-tab-label"></div>
+            </div>
+            <div class="maui-sv-tab">
+              <div class="maui-sv-tab-icon"></div>
+              <div class="maui-sv-tab-label"></div>
+            </div>
+            <div class="maui-sv-tab">
+              <div class="maui-sv-tab-icon"></div>
+              <div class="maui-sv-tab-label"></div>
+            </div>
+            <div class="maui-sv-tab">
+              <div class="maui-sv-tab-icon"></div>
+              <div class="maui-sv-tab-label"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="maui-shell-list">
+        <li>Inicio, Citas, Mi Plan, Historial</li>
+        <li>Tab activo: ícono filled + color acento</li>
+        <li>iOS: <code>TabBar</code> nativo · Android: <code>BottomNavigationView</code></li>
+      </ul>
+    </div>
+
+    <div class="maui-shell-card maui-shell-card--flyout">
+      <div class="maui-shell-card-header">
+        <div class="maui-shell-icon"><span class="material-symbols-rounded">menu</span></div>
+        <div>
+          <span class="maui-shell-card-name">Flyout (menú lateral)</span>
+          <span class="maui-shell-card-sub">Menú hamburguesa — secciones secundarias</span>
+        </div>
+      </div>
+      <div class="maui-shell-visual maui-shell-visual--flyout">
+        <div class="maui-sv-screen">
+          <div class="maui-sv-flyout-panel">
+            <div class="maui-sv-flyout-header"></div>
+            <div class="maui-sv-flyout-item maui-sv-flyout-item--active"></div>
+            <div class="maui-sv-flyout-item"></div>
+            <div class="maui-sv-flyout-item"></div>
+          </div>
+          <div class="maui-sv-content maui-sv-content--dimmed"></div>
+        </div>
+      </div>
+      <ul class="maui-shell-list">
+        <li>Configuración, Soporte, Cerrar sesión</li>
+        <li>Se combina con Tab Bar para híbridos</li>
+        <li>Usar <code>FlyoutBehavior="Flyout"</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Shell XAML code -->
+  <div class="code-block">
+    <div class="code-tabs">
+      <button class="code-tab active" onclick="switchTab(this,'shell-tab-tab')">Tabs</button>
+      <button class="code-tab" onclick="switchTab(this,'shell-route-tab')">Rutas / Navegación</button>
+    </div>
+    <div class="code-content">
+      <button class="copy-btn" onclick="copyCode(this)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+      <pre class="active" id="shell-tab-tab"><span class="cmt">&lt;!-- AppShell.xaml --&gt;</span>
+<span class="sel">&lt;Shell</span>
+    <span class="val">x:Class</span><span class="sel">="</span><span class="val">Compensar.AppShell</span><span class="sel">"</span>
+    <span class="val">xmlns</span><span class="sel">="</span><span class="val">http://schemas.microsoft.com/dotnet/2021/maui</span><span class="sel">"</span>
+    <span class="val">Shell.TabBarBackgroundColor</span><span class="sel">="{</span><span class="val">StaticResource ui-surface</span><span class="sel">}"</span>
+    <span class="val">Shell.TabBarForegroundColor</span><span class="sel">="{</span><span class="val">StaticResource product-accent-100</span><span class="sel">}"</span>
+    <span class="val">Shell.TabBarUnselectedColor</span><span class="sel">="{</span><span class="val">StaticResource ui-text-muted</span><span class="sel">}"</span><span class="sel">&gt;</span>
+
+    <span class="sel">&lt;TabBar&gt;</span>
+        <span class="sel">&lt;Tab</span> <span class="val">Title</span><span class="sel">="</span><span class="val">Inicio</span><span class="sel">"</span> <span class="val">Icon</span><span class="sel">="</span><span class="val">home.svg</span><span class="sel">"&gt;</span>
+            <span class="sel">&lt;ShellContent</span>
+                <span class="val">ContentTemplate</span><span class="sel">="{</span><span class="val">DataTemplate local:HomePage</span><span class="sel">}" /&gt;</span>
+        <span class="sel">&lt;/Tab&gt;</span>
+        <span class="sel">&lt;Tab</span> <span class="val">Title</span><span class="sel">="</span><span class="val">Mi Plan</span><span class="sel">"</span> <span class="val">Icon</span><span class="sel">="</span><span class="val">shield.svg</span><span class="sel">"&gt;</span>
+            <span class="sel">&lt;ShellContent</span>
+                <span class="val">ContentTemplate</span><span class="sel">="{</span><span class="val">DataTemplate local:PlanPage</span><span class="sel">}" /&gt;</span>
+        <span class="sel">&lt;/Tab&gt;</span>
+        <span class="sel">&lt;Tab</span> <span class="val">Title</span><span class="sel">="</span><span class="val">Citas</span><span class="sel">"</span> <span class="val">Icon</span><span class="sel">="</span><span class="val">calendar.svg</span><span class="sel">"&gt;</span>
+            <span class="sel">&lt;ShellContent</span>
+                <span class="val">ContentTemplate</span><span class="sel">="{</span><span class="val">DataTemplate local:AppointmentsPage</span><span class="sel">}" /&gt;</span>
+        <span class="sel">&lt;/Tab&gt;</span>
+    <span class="sel">&lt;/TabBar&gt;</span>
+
+<span class="sel">&lt;/Shell&gt;</span></pre>
+
+      <pre id="shell-route-tab"><span class="cmt">// Registrar rutas en MauiProgram.cs o AppShell.xaml.cs</span>
+<span class="sel">public</span> <span class="val">AppShell</span>()
+{
+    InitializeComponent();
+
+    <span class="cmt">// Registrar rutas para navegación por URI</span>
+    Routing.RegisterRoute(<span class="val">"detalle-plan"</span>, <span class="sel">typeof</span>(<span class="val">PlanDetailPage</span>));
+    Routing.RegisterRoute(<span class="val">"reservar-cita"</span>, <span class="sel">typeof</span>(<span class="val">BookAppointmentPage</span>));
+    Routing.RegisterRoute(<span class="val">"resultados"</span>,    <span class="sel">typeof</span>(<span class="val">ResultsPage</span>));
+}
+
+<span class="cmt">// Navegar desde cualquier página</span>
+<span class="sel">await</span> Shell.Current.GoToAsync(<span class="val">"detalle-plan"</span>);
+
+<span class="cmt">// Navegar con parámetros</span>
+<span class="sel">await</span> Shell.Current.GoToAsync(
+    <span class="val">$"detalle-plan?planId={plan.Id}"</span>);
+
+<span class="cmt">// Navegar atrás</span>
+<span class="sel">await</span> Shell.Current.GoToAsync(<span class="val">".."</span>);</pre>
+    </div>
+  </div>
+
+  <!-- ── 7. SAFE AREAS ─────────────────────────────────────── -->
+  <h2 class="lys-section-title">Safe Areas</h2>
+  <p class="lys-section-desc">Las safe areas protegen el contenido de notches, Dynamic Island, status bar y home indicator.</p>
+
+  <div class="maui-safe-grid">
+    <div class="maui-safe-card maui-safe-card--ios">
+      <div class="maui-safe-header">
+        <span class="maui-safe-platform maui-safe-platform--ios">iOS</span>
+        <span class="maui-safe-title">Dynamic Island / Notch</span>
+      </div>
+      <div class="maui-safe-phone">
+        <div class="maui-sp-body">
+          <div class="maui-sp-zone maui-sp-zone--top maui-sp-zone--ios-top">
+            <span>Safe area top<br>59 pt</span>
+          </div>
+          <div class="maui-sp-zone maui-sp-zone--content">
+            <span>Contenido seguro</span>
+          </div>
+          <div class="maui-sp-zone maui-sp-zone--bottom maui-sp-zone--ios-bottom">
+            <span>Safe area bottom<br>34 pt (home ind.)</span>
+          </div>
+        </div>
+      </div>
+      <div class="maui-safe-note">
+        Shell maneja automáticamente las safe areas. Usar <code>Padding="{OnPlatform iOS='59,0,0,34'}"</code> solo en layouts personalizados sin Shell.
+      </div>
+    </div>
+
+    <div class="maui-safe-card maui-safe-card--android">
+      <div class="maui-safe-header">
+        <span class="maui-safe-platform maui-safe-platform--android">Android</span>
+        <span class="maui-safe-title">Status Bar / Navigation Bar</span>
+      </div>
+      <div class="maui-safe-phone">
+        <div class="maui-sp-body">
+          <div class="maui-sp-zone maui-sp-zone--top maui-sp-zone--android-top">
+            <span>Status bar<br>~24 dp</span>
+          </div>
+          <div class="maui-sp-zone maui-sp-zone--content">
+            <span>Contenido seguro</span>
+          </div>
+          <div class="maui-sp-zone maui-sp-zone--bottom maui-sp-zone--android-bottom">
+            <span>Nav bar gestural<br>~16 dp</span>
+          </div>
+        </div>
+      </div>
+      <div class="maui-safe-note">
+        En Android usar <code>WindowSoftInputModeAdjust</code> para manejar el teclado. Activar edge-to-edge en <code>MainActivity.cs</code> para layouts full-screen.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 8. DO / DON'T ─────────────────────────────────────── -->
+  <h2 class="lys-section-title">Reglas clave</h2>
+  <div class="lys-rules-grid">
+    <div class="lys-rule lys-rule--do">
+      <div class="lys-rule-icon">✓</div>
+      <p>Usar <code>Grid</code> para layouts de 2+ dimensiones y <code>VerticalStackLayout</code> para listas simples</p>
+    </div>
+    <div class="lys-rule lys-rule--dont">
+      <div class="lys-rule-icon">✗</div>
+      <p>No anidar múltiples <code>StackLayout</code> para crear grids — usar <code>Grid</code> directamente</p>
+    </div>
+    <div class="lys-rule lys-rule--do">
+      <div class="lys-rule-icon">✓</div>
+      <p>Envolver contenido largo en <code>ScrollView</code> antes de <code>VerticalStackLayout</code></p>
+    </div>
+    <div class="lys-rule lys-rule--dont">
+      <div class="lys-rule-icon">✗</div>
+      <p>No poner <code>ScrollView</code> dentro de <code>CollectionView</code> — causa scroll conflictivo</p>
+    </div>
+    <div class="lys-rule lys-rule--do">
+      <div class="lys-rule-icon">✓</div>
+      <p>Siempre respetar safe areas — usar Shell para que las maneje automáticamente</p>
+    </div>
+    <div class="lys-rule lys-rule--dont">
+      <div class="lys-rule-icon">✗</div>
+      <p>No usar valores de padding/margin hardcoded para safe areas — cambian por modelo de iPhone</p>
+    </div>
+    <div class="lys-rule lys-rule--do">
+      <div class="lys-rule-icon">✓</div>
+      <p>Targets táctiles mínimos de <strong>44×44 pt</strong> (iOS) / <strong>48×48 dp</strong> (Android)</p>
+    </div>
+    <div class="lys-rule lys-rule--dont">
+      <div class="lys-rule-icon">✗</div>
+      <p>No usar <code>AbsoluteLayout</code> con coordenadas fijas para el layout principal de pantalla</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<style>
+/* ── Layout System MAUI ─────────────────────────────────── */
+
+.lys-pill--teal   { background: color-mix(in srgb,var(--product-accent-100) 12%,transparent); color: var(--product-accent-100); }
+.lys-pill--blue   { background: #e8f0fe; color: #1a73e8; }
+.lys-pill--purple { background: #f3eefb; color: #6b3faa; }
+.lys-pill--gray   { background: var(--ui-surface-alt); color: var(--ui-text-muted); }
+
+/* ── QA Hero block ──────────────────────────────────────── */
+.maui-qa-hero {
+  background: linear-gradient(135deg, color-mix(in srgb,var(--product-accent-100) 6%,var(--ui-bg)) 0%, color-mix(in srgb,var(--base-blue-80) 5%,var(--ui-bg)) 100%);
+  border: 1.5px solid color-mix(in srgb,var(--product-accent-100) 20%,var(--ui-border));
+  border-radius: 20px;
+  padding: var(--space-7);
+  margin-bottom: var(--space-8);
+}
+
+.maui-qa-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: color-mix(in srgb,var(--product-accent-100) 15%,transparent);
+  color: var(--product-accent-100);
+  border: 1px solid color-mix(in srgb,var(--product-accent-100) 25%,transparent);
+  margin-bottom: var(--space-4);
+}
+.maui-qa-hero-badge .material-symbols-rounded { font-size: 15px; }
+
+.maui-qa-hero-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--ui-text);
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  margin: 0 0 var(--space-3);
+}
+
+.maui-qa-hero-sub {
+  font-size: 15px;
+  color: var(--ui-text-muted);
+  line-height: 1.6;
+  max-width: 560px;
+  margin: 0 0 var(--space-6);
+}
+
+/* ── Device comparison ──────────────────────────────────── */
+.maui-qa-devices {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-5);
+  align-items: start;
+  margin-bottom: var(--space-6);
+}
+@media (max-width: 720px) {
+  .maui-qa-devices { grid-template-columns: 1fr; }
+  .maui-qa-vs { display: none; }
+}
+
+.maui-qa-device {
+  background: var(--ui-surface);
+  border-radius: 16px;
+  border: 1.5px solid var(--ui-border);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.maui-qa-device--ios     { border-top: 3px solid #555; }
+.maui-qa-device--android { border-top: 3px solid var(--product-accent-100); }
+
+.maui-qa-device-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.maui-qa-platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.maui-qa-platform-badge .material-symbols-rounded { font-size: 14px; }
+.maui-qa-platform-badge--ios     { background: #f0f0f0; color: #333; }
+.maui-qa-platform-badge--android { background: color-mix(in srgb,var(--product-accent-100) 12%,transparent); color: var(--product-accent-100); }
+
+.maui-qa-primary-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: color-mix(in srgb,var(--base-green-70) 15%,transparent);
+  color: var(--base-green-80);
+  border: 1px solid color-mix(in srgb,var(--base-green-70) 30%,transparent);
+}
+
+/* Phone visuals */
+.maui-qa-phone-visual {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-3) 0;
+}
+.maui-qa-phone {
+  position: relative;
+  width: 100px;
+  background: #1a1a1a;
+  border-radius: 18px;
+  padding: 6px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.maui-qa-phone--ios {
+  width: 90px;
+  border-radius: 22px;
+  padding: 8px 5px 5px;
+}
+.maui-qa-phone--android {
+  border-radius: 16px;
+}
+
+.maui-qa-notch {
+  width: 36px; height: 8px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  margin: 0 auto 4px;
+  position: relative;
+  z-index: 2;
+}
+.maui-qa-camera-hole {
+  width: 8px; height: 8px;
+  background: #333;
+  border-radius: 50%;
+  margin: 0 auto 2px;
+}
+
+.maui-qa-screen {
+  background: var(--ui-bg);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.maui-qa-phone--ios .maui-qa-screen { border-radius: 16px; }
+
+.maui-qa-status-bar {
+  height: 10px;
+}
+.maui-qa-status-bar--ios     { background: color-mix(in srgb,var(--ui-text) 8%,transparent); }
+.maui-qa-status-bar--android { background: color-mix(in srgb,var(--product-accent-100) 15%,transparent); }
+
+.maui-qa-content-area {
+  display: flex;
+  flex-direction: column;
+  min-height: 140px;
+}
+.maui-qa-nav-bar {
+  height: 22px;
+}
+.maui-qa-nav-bar--ios     { background: color-mix(in srgb,var(--ui-text) 5%,transparent); border-bottom: 1px solid var(--ui-border); }
+.maui-qa-nav-bar--android { background: color-mix(in srgb,var(--product-accent-100) 10%,transparent); border-bottom: 1px solid var(--ui-border); }
+
+.maui-qa-body-sim {
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.maui-qa-line { height: 6px; background: var(--ui-border); border-radius: 3px; }
+.maui-qa-line--lg { width: 85%; }
+.maui-qa-line--md { width: 65%; }
+.maui-qa-line--sm { width: 50%; }
+.maui-qa-card-row { display: flex; gap: 4px; margin-top: 4px; }
+.maui-qa-card-sm { flex: 1; height: 28px; background: color-mix(in srgb,var(--product-accent-100) 12%,transparent); border-radius: 5px; }
+
+.maui-qa-tab-bar {
+  height: 24px;
+  border-top: 1px solid var(--ui-border);
+}
+.maui-qa-tab-bar--ios     { background: color-mix(in srgb,var(--ui-surface) 95%,transparent); }
+.maui-qa-tab-bar--android { background: color-mix(in srgb,var(--product-accent-100) 8%,transparent); }
+
+.maui-qa-home-indicator {
+  width: 30px; height: 3px;
+  background: #555;
+  border-radius: 2px;
+  margin: 4px auto 0;
+}
+
+.maui-qa-device-name {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ui-text);
+  text-align: center;
+}
+
+/* Specs table */
+.maui-qa-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+.maui-qa-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--ui-bg);
+  border-radius: 8px;
+  border: 1px solid var(--ui-border);
+}
+.maui-qa-spec-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--ui-text-muted);
+}
+.maui-qa-spec-val {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ui-text);
+  font-family: var(--font-mono);
+}
+.maui-qa-spec-val--highlight {
+  color: var(--product-accent-100);
+}
+
+/* Why note */
+.maui-qa-why {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: 12px;
+  color: var(--ui-text-muted);
+  line-height: 1.5;
+  padding: var(--space-3);
+  background: var(--ui-bg);
+  border-radius: 8px;
+  border: 1px solid var(--ui-border);
+}
+.maui-qa-why .material-symbols-rounded { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+/* VS divider */
+.maui-qa-vs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding-top: 80px;
+  color: var(--ui-text-muted);
+  font-weight: 700;
+  font-size: 18px;
+}
+.maui-qa-vs-line { flex: 1; width: 1px; background: var(--ui-border); }
+
+/* Rule + Escalate */
+.maui-qa-rule {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: color-mix(in srgb,var(--product-accent-100) 8%,var(--ui-bg));
+  border: 1px solid color-mix(in srgb,var(--product-accent-100) 20%,var(--ui-border));
+  border-radius: 12px;
+  margin-bottom: var(--space-5);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.maui-qa-rule strong { display: block; font-weight: 700; color: var(--ui-text); margin-bottom: 2px; }
+.maui-qa-rule span   { color: var(--ui-text-muted); }
+.maui-qa-rule-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--product-accent-100);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.maui-qa-rule-icon .material-symbols-rounded { font-size: 20px; }
+
+.maui-qa-escalate {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.maui-qa-escalate-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--ui-surface-alt);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ui-text);
+  border-bottom: 1px solid var(--ui-border);
+}
+.maui-qa-escalate-title .material-symbols-rounded { font-size: 18px; color: var(--ui-text-muted); }
+
+.maui-qa-escalate-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+@media (max-width: 640px) { .maui-qa-escalate-grid { grid-template-columns: 1fr; } }
+
+.maui-qa-escalate-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--ui-border);
+  border-right: 1px solid var(--ui-border);
+  font-size: 13px;
+}
+.maui-qa-escalate-item:nth-child(2n) { border-right: none; }
+.maui-qa-escalate-item:nth-last-child(-n+2) { border-bottom: none; }
+.maui-qa-escalate-item strong { display: block; font-weight: 700; color: var(--ui-text); margin-bottom: 2px; }
+.maui-qa-escalate-item span   { color: var(--ui-text-muted); line-height: 1.5; }
+
+.maui-qa-escalate-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.maui-qa-escalate-icon--warn { background: #fff8e1; color: #b84c00; }
+.maui-qa-escalate-icon .material-symbols-rounded { font-size: 17px; }
+
+/* ── Containers grid ────────────────────────────────────── */
+.maui-containers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+@media (max-width: 860px) { .maui-containers-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .maui-containers-grid { grid-template-columns: 1fr; } }
+
+.maui-container-card {
+  background: var(--ui-surface);
+  border: 1.5px solid var(--ui-border);
+  border-radius: 14px;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: box-shadow .2s, border-color .2s;
+}
+.maui-container-card:hover { box-shadow: var(--shadow-2); }
+.maui-container-card--primary { border-color: color-mix(in srgb,var(--product-accent-100) 30%,var(--ui-border)); }
+.maui-container-card--primary:hover { border-color: var(--product-accent-100); }
+
+.maui-container-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.maui-container-icon {
+  width: 36px; height: 36px;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.maui-container-icon--grid   { background: color-mix(in srgb,var(--product-accent-100) 12%,transparent); color: var(--product-accent-100); }
+.maui-container-icon--vstack { background: color-mix(in srgb,var(--base-blue-70) 12%,transparent); color: var(--base-blue-70); }
+.maui-container-icon--hstack { background: color-mix(in srgb,var(--base-brand-80) 12%,transparent); color: var(--base-brand-80); }
+.maui-container-icon--flex   { background: color-mix(in srgb,var(--base-green-70) 12%,transparent); color: var(--base-green-70); }
+.maui-container-icon--abs    { background: color-mix(in srgb,var(--base-yellow-70) 12%,transparent); color: var(--base-yellow-80); }
+
+.maui-container-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ui-text);
+  display: block;
+}
+.maui-container-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: color-mix(in srgb,var(--product-accent-100) 12%,transparent);
+  color: var(--product-accent-100);
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.maui-container-desc {
+  font-size: 13px;
+  color: var(--ui-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.maui-container-uses {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.maui-container-use {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--ui-surface-alt);
+  color: var(--ui-text-muted);
+  border: 1px solid var(--ui-border);
+}
+
+.maui-container-tag-code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--ui-surface-alt);
+  color: var(--ui-text-muted);
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: block;
+  word-break: break-all;
+}
+
+/* ── Grid explainer ─────────────────────────────────────── */
+.maui-grid-explainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+@media (max-width: 700px) { .maui-grid-explainer { grid-template-columns: 1fr; } }
+
+.maui-grid-defs {
+  background: var(--ui-surface);
+  border: 1.5px solid var(--ui-border);
+  border-radius: 14px;
+  padding: var(--space-5);
+}
+.maui-grid-defs-title {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ui-text);
+  margin: 0 0 var(--space-4);
+}
+
+.maui-grid-def-table { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--ui-border); border-radius: 10px; overflow: hidden; }
+.maui-grid-def-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 1fr;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--ui-border);
+  font-size: 13px;
+  align-items: center;
+}
+.maui-grid-def-row:last-child { border-bottom: none; }
+.maui-grid-def-header {
+  background: var(--ui-surface-alt);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--ui-text-muted);
+}
+.maui-grid-def-row code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  background: color-mix(in srgb,var(--product-accent-100) 10%,transparent);
+  color: var(--product-accent-100);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Grid visual */
+.maui-grid-visual {
+  background: var(--ui-surface);
+  border: 1.5px solid var(--ui-border);
+  border-radius: 14px;
+  padding: var(--space-5);
+}
+
+.maui-grid-phone-demo {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-4) 0;
+}
+.maui-grid-demo-screen {
+  width: 200px;
+  background: var(--ui-bg);
+  border: 2px solid var(--ui-border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-2);
+}
+.maui-grid-demo-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.maui-grid-demo-label {
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--ui-text-muted);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+.maui-grid-demo-bar {
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-left: 50px;
+}
+.maui-grid-demo-row--auto   { padding: 10px 4px; }
+.maui-grid-demo-row--star   { flex: 1; min-height: 80px; padding: 8px 4px; }
+.maui-grid-demo-row--fixed  { height: 36px; padding: 4px; }
+
+.maui-grid-demo-row--header .maui-grid-demo-bar { background: var(--base-blue-70); }
+.maui-grid-demo-row--footer .maui-grid-demo-bar { background: var(--product-accent-100); }
+.maui-grid-demo-row--content { background: color-mix(in srgb,var(--product-accent-100) 5%,transparent); }
+
+.maui-grid-demo-cols { display: flex; gap: 6px; width: 100%; padding: 0 8px; margin-left: 40px; }
+.maui-grid-demo-col { flex: 1; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; padding: 12px 4px; }
+.maui-grid-demo-col--half { background: color-mix(in srgb,var(--product-accent-100) 30%,transparent); color: var(--product-accent-100); }
+
+/* ── Shell grid ─────────────────────────────────────────── */
+.maui-shell-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+@media (max-width: 640px) { .maui-shell-grid { grid-template-columns: 1fr; } }
+
+.maui-shell-card {
+  background: var(--ui-surface);
+  border: 1.5px solid var(--ui-border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.maui-shell-card--tabs    { border-top: 3px solid var(--product-accent-100); }
+.maui-shell-card--flyout  { border-top: 3px solid var(--base-brand-80); }
+
+.maui-shell-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5) 0;
+}
+.maui-shell-icon {
+  width: 36px; height: 36px;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--ui-surface-alt);
+  color: var(--ui-text-muted);
+  flex-shrink: 0;
+  font-size: 20px;
+}
+.maui-shell-card-name { font-weight: 700; font-size: 15px; color: var(--ui-text); display: block; }
+.maui-shell-card-sub  { font-size: 12px; color: var(--ui-text-muted); display: block; }
+
+.maui-shell-visual {
+  padding: var(--space-4);
+  background: var(--ui-bg);
+  margin: var(--space-4) var(--space-5);
+  border-radius: 10px;
+  border: 1px solid var(--ui-border);
+}
+
+.maui-sv-screen {
+  position: relative;
+  width: 120px;
+  margin: 0 auto;
+  background: var(--ui-surface);
+  border: 2px solid var(--ui-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.maui-sv-content {
+  height: 80px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--ui-bg) 0, var(--ui-bg) 4px,
+    var(--ui-surface-alt) 4px, var(--ui-surface-alt) 8px
+  );
+}
+.maui-sv-content--dimmed { opacity: .4; }
+
+.maui-sv-tabs {
+  display: flex;
+  border-top: 1px solid var(--ui-border);
+  background: var(--ui-surface);
+}
+.maui-sv-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 2px;
+}
+.maui-sv-tab-icon {
+  width: 16px; height: 16px;
+  border-radius: 4px;
+  background: var(--ui-border);
+}
+.maui-sv-tab-icon--filled { background: var(--product-accent-100); }
+.maui-sv-tab-label {
+  width: 20px; height: 4px;
+  background: var(--ui-border);
+  border-radius: 2px;
+}
+.maui-sv-tab--active .maui-sv-tab-label { background: var(--product-accent-100); }
+
+.maui-sv-flyout-panel {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 70px;
+  background: var(--ui-surface);
+  border-right: 1px solid var(--ui-border);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+}
+.maui-sv-flyout-header { height: 20px; background: var(--ui-surface-alt); border-radius: 4px; margin-bottom: 4px; }
+.maui-sv-flyout-item { height: 14px; background: var(--ui-border); border-radius: 3px; }
+.maui-sv-flyout-item--active { background: var(--product-accent-100); opacity: .7; }
+
+.maui-shell-list {
+  margin: 0;
+  padding: 0 var(--space-5) var(--space-5);
+  padding-left: calc(var(--space-5) + 14px);
+  font-size: 13px;
+  color: var(--ui-text-muted);
+  line-height: 1.8;
+}
+.maui-shell-list code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--ui-surface-alt);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: var(--ui-text);
+}
+
+/* ── Safe areas ─────────────────────────────────────────── */
+.maui-safe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+@media (max-width: 640px) { .maui-safe-grid { grid-template-columns: 1fr; } }
+
+.maui-safe-card {
+  background: var(--ui-surface);
+  border: 1.5px solid var(--ui-border);
+  border-radius: 14px;
+  padding: var(--space-5);
+}
+.maui-safe-card--ios     { border-top: 3px solid #555; }
+.maui-safe-card--android { border-top: 3px solid var(--product-accent-100); }
+
+.maui-safe-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.maui-safe-platform {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.maui-safe-platform--ios     { background: #f0f0f0; color: #333; }
+.maui-safe-platform--android { background: color-mix(in srgb,var(--product-accent-100) 12%,transparent); color: var(--product-accent-100); }
+.maui-safe-title { font-weight: 600; font-size: 14px; color: var(--ui-text); }
+
+.maui-safe-phone {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+.maui-sp-body {
+  width: 100px;
+  border: 2px solid var(--ui-border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+.maui-sp-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+  padding: 6px 4px;
+}
+.maui-sp-zone--top     { border-bottom: 1px dashed rgba(255,255,255,.5); }
+.maui-sp-zone--content { min-height: 60px; background: var(--ui-bg); color: var(--ui-text-muted); }
+.maui-sp-zone--bottom  { border-top: 1px dashed rgba(255,255,255,.5); }
+.maui-sp-zone--ios-top     { background: rgba(0,0,0,.55); color: #fff; height: 30px; }
+.maui-sp-zone--ios-bottom  { background: rgba(0,0,0,.4); color: #fff; height: 22px; }
+.maui-sp-zone--android-top    { background: color-mix(in srgb,var(--product-accent-100) 60%,#000); color: #fff; height: 20px; }
+.maui-sp-zone--android-bottom { background: color-mix(in srgb,var(--product-accent-100) 35%,#000); color: #fff; height: 16px; }
+
+.maui-safe-note {
+  font-size: 12px;
+  color: var(--ui-text-muted);
+  line-height: 1.6;
+  padding: var(--space-3);
+  background: var(--ui-bg);
+  border-radius: 8px;
+  border: 1px solid var(--ui-border);
+}
+.maui-safe-note code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--ui-surface-alt);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--ui-text);
+}
+
+/* ── Do/Don't (reuse from shared) ───────────────────────── */
+.lys-rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; }
+@media (max-width: 680px) { .lys-rules-grid { grid-template-columns: 1fr; } }
+.lys-rule { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 10px; font-size: 0.875rem; line-height: 1.5; }
+.lys-rule code { font-family: var(--font-mono); font-size: .8em; background: rgba(0,0,0,.06); padding: 1px 5px; border-radius: 3px; }
+.lys-rule--do   { background: #f0faf4; border: 1px solid #b7dfc8; color: #1a4d2e; }
+.lys-rule--dont { background: #fff4f4; border: 1px solid #f5c2c2; color: #5c1a1a; }
+.lys-rule-icon  { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .875rem; }
+.lys-rule--do   .lys-rule-icon { background: #1da462; color: #fff; }
+.lys-rule--dont .lys-rule-icon { background: #e53935; color: #fff; }
+
+.lys-section-title { font-size: 1.5rem; font-weight: 700; color: var(--ui-text); margin: 40px 0 6px; }
+.lys-section-desc  { font-size: 1rem; color: var(--ui-text-muted); margin: 0 0 20px; line-height: 1.5; }
+</style>

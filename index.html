@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="light">
 <head>
+  <script>
+  /* Redirect to trailing slash BEFORE any CSS loads.
+     When a server (or live-server) serves index.html as the directory index
+     at /Compensar (no trailing slash), relative hrefs like css/tokens.css
+     resolve one level up and fail. location.replace() triggers a real
+     navigation with the corrected URL so all subsequent resource requests
+     use the right base path. */
+  (function () {
+    var p = location.pathname;
+    if (p !== '/' && !p.endsWith('/') && !p.endsWith('.html')) {
+      location.replace(location.origin + p + '/' + location.search + location.hash);
+    }
+  })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compensar — Design System</title>
@@ -324,15 +338,18 @@
   // Tema
   function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    document.querySelectorAll('.portal-theme button').forEach(b => b.classList.remove('active'));
-    const map = { light: 'btn-light', dark: 'btn-dark', 'high-contrast': 'btn-hc' };
-    document.getElementById(map[theme])?.classList.add('active');
-    localStorage.setItem('ds-theme', theme);
+    document.querySelectorAll('.portal-theme button').forEach(function(b) { b.classList.remove('active'); });
+    var map = { light: 'btn-light', dark: 'btn-dark', 'high-contrast': 'btn-hc' };
+    var btn = document.getElementById(map[theme]);
+    if (btn) btn.classList.add('active');
+    try { localStorage.setItem('ds-theme', theme); } catch(e) {}
   }
 
   // Restaurar tema guardado
-  const saved = localStorage.getItem('ds-theme');
-  if (saved) setTheme(saved);
+  try {
+    var saved = localStorage.getItem('ds-theme');
+    if (saved) setTheme(saved);
+  } catch(e) {}
 </script>
 
 </body>
