@@ -285,16 +285,12 @@ La pagina de colores actualmente tiene descargas de:
 - JSON
 - Copia de variables
 
-Los artefactos relacionados con colores viven en:
+Las descargas de colores se generan en vivo desde dos fuentes del core:
 
-- `docs/foundations/color-tokens.css`
-- `docs/foundations/_color-tokens.scss`
-- `docs/foundations/color-tokens.json`
-- `docs/foundations/colors-abstract.scss`
-- `docs/foundations/colors-utils.scss`
-- `docs/foundations/colors-utils.css`
+- `core/abstracts/_tokens-colors.scss`
+- `core/utils/_colors.scss`
 
-La regla conceptual es que las descargas deben representar el core real o los archivos generados desde el core, no una version inventada dentro del HTML.
+No se deben mantener copias de descarga dentro de `docs/foundations`. La regla conceptual es que las descargas deben representar el core real, no una version duplicada o generada previamente.
 
 ## Paginas compartidas y transversales
 
@@ -314,8 +310,94 @@ La intencion es evitar duplicar contenido cuando el fundamento aplica a varias p
 
 Decision clave:
 
-- El core es para proyectos futuros.
-- El portal es solo para documentar, presentar, buscar, copiar y descargar.
+- `core/` es la capa reusable del sistema de diseno. Representa lo que viene de Figma y lo que debe poder consumirse en otros proyectos.
+- `portal/` es la capa visual del portal del sistema de diseno. Existe para documentar, presentar, buscar, copiar, descargar y montar las paginas HTML del sistema.
+
+Relacion entre capas:
+
+- `portal` puede consumir `core`.
+- `core` nunca debe depender de `portal`.
+- `core.css` debe poder usarse sin `portal.css`.
+- `portal.css` necesita `tokens.css` y `core.css` cargados antes.
+
+Orden esperado en HTML:
+
+```html
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/core.css">
+<link rel="stylesheet" href="css/portal.css">
+```
+
+### Que va en core
+
+Debe vivir en `core/`:
+
+- Tokens exportados o derivados directamente de Figma.
+- Variables Sass reutilizables.
+- CSS Custom Properties del sistema.
+- Funciones Sass generales: por ejemplo `rem()`.
+- Mixins generales: por ejemplo `rem-prop()`.
+- Integracion con Bootstrap.
+- Reset/base reutilizable.
+- Tipografia base.
+- Iconos base.
+- Utilidades reutilizables: spacing, colors, typography, display.
+- Componentes base que se podran usar en Drupal/ZT, App o futuros proyectos.
+
+Ejemplos correctos:
+
+- `core/abstracts/_tokens-colors.scss`
+- `core/abstracts/_tokens-spacing.scss`
+- `core/abstracts/_tokens-radius.scss`
+- `core/abstracts/_functions.scss`
+- `core/abstracts/_mixins.scss`
+- `core/utils/_colors.scss`
+- `core/components/web/_buttons.scss`
+
+### Que va en portal
+
+Debe vivir en `portal/`:
+
+- Header del portal.
+- Sidebar del portal.
+- Layout de documentacion.
+- Cards, tablas y bloques visuales usados solo para documentar.
+- Estilos de paginas HTML del sistema de diseno.
+- Estilos de secciones como principios, colores, botones documentados, previews, filtros y buscadores.
+- Estados visuales del portal: loading, error, toast, empty state.
+- Variables UI propias del portal que apuntan a tokens del core.
+
+Ejemplos correctos:
+
+- `portal/portal.scss`
+- `portal/base/_shell.scss`
+- `portal/layout/_shell-layout.scss`
+- `portal/foundations/_colors-page.scss`
+- `portal/components/_downloads.scss`
+- `portal/sections/_principles.scss`
+
+### Como portal consume core
+
+Cada parcial de `portal/` que necesite tokens, funciones o mixins del core debe importar los abstracts asi:
+
+```scss
+@use '../../core/abstracts' as *;
+```
+
+Ejemplo:
+
+```scss
+@use '../../core/abstracts' as *;
+
+.portal-card {
+  padding: rem(24px);
+  border-radius: $border-radius-xs;
+  color: var(--use-text-primary);
+  background: var(--use-surface-white);
+}
+```
+
+### Que no se debe hacer
 
 Por eso:
 
@@ -323,6 +405,10 @@ Por eso:
 - No agregar colores nuevos en el core.
 - No crear aliases visuales nuevos en core si solo sirven para el portal.
 - Si el portal necesita una variable UI propia, debe vivir en portal.
+- No crear dependencias desde `core/` hacia `portal/`.
+- No duplicar tokens de Figma en archivos del portal.
+- No usar HEX directos en portal si existe token o variable del core.
+- No modificar tokens generados solo para ajustar una pantalla del portal.
 
 Ejemplo valido en portal:
 

@@ -1,29 +1,115 @@
 // ============================================================
 //  utils/_colors.scss
-//  Clases de background y color de texto semánticos.
-//  Este archivo se copia a docs/foundations/colors-utils.scss con `npm run docs:build`.
+//  Utilidades semanticas de fondo y texto.
+//  Fuente viva para documentacion y descargas de color.
+//
+//  Como agregar una utilidad nueva:
+//  1. Usa solo tokens existentes del sistema: var(--use-...).
+//  2. No uses HEX directos ni variables Sass ($...).
+//  3. La documentacion lee automaticamente estas clases si empiezan por:
+//     - .bg-*     para background-color
+//     - .text-*   para color
+//     - .border-* para border-color, si se habilitan bordes
+//  4. Estructura esperada:
+//     .bg-nombre { background-color: var(--use-token) !important; }
+//     .text-nombre { color: var(--use-token) !important; }
+//  5. Despues de guardar, refresca el portal. La descarga se genera
+//     en vivo desde este archivo y no requiere copiar archivos.
 // ============================================================
 
-// ── Fondos ───────────────────────────────────────────────
-.bg-surface       { background-color: var(--color-surface) !important; }
-.bg-surface-alt   { background-color: var(--color-surface-alt) !important; }
-.bg-surface-page  { background-color: var(--color-surface-page) !important; }
-.bg-primary       { background-color: var(--color-primary) !important; color: #fff !important; }
-.bg-primary-subtle { background-color: var(--color-primary-subtle) !important; }
-.bg-secondary     { background-color: var(--color-secondary) !important; color: #fff !important; }
-.bg-secondary-subtle { background-color: var(--color-secondary-subtle) !important; }
-.bg-success       { background-color: var(--color-success-bg) !important; }
-.bg-error         { background-color: var(--color-error-bg) !important; }
-.bg-warning       { background-color: var(--color-warning-bg) !important; }
-.bg-info          { background-color: var(--color-info-bg) !important; }
-.bg-violet        { background-color: var(--color-surface-violet) !important; }
-.bg-green         { background-color: var(--color-surface-green) !important; }
+// ── Fondos: background / primary ─────────────────────────
+.bg-page { background-color: var(--use-background-page) !important; }
+.bg-primary { background-color: var(--use-primary-default) !important; }
+.bg-primary-hover { background-color: var(--use-primary-hover) !important; }
+.bg-primary-active { background-color: var(--use-primary-active) !important; }
+.bg-primary-dark { background-color: var(--use-primary-default-dark) !important; }
+.bg-focus { background-color: var(--use-focus-background) !important; }
 
-// ── Bordes ───────────────────────────────────────────────
-.border-default { border-color: var(--color-border) !important; }
-.border-strong  { border-color: var(--color-border-strong) !important; }
-.border-subtle  { border-color: var(--color-border-subtle) !important; }
-.border-primary { border-color: var(--color-primary) !important; }
-.border-success { border-color: var(--color-success-border) !important; }
-.border-error   { border-color: var(--color-error-border) !important; }
-.border-warning { border-color: var(--color-warning-border) !important; }
+// ── Fondos: surface ──────────────────────────────────────
+.bg-surface { background-color: var(--use-surface-surface) !important; }
+.bg-surface-subtle { background-color: var(--use-surface-subtle) !important; }
+.bg-surface-white { background-color: var(--use-surface-white) !important; }
+.bg-surface-orange { background-color: var(--use-surface-orange) !important; }
+.bg-surface-cyan-blue { background-color: var(--use-surface-cyan-blue) !important; }
+.bg-surface-violet { background-color: var(--use-surface-violet) !important; }
+.bg-surface-green { background-color: var(--use-surface-green) !important; }
+.bg-surface-green-2 { background-color: var(--use-surface-green-2) !important; }
+
+// ── Fondos: estados ──────────────────────────────────────
+.bg-state-success { background-color: var(--use-state-success-bg) !important; }
+.bg-state-error { background-color: var(--use-state-error-bg) !important; }
+.bg-state-warning { background-color: var(--use-state-warning-bg) !important; }
+.bg-state-info { background-color: var(--use-state-info-bg) !important; }
+
+// ── Fondos: tablas ───────────────────────────────────────
+.bg-table-head { background-color: var(--use-tables-head) !important; }
+.bg-table-filter { background-color: var(--use-tables-filter) !important; }
+.bg-table-stripes { background-color: var(--use-tables-stripes) !important; }
+
+// ── Fondos: temas / blue dark ────────────────────────────
+.bg-theme-blue-dark-30 { background-color: var(--use-surface-theme-blue-dark-30) !important; }
+.bg-theme-blue-dark-40 { background-color: var(--use-surface-theme-blue-dark-40) !important; }
+.bg-theme-blue-dark-50 { background-color: var(--use-surface-theme-blue-dark-50) !important; }
+.bg-theme-blue-dark-60 { background-color: var(--use-surface-theme-blue-dark-60) !important; }
+.bg-theme-blue-dark-90 { background-color: var(--use-surface-theme-blue-dark-90) !important; }
+
+// ── Fondos: temas / gray ─────────────────────────────────
+.bg-theme-gray-5 { background-color: var(--use-surface-theme-gray-5) !important; }
+.bg-theme-gray-10 { background-color: var(--use-surface-theme-gray-10) !important; }
+.bg-theme-gray-20 { background-color: var(--use-surface-theme-gray-20) !important; }
+
+// ── Fondos: temas / green ────────────────────────────────
+.bg-theme-green-1-30 { background-color: var(--use-surface-theme-green-1-30) !important; }
+.bg-theme-green-1-40 { background-color: var(--use-surface-theme-green-1-40) !important; }
+.bg-theme-green-1-50 { background-color: var(--use-surface-theme-green-1-50) !important; }
+.bg-theme-green-2-10 { background-color: var(--use-surface-theme-green-2-10) !important; }
+.bg-theme-green-2-20 { background-color: var(--use-surface-theme-green-2-20) !important; }
+.bg-theme-green-2-40 { background-color: var(--use-surface-theme-green-2-40) !important; }
+.bg-theme-green-2-60 { background-color: var(--use-surface-theme-green-2-60) !important; }
+
+// ── Fondos: temas / neutral, orange, red ─────────────────
+.bg-theme-neutral-30 { background-color: var(--use-surface-theme-neutral-30) !important; }
+.bg-theme-orange-10 { background-color: var(--use-surface-theme-orange-10) !important; }
+.bg-theme-orange-20 { background-color: var(--use-surface-theme-orange-20) !important; }
+.bg-theme-orange-40 { background-color: var(--use-surface-theme-orange-40) !important; }
+.bg-theme-orange-60 { background-color: var(--use-surface-theme-orange-60) !important; }
+.bg-theme-red-30 { background-color: var(--use-surface-theme-red-30) !important; }
+.bg-theme-red-40 { background-color: var(--use-surface-theme-red-40) !important; }
+.bg-theme-red-50 { background-color: var(--use-surface-theme-red-50) !important; }
+.bg-theme-red-60 { background-color: var(--use-surface-theme-red-60) !important; }
+
+// ── Fondos: temas / violet, yellow ───────────────────────
+.bg-theme-violet-5 { background-color: var(--use-surface-theme-violet-5) !important; }
+.bg-theme-violet-10 { background-color: var(--use-surface-theme-violet-10) !important; }
+.bg-theme-violet-20 { background-color: var(--use-surface-theme-violet-20) !important; }
+.bg-theme-violet-60 { background-color: var(--use-surface-theme-violet-60) !important; }
+.bg-theme-violet-70 { background-color: var(--use-surface-theme-violet-70) !important; }
+.bg-theme-yellow-30 { background-color: var(--use-surface-theme-yellow-30) !important; }
+.bg-theme-yellow-50 { background-color: var(--use-surface-theme-yellow-50) !important; }
+.bg-theme-yellow-60 { background-color: var(--use-surface-theme-yellow-60) !important; }
+.bg-theme-yellow-70 { background-color: var(--use-surface-theme-yellow-70) !important; }
+
+// ── Textos: base semantica ───────────────────────────────
+.text-primary { color: var(--use-text-primary) !important; }
+.text-secondary { color: var(--use-text-secondary) !important; }
+.text-tertiary { color: var(--use-text-tertiary) !important; }
+.text-inverse { color: var(--use-text-inverse) !important; }
+.text-link { color: var(--use-text-link) !important; }
+.text-on-dark-primary { color: var(--use-text-on-dark-primary) !important; }
+.text-on-dark-secondary { color: var(--use-text-on-dark-secondary) !important; }
+
+// ── Textos: temas ────────────────────────────────────────
+.text-theme-violet { color: var(--use-text-theme-violet) !important; }
+.text-theme-yellow { color: var(--use-text-theme-yellow) !important; }
+.text-theme-orange { color: var(--use-text-theme-orange) !important; }
+.text-theme-blue { color: var(--use-text-theme-blue) !important; }
+.text-theme-red { color: var(--use-text-theme-red) !important; }
+.text-theme-green-1 { color: var(--use-text-theme-green-1) !important; }
+.text-theme-green-2 { color: var(--use-text-theme-green-2) !important; }
+
+// ── Textos: estados ──────────────────────────────────────
+.text-state-success { color: var(--use-state-success-text) !important; }
+.text-state-error { color: var(--use-state-error-text) !important; }
+.text-state-error-field { color: var(--use-state-error-text-error-field) !important; }
+.text-state-warning { color: var(--use-state-warning-text) !important; }
+.text-state-info { color: var(--use-state-info-text) !important; }

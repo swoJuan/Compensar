@@ -18,7 +18,7 @@
     <button class="ct-download-btn" onclick="ctDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
     <button class="ct-download-btn" onclick="ctCopyVars()"><span class="material-symbols-rounded">content_copy</span> Copiar variables</button>
   </div>
-  <p class="ct-download-note">Descarga generada desde los tokens oficiales y las utilidades SCSS reales. Ejecuta <code>npm run docs:build</code> después de modificar los tokens o utilidades.</p>
+  <p class="ct-download-note">Descarga generada en vivo desde <code>core/abstracts/_tokens-colors.scss</code> y <code>core/utils/_colors.scss</code>.</p>
 
   <!-- FILTRO -->
   <div class="ct-filter-bar">
@@ -1865,42 +1865,65 @@
      ══════════════════════════════════════════════════════ -->
 <div class="ct-section" id="colors-utilities">
   <h3 class="ct-section-title">1.2.4 — Utilidades de color</h3>
-  <p class="ct-section-desc">Clases CSS listas para usar directamente en HTML. Cada clase aplica un token semántico como background, color de texto o borde. Heredan automáticamente los modos claro, oscuro y alto contraste.</p>
+  <p class="ct-section-desc">Clases CSS listas para usar directamente en HTML. Esta vista se alimenta de <code>core/utils/_colors.scss</code>, por eso siempre muestra las mismas utilidades que se descargan desde el sistema.</p>
 
   <div class="ct-util-intro">
-    <span class="material-symbols-rounded">info</span>
-    <p>
-      Usa las clases con prefijo <code>.bg-</code>, <code>.text-</code> o <code>.border-</code> sobre cualquier elemento HTML.
-      Siempre apuntan a un <strong>token semántico</strong> (<code>--color-*</code>) para garantizar coherencia entre temas.<br><br>
-      <strong>Ejemplo:</strong> <code>&lt;div class="bg-primary text-on-primary"&gt;Texto&lt;/div&gt;</code>
-    </p>
+    <div class="ct-util-intro-main">
+      <span class="material-symbols-rounded">auto_awesome</span>
+      <div>
+        <h4>Uso rapido</h4>
+        <p>Elige una clase, copiala y aplicala en el HTML. Todas apuntan a tokens semanticos con <code>var(--use-*)</code>, asi heredan automaticamente los modos claro, oscuro y alto contraste.</p>
+        <code>&lt;div class="bg-primary text-on-primary"&gt;Contenido&lt;/div&gt;</code>
+      </div>
+    </div>
+    <div class="ct-util-guide">
+      <div class="ct-util-guide-item">
+        <span class="material-symbols-rounded">format_color_fill</span>
+        <strong>Fondos</strong>
+        <code>.bg-*</code>
+      </div>
+      <div class="ct-util-guide-item">
+        <span class="material-symbols-rounded">format_color_text</span>
+        <strong>Texto</strong>
+        <code>.text-*</code>
+      </div>
+      <div class="ct-util-guide-item">
+        <span class="material-symbols-rounded">content_copy</span>
+        <strong>Copiar</strong>
+        <code>click</code>
+      </div>
+    </div>
   </div>
 
   <div class="ct-util-tabs">
     <button class="ct-util-tab active" onclick="ctUtilTab(this,'util-bg')">
-      <span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;margin-right:4px">format_color_fill</span>Backgrounds
+      <span class="material-symbols-rounded">format_color_fill</span>
+      Fondos
+      <span class="ct-util-tab-count" id="util-bg-count">0</span>
     </button>
     <button class="ct-util-tab" onclick="ctUtilTab(this,'util-text')">
-      <span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;margin-right:4px">format_color_text</span>Texto
-    </button>
-    <button class="ct-util-tab" onclick="ctUtilTab(this,'util-border')">
-      <span class="material-symbols-rounded" style="font-size:15px;vertical-align:middle;margin-right:4px">border_color</span>Bordes
+      <span class="material-symbols-rounded">format_color_text</span>
+      Texto
+      <span class="ct-util-tab-count" id="util-text-count">0</span>
     </button>
   </div>
 
   <!-- Panel Backgrounds -->
   <div class="ct-util-panel active" id="util-bg">
+    <div class="ct-util-panel-head">
+      <h4>Fondos <code>.bg-*</code></h4>
+      <p>Aplican <code>background-color</code> con tokens de superficie, marca, estado y temas.</p>
+    </div>
     <div class="ct-util-grid" id="util-bg-grid"></div>
   </div>
 
   <!-- Panel Texto -->
   <div class="ct-util-panel" id="util-text">
-    <div class="ct-util-grid" id="util-text-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px,1fr))"></div>
-  </div>
-
-  <!-- Panel Bordes -->
-  <div class="ct-util-panel" id="util-border">
-    <div class="ct-util-grid" id="util-border-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr))"></div>
+    <div class="ct-util-panel-head">
+      <h4>Texto <code>.text-*</code></h4>
+      <p>Aplican <code>color</code> con tokens preparados para contenido, estados y contraste sobre fondos.</p>
+    </div>
+    <div class="ct-util-grid ct-util-grid--text" id="util-text-grid"></div>
   </div>
 </div>
 
@@ -1973,6 +1996,10 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
 
 /* ─── Dynamic docs rendering from generated sources ───────────────────── */
 (function() {
+  const IS_DIRECT_DOC = location.pathname.includes('/docs/foundations/');
+  const CORE_COLOR_TOKENS_URL = IS_DIRECT_DOC ? '../../core/abstracts/_tokens-colors.scss' : 'core/abstracts/_tokens-colors.scss';
+  const CORE_COLOR_UTILS_URL = IS_DIRECT_DOC ? '../../core/utils/_colors.scss' : 'core/utils/_colors.scss';
+
   function ctEscapeHtml(value) {
     return String(value)
       .replaceAll('&', '&amp;')
@@ -2113,7 +2140,6 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
     const re = /\.([a-z0-9-]+)\s*\{([^}]*)\}/gim;
     const bg = [];
     const text = [];
-    const border = [];
     const tokenMap = {};
 
     let match;
@@ -2138,47 +2164,49 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
       } else if (className.startsWith('text-')) {
         item.color = ctResolveUtilityColor(className, 'text');
         text.push(item);
-      } else if (className.startsWith('border-')) {
-        item.color = ctResolveUtilityColor(className, 'border');
-        border.push(item);
       }
     }
 
     const bgGrid = document.getElementById('util-bg-grid');
     const textGrid = document.getElementById('util-text-grid');
-    const borderGrid = document.getElementById('util-border-grid');
+    const setCount = (id, count) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = String(count);
+    };
+    const empty = (label) => `
+      <div class="ct-util-empty">
+        <span class="material-symbols-rounded">info</span>
+        <strong>No hay utilidades ${label}</strong>
+        <p>Agregalas en <code>core/utils/_colors.scss</code> usando tokens existentes del core.</p>
+      </div>`;
+
+    setCount('util-bg-count', bg.length);
+    setCount('util-text-count', text.length);
 
     if (bgGrid) {
-      bgGrid.innerHTML = bg.map(u => `
-        <div class="ct-util-card" onclick="navigator.clipboard.writeText('${ctEscapeHtml(u.cls)}');showToast('Clase copiada: ${ctEscapeHtml(u.cls)}')">
-          <div class="ct-util-card-swatch" style="background:${ctEscapeHtml(u.color)};border-bottom:1px solid var(--ui-border)"></div>
-          <div class="ct-util-card-info">
-            <div class="ct-util-card-class">${ctEscapeHtml(u.cls)}</div>
-            <div class="ct-util-card-var">${ctEscapeHtml(u.var)}</div>
-          </div>
-        </div>`).join('');
+      bgGrid.innerHTML = bg.length ? bg.map(u => `
+        <button type="button" class="ct-util-card" onclick="navigator.clipboard.writeText('${ctEscapeHtml(u.cls)}');showToast('Clase copiada: ${ctEscapeHtml(u.cls)}')" title="Copiar ${ctEscapeHtml(u.cls)}">
+          <span class="ct-util-card-copy material-symbols-rounded">content_copy</span>
+          <span class="ct-util-card-swatch" style="background:${ctEscapeHtml(u.color)}"></span>
+          <span class="ct-util-card-info">
+            <span class="ct-util-card-class">${ctEscapeHtml(u.cls)}</span>
+            <span class="ct-util-card-var">${ctEscapeHtml(u.var)}</span>
+            <span class="ct-util-property">background-color</span>
+          </span>
+        </button>`).join('') : empty('de fondo');
     }
 
     if (textGrid) {
-      textGrid.innerHTML = text.map(u => `
-        <div class="ct-util-text-card" onclick="navigator.clipboard.writeText('${ctEscapeHtml(u.cls)}');showToast('Clase copiada: ${ctEscapeHtml(u.cls)}')">
-          <div class="ct-util-text-preview" style="color:${ctEscapeHtml(u.color)}">${ctEscapeHtml(u.cls)}</div>
-          <div class="ct-util-text-meta">
-            <div class="ct-util-text-class">${ctEscapeHtml(u.cls)}</div>
-            <div class="ct-util-text-var">${ctEscapeHtml(u.var)}</div>
-          </div>
-        </div>`).join('');
-    }
-
-    if (borderGrid) {
-      borderGrid.innerHTML = border.map(u => `
-        <div class="ct-util-border-card" onclick="navigator.clipboard.writeText('${ctEscapeHtml(u.cls)}');showToast('Clase copiada: ${ctEscapeHtml(u.cls)}')">
-          <div class="ct-util-border-preview" style="border-color:${ctEscapeHtml(u.color)}"></div>
-          <div class="ct-util-border-meta">
-            <div class="ct-util-border-class">${ctEscapeHtml(u.cls)}</div>
-            <div class="ct-util-border-var">${ctEscapeHtml(u.var)}</div>
-          </div>
-        </div>`).join('');
+      textGrid.innerHTML = text.length ? text.map(u => `
+        <button type="button" class="ct-util-text-card" onclick="navigator.clipboard.writeText('${ctEscapeHtml(u.cls)}');showToast('Clase copiada: ${ctEscapeHtml(u.cls)}')" title="Copiar ${ctEscapeHtml(u.cls)}">
+          <span class="ct-util-text-preview" style="color:${ctEscapeHtml(u.color)}">Aa</span>
+          <span class="ct-util-text-meta">
+            <span class="ct-util-text-class">${ctEscapeHtml(u.cls)}</span>
+            <span class="ct-util-text-var">${ctEscapeHtml(u.var)}</span>
+            <span class="ct-util-property">color</span>
+          </span>
+          <span class="ct-util-card-copy material-symbols-rounded">content_copy</span>
+        </button>`).join('') : empty('de texto');
     }
 
     if (typeof window.ctSetTokenUtilsMap === 'function') {
@@ -2188,46 +2216,28 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
 
   async function ctRenderFromSources() {
     try {
-      const [abstractText, tokenJsonText, utilsText] = await Promise.all([
-        fetch('./colors-abstract.scss').then(r => r.ok ? r.text() : ''),
-        fetch('./color-tokens.json').then(r => r.ok ? r.text() : ''),
-        fetch('./colors-utils.scss').then(r => r.ok ? r.text() : ''),
+      const [abstractText, utilsText] = await Promise.all([
+        fetch(CORE_COLOR_TOKENS_URL).then(r => r.ok ? r.text() : ''),
+        fetch(CORE_COLOR_UTILS_URL).then(r => r.ok ? r.text() : ''),
       ]);
 
-      if (!abstractText || !tokenJsonText) return;
+      if (!abstractText) return;
 
       const abstractVars = ctParseAbstractVars(abstractText);
-      const tokensJson = JSON.parse(tokenJsonText);
       const merged = {};
 
       Object.entries(abstractVars).forEach(([name, value]) => {
         const css = `--${name}`;
-        const byJson = Object.values(tokensJson).find(item => item.css === css);
         merged[css] = {
           css,
           path: ctPathFromCss(css),
           group: ctGroupFromCss(css),
           modes: {
             light: value,
-            dark: byJson?.modes?.dark || value,
-            highContrast: byJson?.modes?.highContrast || value,
+            dark: value,
+            highContrast: value,
           }
         };
-      });
-
-      Object.entries(tokensJson).forEach(([pathName, item]) => {
-        if (!merged[item.css]) {
-          merged[item.css] = {
-            css: item.css,
-            path: pathName,
-            group: ctGroupFromCss(item.css),
-            modes: {
-              light: item.modes?.light || '',
-              dark: item.modes?.dark || item.modes?.light || '',
-              highContrast: item.modes?.highContrast || item.modes?.light || '',
-            }
-          };
-        }
       });
 
       const items = Object.values(merged);
@@ -2267,7 +2277,7 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
       if (semanticSection) {
         semanticSection.innerHTML = `
           <h3 class="ct-section-title">1.2.3 — Colores de Uso</h3>
-          <p class="ct-section-desc">Tabla generada automáticamente desde core/abstracts/_tokens-colors.scss y modos de color-tokens.json.</p>
+          <p class="ct-section-desc">Tabla generada automáticamente desde core/abstracts/_tokens-colors.scss.</p>
           <div class="ct-use-group">
             <div class="ct-use-group-header">
               <div class="ct-use-icon"><span class="material-symbols-rounded">style</span></div>
@@ -2296,6 +2306,9 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
 
 /* ─── Downloads ───────────────────────────────────────────────────────── */
 (function() {
+  const IS_DIRECT_DOC = location.pathname.includes('/docs/foundations/');
+  const CORE_COLOR_TOKENS_URL = IS_DIRECT_DOC ? '../../core/abstracts/_tokens-colors.scss' : 'core/abstracts/_tokens-colors.scss';
+  const CORE_COLOR_UTILS_URL = IS_DIRECT_DOC ? '../../core/utils/_colors.scss' : 'core/utils/_colors.scss';
 
   function today() {
     return new Date().toISOString().split('T')[0];
@@ -2377,7 +2390,7 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
     return tokens;
   }
 
-  // Primary source for downloads: generated artifacts built by npm run docs:build.
+  // Primary source for downloads: core SCSS files.
   async function ctLoadAsset(url) {
     try {
       const res = await fetch(url);
@@ -2394,27 +2407,97 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
     return match ? match[1].trim() : null;
   }
 
-  // ── CSS ─────────────────────────────────────────────────────────────────
-  window.ctDownloadCSS = async function() {
-    const [tokensCss, utilsScss] = await Promise.all([
-      ctLoadAsset('./color-tokens.css'),
-      ctLoadAsset('./colors-utils.scss')
-    ]);
+  function ctParseCoreColorVars(scssText) {
+    const out = [];
+    const re = /^\$([a-z0-9-]+):\s*([^;]+);/gim;
+    let match;
+    while ((match = re.exec(scssText)) !== null) {
+      const name = match[1].trim();
+      const value = match[2].trim();
+      if (!/^#/.test(value) && !/^var\(--/.test(value)) continue;
+      out.push({
+        name,
+        css: `--${name}`,
+        sass: `$${name}`,
+        value,
+        path: name.replace(/-/g, '/'),
+        group: name.startsWith('base-') ? 'base' : (name.startsWith('product-') ? 'product' : (name.startsWith('use-') ? 'use' : 'other')),
+      });
+    }
+    return out;
+  }
 
-    if (tokensCss && utilsScss) {
-      const compiled = [
-        '/* Generated from docs/foundations/color-tokens.css + docs/foundations/colors-utils.scss */',
-        tokensCss.trim(),
-        '',
-        '/* Utility classes source (SCSS) */',
-        utilsScss.trim()
-      ].join('\n');
-      ctTrigger(compiled, 'color-tokens.css', 'text/css');
-      return;
+  function ctBuildCssFromCore(abstractScss, utilsScss = '') {
+    const vars = ctParseCoreColorVars(abstractScss);
+    const utilitiesCss = utilsScss
+      .split('\n')
+      .map(line => {
+        const comment = line.match(/^(\s*)\/\/\s?(.*)$/);
+        return comment ? `${comment[1]}/* ${comment[2]} */` : line;
+      })
+      .join('\n')
+      .trim();
+    const lines = [
+      '/* ============================================================',
+      '   Compensar MP color tokens',
+      '   Generated at download time from:',
+      '   - core/abstracts/_tokens-colors.scss',
+      '   - core/utils/_colors.scss',
+      '   ============================================================ */',
+      '',
+      ':root {',
+    ];
+
+    vars.forEach(token => {
+      lines.push(`  ${token.css}: ${token.value};`);
+    });
+    lines.push('}');
+
+    if (utilitiesCss) {
+      lines.push('', '/* ============================================================', '   Color utility classes', '   Source: core/utils/_colors.scss', '   ============================================================ */', '', utilitiesCss);
     }
 
-    if (tokensCss) {
-      ctTrigger(tokensCss, 'color-tokens.css', 'text/css');
+    return lines.join('\n');
+  }
+
+  function ctBuildJsonFromCore(abstractScss, utilsScss = '') {
+    const utilities = [];
+    const utilRe = /\.([a-z0-9-]+)\s*\{([^}]*)\}/gim;
+    let match;
+    while ((match = utilRe.exec(utilsScss)) !== null) {
+      const body = match[2];
+      const varMatch = body.match(/var\((--[^)]+)\)/);
+      utilities.push({
+        className: `.${match[1].trim()}`,
+        cssVariable: varMatch ? varMatch[1] : null,
+        source: body.trim().replace(/\s+/g, ' '),
+      });
+    }
+
+    return {
+      metadata: {
+        title: 'Color Tokens — Compensar Medicina Prepagada',
+        generatedAt: today(),
+        source: [
+          'core/abstracts/_tokens-colors.scss',
+          'core/utils/_colors.scss'
+        ],
+        note: 'Generated directly from core source files at download time.'
+      },
+      tokens: ctParseCoreColorVars(abstractScss),
+      utilities,
+    };
+  }
+
+  // ── CSS ─────────────────────────────────────────────────────────────────
+  window.ctDownloadCSS = async function() {
+    const [tokensScss, utilsScss] = await Promise.all([
+      ctLoadAsset(CORE_COLOR_TOKENS_URL),
+      ctLoadAsset(CORE_COLOR_UTILS_URL)
+    ]);
+
+    if (tokensScss) {
+      ctTrigger(ctBuildCssFromCore(tokensScss, utilsScss || ''), 'color-tokens.css', 'text/css');
       return;
     }
 
@@ -2528,13 +2611,13 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
   // ── SCSS ────────────────────────────────────────────────────────────────
   window.ctDownloadSCSS = async function() {
     const [tokensScss, utilsScss] = await Promise.all([
-      ctLoadAsset('./_color-tokens.scss'),
-      ctLoadAsset('./colors-utils.scss')
+      ctLoadAsset(CORE_COLOR_TOKENS_URL),
+      ctLoadAsset(CORE_COLOR_UTILS_URL)
     ]);
 
     if (tokensScss && utilsScss) {
       const compiled = [
-        '// Generated from docs/foundations/_color-tokens.scss + docs/foundations/colors-utils.scss',
+        '// Generated from core/abstracts/_tokens-colors.scss + core/utils/_colors.scss',
         tokensScss.trim(),
         '',
         '// Utility classes source',
@@ -2653,29 +2736,14 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
 
   // ── JSON ────────────────────────────────────────────────────────────────
   window.ctDownloadJSON = async function() {
-    const [tokensJson, utilsScss] = await Promise.all([
-      ctLoadAsset('./color-tokens.json'),
-      ctLoadAsset('./colors-utils.scss')
+    const [tokensScss, utilsScss] = await Promise.all([
+      ctLoadAsset(CORE_COLOR_TOKENS_URL),
+      ctLoadAsset(CORE_COLOR_UTILS_URL)
     ]);
 
-    if (tokensJson) {
-      try {
-        const parsedTokens = JSON.parse(tokensJson);
-        const compiled = {
-          metadata: {
-            title: 'Color Tokens — Compensar Medicina Prepagada',
-            generatedAt: today(),
-            source: 'docs/foundations/color-tokens.json + docs/foundations/colors-utils.scss',
-            note: 'Run npm run docs:build after changing tokens or color utilities.'
-          },
-          tokens: parsedTokens,
-          utilitiesScss: utilsScss || ''
-        };
-        ctTrigger(JSON.stringify(compiled, null, 2), 'color-tokens.json', 'application/json');
-        return;
-      } catch (error) {
-        console.warn('Unable to parse generated color-tokens.json:', error);
-      }
+    if (tokensScss) {
+      ctTrigger(JSON.stringify(ctBuildJsonFromCore(tokensScss, utilsScss || ''), null, 2), 'color-tokens.json', 'application/json');
+      return;
     }
 
     const palette  = collectPalette();
@@ -2734,12 +2802,13 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
 
   // ── Copy vars ───────────────────────────────────────────────────────────
   window.ctCopyVars = async function() {
-    const [tokensCss, utilsScss] = await Promise.all([
-      ctLoadAsset('./color-tokens.css'),
-      ctLoadAsset('./colors-utils.scss')
+    const [tokensScss, utilsScss] = await Promise.all([
+      ctLoadAsset(CORE_COLOR_TOKENS_URL),
+      ctLoadAsset(CORE_COLOR_UTILS_URL)
     ]);
 
-    if (tokensCss) {
+    if (tokensScss) {
+      const tokensCss = ctBuildCssFromCore(tokensScss, utilsScss || '');
       const rootVars = parseRootCssVars(tokensCss);
       const parts = [];
       if (rootVars) {

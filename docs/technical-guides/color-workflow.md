@@ -1,87 +1,64 @@
 # Color Documentation Workflow
 
-This document is the single technical reference for how the color documentation is generated and kept in sync.
+This document is the single technical reference for how the color documentation and downloads stay in sync.
 
 ## Purpose
 
-Keep these three things aligned at all times:
+Keep one source of truth for color tokens and utility classes.
 
-1. Source tokens from abstracts.
-2. Color utility classes from utils.
-3. Rendered docs and downloadable files in the Colors page.
+## Source Of Truth
 
-## Source of Truth
+The Colors page reads these live core files directly:
 
-1. Abstract color tokens:
-   - core/abstracts/_tokens-colors.scss
-2. Utility classes:
-   - core/utils/_colors.scss
+- `core/abstracts/_tokens-colors.scss`
+- `core/utils/_colors.scss`
 
-## Build Pipeline
+Do not maintain copied color download files inside `docs/foundations`.
 
-### Step 1: Regenerate base token artifacts (when token source changes)
+## Runtime Behavior In `colors.html`
 
-Run:
+The Colors page fetches the core files directly:
 
-node scripts/generate-figma-tokens.mjs
-
-This refreshes:
-
-- tokens/compensar.tokens.json
-- css/tokens.css
-- core/abstracts/_tokens-colors.scss
-
-### Step 2: Regenerate docs color assets
-
-Run:
-
-npm run docs:build
-
-This executes scripts/generate-color-docs.mjs and refreshes:
-
-- docs/foundations/color-tokens.css
-- docs/foundations/_color-tokens.scss
-- docs/foundations/color-tokens.json
-- docs/foundations/colors-abstract.scss
-- docs/foundations/colors-utils.scss
-
-## Runtime Behavior in colors.html
-
-The Colors page reads generated files first:
-
-1. Colors tables and semantic rows are rendered from:
-   - docs/foundations/colors-abstract.scss
-   - docs/foundations/color-tokens.json
-2. Utilities section is rendered from:
-   - docs/foundations/colors-utils.scss
-3. Download actions use generated files as primary source.
-
-If generated files are missing, fallback logic keeps the page usable.
-
-## Required Validation After Changes
-
-1. Open docs/foundations/colors.html.
-2. Confirm base, product, semantic, and utilities sections show updated values/classes.
-3. Confirm download buttons generate updated files:
+1. Token tables are rendered from `core/abstracts/_tokens-colors.scss`.
+2. Utility sections are rendered from `core/utils/_colors.scss`.
+3. Download buttons generate files in the browser from those two files:
    - CSS
    - SCSS
    - JSON
    - Copy variables
-4. Validate Light, Dark, and High Contrast values.
 
-## Recommended Team Rule
+This means changes in the two core SCSS files are reflected after refreshing the portal page.
 
-After any change in either file below, always run npm run docs:build before commit:
+## Validation Command
 
-- core/abstracts/_tokens-colors.scss
-- core/utils/_colors.scss
+Run:
+
+```bash
+npm run docs:build
+```
+
+This no longer generates copied files. It validates that the two core color sources exist and reports the number of color tokens and utility classes found.
+
+## Required Validation After Changes
+
+1. Update only the source files:
+   - `core/abstracts/_tokens-colors.scss`
+   - `core/utils/_colors.scss`
+2. Refresh `docs/foundations/colors.html` in the browser.
+3. Confirm base, product, semantic, and utilities sections show updated values/classes.
+4. Confirm download buttons generate updated files:
+   - CSS
+   - SCSS
+   - JSON
+   - Copy variables
 
 ## Troubleshooting
 
-1. New utility does not appear in Utilities section:
-   - Ensure class follows .bg-, .text-, or .border- prefix.
-   - Run npm run docs:build again.
+1. New utility does not appear:
+   - Ensure the class follows `.bg-*`, `.text-*`, or `.border-*`.
+   - Refresh the Colors page.
 2. Download output looks stale:
-   - Confirm generated files were refreshed in docs/foundations.
-3. Semantic values do not match expected theme:
-   - Verify token mode values in tokens/compensar.tokens.json.
+   - Confirm the browser is not caching aggressively.
+   - Reload the page.
+3. Token does not appear:
+   - Confirm it is declared in `core/abstracts/_tokens-colors.scss` as a Sass variable with a color-like value: `#...` or `var(--...)`.

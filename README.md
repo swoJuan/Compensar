@@ -246,26 +246,20 @@ Outputs minified CSS to `css/core.css`.
 
 ### Color Docs Sync (Tokens + Utilities)
 
-The color documentation downloads now use generated sources from two real files:
+The color documentation and downloads read directly from two core source files:
 
-- `tokens/compensar.tokens.json` (official token source)
+- `core/abstracts/_tokens-colors.scss` (official color token source)
 - `core/utils/_colors.scss` (official color utility classes)
 
-Run this command whenever you update color tokens or color utility classes:
+`docs/foundations/colors.html` fetches those files at runtime and generates the downloadable CSS, SCSS, JSON, and copied variables in the browser.
+
+Run this command only as a quick validation after updating color tokens or utilities:
 
 ```bash
 npm run docs:build
 ```
 
-This generates and refreshes:
-
-- `docs/foundations/color-tokens.css`
-- `docs/foundations/_color-tokens.scss`
-- `docs/foundations/color-tokens.json`
-- `docs/foundations/colors-abstract.scss`
-- `docs/foundations/colors-utils.scss`
-
-`docs/foundations/colors.html` uses those generated files for download actions (with fallback generation from page content if files are missing).
+This no longer generates copied files in `docs/foundations`. It validates the live core sources and reports how many color tokens and utilities were found.
 
 Detailed maintenance guide:
 
@@ -273,22 +267,16 @@ Detailed maintenance guide:
 
 #### Quick Checklist
 
-1. If you changed token source data, regenerate base tokens first:
+1. If Figma token exports changed, regenerate base token sources first:
   ```bash
   node scripts/generate-figma-tokens.mjs
   ```
-2. If you changed color utilities in `core/utils/_colors.scss`, keep that file as the source of truth.
-3. Rebuild color docs assets:
+2. Keep all custom color utility classes in `core/utils/_colors.scss`.
+3. Validate the color documentation sources:
   ```bash
   npm run docs:build
   ```
-4. Validate generated outputs exist and are updated:
-  - `docs/foundations/color-tokens.css`
-  - `docs/foundations/_color-tokens.scss`
-  - `docs/foundations/color-tokens.json`
-  - `docs/foundations/colors-abstract.scss`
-  - `docs/foundations/colors-utils.scss`
-5. Open the Colors page and verify:
+4. Open the Colors page and verify:
   - Download buttons (`CSS`, `SCSS`, `JSON`, `Copiar variables`) return updated content.
   - Theme values change correctly across Light, Dark, and High Contrast.
 
