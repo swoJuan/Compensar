@@ -7,6 +7,15 @@
 @use '../abstracts/tokens-typography' as *;
 @use '../abstracts/mixins' as mx;
 
+// ── Standard set (recommended daily utilities) ───────────────────────────
+// Prioritize these in product screens before using the full catalog:
+// - .u-fs-md, .u-fs-sm
+// - .u-fw-regular, .u-fw-medium, .u-fw-bold
+// - .u-lh-normal, .u-lh-relaxed
+// - .u-text-primary, .u-text-muted, .u-text-link
+// - .u-text-left, .u-text-center
+// - .u-truncate, .u-line-clamp-2, .u-break-word
+
 // ── Text alignment ─────────────────────────────────────────────────────────
 .u-text-left   { text-align: left   !important; }
 .u-text-center { text-align: center !important; }

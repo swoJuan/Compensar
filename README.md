@@ -241,9 +241,11 @@ Outputs minified CSS to `css/core.css`.
 
 **Typography:**
 1. Add font variables to `core/abstracts/_tokens-typography.scss`
-2. Create mixin in `core/abstracts/_mixins.scss` if needed
+2. Publish the matching Figma CSS custom property in `core/base/_theme.scss`
+3. Add or update the production class in `core/base/_typography.scss`
+4. Create mixin in `core/abstracts/_mixins.scss` only if a Sass API is needed
 
-### Color Docs Sync (Tokens + Utilities)
+### Docs Sync (Tokens + Utilities)
 
 The color documentation and downloads read directly from two core source files:
 
@@ -252,13 +254,20 @@ The color documentation and downloads read directly from two core source files:
 
 `docs/foundations/colors.html` fetches those files at runtime and generates the downloadable CSS, SCSS, JSON, and copied variables in the browser.
 
-Run this command only as a quick validation after updating color tokens or utilities:
+The typography documentation follows the same rule:
+
+- `core/abstracts/_tokens-typography.scss` is the official typography token source.
+- `core/base/_theme.scss` publishes the Figma CSS variables such as `--heading--h1`, `--body---l`, and `--comun---boton`.
+- `core/base/_typography.scss` defines the production `.mp-*` classes downloaded by the portal.
+- `docs/app/fundamentos/typography.html` fetches the core sources at runtime and generates CSS, SCSS, and JSON downloads from them.
+
+Run this command only as a quick validation after updating color or typography tokens/utilities:
 
 ```bash
 npm run docs:build
 ```
 
-This no longer generates copied files in `docs/foundations`. It validates the live core sources and reports how many color tokens and utilities were found.
+This no longer generates copied files in `docs/foundations`. It validates the live core sources and reports how many color and typography tokens/classes were found.
 
 Detailed maintenance guide:
 

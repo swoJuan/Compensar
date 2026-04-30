@@ -304,6 +304,28 @@ Las descargas de colores se generan en vivo desde dos fuentes del core:
 
 No se deben mantener copias de descarga dentro de `docs/foundations`. La regla conceptual es que las descargas deben representar el core real, no una version duplicada o generada previamente.
 
+### Descargas de tipografia
+
+La pagina de tipografia sigue el mismo patron de colores: la documentacion muestra la escala y los botones de descarga generan CSS, SCSS y JSON desde las fuentes vivas del core.
+
+Fuentes canonicas:
+
+- `core/abstracts/_tokens-typography.scss`: tamanos, familias, pesos, line-height y letter-spacing base.
+- `core/base/_theme.scss`: publica las variables CSS exportables con nomenclatura de Figma, por ejemplo `--heading--h1`, `--body---l`, `--body--2-x-l`, `--comun---boton`.
+- `core/base/_typography.scss`: contiene las clases productivas `.mp-*` que se documentan y descargan.
+
+Clases principales que debe descargar el portal:
+
+- Display: `.mp-display-l`, `.mp-display-m`, `.mp-display-xl-mob`, `.mp-display-l-mob`, `.mp-display-m-mob`.
+- Headings: `.mp-h1`, `.mp-h2`, `.mp-h3`, `.mp-h4`, `.mp-h5`, `.mp-h6`.
+- Texto editorial: `.mp-eyebrow`, `.mp-parrafo-xl`, `.mp-parrafo-l`.
+- Body: `.mp-body-2xl`, `.mp-body-xl`, `.mp-body-l`, `.mp-body-m`, `.mp-body-s`, `.mp-body-xs`.
+- UI: `.mp-btn`, `.mp-label`, `.mp-hint`, `.mp-placeholder`.
+
+Alias legados como `.mp-paragraph-xl`, `.mp-paragraph-l`, `.mp-button` y `.mp-display-mob` pueden existir por compatibilidad, pero la documentacion y las descargas deben favorecer las clases principales anteriores.
+
+El portal no debe definir variables `.mp-*` propias en `portal.css`. Esas variables viven en `core.css`; el Sass del portal solo debe contener estilos de presentacion de la pagina de documentacion.
+
 ## Paginas compartidas y transversales
 
 Se decidio que algunas paginas son transversales porque aplican tanto a Drupal/ZT como a App:
