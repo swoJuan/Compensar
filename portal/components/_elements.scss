@@ -1,0 +1,32 @@
+@use '../../core/abstracts' as *;
+
+/* ══════════════════════════════════════════════════════════
+   CHIP / TAG
+   ══════════════════════════════════════════════════════════ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px 3px 8px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: var(--ui-surface-alt);
+  color: var(--ui-text-muted);
+  border: 1px solid var(--ui-border);
+  cursor: default;
+  user-select: none;
+  transition: background .15s;
+}
+
+.chip:hover { background: var(--ui-tag-bg); color: var(--ui-accent); border-color: var(--ui-accent); }
+
+/* ══════════════════════════════════════════════════════════
+   DIVIDER
+   ══════════════════════════════════════════════════════════ */
+.divider {
+  height: 1px;
+  background: var(--ui-border);
+  border: none;
+  margin: var(--spacing-32px) 0;
+}

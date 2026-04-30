@@ -14,7 +14,7 @@
   <!-- Design System CSS -->
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/core.css">
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/portal.css">
 
   <!-- Shell-specific styles -->
   <style>
@@ -51,7 +51,7 @@
       justify-content: space-between;
       gap: var(--space-16);
       z-index: 100;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px color-mix(in srgb, var(--ui-text) 8%, transparent);
     }
 
     .header-brand {
@@ -67,7 +67,7 @@
     .header-logo {
       width: 32px;
       height: 32px;
-      background: linear-gradient(135deg, var(--base-brand-80), var(--base-primary-30));
+      background: linear-gradient(135deg, var(--base-brand-80), var(--base-brand-90));
       border-radius: 6px;
       display: flex;
       align-items: center;
@@ -240,8 +240,8 @@
       position: fixed;
       bottom: var(--space-16);
       right: var(--space-16);
-      background: #333;
-      color: white;
+      background: var(--ui-text);
+      color: var(--ui-bg);
       padding: var(--space-12) var(--space-16);
       border-radius: var(--radius-xs);
       font-size: var(--font-size-sm);

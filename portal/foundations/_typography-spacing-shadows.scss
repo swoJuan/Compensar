@@ -1,0 +1,84 @@
+@use '../../core/abstracts' as *;
+
+/* ══════════════════════════════════════════════════════════
+   TYPOGRAPHY SCALE
+   ══════════════════════════════════════════════════════════ */
+.type-scale { display: flex; flex-direction: column; gap: var(--spacing-16px); }
+
+.type-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: baseline;
+  gap: var(--spacing-24px);
+  padding: var(--spacing-16px);
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+  transition: box-shadow .15s;
+}
+
+.type-row:hover { box-shadow: var(--elevation-1); }
+
+.type-meta { font-size: 11px; color: var(--ui-text-muted); font-family: var(--font-code); }
+.type-meta strong {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ui-text);
+  margin-bottom: 4px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SPACING
+   ══════════════════════════════════════════════════════════ */
+.spacing-list { display: flex; flex-direction: column; gap: var(--spacing-4px); }
+
+.spacing-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 130px;
+  align-items: center;
+  gap: var(--spacing-16px);
+  padding: 8px var(--spacing-16px);
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 8px;
+  font-size: 13px;
+  transition: box-shadow .15s;
+}
+
+.spacing-row:hover { box-shadow: var(--elevation-1); }
+
+.spacing-bar { height: 8px; background: var(--base-brand-80); border-radius: 4px; opacity: .65; }
+.spacing-val { font-family: var(--font-code); font-size: 12px; font-weight: 600; color: var(--ui-text); }
+.spacing-token { font-family: var(--font-code); font-size: 11px; color: var(--ui-text-muted); }
+
+/* ══════════════════════════════════════════════════════════
+   SHADOWS
+   ══════════════════════════════════════════════════════════ */
+.shadow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--spacing-24px);
+}
+
+.shadow-card {
+  padding: var(--spacing-48px) var(--spacing-24px);
+  background: var(--ui-surface);
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid var(--ui-border);
+  transition: transform .2s;
+}
+
+.shadow-card:hover { transform: translateY(-2px); }
+
+.shadow-box {
+  width: 80px; height: 80px;
+  background: var(--ui-surface);
+  border-radius: 12px;
+  margin: 0 auto var(--spacing-16px);
+}
+
+.shadow-name { font-weight: 600; font-size: 13px; color: var(--ui-text); margin-bottom: 4px; }
+.shadow-value { font-family: var(--font-code); font-size: 11px; color: var(--ui-text-muted); line-height: 1.5; }

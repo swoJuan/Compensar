@@ -351,8 +351,8 @@
         primario:
           '\n/* Tokens de .mp-btn--primario ──────────────────────── */\n' +
           '--base-brand-80:          #e55a22;\n' +
-          '--base-primary-30:        #c04a15;\n' +
-          '--base-primary-20:        #a03a0c;\n' +
+          '--base-brand-90:        #c04a15;\n' +
+          '--base-brand-100:        #a03a0c;\n' +
           '--shadow-button-hover:    2px 2px 3px #ff9d5c;\n' +
           '--shadow-button-pressed:  inset 0 4px 4px rgba(0,0,0,.25);',
         secundario:
@@ -366,8 +366,8 @@
           '--font-size-md:           0.875rem;  /* 14 px */',
         especial:
           '\n/* Tokens de .mp-btn--especial ──────────────────────── */\n' +
-          '--colors-violeta-500:     #6d4cc5;\n' +
-          '--colors-violeta-700:     #4e3199;\n' +
+          '--product-violet-50:     #6d4cc5;\n' +
+          '--product-violet-70:     #4e3199;\n' +
           '--shadow-button-special-hover: 2px 2px 3px #a28dda;'
       };
       return base + (map[t] || '');
@@ -535,9 +535,9 @@
     <!-- Especial -->
     <div class="btn-estados-cell--label">Especial</div>
     <div><button class="mp-btn mp-btn--especial">Botón</button></div>
-    <div class="hide-mobile"><button class="mp-btn mp-btn--especial" style="background:linear-gradient(180deg,var(--colors-violeta-700) 0%,var(--colors-violeta-500) 100%);box-shadow:var(--shadow-button-special-hover)">Botón</button></div>
+    <div class="hide-mobile"><button class="mp-btn mp-btn--especial" style="background:linear-gradient(180deg,var(--product-violet-70) 0%,var(--product-violet-50) 100%);box-shadow:var(--shadow-button-special-hover)">Botón</button></div>
     <div class="hide-mobile"><button class="mp-btn mp-btn--especial" style="box-shadow:var(--shadow-button-pressed)">Botón</button></div>
-    <div><button class="mp-btn mp-btn--especial" style="outline:3px solid var(--colors-violeta-500);outline-offset:3px">Botón</button></div>
+    <div><button class="mp-btn mp-btn--especial" style="outline:3px solid var(--product-violet-50);outline-offset:3px">Botón</button></div>
     <div><button class="mp-btn mp-btn--especial" disabled>Botón</button></div>
   </div>
 </div>
@@ -755,11 +755,11 @@
         '',
         '/* ── Primario ─────────────────────────────────────────────── */',
         '.mp-btn--primario {',
-        '  background: linear-gradient(180deg, var(--base-brand-80) 0%, var(--base-primary-30) 100%);',
+        '  background: linear-gradient(180deg, var(--base-brand-80) 0%, var(--base-brand-90) 100%);',
         '  color: #ffffff;',
         '}',
         '.mp-btn--primario:hover:not(:disabled) {',
-        '  background: linear-gradient(180deg, var(--base-primary-20) 0%, var(--base-brand-80) 100%);',
+        '  background: linear-gradient(180deg, var(--base-brand-100) 0%, var(--base-brand-80) 100%);',
         '  box-shadow: var(--shadow-button-hover);',
         '}',
         '.mp-btn--primario:active:not(:disabled) { box-shadow: var(--shadow-button-pressed); }',
@@ -797,15 +797,15 @@
         '',
         '/* ── Especial ─────────────────────────────────────────────── */',
         '.mp-btn--especial {',
-        '  background: linear-gradient(180deg, var(--colors-violeta-500) 0%, var(--colors-violeta-700) 100%);',
+        '  background: linear-gradient(180deg, var(--product-violet-50) 0%, var(--product-violet-70) 100%);',
         '  color: #ffffff;',
         '}',
         '.mp-btn--especial:hover:not(:disabled) {',
-        '  background: linear-gradient(180deg, var(--colors-violeta-700) 0%, var(--colors-violeta-500) 100%);',
+        '  background: linear-gradient(180deg, var(--product-violet-70) 0%, var(--product-violet-50) 100%);',
         '  box-shadow: var(--shadow-button-special-hover);',
         '}',
         '.mp-btn--especial:active:not(:disabled) { box-shadow: var(--shadow-button-pressed); }',
-        '.mp-btn--especial:focus-visible { outline: 3px solid var(--colors-violeta-500); outline-offset: 3px; }',
+        '.mp-btn--especial:focus-visible { outline: 3px solid var(--product-violet-50); outline-offset: 3px; }',
         '',
         '/* ── Disabled ─────────────────────────────────────────────── */',
         '.mp-btn:disabled,',
@@ -873,10 +873,10 @@
         '$btn-transition:      box-shadow .2s, background .2s, opacity .15s;',
         '',
         '$color-primary:       var(--base-brand-80);',
-        '$color-primary-dark:  var(--base-primary-30);',
-        '$color-primary-hover: var(--base-primary-20);',
-        '$color-violeta:       var(--colors-violeta-500);',
-        '$color-violeta-dark:  var(--colors-violeta-700);',
+        '$color-primary-dark:  var(--base-brand-90);',
+        '$color-primary-hover: var(--base-brand-100);',
+        '$color-violeta:       var(--product-violet-50);',
+        '$color-violeta-dark:  var(--product-violet-70);',
         '$shadow-hover:        var(--shadow-button-hover);',
         '$shadow-pressed:      var(--shadow-button-pressed);',
         '$shadow-special:      var(--shadow-button-special-hover);',
@@ -1030,13 +1030,13 @@
         },
         "color": {
           "primario-bg-start":    { "$value": "{base-brand-80}",       "$type": "color" },
-          "primario-bg-end":      { "$value": "{base-primary-30}",     "$type": "color" },
+          "primario-bg-end":      { "$value": "{base.brand.90}",     "$type": "color" },
           "primario-text":        { "$value": "#ffffff",               "$type": "color" },
           "secundario-border":    { "$value": "{base-brand-80}",       "$type": "color" },
           "secundario-text":      { "$value": "{base-brand-80}",       "$type": "color" },
           "terciario-text":       { "$value": "{base-brand-80}",       "$type": "color" },
-          "especial-bg-start":    { "$value": "{colors-violeta-500}",  "$type": "color" },
-          "especial-bg-end":      { "$value": "{colors-violeta-700}",  "$type": "color" },
+          "especial-bg-start":    { "$value": "{product.violet.50}",  "$type": "color" },
+          "especial-bg-end":      { "$value": "{product.violet.70}",  "$type": "color" },
           "disabled-bg":          { "$value": "{base-neutral-30}",     "$type": "color" },
           "disabled-text":        { "$value": "{base-neutral-50}",     "$type": "color" }
         },

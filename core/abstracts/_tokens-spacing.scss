@@ -1,43 +1,58 @@
 // ============================================================
 //  _tokens-spacing.scss
-//  Escala px-based. Múltiplos de 4 y 8.
-//  Uso: margin, padding, gap, grid gaps.
+//  Generated from Figma token exports. Do not edit by hand.
 // ============================================================
 
-$space-0:   0;
-$space-2:   0.125rem;  //  2px — uso restringido
-$space-4:   0.25rem;   //  4px — uso restringido
-$space-8:   0.5rem;    //  8px
-$space-12:  0.75rem;   // 12px — uso restringido
-$space-16:  1rem;      // 16px ← base
-$space-24:  1.5rem;    // 24px
-$space-32:  2rem;      // 32px
-$space-48:  3rem;      // 48px
-$space-64:  4rem;      // 64px
-$space-80:  5rem;      // 80px
-$space-96:  6rem;      // 96px
-$space-128: 8rem;      // 128px
+$spacing-2px: 2px;
+$spacing-4px: 4px;
+$spacing-8px: 8px;
+$spacing-12px: 12px;
+$spacing-16px: 16px;
+$spacing-24px: 24px;
+$spacing-32px: 32px;
+$spacing-40px: 40px;
+$spacing-48px: 48px;
+$spacing-56px: 56px;
+$spacing-64px: 64px;
+$spacing-72px: 72px;
+$spacing-80px: 80px;
+$spacing-96px: 96px;
+$spacing-128px: 128px;
 
-// ── Mapa para utilidades y Bootstrap $spacers ────────────
-$spacers: (
-  0:   $space-0,
-  1:   $space-4,
-  2:   $space-8,
-  3:   $space-16,
-  4:   $space-24,
-  5:   $space-32,
-  6:   $space-48,
-  7:   $space-64,
-  8:   $space-80,
-  9:   $space-96,
-  10:  $space-128,
-) !default;
+$tokens-light: (
+  'spacing/2px': 2px,
+  'spacing/4px': 4px,
+  'spacing/8px': 8px,
+  'spacing/12px': 12px,
+  'spacing/16px': 16px,
+  'spacing/24px': 24px,
+  'spacing/32px': 32px,
+  'spacing/40px': 40px,
+  'spacing/48px': 48px,
+  'spacing/56px': 56px,
+  'spacing/64px': 64px,
+  'spacing/72px': 72px,
+  'spacing/80px': 80px,
+  'spacing/96px': 96px,
+  'spacing/128px': 128px,
+);
 
-// ── Alias semánticos ─────────────────────────────────────
-$space-xs:  $space-4;
-$space-sm:  $space-8;
-$space-md:  $space-16;
-$space-lg:  $space-24;
-$space-xl:  $space-32;
-$space-2xl: $space-48;
-$space-3xl: $space-64;
+// Legacy Sass aliases used by the current core implementation.
+// Values point to Figma-exported spacing tokens.
+$space-0: 0;
+$space-2: $spacing-2px;
+$space-4: $spacing-4px;
+$space-8: $spacing-8px;
+$space-12: $spacing-12px;
+$space-16: $spacing-16px;
+$space-24: $spacing-24px;
+$space-32: $spacing-32px;
+$space-40: $spacing-40px;
+$space-48: $spacing-48px;
+$space-56: $spacing-56px;
+$space-64: $spacing-64px;
+$space-72: $spacing-72px;
+$space-80: $spacing-80px;
+$space-96: $spacing-96px;
+$space-128: $spacing-128px;
+

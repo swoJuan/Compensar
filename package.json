@@ -4,9 +4,9 @@
   "description": "Design System — Compensar Medicina Prepagada",
   "private": true,
   "scripts": {
-    "sass:build": "sass core/core.scss css/core.css --style=compressed --load-path=node_modules",
-    "sass:watch": "sass core/core.scss css/core.css --watch --style=expanded --load-path=node_modules",
-    "sass:dev":   "sass core/core.scss css/core.css --style=expanded --source-map --load-path=node_modules",
+    "sass:build": "sass core/core.scss:css/core.css portal/portal.scss:css/portal.css --style=compressed --no-source-map --load-path=node_modules",
+    "sass:watch": "sass core/core.scss:css/core.css portal/portal.scss:css/portal.css --watch --style=expanded --no-source-map --load-path=node_modules",
+    "sass:dev":   "sass core/core.scss:css/core.css portal/portal.scss:css/portal.css --style=expanded --source-map --load-path=node_modules",
     "build":      "npm run sass:build",
     "dev":        "npm run sass:watch"
   },

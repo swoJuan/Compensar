@@ -1,188 +1,211 @@
 // ============================================================
 //  _theme.scss
-//  CSS Custom Properties para theming.
-//  Soporta: light (default), dark, high-contrast.
-//  Los componentes consumen ESTAS variables, nunca los tokens
-//  base directamente.
+//  Core compatibility layer.
+//  All color values point to Figma-exported tokens from
+//  css/tokens.css. Do not add portal-only tokens here.
 // ============================================================
 
-@use '../abstracts/tokens-colors' as *;
 @use '../abstracts/tokens-typography' as *;
-@use '../abstracts/tokens-spacing' as *;
-@use '../abstracts/tokens-radius' as *;
 @use '../abstracts/tokens-shadows' as *;
 
-// ── Modo claro (default) ─────────────────────────────────
 :root,
-[data-theme='light'] {
-
-  // Primario
-  --color-primary:        #{$color-brand-80};
-  --color-primary-hover:  #{$color-brand-90};
-  --color-primary-active: #{$color-brand-100};
-  --color-primary-subtle: #{$color-brand-40};
-
-  // Secundario (violeta)
-  --color-secondary:        #{$color-violet-70};
-  --color-secondary-hover:  #{$color-violet-80};
-  --color-secondary-active: #{$color-violet-90};
-  --color-secondary-subtle: #{$color-violet-5};
-
-  // Texto
-  --color-text-primary:   #{$color-neutral-100};
-  --color-text-secondary: #{$color-neutral-80};
-  --color-text-tertiary:  #{$color-neutral-70};
-  --color-text-disabled:  #{$color-neutral-50};
-  --color-text-inverse:   #{$color-neutral-10};
-  --color-text-link:      #{$color-brand-80};
-  --color-text-on-dark:   #{$color-neutral-white};
-
-  // Superficies
-  --color-surface-page:    #{$color-neutral-white};
-  --color-surface:         #{$color-neutral-white};
-  --color-surface-alt:     #{$color-neutral-10};
-  --color-surface-subtle:  #{$color-prod-gray-20};
-  --color-surface-violet:  #{$color-violet-5};
-  --color-surface-green:   #{$color-green1-30};
-  --color-surface-orange:  #{$color-orange-10};
-  --color-surface-cyan:    #{$color-cyan-blue-10};
-
-  // Bordes
-  --color-border:        #{$color-neutral-30};
-  --color-border-strong: #{$color-neutral-70};
-  --color-border-subtle: #{$color-neutral-20};
-  --color-border-violet: #{$color-violet-10};
-
-  // Estados
-  --color-success-bg:     #{$color-green1-40};
-  --color-success-text:   #{$color-green1-100};
-  --color-success-border: #{$color-green1-60};
-  --color-success-icon:   #{$color-green1-80};
-
-  --color-error-bg:       #{$color-red-30};
-  --color-error-text:     #{$color-red-100};
-  --color-error-border:   #{$color-red-60};
-  --color-error-icon:     #{$color-red-70};
-  --color-error-field:    #{$color-red-80};
-
-  --color-warning-bg:     #{$color-yellow-40};
-  --color-warning-text:   #{$color-yellow-100};
-  --color-warning-border: #{$color-yellow-60};
-  --color-warning-icon:   #{$color-yellow-70};
-
-  --color-info-bg:        #{$color-blue-30};
-  --color-info-text:      #{$color-blue-100};
-  --color-info-border:    #{$color-cyan-blue-50};
-  --color-info-icon:      #{$color-cyan-blue-60};
-
-  // Focus
-  --color-focus-outline: #{$color-brand-80};
-  --color-focus-bg:      #{$color-brand-40};
-
-  // Tablas
-  --color-table-head:    #{$color-product-accent-50};
-  --color-table-filter:  #{$color-neutral-20};
-  --color-table-stripe:  #{$color-neutral-10};
-
-  // Code
-  --color-code-bg:   #1e1e2e;
-  --color-code-text: #cdd6f4;
-
-  // Sombras
-  --shadow-1:      #{$shadow-1};
-  --shadow-2:      #{$shadow-2};
-  --shadow-3:      #{$shadow-3};
-  --shadow-4:      #{$shadow-4};
-  --shadow-header: #{$shadow-header};
-
-  // Radius
-  --radius-xs:   #{$radius-xs};
-  --radius-sm:   #{$radius-sm};
-  --radius-md:   #{$radius-md};
-  --radius-lg:   #{$radius-lg};
-  --radius-full: #{$radius-full};
-
-  // Spacing (por si se necesitan en CSS puro)
-  --space-4:   #{$space-4};
-  --space-8:   #{$space-8};
-  --space-16:  #{$space-16};
-  --space-24:  #{$space-24};
-  --space-32:  #{$space-32};
-  --space-48:  #{$space-48};
-  --space-64:  #{$space-64};
-
-  // Tipografía
-  --font-body:    #{$font-body};
-  --font-heading: #{$font-heading};
-  --font-code:    #{$font-code};
-  --font-icons-primary:   'CompensarIcons';
-  --font-icons-secondary: 'Material Symbols Rounded';
-}
-
-// ── Modo oscuro ──────────────────────────────────────────
-[data-theme='dark'] {
-  --color-primary:        #{$color-brand-60};
-  --color-primary-hover:  #{$color-brand-70};
-  --color-primary-active: #{$color-brand-80};
-  --color-primary-subtle: rgba(255,102,0,0.15);
-
-  --color-secondary:        #{$color-violet-40};
-  --color-secondary-subtle: rgba(78,49,153,0.2);
-
-  --color-text-primary:   #f0eef5;
-  --color-text-secondary: #{$color-prod-gray-20};
-  --color-text-tertiary:  #{$color-prod-gray-40};
-  --color-text-disabled:  #{$color-prod-gray-60};
-  --color-text-link:      #{$color-brand-60};
-
-  --color-surface-page:   #0f0e13;
-  --color-surface:        #1a1825;
-  --color-surface-alt:    #221f2e;
-  --color-surface-subtle: #2e2a3f;
-
-  --color-border:        rgba(255,255,255,0.12);
-  --color-border-strong: rgba(255,255,255,0.30);
-  --color-border-subtle: rgba(255,255,255,0.06);
-
-  --color-success-bg:     rgba(14,133,61,0.15);
-  --color-success-text:   #{$color-green1-50};
-  --color-success-border: #{$color-green1-70};
-
-  --color-error-bg:       rgba(209,68,52,0.15);
-  --color-error-text:     #{$color-red-50};
-  --color-error-border:   #{$color-red-70};
-
-  --color-warning-bg:     rgba(255,193,84,0.12);
-  --color-warning-text:   #{$color-yellow-60};
-  --color-warning-border: #{$color-yellow-70};
-
-  --color-info-bg:        rgba(82,134,188,0.15);
-  --color-info-text:      #{$color-blue-50};
-  --color-info-border:    #{$color-cyan-blue-60};
-
-  --color-code-bg:   #13111c;
-  --color-code-text: #cdd6f4;
-
-  --shadow-1: 0 2px 8px rgba(0,0,0,0.5);
-  --shadow-2: 0 8px 24px rgba(0,0,0,0.6);
-  --shadow-3: 0 16px 40px rgba(0,0,0,0.7);
-}
-
-// ── Alto contraste ───────────────────────────────────────
+[data-theme='light'],
+[data-theme='dark'],
 [data-theme='high-contrast'] {
-  --color-primary:       #ff6600;
-  --color-text-primary:  #000000;
-  --color-text-link:     #0000cc;
-  --color-surface-page:  #ffffff;
-  --color-surface:       #ffffff;
-  --color-border:        #000000;
-  --color-border-strong: #000000;
-  --color-focus-outline: #0000cc;
+  // Brand / action aliases used by current components.
+  --color-primary: var(--use-primary-default);
+  --color-primary-hover: var(--use-primary-hover);
+  --color-primary-active: var(--use-primary-active);
+  --color-primary-subtle: var(--base-brand-40);
+  --color-primary-surface: var(--base-brand-40);
+  --color-primary-rgb: 255, 102, 0;
 
-  --color-success-bg:    #d4edda;
-  --color-success-text:  #000000;
-  --color-error-bg:      #f8d7da;
-  --color-error-text:    #000000;
-  --color-warning-bg:    #fff3cd;
-  --color-warning-text:  #000000;
+  --color-secondary: var(--product-accent-100);
+  --color-secondary-hover: var(--product-accent-90);
+  --color-secondary-active: var(--product-accent-80);
+  --color-secondary-subtle: var(--product-accent-30);
+
+  // Text aliases.
+  --color-text-primary: var(--use-text-primary);
+  --color-text-secondary: var(--use-text-secondary);
+  --color-text-tertiary: var(--use-text-tertiary);
+  --color-text-muted: var(--use-text-tertiary);
+  --color-text-disabled: var(--base-neutral-50);
+  --color-text-inverse: var(--use-text-inverse);
+  --color-text-link: var(--use-text-link);
+  --color-text-on-dark: var(--use-text-on-dark-primary);
+
+  // Surface aliases.
+  --color-surface-page: var(--use-background-page);
+  --color-surface: var(--use-surface-surface);
+  --color-surface-default: var(--use-surface-white);
+  --color-surface-alt: var(--use-surface-subtle);
+  --color-surface-subtle: var(--use-surface-subtle);
+  --color-surface-hover: var(--use-surface-subtle);
+  --color-surface-disabled: var(--use-surface-subtle);
+  --color-surface-inverse: var(--base-neutral-100-negro);
+  --color-surface-violet: var(--use-surface-violet);
+  --color-surface-green: var(--use-surface-green);
+  --color-surface-orange: var(--use-surface-orange);
+  --color-surface-cyan: var(--use-surface-cyan-blue);
+
+  // Border and focus aliases.
+  --color-border: var(--use-border-default);
+  --color-border-default: var(--use-border-default);
+  --color-border-strong: var(--use-border-strong);
+  --color-border-subtle: var(--use-border-subtle);
+  --color-border-violet: var(--use-border-violet);
+  --color-focus-outline: var(--use-focus-outline);
+  --color-focus-ring: var(--use-focus-outline);
+  --color-focus-ring-width: 3px;
+  --color-focus-bg: var(--use-focus-background);
+
+  // State aliases.
+  --color-success: var(--use-state-success-icon);
+  --color-success-bg: var(--use-state-success-bg);
+  --color-success-surface: var(--use-state-success-bg);
+  --color-success-text: var(--use-state-success-text);
+  --color-success-border: var(--use-state-success-border);
+  --color-success-icon: var(--use-state-success-icon);
+
+  --color-error: var(--use-state-error-icon);
+  --color-error-bg: var(--use-state-error-bg);
+  --color-error-surface: var(--use-state-error-bg);
+  --color-error-text: var(--use-state-error-text);
+  --color-error-border: var(--use-state-error-border);
+  --color-error-icon: var(--use-state-error-icon);
+  --color-error-field: var(--use-state-error-text-error-field);
+
+  --color-warning: var(--use-state-warning-icon-bg);
+  --color-warning-bg: var(--use-state-warning-bg);
+  --color-warning-surface: var(--use-state-warning-bg);
+  --color-warning-text: var(--use-state-warning-text);
+  --color-warning-border: var(--use-state-warning-border);
+  --color-warning-icon: var(--use-state-warning-icon-bg);
+
+  --color-info: var(--use-state-info-icon);
+  --color-info-bg: var(--use-state-info-bg);
+  --color-info-surface: var(--use-state-info-bg);
+  --color-info-text: var(--use-state-info-text);
+  --color-info-border: var(--use-state-info-border);
+  --color-info-icon: var(--use-state-info-icon);
+
+  --color-table-head: var(--use-tables-head);
+  --color-table-filter: var(--use-tables-filter);
+  --color-table-stripe: var(--use-tables-stripes);
+
+  --color-code-bg: var(--base-neutral-100-negro);
+  --color-code-text: var(--use-text-on-dark-primary);
+
+  // Radius aliases.
+  --radius-none: 0;
+  --radius-xs: var(--border-radius-xs);
+  --radius-sm: var(--border-radius-sm);
+  --radius-md: var(--border-radius-md);
+  --radius-lg: var(--border-radius-lg);
+  --radius-full: var(--border-radius-lg);
+
+  // Spacing aliases used by existing utilities/components.
+  --space-0: 0;
+  --space-1: var(--spacing-2px);
+  --space-2: var(--spacing-2px);
+  --space-3: var(--spacing-8px);
+  --space-4: var(--spacing-4px);
+  --space-5: var(--spacing-24px);
+  --space-6: var(--spacing-32px);
+  --space-7: var(--spacing-48px);
+  --space-8: var(--spacing-8px);
+  --space-12: var(--spacing-12px);
+  --space-16: var(--spacing-16px);
+  --space-24: var(--spacing-24px);
+  --space-32: var(--spacing-32px);
+  --space-40: var(--spacing-40px);
+  --space-48: var(--spacing-48px);
+  --space-56: var(--spacing-56px);
+  --space-64: var(--spacing-64px);
+  --space-72: var(--spacing-72px);
+  --space-80: var(--spacing-80px);
+  --space-96: var(--spacing-96px);
+  --space-128: var(--spacing-128px);
+  --space-10: var(--spacing-128px);
+
+  // Typography aliases.
+  --font-body: #{$font-body};
+  --font-heading: #{$font-heading};
+  --font-code: #{$font-code};
+  --font-family-sans: #{$font-body};
+  --font-family-mono: #{$font-code};
+  --font-icons-primary: 'CompensarIcons';
+  --font-icons-secondary: 'Material Symbols Rounded';
+
+  --font-size-xs: #{$fs-body-xs};
+  --font-size-sm: #{$fs-body-s};
+  --font-size-md: #{$fs-body-m};
+  --font-size-lg: #{$fs-body-l};
+  --font-size-xl: #{$fs-body-xl};
+  --font-size-2xl: #{$fs-body-2xl};
+  --font-size-3xl: #{$fs-h4};
+  --font-size-4xl: #{$fs-h3};
+  --font-size-btn: #{$fs-button};
+
+  --font-weight-light: 300;
+  --font-weight-regular: #{$fw-regular};
+  --font-weight-medium: #{$fw-medium};
+  --font-weight-semibold: 600;
+  --font-weight-bold: #{$fw-bold};
+  --font-weight-black: #{$fw-black};
+
+  --font-line-height-normal: #{$lh-body};
+  --line-height-none: 1;
+  --line-height-tight: #{$lh-display-l};
+  --line-height-snug: #{$lh-h5-h6};
+  --line-height-normal: #{$lh-body};
+  --line-height-relaxed: #{$lh-paragraph};
+  --line-height-loose: 1.75;
+  --letter-spacing-normal: #{$ls-normal};
+  --letter-spacing-tight: 0;
+  --letter-spacing-wide: #{$ls-label};
+  --letter-spacing-wider: #{$ls-eyebrow};
+  --letter-spacing-widest: #{$ls-eyebrow};
+
+  // Existing elevation aliases. These are not color tokens.
+  --shadow-1: #{$shadow-1};
+  --shadow-2: #{$shadow-2};
+  --shadow-3: #{$shadow-3};
+  --shadow-4: #{$shadow-4};
+  --shadow-sm: var(--shadow-1);
+  --shadow-lg: var(--shadow-3);
+  --shadow-xl: var(--shadow-4);
+  --shadow-header: #{$shadow-header};
+  --shadow-btn-hover: #{$shadow-btn-hover};
+  --shadow-button-hover: #{$shadow-btn-hover};
+  --shadow-button-special-hover: #{$shadow-btn-especial-hover};
+  --shadow-button-pressed: #{$shadow-btn-pressed};
+  --elevation-1: var(--shadow-1);
+  --elevation-2: var(--shadow-2);
+  --elevation-3: var(--shadow-3);
+  --elevation-4: var(--shadow-4);
+
+  // Layer aliases.
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-header: 300;
+  --z-overlay: 400;
+  --z-modal: 500;
+  --z-toast: 600;
+  --z-tooltip: 700;
+
+  // Bootstrap optional variables referenced by generated CSS.
+  --bs-body-text-align: left;
+  --bs-breadcrumb-divider: "/";
+  --bs-breadcrumb-font-size: 1rem;
+  --bs-dropdown-item-border-radius: var(--radius-xs);
+  --bs-focus-ring-x: 0;
+  --bs-focus-ring-y: 0;
+  --bs-focus-ring-blur: 0;
+  --bs-icon-link-transform: translate3d(0, -0.125rem, 0);
+  --bs-nav-link-font-size: 1rem;
+  --bs-scroll-height: 340px;
 }

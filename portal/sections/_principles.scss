@@ -1,0 +1,158 @@
+/* ============================================================
+   Principles page
+   Portal-only styles. Consumes core/tokens through CSS variables.
+   ============================================================ */
+
+@use '../../core/abstracts' as *;
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.principle-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 14px;
+  padding: var(--space-6);
+  transition: box-shadow .15s ease, transform .15s ease;
+}
+
+.principle-card:hover {
+  box-shadow: var(--elevation-2);
+  transform: translateY(-2px);
+}
+
+.principle-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: var(--base-brand-40);
+  border-radius: 50%;
+  opacity: .4;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .principle-card::before {
+  opacity: .08;
+}
+
+[data-theme="high-contrast"] .principle-card::before {
+  display: none;
+}
+
+.principle-card--wide {
+  grid-column: 1;
+}
+
+.principle-number {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--ui-accent);
+  letter-spacing: .08em;
+  margin-bottom: var(--space-3);
+}
+
+.principle-icon-wrap {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ui-tag-bg);
+  border-radius: 10px;
+  margin-bottom: var(--space-3);
+}
+
+.principle-icon-wrap .material-symbols-rounded {
+  font-size: 20px;
+  color: var(--ui-accent);
+}
+
+.principle-title {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ui-accent);
+  margin-bottom: var(--space-3);
+}
+
+.principle-desc {
+  font-size: 13.5px;
+  color: var(--ui-text);
+  line-height: 1.65;
+  margin-bottom: var(--space-4);
+}
+
+.principle-note {
+  grid-column: 2;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  align-self: end;
+  background: var(--product-accent-40);
+  border: 1px solid var(--product-accent-50);
+  border-radius: 14px;
+  padding: var(--space-5) var(--space-6);
+}
+
+[data-theme="dark"] .principle-note {
+  background: color-mix(in srgb, var(--product-accent-100) 15%, transparent);
+  border-color: color-mix(in srgb, var(--product-accent-100) 30%, transparent);
+}
+
+[data-theme="high-contrast"] .principle-note {
+  background: var(--base-neutral-black);
+  border-color: var(--base-neutral-white);
+}
+
+.principle-note-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--product-accent-100);
+  border-radius: 50%;
+}
+
+.principle-note-icon .material-symbols-rounded {
+  font-size: 20px;
+  color: var(--base-neutral-white);
+}
+
+.principle-note p {
+  font-size: 13.5px;
+  color: var(--use-text-primary);
+  line-height: 1.6;
+}
+
+.principle-note strong {
+  color: var(--ui-text);
+}
+
+@media (max-width: 760px) {
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .principle-card--wide,
+  .principle-note {
+    grid-column: auto;
+  }
+}
+
+.principle-rule
+{
+  background-color: $use-surface-theme-gray-5;
+  padding: 0.8rem;
+  border-radius: $border-radius-sm;
+}

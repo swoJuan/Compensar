@@ -109,7 +109,7 @@
         <div class="intro-step-num">03</div>
         <div>
           <strong>Usa siempre tokens</strong>
-          <p>Nunca uses valores hex directos. Usa <code>var(--nombre-del-token)</code> para que los modos funcionen solos.</p>
+          <p>Nunca uses valores hex directos. Usa <code>var(--use-primary-default)</code> para que los modos funcionen solos.</p>
         </div>
       </div>
     </div>
@@ -151,7 +151,7 @@
   font-family: var(--font-heading);
   font-size: 40px;
   font-weight: 800;
-  color: var(--use-text-heading);
+  color: var(--ui-text);
   line-height: 1.1;
   margin-bottom: var(--space-2);
 }
@@ -379,5 +379,168 @@
   padding: 1px 5px;
   border-radius: 4px;
   color: var(--ui-accent);
+}
+
+/* ——— PORTAL POLISH OVERRIDES ——————————————————————————— */
+.intro-hero {
+  max-width: 1100px;
+  min-height: 444px;
+  gap: 56px;
+  border-radius: 16px;
+  padding: 64px;
+  margin-bottom: 64px;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--ui-text) 5%, transparent);
+}
+
+.intro-version-badge {
+  padding: 6px 14px;
+  margin-bottom: 18px;
+}
+
+.intro-title {
+  max-width: 560px;
+  font-size: 42px;
+  line-height: 1.04;
+  letter-spacing: 0;
+  margin-bottom: 8px;
+}
+
+.intro-subtitle {
+  color: var(--use-primary-default);
+  margin-bottom: 22px;
+}
+
+.intro-desc {
+  max-width: 570px;
+  font-size: 16px;
+  line-height: 1.72;
+  margin-bottom: 28px;
+}
+
+.intro-tech-badges {
+  gap: 8px;
+}
+
+.intro-tech {
+  min-height: 34px;
+  border-radius: 8px;
+  padding: 0 14px;
+}
+
+.intro-hero-visual {
+  width: 180px;
+  height: 180px;
+  margin-right: 16px;
+}
+
+.ring-1 { width: 92px; height: 92px; }
+.ring-2 { width: 136px; height: 136px; }
+.ring-3 { width: 180px; height: 180px; }
+
+.intro-visual-icon {
+  font-size: 50px;
+}
+
+.intro-objective {
+  max-width: 1100px;
+  gap: 24px;
+  border-left-width: 4px;
+  border-radius: 14px;
+  padding: 24px 32px;
+  margin-bottom: 64px;
+}
+
+.intro-objective-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.intro-objective-title {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.intro-objective-text {
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.intro-cards-title {
+  max-width: 1100px;
+  margin-bottom: 18px;
+}
+
+.intro-cards {
+  max-width: 1100px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.intro-card {
+  min-height: 176px;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.intro-card-icon {
+  margin-bottom: 18px;
+}
+
+.intro-card h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.intro-card p {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.intro-how {
+  max-width: 1100px;
+  border-radius: 14px;
+  padding: 32px;
+}
+
+@media (max-width: 1180px) {
+  .intro-hero,
+  .intro-objective,
+  .intro-cards,
+  .intro-cards-title,
+  .intro-how {
+    max-width: none;
+  }
+
+  .intro-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .intro-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 32px 24px;
+    gap: 32px;
+  }
+
+  .intro-title {
+    font-size: 34px;
+  }
+
+  .intro-hero-visual {
+    justify-self: center;
+    margin-right: 0;
+  }
+
+  .intro-objective {
+    padding: 22px;
+  }
+
+  .intro-cards {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

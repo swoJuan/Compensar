@@ -1,0 +1,18 @@
+@use '../../core/abstracts' as *;
+
+/* ============================================================
+   MAIN STYLES — Design System Shell
+   Compensar Medicina Prepagada
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  font-size: 14px;
+  line-height: 1.6;
+  transition: background .25s, color .25s;
+}

@@ -55,11 +55,11 @@
 }
 
 .mp-btn--primario {
-  background: linear-gradient(180deg, var(--base-brand-80) 0%, var(--base-primary-30) 100%);
+  background: linear-gradient(180deg, var(--base-brand-80) 0%, var(--base-brand-90) 100%);
   color: #ffffff;
 
   &:hover:not(:disabled) {
-    background: linear-gradient(180deg, var(--base-primary-20) 0%, var(--base-brand-80) 100%);
+    background: linear-gradient(180deg, var(--base-brand-100) 0%, var(--base-brand-80) 100%);
     box-shadow: var(--shadow-button-hover);
   }
 
@@ -113,11 +113,11 @@
 }
 
 .mp-btn--especial {
-  background: linear-gradient(180deg, var(--colors-violeta-500) 0%, var(--colors-violeta-700) 100%);
+  background: linear-gradient(180deg, var(--product-violet-50) 0%, var(--product-violet-70) 100%);
   color: #ffffff;
 
   &:hover:not(:disabled) {
-    background: linear-gradient(180deg, var(--colors-violeta-700) 0%, var(--colors-violeta-500) 100%);
+    background: linear-gradient(180deg, var(--product-violet-70) 0%, var(--product-violet-50) 100%);
     box-shadow: var(--shadow-button-special-hover);
   }
 
@@ -126,7 +126,7 @@
   }
 
   &:focus-visible {
-    outline: 3px solid var(--colors-violeta-500);
+    outline: 3px solid var(--product-violet-50);
     outline-offset: 3px;
   }
 }

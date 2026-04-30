@@ -1,0 +1,96 @@
+@use '../../core/abstracts' as *;
+
+/* ══════════════════════════════════════════════════════════
+   LOADING STATE — spinner moderno
+   ══════════════════════════════════════════════════════════ */
+.fragment-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-16px);
+  padding: var(--spacing-12px) var(--spacing-64px);
+  color: var(--ui-text-muted);
+  font-size: 13.5px;
+  min-height: 280px;
+}
+
+.fragment-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--ui-border);
+  border-top-color: var(--ui-accent);
+  border-radius: 50%;
+  animation: ct-spin .75s linear infinite;
+  flex-shrink: 0;
+}
+
+.fragment-loading-text {
+  color: var(--ui-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+@keyframes ct-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ══════════════════════════════════════════════════════════
+   ERROR STATE
+   ══════════════════════════════════════════════════════════ */
+.fragment-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8px);
+  padding: var(--spacing-128px) var(--spacing-64px);
+  text-align: center;
+  min-height: 240px;
+  color: var(--ui-text-muted);
+  font-size: 13px;
+}
+
+.fragment-error-icon {
+  font-size: 40px;
+  color: var(--base-red-60);
+  margin-bottom: var(--spacing-4px);
+}
+
+.fragment-error strong { color: var(--ui-text); font-size: 15px; }
+
+.fragment-error code {
+  font-family: var(--font-code);
+  font-size: 12px;
+  background: var(--ui-surface-alt);
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: var(--ui-text-muted);
+}
+
+.fragment-error small { font-size: 11.5px; color: var(--base-red-60); }
+
+/* ══════════════════════════════════════════════════════════
+   CALLOUT / INFO BOXES
+   ══════════════════════════════════════════════════════════ */
+.callout {
+  display: flex;
+  gap: var(--spacing-16px);
+  padding: var(--spacing-16px) var(--spacing-24px);
+  border-radius: 10px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-24px);
+  border-left: 3px solid;
+}
+
+.callout-info    { background: var(--base-blue-30); border-color: var(--base-blue-70); color: var(--base-blue-90); }
+.callout-success { background: var(--base-green-1-30); border-color: var(--base-green-1-70); color: var(--base-green-1-90); }
+.callout-warning { background: var(--base-yellow-30); border-color: var(--base-yellow-70); color: var(--base-yellow-100); }
+.callout-danger  { background: var(--base-red-30); border-color: var(--base-red-70); color: var(--base-red-80); }
+
+.callout .material-symbols-rounded {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}

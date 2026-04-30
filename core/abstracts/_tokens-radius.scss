@@ -1,20 +1,26 @@
 // ============================================================
 //  _tokens-radius.scss
+//  Generated from Figma token exports. Do not edit by hand.
 // ============================================================
 
-$radius-none: 0;
-$radius-xs:   0.5rem;   //  8px — inputs, badges
-$radius-sm:   1rem;     // 16px — cards, modales pequeños
-$radius-md:   1.5rem;   // 24px — cards grandes, sheets
-$radius-lg:   2rem;     // 32px — pills, full-rounded large
-$radius-full: 9999px;   // pill completo
+$border-radius-xs: 8px;
+$border-radius-sm: 16px;
+$border-radius-md: 24px;
+$border-radius-lg: 32px;
 
-// ── Mapa para Bootstrap $border-radius-* ─────────────────
-$border-radii: (
-  'none': $radius-none,
-  'xs':   $radius-xs,
-  'sm':   $radius-sm,
-  'md':   $radius-md,
-  'lg':   $radius-lg,
-  'full': $radius-full,
-) !default;
+$tokens-light: (
+  'border-radius/xs': 8px,
+  'border-radius/sm': 16px,
+  'border-radius/md': 24px,
+  'border-radius/lg': 32px,
+);
+
+// Legacy Sass aliases used by the current core implementation.
+// Values point to Figma-exported radius tokens.
+$radius-none: 0;
+$radius-xs: $border-radius-xs;
+$radius-sm: $border-radius-sm;
+$radius-md: $border-radius-md;
+$radius-lg: $border-radius-lg;
+$radius-full: $border-radius-lg;
+

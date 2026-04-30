@@ -1,0 +1,124 @@
+@use '../../core/abstracts' as *;
+
+/* ══════════════════════════════════════════════════════════
+   COMPONENT PREVIEW
+   ══════════════════════════════════════════════════════════ */
+.component-preview {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-24px);
+}
+
+.preview-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-8px) var(--spacing-16px);
+  border-bottom: 1px solid var(--ui-border);
+  background: var(--ui-surface-alt);
+}
+
+.preview-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ui-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.preview-canvas {
+  padding: var(--spacing-48px) var(--spacing-32px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-16px);
+}
+
+.preview-canvas.col { flex-direction: column; align-items: flex-start; }
+
+/* ══════════════════════════════════════════════════════════
+   CODE BLOCK
+   ══════════════════════════════════════════════════════════ */
+.code-block {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-16px);
+}
+
+.code-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--ui-border);
+  background: var(--ui-surface-alt);
+  gap: 0;
+}
+
+.code-tab {
+  padding: 9px var(--spacing-16px);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  border-bottom: 2px solid transparent;
+  transition: color .15s;
+  letter-spacing: .01em;
+}
+
+.code-tab:hover { color: var(--ui-text); }
+.code-tab.active { color: var(--ui-accent); border-bottom-color: var(--ui-accent); }
+
+.code-content { position: relative; }
+
+.code-content pre {
+  margin: 0;
+  padding: var(--spacing-16px) var(--spacing-24px);
+  background: var(--ui-code-bg);
+  color: var(--ui-code-text);
+  font-family: var(--font-code);
+  font-size: 12.5px;
+  line-height: 1.75;
+  overflow-x: auto;
+  display: none;
+  tab-size: 2;
+}
+
+.code-content pre.active { display: block; }
+
+/* Syntax highlight */
+.code-content pre .kw   { color: #ff7b72; }
+.code-content pre .val  { color: #79c0ff; }
+.code-content pre .str  { color: #a5d6ff; }
+.code-content pre .cmt  { color: #8b949e; font-style: italic; }
+.code-content pre .sel  { color: #d2a8ff; }
+.code-content pre .prop { color: #7ee787; }
+.code-content pre .var  { color: #ffa657; }
+.code-content pre .num  { color: #79c0ff; }
+
+.copy-btn {
+  position: absolute;
+  top: var(--spacing-8px);
+  right: var(--spacing-8px);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 6px;
+  color: var(--ui-code-text);
+  font-size: 11px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.copy-btn:hover  { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.2); }
+.copy-btn.copied { color: #7ee787; border-color: #7ee787; background: rgba(126,231,135,.1); }

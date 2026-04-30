@@ -11,14 +11,14 @@
 @use 'tokens-shadows'    as *;
 
 // ── Bootstrap: colores principales ──────────────────────
-$primary:   $color-brand-80       !default;  // #ff6600
-$secondary: $color-violet-70      !default;  // #4e3199
-$success:   $color-green1-80      !default;  // #0b853d
-$info:      $color-cyan-blue-60   !default;  // #5286bc
-$warning:   $color-yellow-70      !default;  // #ffc154
-$danger:    $color-red-70         !default;  // #d14434
-$light:     $color-neutral-10     !default;  // #f5f5f5
-$dark:      $color-neutral-100    !default;  // #111111
+$primary:   $base-brand-80          !default;
+$secondary: $product-violet-70      !default;
+$success:   $base-green-1-80        !default;
+$info:      $base-cyan-blue-60      !default;
+$warning:   $base-yellow-70         !default;
+$danger:    $base-red-70            !default;
+$light:     $base-neutral-10        !default;
+$dark:      $base-neutral-100-negro !default;
 
 // ── Bootstrap: tipografía ────────────────────────────────
 $font-family-sans-serif: $font-body     !default;
@@ -43,14 +43,14 @@ $headings-font-weight: $fw-bold      !default;
 $headings-line-height: $lh-h1-h4     !default;
 
 // ── Bootstrap: border-radius ─────────────────────────────
-$border-radius:    $radius-xs  !default;
-$border-radius-sm: $radius-xs  !default;
-$border-radius-lg: $radius-sm  !default;
-$border-radius-xl: $radius-md  !default;
+$border-radius:    $border-radius-xs  !default;
+$border-radius-sm: $border-radius-xs  !default;
+$border-radius-lg: $border-radius-sm  !default;
+$border-radius-xl: $border-radius-md  !default;
 $border-radius-pill: $radius-full !default;
 
 // ── Bootstrap: espaciado ─────────────────────────────────
-$spacer: $space-16 !default;
+$spacer: $spacing-16px !default;
 
 // ── Bootstrap: sombras ───────────────────────────────────
 $box-shadow:    $shadow-1 !default;
@@ -59,8 +59,8 @@ $box-shadow-lg: $shadow-3 !default;
 
 // ── Bootstrap: grid ──────────────────────────────────────
 $grid-columns:      12     !default;
-$grid-gutter-width: $space-24 !default;
-$container-padding-x: $space-16 !default;
+$grid-gutter-width: $spacing-24px !default;
+$container-padding-x: $spacing-16px !default;
 
 // ── Bootstrap: transiciones ──────────────────────────────
 $transition-base: all 0.15s ease-in-out !default;

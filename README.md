@@ -109,7 +109,7 @@ core/
 
 css/
 ├── core.css                # Generated from core.scss
-├── main.css                # Shell layout styles (design system UI)
+├── portal.css              # Generated from portal/portal.scss
 └── tokens.css              # Generated CSS custom properties
 
 js/

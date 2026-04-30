@@ -1,0 +1,13 @@
+// ============================================================
+//  core/abstracts
+//  Shared Sass API for tokens, variables, functions and mixins.
+// ============================================================
+
+@forward 'tokens-colors' hide $tokens-light;
+@forward 'tokens-typography';
+@forward 'tokens-spacing' hide $tokens-light;
+@forward 'tokens-radius' hide $tokens-light;
+@forward 'tokens-shadows';
+@forward 'functions';
+@forward 'mixins';
+@forward 'variables';

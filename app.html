@@ -9,7 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/portal.css">
 </head>
 <body>
 
@@ -19,7 +20,7 @@
     <a href="index.html" class="ds-back-link" title="Volver al portal">
       <span class="material-symbols-rounded" style="font-size:18px;color:var(--ui-text-muted)">arrow_back</span>
     </a>
-    <div class="logo-mark" style="background:linear-gradient(135deg,#03838a 0%,#006b72 100%);box-shadow:0 2px 6px rgba(3,131,138,.35)">C</div>
+    <div class="logo-mark logo-mark--app">C</div>
     <span class="brand-name">App Compensar</span>
     <span class="brand-tag" style="background:var(--product-accent-40);color:var(--product-accent-100);border-color:color-mix(in srgb,var(--product-accent-100) 20%,transparent)">Mobile · iOS · Android</span>
   </div>
@@ -150,18 +151,10 @@
 <div class="toast" id="toast"></div>
 
 <style>
-.ds-back-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 7px;
-  text-decoration: none;
-  transition: background .15s;
-  flex-shrink: 0;
+.logo-mark--app {
+  background: var(--product-accent-100);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--product-accent-100) 22%, transparent);
 }
-.ds-back-link:hover { background: var(--ui-surface-alt); }
 </style>
 
 <!-- SCRIPTS -->
