@@ -4785,7 +4785,7 @@ body {
    CODE BLOCK
    ══════════════════════════════════════════════════════════ */
 .code-block {
-  background: var(--ui-surface);
+  background: #111111;
   border: 0.0625rem solid var(--ui-border);
   border-radius: 0.75rem;
   overflow: hidden;
@@ -5903,7 +5903,7 @@ body {
 .principle-rule {
   background-color: var(--product-gray-5);
   padding: 0.8rem;
-  border-radius: 16px;
+  border-radius: 1rem;
 }
 
 /* ══════════════════════════════════════════════════════════
