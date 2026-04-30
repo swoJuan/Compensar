@@ -14,6 +14,7 @@ const ROUTES = {
   'colores-producto':     'docs/foundations/colors.html',
   'colores-uso':          'docs/foundations/colors.html',
   'colores-utilidades':   'docs/foundations/colors.html',
+  'fundamentos/colores':  'docs/foundations/colors.html',
 
   'tipografia':     'docs/app/fundamentos/typography.html',
   'espaciado':      'docs/app/fundamentos/spacing.html',

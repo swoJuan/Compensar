@@ -19,7 +19,7 @@ const router = (() => {
 
   const config = {
     containerSelector: '#main-content',
-    defaultSection: 'intro',
+    defaultSection: 'fundamentos/colores',
     fragmentBase: '/docs'
   };
 
@@ -28,84 +28,11 @@ const router = (() => {
    * Defines all available sections and their fragment paths
    */
   const navigationMap = {
-    // Intro & Fundamentos
-    'intro': {
-      label: 'Introducción',
-      path: 'intro.html',
-      icon: 'home',
-      group: 'start'
-    },
-    'principios': {
-      label: 'Principios',
-      path: 'foundations/principles.html',
-      icon: 'star',
-      group: 'start'
-    },
-
-    // Fundamentos Compartidos
     'fundamentos/colores': {
       label: 'Colores',
       path: 'foundations/colors.html',
       icon: 'palette',
       group: 'fundamentos'
-    },
-    'fundamentos/tipografia': {
-      label: 'Tipografía',
-      path: 'app/fundamentos/typography.html',
-      icon: 'text_fields',
-      group: 'fundamentos'
-    },
-    'fundamentos/espaciado': {
-      label: 'Espaciado',
-      path: 'app/fundamentos/spacing.html',
-      icon: 'space_bar',
-      group: 'fundamentos'
-    },
-    'fundamentos/layout': {
-      label: 'Layout',
-      path: 'app/fundamentos/layout.html',
-      icon: 'grid_view',
-      group: 'fundamentos'
-    },
-    'fundamentos/sombras': {
-      label: 'Sombras',
-      path: 'app/fundamentos/shadows.html',
-      icon: 'layers',
-      group: 'fundamentos'
-    },
-    'fundamentos/border-radius': {
-      label: 'Border Radius',
-      path: 'app/fundamentos/border-radius.html',
-      icon: 'rounded_corner',
-      group: 'fundamentos'
-    },
-
-    // Web Components
-    'web/componentes/botones': {
-      label: 'Botones',
-      path: 'web/components/buttons.html',
-      icon: 'touch_app',
-      group: 'web-componentes'
-    },
-    'web/componentes/inputs': {
-      label: 'Inputs',
-      path: 'web/components/inputs.html',
-      icon: 'input',
-      group: 'web-componentes'
-    },
-    'web/componentes/libreria': {
-      label: 'Iconos',
-      path: 'web/components/icons-library.html',
-      icon: 'image',
-      group: 'web-componentes'
-    },
-
-    // QA
-    'qa/checklist': {
-      label: 'QA Checklist',
-      path: 'qa/checklist.html',
-      icon: 'check_circle',
-      group: 'qa'
     }
   };
 

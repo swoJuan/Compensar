@@ -344,58 +344,27 @@
     const sidebar = document.getElementById('sidebar');
     const navMap = router.getNav();
     
-    // Group nav items by section
-    const groups = {};
+    // Build simplified sidebar with single item
     for (const [id, def] of Object.entries(navMap)) {
-      if (!groups[def.group]) groups[def.group] = [];
-      groups[def.group].push({ id, ...def });
-    }
-
-    // Group order
-    const groupOrder = ['start', 'fundamentos', 'web-componentes', 'app-componentes', 'qa'];
-    const groupLabels = {
-      'start': 'Inicio',
-      'fundamentos': 'Fundamentos',
-      'web-componentes': 'Web',
-      'app-componentes': 'App',
-      'qa': 'QA'
-    };
-
-    // Build sidebar
-    for (const groupKey of groupOrder) {
-      if (!groups[groupKey]) continue;
+      const link = document.createElement('a');
+      link.className = 'nav-item';
+      link.href = `#${id}`;
+      link.setAttribute('data-nav-item', id);
+      link.onclick = (e) => {
+        e.preventDefault();
+        router.navigate(id);
+      };
       
-      const section = document.createElement('div');
-      section.className = 'nav-section';
-
-      const label = document.createElement('div');
-      label.className = 'nav-section-label';
-      label.textContent = groupLabels[groupKey] || groupKey;
-      section.appendChild(label);
-
-      for (const item of groups[groupKey]) {
-        const link = document.createElement('a');
-        link.className = 'nav-item';
-        link.href = `#${item.id}`;
-        link.setAttribute('data-nav-item', item.id);
-        link.onclick = (e) => {
-          e.preventDefault();
-          router.navigate(item.id);
-        };
-        
-        const icon = document.createElement('span');
-        icon.className = 'icon material-symbols-rounded';
-        icon.textContent = item.icon;
-        
-        const label = document.createElement('span');
-        label.textContent = item.label;
-        
-        link.appendChild(icon);
-        link.appendChild(label);
-        section.appendChild(link);
-      }
-
-      sidebar.appendChild(section);
+      const icon = document.createElement('span');
+      icon.className = 'icon material-symbols-rounded';
+      icon.textContent = def.icon;
+      
+      const label = document.createElement('span');
+      label.textContent = def.label;
+      
+      link.appendChild(icon);
+      link.appendChild(label);
+      sidebar.appendChild(link);
     }
 
     // Initialize router and load initial page

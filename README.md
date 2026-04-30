@@ -244,6 +244,54 @@ Outputs minified CSS to `css/core.css`.
 1. Add font variables to `core/abstracts/_tokens-typography.scss`
 2. Create mixin in `core/abstracts/_mixins.scss` if needed
 
+### Color Docs Sync (Tokens + Utilities)
+
+The color documentation downloads now use generated sources from two real files:
+
+- `tokens/compensar.tokens.json` (official token source)
+- `core/utils/_colors.scss` (official color utility classes)
+
+Run this command whenever you update color tokens or color utility classes:
+
+```bash
+npm run docs:build
+```
+
+This generates and refreshes:
+
+- `docs/foundations/color-tokens.css`
+- `docs/foundations/_color-tokens.scss`
+- `docs/foundations/color-tokens.json`
+- `docs/foundations/colors-abstract.scss`
+- `docs/foundations/colors-utils.scss`
+
+`docs/foundations/colors.html` uses those generated files for download actions (with fallback generation from page content if files are missing).
+
+Detailed maintenance guide:
+
+- `docs/technical-guides/color-workflow.md`
+
+#### Quick Checklist
+
+1. If you changed token source data, regenerate base tokens first:
+  ```bash
+  node scripts/generate-figma-tokens.mjs
+  ```
+2. If you changed color utilities in `core/utils/_colors.scss`, keep that file as the source of truth.
+3. Rebuild color docs assets:
+  ```bash
+  npm run docs:build
+  ```
+4. Validate generated outputs exist and are updated:
+  - `docs/foundations/color-tokens.css`
+  - `docs/foundations/_color-tokens.scss`
+  - `docs/foundations/color-tokens.json`
+  - `docs/foundations/colors-abstract.scss`
+  - `docs/foundations/colors-utils.scss`
+5. Open the Colors page and verify:
+  - Download buttons (`CSS`, `SCSS`, `JSON`, `Copiar variables`) return updated content.
+  - Theme values change correctly across Light, Dark, and High Contrast.
+
 ### Bootstrap Integration
 
 The project extends Bootstrap 5, it does not replace it.

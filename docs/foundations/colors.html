@@ -18,19 +18,20 @@
     <button class="ct-download-btn" onclick="ctDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
     <button class="ct-download-btn" onclick="ctCopyVars()"><span class="material-symbols-rounded">content_copy</span> Copiar variables</button>
   </div>
+  <p class="ct-download-note">Descarga generada desde los tokens oficiales y las utilidades SCSS reales. Ejecuta <code>npm run docs:build</code> después de modificar los tokens o utilidades.</p>
 
   <!-- FILTRO -->
   <div class="ct-filter-bar">
-    <div class="ct-filter-search">
-      <span class="material-symbols-rounded">search</span>
-      <input type="text" id="colorSearch" placeholder="Filtrar tokens de color…">
-    </div>
     <div class="ct-filter-tabs">
       <button class="ct-filter-tab active" onclick="filterColorSection('all', this)">Todos</button>
       <button class="ct-filter-tab" onclick="filterColorSection('colors-base', this)">Base</button>
       <button class="ct-filter-tab" onclick="filterColorSection('colors-product', this)">Producto</button>
       <button class="ct-filter-tab" onclick="filterColorSection('colors-semantic', this)">Semánticos</button>
       <button class="ct-filter-tab" onclick="filterColorSection('colors-utilities', this)">Utilidades</button>
+    </div>
+    <div class="ct-filter-search">
+      <span class="material-symbols-rounded">search</span>
+      <input type="text" id="colorSearch" placeholder="Busca el token de color o la clase">
     </div>
   </div>
 
@@ -1024,7 +1025,7 @@
 <div class="ct-section" id="colors-semantic">
   <h3 class="ct-section-title">1.2.3 — Colores de Uso</h3>
   <div class="ct-use-intro">
-    <div class="ct-use-intro-body">
+    <div class="ct-use-intro-body mb-3">
       <p>Los <strong>colores de uso</strong> son la capa semántica entre los colores base y los componentes. En lugar de escribir un valor HEX directamente, el desarrollador usa el token que describe <em>para qué sirve</em> ese color (ej. <code>--use-text-primary</code>). Al cambiar de modo (Light → Dark → Alto Contraste) el valor cambia solo, sin tocar el código del componente.</p>
       <a class="ct-figma-link" href="https://www.figma.com/proto/1zVGMpzqBgiBUqhmfFEAoT/Compensar-v2---Sistema-de-dise%C3%B1o?node-id=3957-1873&viewport=-944%2C-598%2C0.71&t=hFMUwEU0ZDklg5xg-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=4215%3A2626&page-id=3909%3A20350" target="_blank" rel="noopener">
         <span class="material-symbols-rounded">open_in_new</span> Ver en Figma
@@ -1970,6 +1971,329 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
   });
 });
 
+/* ─── Dynamic docs rendering from generated sources ───────────────────── */
+(function() {
+  function ctEscapeHtml(value) {
+    return String(value)
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#39;');
+  }
+
+  function ctIsColorLike(value) {
+    return /^#/.test(value) || /^var\(--/.test(value);
+  }
+
+  function ctParseAbstractVars(text) {
+    const out = {};
+    const re = /^\$([a-z0-9-]+):\s*([^;]+);/gim;
+    let match;
+    while ((match = re.exec(text)) !== null) {
+      const name = match[1].trim();
+      const value = match[2].trim();
+      if (!ctIsColorLike(value)) continue;
+      out[name] = value;
+    }
+    return out;
+  }
+
+  function ctGroupFromCss(cssVar) {
+    const token = cssVar.replace(/^--/, '');
+    const parts = token.split('-');
+    const top = parts[0] || '';
+    if (!parts.length) return 'other/misc';
+    if (top === 'use') return `use/${parts[1] || 'other'}`;
+    if (top === 'base' || top === 'product') {
+      if (parts.length <= 2) return `${top}/${parts[1] || 'other'}`;
+      return `${top}/${parts.slice(1, -1).join('-') || 'other'}`;
+    }
+    return `${top}/other`;
+  }
+
+  function ctPathFromCss(cssVar) {
+    const token = cssVar.replace(/^--/, '');
+    const parts = token.split('-');
+    if (parts.length <= 2) return token;
+    const top = parts[0];
+    if (top === 'use') {
+      return `${top}/${parts[1]}/${parts.slice(2).join('-')}`;
+    }
+    if (top === 'base' || top === 'product') {
+      return `${top}/${parts.slice(1, -1).join('-')}/${parts[parts.length - 1]}`;
+    }
+    return token;
+  }
+
+  function ctRowPalette(entry) {
+    const raw = entry.css.replace(/^--/, '');
+    const l = entry.modes.light || '';
+    const d = entry.modes.dark || l;
+    const h = entry.modes.highContrast || l;
+    const modeCell = (value) => `
+      <td class="ct-cell ct-mode-cell">
+        <span class="ct-swatch" style="background:${ctEscapeHtml(value)}"></span>
+        <span class="ct-hex">${ctEscapeHtml(value)}</span>
+        <button class="ct-copy-btn ct-copy-mode" onclick="copyColor('${ctEscapeHtml(value)}','${ctEscapeHtml(raw)}')" title="Copiar ${ctEscapeHtml(value)}"><span class="material-symbols-rounded">content_copy</span></button>
+      </td>`;
+
+    return `
+      <tr class="ct-row">
+        <td class="ct-cell ct-figma-col"><span class="ct-figma-name">${ctEscapeHtml(entry.path)}</span></td>
+        <td class="ct-cell ct-token-col"><span class="ct-token-name">${ctEscapeHtml(entry.css)}</span><button class="ct-copy-mode" onclick="copyToClipboard('${ctEscapeHtml(entry.css)}','Token copiado')" title="Copiar ${ctEscapeHtml(entry.css)}"><span class="material-symbols-rounded">content_copy</span></button></td>
+        ${modeCell(l)}
+        ${modeCell(d)}
+        ${modeCell(h)}
+      </tr>`;
+  }
+
+  function ctRowSemantic(entry) {
+    const l = entry.modes.light || '';
+    const d = entry.modes.dark || l;
+    const h = entry.modes.highContrast || l;
+    const modeCell = (value) => `
+      <td class="ct-cell ct-mode-cell">
+        <span class="ct-swatch" style="background:${ctEscapeHtml(value)}"></span>
+        <code class="ct-base-ref">${ctEscapeHtml(value)}</code>
+        <button class="ct-copy-mode" onclick="copyToClipboard('${ctEscapeHtml(value)}','Copiado')" title="Copiar ${ctEscapeHtml(value)}"><span class="material-symbols-rounded">content_copy</span></button>
+      </td>`;
+
+    return `
+      <tr class="ct-row">
+        <td class="ct-cell ct-figma-col"><span class="ct-figma-name">${ctEscapeHtml(entry.path)}</span><span class="ct-desc-inline">${ctEscapeHtml(entry.path)}</span></td>
+        <td class="ct-cell ct-token-col"><span class="ct-token-name">${ctEscapeHtml(entry.css)}</span><button class="ct-copy-mode" onclick="copyToClipboard('${ctEscapeHtml(entry.css)}','Token copiado')" title="Copiar ${ctEscapeHtml(entry.css)}"><span class="material-symbols-rounded">content_copy</span></button></td>
+        ${modeCell(l)}
+        ${modeCell(d)}
+        ${modeCell(h)}
+      </tr>`;
+  }
+
+  function ctRenderTable(rows) {
+    return `
+      <table class="ct-table">
+        <thead>
+          <tr>
+            <th class="ct-th">Nombre</th>
+            <th class="ct-th">Token</th>
+            <th class="ct-th">Light</th>
+            <th class="ct-th">Dark</th>
+            <th class="ct-th">High Contrast</th>
+          </tr>
+        </thead>
+        <tbody>${rows.join('')}</tbody>
+      </table>`;
+  }
+
+  function ctRgbToHex(rgb) {
+    const match = String(rgb).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+    if (!match) return '#cccccc';
+    const toHex = (n) => Number(n).toString(16).padStart(2, '0');
+    return `#${toHex(match[1])}${toHex(match[2])}${toHex(match[3])}`;
+  }
+
+  function ctResolveUtilityColor(className, kind) {
+    const el = document.createElement('div');
+    el.className = className;
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    el.style.top = '-9999px';
+    el.style.width = '24px';
+    el.style.height = '24px';
+    el.style.borderWidth = '2px';
+    el.style.borderStyle = 'solid';
+    document.body.appendChild(el);
+    const cs = getComputedStyle(el);
+    const color = kind === 'border' ? cs.borderTopColor : (kind === 'text' ? cs.color : cs.backgroundColor);
+    document.body.removeChild(el);
+    return ctRgbToHex(color);
+  }
+
+  function ctRenderUtilities(utilsScss) {
+    const re = /\.([a-z0-9-]+)\s*\{([^}]*)\}/gim;
+    const bg = [];
+    const text = [];
+    const border = [];
+    const tokenMap = {};
+
+    let match;
+    while ((match = re.exec(utilsScss)) !== null) {
+      const className = match[1].trim();
+      const body = match[2];
+      const varMatch = body.match(/var\((--[^)]+)\)/);
+      const varName = varMatch ? varMatch[1] : '';
+      const item = {
+        cls: `.${className}`,
+        var: varName || '—',
+      };
+
+      if (varName) {
+        if (!tokenMap[varName]) tokenMap[varName] = [];
+        tokenMap[varName].push(item.cls);
+      }
+
+      if (className.startsWith('bg-')) {
+        item.color = ctResolveUtilityColor(className, 'bg');
+        bg.push(item);
+      } else if (className.startsWith('text-')) {
+        item.color = ctResolveUtilityColor(className, 'text');
+        text.push(item);
+      } else if (className.startsWith('border-')) {
+        item.color = ctResolveUtilityColor(className, 'border');
+        border.push(item);
+      }
+    }
+
+    const bgGrid = document.getElementById('util-bg-grid');
+    const textGrid = document.getElementById('util-text-grid');
+    const borderGrid = document.getElementById('util-border-grid');
+
+    if (bgGrid) {
+      bgGrid.innerHTML = bg.map(u => `
+        <div class="ct-util-card" onclick="navigator.clipboard.writeText('${ctEscapeHtml(u.cls)}');showToast('Clase copiada: ${ctEscapeHtml(u.cls)}')">
+          <div class="ct-util-card-swatch" style="background:${ctEscapeHtml(u.color)};border-bottom:1px solid var(--ui-border)"></div>
+          <div class="ct-util-card-info">
+            <div class="ct-util-card-class">${ctEscapeHtml(u.cls)}</div>
+            <div class="ct-util-card-var">${ctEscapeHtml(u.var)}</div>
+          </div>
+        </div>`).join('');
+    }
+
+    if (textGrid) {
+      textGrid.innerHTML = text.map(u => `
+        <div class="ct-util-text-card" onclick="navigator.clipboard.writeText('${ctEscapeHtml(u.cls)}');showToast('Clase copiada: ${ctEscapeHtml(u.cls)}')">
+          <div class="ct-util-text-preview" style="color:${ctEscapeHtml(u.color)}">${ctEscapeHtml(u.cls)}</div>
+          <div class="ct-util-text-meta">
+            <div class="ct-util-text-class">${ctEscapeHtml(u.cls)}</div>
+            <div class="ct-util-text-var">${ctEscapeHtml(u.var)}</div>
+          </div>
+        </div>`).join('');
+    }
+
+    if (borderGrid) {
+      borderGrid.innerHTML = border.map(u => `
+        <div class="ct-util-border-card" onclick="navigator.clipboard.writeText('${ctEscapeHtml(u.cls)}');showToast('Clase copiada: ${ctEscapeHtml(u.cls)}')">
+          <div class="ct-util-border-preview" style="border-color:${ctEscapeHtml(u.color)}"></div>
+          <div class="ct-util-border-meta">
+            <div class="ct-util-border-class">${ctEscapeHtml(u.cls)}</div>
+            <div class="ct-util-border-var">${ctEscapeHtml(u.var)}</div>
+          </div>
+        </div>`).join('');
+    }
+
+    if (typeof window.ctSetTokenUtilsMap === 'function') {
+      window.ctSetTokenUtilsMap(tokenMap);
+    }
+  }
+
+  async function ctRenderFromSources() {
+    try {
+      const [abstractText, tokenJsonText, utilsText] = await Promise.all([
+        fetch('./colors-abstract.scss').then(r => r.ok ? r.text() : ''),
+        fetch('./color-tokens.json').then(r => r.ok ? r.text() : ''),
+        fetch('./colors-utils.scss').then(r => r.ok ? r.text() : ''),
+      ]);
+
+      if (!abstractText || !tokenJsonText) return;
+
+      const abstractVars = ctParseAbstractVars(abstractText);
+      const tokensJson = JSON.parse(tokenJsonText);
+      const merged = {};
+
+      Object.entries(abstractVars).forEach(([name, value]) => {
+        const css = `--${name}`;
+        const byJson = Object.values(tokensJson).find(item => item.css === css);
+        merged[css] = {
+          css,
+          path: ctPathFromCss(css),
+          group: ctGroupFromCss(css),
+          modes: {
+            light: value,
+            dark: byJson?.modes?.dark || value,
+            highContrast: byJson?.modes?.highContrast || value,
+          }
+        };
+      });
+
+      Object.entries(tokensJson).forEach(([pathName, item]) => {
+        if (!merged[item.css]) {
+          merged[item.css] = {
+            css: item.css,
+            path: pathName,
+            group: ctGroupFromCss(item.css),
+            modes: {
+              light: item.modes?.light || '',
+              dark: item.modes?.dark || item.modes?.light || '',
+              highContrast: item.modes?.highContrast || item.modes?.light || '',
+            }
+          };
+        }
+      });
+
+      const items = Object.values(merged);
+      const base = items.filter(i => i.group.startsWith('base/'));
+      const product = items.filter(i => i.group.startsWith('product/'));
+      const semantic = items.filter(i => i.group.startsWith('use/'));
+
+      const baseSection = document.getElementById('colors-base');
+      if (baseSection) {
+        baseSection.innerHTML = `
+          <h3 class="ct-section-title">1.2.1 — Colores Base</h3>
+          <p class="ct-section-desc">Tabla generada automáticamente desde core/abstracts/_tokens-colors.scss.</p>
+          <div class="ct-group">
+            <div class="ct-group-header">
+              <span class="ct-group-name">Base</span>
+              <span class="ct-group-count">${base.length} tokens</span>
+            </div>
+            ${ctRenderTable(base.map(ctRowPalette))}
+          </div>`;
+      }
+
+      const productSection = document.getElementById('colors-product');
+      if (productSection) {
+        productSection.innerHTML = `
+          <h3 class="ct-section-title">1.2.2 — Colores de Producto</h3>
+          <p class="ct-section-desc">Tabla generada automáticamente desde core/abstracts/_tokens-colors.scss.</p>
+          <div class="ct-group">
+            <div class="ct-group-header">
+              <span class="ct-group-name">Producto</span>
+              <span class="ct-group-count">${product.length} tokens</span>
+            </div>
+            ${ctRenderTable(product.map(ctRowPalette))}
+          </div>`;
+      }
+
+      const semanticSection = document.getElementById('colors-semantic');
+      if (semanticSection) {
+        semanticSection.innerHTML = `
+          <h3 class="ct-section-title">1.2.3 — Colores de Uso</h3>
+          <p class="ct-section-desc">Tabla generada automáticamente desde core/abstracts/_tokens-colors.scss y modos de color-tokens.json.</p>
+          <div class="ct-use-group">
+            <div class="ct-use-group-header">
+              <div class="ct-use-icon"><span class="material-symbols-rounded">style</span></div>
+              <div class="ct-use-meta">
+                <h4 class="ct-use-title">Tokens de uso</h4>
+                <p class="ct-use-desc">Referencias semánticas para componentes.</p>
+              </div>
+            </div>
+            ${ctRenderTable(semantic.map(ctRowSemantic))}
+          </div>`;
+      }
+
+      if (utilsText) ctRenderUtilities(utilsText);
+      if (typeof window.ctBindSwatchPopovers === 'function') window.ctBindSwatchPopovers();
+    } catch (error) {
+      console.warn('Dynamic color docs rendering skipped:', error);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ctRenderFromSources);
+  } else {
+    ctRenderFromSources();
+  }
+})();
+
 /* ─── Downloads ───────────────────────────────────────────────────────── */
 (function() {
 
@@ -2053,8 +2377,47 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
     return tokens;
   }
 
+  // Primary source for downloads: generated artifacts built by npm run docs:build.
+  async function ctLoadAsset(url) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`${url} status ${res.status}`);
+      return await res.text();
+    } catch (error) {
+      console.warn('ctLoadAsset:', url, error);
+      return null;
+    }
+  }
+
+  function parseRootCssVars(cssText) {
+    const match = cssText.match(/:root\s*\{([\s\S]*?)\}/m);
+    return match ? match[1].trim() : null;
+  }
+
   // ── CSS ─────────────────────────────────────────────────────────────────
-  window.ctDownloadCSS = function() {
+  window.ctDownloadCSS = async function() {
+    const [tokensCss, utilsScss] = await Promise.all([
+      ctLoadAsset('./color-tokens.css'),
+      ctLoadAsset('./colors-utils.scss')
+    ]);
+
+    if (tokensCss && utilsScss) {
+      const compiled = [
+        '/* Generated from docs/foundations/color-tokens.css + docs/foundations/colors-utils.scss */',
+        tokensCss.trim(),
+        '',
+        '/* Utility classes source (SCSS) */',
+        utilsScss.trim()
+      ].join('\n');
+      ctTrigger(compiled, 'color-tokens.css', 'text/css');
+      return;
+    }
+
+    if (tokensCss) {
+      ctTrigger(tokensCss, 'color-tokens.css', 'text/css');
+      return;
+    }
+
     const palette  = collectPalette();
     const semantic = collectSemantic();
     const semByGroup = {};
@@ -2163,7 +2526,24 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
   };
 
   // ── SCSS ────────────────────────────────────────────────────────────────
-  window.ctDownloadSCSS = function() {
+  window.ctDownloadSCSS = async function() {
+    const [tokensScss, utilsScss] = await Promise.all([
+      ctLoadAsset('./_color-tokens.scss'),
+      ctLoadAsset('./colors-utils.scss')
+    ]);
+
+    if (tokensScss && utilsScss) {
+      const compiled = [
+        '// Generated from docs/foundations/_color-tokens.scss + docs/foundations/colors-utils.scss',
+        tokensScss.trim(),
+        '',
+        '// Utility classes source',
+        utilsScss.trim()
+      ].join('\n');
+      ctTrigger(compiled, '_color-tokens.scss', 'text/plain');
+      return;
+    }
+
     const palette  = collectPalette();
     const semantic = collectSemantic();
     const semByGroup = {};
@@ -2272,7 +2652,32 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
   };
 
   // ── JSON ────────────────────────────────────────────────────────────────
-  window.ctDownloadJSON = function() {
+  window.ctDownloadJSON = async function() {
+    const [tokensJson, utilsScss] = await Promise.all([
+      ctLoadAsset('./color-tokens.json'),
+      ctLoadAsset('./colors-utils.scss')
+    ]);
+
+    if (tokensJson) {
+      try {
+        const parsedTokens = JSON.parse(tokensJson);
+        const compiled = {
+          metadata: {
+            title: 'Color Tokens — Compensar Medicina Prepagada',
+            generatedAt: today(),
+            source: 'docs/foundations/color-tokens.json + docs/foundations/colors-utils.scss',
+            note: 'Run npm run docs:build after changing tokens or color utilities.'
+          },
+          tokens: parsedTokens,
+          utilitiesScss: utilsScss || ''
+        };
+        ctTrigger(JSON.stringify(compiled, null, 2), 'color-tokens.json', 'application/json');
+        return;
+      } catch (error) {
+        console.warn('Unable to parse generated color-tokens.json:', error);
+      }
+    }
+
     const palette  = collectPalette();
     const semantic = collectSemantic();
 
@@ -2328,7 +2733,35 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
   };
 
   // ── Copy vars ───────────────────────────────────────────────────────────
-  window.ctCopyVars = function() {
+  window.ctCopyVars = async function() {
+    const [tokensCss, utilsScss] = await Promise.all([
+      ctLoadAsset('./color-tokens.css'),
+      ctLoadAsset('./colors-utils.scss')
+    ]);
+
+    if (tokensCss) {
+      const rootVars = parseRootCssVars(tokensCss);
+      const parts = [];
+      if (rootVars) {
+        parts.push(':root {', rootVars, '}');
+      }
+      if (utilsScss) {
+        parts.push('', '/* Utility classes source (SCSS) */', utilsScss.trim());
+      }
+
+      if (parts.length) {
+        navigator.clipboard.writeText(parts.join('\n')).then(() => {
+          const btn = document.querySelector('[onclick="ctCopyVars()"]');
+          if (btn) {
+            const o = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-rounded">check</span> ¡Copiado!';
+            setTimeout(() => btn.innerHTML = o, 1600);
+          }
+        });
+        return;
+      }
+    }
+
     const palette = collectPalette();
     const lines = [':root {', '  /* Paleta base */'];
     PALETTE_GROUPS.filter(g => g.startsWith('base')).forEach(group => {
@@ -2358,7 +2791,7 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
    ══════════════════════════════════════════════════════════ */
 (function() {
   // Mapa token → clases de utilidad
-  const TOKEN_UTILS = {
+  let TOKEN_UTILS = {
     '--base-brand-80':       ['.bg-brand-80', '.text-brand-80'],
     '--base-brand-90':     ['.bg-brand-dark'],
     '--base-neutral-100':    ['.bg-neutral-100', '.text-neutral-100'],
@@ -2394,6 +2827,10 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
     '--use-text-primary':    ['.text-primary'],
     '--ui-text-muted':       ['.text-muted'],
     '--use-text-link':       ['.text-link'],
+  };
+
+  window.ctSetTokenUtilsMap = function(map) {
+    TOKEN_UTILS = map || {};
   };
 
   let _popHex = '', _popToken = '', _popRgb = '';
@@ -2471,10 +2908,9 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
     navigator.clipboard.writeText('var(' + _popToken + ')').then(() => showToast('Token copiado: var(' + _popToken + ')'));
   };
 
-  // Agregar click handler a todos los ct-swatch existentes
-  document.addEventListener('DOMContentLoaded', () => {
-    // Wrapping swatches con trigger
+  function bindSwatchPopovers() {
     document.querySelectorAll('.ct-swatch').forEach(sw => {
+      if (sw.dataset.ctPopoverBound === '1') return;
       const color = sw.style.background;
       if (!color) return;
       // Buscar el token en la misma fila
@@ -2483,12 +2919,17 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
       const token = tokenEl ? tokenEl.textContent.trim().replace(/^--/, '') : '';
       sw.classList.add('ct-swatch-trigger');
       sw.title = 'Ver detalles';
+      sw.dataset.ctPopoverBound = '1';
       sw.addEventListener('click', e => {
         e.stopPropagation();
         ctPopOpen(sw, token, color);
       });
     });
-  });
+  }
+
+  window.ctBindSwatchPopovers = bindSwatchPopovers;
+
+  document.addEventListener('DOMContentLoaded', bindSwatchPopovers);
 })();
 
 /* ══════════════════════════════════════════════════════════

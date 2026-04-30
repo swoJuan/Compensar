@@ -4975,6 +4975,7 @@
   var ROUTES = {
     'introduccion':       'docs/intro.html',
     'principios':         'docs/foundations/principles.html',
+    'fundamentos/colores': 'docs/foundations/colors.html',
     'colores-base':       'docs/foundations/colors.html',
     'colores-producto':   'docs/foundations/colors.html',
     'colores-uso':        'docs/foundations/colors.html',

@@ -8,6 +8,7 @@
     "sass:watch": "sass core/core.scss:css/core.css portal/portal.scss:css/portal.css --watch --style=expanded --no-source-map --load-path=node_modules",
     "sass:dev":   "sass core/core.scss:css/core.css portal/portal.scss:css/portal.css --style=expanded --source-map --load-path=node_modules",
     "build":      "npm run sass:build",
+    "docs:build": "node scripts/generate-color-docs.mjs",
     "dev":        "npm run sass:watch"
   },
   "devDependencies": {
