@@ -2,7 +2,9 @@
 //  _functions.scss
 // ============================================================
 
+@use 'sass:list';
 @use 'sass:math';
+@use 'sass:meta';
 @use 'tokens-spacing' as *;
 
 // ── Strip unit ───────────────────────────────────────────
@@ -11,13 +13,52 @@
 }
 
 // ── px → rem ─────────────────────────────────────────────
-@function rem($px, $base: 16) {
-  @return math.div($px, $base) * 1rem;
+// Acepta números con o sin unidad y listas: rem(16px), rem(16), rem(16px 24px)
+@function rem($value, $base: 16) {
+  @if meta.type-of($value) == 'list' {
+    $result: ();
+    $separator: list.separator($value);
+
+    @each $item in $value {
+      $result: list.append($result, rem($item, $base), $separator: $separator);
+    }
+
+    @return $result;
+  }
+
+  @if $value == 0 {
+    @return 0;
+  }
+
+  @if meta.type-of($value) != 'number' {
+    @return $value;
+  }
+
+  @return math.div(strip-unit($value), strip-unit($base)) * 1rem;
 }
 
 // ── rem → px ─────────────────────────────────────────────
-@function px($rem, $base: 16) {
-  @return $rem * $base * 1px;
+@function px($value, $base: 16) {
+  @if meta.type-of($value) == 'list' {
+    $result: ();
+    $separator: list.separator($value);
+
+    @each $item in $value {
+      $result: list.append($result, px($item, $base), $separator: $separator);
+    }
+
+    @return $result;
+  }
+
+  @if $value == 0 {
+    @return 0;
+  }
+
+  @if meta.type-of($value) != 'number' {
+    @return $value;
+  }
+
+  @return strip-unit($value) * strip-unit($base) * 1px;
 }
 
 // ── Tint (mezcla con blanco) ─────────────────────────────

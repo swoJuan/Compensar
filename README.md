@@ -119,9 +119,10 @@ js/
 
 docs/
 ├── intro.html              # Shared: introduction
-├── principles.html         # Shared: design principles
-├── fundamentos/            # Shared: tokens (colors, typography, spacing, etc)
+├── foundations/            # Shared foundations across Web and App
+│   ├── principles.html
 │   ├── colors.html
+├── fundamentos/            # Shared: tokens (typography, spacing, etc)
 │   ├── typography.html
 │   ├── spacing.html
 │   ├── layout.html

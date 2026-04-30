@@ -15,24 +15,24 @@
   position: relative;
   overflow: hidden;
   background: var(--ui-surface);
-  border: 1px solid var(--ui-border);
-  border-radius: 14px;
+  border: rem(1px) solid var(--ui-border);
+  border-radius: rem(14px);
   padding: var(--space-6);
   transition: box-shadow .15s ease, transform .15s ease;
 }
 
 .principle-card:hover {
   box-shadow: var(--elevation-2);
-  transform: translateY(-2px);
+  transform: translateY(rem(-2px));
 }
 
 .principle-card::before {
   content: '';
   position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 100px;
-  height: 100px;
+  top: rem(-20px);
+  right: rem(-20px);
+  width: rem(100px);
+  height: rem(100px);
   background: var(--base-brand-40);
   border-radius: 50%;
   opacity: .4;
@@ -53,7 +53,7 @@
 
 .principle-number {
   font-family: var(--font-heading);
-  font-size: 12px;
+  font-size: rem(12px);
   font-weight: 800;
   color: var(--ui-accent);
   letter-spacing: .08em;
@@ -61,31 +61,31 @@
 }
 
 .principle-icon-wrap {
-  width: 36px;
-  height: 36px;
+  width: rem(36px);
+  height: rem(36px);
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--ui-tag-bg);
-  border-radius: 10px;
+  border-radius: rem(10px);
   margin-bottom: var(--space-3);
 }
 
 .principle-icon-wrap .material-symbols-rounded {
-  font-size: 20px;
+  font-size: rem(20px);
   color: var(--ui-accent);
 }
 
 .principle-title {
   font-family: var(--font-heading);
-  font-size: 17px;
+  font-size: rem(17px);
   font-weight: 700;
   color: var(--ui-accent);
   margin-bottom: var(--space-3);
 }
 
 .principle-desc {
-  font-size: 13.5px;
+  font-size: rem(13.5px);
   color: var(--ui-text);
   line-height: 1.65;
   margin-bottom: var(--space-4);
@@ -98,8 +98,8 @@
   gap: var(--space-4);
   align-self: end;
   background: var(--product-accent-40);
-  border: 1px solid var(--product-accent-50);
-  border-radius: 14px;
+  border: rem(1px) solid var(--product-accent-50);
+  border-radius: rem(14px);
   padding: var(--space-5) var(--space-6);
 }
 
@@ -114,8 +114,8 @@
 }
 
 .principle-note-icon {
-  width: 36px;
-  height: 36px;
+  width: rem(36px);
+  height: rem(36px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,12 +125,12 @@
 }
 
 .principle-note-icon .material-symbols-rounded {
-  font-size: 20px;
+  font-size: rem(20px);
   color: var(--base-neutral-white);
 }
 
 .principle-note p {
-  font-size: 13.5px;
+  font-size: rem(13.5px);
   color: var(--use-text-primary);
   line-height: 1.6;
 }
@@ -139,7 +139,7 @@
   color: var(--ui-text);
 }
 
-@media (max-width: 760px) {
+@media (max-width: rem(760px)) {
   .principles-grid {
     grid-template-columns: 1fr;
   }

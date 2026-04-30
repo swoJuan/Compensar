@@ -11,14 +11,14 @@
   gap: var(--spacing-16px);
   padding: var(--spacing-12px) var(--spacing-64px);
   color: var(--ui-text-muted);
-  font-size: 13.5px;
-  min-height: 280px;
+  font-size: rem(13.5px);
+  min-height: rem(280px);
 }
 
 .fragment-loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--ui-border);
+  width: rem(40px);
+  height: rem(40px);
+  border: rem(3px) solid var(--ui-border);
   border-top-color: var(--ui-accent);
   border-radius: 50%;
   animation: ct-spin .75s linear infinite;
@@ -27,7 +27,7 @@
 
 .fragment-loading-text {
   color: var(--ui-text-muted);
-  font-size: 13px;
+  font-size: rem(13px);
   font-weight: 500;
 }
 
@@ -46,29 +46,29 @@
   gap: var(--spacing-8px);
   padding: var(--spacing-128px) var(--spacing-64px);
   text-align: center;
-  min-height: 240px;
+  min-height: rem(240px);
   color: var(--ui-text-muted);
-  font-size: 13px;
+  font-size: rem(13px);
 }
 
 .fragment-error-icon {
-  font-size: 40px;
+  font-size: rem(40px);
   color: var(--base-red-60);
   margin-bottom: var(--spacing-4px);
 }
 
-.fragment-error strong { color: var(--ui-text); font-size: 15px; }
+.fragment-error strong { color: var(--ui-text); font-size: rem(15px); }
 
 .fragment-error code {
   font-family: var(--font-code);
-  font-size: 12px;
+  font-size: rem(12px);
   background: var(--ui-surface-alt);
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: rem(4px) rem(10px);
+  border-radius: rem(6px);
   color: var(--ui-text-muted);
 }
 
-.fragment-error small { font-size: 11.5px; color: var(--base-red-60); }
+.fragment-error small { font-size: rem(11.5px); color: var(--base-red-60); }
 
 /* ══════════════════════════════════════════════════════════
    CALLOUT / INFO BOXES
@@ -77,11 +77,11 @@
   display: flex;
   gap: var(--spacing-16px);
   padding: var(--spacing-16px) var(--spacing-24px);
-  border-radius: 10px;
-  font-size: 13.5px;
+  border-radius: rem(10px);
+  font-size: rem(13.5px);
   line-height: 1.6;
   margin-bottom: var(--spacing-24px);
-  border-left: 3px solid;
+  border-left: rem(3px) solid;
 }
 
 .callout-info    { background: var(--base-blue-30); border-color: var(--base-blue-70); color: var(--base-blue-90); }
@@ -90,7 +90,7 @@
 .callout-danger  { background: var(--base-red-30); border-color: var(--base-red-70); color: var(--base-red-80); }
 
 .callout .material-symbols-rounded {
-  font-size: 20px;
+  font-size: rem(20px);
   flex-shrink: 0;
-  margin-top: 1px;
+  margin-top: rem(1px);
 }

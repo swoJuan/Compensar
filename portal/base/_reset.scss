@@ -12,7 +12,7 @@ body {
   font-family: var(--font-body);
   background: var(--ui-bg);
   color: var(--ui-text);
-  font-size: 14px;
+  font-size: rem(14px);
   line-height: 1.6;
   transition: background .25s, color .25s;
 }

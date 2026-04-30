@@ -7,13 +7,13 @@ import { onSectionReady } from './app.js';
 // ── Mapa de rutas: id-sección → ruta del fragmento ──────────
 const ROUTES = {
   'introduccion':     'docs/intro.html',
-  'principios':       'docs/principles.html',
+  'principios':       'docs/foundations/principles.html',
 
   // Colores: todas las sub-secciones apuntan al mismo fragmento unificado
-  'colores-base':         'docs/app/fundamentos/colors.html',
-  'colores-producto':     'docs/app/fundamentos/colors.html',
-  'colores-uso':          'docs/app/fundamentos/colors.html',
-  'colores-utilidades':   'docs/app/fundamentos/colors.html',
+  'colores-base':         'docs/foundations/colors.html',
+  'colores-producto':     'docs/foundations/colors.html',
+  'colores-uso':          'docs/foundations/colors.html',
+  'colores-utilidades':   'docs/foundations/colors.html',
 
   'tipografia':     'docs/app/fundamentos/typography.html',
   'espaciado':      'docs/app/fundamentos/spacing.html',

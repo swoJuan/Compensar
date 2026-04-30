@@ -4974,11 +4974,11 @@
   /* Rutas base (Drupal / ZT) */
   var ROUTES = {
     'introduccion':       'docs/intro.html',
-    'principios':         'docs/principles.html',
-    'colores-base':       'docs/app/fundamentos/colors.html',
-    'colores-producto':   'docs/app/fundamentos/colors.html',
-    'colores-uso':        'docs/app/fundamentos/colors.html',
-    'colores-utilidades': 'docs/app/fundamentos/colors.html',
+    'principios':         'docs/foundations/principles.html',
+    'colores-base':       'docs/foundations/colors.html',
+    'colores-producto':   'docs/foundations/colors.html',
+    'colores-uso':        'docs/foundations/colors.html',
+    'colores-utilidades': 'docs/foundations/colors.html',
     'tipografia':         'docs/app/fundamentos/typography.html',
     'espaciado':          'docs/app/fundamentos/spacing.html',
     'border-radius':      'docs/app/fundamentos/border-radius.html',
@@ -4997,10 +4997,6 @@
   /* Rutas específicas de App (.NET MAUI) — sobreescriben ROUTES cuando PLATFORM='app' */
   var APP_ROUTES = {
     'introduccion':       'docs/app/intro.html',
-    'colores-base':       'docs/app/fundamentos/colors.html',
-    'colores-producto':   'docs/app/fundamentos/colors.html',
-    'colores-uso':        'docs/app/fundamentos/colors.html',
-    'colores-utilidades': 'docs/app/fundamentos/colors.html',
     'tipografia':         'docs/app/fundamentos/typography.html',
     'espaciado':          'docs/app/fundamentos/spacing.html',
     'layout':             'docs/app/fundamentos/layout.html',

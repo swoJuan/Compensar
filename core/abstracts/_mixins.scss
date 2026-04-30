@@ -5,6 +5,14 @@
 @use 'tokens-typography' as *;
 @use 'tokens-spacing'    as *;
 @use 'tokens-radius'     as *;
+@use 'functions'         as *;
+
+// ── Conversión px → rem ─────────────────────────────────
+// Uso: @include rem-prop(padding, 16px 24px);
+//      @include rem-prop(font-size, 14px);
+@mixin rem-prop($property, $value, $base: 16) {
+  #{$property}: rem($value, $base);
+}
 
 // ── Tipografía ───────────────────────────────────────────
 @mixin ty-display-l {

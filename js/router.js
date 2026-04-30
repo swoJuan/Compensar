@@ -37,7 +37,7 @@ const router = (() => {
     },
     'principios': {
       label: 'Principios',
-      path: 'principles.html',
+      path: 'foundations/principles.html',
       icon: 'star',
       group: 'start'
     },
@@ -45,7 +45,7 @@ const router = (() => {
     // Fundamentos Compartidos
     'fundamentos/colores': {
       label: 'Colores',
-      path: 'app/fundamentos/colors.html',
+      path: 'foundations/colors.html',
       icon: 'palette',
       group: 'fundamentos'
     },

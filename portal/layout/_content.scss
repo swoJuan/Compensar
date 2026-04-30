@@ -4,10 +4,25 @@
    MAIN CONTENT
    ══════════════════════════════════════════════════════════ */
 .main {
-  margin-left: var(--ui-sidebar-w);
+  width: calc(100% - var(--ui-sidebar-w));
   flex: 1;
-  padding: var(--spacing-24px);
-  max-width: 1100px;
+  max-width: none;
+  margin-left: var(--ui-sidebar-w);
+  padding: rem(48px) rem(48px) rem(80px);
+}
+
+@media (max-width: rem(1180px)) {
+  .main {
+    padding: rem(40px) rem(32px) rem(72px);
+  }
+}
+
+@media (max-width: rem(760px)) {
+  .main {
+    width: 100%;
+    margin-left: 0;
+    padding: rem(32px) rem(24px) rem(56px);
+  }
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -21,11 +36,11 @@
 .section-header {
   margin-bottom: var(--spacing-32px);
   padding-bottom: var(--spacing-16px);
-  border-bottom: 1px solid var(--ui-border);
+  border-bottom: rem(1px) solid var(--ui-border);
 }
 
 .section-eyebrow {
-  font-size: 11px;
+  font-size: rem(11px);
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -35,7 +50,7 @@
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: 30px;
+  font-size: rem(30px);
   font-weight: 700;
   color: var(--ui-text);
   letter-spacing: -.02em;
@@ -45,9 +60,9 @@
 .section-desc {
   margin-top: var(--spacing-8px);
   color: var(--ui-text-muted);
-  font-size: 14px;
+  font-size: rem(14px);
   line-height: 1.7;
-  max-width: 620px;
+  max-width: rem(620px);
 }
 
 /* ── Subsección ────────────────────────────────────────── */
@@ -55,7 +70,7 @@
 
 .subsection-title {
   font-family: var(--font-heading);
-  font-size: 11px;
+  font-size: rem(11px);
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -69,6 +84,6 @@
 .subsection-title::after {
   content: '';
   flex: 1;
-  height: 1px;
+  height: rem(1px);
   background: var(--ui-border);
 }
