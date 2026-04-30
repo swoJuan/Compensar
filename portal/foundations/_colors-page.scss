@@ -53,7 +53,7 @@
   max-width: rem(680px);
 }
 .ct-use-rule .material-symbols-rounded { font-size: rem(18px); color: $use-state-info-text; flex-shrink: 0; margin-top: rem(1px); }
-.ct-use-rule code { font-family: var(--font-code); font-size: rem(11.5px); background: var(--ui-surface); padding: rem(1px) rem(5px); border-radius: rem(4px); }
+.ct-use-rule code { font-family: var(--font-code); font-size: rem(11.5px); background: $use-surface-theme-gray-5; padding: rem(1px) rem(5px); border-radius: rem(4px); }
 
 /* Grupos */
 .ct-use-group {
@@ -136,7 +136,7 @@
   display: flex;
   align-items: center;
   gap: rem(8px);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border-radius: rem(8px);
   padding: rem(6px) rem(12px);
   width: 100%;
@@ -253,7 +253,7 @@
   letter-spacing: .08em;
   color: var(--ui-text-muted);
   padding: var(--space-2) var(--space-4);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border-bottom: rem(1px) solid var(--ui-border);
 }
 
@@ -264,7 +264,7 @@
 .ct-cell {
   padding: rem(8px) var(--space-4);
   border-bottom: rem(1px) solid var(--ui-border);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   vertical-align: middle;
 }
 
@@ -382,7 +382,7 @@
   position: fixed;
   z-index: 600;
   width: rem(280px);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(14px);
   box-shadow: var(--shadow-3);
@@ -539,7 +539,7 @@
 
 /* ══ SECCIÓN UTILIDADES ══════════════════════════════════ */
 .ct-util-intro {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(14px);
   padding: var(--space-24);
@@ -623,7 +623,7 @@
 
 .ct-util-guide-item code {
   width: fit-content;
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
 }
 
 .ct-util-tabs {
@@ -633,7 +633,7 @@
   padding: rem(4px);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   margin-bottom: var(--space-24);
 }
 
@@ -670,7 +670,7 @@
   justify-content: center;
   padding: 0 rem(7px);
   border-radius: rem(999px);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   color: var(--ui-text);
   font-size: rem(11px);
@@ -729,7 +729,7 @@
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
   overflow: hidden;
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   cursor: pointer;
   font-family: var(--font-body);
   transition: border-color .15s, box-shadow .15s, transform .12s;
@@ -795,7 +795,7 @@
   align-items: center;
   justify-content: center;
   border-radius: rem(8px);
-  background: color-mix(in srgb, var(--ui-surface) 86%, transparent);
+  background: color-mix(in srgb, $use-surface-theme-gray-5 86%, transparent);
   border: rem(1px) solid var(--ui-border);
   color: var(--ui-text-muted);
   font-size: rem(16px);
@@ -811,7 +811,7 @@
   padding: rem(12px);
   appearance: none;
   text-align: left;
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
   cursor: pointer;
@@ -865,7 +865,7 @@
   padding: var(--space-24);
   border: rem(1px) dashed var(--ui-border);
   border-radius: rem(12px);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   color: var(--ui-text-muted);
 }
 

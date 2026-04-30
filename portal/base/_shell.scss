@@ -91,7 +91,7 @@ body {
 .header {
   height: rem(58px);
   padding: 0 rem(22px);
-  background: color-mix(in srgb, var(--ui-surface) 96%, transparent);
+  background: color-mix(in srgb, $use-surface-theme-gray-5 96%, transparent);
   border-bottom: rem(1px) solid color-mix(in srgb, var(--ui-border) 82%, transparent);
   box-shadow: none;
   backdrop-filter: blur(rem(12px));
@@ -144,7 +144,7 @@ body {
   padding: 0 rem(11px);
   border-radius: rem(999px);
   font-size: rem(11px);
-  background: color-mix(in srgb, var(--use-primary-default) 8%, var(--ui-surface));
+  background: color-mix(in srgb, var(--use-primary-default) 8%, $use-surface-theme-gray-5);
   border-color: color-mix(in srgb, var(--use-primary-default) 28%, transparent);
 }
 
@@ -155,7 +155,7 @@ body {
 .search-box input {
   width: min(rem(260px), 26vw);
   height: rem(34px);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border-color: var(--ui-border);
   border-radius: rem(8px);
   padding: 0 rem(12px) 0 rem(36px);
@@ -163,7 +163,7 @@ body {
 }
 
 .search-box input:focus {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border-color: color-mix(in srgb, var(--ui-accent) 45%, var(--ui-border));
   box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--ui-accent) 12%, transparent);
 }
@@ -173,7 +173,7 @@ body {
   height: rem(34px);
   border-radius: rem(8px);
   border: rem(1px) solid var(--ui-border);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   box-shadow: 0 rem(10px) rem(24px) color-mix(in srgb, var(--ui-text) 8%, transparent);
 }
 
@@ -199,7 +199,7 @@ body {
   top: rem(58px);
   width: rem(256px);
   padding: rem(26px) rem(8px) rem(48px);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border-right: rem(1px) solid var(--ui-border);
 }
 
@@ -238,7 +238,7 @@ body {
 
 .sidebar-link.active,
 .sidebar-accordion.open {
-  background: color-mix(in srgb, var(--ui-accent) 9%, var(--ui-surface));
+  background: color-mix(in srgb, var(--ui-accent) 9%, $use-surface-theme-gray-5);
   color: var(--ui-accent);
 }
 

@@ -10,7 +10,7 @@
   padding: rem(10px) var(--space-16);
   border: rem(1.5px) solid var(--ui-border);
   border-radius: rem(8px);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   color: var(--ui-text);
   font-family: var(--font-body);
   font-size: rem(14px);

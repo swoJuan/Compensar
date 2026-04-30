@@ -11,7 +11,7 @@
   align-items: baseline;
   gap: var(--space-24);
   padding: var(--space-16);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(10px);
   transition: box-shadow .15s;
@@ -36,19 +36,19 @@
 /* Las variables y clases .mp-* viven en core/base/_theme.scss y core/base/_typography.scss. */
 
 /* ── Toggle bar ──────────────────────────────────────── */
-.ty-toggle-bar { display: flex; align-items: center; gap: var(--space-4); background: var(--ui-surface); border: 1px solid var(--ui-border); border-radius: 12px; padding: var(--space-8) var(--space-24); margin-bottom: var(--space-32); flex-wrap: wrap; }
+.ty-toggle-bar { display: flex; align-items: center; gap: var(--space-4); background: $use-surface-theme-gray-5; border: 1px solid var(--ui-border); border-radius: 12px; padding: var(--space-8) var(--space-24); margin-bottom: var(--space-32); flex-wrap: wrap; }
 .ty-toggle-label { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; color: var(--ui-text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
 .ty-toggle-label .material-symbols-rounded { font-size: 15px; color: var(--ui-accent); }
 .ty-toggle-btns { display: flex; gap: 4px; background:$use-surface-theme-gray-5; border-radius: 8px; padding: 3px; }
 .ty-toggle-btn { display: inline-flex; align-items: center; gap: 5px; background: none; border: none; border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 500; color: var(--ui-text-muted); cursor: pointer; transition: background 0.15s, color 0.15s; }
 .ty-toggle-btn .material-symbols-rounded { font-size: 14px; }
-.ty-toggle-btn.active { background: var(--ui-surface); color: var(--ui-accent); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); }
+.ty-toggle-btn.active { background: $use-surface-theme-gray-5; color: var(--ui-accent); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); }
 .ty-toggle-hint { font-size: 11px; color: var(--ui-text-muted); margin-left: auto; }
 
 /* ── Figma bar ───────────────────────────────────────── */
 .ty-figma-bar { display: flex; align-items: center; gap: var(--space-8); background:$use-surface-theme-gray-5; border-left: 3px solid var(--ui-accent); border-radius: 0 8px 8px 0; padding: var(--space-8) var(--space-24); font-size: 13px; color: var(--ui-text); margin-bottom: var(--space-24); flex-wrap: wrap; }
 .ty-figma-bar .material-symbols-rounded { color: var(--ui-accent); flex-shrink: 0; }
-.ty-figma-bar code { font-family: var(--font-code); font-size: 11.5px; background: var(--ui-surface); padding: 1px 5px; border-radius: 4px; color: var(--ui-accent); }
+.ty-figma-bar code { font-family: var(--font-code); font-size: 11.5px; background: $use-surface-theme-gray-5; padding: 1px 5px; border-radius: 4px; color: var(--ui-accent); }
 .ty-figma-bar .ct-figma-link { margin-left: auto; white-space: nowrap; }
 
 /* ── Section label ───────────────────────────────────── */
@@ -56,7 +56,7 @@
 .ty-section-label .material-symbols-rounded { font-size: 15px; color: var(--ui-accent); }
 
 /* ── Roboto card ─────────────────────────────────────── */
-.ty-font-card-single { background: var(--ui-surface); border: 1px solid var(--ui-border); border-radius: 14px; padding: var(--space-32); display: flex; flex-direction: column; gap: var(--space-24); }
+.ty-font-card-single { background: $use-surface-theme-gray-5; border: 1px solid var(--ui-border); border-radius: 14px; padding: var(--space-32); display: flex; flex-direction: column; gap: var(--space-24); }
 .ty-font-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
 .ty-font-name { font-size: 28px; font-weight: 700; color: var(--ui-text); margin-bottom: 4px; }
 .ty-font-role { font-size: 12px; color: var(--ui-text-muted); }
@@ -83,7 +83,7 @@
 .ty-cat-desc { font-size: 11.5px; color: var(--ui-text-muted); margin-left: auto; }
 
 /* Scale row */
-.ty-row { border-bottom: 1px solid var(--ui-border); background: var(--ui-surface); transition: background 0.1s; }
+.ty-row { border-bottom: 1px solid var(--ui-border); background: $use-surface-theme-gray-5; transition: background 0.1s; }
 .ty-row:last-child { border-bottom: none; }
 .ty-row:hover { background:$use-surface-theme-gray-5; }
 .ty-row-main { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-4); align-items: start; padding: var(--space-24); }
@@ -167,7 +167,7 @@
 
 .ty-util-tab .material-symbols-rounded { font-size: 15px; }
 .ty-util-tab:hover { color: var(--ui-text); }
-.ty-util-tab.active { background: var(--ui-surface); color: var(--ui-accent); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); }
+.ty-util-tab.active { background: $use-surface-theme-gray-5; color: var(--ui-accent); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); }
 
 .ty-util-tab-count {
   font-family: var(--font-code);
@@ -203,7 +203,7 @@
   position: relative;
   border: 1px solid var(--ui-border);
   border-radius: 10px;
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -244,7 +244,7 @@
 }
 
 .ty-util-preview--color {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border-color: var(--ui-border);
 }
 
@@ -269,7 +269,7 @@
   border: 1px solid var(--ui-border);
   border-radius: 12px;
   overflow: hidden;
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
 }
 
 .ty-standard-head {
@@ -313,7 +313,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--ui-text-muted);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
 }
 
 .ty-standard-table td {

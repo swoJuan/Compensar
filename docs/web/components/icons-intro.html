@@ -2,16 +2,60 @@
 
 <div class="section-header">
   <div class="section-eyebrow">1.8.1</div>
-  <h1 class="section-title">Introducción</h1>
-  <p class="section-desc">La iconografía del sistema permite representar acciones, estados y categorías de manera visual y consistente dentro de la interfaz. El uso de iconos mejora la comprensión, facilita la identificación rápida de acciones y refuerza la jerarquía visual del sistema.</p>
+  <h1 class="section-title">Sistema de iconos</h1>
+  <p class="section-desc">Una guía para elegir, usar e implementar iconos de forma consistente en las interfaces de Compensar. La iconografía debe ayudar a reconocer acciones, estados y categorías sin reemplazar el contenido principal.</p>
 </div>
 
-<div class="ty-figma-bar">
-  <span class="material-symbols-rounded">tips_and_updates</span>
-  <span>Usar <code>&lt;i class="icon icon-nombre icon-24"&gt;&lt;/i&gt;</code>. Todos los iconos deben respetar el mismo estilo visual para evitar inconsistencias.</span>
-  <a class="ct-figma-link" href="https://www.figma.com/proto/1zVGMpzqBgiBUqhmfFEAoT/Compensar-v2---Sistema-de-dise%C3%B1o?node-id=3916-20454" target="_blank" rel="noopener">
-    <span class="material-symbols-rounded">open_in_new</span> Ver en Figma
-  </a>
+<div class="ic-hero">
+  <div class="ic-hero-content">
+    <span class="ic-hero-kicker">Iconografía oficial</span>
+    <h2 class="ic-hero-title">Iconos claros, consistentes y listos para desarrollo</h2>
+    <p class="ic-hero-copy">El sistema usa una fuente de iconos propia para mantener consistencia visual, rendimiento y facilidad de implementación. Cada icono debe conservar el mismo lenguaje outline, alinearse a la grilla y usarse solo cuando aporte comprensión.</p>
+    <div class="ic-hero-actions">
+      <a class="ic-hero-link" href="#componentes/iconos/libreria">
+        <span class="material-symbols-rounded">grid_view</span>
+        Ver librería
+      </a>
+      <a class="ic-hero-link ic-hero-link--secondary" href="https://www.figma.com/proto/1zVGMpzqBgiBUqhmfFEAoT/Compensar-v2---Sistema-de-dise%C3%B1o?node-id=3916-20454" target="_blank" rel="noopener">
+        <span class="material-symbols-rounded">open_in_new</span>
+        Ver en Figma
+      </a>
+    </div>
+  </div>
+  <div class="ic-hero-panel" aria-label="Vista previa de iconos del sistema">
+    <div class="ic-hero-grid">
+      <span class="icon icon-house icon-24" aria-hidden="true"></span>
+      <span class="icon icon-user-circle icon-24" aria-hidden="true"></span>
+      <span class="icon icon-lock icon-24" aria-hidden="true"></span>
+      <span class="icon icon-heart icon-24" aria-hidden="true"></span>
+      <span class="icon icon-calendar icon-24" aria-hidden="true"></span>
+      <span class="icon icon-article icon-24" aria-hidden="true"></span>
+      <span class="icon icon-bell-ringing icon-24" aria-hidden="true"></span>
+      <span class="icon icon-magnifying-glass icon-24" aria-hidden="true"></span>
+      <span class="icon icon-warning icon-24" aria-hidden="true"></span>
+    </div>
+    <div class="ic-hero-code">
+      <code>&lt;i class="icon icon-name icon-24" aria-hidden="true"&gt;&lt;/i&gt;</code>
+    </div>
+  </div>
+</div>
+
+<div class="ic-principles-row">
+  <div class="ic-principle-card">
+    <span class="material-symbols-rounded">route</span>
+    <strong>Primero librería oficial</strong>
+    <p>Antes de buscar alternativas, valida si el icono existe en el set Compensar.</p>
+  </div>
+  <div class="ic-principle-card">
+    <span class="material-symbols-rounded">straighten</span>
+    <strong>Tamaño base 1.5rem</strong>
+    <p>Usa 1.5rem (24px) para acciones principales; 1.25rem (20px) y 1rem (16px) solo para contextos compactos.</p>
+  </div>
+  <div class="ic-principle-card">
+    <span class="material-symbols-rounded">accessibility_new</span>
+    <strong>Accesibilidad siempre</strong>
+    <p>Los iconos decorativos usan <code>aria-hidden</code>; los interactivos necesitan texto o <code>aria-label</code>.</p>
+  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════
@@ -36,7 +80,7 @@
         <ul class="ic-alert-list">
           <li>No usar valores arbitrarios.</li>
           <li>No usar decimales.</li>
-          <li>Todo tamaño debe respetar múltiplos de 8px.</li>
+          <li>Todo tamaño debe respetar la escala rem del sistema, equivalente a múltiplos de 8px.</li>
           <li>Evitar usar margin para alinear elementos internos de un componente.</li>
           <li>No ajustar espaciado visualmente para compensar errores de layout.</li>
           <li>Priorizar siempre la consistencia del sistema.</li>
@@ -51,7 +95,7 @@
      2 · ORDEN DE USO
 ════════════════════════════════════════════════════════ -->
 <div class="ic-section-label"><span class="material-symbols-rounded">format_list_numbered</span> Orden de uso de iconos</div>
-<p class="ic-body" style="margin-bottom:var(--space-24)">Para mantener consistencia dentro del sistema, se debe seguir el siguiente orden de prioridad al seleccionar iconos.</p>
+<p class="ic-body ic-body--spaced">Para mantener consistencia dentro del sistema, se debe seguir el siguiente orden de prioridad al seleccionar iconos.</p>
 
 <div class="ic-order-grid">
   <div class="ic-order-card ic-order-card--1">
@@ -74,7 +118,7 @@
         <strong>Configuración recomendada:</strong>
         <ul class="ic-list">
           <li>Estilo <strong>Outlined</strong></li>
-          <li>Tamaño base <strong>24px</strong></li>
+          <li>Tamaño base <strong>1.5rem (24px)</strong></li>
           <li>Grosor de trazo consistente</li>
           <li>Sin rellenos sólidos</li>
         </ul>
@@ -92,7 +136,7 @@
 </div>
 
 <!-- Iconos personalizados -->
-<div class="ic-section-label" style="margin-top:var(--space-8)"><span class="material-symbols-rounded">draw</span> Iconos personalizados</div>
+<div class="ic-section-label ic-section-label--compact"><span class="material-symbols-rounded">draw</span> Iconos personalizados</div>
 <div class="ic-two-col">
   <div>
     <p class="ic-body">Algunos iconos específicos del producto han sido diseñados de forma personalizada.</p>
@@ -110,7 +154,7 @@
       <li>Mejor rendimiento que múltiples SVG independientes</li>
     </ul>
   </div>
-  <div class="ic-alert ic-alert--amber" style="align-self:start">
+  <div class="ic-alert ic-alert--amber ic-alert--self-start">
     <span class="material-symbols-rounded">warning</span>
     <div>
       <strong>Reglas:</strong>
@@ -133,25 +177,25 @@
   <div class="ic-sizes-col">
     <h3 class="ic-sizes-title">Tamaños recomendados</h3>
     <div class="ic-sizes-preview">
-      <div class="ic-size-demo"><span class="icon" style="font-size:16px">&#xf3b2;</span><span class="ic-size-label">16px</span></div>
-      <div class="ic-size-demo"><span class="icon" style="font-size:20px">&#xf3b2;</span><span class="ic-size-label">20px</span></div>
-      <div class="ic-size-demo"><span class="icon" style="font-size:24px">&#xf3b2;</span><span class="ic-size-label">24px</span></div>
+      <div class="ic-size-demo"><span class="icon icon-16">&#xf3b2;</span><span class="ic-size-label">1rem · 16px</span></div>
+      <div class="ic-size-demo"><span class="icon icon-20">&#xf3b2;</span><span class="ic-size-label">1.25rem · 20px</span></div>
+      <div class="ic-size-demo"><span class="icon icon-24">&#xf3b2;</span><span class="ic-size-label">1.5rem · 24px</span></div>
     </div>
     <table class="ic-sizes-table">
       <thead><tr><th>Tamaño</th><th>Uso</th></tr></thead>
       <tbody>
-        <tr><td>Icono estándar UI</td><td><strong>24px</strong></td></tr>
-        <tr><td>Icono compacto</td><td><strong>20px</strong></td></tr>
-        <tr><td>Icono pequeño</td><td><strong>16px</strong></td></tr>
+        <tr><td>Icono estándar UI</td><td><strong>1.5rem (24px)</strong></td></tr>
+        <tr><td>Icono compacto</td><td><strong>1.25rem (20px)</strong></td></tr>
+        <tr><td>Icono pequeño</td><td><strong>1rem (16px)</strong></td></tr>
       </tbody>
     </table>
-    <p class="ic-body" style="font-size:12px">Evitar tamaños intermedios que rompan la consistencia visual.</p>
-    <div class="ic-alert ic-alert--amber" style="margin-top:var(--space-4)">
+    <p class="ic-body ic-body--small">Evitar tamaños intermedios que rompan la consistencia visual.</p>
+    <div class="ic-alert ic-alert--amber ic-alert--mt-4">
       <span class="material-symbols-rounded">warning</span>
-      <div style="font-size:12px">
+      <div class="ic-alert-text-small">
         <strong>Reglas:</strong><br>
-        El tamaño visual del icono puede ser 16px, 20px o 24px.<br>
-        Cuando el icono sea interactivo, el área clicable mínima debe ser 44px × 44px.<br>
+        El tamaño visual del icono puede ser 1rem (16px), 1.25rem (20px) o 1.5rem (24px).<br>
+        Cuando el icono sea interactivo, el área clicable mínima debe ser 2.75rem × 2.75rem (44px × 44px).<br>
         El icono debe centrarse dentro del contenedor interactivo.<br>
         No usar iconos clicables sin área táctil suficiente.
       </div>
@@ -159,21 +203,21 @@
   </div>
   <div class="ic-sizes-col">
     <h3 class="ic-sizes-title">Tamaño mínimo para iconos interactivos</h3>
-    <p class="ic-body">El icono no necesita ser de 44px. Lo importante es que el contenedor clicable sí lo sea.</p>
+    <p class="ic-body">El icono no necesita medir 2.75rem (44px). Lo importante es que el contenedor clicable sí respete esa medida mínima.</p>
     <div class="ic-touch-demo">
       <div class="ic-touch-target">
-        <span class="icon" style="font-size:24px">&#xf3b2;</span>
-        <span class="ic-size-label" style="margin-top:4px">24px</span>
+        <span class="icon icon-24">&#xf3b2;</span>
+        <span class="ic-size-label ic-size-label--offset">1.5rem · 24px</span>
       </div>
       <div class="ic-touch-box">
-        <span class="ic-touch-label">Área clicable 44×44px</span>
+        <span class="ic-touch-label">Área clicable 2.75rem × 2.75rem (44×44px)</span>
       </div>
     </div>
     <table class="ic-sizes-table">
       <thead><tr><th>Tamaño</th><th>Uso</th></tr></thead>
       <tbody>
-        <tr><td>Icono</td><td><strong>20px – 24px</strong></td></tr>
-        <tr><td>Área clicable</td><td><strong>44px</strong></td></tr>
+        <tr><td>Icono</td><td><strong>1.25rem – 1.5rem (20px – 24px)</strong></td></tr>
+        <tr><td>Área clicable</td><td><strong>2.75rem (44px)</strong></td></tr>
       </tbody>
     </table>
   </div>
@@ -183,178 +227,7 @@
 
 </section>
 
-<style>
-/* ── Icon font ─────────────────────────────────────────── */
-@font-face {
-  font-family: "CompensarIcons";
-  src: url("./icons/fonts/compensar-icons.woff2") format("woff2"),
-       url("./icons/fonts/compensar-icons.woff")  format("woff"),
-       url("./icons/fonts/compensar-icons.ttf")   format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-.icon {
-  font-family: "CompensarIcons" !important;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  display: inline-block;
-  speak: never;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-/* ── Section label ─────────────────────────────────────── */
-.ic-section-label {
-  display:flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:700;color:var(--ui-text-muted);
-  letter-spacing:.08em;text-transform:uppercase;
-  margin:var(--space-48) 0 var(--space-24);
-  border-bottom:1px solid var(--ui-border);padding-bottom:var(--space-8);
-}
-.ic-section-label .material-symbols-rounded{font-size:15px;color:var(--ui-accent)}
-.ic-count-badge{margin-left:auto;font-size:10px;background:var(--ui-surface-alt);border:1px solid var(--ui-border);border-radius:20px;padding:2px 10px;letter-spacing:0;text-transform:none;font-weight:600}
-
-/* ── Two-col layout ────────────────────────────────────── */
-.ic-two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24);margin-bottom:var(--space-24)}
-.ic-body{font-size:13.5px;color:var(--ui-text);line-height:1.6;margin-bottom:var(--space-8)}
-.ic-list{margin:0 0 var(--space-8);padding-left:18px;font-size:13px;color:var(--ui-text);line-height:2}
-
-/* ── Alert blocks ──────────────────────────────────────── */
-.ic-alert{display:flex;gap:10px;border-radius:10px;padding:var(--space-4) var(--space-24);font-size:12.5px;line-height:1.6}
-.ic-alert--amber{background:#fff9ec;border:1px solid #f5d07a;color:#7a5c00}
-.ic-alert--amber .material-symbols-rounded{color:#c98a00;flex-shrink:0;font-size:18px;margin-top:1px}
-.ic-alert--blue{background:#e6f1fb;border:1px solid #9fbef5;color:#1a3a6b}
-.ic-alert--blue .material-symbols-rounded{color:#296ff0;flex-shrink:0;font-size:18px;margin-top:1px}
-.ic-alert-list{margin:6px 0 0;padding-left:16px}
-.ic-alert-list li{margin-bottom:2px}
-
-/* ── Preview grid (style sample) ──────────────────────── */
-.ic-preview-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-8);background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;padding:var(--space-4);align-content:start}
-.ic-preview-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:var(--space-8);border-radius:8px;background:var(--ui-surface-alt)}
-.ic-preview-item .icon{font-size:24px;color:var(--ui-text)}
-
-/* ── Order cards ───────────────────────────────────────── */
-.ic-order-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-24)}
-.ic-order-card{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;padding:var(--space-24);display:flex;gap:var(--space-4)}
-.ic-order-card--1{border-top:3px solid var(--ui-accent)}
-.ic-order-card--2{border-top:3px solid var(--base-blue-70)}
-.ic-order-card--3{border-top:3px solid var(--ui-text-muted)}
-.ic-order-num{font-size:2rem;font-weight:900;color:var(--ui-accent);min-width:32px;line-height:1;margin-top:2px}
-.ic-order-card--2 .ic-order-num{color:var(--base-blue-70)}
-.ic-order-card--3 .ic-order-num{color:var(--ui-text-muted)}
-.ic-order-title{font-size:13px;font-weight:700;color:var(--ui-text);margin-bottom:var(--space-8)}
-.ic-order-desc{font-size:12.5px;color:var(--ui-text-muted);line-height:1.6;margin-bottom:var(--space-8)}
-.ic-order-badge{display:inline-flex;align-items:center;gap:5px;background:var(--base-green-40);color:var(--base-green-90);border:1px solid var(--base-green-50);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700}
-.ic-order-badge .material-symbols-rounded{font-size:13px}
-.ic-order-config{background:var(--ui-surface-alt);border-radius:8px;padding:var(--space-8) var(--space-4);margin-top:var(--space-2)}
-
-/* ── Sizes ─────────────────────────────────────────────── */
-.ic-sizes-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24);margin-bottom:var(--space-24)}
-.ic-sizes-title{font-size:13px;font-weight:700;color:var(--ui-text);margin:0 0 var(--space-4)}
-.ic-sizes-preview{display:flex;align-items:flex-end;gap:var(--space-24);margin-bottom:var(--space-4)}
-.ic-size-demo{display:flex;flex-direction:column;align-items:center;gap:4px}
-.ic-size-label{font-size:10px;color:var(--ui-text-muted);font-family:var(--font-code)}
-.ic-sizes-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:var(--space-8)}
-.ic-sizes-table th{background:var(--ui-surface-alt);padding:7px 12px;text-align:left;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ui-text-muted);border:1px solid var(--ui-border)}
-.ic-sizes-table td{padding:8px 12px;border:1px solid var(--ui-border);color:var(--ui-text)}
-.ic-touch-demo{display:flex;align-items:center;gap:var(--space-24);margin:var(--space-4) 0}
-.ic-touch-target{display:flex;flex-direction:column;align-items:center;gap:4px}
-.ic-touch-box{width:88px;height:88px;border:2px dashed var(--ui-accent);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative}
-.ic-touch-label{font-size:10px;color:var(--ui-accent);font-weight:600;text-align:center;padding:4px}
-
-/* ── Implementation cards ──────────────────────────────── */
-.ic-impl-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24);margin-bottom:var(--space-24)}
-.ic-impl-card{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;overflow:hidden}
-.ic-impl-card-head{display:flex;align-items:center;gap:8px;background:var(--ui-surface-alt);border-bottom:1px solid var(--ui-border);padding:var(--space-8) var(--space-24);font-size:12px;font-weight:700;color:var(--ui-text)}
-.ic-impl-card-head .material-symbols-rounded{font-size:15px;color:var(--ui-accent)}
-.ic-impl-desc-list{padding:var(--space-4) var(--space-24);display:flex;flex-direction:column;gap:var(--space-2)}
-.ic-impl-desc-row{display:flex;align-items:baseline;gap:var(--space-8);font-size:12.5px}
-.ic-impl-desc-row code{font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);padding:1px 6px;border-radius:4px;color:var(--ui-accent);flex-shrink:0}
-.ic-impl-desc-row span{color:var(--ui-text-muted)}
-.ic-steps{margin:var(--space-4) var(--space-24);padding-left:20px;font-size:12.5px;line-height:2;color:var(--ui-text)}
-.ic-steps code{font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);padding:1px 5px;border-radius:4px;color:var(--ui-accent)}
-.ic-steps a{color:var(--ui-accent)}
-
-/* ── Code blocks ───────────────────────────────────────── */
-.ic-code-tabs-bar{display:flex;gap:3px;background:var(--ui-surface-alt);padding:3px;border-bottom:1px solid var(--ui-border)}
-.ic-code-tab{background:none;border:none;border-radius:5px;padding:4px 12px;font-size:11.5px;font-weight:500;color:var(--ui-text-muted);cursor:pointer;transition:background .12s,color .12s}
-.ic-code-tab.active{background:var(--ui-surface);color:var(--ui-accent);box-shadow:0 1px 3px rgba(0,0,0,.1)}
-.ic-code-block{position:relative;background:var(--ui-code-bg)}
-.ic-code-copy{position:absolute;top:6px;right:8px;display:inline-flex;align-items:center;gap:3px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:2px 8px;font-size:10px;color:#aaa;cursor:pointer;transition:background .12s,color .12s;z-index:1}
-.ic-code-copy:hover{background:rgba(255,255,255,.14);color:#fff}
-.ic-code-copy .material-symbols-rounded{font-size:11px}
-.ic-code-pre{font-family:var(--font-code);font-size:11px;line-height:1.7;color:var(--ui-code-text);padding:28px 14px 14px;margin:0;overflow-x:auto;white-space:pre;display:none}
-.ic-code-pre.ic-code-active{display:block}
-
-/* ── Search bar ────────────────────────────────────────── */
-.ic-search-bar{display:flex;align-items:center;gap:var(--space-4);background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;padding:var(--space-8) var(--space-24);margin-bottom:var(--space-24);flex-wrap:wrap}
-.ic-search-input-wrap{display:flex;align-items:center;gap:8px;flex:1;min-width:200px}
-.ic-search-ico{font-size:18px;color:var(--ui-text-muted);flex-shrink:0}
-.ic-search-input{border:none;background:none;font-size:13.5px;color:var(--ui-text);outline:none;flex:1;min-width:100px;font-family:var(--font-body)}
-.ic-search-input::placeholder{color:var(--ui-text-muted)}
-.ic-search-clear{background:none;border:none;cursor:pointer;color:var(--ui-text-muted);display:flex;align-items:center;padding:2px}
-.ic-search-clear:hover{color:var(--ui-text)}
-.ic-search-clear .material-symbols-rounded{font-size:16px}
-.ic-search-meta{font-size:11.5px;color:var(--ui-text-muted);white-space:nowrap;font-family:var(--font-code)}
-
-/* ── Icon grid ─────────────────────────────────────────── */
-.ic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:var(--space-2);margin-bottom:var(--space-48)}
-.ic-card{display:flex;flex-direction:column;align-items:center;gap:5px;padding:var(--space-8) var(--space-2);background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:10px;cursor:pointer;transition:background .12s,border-color .12s,transform .1s;text-align:center;position:relative;overflow:hidden}
-.ic-card:hover{background:var(--ui-surface-alt);border-color:var(--ui-accent);transform:translateY(-1px)}
-.ic-card .icon{font-size:28px;color:var(--ui-text);pointer-events:none}
-.ic-card-name{font-size:9.5px;color:var(--ui-text-muted);line-height:1.3;word-break:break-word;pointer-events:none;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
-.ic-card-copy{position:absolute;top:4px;right:4px;background:var(--ui-tag-bg);border:1px solid var(--ui-border);border-radius:4px;padding:2px 4px;font-size:9px;color:var(--ui-accent);display:none;cursor:pointer;font-family:var(--font-code)}
-.ic-card:hover .ic-card-copy{display:block}
-.ic-no-results{grid-column:1/-1;text-align:center;padding:var(--space-8);color:var(--ui-text-muted);font-size:13px}
-.ic-no-results .material-symbols-rounded{font-size:40px;display:block;margin-bottom:var(--space-8);color:var(--ui-border)}
-
-/* ── Popover ───────────────────────────────────────────── */
-.ic-popover-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:1000}
-.ic-popover-overlay.open{display:block}
-.ic-popover{position:fixed;z-index:1001;background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:16px;width:280px;box-shadow:0 8px 32px rgba(0,0,0,.2);overflow:hidden}
-.ic-pop-header{display:flex;align-items:flex-start;justify-content:space-between;padding:var(--space-24);background:var(--ui-surface-alt);border-bottom:1px solid var(--ui-border)}
-.ic-pop-preview{width:64px;height:64px;background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;display:flex;align-items:center;justify-content:center}
-.ic-pop-icon{font-size:36px;color:var(--ui-text)}
-.ic-pop-close{background:none;border:1px solid var(--ui-border);border-radius:6px;width:28px;height:28px;cursor:pointer;color:var(--ui-text-muted);display:flex;align-items:center;justify-content:center}
-.ic-pop-close .material-symbols-rounded{font-size:16px}
-.ic-pop-body{padding:var(--space-4) var(--space-24) 0}
-.ic-pop-name{font-size:14px;font-weight:700;color:var(--ui-text);margin-bottom:var(--space-8)}
-.ic-pop-row{display:flex;align-items:center;gap:var(--space-8);margin-bottom:6px}
-.ic-pop-lbl{font-size:10.5px;color:var(--ui-text-muted);min-width:80px;flex-shrink:0}
-.ic-pop-val{font-family:var(--font-code);font-size:10.5px;background:var(--ui-surface-alt);padding:2px 8px;border-radius:5px;color:var(--ui-accent)}
-.ic-pop-cls{color:var(--product-violet-50)}
-.ic-pop-snippet{margin:var(--space-8) var(--space-24) 0;background:var(--ui-code-bg);border-radius:8px;padding:var(--space-8) var(--space-4)}
-.ic-pop-snippet pre{font-family:var(--font-code);font-size:10px;color:var(--ui-code-text);margin:0;white-space:pre-wrap;word-break:break-all;line-height:1.6}
-.ic-pop-actions{display:flex;gap:var(--space-2);padding:var(--space-4) var(--space-24) var(--space-24)}
-.ic-pop-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--ui-border);border-radius:8px;padding:7px 10px;font-size:11px;cursor:pointer;background:var(--ui-surface-alt);color:var(--ui-text);transition:background .12s}
-.ic-pop-btn:hover{background:var(--ui-surface);border-color:var(--ui-accent);color:var(--ui-accent)}
-.ic-pop-btn--primary{background:var(--ui-accent);color:#fff;border-color:var(--ui-accent)}
-.ic-pop-btn--primary:hover{background:var(--ui-accent-dark);border-color:var(--ui-accent-dark);color:#fff}
-.ic-pop-btn .material-symbols-rounded{font-size:12px}
-
-/* Mobile bottom sheet */
-@media(max-width:640px){
-  .ic-popover{width:100%;left:0!important;top:auto!important;bottom:0;border-radius:20px 20px 0 0;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,1,.23,1)}
-  .ic-popover.sheet-open{transform:translateY(0)}
-}
-
-/* ── Responsive ────────────────────────────────────────── */
-@media(max-width:900px){
-  .ic-two-col{grid-template-columns:1fr}
-  .ic-order-grid{grid-template-columns:1fr}
-  .ic-sizes-grid{grid-template-columns:1fr}
-  .ic-impl-grid{grid-template-columns:1fr}
-}
-@media(max-width:600px){
-  .ic-grid{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}
-}
-</style>
-
-</style>
 <script>
 function normStr(s){ return s.toLowerCase().replace(/[áàä]/g,'a').replace(/[éèë]/g,'e').replace(/[íìï]/g,'i').replace(/[óòö]/g,'o').replace(/[úùü]/g,'u').replace(/ñ/g,'n'); }
 

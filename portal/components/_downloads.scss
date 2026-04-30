@@ -9,7 +9,7 @@
   gap: var(--space-8);
   flex-wrap: wrap;
   padding: var(--space-16) var(--space-24);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
   margin-bottom: var(--space-32);
@@ -45,7 +45,7 @@
 }
 
 .ct-download-btn:hover {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border-color: var(--ui-accent);
   color: var(--ui-accent);
   transform: translateY(rem(-1px));

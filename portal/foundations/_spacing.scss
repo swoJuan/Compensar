@@ -15,7 +15,7 @@
   align-items: center;
   gap: var(--space-16);
   padding: rem(8px) var(--space-16);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(8px);
   font-size: rem(13px);
@@ -284,7 +284,7 @@
 #espaciado .ty-figma-bar code {
   font-family: var(--font-code);
   font-size: 11.5px;
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   padding: 1px 5px;
   border-radius: 4px;
   color: var(--ui-accent)
@@ -335,7 +335,7 @@
 }
 
 .sp-base-card {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: 1px solid var(--ui-border);
   border-radius: 14px;
   padding: var(--space-24);
@@ -377,7 +377,7 @@
 }
 
 .sp-base-info {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: 1px solid var(--ui-border);
   border-radius: 14px;
   padding: var(--space-24);
@@ -486,7 +486,7 @@
   padding: 10px 12px;
   border-bottom: 1px solid var(--ui-border);
   vertical-align: middle;
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   transition: background .1s;
 }
 
@@ -663,14 +663,14 @@
 }
 
 .sp-util-tab.active {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   color: var(--ui-accent);
   box-shadow: 0 1px 3px rgba(0, 0, 0, .1)
 }
 
 .sp-util-panel {
   display: none;
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: 1px solid var(--ui-border);
   border-radius: 0 0 10px 10px;
   padding: var(--space-24);
@@ -746,7 +746,7 @@
 }
 
 .sp-stack-item {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: 1px solid var(--ui-border);
   border-radius: 6px;
   padding: 8px 12px;
@@ -798,7 +798,7 @@
 }
 
 .sp-bs-card {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: 1px solid var(--ui-border);
   border-radius: 12px;
   overflow: hidden
@@ -905,7 +905,7 @@
 }
 
 .sp-code-tab.active {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   color: var(--ui-accent);
   box-shadow: 0 1px 3px rgba(0, 0, 0, .1)
 }
@@ -914,7 +914,7 @@
 .sp-access-block {
   display: flex;
   gap: var(--space-24);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: 1px solid var(--ui-border);
   border-radius: 14px;
   padding: var(--space-32);

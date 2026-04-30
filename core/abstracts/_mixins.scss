@@ -140,3 +140,7 @@
 @mixin xl  { @media (min-width: 1200px) { @content; } }
 @mixin xxl { @media (min-width: 1400px) { @content; } }
 @mixin mobile-only { @media (max-width: 575.98px) { @content; } }
+@mixin sm-down { @media (max-width: 575.98px) { @content; } }
+@mixin md-down { @media (max-width: 767.98px) { @content; } }
+@mixin lg-down { @media (max-width: 991.98px) { @content; } }
+@mixin xl-down { @media (max-width: 1199.98px) { @content; } }

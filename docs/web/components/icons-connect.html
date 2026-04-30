@@ -3,13 +3,38 @@
 <div class="section-header">
   <div class="section-eyebrow">1.8.2</div>
   <h1 class="section-title">Cómo conectarlo</h1>
-  <p class="section-desc">Integra el sistema de iconos en tu proyecto copiando los archivos de fuente, añadiendo la declaración <code>@font-face</code> y usando la clase <code>.icon</code> con el carácter unicode correspondiente.</p>
+  <p class="section-desc">Integra la fuente de iconos del sistema con un único CSS, precarga el archivo principal y usa clases semánticas para mantener consistencia entre diseño, desarrollo y documentación.</p>
 </div>
 
 <!-- ══════════════════════════════════════════════════════
      4 · IMPLEMENTACIÓN TÉCNICA
 ════════════════════════════════════════════════════════ -->
 <div class="ic-section-label"><span class="material-symbols-rounded">integration_instructions</span> Implementación técnica</div>
+
+<div class="ic-impl-overview">
+  <div class="ic-impl-overview-copy">
+    <span class="ic-impl-kicker">Flujo recomendado</span>
+    <h2>Conexión en tres pasos</h2>
+    <p>La implementación debe ser predecible: copiar los archivos, cargar el CSS del set y usar la clase base con el nombre del icono y su tamaño en rem.</p>
+  </div>
+  <div class="ic-impl-steps-row">
+    <div class="ic-impl-step-card">
+      <span class="material-symbols-rounded">folder_copy</span>
+      <strong>1. Copiar archivos</strong>
+      <p><code>icons/</code>, <code>fonts/</code> y <code>selection.json</code>.</p>
+    </div>
+    <div class="ic-impl-step-card">
+      <span class="material-symbols-rounded">code_blocks</span>
+      <strong>2. Cargar CSS</strong>
+      <p>Usar <code>icons.css</code> y precargar <code>woff2</code>.</p>
+    </div>
+    <div class="ic-impl-step-card">
+      <span class="material-symbols-rounded">ads_click</span>
+      <strong>3. Usar clases</strong>
+      <p><code>.icon</code> + <code>.icon-name</code> + <code>.icon-24</code>.</p>
+    </div>
+  </div>
+</div>
 
 <div class="ic-impl-grid">
   <!-- Estructura de archivos -->
@@ -38,7 +63,7 @@
       <button class="ic-code-tab active" onclick="icCodeTab(this,'ict-html')">HTML</button>
       <button class="ic-code-tab" onclick="icCodeTab(this,'ict-css')">@font-face</button>
     </div>
-    <div class="ic-code-block" style="border-radius:0 0 8px 8px">
+    <div class="ic-code-block ic-code-block--tabbed">
       <button class="ic-code-copy" onclick="icCopyCode('ict-html-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
 <pre class="ic-code-pre ic-code-active" id="ict-html-pre">&lt;!-- 1. Un solo archivo CSS --&gt;
 &lt;link rel="stylesheet" href="icons/icons.css"&gt;
@@ -73,15 +98,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 /* ── Tamaños de icono ──────────────────────────────────── */
+/* Base 16px: 1rem = 16px                                  */
 /* Uso: <i class="icon icon-nombre icon-24"></i>           */
-.icon-12 { font-size: 12px; }
-.icon-16 { font-size: 16px; }
-.icon-20 { font-size: 20px; }
-.icon-24 { font-size: 24px; }
-.icon-32 { font-size: 32px; }
-.icon-40 { font-size: 40px; }
-.icon-48 { font-size: 48px; }
-.icon-64 { font-size: 64px; }
+.icon-12 { font-size: 0.75rem; } /* 12px */
+.icon-16 { font-size: 1rem; }    /* 16px */
+.icon-20 { font-size: 1.25rem; } /* 20px */
+.icon-24 { font-size: 1.5rem; }  /* 24px */
+.icon-32 { font-size: 2rem; }    /* 32px */
+.icon-40 { font-size: 2.5rem; }  /* 40px */
+.icon-48 { font-size: 3rem; }    /* 48px */
+.icon-64 { font-size: 4rem; }    /* 64px */
 </pre>
     </div>
   </div>
@@ -94,7 +120,7 @@
       <button class="ic-code-tab" onclick="icCodeTab(this,'ict-use2')">Interactivo</button>
       <button class="ic-code-tab" onclick="icCodeTab(this,'ict-use3')">Con texto</button>
     </div>
-    <div class="ic-code-block" style="border-radius:0 0 8px 8px">
+    <div class="ic-code-block ic-code-block--tabbed">
       <button class="ic-code-copy" onclick="icCopyCode('ict-use1-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
 <pre class="ic-code-pre ic-code-active" id="ict-use1-pre">&lt;!-- Clase nombre + clase tamaño --&gt;
 &lt;i class="icon icon-key icon-16" aria-hidden="true"&gt;&lt;/i&gt;
@@ -109,13 +135,18 @@
   &lt;i class="icon icon-magnifying-glass icon-24" aria-hidden="true"&gt;&lt;/i&gt;
 &lt;/button&gt;
 
-&lt;!-- Área táctil mínima 44×44px --&gt;
-&lt;button style="min-width:44px;min-height:44px;
-               display:flex;align-items:center;
-               justify-content:center;"
-        aria-label="Abrir menú"&gt;
+&lt;!-- Área táctil mínima 2.75rem × 2.75rem (44×44px) --&gt;
+&lt;button class="icon-action" aria-label="Abrir menú"&gt;
   &lt;i class="icon icon-list icon-24" aria-hidden="true"&gt;&lt;/i&gt;
-&lt;/button&gt;</pre>
+&lt;/button&gt;
+
+.icon-action {
+  min-width: 2.75rem;  /* 44px */
+  min-height: 2.75rem; /* 44px */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}</pre>
       <button class="ic-code-copy" onclick="icCopyCode('ict-use3-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
 <pre class="ic-code-pre" id="ict-use3-pre">&lt;!-- Icono + texto: el ícono es decorativo --&gt;
 &lt;button&gt;
@@ -145,41 +176,41 @@
       <li>Agregar o quitar iconos según necesidad</li>
       <li>Exportar → descargar ZIP → reemplazar archivos en el proyecto</li>
     </ol>
-    <div class="ic-alert ic-alert--blue" style="margin-top:var(--space-4)">
+    <div class="ic-alert ic-alert--blue ic-alert--mt-4">
       <span class="material-symbols-rounded">info</span>
       <span>El archivo <code>selection.json</code> es la fuente de verdad del set. <strong>Nunca modificar los archivos .woff o .ttf directamente.</strong></span>
     </div>
   </div>
 
   <!-- Clases de tamaño -->
-  <div class="ic-impl-card" style="grid-column:1/-1">
+  <div class="ic-impl-card ic-impl-card--full">
     <div class="ic-impl-card-head"><span class="material-symbols-rounded">straighten</span> Clases de tamaño</div>
-    <div style="padding:var(--space-4) var(--space-24)">
-      <p style="font-size:12.5px;color:var(--ui-text-muted);margin-bottom:var(--space-4)">Combina la clase base <code>.icon</code> con una clase de tamaño. Los valores siguen la escala de 8px del sistema.</p>
-      <div style="display:flex;align-items:flex-end;gap:var(--space-24);margin-bottom:var(--space-24);flex-wrap:wrap">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="icon icon-warning icon-12" aria-hidden="true"></i><code style="font-size:9px;color:var(--ui-text-muted)">icon-12</code></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="icon icon-warning icon-16" aria-hidden="true"></i><code style="font-size:9px;color:var(--ui-text-muted)">icon-16</code></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="icon icon-warning icon-20" aria-hidden="true"></i><code style="font-size:9px;color:var(--ui-text-muted)">icon-20</code></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="icon icon-warning icon-24" aria-hidden="true"></i><code style="font-size:9px;color:var(--ui-text-muted)">icon-24</code></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="icon icon-warning icon-32" aria-hidden="true"></i><code style="font-size:9px;color:var(--ui-text-muted)">icon-32</code></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="icon icon-warning icon-40" aria-hidden="true"></i><code style="font-size:9px;color:var(--ui-text-muted)">icon-40</code></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="icon icon-warning icon-48" aria-hidden="true"></i><code style="font-size:9px;color:var(--ui-text-muted)">icon-48</code></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="icon icon-warning icon-64" aria-hidden="true"></i><code style="font-size:9px;color:var(--ui-text-muted)">icon-64</code></div>
+    <div class="ic-size-doc">
+      <p class="ic-size-doc-desc">Combina la clase base <code>.icon</code> con una clase de tamaño. Los valores se expresan en rem y muestran su equivalencia en px sobre base 16.</p>
+      <div class="ic-size-class-list">
+        <div class="ic-size-class-item"><i class="icon icon-warning icon-12" aria-hidden="true"></i><code>icon-12</code></div>
+        <div class="ic-size-class-item"><i class="icon icon-warning icon-16" aria-hidden="true"></i><code>icon-16</code></div>
+        <div class="ic-size-class-item"><i class="icon icon-warning icon-20" aria-hidden="true"></i><code>icon-20</code></div>
+        <div class="ic-size-class-item"><i class="icon icon-warning icon-24" aria-hidden="true"></i><code>icon-24</code></div>
+        <div class="ic-size-class-item"><i class="icon icon-warning icon-32" aria-hidden="true"></i><code>icon-32</code></div>
+        <div class="ic-size-class-item"><i class="icon icon-warning icon-40" aria-hidden="true"></i><code>icon-40</code></div>
+        <div class="ic-size-class-item"><i class="icon icon-warning icon-48" aria-hidden="true"></i><code>icon-48</code></div>
+        <div class="ic-size-class-item"><i class="icon icon-warning icon-64" aria-hidden="true"></i><code>icon-64</code></div>
       </div>
       <table class="ic-sizes-table">
         <thead><tr><th>Clase</th><th>Tamaño</th><th>Uso recomendado</th></tr></thead>
         <tbody>
-          <tr><td><code>.icon-12</code></td><td>12px</td><td>Badges, etiquetas compactas</td></tr>
-          <tr><td><code>.icon-16</code></td><td>16px</td><td>Texto inline, botones pequeños</td></tr>
-          <tr><td><code>.icon-20</code></td><td>20px</td><td>Botones estándar, inputs</td></tr>
-          <tr><td><code>.icon-24</code></td><td>24px</td><td>Navegación, acciones principales ✓ recomendado</td></tr>
-          <tr><td><code>.icon-32</code></td><td>32px</td><td>Encabezados de sección</td></tr>
-          <tr><td><code>.icon-40</code></td><td>40px</td><td>Ilustraciones de apoyo</td></tr>
-          <tr><td><code>.icon-48</code></td><td>48px</td><td>Estados vacíos, destacados</td></tr>
-          <tr><td><code>.icon-64</code></td><td>64px</td><td>Ilustraciones hero</td></tr>
+          <tr><td><code>.icon-12</code></td><td>0.75rem (12px)</td><td>Badges, etiquetas compactas</td></tr>
+          <tr><td><code>.icon-16</code></td><td>1rem (16px)</td><td>Texto inline, botones pequeños</td></tr>
+          <tr><td><code>.icon-20</code></td><td>1.25rem (20px)</td><td>Botones estándar, inputs</td></tr>
+          <tr><td><code>.icon-24</code></td><td>1.5rem (24px)</td><td>Navegación, acciones principales ✓ recomendado</td></tr>
+          <tr><td><code>.icon-32</code></td><td>2rem (32px)</td><td>Encabezados de sección</td></tr>
+          <tr><td><code>.icon-40</code></td><td>2.5rem (40px)</td><td>Ilustraciones de apoyo</td></tr>
+          <tr><td><code>.icon-48</code></td><td>3rem (48px)</td><td>Estados vacíos, destacados</td></tr>
+          <tr><td><code>.icon-64</code></td><td>4rem (64px)</td><td>Ilustraciones hero</td></tr>
         </tbody>
       </table>
-      <div class="ic-code-block" style="border-radius:8px;margin-top:var(--space-8)">
+      <div class="ic-code-block ic-code-block--standalone">
         <button class="ic-code-copy" onclick="icCopyCode('ict-sizes-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
 <pre class="ic-code-pre ic-code-active" id="ict-sizes-pre">&lt;!-- Clase base + clase de tamaño --&gt;
 &lt;i class="icon icon-lock icon-16" aria-hidden="true"&gt;&lt;/i&gt;
@@ -201,181 +232,8 @@
 
 </section>
 
-<style>
-/* ── Icon font ─────────────────────────────────────────── */
-@font-face {
-  font-family: "CompensarIcons";
-  src: url("./icons/fonts/compensar-icons.woff2") format("woff2"),
-       url("./icons/fonts/compensar-icons.woff")  format("woff"),
-       url("./icons/fonts/compensar-icons.ttf")   format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-.icon {
-  font-family: "CompensarIcons" !important;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-/* ── Section label ─────────────────────────────────────── */
-.ic-section-label {
-  display:flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:700;color:var(--ui-text-muted);
-  letter-spacing:.08em;text-transform:uppercase;
-  margin:var(--space-48) 0 var(--space-24);
-  border-bottom:1px solid var(--ui-border);padding-bottom:var(--space-8);
-}
-.ic-section-label .material-symbols-rounded{font-size:15px;color:var(--ui-accent)}
-.ic-count-badge{margin-left:auto;font-size:10px;background:var(--ui-surface-alt);border:1px solid var(--ui-border);border-radius:20px;padding:2px 10px;letter-spacing:0;text-transform:none;font-weight:600}
-
-/* ── Two-col layout ────────────────────────────────────── */
-.ic-two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24);margin-bottom:var(--space-24)}
-.ic-body{font-size:13.5px;color:var(--ui-text);line-height:1.6;margin-bottom:var(--space-8)}
-.ic-list{margin:0 0 var(--space-8);padding-left:18px;font-size:13px;color:var(--ui-text);line-height:2}
-
-/* ── Alert blocks ──────────────────────────────────────── */
-.ic-alert{display:flex;gap:10px;border-radius:10px;padding:var(--space-4) var(--space-24);font-size:12.5px;line-height:1.6}
-.ic-alert--amber{background:#fff9ec;border:1px solid #f5d07a;color:#7a5c00}
-.ic-alert--amber .material-symbols-rounded{color:#c98a00;flex-shrink:0;font-size:18px;margin-top:1px}
-.ic-alert--blue{background:#e6f1fb;border:1px solid #9fbef5;color:#1a3a6b}
-.ic-alert--blue .material-symbols-rounded{color:#296ff0;flex-shrink:0;font-size:18px;margin-top:1px}
-.ic-alert-list{margin:6px 0 0;padding-left:16px}
-.ic-alert-list li{margin-bottom:2px}
-
-/* ── Preview grid (style sample) ──────────────────────── */
-.ic-preview-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-8);background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;padding:var(--space-4);align-content:start}
-.ic-preview-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:var(--space-8);border-radius:8px;background:var(--ui-surface-alt)}
-.ic-preview-item .icon{font-size:24px;color:var(--ui-text)}
-
-/* ── Order cards ───────────────────────────────────────── */
-.ic-order-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-24)}
-.ic-order-card{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;padding:var(--space-24);display:flex;gap:var(--space-4)}
-.ic-order-card--1{border-top:3px solid var(--ui-accent)}
-.ic-order-card--2{border-top:3px solid var(--base-blue-70)}
-.ic-order-card--3{border-top:3px solid var(--ui-text-muted)}
-.ic-order-num{font-size:2rem;font-weight:900;color:var(--ui-accent);min-width:32px;line-height:1;margin-top:2px}
-.ic-order-card--2 .ic-order-num{color:var(--base-blue-70)}
-.ic-order-card--3 .ic-order-num{color:var(--ui-text-muted)}
-.ic-order-title{font-size:13px;font-weight:700;color:var(--ui-text);margin-bottom:var(--space-8)}
-.ic-order-desc{font-size:12.5px;color:var(--ui-text-muted);line-height:1.6;margin-bottom:var(--space-8)}
-.ic-order-badge{display:inline-flex;align-items:center;gap:5px;background:var(--base-green-40);color:var(--base-green-90);border:1px solid var(--base-green-50);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700}
-.ic-order-badge .material-symbols-rounded{font-size:13px}
-.ic-order-config{background:var(--ui-surface-alt);border-radius:8px;padding:var(--space-8) var(--space-4);margin-top:var(--space-2)}
-
-/* ── Sizes ─────────────────────────────────────────────── */
-.ic-sizes-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24);margin-bottom:var(--space-24)}
-.ic-sizes-title{font-size:13px;font-weight:700;color:var(--ui-text);margin:0 0 var(--space-4)}
-.ic-sizes-preview{display:flex;align-items:flex-end;gap:var(--space-24);margin-bottom:var(--space-4)}
-.ic-size-demo{display:flex;flex-direction:column;align-items:center;gap:4px}
-.ic-size-label{font-size:10px;color:var(--ui-text-muted);font-family:var(--font-code)}
-.ic-sizes-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:var(--space-8)}
-.ic-sizes-table th{background:var(--ui-surface-alt);padding:7px 12px;text-align:left;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ui-text-muted);border:1px solid var(--ui-border)}
-.ic-sizes-table td{padding:8px 12px;border:1px solid var(--ui-border);color:var(--ui-text)}
-.ic-touch-demo{display:flex;align-items:center;gap:var(--space-24);margin:var(--space-4) 0}
-.ic-touch-target{display:flex;flex-direction:column;align-items:center;gap:4px}
-.ic-touch-box{width:88px;height:88px;border:2px dashed var(--ui-accent);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative}
-.ic-touch-label{font-size:10px;color:var(--ui-accent);font-weight:600;text-align:center;padding:4px}
-
-/* ── Implementation cards ──────────────────────────────── */
-.ic-impl-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24);margin-bottom:var(--space-24)}
-.ic-impl-card{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;overflow:hidden}
-.ic-impl-card-head{display:flex;align-items:center;gap:8px;background:var(--ui-surface-alt);border-bottom:1px solid var(--ui-border);padding:var(--space-8) var(--space-24);font-size:12px;font-weight:700;color:var(--ui-text)}
-.ic-impl-card-head .material-symbols-rounded{font-size:15px;color:var(--ui-accent)}
-.ic-impl-desc-list{padding:var(--space-4) var(--space-24);display:flex;flex-direction:column;gap:var(--space-2)}
-.ic-impl-desc-row{display:flex;align-items:baseline;gap:var(--space-8);font-size:12.5px}
-.ic-impl-desc-row code{font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);padding:1px 6px;border-radius:4px;color:var(--ui-accent);flex-shrink:0}
-.ic-impl-desc-row span{color:var(--ui-text-muted)}
-.ic-steps{margin:var(--space-4) var(--space-24);padding-left:20px;font-size:12.5px;line-height:2;color:var(--ui-text)}
-.ic-steps code{font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);padding:1px 5px;border-radius:4px;color:var(--ui-accent)}
-.ic-steps a{color:var(--ui-accent)}
-
-/* ── Code blocks ───────────────────────────────────────── */
-.ic-code-tabs-bar{display:flex;gap:3px;background:var(--ui-surface-alt);padding:3px;border-bottom:1px solid var(--ui-border)}
-.ic-code-tab{background:none;border:none;border-radius:5px;padding:4px 12px;font-size:11.5px;font-weight:500;color:var(--ui-text-muted);cursor:pointer;transition:background .12s,color .12s}
-.ic-code-tab.active{background:var(--ui-surface);color:var(--ui-accent);box-shadow:0 1px 3px rgba(0,0,0,.1)}
-.ic-code-block{position:relative;background:var(--ui-code-bg)}
-.ic-code-copy{position:absolute;top:6px;right:8px;display:inline-flex;align-items:center;gap:3px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:2px 8px;font-size:10px;color:#aaa;cursor:pointer;transition:background .12s,color .12s;z-index:1}
-.ic-code-copy:hover{background:rgba(255,255,255,.14);color:#fff}
-.ic-code-copy .material-symbols-rounded{font-size:11px}
-.ic-code-pre{font-family:var(--font-code);font-size:11px;line-height:1.7;color:var(--ui-code-text);padding:28px 14px 14px;margin:0;overflow-x:auto;white-space:pre;display:none}
-.ic-code-pre.ic-code-active{display:block}
-
-/* ── Search bar ────────────────────────────────────────── */
-.ic-search-bar{display:flex;align-items:center;gap:var(--space-4);background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;padding:var(--space-8) var(--space-24);margin-bottom:var(--space-24);flex-wrap:wrap}
-.ic-search-input-wrap{display:flex;align-items:center;gap:8px;flex:1;min-width:200px}
-.ic-search-ico{font-size:18px;color:var(--ui-text-muted);flex-shrink:0}
-.ic-search-input{border:none;background:none;font-size:13.5px;color:var(--ui-text);outline:none;flex:1;min-width:100px;font-family:var(--font-body)}
-.ic-search-input::placeholder{color:var(--ui-text-muted)}
-.ic-search-clear{background:none;border:none;cursor:pointer;color:var(--ui-text-muted);display:flex;align-items:center;padding:2px}
-.ic-search-clear:hover{color:var(--ui-text)}
-.ic-search-clear .material-symbols-rounded{font-size:16px}
-.ic-search-meta{font-size:11.5px;color:var(--ui-text-muted);white-space:nowrap;font-family:var(--font-code)}
-
-/* ── Icon grid ─────────────────────────────────────────── */
-.ic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:var(--space-2);margin-bottom:var(--space-48)}
-.ic-card{display:flex;flex-direction:column;align-items:center;gap:5px;padding:var(--space-8) var(--space-2);background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:10px;cursor:pointer;transition:background .12s,border-color .12s,transform .1s;text-align:center;position:relative;overflow:hidden}
-.ic-card:hover{background:var(--ui-surface-alt);border-color:var(--ui-accent);transform:translateY(-1px)}
-.ic-card .icon{font-size:28px;color:var(--ui-text);pointer-events:none}
-.ic-card-name{font-size:9.5px;color:var(--ui-text-muted);line-height:1.3;word-break:break-word;pointer-events:none;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
-.ic-card-copy{position:absolute;top:4px;right:4px;background:var(--ui-tag-bg);border:1px solid var(--ui-border);border-radius:4px;padding:2px 4px;font-size:9px;color:var(--ui-accent);display:none;cursor:pointer;font-family:var(--font-code)}
-.ic-card:hover .ic-card-copy{display:block}
-.ic-no-results{grid-column:1/-1;text-align:center;padding:var(--space-8);color:var(--ui-text-muted);font-size:13px}
-.ic-no-results .material-symbols-rounded{font-size:40px;display:block;margin-bottom:var(--space-8);color:var(--ui-border)}
-
-/* ── Popover ───────────────────────────────────────────── */
-.ic-popover-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:1000}
-.ic-popover-overlay.open{display:block}
-.ic-popover{position:fixed;z-index:1001;background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:16px;width:280px;box-shadow:0 8px 32px rgba(0,0,0,.2);overflow:hidden}
-.ic-pop-header{display:flex;align-items:flex-start;justify-content:space-between;padding:var(--space-24);background:var(--ui-surface-alt);border-bottom:1px solid var(--ui-border)}
-.ic-pop-preview{width:64px;height:64px;background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;display:flex;align-items:center;justify-content:center}
-.ic-pop-icon{font-size:36px;color:var(--ui-text)}
-.ic-pop-close{background:none;border:1px solid var(--ui-border);border-radius:6px;width:28px;height:28px;cursor:pointer;color:var(--ui-text-muted);display:flex;align-items:center;justify-content:center}
-.ic-pop-close .material-symbols-rounded{font-size:16px}
-.ic-pop-body{padding:var(--space-4) var(--space-24) 0}
-.ic-pop-name{font-size:14px;font-weight:700;color:var(--ui-text);margin-bottom:var(--space-8)}
-.ic-pop-row{display:flex;align-items:center;gap:var(--space-8);margin-bottom:6px}
-.ic-pop-lbl{font-size:10.5px;color:var(--ui-text-muted);min-width:80px;flex-shrink:0}
-.ic-pop-val{font-family:var(--font-code);font-size:10.5px;background:var(--ui-surface-alt);padding:2px 8px;border-radius:5px;color:var(--ui-accent)}
-.ic-pop-cls{color:var(--product-violet-50)}
-.ic-pop-snippet{margin:var(--space-8) var(--space-24) 0;background:var(--ui-code-bg);border-radius:8px;padding:var(--space-8) var(--space-4)}
-.ic-pop-snippet pre{font-family:var(--font-code);font-size:10px;color:var(--ui-code-text);margin:0;white-space:pre-wrap;word-break:break-all;line-height:1.6}
-.ic-pop-actions{display:flex;gap:var(--space-2);padding:var(--space-4) var(--space-24) var(--space-24)}
-.ic-pop-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--ui-border);border-radius:8px;padding:7px 10px;font-size:11px;cursor:pointer;background:var(--ui-surface-alt);color:var(--ui-text);transition:background .12s}
-.ic-pop-btn:hover{background:var(--ui-surface);border-color:var(--ui-accent);color:var(--ui-accent)}
-.ic-pop-btn--primary{background:var(--ui-accent);color:#fff;border-color:var(--ui-accent)}
-.ic-pop-btn--primary:hover{background:var(--ui-accent-dark);border-color:var(--ui-accent-dark);color:#fff}
-.ic-pop-btn .material-symbols-rounded{font-size:12px}
-
-/* Mobile bottom sheet */
-@media(max-width:640px){
-  .ic-popover{width:100%;left:0!important;top:auto!important;bottom:0;border-radius:20px 20px 0 0;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,1,.23,1)}
-  .ic-popover.sheet-open{transform:translateY(0)}
-}
-
-/* ── Responsive ────────────────────────────────────────── */
-@media(max-width:900px){
-  .ic-two-col{grid-template-columns:1fr}
-  .ic-order-grid{grid-template-columns:1fr}
-  .ic-sizes-grid{grid-template-columns:1fr}
-  .ic-impl-grid{grid-template-columns:1fr}
-}
-@media(max-width:600px){
-  .ic-grid{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}
-}
-</style>
-
-</style>
 <script>
-// function icCodeTab not found
-
-// function icCopyCode not found
-
 function copyText(text, btn){
   navigator.clipboard.writeText(text).then(()=>{
     if(!btn) return;
@@ -383,5 +241,23 @@ function copyText(text, btn){
     if(ico){ const o=ico.textContent; ico.textContent='check'; setTimeout(()=>ico.textContent=o,1400); }
     else { const o=btn.textContent; btn.textContent='✓'; setTimeout(()=>btn.textContent=o,1400); }
   });
+}
+
+function icCodeTab(btn, targetId){
+  const card = btn.closest('.ic-impl-card');
+  if(!card) return;
+
+  card.querySelectorAll('.ic-code-tab').forEach(tab => tab.classList.remove('active'));
+  card.querySelectorAll('.ic-code-pre').forEach(pre => pre.classList.remove('ic-code-active'));
+
+  btn.classList.add('active');
+  const target = document.getElementById(targetId + '-pre') || document.getElementById(targetId);
+  if(target) target.classList.add('ic-code-active');
+}
+
+function icCopyCode(preId, btn){
+  const pre = document.getElementById(preId);
+  if(!pre) return;
+  copyText(pre.innerText, btn);
 }
 </script>

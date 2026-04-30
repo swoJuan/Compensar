@@ -78,7 +78,7 @@
 @media (max-width: rem(540px)) { .a11y-grid { grid-template-columns: 1fr; } }
 
 .a11y-card {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: rem(1.5px) solid var(--ui-border);
   border-radius: rem(14px);
   padding: var(--space-16);

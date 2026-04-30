@@ -582,6 +582,32 @@ Fragmentos de documentacion:
 9. Si se cambia una fuente de tokens o utilidades, regenerar los archivos descargables correspondientes.
 10. Documentar cualquier decision nueva en este archivo.
 
+## Layout System
+
+La pagina `docs/app/fundamentos/layout.html` documenta el sistema de layout y debe quedar como contenido HTML, ejemplos y comportamiento puntual. Sus estilos visuales viven en `portal/foundations/_layout-system.scss`, conectado desde `portal/foundations/_index.scss`.
+
+Reglas aplicadas:
+
+- No usar bloques `<style>` dentro de `layout.html`.
+- Los colores de demos, estados, bordes y fondos deben consumir variables oficiales del core, principalmente `--use-*`, `--base-*`, `--product-*` y `--shadow-*`.
+- Las transparencias visuales de demos deben usar `color-mix()` sobre tokens del core, no valores HEX ni `rgba()` quemados.
+- Los cortes responsivos de la pagina deben usar mixins del core alineados con Bootstrap: `sm-down`, `md-down`, `lg-down` y `xl-down`.
+- Los ejemplos deben respetar el gutter base del sistema. La clase `.row` mantiene el gutter oficial; `g-0` solo debe documentarse si se explica explicitamente como excepcion controlada.
+- Los valores visuales en Sass deben expresarse en `rem()` usando la funcion del core cuando partan de una medida en px.
+
+## Icon System
+
+Las paginas `docs/web/components/icons-intro.html`, `docs/web/components/icons-connect.html` y `docs/web/components/icons-library.html` documentan la iconografia del sistema. Sus estilos visuales viven en `portal/pages/_icons.scss`, conectado desde `portal/pages/_index.scss`.
+
+Reglas aplicadas:
+
+- No usar bloques `<style>` dentro de las paginas HTML de iconos.
+- No usar estilos inline para presentacion visual; usar clases `ic-*` o `sp-access-*` centralizadas en Sass.
+- La fuente `CompensarIcons` se declara desde el Sass del portal para vistas de documentacion. La libreria descargable sigue viviendo en `/icons/icons.css` y `/icons/fonts`.
+- Los colores del portal deben consumir variables oficiales del core o aliases `--ui-*` que derivan del core.
+- Las transparencias de demos deben usar `color-mix()` sobre tokens, no `rgba()` quemado.
+- Los valores en px dentro del Sass del portal deben pasar por `rem()`.
+
 ## Estado actual de trabajo
 
 Ya se avanzo en:
@@ -592,6 +618,8 @@ Ya se avanzo en:
 - Crear funcion `rem()` y mixin `rem-prop()`.
 - Convertir px del Sass del portal a rem.
 - Quitar estilos inline de colores y principios hacia Sass del portal.
+- Quitar estilos inline de layout hacia `portal/foundations/_layout-system.scss`.
+- Quitar estilos inline de iconos hacia `portal/pages/_icons.scss`.
 - Mantener el core como capa base para consumo futuro.
 - Verificar compilacion con `npm run build`.
 

@@ -4,7 +4,7 @@
    COMPONENT PREVIEW
    ══════════════════════════════════════════════════════════ */
 .component-preview {
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
   overflow: hidden;
@@ -43,7 +43,7 @@
    CODE BLOCK
    ══════════════════════════════════════════════════════════ */
 .code-block {
-  background: var(--ui-surface);
+  background: $base-neutral-100-negro;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
   overflow: hidden;

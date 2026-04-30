@@ -47,7 +47,7 @@
   display: grid;
   grid-template-columns: minmax(rem(240px), rem(320px)) minmax(0, 1fr);
   gap: var(--space-16);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: 1rem;
   padding: var(--space-16);
@@ -147,7 +147,7 @@
   border: rem(1px) solid var(--ui-border);
   border-radius: 1rem;
   overflow: hidden;
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
 }
 .bv-theme-card[data-theme="dark"] {
   background: var(--ui-surface-alt);
@@ -180,7 +180,7 @@
   border: rem(1px) solid var(--ui-border);
   border-radius: 1rem;
   overflow: hidden;
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
 }
 .bv-code-tabs-bar {
   display: flex;
@@ -263,7 +263,7 @@
 }
 .btn-anatomy-spec--blue { border-color: rgba(14,133,61,0.12); background: rgba(14,133,61,0.06); }
 .btn-anatomy-spec--red { border-color: rgba(209,68,52,0.18); background: rgba(209,68,52,0.08); }
-.btn-anatomy-spec--gray { border-color: var(--ui-border); background: var(--ui-surface); }
+.btn-anatomy-spec--gray { border-color: var(--ui-border); background: $use-surface-theme-gray-5; }
 .btn-anatomy-spec__val { font-weight: 700; color: var(--ui-text); }
 .btn-anatomy-spec__name,
 .btn-anatomy-spec__px { font-size: 0.85rem; color: var(--ui-text-secondary); }
@@ -271,7 +271,7 @@
 .btn-anatomy-table { width: 100%; border-collapse: collapse; min-width: rem(640px); }
 .btn-anatomy-table th,
 .btn-anatomy-table td { padding: 0.95rem 1rem; border-bottom: rem(1px) solid var(--ui-border); text-align: left; font-size: 0.95rem; }
-.btn-anatomy-table th { font-weight: 700; color: var(--ui-text-secondary); background: var(--ui-surface); }
+.btn-anatomy-table th { font-weight: 700; color: var(--ui-text-secondary); background: $use-surface-theme-gray-5; }
 .btn-anatomy-table-title { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: var(--ui-text-secondary); font-weight: 700; }
 .btn-anatomy-callout { display: flex; gap: 0.85rem; align-items: flex-start; padding: 1rem 1.1rem; border: rem(1px) solid var(--ui-border); border-radius: 1rem; background: var(--ui-surface-alt); }
 .btn-anatomy-callout strong { color: var(--ui-text); }
@@ -286,7 +286,7 @@
   padding: var(--space-16);
   border-radius: 1rem;
   border: rem(1px) solid var(--ui-border);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
 }
 .btn-tipo-card__demo { display: flex; justify-content: center; }
 .btn-tipo-card__name { font-weight: 700; color: var(--ui-text); }
@@ -320,7 +320,7 @@
   padding: var(--space-16);
   border-radius: 1rem;
   border: rem(1px) solid var(--ui-border);
-  background: var(--ui-surface);
+  background: $use-surface-theme-gray-5;
 }
 .bv-dl-card-top {
   display: flex;
