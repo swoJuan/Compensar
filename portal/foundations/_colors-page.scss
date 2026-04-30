@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  margin-bottom: var(--space-7);
+  margin-bottom: var(--space-48);
 }
 
 .ct-use-intro-body p {
@@ -13,7 +13,7 @@
   color: var(--ui-text);
   line-height: 1.7;
   max-width: rem(680px);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-8);
 }
 
 .ct-use-intro-body code {
@@ -44,7 +44,7 @@
 .ct-use-rule {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
+  gap: var(--space-8);
   background: $use-state-info-bg;
   border-radius: rem(12px);
   padding: rem(12px);
@@ -57,7 +57,7 @@
 
 /* Grupos */
 .ct-use-group {
-  margin-bottom: var(--space-7);
+  margin-bottom: var(--space-48);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
   overflow: hidden;
@@ -128,7 +128,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-32);
   width: 100%;
 }
 
@@ -187,7 +187,7 @@
 .ct-filter-tab:hover:not(.active) { color: var(--ui-text); }
 
 /* ——— SECTION ——— */
-.ct-section { margin-bottom: var(--space-10); }
+.ct-section { margin-bottom: var(--space-128); }
 
 .ct-section-title {
   font-family: var(--font-heading);
@@ -202,11 +202,11 @@
   color: var(--ui-text-muted);
   line-height: 1.6;
   max-width: rem(700px);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-32);
 }
 
 /* ——— GROUP ——— */
-.ct-group { margin-bottom: var(--space-6); }
+.ct-group { margin-bottom: var(--space-32); }
 
 .ct-group-header {
   display: flex;
@@ -429,7 +429,7 @@
   font-size: rem(12.5px);
   font-weight: 600;
   color: var(--ui-accent);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-8);
   word-break: break-all;
 }
 
@@ -472,7 +472,7 @@
 
 .ct-pop-utils {
   border-top: rem(1px) solid var(--ui-border);
-  padding-top: var(--space-3);
+  padding-top: var(--space-8);
 }
 .ct-pop-utils-label {
   font-size: rem(10px);
@@ -542,11 +542,11 @@
   background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(14px);
-  padding: var(--space-5);
-  margin-bottom: var(--space-6);
+  padding: var(--space-24);
+  margin-bottom: var(--space-32);
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--space-6);
+  gap: var(--space-32);
   align-items: stretch;
 }
 
@@ -580,7 +580,7 @@
   color: var(--ui-text-muted);
   line-height: 1.65;
   max-width: rem(720px);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-8);
 }
 
 .ct-util-intro code {
@@ -595,7 +595,7 @@
 .ct-util-guide {
   display: grid;
   grid-template-columns: repeat(3, minmax(rem(96px), 1fr));
-  gap: var(--space-3);
+  gap: var(--space-8);
   min-width: rem(360px);
 }
 
@@ -634,7 +634,7 @@
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
   background: var(--ui-surface);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-24);
 }
 
 .ct-util-tab {
@@ -684,7 +684,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: var(--space-5);
+  gap: var(--space-24);
   margin-bottom: var(--space-4);
 }
 
@@ -862,7 +862,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: rem(8px);
-  padding: var(--space-5);
+  padding: var(--space-24);
   border: rem(1px) dashed var(--ui-border);
   border-radius: rem(12px);
   background: var(--ui-surface);

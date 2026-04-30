@@ -140,29 +140,9 @@
   --radius-lg: var(--border-radius-lg);
   --radius-full: var(--border-radius-lg);
 
-  // Spacing aliases used by existing utilities/components.
+  // Spacing tokens — --space-2 through --space-128 are generated
+  // by the @each loop above from spacing-tokens.$tokens-light.
   --space-0: 0;
-  --space-1: var(--spacing-2px);
-  --space-2: var(--spacing-2px);
-  --space-3: var(--spacing-8px);
-  --space-4: var(--spacing-4px);
-  --space-5: var(--spacing-24px);
-  --space-6: var(--spacing-32px);
-  --space-7: var(--spacing-48px);
-  --space-8: var(--spacing-8px);
-  --space-12: var(--spacing-12px);
-  --space-16: var(--spacing-16px);
-  --space-24: var(--spacing-24px);
-  --space-32: var(--spacing-32px);
-  --space-40: var(--spacing-40px);
-  --space-48: var(--spacing-48px);
-  --space-56: var(--spacing-56px);
-  --space-64: var(--spacing-64px);
-  --space-72: var(--spacing-72px);
-  --space-80: var(--spacing-80px);
-  --space-96: var(--spacing-96px);
-  --space-128: var(--spacing-128px);
-  --space-10: var(--spacing-128px);
 
   // Typography aliases.
   --font-body: #{$font-body};

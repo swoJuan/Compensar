@@ -7,7 +7,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-4px);
+  gap: var(--space-4);
   border: none;
   border-radius: rem(8px);
   font-family: var(--font-body);
@@ -46,17 +46,17 @@
 .bv-shell {
   display: grid;
   grid-template-columns: minmax(rem(240px), rem(320px)) minmax(0, 1fr);
-  gap: var(--spacing-16px);
+  gap: var(--space-16);
   background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: 1rem;
-  padding: var(--spacing-16px);
-  margin-bottom: var(--spacing-24px);
+  padding: var(--space-16);
+  margin-bottom: var(--space-24);
 }
 .bv-panel,
 .bv-preview {
   display: grid;
-  gap: var(--spacing-16px);
+  gap: var(--space-16);
 }
 .bv-group-label {
   font-size: 0.75rem;
@@ -141,7 +141,7 @@
 }
 .bv-themes {
   display: grid;
-  gap: var(--spacing-12px);
+  gap: var(--space-12);
 }
 .bv-theme-card {
   border: rem(1px) solid var(--ui-border);
@@ -163,7 +163,7 @@
   background: var(--ui-surface-hover);
 }
 .bv-theme-canvas {
-  padding: var(--spacing-16px);
+  padding: var(--space-16);
   display: grid;
   place-items: center;
   min-height: rem(108px);
@@ -210,8 +210,8 @@
 }
 .bv-copy-btn {
   position: absolute;
-  top: var(--spacing-8px);
-  right: var(--spacing-8px);
+  top: var(--space-8);
+  right: var(--space-8);
   border: rem(1px) solid rgba(255,255,255,.12);
   border-radius: 0.75rem;
   background: rgba(255,255,255,.08);
@@ -226,16 +226,16 @@
 }
 .bv-copy-btn:hover { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.2); }
 .bv-code-body { position: relative; }
-#bv-code-pre { margin: 0; padding: var(--spacing-16px); background: var(--ui-code-bg); color: var(--ui-code-text); font-family: var(--font-code); font-size: rem(12.5px); line-height: 1.75; overflow-x: auto; min-height: rem(220px); }
+#bv-code-pre { margin: 0; padding: var(--space-16); background: var(--ui-code-bg); color: var(--ui-code-text); font-family: var(--font-code); font-size: rem(12.5px); line-height: 1.75; overflow-x: auto; min-height: rem(220px); }
 .btn-anatomy-rules {
   display: grid;
-  gap: var(--spacing-16px);
-  margin-bottom: var(--spacing-24px);
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
 }
 .btn-anatomy-rule {
   display: grid;
-  gap: var(--spacing-12px);
-  padding: var(--spacing-16px);
+  gap: var(--space-12);
+  padding: var(--space-16);
   border: rem(1px) solid var(--ui-border);
   border-radius: 1rem;
   background: var(--ui-surface-alt);
@@ -247,7 +247,7 @@
   font-weight: 700;
   color: var(--ui-text);
 }
-.btn-anatomy-demo { margin-top: var(--spacing-64px); }
+.btn-anatomy-demo { margin-top: var(--space-64); }
 .btn-anatomy-rule__specs {
   display: grid;
   gap: 0.75rem;
@@ -277,13 +277,13 @@
 .btn-anatomy-callout strong { color: var(--ui-text); }
 .btn-tipos-grid {
   display: grid;
-  gap: var(--spacing-16px);
+  gap: var(--space-16);
   grid-template-columns: repeat(auto-fit, minmax(rem(220px), 1fr));
 }
 .btn-tipo-card {
   display: grid;
   gap: 0.75rem;
-  padding: var(--spacing-16px);
+  padding: var(--space-16);
   border-radius: 1rem;
   border: rem(1px) solid var(--ui-border);
   background: var(--ui-surface);
@@ -297,7 +297,7 @@
   gap: 0.75rem;
   grid-template-columns: minmax(rem(130px), 1fr) repeat(5, minmax(rem(90px), 1fr));
   align-items: center;
-  margin-top: var(--spacing-16px);
+  margin-top: var(--space-16);
 }
 .btn-estados-cell--header { font-weight: 700; color: var(--ui-text-secondary); }
 .btn-estados-cell--label { font-weight: 700; color: var(--ui-text); }
@@ -310,14 +310,14 @@
 .mp-btn--demo-pressed { box-shadow: var(--shadow-button-pressed); }
 .bv-dl-grid {
   display: grid;
-  gap: var(--spacing-16px);
+  gap: var(--space-16);
   grid-template-columns: repeat(auto-fit, minmax(rem(240px), 1fr));
-  margin-top: var(--spacing-16px);
+  margin-top: var(--space-16);
 }
 .bv-dl-card {
   display: grid;
   gap: 1rem;
-  padding: var(--spacing-16px);
+  padding: var(--space-16);
   border-radius: 1rem;
   border: rem(1px) solid var(--ui-border);
   background: var(--ui-surface);

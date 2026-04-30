@@ -6,13 +6,13 @@
 .ct-downloads {
   display: flex;
   align-items: center;
-  gap: var(--spacing-8px);
+  gap: var(--space-8);
   flex-wrap: wrap;
-  padding: var(--spacing-16px) var(--spacing-24px);
+  padding: var(--space-16) var(--space-24);
   background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
-  margin-bottom: var(--spacing-32px);
+  margin-bottom: var(--space-32);
 }
 
 .ct-downloads-label {
@@ -21,7 +21,7 @@
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--ui-text-muted);
-  margin-right: var(--spacing-4px);
+  margin-right: var(--space-4);
   flex-shrink: 0;
 }
 

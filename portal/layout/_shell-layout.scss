@@ -12,16 +12,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--spacing-24px);
+  padding: 0 var(--space-24);
   z-index: var(--z-header, 300);
-  gap: var(--spacing-16px);
+  gap: var(--space-16);
   box-shadow: 0 rem(1px) 0 var(--ui-border), 0 rem(2px) rem(8px) rgba(0,0,0,.04);
 }
 
 .header-brand {
   display: flex;
   align-items: center;
-  gap: var(--spacing-8px);
+  gap: var(--space-8);
   text-decoration: none;
   color: var(--ui-text);
 }
@@ -61,7 +61,7 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: var(--spacing-16px);
+  gap: var(--space-16);
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -152,19 +152,19 @@
   background: var(--ui-surface);
   border-right: rem(1px) solid var(--ui-border);
   overflow-y: auto;
-  padding: var(--spacing-16px) 0 var(--spacing-64px);
+  padding: var(--space-16) 0 var(--space-64);
   scrollbar-width: thin;
   scrollbar-color: var(--ui-border) transparent;
 }
 
 .sidebar-section {
-  padding: var(--spacing-16px) var(--spacing-8px) var(--spacing-4px);
+  padding: var(--space-16) var(--space-8) var(--space-4);
 }
 
 .sidebar-section + .sidebar-section {
   border-top: rem(1px) solid var(--ui-border);
-  margin-top: var(--spacing-4px);
-  padding-top: var(--spacing-16px);
+  margin-top: var(--space-4);
+  padding-top: var(--space-16);
 }
 
 .sidebar-section-label {
@@ -173,7 +173,7 @@
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--ui-text-muted);
-  padding: 0 var(--spacing-8px) var(--spacing-8px);
+  padding: 0 var(--space-8) var(--space-8);
   opacity: .7;
 }
 
@@ -181,7 +181,7 @@
   display: flex;
   align-items: center;
   gap: rem(8px);
-  padding: rem(7px) var(--spacing-8px);
+  padding: rem(7px) var(--space-8);
   border-radius: rem(7px);
   text-decoration: none;
   color: var(--ui-text-muted);

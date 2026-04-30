@@ -15,7 +15,7 @@
   </div>
 
   <!-- Download bar -->
-  <div class="ct-downloads" style="margin-bottom:var(--space-6)">
+  <div class="ct-downloads sp-downloads-bar">
     <span class="ct-downloads-label"><span class="material-symbols-rounded">download</span> Descargar tokens</span>
     <button class="ct-download-btn" onclick="spDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
     <button class="ct-download-btn" onclick="spDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
@@ -36,7 +36,7 @@
         <span>Múltiplos de <strong>8px</strong>: 8, 16, 24, 32, 48, 64, 96, 128</span>
       </div>
       <div class="sp-base-info-row sp-restricted-row">
-        <span class="material-symbols-rounded sp-info-icon-sm" style="color:var(--base-yellow-80)">warning</span>
+        <span class="material-symbols-rounded sp-info-icon-sm">warning</span>
         <span><strong>Uso restringido:</strong> 2px, 4px, 12px — solo cuando el diseño lo requiere explícitamente.</span>
       </div>
       <div class="sp-base-info-row">
@@ -57,11 +57,9 @@
       <thead>
         <tr>
           <th class="spc-th-vis">Visual</th>
-          <th class="spc-th-token">Token</th>
-          <th class="spc-th-val">Valor</th>
           <th class="spc-th-var">Variable CSS</th>
-          <th class="spc-th-cls">Clases recomendadas</th>
-          <th class="spc-th-tipo">Tipo</th>
+          <th class="spc-th-rem">rem</th>
+          <th class="spc-th-cls">Clases</th>
           <th class="spc-th-copy"></th>
         </tr>
       </thead>
@@ -136,7 +134,7 @@ $spacers: (
     <button class="sp-code-tab" onclick="spCodeTab(this,'spc-css')"><span class="material-symbols-rounded">css</span> CSS vars</button>
     <button class="sp-code-tab" onclick="spCodeTab(this,'spc-stack')"><span class="material-symbols-rounded">view_agenda</span> Stack pattern</button>
   </div>
-  <div class="sp-code-block" style="border-radius:0 12px 12px 12px">
+  <div class="sp-code-block sp-code-block--tabs">
     <button class="sp-code-copy" onclick="spCopyCode('spc-active',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
     <pre class="sp-code-pre sp-code-active" id="spc-html">&lt;!-- Padding + Margin con clases utilitarias --&gt;
 &lt;div class="p-16 mb-24"&gt;
@@ -232,318 +230,12 @@ $spacers: (
 
 </section>
 
-<style>
-/* ═══ SPACING v2 ═══════════════════════════════════════ */
-
-/* ── Scoped new tokens (avoid conflicting with global --space-N) */
-#espaciado {
-  --space-2:   2px;
-  --space-4:   4px;
-  --space-8:   8px;
-  --space-12:  12px;
-  --space-16:  16px;
-  --space-24:  24px;
-  --space-32:  32px;
-  --space-48:  48px;
-  --space-64:  64px;
-  --space-80:  80px;
-  --space-96:  96px;
-  --space-128: 128px;
-}
-
-/* ── Utility classes (scoped to #espaciado) ────────────── */
-/* Padding */
-#espaciado .p-8   { padding: var(--space-8);  }
-#espaciado .p-16  { padding: var(--space-16); }
-#espaciado .p-24  { padding: var(--space-24); }
-#espaciado .p-32  { padding: var(--space-32); }
-#espaciado .p-48  { padding: var(--space-48); }
-#espaciado .p-64  { padding: var(--space-64); }
-#espaciado .pt-8  { padding-top: var(--space-8);  }
-#espaciado .pt-16 { padding-top: var(--space-16); }
-#espaciado .pt-24 { padding-top: var(--space-24); }
-#espaciado .pb-16 { padding-bottom: var(--space-16); }
-#espaciado .pb-24 { padding-bottom: var(--space-24); }
-#espaciado .pb-32 { padding-bottom: var(--space-32); }
-#espaciado .px-16 { padding-left: var(--space-16); padding-right: var(--space-16); }
-#espaciado .px-24 { padding-left: var(--space-24); padding-right: var(--space-24); }
-#espaciado .px-32 { padding-left: var(--space-32); padding-right: var(--space-32); }
-#espaciado .py-16 { padding-top: var(--space-16); padding-bottom: var(--space-16); }
-#espaciado .py-24 { padding-top: var(--space-24); padding-bottom: var(--space-24); }
-#espaciado .py-64 { padding-top: var(--space-64); padding-bottom: var(--space-64); }
-/* Margin */
-#espaciado .m-16  { margin: var(--space-16); }
-#espaciado .m-24  { margin: var(--space-24); }
-#espaciado .mt-8  { margin-top: var(--space-8);  }
-#espaciado .mt-16 { margin-top: var(--space-16); }
-#espaciado .mt-24 { margin-top: var(--space-24); }
-#espaciado .mb-0  { margin-bottom: 0; }
-#espaciado .mb-8  { margin-bottom: var(--space-8);  }
-#espaciado .mb-16 { margin-bottom: var(--space-16); }
-#espaciado .mb-24 { margin-bottom: var(--space-24); }
-#espaciado .mb-32 { margin-bottom: var(--space-32); }
-#espaciado .mx-16 { margin-left: var(--space-16); margin-right: var(--space-16); }
-#espaciado .my-24 { margin-top: var(--space-24); margin-bottom: var(--space-24); }
-/* Gap */
-#espaciado .gap-8  { gap: var(--space-8);  }
-#espaciado .gap-16 { gap: var(--space-16); }
-#espaciado .gap-24 { gap: var(--space-24); }
-#espaciado .gap-32 { gap: var(--space-32); }
-/* Stack */
-#espaciado .stack-8  > * + * { margin-top: var(--space-8);  }
-#espaciado .stack-16 > * + * { margin-top: var(--space-16); }
-#espaciado .stack-24 > * + * { margin-top: var(--space-24); }
-#espaciado .stack-32 > * + * { margin-top: var(--space-32); }
-#espaciado .stack-48 > * + * { margin-top: var(--space-48); }
-
-/* ── Section label ────────────────────────────────────── */
-.sp-section-label {
-  display:flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:700;color:var(--ui-text-muted);
-  letter-spacing:.08em;text-transform:uppercase;
-  margin:var(--space-7) 0 var(--space-5);
-  border-bottom:1px solid var(--ui-border);padding-bottom:var(--space-3);
-}
-.sp-section-label .material-symbols-rounded{font-size:15px;color:var(--ui-accent)}
-
-/* ── Figma bar (shared) ────────────────────────────────── */
-.ty-figma-bar {
-  display:flex;align-items:center;gap:var(--space-3);
-  background:var(--ui-surface-alt);border-left:3px solid var(--ui-accent);
-  border-radius:0 8px 8px 0;padding:var(--space-3) var(--space-5);
-  font-size:13px;color:var(--ui-text);margin-bottom:var(--space-5);flex-wrap:wrap;
-}
-.ty-figma-bar .material-symbols-rounded{color:var(--ui-accent);flex-shrink:0}
-.ty-figma-bar code{font-family:var(--font-code);font-size:11.5px;background:var(--ui-surface);padding:1px 5px;border-radius:4px;color:var(--ui-accent)}
-.ty-figma-bar .ct-figma-link{margin-left:auto;white-space:nowrap}
-
-/* ── Badge restricted ─────────────────────────────────── */
-.sp-badge-restricted {
-  display:inline-block;font-size:9.5px;font-weight:700;
-  background:#fff4e0;color:#a0620f;border:1px solid #f5d07a;
-  border-radius:4px;padding:1px 6px;letter-spacing:.04em;text-transform:uppercase;
-}
-.sp-badge-standard {
-  display:inline-block;font-size:9.5px;font-weight:700;
-  background:#e6f7e8;color:#1a7a3c;border:1px solid #9fe0b8;
-  border-radius:4px;padding:1px 6px;letter-spacing:.04em;text-transform:uppercase;
-}
-
-/* ── Base card ────────────────────────────────────────── */
-.sp-base-grid {
-  display:grid;grid-template-columns:200px 1fr;gap:var(--space-5);
-  margin-bottom:var(--space-6);
-}
-.sp-base-card {
-  background:var(--ui-surface);border:1px solid var(--ui-border);
-  border-radius:14px;padding:var(--space-5);text-align:center;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
-}
-.sp-base-num {
-  font-size:3.5rem;font-weight:900;color:var(--ui-accent);line-height:1;
-  font-family:var(--font-heading);
-}
-.sp-base-unit { font-size:1.5rem;color:var(--ui-text-muted);font-weight:400; }
-.sp-base-label { font-size:11px;font-weight:700;color:var(--ui-text-muted);letter-spacing:.05em;text-transform:uppercase; }
-.sp-base-desc { font-size:12px;color:var(--ui-text-muted);line-height:1.6;text-align:left }
-.sp-base-info {
-  background:var(--ui-surface);border:1px solid var(--ui-border);
-  border-radius:14px;padding:var(--space-5);
-  display:flex;flex-direction:column;justify-content:center;gap:var(--space-3);
-}
-.sp-base-info-row { display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--ui-text) }
-.sp-info-icon-sm { font-size:16px;flex-shrink:0;color:var(--base-green-70) }
-.sp-restricted-row .sp-info-icon-sm { color:var(--base-yellow-80) }
-.sp-base-info-row code { font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);padding:1px 5px;border-radius:4px;color:var(--ui-accent) }
-
-/* ── Token table ──────────────────────────────────────── */
-.sp-table-wrap {
-  overflow-x:auto;margin-bottom:var(--space-3);
-  border-radius:12px;border:1px solid var(--ui-border);
-}
-.sp-table { width:100%;border-collapse:collapse;font-size:13px }
-.sp-table thead th {
-  background:var(--ui-surface-alt);font-size:10px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.06em;color:var(--ui-text-muted);
-  padding:10px 12px;text-align:left;border-bottom:1px solid var(--ui-border);
-  white-space:nowrap;
-}
-.spc-th-vis   { width:160px;min-width:80px }
-.spc-th-token { width:140px }
-.spc-th-val   { width:56px }
-.spc-th-var   { width:148px }
-.spc-th-cls   { }
-.spc-th-tipo  { width:100px }
-.spc-th-copy  { width:40px }
-.sp-table .sp-group-row td {
-  background:var(--ui-surface-alt);padding:5px 12px;
-  border-bottom:1px solid var(--ui-border);
-}
-.sp-group-lbl {
-  font-size:9.5px;font-weight:700;text-transform:uppercase;
-  letter-spacing:.1em;color:var(--ui-text-muted);
-}
-.sp-table .sp-data-row td {
-  padding:9px 12px;border-bottom:1px solid var(--ui-border);
-  vertical-align:middle;background:var(--ui-surface);transition:background .1s;
-}
-.sp-table .sp-data-row:hover td { background:var(--ui-surface-alt) }
-.sp-table .sp-data-row:last-child td { border-bottom:none }
-.sp-table .sp-data-row.sp-restricted td { border-left:3px solid #f5d07a }
-/* Visual bar */
-.sp-bar-cell { display:flex;align-items:center;gap:8px }
-.sp-bar-wrap2 { flex:1;height:6px;background:var(--ui-border);border-radius:3px;overflow:hidden;min-width:40px }
-.sp-bar-fill  { height:100%;background:linear-gradient(90deg,var(--ui-accent),var(--product-teal-60));border-radius:3px;min-width:2px }
-.sp-bar-fill.restricted { background:linear-gradient(90deg,#f5d07a,#ffc154) }
-.sp-bar-px { font-size:11px;font-weight:600;color:var(--ui-text);font-family:var(--font-code);min-width:36px }
-/* Token chip */
-.sp-token-chip {
-  font-family:var(--font-code);font-size:10.5px;
-  background:var(--ui-surface-alt);border:1px solid var(--ui-border);
-  border-radius:5px;padding:2px 7px;cursor:pointer;
-  color:var(--base-blue-70);display:inline-block;
-  transition:background .12s,border-color .12s;white-space:nowrap;
-}
-.sp-token-chip:hover { background:var(--base-blue-40);border-color:var(--base-blue-60) }
-.sp-var-chip {
-  font-family:var(--font-code);font-size:10.5px;
-  background:var(--ui-tag-bg);border:1px solid transparent;
-  border-radius:5px;padding:2px 7px;cursor:pointer;
-  color:var(--ui-accent);display:inline-block;
-  transition:background .12s;white-space:nowrap;
-}
-.sp-var-chip:hover { background:var(--ui-surface-alt) }
-/* Classes cell */
-.sp-cls-list { display:flex;flex-wrap:wrap;gap:4px }
-.sp-cls-chip {
-  font-family:var(--font-code);font-size:9.5px;
-  background:var(--ui-surface-alt);border:1px solid var(--ui-border);
-  border-radius:4px;padding:1px 6px;cursor:pointer;
-  color:var(--product-violet-50);
-  transition:background .12s;white-space:nowrap;
-}
-.sp-cls-chip:hover { background:var(--product-violet-5) }
-/* Copy btn */
-.sp-row-copy {
-  background:none;border:1px solid var(--ui-border);border-radius:6px;
-  padding:4px 6px;cursor:pointer;color:var(--ui-text-muted);
-  transition:all .12s;display:flex;align-items:center;
-}
-.sp-row-copy:hover { border-color:var(--ui-accent);color:var(--ui-accent);background:var(--ui-tag-bg) }
-.sp-row-copy .material-symbols-rounded { font-size:13px }
-
-/* ── Utility panels ───────────────────────────────────── */
-.sp-util-tabs {
-  display:flex;gap:4px;background:var(--ui-surface-alt);
-  border-radius:10px 10px 0 0;padding:4px;border:1px solid var(--ui-border);
-  border-bottom:none;
-}
-.sp-util-tab {
-  display:inline-flex;align-items:center;gap:5px;
-  background:none;border:none;border-radius:7px;padding:6px 14px;
-  font-size:12px;font-weight:500;color:var(--ui-text-muted);cursor:pointer;
-  transition:background .15s,color .15s;
-}
-.sp-util-tab .material-symbols-rounded { font-size:14px }
-.sp-util-tab.active { background:var(--ui-surface);color:var(--ui-accent);box-shadow:0 1px 3px rgba(0,0,0,.1) }
-.sp-util-panel {
-  display:none;background:var(--ui-surface);
-  border:1px solid var(--ui-border);border-radius:0 0 10px 10px;
-  padding:var(--space-5);margin-bottom:var(--space-3);
-}
-.sp-util-panel.active { display:block }
-.sp-util-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--space-3) }
-.sp-util-item {
-  background:var(--ui-surface-alt);border:1px solid var(--ui-border);
-  border-radius:8px;padding:var(--space-3) var(--space-4);
-  display:flex;flex-direction:column;gap:5px;
-}
-.sp-util-class { font-family:var(--font-code);font-size:12px;font-weight:700;color:var(--product-violet-50);cursor:pointer }
-.sp-util-class:hover { color:var(--product-violet-70) }
-.sp-util-prop { font-size:10.5px;color:var(--ui-text-muted);font-family:var(--font-code) }
-.sp-util-val  { font-size:10px;color:var(--ui-text-muted) }
-/* Stack demo */
-.sp-stack-demo-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);margin-top:var(--space-4) }
-.sp-stack-demo { background:var(--ui-surface-alt);border:1px solid var(--ui-border);border-radius:8px;padding:var(--space-4) }
-.sp-stack-demo-label { font-size:10px;font-weight:700;color:var(--ui-accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:var(--space-3) }
-.sp-stack-item { background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:6px;padding:8px 12px;font-size:12px;color:var(--ui-text);position:relative }
-.sp-stack-gap-indicator { display:flex;align-items:center;gap:4px;font-size:9px;color:var(--ui-accent);padding:2px 0;font-family:var(--font-code) }
-.sp-stack-gap-line { flex:1;border-top:1px dashed var(--ui-accent);opacity:.5 }
-
-/* ── Bootstrap card ───────────────────────────────────── */
-.sp-bs-grid { display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);margin-bottom:var(--space-3) }
-.sp-bs-card { background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:12px;overflow:hidden }
-.sp-bs-card-head {
-  background:var(--ui-surface-alt);border-bottom:1px solid var(--ui-border);
-  padding:var(--space-3) var(--space-5);font-size:12px;font-weight:700;color:var(--ui-text);
-}
-.sp-bs-card-head code { font-family:var(--font-code);font-size:11px;color:var(--ui-accent) }
-
-/* ── Code blocks ──────────────────────────────────────── */
-.sp-code-block { position:relative;background:var(--ui-code-bg);border-radius:10px;overflow:hidden }
-.sp-code-copy {
-  position:absolute;top:6px;right:8px;
-  display:inline-flex;align-items:center;gap:3px;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
-  border-radius:5px;padding:2px 8px;font-size:10px;color:#aaa;cursor:pointer;
-  transition:background .12s,color .12s;
-}
-.sp-code-copy:hover { background:rgba(255,255,255,.14);color:#fff }
-.sp-code-copy .material-symbols-rounded { font-size:11px }
-.sp-code-pre {
-  font-family:var(--font-code);font-size:11.5px;line-height:1.7;
-  color:var(--ui-code-text);padding:28px 16px 14px;margin:0;
-  overflow-x:auto;white-space:pre;display:none;
-}
-.sp-code-pre.sp-code-active { display:block }
-
-/* ── Code tabs ────────────────────────────────────────── */
-.sp-code-tabs-bar {
-  display:flex;gap:4px;background:var(--ui-surface-alt);
-  border-radius:10px 10px 0 0;padding:4px;border:1px solid var(--ui-border);
-  border-bottom:none;
-}
-.sp-code-tab {
-  display:inline-flex;align-items:center;gap:5px;
-  background:none;border:none;border-radius:7px;padding:6px 14px;
-  font-size:12px;font-weight:500;color:var(--ui-text-muted);cursor:pointer;
-  transition:background .15s,color .15s;
-}
-.sp-code-tab .material-symbols-rounded { font-size:14px }
-.sp-code-tab.active { background:var(--ui-surface);color:var(--ui-accent);box-shadow:0 1px 3px rgba(0,0,0,.1) }
-
-/* ── Accessibility block ──────────────────────────────── */
-.sp-access-block {
-  display:flex;gap:var(--space-5);
-  background:var(--ui-surface);border:1px solid var(--ui-border);
-  border-radius:14px;padding:var(--space-6);margin-top:var(--space-7);
-}
-.sp-access-icon { font-size:32px;color:var(--ui-accent);flex-shrink:0 }
-.sp-access-icon .material-symbols-rounded { font-size:32px }
-.sp-access-title { font-size:14px;font-weight:700;color:var(--ui-text);margin-bottom:var(--space-4) }
-.sp-access-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-5) }
-.sp-access-sub { font-size:11px;font-weight:700;color:var(--ui-text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px }
-.sp-access-list { margin:0;padding-left:16px;display:flex;flex-direction:column;gap:3px }
-.sp-access-list li { font-size:12.5px;color:var(--ui-text) }
-
-/* ── Responsive ───────────────────────────────────────── */
-@media(max-width:900px){
-  .sp-base-grid{grid-template-columns:1fr}
-  .sp-bs-grid{grid-template-columns:1fr}
-  .sp-stack-demo-grid{grid-template-columns:1fr}
-  .sp-access-grid{grid-template-columns:1fr}
-  .spc-th-vis,.spc-th-cls{display:none}
-}
-@media(max-width:600px){
-  .sp-util-tabs{flex-wrap:wrap}
-}
-</style>
 
 <script>
 (function(){
 
 /* ─── Token data ─────────────────────────────────────── */
-const SP_TOKENS = [
+let SP_TOKENS = [
   { group:'Micro', token:'spacing/2px',  px:2,   var:'--space-2',   usage:'restricted',
     classes:[], desc:'Separador fino, border-gap' },
   { group:'Micro', token:'spacing/4px',  px:4,   var:'--space-4',   usage:'restricted',
@@ -582,6 +274,11 @@ function spCopyText(text, el){
 window.spCopyText = spCopyText;
 
 /* ─── Render token table ──────────────────────────────── */
+function toRem(px) {
+  const r = px / 16;
+  return (Math.round(r * 1000) / 1000) + 'rem';
+}
+
 function renderTable(){
   const tbody = document.getElementById('sp-token-tbody');
   if(!tbody) return;
@@ -589,7 +286,7 @@ function renderTable(){
   let lastGroup = '';
   SP_TOKENS.forEach(t=>{
     if(t.group !== lastGroup){
-      html += `<tr class="sp-group-row"><td colspan="7"><span class="sp-group-lbl">${t.group}</span></td></tr>`;
+      html += `<tr class="sp-group-row"><td colspan="5"><span class="sp-group-lbl">${t.group}</span></td></tr>`;
       lastGroup = t.group;
     }
     const pct = Math.max((t.px/MAX_PX)*100, 1.5).toFixed(1);
@@ -597,7 +294,7 @@ function renderTable(){
     const barCls = isR ? 'sp-bar-fill restricted' : 'sp-bar-fill';
     const clsHtml = t.classes.length
       ? t.classes.map(c=>`<code class="sp-cls-chip" onclick="spCopyText('${c}',this)">${c}</code>`).join('')
-      : '<span style="font-size:10px;color:var(--ui-text-muted)">—</span>';
+      : '<span class="sp-empty-cell">—</span>';
     html += `
 <tr class="sp-data-row${isR?' sp-restricted':''}">
   <td>
@@ -606,21 +303,34 @@ function renderTable(){
       <div class="sp-bar-wrap2"><div class="${barCls}" style="width:${pct}%"></div></div>
     </div>
   </td>
-  <td><code class="sp-token-chip" onclick="spCopyText('${t.token}',this)">${t.token}</code></td>
-  <td><strong style="font-family:var(--font-code);font-size:12px">${t.px}px</strong></td>
   <td><code class="sp-var-chip" onclick="spCopyText('var(${t.var})',this)">${t.var}</code></td>
+  <td><strong class="sp-px-strong">${toRem(t.px)}</strong></td>
   <td><div class="sp-cls-list">${clsHtml}</div></td>
-  <td>${isR
-    ? '<span class="sp-badge-restricted">restringido</span>'
-    : '<span class="sp-badge-standard">standard</span>'}</td>
   <td><button class="sp-row-copy" onclick="spCopyText('var(${t.var})',this)" title="Copiar variable CSS"><span class="material-symbols-rounded">content_copy</span></button></td>
 </tr>`;
   });
   tbody.innerHTML = html;
 }
 
+function spAttachTokenClasses(tokens, utils){
+  const classMap = {};
+  ['padding','margin','gap','stack'].forEach(group => {
+    (utils[group] || []).forEach(u => {
+      const m = u.val.match(/--space-(\d+)/);
+      if (!m) return;
+      const key = Number.parseInt(m[1], 10);
+      if (!classMap[key]) classMap[key] = [];
+      classMap[key].push(u.cls);
+    });
+  });
+  return tokens.map(t => ({
+    ...t,
+    classes: Array.from(new Set(classMap[t.px] || t.classes || []))
+  }));
+}
+
 /* ─── Utility panels ──────────────────────────────────── */
-const UTIL_DATA = {
+let UTIL_DATA = {
   padding: [
     { cls:'.p-8',   prop:'padding',         val:'var(--space-8)',  px:'8px'  },
     { cls:'.p-16',  prop:'padding',         val:'var(--space-16)', px:'16px' },
@@ -678,17 +388,21 @@ function renderUtilPanel(id, items){
 function renderStackPanel(){
   const el = document.getElementById('util-stack');
   if(!el) return;
-  const stacks = [
-    { cls:'stack-8',  px:'8px',  label:'.stack-8' },
-    { cls:'stack-16', px:'16px', label:'.stack-16' },
-    { cls:'stack-24', px:'24px', label:'.stack-24' },
-  ];
-  let html = `<p style="font-size:13px;color:var(--ui-text-muted);margin-bottom:var(--space-4)">
-    Aplica <code style="font-family:var(--font-code);font-size:11px;background:var(--ui-surface-alt);padding:1px 5px;border-radius:4px">margin-top</code>
+  const stacks = (UTIL_DATA.stack || [])
+    .map(s => {
+      const n = (s.cls.match(/\.stack-(\d+)/) || [])[1];
+      return n ? { cls:`stack-${n}`, px:`${n}px`, label:`.stack-${n}`, n:Number.parseInt(n, 10) } : null;
+    })
+    .filter(Boolean)
+    .sort((a,b)=>a.n-b.n);
+  const visualStacks = stacks.filter(s=>s.n>0).slice(0,3);
+
+  let html = `<p class="sp-stack-intro">
+    Aplica <code>margin-top</code>
     automáticamente a cada hijo excepto el primero. Ideal para listas, formularios y bloques de contenido vertical.
   </p>`;
   html += '<div class="sp-stack-demo-grid">';
-  stacks.forEach(s=>{
+  visualStacks.forEach(s=>{
     html += `<div class="sp-stack-demo">
       <div class="sp-stack-demo-label">${s.label}</div>
       <div class="${s.cls}">
@@ -701,11 +415,11 @@ function renderStackPanel(){
     </div>`;
   });
   html += '</div>';
-  html += `<div class="sp-util-grid" style="margin-top:var(--space-5)">`;
-  [{cls:'stack-8',px:'8px'},{cls:'stack-16',px:'16px'},{cls:'stack-24',px:'24px'},{cls:'stack-32',px:'32px'},{cls:'stack-48',px:'48px'}].forEach(s=>{
+  html += `<div class="sp-util-grid sp-util-grid--mt">`;
+  stacks.forEach(s=>{
     html += `<div class="sp-util-item">
       <span class="sp-util-class" onclick="spCopyText('.${s.cls}',this)">.${s.cls}</span>
-      <span class="sp-util-prop">> * + * { margin-top: var(--space-${parseInt(s.px)}); }</span>
+      <span class="sp-util-prop">> * + * { margin-top: var(--space-${s.n}); }</span>
       <span class="sp-util-val">/* ${s.px} */</span>
     </div>`;
   });
@@ -739,7 +453,132 @@ function spCopyCode(id, btn){
 window.spCopyCode = spCopyCode;
 
 /* ─── Downloads ───────────────────────────────────────── */
-function spDownloadCSS(){
+const SP_DIRECT_DOC = location.pathname.includes('/docs/');
+const CORE_SPACING_TOKENS_URL = SP_DIRECT_DOC ? '../../../core/abstracts/_tokens-spacing.scss' : 'core/abstracts/_tokens-spacing.scss';
+const CORE_SPACING_UTILS_URL = SP_DIRECT_DOC ? '../../../core/utils/_spacing.scss' : 'core/utils/_spacing.scss';
+
+async function spReadCoreSource(url){
+  try {
+    const res = await fetch(url);
+    return res.ok ? await res.text() : '';
+  } catch (_) {
+    return '';
+  }
+}
+
+function spParseTokensFromCore(tokensScss){
+  const list = [];
+  const re = /^\$spacing-(\d+)px:\s*([\d.]+)px;/gim;
+  let match;
+  while ((match = re.exec(tokensScss)) !== null) {
+    const px = Number.parseInt(match[1], 10);
+    list.push({
+      group: px <= 12 ? (px === 12 ? 'Excepción' : 'Micro') : px <= 24 ? 'Pequeño' : px <= 48 ? 'Mediano' : px <= 96 ? 'Grande' : 'Extra grande',
+      token: `spacing/${px}px`,
+      px,
+      var: `--space-${px}`,
+      usage: [2,4,12].includes(px) ? 'restricted' : 'standard',
+      classes: [],
+      desc: [2,4,12].includes(px) ? 'Uso restringido: requiere validación de diseño.' : 'Uso estándar del sistema de espaciado.'
+    });
+  }
+  return list.sort((a,b)=>a.px-b.px);
+}
+
+function spParseUtilitiesFromCore(utilsScss){
+  const out = { padding: [], margin: [], gap: [], stack: [] };
+  const spacesBlock = (utilsScss.match(/\$_spaces:\s*\(([\s\S]*?)\);/m) || [])[1] || '';
+  const nums = [];
+  spacesBlock.replace(/'([0-9]+)'\s*:\s*\$space-([0-9]+)/g, (_, key) => {
+    nums.push(Number.parseInt(key, 10));
+    return '';
+  });
+
+  const scales = Array.from(new Set(nums)).sort((a,b)=>a-b);
+  if (scales.length) {
+    scales.forEach(n => {
+      const v = `var(--space-${n})`;
+      out.padding.push({ cls:`.p-${n}`,  prop:'padding', val:v, px:`${n}px`, css:`padding: ${v};` });
+      out.padding.push({ cls:`.pt-${n}`, prop:'padding-top', val:v, px:`${n}px`, css:`padding-top: ${v};` });
+      out.padding.push({ cls:`.pr-${n}`, prop:'padding-right', val:v, px:`${n}px`, css:`padding-right: ${v};` });
+      out.padding.push({ cls:`.pb-${n}`, prop:'padding-bottom', val:v, px:`${n}px`, css:`padding-bottom: ${v};` });
+      out.padding.push({ cls:`.pl-${n}`, prop:'padding-left', val:v, px:`${n}px`, css:`padding-left: ${v};` });
+      out.padding.push({ cls:`.px-${n}`, prop:'padding-left, padding-right', val:`${v} | ${v}`, px:`${n}px`, css:`padding-left: ${v}; padding-right: ${v};` });
+      out.padding.push({ cls:`.py-${n}`, prop:'padding-top, padding-bottom', val:`${v} | ${v}`, px:`${n}px`, css:`padding-top: ${v}; padding-bottom: ${v};` });
+
+      out.margin.push({ cls:`.m-${n}`,  prop:'margin', val:v, px:`${n}px`, css:`margin: ${v};` });
+      out.margin.push({ cls:`.mt-${n}`, prop:'margin-top', val:v, px:`${n}px`, css:`margin-top: ${v};` });
+      out.margin.push({ cls:`.mr-${n}`, prop:'margin-right', val:v, px:`${n}px`, css:`margin-right: ${v};` });
+      out.margin.push({ cls:`.mb-${n}`, prop:'margin-bottom', val:v, px:`${n}px`, css:`margin-bottom: ${v};` });
+      out.margin.push({ cls:`.ml-${n}`, prop:'margin-left', val:v, px:`${n}px`, css:`margin-left: ${v};` });
+      out.margin.push({ cls:`.mx-${n}`, prop:'margin-left, margin-right', val:`${v} | ${v}`, px:`${n}px`, css:`margin-left: ${v}; margin-right: ${v};` });
+      out.margin.push({ cls:`.my-${n}`, prop:'margin-top, margin-bottom', val:`${v} | ${v}`, px:`${n}px`, css:`margin-top: ${v}; margin-bottom: ${v};` });
+
+      out.gap.push({ cls:`.gap-${n}`, prop:'gap', val:v, px:`${n}px`, css:`gap: ${v};` });
+      out.gap.push({ cls:`.gap-x-${n}`, prop:'column-gap', val:v, px:`${n}px`, css:`column-gap: ${v};` });
+      out.gap.push({ cls:`.gap-y-${n}`, prop:'row-gap', val:v, px:`${n}px`, css:`row-gap: ${v};` });
+
+      out.stack.push({ cls:`.stack-${n}`, prop:'> * + * { margin-top }', val:v, px:`${n}px` });
+    });
+
+    out.margin.push({ cls:'.mx-auto', prop:'margin-left, margin-right', val:'auto | auto', px:'auto', css:'margin-left: auto; margin-right: auto;' });
+    out.margin.push({ cls:'.ml-auto', prop:'margin-left', val:'auto', px:'auto', css:'margin-left: auto;' });
+    out.margin.push({ cls:'.mr-auto', prop:'margin-right', val:'auto', px:'auto', css:'margin-right: auto;' });
+    out.margin.push({ cls:'.mt-auto', prop:'margin-top', val:'auto', px:'auto', css:'margin-top: auto;' });
+    out.margin.push({ cls:'.mb-auto', prop:'margin-bottom', val:'auto', px:'auto', css:'margin-bottom: auto;' });
+  }
+
+  Object.keys(out).forEach(k => out[k].sort((a,b)=>a.cls.localeCompare(b.cls)));
+  return out;
+}
+
+function spBuildUtilitiesCss(utils){
+  const lines = [];
+  ['padding','margin','gap','stack'].forEach(group => {
+    if (!utils[group]?.length) return;
+    lines.push(`\n/* ${group.toUpperCase()} */`);
+    utils[group].forEach(u => {
+      if (group === 'stack') {
+        lines.push(`${u.cls} > * + * { margin-top: ${u.val}; }  /* ${u.px} */`);
+      } else {
+        lines.push(`${u.cls} { ${u.css || `${u.prop}: ${u.val};`} }  /* ${u.px} */`);
+      }
+    });
+  });
+  return lines.join('\n');
+}
+
+async function spHydrateFromCoreForUI(){
+  const [tokensScss, utilsScss] = await Promise.all([
+    spReadCoreSource(CORE_SPACING_TOKENS_URL),
+    spReadCoreSource(CORE_SPACING_UTILS_URL)
+  ]);
+  if (!tokensScss || !utilsScss) return;
+
+  const parsedTokens = spParseTokensFromCore(tokensScss);
+  const parsedUtils = spParseUtilitiesFromCore(utilsScss);
+  if (!parsedTokens.length) return;
+
+  SP_TOKENS = spAttachTokenClasses(parsedTokens, parsedUtils);
+  UTIL_DATA = parsedUtils;
+
+  const root = document.getElementById('espaciado');
+  if (root) {
+    SP_TOKENS.forEach(t => root.style.setProperty(`--space-${t.px}`, `${t.px}px`));
+  }
+}
+
+async function spDownloadCSS(){
+  const [tokensScss, utilsScss] = await Promise.all([
+    spReadCoreSource(CORE_SPACING_TOKENS_URL),
+    spReadCoreSource(CORE_SPACING_UTILS_URL)
+  ]);
+
+  let tokens = SP_TOKENS;
+  let utils = UTIL_DATA;
+  if (tokensScss) tokens = spParseTokensFromCore(tokensScss);
+  if (utilsScss) utils = spParseUtilitiesFromCore(utilsScss);
+
   const d = new Date().toISOString().split('T')[0];
   const lines = [
 `/* ════════════════════════════════════════════════════════════════════
@@ -749,6 +588,8 @@ function spDownloadCSS(){
    Generado  : ${d}
    Archivo   : spacing-tokens.css
    Base      : 8px · compatible Bootstrap 5
+  Core      : core/abstracts/_tokens-spacing.scss
+          core/utils/_spacing.scss
 
    CONTENIDO
    ─────────
@@ -774,7 +615,7 @@ function spDownloadCSS(){
    1. CUSTOM PROPERTIES
    ──────────────────────────────────────────────────────────────────── */
 :root {`];
-  SP_TOKENS.forEach(t=>{
+  tokens.forEach(t=>{
     const r = t.usage === 'restricted' ? '  /* ⚠ USO RESTRINGIDO — requiere justificación de diseño */' : '';
     lines.push(`  ${t.var}: ${t.px}px;${r}`);
   });
@@ -785,28 +626,31 @@ function spDownloadCSS(){
    Ej: <div class="p-16">  → padding: 16px
        <div class="pt-8">  → padding-top: 8px
    ──────────────────────────────────────────────────────────────────── */`);
-  UTIL_DATA.padding.forEach(u=> lines.push(`${u.cls} { ${u.prop}: ${u.val}; }  /* ${u.px} */`));
-  lines.push(`\n/* ─────────────────────────────────────────────────────────────────────
-   3. CLASES DE MARGIN
-   ──────────────────────────────────────────────────────────────────── */`);
-  UTIL_DATA.margin.forEach(u=> lines.push(`${u.cls} { ${u.prop}: ${u.val}; }  /* ${u.px} */`));
-  lines.push(`\n/* ─────────────────────────────────────────────────────────────────────
-   4. CLASES DE GAP
-   Uso en flex o grid: <div class="d-flex gap-16">
-   ──────────────────────────────────────────────────────────────────── */`);
-  UTIL_DATA.gap.forEach(u=> lines.push(`${u.cls} { ${u.prop}: ${u.val}; }  /* ${u.px} */`));
-  lines.push(`\n/* ─────────────────────────────────────────────────────────────────────
-   5. PATRÓN STACK
-   Espacia hijos directos verticalmente sin margin en el primero.
-   Ej: <ul class="stack-16"> → cada <li> separado 16px del anterior.
-   ──────────────────────────────────────────────────────────────────── */`);
-  [4,8,12,16,24,32,48,64].forEach(n=> lines.push(`.stack-${n} > * + * { margin-top: var(--space-${n}); }  /* ${n}px */`));
+  lines.push(spBuildUtilitiesCss(utils));
   lines.push('\n/* ── FIN: spacing-tokens.css ─── Compensar Medicina Prepagada ── */');
   const blob = new Blob([lines.join('\n')],{type:'text/css'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='spacing-tokens.css'; a.click();
 }
 
-function spDownloadSCSS(){
+async function spDownloadSCSS(){
+  const [tokensScss, utilsScss] = await Promise.all([
+    spReadCoreSource(CORE_SPACING_TOKENS_URL),
+    spReadCoreSource(CORE_SPACING_UTILS_URL)
+  ]);
+
+  if (tokensScss && utilsScss) {
+    const compiled = [
+      '// Generated from core/abstracts/_tokens-spacing.scss + core/utils/_spacing.scss',
+      tokensScss.trim(),
+      '',
+      '// Utility classes source',
+      utilsScss.trim()
+    ].join('\n');
+    const blob = new Blob([compiled],{type:'text/plain'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='_spacing-tokens.scss'; a.click();
+    return;
+  }
+
   const d = new Date().toISOString().split('T')[0];
   const lines = [
 `// ════════════════════════════════════════════════════════════════════
@@ -822,16 +666,14 @@ function spDownloadSCSS(){
 // 1. Variables Sass   ($space-16: 16px)
 // 2. Override $spacers de Bootstrap 5
 // 3. CSS custom properties en :root
-// 4. Mixin stack($size)
-// 5. Mixins de utilidad: p-n, m-n, gap-n
+// 4. Clases de utilidad (padding/margin/gap/stack)
 //
 // USO
 // ───
 // @use "spacing-tokens" as *;
 //
 // .mi-componente {
-//   padding: var(--space-16);   ← CSS puro
-//   @include p-16;              ← mixin Sass
+//   padding: var(--space-16);
 // }
 //
 // REGLA
@@ -872,36 +714,36 @@ $spacers: (
   lines.push(`}
 
 // ─────────────────────────────────────────────────────────────────────
-// 4. MIXIN STACK
-// Espaciado vertical entre hijos directos sin tocar el primer hijo.
-// Uso: @include stack(16);
-// ─────────────────────────────────────────────────────────────────────
-@mixin stack($size) {
-  > * + * { margin-top: var(--space-#{$size}); }
-}
-
-// Variantes precompiladas de stack
-@each $n in 4, 8, 12, 16, 24, 32, 48, 64 {
-  .stack-#{$n} { @include stack($n); }
-}
-
-// ─────────────────────────────────────────────────────────────────────
-// 5. MIXINS DE UTILIDAD
-// Uso: @include p-16; @include gap-24;
+// 4. CLASES DE UTILIDAD
 // ─────────────────────────────────────────────────────────────────────`);
-  [4,8,12,16,20,24,32,40,48,64,80,96,128].forEach(n=>{
-    if(SP_TOKENS.find(t=>t.px===n)){
-      lines.push(`@mixin p-${n}   { padding:  var(--space-${n}); }  // ${n}px`);
-      lines.push(`@mixin m-${n}   { margin:   var(--space-${n}); }  // ${n}px`);
-      lines.push(`@mixin gap-${n} { gap:      var(--space-${n}); }  // ${n}px`);
-    }
-  });
+  lines.push(...spBuildUtilitiesCss(UTIL_DATA).split('\n'));
   lines.push('\n// ── FIN: _spacing-tokens.scss ─── Compensar Medicina Prepagada ──');
   const blob = new Blob([lines.join('\n')],{type:'text/plain'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='_spacing-tokens.scss'; a.click();
 }
 
-function spDownloadJSON(){
+async function spDownloadJSON(){
+  const [tokensScss, utilsScss] = await Promise.all([
+    spReadCoreSource(CORE_SPACING_TOKENS_URL),
+    spReadCoreSource(CORE_SPACING_UTILS_URL)
+  ]);
+
+  let tokens = SP_TOKENS;
+  let utils = UTIL_DATA;
+  if (tokensScss) tokens = spParseTokensFromCore(tokensScss);
+  if (utilsScss) utils = spParseUtilitiesFromCore(utilsScss);
+
+  const classMap = {};
+  ['padding','margin','gap','stack'].forEach(group => {
+    (utils[group] || []).forEach(u => {
+      const m = u.val.match(/--space-(\d+)/);
+      if (!m) return;
+      const key = Number.parseInt(m[1], 10);
+      if (!classMap[key]) classMap[key] = [];
+      classMap[key].push(u.cls);
+    });
+  });
+
   const d = new Date().toISOString().split('T')[0];
   const obj = {
     metadata: {
@@ -910,33 +752,40 @@ function spDownloadJSON(){
       generatedAt: d,
       source:      'Figma · Compensar v2 – Sistema de diseño',
       baseUnit:    '8px',
+      coreSources: [
+        'core/abstracts/_tokens-spacing.scss',
+        'core/utils/_spacing.scss'
+      ],
       description: 'Sistema espacial de 8pt. Compatible con Bootstrap 5. Los tokens "restringido" requieren aprobación de diseño.',
       usage: {
         css:    'padding: var(--space-16)',
         html:   '<div class="p-16 gap-24">',
-        sass:   '@include p-16;  o  $space-16',
+        sass:   '$space-16 o clases .p-16/.mb-24',
         rule:   'Nunca usar valores hardcoded (padding: 16px). Siempre token o clase utilitaria.'
       }
     },
-    tokens: SP_TOKENS.map(t=>({
+    tokens: tokens.map(t=>({
       token:       t.token,
       value:       t.px,
       unit:        'px',
       cssVariable: t.var,
       sassVariable:'$space-' + t.px,
-      classes:     t.classes,
+      classes:     Array.from(new Set(classMap[t.px] || t.classes || [])),
       usage:       t.usage,
       restricted:  t.usage === 'restricted',
       description: t.desc
-    }))
+    })),
+    utilities: utils
   };
   const blob = new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='spacing-tokens.json'; a.click();
 }
 
-function spCopyVars(){
+async function spCopyVars(){
+  const tokensScss = await spReadCoreSource(CORE_SPACING_TOKENS_URL);
+  const tokens = tokensScss ? spParseTokensFromCore(tokensScss) : SP_TOKENS;
   const lines = [':root {'];
-  SP_TOKENS.forEach(t=> lines.push(`  ${t.var}: ${t.px}px;`));
+  tokens.forEach(t=> lines.push(`  ${t.var}: ${t.px}px;`));
   lines.push('}');
   navigator.clipboard.writeText(lines.join('\n')).then(()=>{
     const btn = document.querySelector('[onclick="spCopyVars()"]');
@@ -950,11 +799,23 @@ window.spDownloadJSON = spDownloadJSON;
 window.spCopyVars     = spCopyVars;
 
 /* ─── Init ────────────────────────────────────────────── */
-renderTable();
-renderUtilPanel('util-padding', UTIL_DATA.padding);
-renderUtilPanel('util-margin',  UTIL_DATA.margin);
-renderUtilPanel('util-gap',     UTIL_DATA.gap);
-renderStackPanel();
+async function spInit(){
+  renderTable();
+  renderUtilPanel('util-padding', UTIL_DATA.padding);
+  renderUtilPanel('util-margin',  UTIL_DATA.margin);
+  renderUtilPanel('util-gap',     UTIL_DATA.gap);
+  renderStackPanel();
+
+  await spHydrateFromCoreForUI();
+
+  renderTable();
+  renderUtilPanel('util-padding', UTIL_DATA.padding);
+  renderUtilPanel('util-margin',  UTIL_DATA.margin);
+  renderUtilPanel('util-gap',     UTIL_DATA.gap);
+  renderStackPanel();
+}
+
+spInit();
 
 })();
 </script>

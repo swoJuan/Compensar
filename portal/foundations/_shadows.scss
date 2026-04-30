@@ -1,0 +1,45 @@
+@use '../../core/abstracts' as *;
+
+/* ══════════════════════════════════════════════════════════
+   SHADOWS FOUNDATION
+   ══════════════════════════════════════════════════════════ */
+.shadow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(rem(220px), 1fr));
+  gap: var(--space-24);
+}
+
+.shadow-card {
+  padding: var(--space-48) var(--space-24);
+  background: var(--ui-surface);
+  border-radius: rem(14px);
+  text-align: center;
+  border: rem(1px) solid var(--ui-border);
+  transition: transform .2s;
+}
+
+.shadow-card:hover {
+  transform: translateY(rem(-2px));
+}
+
+.shadow-box {
+  width: rem(80px);
+  height: rem(80px);
+  background: var(--ui-surface);
+  border-radius: rem(12px);
+  margin: 0 auto var(--space-16);
+}
+
+.shadow-name {
+  font-weight: 600;
+  font-size: rem(13px);
+  color: var(--ui-text);
+  margin-bottom: rem(4px);
+}
+
+.shadow-value {
+  font-family: var(--font-code);
+  font-size: rem(11px);
+  color: var(--ui-text-muted);
+  line-height: 1.5;
+}

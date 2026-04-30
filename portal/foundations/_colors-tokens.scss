@@ -6,7 +6,7 @@
 .color-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(rem(130px), 1fr));
-  gap: var(--spacing-8px);
+  gap: var(--space-8);
 }
 
 .color-card {
@@ -22,7 +22,7 @@
 
 .color-swatch { height: rem(64px); width: 100%; }
 
-.color-info { padding: var(--spacing-4px) var(--spacing-8px); }
+.color-info { padding: var(--space-4) var(--space-8); }
 
 .color-name {
   font-size: rem(11px);
@@ -58,13 +58,13 @@
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--ui-text-muted);
-  padding: var(--spacing-4px) var(--spacing-16px);
+  padding: var(--space-4) var(--space-16);
   border-bottom: rem(1px) solid var(--ui-border);
   background: var(--ui-surface-alt);
 }
 
 .token-table td {
-  padding: rem(10px) var(--spacing-16px);
+  padding: rem(10px) var(--space-16);
   border-bottom: rem(1px) solid var(--ui-border);
   background: var(--ui-surface);
   vertical-align: middle;
@@ -81,4 +81,4 @@
   flex-shrink: 0;
 }
 
-.token-name-cell { display: flex; align-items: center; gap: var(--spacing-8px); }
+.token-name-cell { display: flex; align-items: center; gap: var(--space-8); }

@@ -1,0 +1,997 @@
+@use '../../core/abstracts'as *;
+
+/* ══════════════════════════════════════════════════════════
+   SPACING FOUNDATION
+   ══════════════════════════════════════════════════════════ */
+.spacing-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.spacing-row {
+  display: grid;
+  grid-template-columns: rem(80px) 1fr rem(120px) rem(130px);
+  align-items: center;
+  gap: var(--space-16);
+  padding: rem(8px) var(--space-16);
+  background: var(--ui-surface);
+  border: rem(1px) solid var(--ui-border);
+  border-radius: rem(8px);
+  font-size: rem(13px);
+  transition: box-shadow .15s;
+}
+
+.spacing-row:hover {
+  box-shadow: var(--elevation-1);
+}
+
+.spacing-bar {
+  height: rem(8px);
+  background: var(--base-brand-80);
+  border-radius: rem(4px);
+  opacity: .65;
+}
+
+.spacing-val {
+  font-family: var(--font-code);
+  font-size: rem(12px);
+  font-weight: 600;
+  color: var(--ui-text);
+}
+
+.spacing-token {
+  font-family: var(--font-code);
+  font-size: rem(11px);
+  color: var(--ui-text-muted);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SPACING DOC PAGE (moved from docs/app/fundamentos/spacing.html)
+   ══════════════════════════════════════════════════════════ */
+
+/* ═══ SPACING v2 ═══════════════════════════════════════ */
+
+/* ── Scoped new tokens (avoid conflicting with global --space-N) */
+#espaciado {
+  --space-0: 0px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+  --space-72: 72px;
+  --space-80: 80px;
+  --space-96: 96px;
+  --space-128: 128px;
+}
+
+/* ── Utility classes (scoped to #espaciado) ────────────── */
+/* Padding */
+#espaciado .p-8 {
+  padding: var(--space-8);
+}
+
+#espaciado .p-16 {
+  padding: var(--space-16);
+}
+
+#espaciado .p-24 {
+  padding: var(--space-24);
+}
+
+#espaciado .p-32 {
+  padding: var(--space-32);
+}
+
+#espaciado .p-48 {
+  padding: var(--space-48);
+}
+
+#espaciado .p-64 {
+  padding: var(--space-64);
+}
+
+#espaciado .pt-8 {
+  padding-top: var(--space-8);
+}
+
+#espaciado .pt-16 {
+  padding-top: var(--space-16);
+}
+
+#espaciado .pt-24 {
+  padding-top: var(--space-24);
+}
+
+#espaciado .pb-16 {
+  padding-bottom: var(--space-16);
+}
+
+#espaciado .pb-24 {
+  padding-bottom: var(--space-24);
+}
+
+#espaciado .pb-32 {
+  padding-bottom: var(--space-32);
+}
+
+#espaciado .px-16 {
+  padding-left: var(--space-16);
+  padding-right: var(--space-16);
+}
+
+#espaciado .px-24 {
+  padding-left: var(--space-24);
+  padding-right: var(--space-24);
+}
+
+#espaciado .px-32 {
+  padding-left: var(--space-32);
+  padding-right: var(--space-32);
+}
+
+#espaciado .py-16 {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+#espaciado .py-24 {
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-24);
+}
+
+#espaciado .py-64 {
+  padding-top: var(--space-64);
+  padding-bottom: var(--space-64);
+}
+
+/* Margin */
+#espaciado .m-16 {
+  margin: var(--space-16);
+}
+
+#espaciado .m-24 {
+  margin: var(--space-24);
+}
+
+#espaciado .mt-8 {
+  margin-top: var(--space-8);
+}
+
+#espaciado .mt-16 {
+  margin-top: var(--space-16);
+}
+
+#espaciado .mt-24 {
+  margin-top: var(--space-24);
+}
+
+#espaciado .mb-0 {
+  margin-bottom: 0;
+}
+
+#espaciado .mb-8 {
+  margin-bottom: var(--space-8);
+}
+
+#espaciado .mb-16 {
+  margin-bottom: var(--space-16);
+}
+
+#espaciado .mb-24 {
+  margin-bottom: var(--space-24);
+}
+
+#espaciado .mb-32 {
+  margin-bottom: var(--space-32);
+}
+
+#espaciado .mx-16 {
+  margin-left: var(--space-16);
+  margin-right: var(--space-16);
+}
+
+#espaciado .my-24 {
+  margin-top: var(--space-24);
+  margin-bottom: var(--space-24);
+}
+
+/* Gap */
+#espaciado .gap-8 {
+  gap: var(--space-8);
+}
+
+#espaciado .gap-16 {
+  gap: var(--space-16);
+}
+
+#espaciado .gap-24 {
+  gap: var(--space-24);
+}
+
+#espaciado .gap-32 {
+  gap: var(--space-32);
+}
+
+/* Stack */
+#espaciado .stack-8>*+* {
+  margin-top: var(--space-8);
+}
+
+#espaciado .stack-16>*+* {
+  margin-top: var(--space-16);
+}
+
+#espaciado .stack-24>*+* {
+  margin-top: var(--space-24);
+}
+
+#espaciado .stack-32>*+* {
+  margin-top: var(--space-32);
+}
+
+#espaciado .stack-48>*+* {
+  margin-top: var(--space-48);
+}
+
+/* ── Section label ────────────────────────────────────── */
+.sp-section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ui-text-muted);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin: var(--space-48) 0 var(--space-24);
+  border-bottom: 1px solid var(--ui-border);
+  padding-bottom: var(--space-12);
+}
+
+.sp-section-label .material-symbols-rounded {
+  font-size: 15px;
+  color: var(--ui-accent)
+}
+
+/* ── Figma bar (shared) ────────────────────────────────── */
+#espaciado .ty-figma-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  background: $use-surface-theme-gray-5;
+  border-left: 3px solid var(--ui-accent);
+  border-radius: 0 8px 8px 0;
+  padding: var(--space-12) var(--space-24);
+  font-size: 13px;
+  color: var(--ui-text);
+  margin-bottom: var(--space-24);
+  flex-wrap: wrap;
+}
+
+#espaciado .ty-figma-bar .material-symbols-rounded {
+  color: var(--ui-accent);
+  flex-shrink: 0
+}
+
+#espaciado .ty-figma-bar code {
+  font-family: var(--font-code);
+  font-size: 11.5px;
+  background: var(--ui-surface);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: var(--ui-accent)
+}
+
+#espaciado .ty-figma-bar .ct-figma-link {
+  margin-left: auto;
+  white-space: nowrap
+}
+
+.sp-downloads-bar {
+  margin-bottom: var(--space-32);
+}
+
+/* ── Badge restricted ─────────────────────────────────── */
+.sp-badge-restricted {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  background: #fff4e0;
+  color: #a0620f;
+  border: 1px solid #f5d07a;
+  border-radius: 4px;
+  padding: 1px 6px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.sp-badge-standard {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  background: #e6f7e8;
+  color: #1a7a3c;
+  border: 1px solid #9fe0b8;
+  border-radius: 4px;
+  padding: 1px 6px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* ── Base card ────────────────────────────────────────── */
+.sp-base-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-24);
+  margin-bottom: var(--space-32);
+}
+
+.sp-base-card {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 14px;
+  padding: var(--space-24);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.sp-base-num {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--ui-accent);
+  line-height: 1;
+  font-family: var(--font-heading);
+}
+
+.sp-base-unit {
+  font-size: 1.5rem;
+  color: var(--ui-text-muted);
+  font-weight: 400;
+}
+
+.sp-base-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ui-text-muted);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.sp-base-desc {
+  font-size: 12px;
+  color: var(--ui-text-muted);
+  line-height: 1.6;
+  text-align: left
+}
+
+.sp-base-info {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 14px;
+  padding: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-12);
+}
+
+.sp-base-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ui-text)
+}
+
+.sp-info-icon-sm {
+  font-size: 16px;
+  flex-shrink: 0;
+  color: var(--base-green-70)
+}
+
+.sp-restricted-row .sp-info-icon-sm {
+  color: var(--base-yellow-80)
+}
+
+.sp-base-info-row code {
+  font-family: var(--font-code);
+  font-size: 11px;
+  background: $use-surface-theme-gray-5;
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: var(--ui-accent)
+}
+
+/* ── Token table ──────────────────────────────────────── */
+.sp-table-wrap {
+  overflow-x: auto;
+  margin-bottom: var(--space-12);
+  border-radius: 12px;
+  border: 1px solid var(--ui-border);
+}
+
+.sp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px
+}
+
+.sp-table thead th {
+  background: $use-surface-theme-gray-5;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ui-text-muted);
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--ui-border);
+  white-space: nowrap;
+}
+
+.spc-th-vis {
+  width: 160px;
+  min-width: 80px
+}
+
+.spc-th-token {
+  width: 140px
+}
+
+.spc-th-val {
+  width: 56px
+}
+
+.spc-th-var {
+  width: 148px
+}
+
+.spc-th-cls {}
+
+.spc-th-tipo {
+  width: 100px
+}
+
+.spc-th-copy {
+  width: 40px
+}
+
+.sp-table .sp-group-row td {
+  background: $use-surface-theme-gray-5;
+  padding: 5px 12px;
+  border-bottom: 1px solid var(--ui-border);
+}
+
+.sp-group-lbl {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ui-text);
+}
+
+.sp-table .sp-data-row td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ui-border);
+  vertical-align: middle;
+  background: var(--ui-surface);
+  transition: background .1s;
+}
+
+.sp-table .sp-data-row:hover td {
+  background: $use-surface-theme-gray-5
+}
+
+.sp-table .sp-data-row:last-child td {
+  border-bottom: none
+}
+
+.sp-table .sp-data-row.sp-restricted td {
+  border-left: 3px solid #f5d07a
+}
+
+/* Visual bar */
+.sp-bar-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+
+.sp-bar-wrap2 {
+  flex: 1;
+  height: 6px;
+  background: var(--ui-border);
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 40px
+}
+
+.sp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ui-accent), var(--product-teal-60));
+  border-radius: 3px;
+  min-width: 2px
+}
+
+.sp-bar-fill.restricted {
+  background: linear-gradient(90deg, #f5d07a, #ffc154)
+}
+
+.sp-bar-px {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ui-text);
+  font-family: var(--font-code);
+  min-width: 36px
+}
+
+.sp-px-strong {
+  font-family: var(--font-code);
+  font-size: 12px;
+}
+
+/* Token chip */
+.sp-token-chip {
+  font-family: var(--font-code);
+  font-size: 11px;
+  background: $use-surface-theme-gray-5;
+  border: 1px solid var(--ui-border);
+  border-radius: 5px;
+  padding: 2px 7px;
+  cursor: pointer;
+  color: var(--base-blue-70);
+  display: inline-block;
+  transition: background .12s, border-color .12s;
+  white-space: nowrap;
+}
+
+.sp-token-chip:hover {
+  background: var(--base-blue-40);
+  border-color: var(--base-blue-60)
+}
+
+.sp-var-chip {
+  font-family: var(--font-code);
+  font-size: 11px;
+  background: var(--ui-tag-bg);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 2px 7px;
+  cursor: pointer;
+  color: var(--ui-accent);
+  display: inline-block;
+  transition: background .12s;
+  white-space: nowrap;
+}
+
+.sp-var-chip:hover {
+  background: $use-surface-theme-gray-5
+}
+
+/* Classes cell */
+.sp-cls-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px
+}
+
+.sp-cls-chip {
+  font-family: var(--font-code);
+  font-size: 10.5px;
+  background: $use-surface-theme-gray-5;
+  border: 1px solid var(--ui-border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  cursor: pointer;
+  color: var(--product-violet-70);
+  transition: background .12s;
+  white-space: nowrap;
+}
+
+.sp-cls-chip:hover {
+  background: var(--product-violet-5)
+}
+
+.sp-empty-cell {
+  font-size: 11px;
+  color: var(--ui-text-muted);
+}
+
+/* Copy btn */
+.sp-row-copy {
+  background: none;
+  border: 1px solid var(--ui-border);
+  border-radius: 6px;
+  padding: 4px 6px;
+  cursor: pointer;
+  color: var(--ui-text-muted);
+  transition: all .12s;
+  display: flex;
+  align-items: center;
+}
+
+.sp-row-copy:hover {
+  border-color: var(--ui-accent);
+  color: var(--ui-accent);
+  background: var(--ui-tag-bg)
+}
+
+.sp-row-copy .material-symbols-rounded {
+  font-size: 13px
+}
+
+/* ── Utility panels ───────────────────────────────────── */
+.sp-util-tabs {
+  display: flex;
+  gap: 4px;
+  background: $use-surface-theme-gray-5;
+  border-radius: 10px 10px 0 0;
+  padding: 4px;
+  border: 1px solid var(--ui-border);
+  border-bottom: none;
+}
+
+.sp-util-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  border-radius: 7px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.sp-util-tab .material-symbols-rounded {
+  font-size: 14px
+}
+
+.sp-util-tab.active {
+  background: var(--ui-surface);
+  color: var(--ui-accent);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .1)
+}
+
+.sp-util-panel {
+  display: none;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 0 0 10px 10px;
+  padding: var(--space-24);
+  margin-bottom: var(--space-12);
+}
+
+.sp-util-panel.active {
+  display: block
+}
+
+.sp-util-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-12)
+}
+
+.sp-util-item {
+  background: $use-surface-theme-gray-5;
+  border: 1px solid var(--ui-border);
+  border-radius: 8px;
+  padding: var(--space-12) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sp-util-class {
+  font-family: var(--font-code);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--product-violet-50);
+  cursor: pointer
+}
+
+.sp-util-class:hover {
+  color: var(--product-violet-70)
+}
+
+.sp-util-prop {
+  font-size: 11.5px;
+  color: var(--ui-text);
+  font-family: var(--font-code);
+  line-height: 1.45
+}
+
+.sp-util-val {
+  font-size: 11px;
+  color: var(--ui-text-muted)
+}
+
+/* Stack demo */
+.sp-stack-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-24);
+  margin-top: var(--space-16)
+}
+
+.sp-stack-demo {
+  background: $use-surface-theme-gray-5;
+  border: 1px solid var(--ui-border);
+  border-radius: 8px;
+  padding: var(--space-16)
+}
+
+.sp-stack-demo-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ui-accent);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-12)
+}
+
+.sp-stack-item {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--ui-text);
+  position: relative
+}
+
+.sp-stack-gap-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--ui-accent);
+  padding: 2px 0;
+  font-family: var(--font-code)
+}
+
+.sp-stack-gap-line {
+  flex: 1;
+  border-top: 1px dashed var(--ui-accent);
+  opacity: .5
+}
+
+.sp-stack-intro {
+  font-size: 13px;
+  color: var(--ui-text-muted);
+  margin-bottom: var(--space-16);
+}
+
+.sp-stack-intro code {
+  font-family: var(--font-code);
+  font-size: 11px;
+  background: $use-surface-theme-gray-5;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.sp-util-grid--mt {
+  margin-top: var(--space-24);
+}
+
+/* ── Bootstrap card ───────────────────────────────────── */
+.sp-bs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-24);
+  margin-bottom: var(--space-12)
+}
+
+.sp-bs-card {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 12px;
+  overflow: hidden
+}
+
+.sp-bs-card-head {
+  background: $use-surface-theme-gray-5;
+  border-bottom: 1px solid var(--ui-border);
+  padding: var(--space-12) var(--space-24);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ui-text);
+}
+
+.sp-bs-card-head code {
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--ui-accent)
+}
+
+/* ── Code blocks ──────────────────────────────────────── */
+.sp-code-block {
+  position: relative;
+  background: var(--ui-code-bg);
+  border-radius: 10px;
+  overflow: hidden
+}
+
+.sp-code-copy {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 5px;
+  padding: 2px 8px;
+  font-size: 10px;
+  color: #aaa;
+  cursor: pointer;
+  transition: background .12s, color .12s;
+}
+
+.sp-code-copy:hover {
+  background: rgba(255, 255, 255, .14);
+  color: #fff
+}
+
+.sp-code-copy .material-symbols-rounded {
+  font-size: 11px
+}
+
+.sp-code-pre {
+  font-family: var(--font-code);
+  font-size: 12.5px;
+  line-height: 1.72;
+  color: var(--ui-code-text);
+  padding: 28px 16px 14px;
+  margin: 0;
+  overflow-x: auto;
+  white-space: pre;
+  display: none;
+  background-color: $base-neutral-100-negro;
+}
+
+.sp-code-pre.sp-code-active {
+  display: block
+}
+
+.sp-code-block--tabs {
+  border-radius: 0 12px 12px 12px;
+}
+
+/* ── Code tabs ────────────────────────────────────────── */
+.sp-code-tabs-bar {
+  display: flex;
+  gap: 4px;
+  background: $use-surface-theme-gray-5;
+  border-radius: 10px 10px 0 0;
+  padding: 4px;
+  border: 1px solid var(--ui-border);
+  border-bottom: none;
+}
+
+.sp-code-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  border-radius: 7px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.sp-code-tab .material-symbols-rounded {
+  font-size: 14px
+}
+
+.sp-code-tab.active {
+  background: var(--ui-surface);
+  color: var(--ui-accent);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .1)
+}
+
+/* ── Accessibility block ──────────────────────────────── */
+.sp-access-block {
+  display: flex;
+  gap: var(--space-24);
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 14px;
+  padding: var(--space-32);
+  margin-top: var(--space-48);
+}
+
+.sp-access-icon {
+  font-size: 32px;
+  color: var(--ui-accent);
+  flex-shrink: 0
+}
+
+.sp-access-icon .material-symbols-rounded {
+  font-size: 32px
+}
+
+.sp-access-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ui-text);
+  margin-bottom: var(--space-16)
+}
+
+.sp-access-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-24)
+}
+
+.sp-access-sub {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ui-text-muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 6px
+}
+
+.sp-access-list {
+  margin: 0;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px
+}
+
+.sp-access-list li {
+  font-size: 12.5px;
+  color: var(--ui-text)
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media(max-width:900px) {
+  .sp-base-grid {
+    grid-template-columns: 1fr
+  }
+
+  .sp-bs-grid {
+    grid-template-columns: 1fr
+  }
+
+  .sp-stack-demo-grid {
+    grid-template-columns: 1fr
+  }
+
+  .sp-access-grid {
+    grid-template-columns: 1fr
+  }
+
+  .spc-th-vis,
+  .spc-th-cls {
+    display: none
+  }
+}
+
+@media(max-width:600px) {
+  .sp-util-tabs {
+    flex-wrap: wrap
+  }
+}

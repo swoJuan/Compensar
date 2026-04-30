@@ -3,14 +3,14 @@
 /* ══════════════════════════════════════════════════════════
    TYPOGRAPHY SCALE
    ══════════════════════════════════════════════════════════ */
-.type-scale { display: flex; flex-direction: column; gap: var(--spacing-16px); }
+.type-scale { display: flex; flex-direction: column; gap: var(--space-16); }
 
 .type-row {
   display: grid;
   grid-template-columns: rem(140px) 1fr;
   align-items: baseline;
-  gap: var(--spacing-24px);
-  padding: var(--spacing-16px);
+  gap: var(--space-24);
+  padding: var(--space-16);
   background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(10px);
@@ -30,67 +30,13 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   SPACING
-   ══════════════════════════════════════════════════════════ */
-.spacing-list { display: flex; flex-direction: column; gap: var(--spacing-4px); }
-
-.spacing-row {
-  display: grid;
-  grid-template-columns: rem(80px) 1fr rem(120px) rem(130px);
-  align-items: center;
-  gap: var(--spacing-16px);
-  padding: rem(8px) var(--spacing-16px);
-  background: var(--ui-surface);
-  border: rem(1px) solid var(--ui-border);
-  border-radius: rem(8px);
-  font-size: rem(13px);
-  transition: box-shadow .15s;
-}
-
-.spacing-row:hover { box-shadow: var(--elevation-1); }
-
-.spacing-bar { height: rem(8px); background: var(--base-brand-80); border-radius: rem(4px); opacity: .65; }
-.spacing-val { font-family: var(--font-code); font-size: rem(12px); font-weight: 600; color: var(--ui-text); }
-.spacing-token { font-family: var(--font-code); font-size: rem(11px); color: var(--ui-text-muted); }
-
-/* ══════════════════════════════════════════════════════════
-   SHADOWS
-   ══════════════════════════════════════════════════════════ */
-.shadow-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(rem(220px), 1fr));
-  gap: var(--spacing-24px);
-}
-
-.shadow-card {
-  padding: var(--spacing-48px) var(--spacing-24px);
-  background: var(--ui-surface);
-  border-radius: rem(14px);
-  text-align: center;
-  border: rem(1px) solid var(--ui-border);
-  transition: transform .2s;
-}
-
-.shadow-card:hover { transform: translateY(rem(-2px)); }
-
-.shadow-box {
-  width: rem(80px); height: rem(80px);
-  background: var(--ui-surface);
-  border-radius: rem(12px);
-  margin: 0 auto var(--spacing-16px);
-}
-
-.shadow-name { font-weight: 600; font-size: rem(13px); color: var(--ui-text); margin-bottom: rem(4px); }
-.shadow-value { font-family: var(--font-code); font-size: rem(11px); color: var(--ui-text-muted); line-height: 1.5; }
-
-/* ══════════════════════════════════════════════════════════
    TYPOGRAPHY DOC PAGE (moved from docs/app/fundamentos/typography.html)
    ══════════════════════════════════════════════════════════ */
 
 /* Las variables y clases .mp-* viven en core/base/_theme.scss y core/base/_typography.scss. */
 
 /* ── Toggle bar ──────────────────────────────────────── */
-.ty-toggle-bar { display: flex; align-items: center; gap: var(--space-4); background: var(--ui-surface); border: 1px solid var(--ui-border); border-radius: 12px; padding: var(--space-3) var(--space-5); margin-bottom: var(--space-6); flex-wrap: wrap; }
+.ty-toggle-bar { display: flex; align-items: center; gap: var(--space-4); background: var(--ui-surface); border: 1px solid var(--ui-border); border-radius: 12px; padding: var(--space-8) var(--space-24); margin-bottom: var(--space-32); flex-wrap: wrap; }
 .ty-toggle-label { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; color: var(--ui-text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
 .ty-toggle-label .material-symbols-rounded { font-size: 15px; color: var(--ui-accent); }
 .ty-toggle-btns { display: flex; gap: 4px; background:$use-surface-theme-gray-5; border-radius: 8px; padding: 3px; }
@@ -100,17 +46,17 @@
 .ty-toggle-hint { font-size: 11px; color: var(--ui-text-muted); margin-left: auto; }
 
 /* ── Figma bar ───────────────────────────────────────── */
-.ty-figma-bar { display: flex; align-items: center; gap: var(--space-3); background:$use-surface-theme-gray-5; border-left: 3px solid var(--ui-accent); border-radius: 0 8px 8px 0; padding: var(--space-3) var(--space-5); font-size: 13px; color: var(--ui-text); margin-bottom: var(--space-5); flex-wrap: wrap; }
+.ty-figma-bar { display: flex; align-items: center; gap: var(--space-8); background:$use-surface-theme-gray-5; border-left: 3px solid var(--ui-accent); border-radius: 0 8px 8px 0; padding: var(--space-8) var(--space-24); font-size: 13px; color: var(--ui-text); margin-bottom: var(--space-24); flex-wrap: wrap; }
 .ty-figma-bar .material-symbols-rounded { color: var(--ui-accent); flex-shrink: 0; }
 .ty-figma-bar code { font-family: var(--font-code); font-size: 11.5px; background: var(--ui-surface); padding: 1px 5px; border-radius: 4px; color: var(--ui-accent); }
 .ty-figma-bar .ct-figma-link { margin-left: auto; white-space: nowrap; }
 
 /* ── Section label ───────────────────────────────────── */
-.ty-section-label { display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 11px; font-weight: 700; color: var(--ui-text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin: var(--space-7) 0 var(--space-5); border-bottom: 1px solid var(--ui-border); padding-bottom: var(--space-3); }
+.ty-section-label { display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 11px; font-weight: 700; color: var(--ui-text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin: var(--space-48) 0 var(--space-24); border-bottom: 1px solid var(--ui-border); padding-bottom: var(--space-8); }
 .ty-section-label .material-symbols-rounded { font-size: 15px; color: var(--ui-accent); }
 
 /* ── Roboto card ─────────────────────────────────────── */
-.ty-font-card-single { background: var(--ui-surface); border: 1px solid var(--ui-border); border-radius: 14px; padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-5); }
+.ty-font-card-single { background: var(--ui-surface); border: 1px solid var(--ui-border); border-radius: 14px; padding: var(--space-32); display: flex; flex-direction: column; gap: var(--space-24); }
 .ty-font-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
 .ty-font-name { font-size: 28px; font-weight: 700; color: var(--ui-text); margin-bottom: 4px; }
 .ty-font-role { font-size: 12px; color: var(--ui-text-muted); }
@@ -130,9 +76,9 @@
 .ty-w-sample { font-size: 16px; color: var(--ui-text); }
 
 /* ── Scale table ─────────────────────────────────────── */
-.ty-scale-wrapper { display: flex; flex-direction: column; gap: var(--space-5); }
+.ty-scale-wrapper { display: flex; flex-direction: column; gap: var(--space-24); }
 .ty-cat-group { border: 1px solid var(--ui-border); border-radius: 12px; overflow: hidden; }
-.ty-cat-header { background:$use-surface-theme-gray-5; padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--ui-border); display: flex; align-items: center; gap: var(--space-3); }
+.ty-cat-header { background:$use-surface-theme-gray-5; padding: var(--space-4) var(--space-24); border-bottom: 1px solid var(--ui-border); display: flex; align-items: center; gap: var(--space-8); }
 .ty-cat-title { font-size: 12px; font-weight: 700; color: var(--ui-text); }
 .ty-cat-desc { font-size: 11.5px; color: var(--ui-text-muted); margin-left: auto; }
 
@@ -140,14 +86,14 @@
 .ty-row { border-bottom: 1px solid var(--ui-border); background: var(--ui-surface); transition: background 0.1s; }
 .ty-row:last-child { border-bottom: none; }
 .ty-row:hover { background:$use-surface-theme-gray-5; }
-.ty-row-main { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-4); align-items: start; padding: var(--space-5); }
-.ty-preview-wrap { padding-right: var(--space-3); overflow: hidden; word-break: break-word; }
+.ty-row-main { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-4); align-items: start; padding: var(--space-24); }
+.ty-preview-wrap { padding-right: var(--space-8); overflow: hidden; word-break: break-word; }
 .ty-preview-text { transition: font-size 0.2s; display: block; }
 
 /* Meta panel */
-.ty-meta { border-left: 1px solid var(--ui-border); padding-left: var(--space-5); }
+.ty-meta { border-left: 1px solid var(--ui-border); padding-left: var(--space-24); }
 .ty-row-name { font-size: 10.5px; font-weight: 700; color: var(--ui-accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-2); }
-.ty-specs { display: flex; flex-direction: column; gap: 3px; margin-bottom: var(--space-3); }
+.ty-specs { display: flex; flex-direction: column; gap: 3px; margin-bottom: var(--space-8); }
 .ty-spec-row { display: flex; align-items: center; gap: 6px; }
 .ty-spec-lbl { font-size: 10px; color: var(--ui-text-muted); min-width: 72px; flex-shrink: 0; }
 .ty-spec-val { font-family: var(--font-code); font-size: 10.5px; background:$use-surface-theme-gray-5; padding: 1px 5px; border-radius: 4px; color: var(--ui-text); }
@@ -155,7 +101,7 @@
 .ty-spec-sep { color: var(--ui-text-muted); font-size: 9px; }
 
 /* Token chips */
-.ty-tokens-block { display: flex; flex-direction: column; gap: 5px; padding: var(--space-3) 0; border-top: 1px solid var(--ui-border); border-bottom: 1px solid var(--ui-border); margin-bottom: var(--space-3); }
+.ty-tokens-block { display: flex; flex-direction: column; gap: 5px; padding: var(--space-8) 0; border-top: 1px solid var(--ui-border); border-bottom: 1px solid var(--ui-border); margin-bottom: var(--space-8); }
 .ty-token-line { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
 .ty-token-lbl { font-size: 9.5px; color: var(--ui-text-muted); min-width: 52px; flex-shrink: 0; font-weight: 600; letter-spacing: 0.03em; }
 .ty-chip { font-family: var(--font-code); font-size: 9.5px; background:$use-surface-theme-gray-5; padding: 2px 6px; border-radius: 4px; cursor: pointer; color: var(--ui-accent); border: 1px solid transparent; transition: background 0.12s, border-color 0.12s; white-space: nowrap; }
@@ -186,10 +132,10 @@
   font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
   font-weight: 700;
   color: var(--ui-text);
-  margin: var(--space-8) 0 var(--space-3);
+  margin: var(--space-8) 0 var(--space-8);
 }
 
-.ty-util-desc { font-size: 14px; color: var(--ui-text-muted); line-height: 1.7; max-width: 840px; margin-bottom: var(--space-5); }
+.ty-util-desc { font-size: 14px; color: var(--ui-text-muted); line-height: 1.7; max-width: 840px; margin-bottom: var(--space-24); }
 .ty-util-desc code { font-family: var(--font-code); font-size: 11.5px; background: $use-surface-theme-gray-5; padding: 1px 5px; border-radius: 4px; color: var(--ui-accent); }
 
 .ty-util-tabs {
@@ -199,7 +145,7 @@
   border: 1px solid var(--ui-border);
   border-radius: 10px;
   padding: 4px;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-24);
   overflow-x: auto;
 }
 
@@ -232,14 +178,14 @@
   color: inherit;
 }
 
-.ty-util-panel { display: none; margin-bottom: var(--space-5); }
+.ty-util-panel { display: none; margin-bottom: var(--space-24); }
 .ty-util-panel.active { display: block; }
 
 .ty-util-panel-head {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-8);
   margin-bottom: var(--space-4);
 }
 
@@ -250,7 +196,7 @@
 .ty-util-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: var(--space-3);
+  gap: var(--space-8);
 }
 
 .ty-util-card {
@@ -319,7 +265,7 @@
 
 /* ── Standard utilities table ───────────────────────── */
 .ty-standard-wrap {
-  margin-top: var(--space-6);
+  margin-top: var(--space-32);
   border: 1px solid var(--ui-border);
   border-radius: 12px;
   overflow: hidden;
@@ -327,7 +273,7 @@
 }
 
 .ty-standard-head {
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-4) var(--space-24);
   border-bottom: 1px solid var(--ui-border);
   background: $use-surface-theme-gray-5;
 }
@@ -390,8 +336,8 @@
 
 /* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 680px) {
-  .ty-row-main { grid-template-columns: 1fr; gap: var(--space-3); }
+  .ty-row-main { grid-template-columns: 1fr; gap: var(--space-8); }
   .ty-meta { border-left: none; padding-left: 0; border-top: 1px solid var(--ui-border); padding-top: var(--space-4); }
   .ty-util-tabs { padding-bottom: 2px; }
-  .ty-standard-wrap { margin-top: var(--space-5); }
+  .ty-standard-wrap { margin-top: var(--space-24); }
 }

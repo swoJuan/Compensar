@@ -50,7 +50,7 @@ $border-radius-xl: $border-radius-md  !default;
 $border-radius-pill: $radius-full !default;
 
 // ── Bootstrap: espaciado ─────────────────────────────────
-$spacer: $spacing-16px !default;
+$spacer: $space-16 !default;
 
 // ── Bootstrap: sombras ───────────────────────────────────
 $box-shadow:    $shadow-1 !default;
@@ -59,8 +59,8 @@ $box-shadow-lg: $shadow-3 !default;
 
 // ── Bootstrap: grid ──────────────────────────────────────
 $grid-columns:      12     !default;
-$grid-gutter-width: $spacing-24px !default;
-$container-padding-x: $spacing-16px !default;
+$grid-gutter-width: $space-24 !default;
+$container-padding-x: $space-16 !default;
 
 // ── Bootstrap: transiciones ──────────────────────────────
 $transition-base: all 0.15s ease-in-out !default;

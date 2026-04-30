@@ -14,7 +14,7 @@
   </div>
 
   <!-- DESCARGAS -->
-  <div class="ct-downloads" style="margin-bottom:var(--space-6)">
+  <div class="ct-downloads" style="margin-bottom:var(--space-32)">
     <span class="ct-downloads-label"><span class="material-symbols-rounded">download</span> Descargar tokens</span>
     <button class="ct-download-btn" onclick="shDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
     <button class="ct-download-btn" onclick="shDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
@@ -526,10 +526,10 @@ window.shCopyVars = function() {
 <style>
 /* ═══ SOMBRAS ═══════════════════════════════════════════ */
 .sh-figma-bar {
-  display:flex;align-items:center;gap:var(--space-3);
+  display:flex;align-items:center;gap:var(--space-8);
   background:var(--ui-surface-alt);border-left:3px solid var(--ui-accent);
-  border-radius:0 8px 8px 0;padding:var(--space-3) var(--space-5);
-  font-size:13px;color:var(--ui-text);margin-bottom:var(--space-6);flex-wrap:wrap;
+  border-radius:0 8px 8px 0;padding:var(--space-8) var(--space-24);
+  font-size:13px;color:var(--ui-text);margin-bottom:var(--space-32);flex-wrap:wrap;
 }
 .sh-figma-bar .material-symbols-rounded {color:var(--ui-accent);flex-shrink:0}
 .sh-figma-bar code {font-family:var(--font-code);font-size:11.5px;background:var(--ui-surface);padding:1px 5px;border-radius:4px;color:var(--ui-accent)}
@@ -539,17 +539,17 @@ window.shCopyVars = function() {
   display:flex;align-items:center;gap:8px;
   font-size:11px;font-weight:700;
   color:var(--ui-text-muted);letter-spacing:.08em;text-transform:uppercase;
-  margin:0 0 var(--space-3);
-  border-bottom:1px solid var(--ui-border);padding-bottom:var(--space-3);
+  margin:0 0 var(--space-8);
+  border-bottom:1px solid var(--ui-border);padding-bottom:var(--space-8);
 }
 .sh-group-label .material-symbols-rounded {font-size:15px;color:var(--ui-accent)}
-.sh-group-desc {font-size:13px;color:var(--ui-text-muted);margin:0 0 var(--space-5)}
+.sh-group-desc {font-size:13px;color:var(--ui-text-muted);margin:0 0 var(--space-24)}
 
 /* ── Grid elevación ──────────────── */
 .sh-elevation-grid {
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
-  gap:var(--space-5);
+  gap:var(--space-24);
 }
 .sh-card {
   background:var(--ui-surface);border:1px solid var(--ui-border);
@@ -559,21 +559,21 @@ window.shCopyVars = function() {
 .sh-card:hover {border-color:var(--ui-accent)}
 .sh-preview-wrap {
   background:var(--ui-surface-alt);
-  padding:var(--space-7) var(--space-5);
+  padding:var(--space-48) var(--space-24);
   display:flex;align-items:center;justify-content:center;
   border-bottom:1px solid var(--ui-border);
   min-height:110px;
 }
 .sh-preview-card {
   background:var(--ui-surface);border-radius:10px;
-  padding:var(--space-4) var(--space-6);
+  padding:var(--space-4) var(--space-32);
   font-size:12px;font-weight:500;color:var(--ui-text-muted);
   text-align:center;
 }
-.sh-card-body {padding:var(--space-4) var(--space-5)}
+.sh-card-body {padding:var(--space-4) var(--space-24)}
 .sh-card-level {font-size:10px;font-weight:700;color:var(--ui-accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
 .sh-card-name {font-size:14px;font-weight:600;color:var(--ui-text);margin-bottom:4px}
-.sh-card-use {font-size:11.5px;color:var(--ui-text-muted);margin-bottom:var(--space-3);line-height:1.4}
+.sh-card-use {font-size:11.5px;color:var(--ui-text-muted);margin-bottom:var(--space-8);line-height:1.4}
 .sh-alias-badge {
   display:inline-block;font-size:9px;font-weight:700;letter-spacing:.06em;
   text-transform:uppercase;background:var(--ui-tag-bg);color:var(--ui-tag-text);
@@ -605,11 +605,11 @@ window.shCopyVars = function() {
 }
 
 /* ── Lista UI Components ─────────── */
-.sh-list {display:flex;flex-direction:column;gap:var(--space-3)}
+.sh-list {display:flex;flex-direction:column;gap:var(--space-8)}
 .sh-list-row {
-  display:flex;align-items:center;gap:var(--space-5);
+  display:flex;align-items:center;gap:var(--space-24);
   background:var(--ui-surface);border:1px solid var(--ui-border);
-  border-radius:12px;padding:var(--space-4) var(--space-5);
+  border-radius:12px;padding:var(--space-4) var(--space-24);
   transition:border-color .15s;
 }
 .sh-list-row:hover {border-color:var(--ui-accent)}
@@ -630,7 +630,7 @@ window.shCopyVars = function() {
 .sh-interaction-grid {
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
-  gap:var(--space-5);
+  gap:var(--space-24);
 }
 .sh-int-card {
   background:var(--ui-surface);border:1px solid var(--ui-border);
@@ -639,7 +639,7 @@ window.shCopyVars = function() {
 .sh-int-card:hover {border-color:var(--ui-accent)}
 .sh-int-preview {
   background:var(--ui-surface-alt);
-  padding:var(--space-6) var(--space-5);
+  padding:var(--space-32) var(--space-24);
   display:flex;align-items:center;justify-content:center;
   border-bottom:1px solid var(--ui-border);
   min-height:96px;

@@ -8,7 +8,7 @@
 .section-subtitle-row {
   display: flex;
   align-items: center;
-  gap: var(--spacing-8px);
+  gap: var(--space-8);
 }
 
 .section-sub {
@@ -18,7 +18,7 @@
   color: var(--ui-text);
   letter-spacing: -.01em;
   margin: 0;
-  padding: var(--spacing-24px) 0 var(--spacing-8px);
+  padding: var(--space-24) 0 var(--space-8);
 }
 
 /* ── API Table ───────────────────────────────────────── */
@@ -70,8 +70,8 @@
 .a11y-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-16px);
-  margin-top: var(--spacing-16px);
+  gap: var(--space-16);
+  margin-top: var(--space-16);
 }
 
 @media (max-width: rem(900px)) { .a11y-grid { grid-template-columns: 1fr 1fr; } }
@@ -81,10 +81,10 @@
   background: var(--ui-surface);
   border: rem(1.5px) solid var(--ui-border);
   border-radius: rem(14px);
-  padding: var(--spacing-16px);
+  padding: var(--space-16);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-4px);
+  gap: var(--space-4);
 }
 
 .a11y-card__icon {
@@ -96,7 +96,7 @@
   font-size: rem(13px);
   font-weight: 700;
   color: var(--ui-text);
-  margin-top: var(--spacing-2px);
+  margin-top: var(--space-2);
 }
 
 .a11y-card__desc {

@@ -21,11 +21,11 @@
    ══════════════════════════════════════════════════════════ */
 .toast {
   position: fixed;
-  bottom: var(--spacing-32px);
-  right: var(--spacing-32px);
+  bottom: var(--space-32);
+  right: var(--space-32);
   background: var(--base-neutral-90);
   color: #fff;
-  padding: rem(11px) var(--spacing-24px);
+  padding: rem(11px) var(--space-24);
   border-radius: rem(10px);
   font-size: rem(13px);
   font-weight: 500;
