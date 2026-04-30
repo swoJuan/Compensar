@@ -1,17 +1,52 @@
 // ============================================================
 //  _theme.scss
 //  Core compatibility layer.
-//  All color values point to Figma-exported tokens from
-//  css/tokens.css. Do not add portal-only tokens here.
+//  All color values point to Figma-exported tokens in the core.
+//  Do not add portal-only tokens here.
 // ============================================================
 
+@use 'sass:string';
+@use '../abstracts/tokens-colors' as color-tokens;
 @use '../abstracts/tokens-typography' as *;
+@use '../abstracts/tokens-spacing' as spacing-tokens;
+@use '../abstracts/tokens-radius' as radius-tokens;
 @use '../abstracts/tokens-shadows' as *;
+
+@function token-custom-property-name($path) {
+  $raw: string.to-lower-case('#{$path}');
+  $name: '';
+
+  @for $i from 1 through string.length($raw) {
+    $char: string.slice($raw, $i, $i);
+
+    @if $char == '/' or $char == ' ' {
+      $name: $name + '-';
+    } @else {
+      $name: $name + $char;
+    }
+  }
+
+  @return '--#{$name}';
+}
 
 :root,
 [data-theme='light'],
 [data-theme='dark'],
 [data-theme='high-contrast'] {
+  // Figma token custom properties.
+  // These make core.css self-contained, so the portal does not need css/tokens.css.
+  @each $path, $value in color-tokens.$tokens-light {
+    #{token-custom-property-name($path)}: #{$value};
+  }
+
+  @each $path, $value in spacing-tokens.$tokens-light {
+    #{token-custom-property-name($path)}: #{$value};
+  }
+
+  @each $path, $value in radius-tokens.$tokens-light {
+    #{token-custom-property-name($path)}: #{$value};
+  }
+
   // Brand / action aliases used by current components.
   --color-primary: var(--use-primary-default);
   --color-primary-hover: var(--use-primary-hover);

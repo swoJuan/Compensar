@@ -1,6 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+// Legacy helper.
+// The active portal no longer consumes css/tokens.css directly.
+// Runtime token publication now happens through css/core.css.
 const rootDir = process.cwd();
 const sourceDir = '/Users/juan.soto/Downloads/Compensar MP';
 const modes = [

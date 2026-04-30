@@ -109,8 +109,7 @@ core/
 
 css/
 ├── core.css                # Generated from core.scss
-├── portal.css              # Generated from portal/portal.scss
-└── tokens.css              # Generated CSS custom properties
+└── portal.css              # Generated from portal/portal.scss
 
 js/
 ├── router.js               # Fragment loader + navigation
@@ -267,10 +266,7 @@ Detailed maintenance guide:
 
 #### Quick Checklist
 
-1. If Figma token exports changed, regenerate base token sources first:
-  ```bash
-  node scripts/generate-figma-tokens.mjs
-  ```
+1. If Figma token exports changed, update the core token sources first.
 2. Keep all custom color utility classes in `core/utils/_colors.scss`.
 3. Validate the color documentation sources:
   ```bash
@@ -279,6 +275,8 @@ Detailed maintenance guide:
 4. Open the Colors page and verify:
   - Download buttons (`CSS`, `SCSS`, `JSON`, `Copiar variables`) return updated content.
   - Theme values change correctly across Light, Dark, and High Contrast.
+
+`css/tokens.css` is not an active portal dependency anymore. Runtime pages should load `css/core.css` first and `css/portal.css` only for the documentation portal.
 
 ### Bootstrap Integration
 

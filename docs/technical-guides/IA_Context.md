@@ -40,7 +40,19 @@ Decision tomada:
 - `portal/` contiene estilos propios del portal de documentacion.
 - `css/core.css` es el CSS compilado del core.
 - `css/portal.css` es el CSS compilado exclusivo del portal.
-- `css/tokens.css` contiene variables CSS generadas desde tokens.
+- Los tokens del sistema viven centralizados dentro del core y se publican desde `css/core.css`.
+
+### Decision sobre `css/tokens.css`
+
+`css/tokens.css` ya no es una capa activa del portal. Se retiro de las entradas HTML para evitar una fuente paralela de tokens y asegurar que el portal, la documentacion y los fragmentos descargables se basen en el core.
+
+Regla actual:
+
+- Las paginas del portal cargan `css/core.css` y luego `css/portal.css`.
+- Los proyectos externos que quieran consumir solo la base del sistema deben usar `css/core.css`.
+- `css/portal.css` es opcional y solo aplica al portal/documentacion.
+- No se debe volver a documentar `css/tokens.css` como requisito de consumo.
+- Si existe `css/tokens.css` en el repo, debe tratarse como legado o salida antigua de scripts, no como fuente activa.
 
 ## Base tecnica del proyecto
 
@@ -174,7 +186,7 @@ Estructura actual:
 - `portal/layout/`: header, sidebar, contenedor principal y layout de documentacion.
 - `portal/foundations/`: estilos de paginas de fundamentos, especialmente colores, tipografia, espaciado y sombras.
 - `portal/components/`: bloques reutilizables del portal como descargas, previews de codigo, formularios, estados y patrones compartidos.
-- `portal/sections/`: estilos especificos de secciones como principios y botones.
+- `portal/pages/`: estilos especificos de paginas/secciones como principios, botones y landing.
 - `portal/utilities/`: helpers propios del portal.
 
 Regla:
@@ -192,16 +204,14 @@ Con eso puede consumir variables Sass del core, funciones como `rem()` y mixins 
 El HTML del portal debe cargar estas capas:
 
 ```html
-<link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/core.css">
 <link rel="stylesheet" href="css/portal.css">
 ```
 
 Orden importante:
 
-1. `tokens.css`: variables exportadas desde tokens.
-2. `core.css`: estilos base reutilizables.
-3. `portal.css`: ajustes especificos del portal.
+1. `core.css`: tokens y estilos base reutilizables.
+2. `portal.css`: ajustes especificos del portal.
 
 ## Compilacion
 
@@ -218,6 +228,8 @@ La compilacion debe generar:
 
 - `css/core.css` desde `core/core.scss`
 - `css/portal.css` desde `portal/portal.scss`
+
+`css/tokens.css` no forma parte del flujo activo de compilacion. Si un script antiguo lo genera, no debe usarse como capa del portal ni como fuente de descarga.
 
 Si aparece `sass: command not found`, se debe instalar dependencias con:
 
@@ -318,12 +330,11 @@ Relacion entre capas:
 - `portal` puede consumir `core`.
 - `core` nunca debe depender de `portal`.
 - `core.css` debe poder usarse sin `portal.css`.
-- `portal.css` necesita `tokens.css` y `core.css` cargados antes.
+- `portal.css` necesita `core.css` cargado antes.
 
 Orden esperado en HTML:
 
 ```html
-<link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/core.css">
 <link rel="stylesheet" href="css/portal.css">
 ```
@@ -374,7 +385,7 @@ Ejemplos correctos:
 - `portal/layout/_shell-layout.scss`
 - `portal/foundations/_colors-page.scss`
 - `portal/components/_downloads.scss`
-- `portal/sections/_principles.scss`
+- `portal/pages/_principles.scss`
 
 ### Como portal consume core
 
