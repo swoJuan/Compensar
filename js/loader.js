@@ -28,6 +28,9 @@ const ROUTES = {
 
   'botones':       'docs/transversales/components/buttons.html',
   'inputs':        'docs/transversales/components/inputs.html',
+  'alertas':       'docs/transversales/components/alerts.html',
+  'toast':         'docs/transversales/components/toasts.html',
+  'modales':       'docs/transversales/components/modals.html',
   'badges':        'docs/web/components/badges.html',
 
   'tokens-texto':  'docs/tokens/tokens-text.html',

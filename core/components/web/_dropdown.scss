@@ -1,0 +1,543 @@
+// ============================================================
+//  _dropdown.scss
+//  Componente: mp-dropdown — Select / Dropdown personalizado
+//  Consume SOLO tokens semánticos. Nunca colores base directos.
+//  Fuente de verdad: Figma Compensar v2 — nodo 4530:13900
+//  Medidas clave (Figma):
+//    Trigger: height 56px · radius 16px · border 1px · padding 16px
+//    font 16px Roboto Regular · gap texto→caret 10px · caret 24px
+//    Panel: radius 12px · shadow md · max-height 256px
+//    Opción: height 48px · padding 0 16px · radius 8px (hover)
+//    Chip multi-select: height 28px · radius 20px · padding 0 8px
+//  Estados (Figma):
+//    default:  use-border-subtle  (#e0e0e0)
+//    hover:    use-border-hover   (naranja brand)
+//    active:   use-border-strong  (#666)
+//    focus/open: use-primary-default + ring 3px
+//    error:    use-state-error-icon + ring 3px
+// ============================================================
+
+@use '../../abstracts/mixins'            as *;
+@use '../../abstracts/functions'         as *;
+@use '../../abstracts/tokens-spacing'    as *;
+@use '../../abstracts/tokens-radius'     as *;
+@use '../../abstracts/tokens-typography' as *;
+
+// ────────────────────────────────────────────────────────────
+// 1. Grupo contenedor (label + trigger + helper)
+// ────────────────────────────────────────────────────────────
+// Reutiliza mp-input-group / mp-input-label / mp-input-helper
+// del mismo sistema; el dropdown los hereda sin redefinirlos.
+// Se añaden sólo los overrides necesarios.
+
+.mp-dropdown-group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+  width: 100%;
+}
+
+.mp-dropdown-label {
+  font-family: var(--font-body);
+  font-size: rem(16px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.012em;
+  color: var(--use-text-primary);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: rem(4px);
+
+  .mp-dropdown-required {
+    color: var(--use-state-error-mandatory, var(--use-state-error-icon));
+    letter-spacing: 0.02em;
+  }
+}
+
+// ────────────────────────────────────────────────────────────
+// 2. Wrapper posicionado (ancla del panel)
+// ────────────────────────────────────────────────────────────
+.mp-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+// ────────────────────────────────────────────────────────────
+// 3. Trigger — botón visible que activa el panel
+// Figma: idéntico al mp-input-field · padding 16px · gap 10px
+// ────────────────────────────────────────────────────────────
+.mp-dropdown__trigger {
+  --mp-dd-border: var(--use-border-subtle);
+
+  display: flex;
+  align-items: center;
+  gap: rem(10px);
+  width: 100%;
+  min-height: rem(56px);
+  padding: rem(14px) rem(16px);
+  font-family: var(--font-body);
+  font-size: rem(16px);
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  line-height: 1;
+  color: var(--use-text-primary);
+  background: var(--use-surface-white);
+  border: rem(1px) solid var(--mp-dd-border);
+  border-radius: rem(16px);
+  outline: none;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+
+  // Hover: naranja brand
+  &:hover:not(:disabled):not(.error):not([aria-expanded='true']) {
+    --mp-dd-border: var(--use-border-hover);
+  }
+
+  // Mousedown / active
+  &:active:not(:disabled):not(.error) {
+    --mp-dd-border: var(--use-border-strong);
+  }
+
+  // Focus visible
+  &:focus-visible:not(:disabled) {
+    --mp-dd-border: var(--use-primary-default);
+    border-color: var(--mp-dd-border);
+    box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--use-primary-default) 18%, transparent);
+  }
+
+  // Abierto (aria-expanded="true")
+  &[aria-expanded='true'] {
+    --mp-dd-border: var(--use-primary-default);
+    border-color: var(--mp-dd-border);
+    box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--use-primary-default) 18%, transparent);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    .mp-dropdown__caret {
+      transform: rotate(180deg);
+    }
+  }
+
+  // Error
+  &.error {
+    --mp-dd-border: var(--use-state-error-icon);
+    border-color: var(--mp-dd-border);
+    box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--use-state-error-icon) 15%, transparent);
+  }
+
+  &.error[aria-expanded='true'],
+  &.error:focus-visible {
+    box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--use-state-error-icon) 22%, transparent);
+  }
+
+  // Disabled
+  &:disabled {
+    background: var(--use-surface-subtle);
+    color: var(--use-text-tertiary);
+    --mp-dd-border: var(--use-border-subtle);
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+}
+
+// ── Texto del valor seleccionado / placeholder ────────────
+.mp-dropdown__value {
+  flex: 1 0 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &.is-placeholder {
+    color: var(--use-text-tertiary);
+  }
+}
+
+// ── Caret (chevron expand_more) ───────────────────────────
+// Figma: 24px · color use/text/tertiary · transición 0.2s
+.mp-dropdown__caret {
+  flex-shrink: 0;
+  font-size: rem(24px);
+  color: var(--use-text-tertiary);
+  line-height: 1;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+// ── Chips multi-select dentro del trigger ─────────────────
+// Figma: height 28px · radius 20px · padding 0 8px · gap 4px
+.mp-dropdown__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(6px);
+  flex: 1 0 0;
+  min-width: 0;
+  align-items: center;
+}
+
+.mp-dropdown__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(4px);
+  height: rem(28px);
+  padding: 0 rem(8px);
+  border-radius: rem(20px);
+  background: color-mix(in srgb, var(--use-primary-default) 12%, transparent);
+  color: var(--use-primary-default);
+  font-size: rem(13px);
+  font-weight: 500;
+  white-space: nowrap;
+  max-width: rem(160px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mp-dropdown__chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: rem(16px);
+  height: rem(16px);
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: background 0.15s;
+
+  .material-symbols-rounded { font-size: rem(14px); }
+
+  &:hover {
+    background: color-mix(in srgb, var(--use-primary-default) 18%, transparent);
+  }
+
+  &:focus-visible {
+    outline: rem(2px) solid var(--use-focus-outline);
+    outline-offset: rem(1px);
+  }
+}
+
+// ────────────────────────────────────────────────────────────
+// 4. Panel desplegable
+// Figma: radius 12px bottom (0 top cuando trigger abierto)
+//        shadow md · bg use/surface/white · z-index 100
+// (medidas de panel no confirmadas explícitamente en Figma;
+//  pendiente validar con diseño)
+// ────────────────────────────────────────────────────────────
+.mp-dropdown__panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  max-height: rem(256px);
+  overflow-y: auto;
+  background: var(--use-surface-white);
+  border: rem(1px) solid var(--use-primary-default);
+  border-top: 0;
+  border-radius: 0 0 rem(16px) rem(16px);
+  box-shadow: 0 rem(8px) rem(32px) rgba(17, 17, 17, 0.14);
+
+  // Oculto por defecto
+  display: none;
+
+  // Visible cuando el trigger tiene aria-expanded="true"
+  .mp-dropdown[aria-expanded='true'] > & {
+    display: block;
+  }
+
+  // Scrollbar sutil
+  &::-webkit-scrollbar {
+    width: rem(4px);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--use-border-subtle);
+    border-radius: rem(4px);
+  }
+}
+
+// ── Search dentro del panel ───────────────────────────────
+.mp-dropdown__search {
+  display: flex;
+  align-items: center;
+  gap: rem(8px);
+  padding: rem(8px) rem(16px);
+  border-bottom: rem(1px) solid var(--use-border-subtle);
+  position: sticky;
+  top: 0;
+  background: var(--use-surface-white);
+  z-index: 1;
+
+  .material-symbols-rounded {
+    font-size: rem(20px);
+    color: var(--use-text-tertiary);
+    flex-shrink: 0;
+  }
+}
+
+.mp-dropdown__search-input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: rem(16px);
+  color: var(--use-text-primary);
+  line-height: 1;
+  min-width: 0;
+
+  &::placeholder {
+    color: var(--use-text-tertiary);
+  }
+}
+
+// ────────────────────────────────────────────────────────────
+// 5. Opciones
+// Figma: height ~48px · padding 0 16px · hover bg gris suave
+// (pendiente validar medidas exactas de ítems con diseño)
+// ────────────────────────────────────────────────────────────
+.mp-dropdown__options {
+  padding: rem(4px) 0;
+}
+
+.mp-dropdown__option {
+  display: flex;
+  align-items: center;
+  gap: rem(10px);
+  min-height: rem(48px);
+  padding: rem(10px) rem(16px);
+  font-family: var(--font-body);
+  font-size: rem(16px);
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  line-height: 1.3;
+  color: var(--use-text-primary);
+  cursor: pointer;
+  transition: background 0.12s;
+  user-select: none;
+
+  &:hover:not(.mp-dropdown__option--disabled) {
+    background: var(--use-surface-theme-gray-5, #f5f5f5);
+  }
+
+  // Seleccionada
+  &--selected {
+    color: var(--use-primary-default);
+    font-weight: 500;
+    background: color-mix(in srgb, var(--use-primary-default) 8%, transparent);
+
+    &:hover {
+      background: color-mix(in srgb, var(--use-primary-default) 14%, transparent);
+    }
+
+    // Checkmark
+    &::after {
+      content: 'check';
+      font-family: 'Material Symbols Rounded';
+      font-size: rem(20px);
+      margin-left: auto;
+      flex-shrink: 0;
+      font-variation-settings: 'FILL' 1;
+    }
+  }
+
+  // Deshabilitada
+  &--disabled {
+    color: var(--use-text-tertiary);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// ── Checkbox en multi-select ──────────────────────────────
+.mp-dropdown__option-check {
+  flex-shrink: 0;
+  width: rem(18px);
+  height: rem(18px);
+  border: rem(1.5px) solid var(--use-border-default, #999);
+  border-radius: rem(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s, border-color 0.12s;
+
+  .mp-dropdown__option--selected & {
+    background: var(--use-primary-default);
+    border-color: var(--use-primary-default);
+    color: var(--use-text-on-dark-primary, #fff);
+
+    &::after {
+      content: 'check';
+      font-family: 'Material Symbols Rounded';
+      font-size: rem(14px);
+      font-variation-settings: 'FILL' 1;
+    }
+  }
+}
+
+// ────────────────────────────────────────────────────────────
+// 6. Grupos de opciones
+// ────────────────────────────────────────────────────────────
+.mp-dropdown__group-header {
+  padding: rem(10px) rem(16px) rem(4px);
+  font-family: var(--font-body);
+  font-size: rem(11px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--use-text-tertiary);
+  pointer-events: none;
+}
+
+.mp-dropdown__divider {
+  height: rem(1px);
+  background: var(--use-border-subtle);
+  margin: rem(4px) 0;
+}
+
+// ────────────────────────────────────────────────────────────
+// 7. Sin resultados (búsqueda vacía)
+// ────────────────────────────────────────────────────────────
+.mp-dropdown__empty {
+  padding: rem(20px) rem(16px);
+  text-align: center;
+  color: var(--use-text-tertiary);
+  font-size: rem(14px);
+  font-family: var(--font-body);
+}
+
+// ────────────────────────────────────────────────────────────
+// 8. Helper / error / success text
+// ────────────────────────────────────────────────────────────
+.mp-dropdown-helper {
+  font-family: var(--font-body);
+  font-size: rem(14px);
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  line-height: 1.45;
+  color: var(--use-text-tertiary);
+  display: flex;
+  align-items: flex-start;
+  gap: rem(4px);
+
+  &.error {
+    color: var(--use-state-error-text);
+    font-weight: 500;
+  }
+
+  &.success {
+    color: var(--use-state-success-text);
+  }
+}
+
+// ────────────────────────────────────────────────────────────
+// 9. Modos de color
+// ────────────────────────────────────────────────────────────
+
+[data-theme='dark'] {
+  .mp-dropdown__trigger {
+    background: var(--use-surface-white); // dark: #292929
+    color: var(--use-text-primary);
+    --mp-dd-border: var(--use-border-subtle);
+
+    &[aria-expanded='true'],
+    &:focus-visible:not(:disabled) {
+      --mp-dd-border: var(--use-primary-default);
+      box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--use-primary-default) 22%, transparent);
+    }
+  }
+
+  .mp-dropdown__panel {
+    background: var(--use-surface-white);
+    border-color: var(--use-primary-default);
+  }
+
+  .mp-dropdown__option:hover:not(.mp-dropdown__option--disabled) {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .mp-dropdown__search {
+    background: var(--use-surface-white);
+    border-bottom-color: var(--use-border-subtle);
+  }
+
+  .mp-dropdown-label {
+    color: var(--use-text-primary);
+  }
+
+  .mp-dropdown-helper {
+    color: var(--use-text-tertiary);
+  }
+}
+
+[data-theme='high-contrast'] {
+  .mp-dropdown__trigger {
+    border-width: rem(2px);
+    border-color: var(--base-neutral-white);
+    background: var(--base-neutral-black);
+    color: var(--base-neutral-white);
+
+    &[aria-expanded='true'],
+    &:focus-visible:not(:disabled) {
+      outline: rem(3px) solid var(--use-focus-outline);
+      outline-offset: rem(2px);
+      box-shadow: none;
+      border-color: var(--base-neutral-white);
+    }
+
+    &.error {
+      border-color: var(--use-state-error-icon);
+      box-shadow: none;
+    }
+
+    &:hover:not(:disabled):not(.error):not([aria-expanded='true']) {
+      border-color: var(--use-primary-default, #ffff00);
+    }
+  }
+
+  .mp-dropdown__panel {
+    background: var(--base-neutral-black);
+    border: rem(2px) solid var(--base-neutral-white);
+    border-top: 0;
+  }
+
+  .mp-dropdown__option {
+    color: var(--base-neutral-white);
+
+    &:hover:not(.mp-dropdown__option--disabled) {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    &--selected {
+      color: var(--use-primary-default, #ffff00);
+      background: transparent;
+    }
+  }
+
+  .mp-dropdown-label {
+    color: var(--base-neutral-white);
+  }
+
+  .mp-dropdown-helper { color: var(--base-neutral-white); }
+  .mp-dropdown-helper.error { color: var(--use-state-error-text); }
+  .mp-dropdown__caret { color: var(--base-neutral-white); }
+
+  .mp-dropdown__search-input {
+    color: var(--base-neutral-white);
+    &::placeholder { color: rgba(255,255,255,0.5); }
+  }
+
+  .mp-dropdown__chip {
+    background: rgba(255, 255, 0, 0.15);
+    color: var(--use-primary-default, #ffff00);
+  }
+}

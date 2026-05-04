@@ -61,7 +61,7 @@ export const TOKENS = {
     "modes": {
       "light": "#e63f0c",
       "dark": "#e65c00",
-      "highContrast": "#e65c00"
+      "highContrast": "#e6e600"
     }
   },
   "base/brand/100": {
@@ -71,7 +71,7 @@ export const TOKENS = {
     "modes": {
       "light": "#cc5200",
       "dark": "#cc5200",
-      "highContrast": "#cc5200"
+      "highContrast": "#cccc00"
     }
   },
   "base/brand/yellow": {

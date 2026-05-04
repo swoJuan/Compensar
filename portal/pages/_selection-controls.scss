@@ -274,3 +274,7 @@
     justify-items: stretch;
   }
 }
+
+[data-theme='high-contrast'] .selection-measure {
+  color: var(--base-neutral-black);
+}

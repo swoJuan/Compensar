@@ -159,6 +159,216 @@ La pagina del componente Boton queda como referencia base para construir futuras
   - Interaccion por teclado.
   - Radio buttons deben compartir `name` cuando pertenecen al mismo grupo.
 
+## Decisiones principales encontradas en Figma para Alertas
+
+- Nodo Figma revisado: `4574:1918` - `2.6 — Alerts / Messages completo`.
+- Subnodos revisados:
+  - `4588:19459` - alerta contextual con medidas y anatomia.
+  - `4589:21376` - tipos info, success, warning y error.
+  - `4585:19287` - modos Light, Dark y Alto contraste.
+- Es un componente transversal y productivo; sus estilos deben vivir en `core/components/web/_alerts.scss`.
+- La documentacion vive en `docs/transversales/components/alerts.html` y sus estilos propios en `portal/pages/_alerts.scss`.
+- Excepcion de documentacion: Alertas tiene tres tipos dentro del sistema. Cada pagina de alerta debe declarar explicitamente que tipo documenta y agregar una zona "donde se usa" antes del resumen.
+- Esta pagina documenta unicamente la alerta `Contextual (Inline / Banner)`.
+- Nombre de componente productivo definido: `.mp-alert`.
+- Variantes oficiales:
+  - `.mp-alert--info`
+  - `.mp-alert--success`
+  - `.mp-alert--warning`
+  - `.mp-alert--error`
+  - `.mp-alert--dismissible` cuando tenga accion de cierre.
+- El componente comunica informacion relevante sobre una accion, validacion o estado del sistema dentro del flujo de lectura.
+- Uso contextual: no bloquea la interaccion, aparece cerca del contenido relacionado y puede ser persistente.
+- Zona "donde se usa" obligatoria para este tipo:
+  - Caracteristicas: no bloquea la interaccion, aparece cerca del contenido relacionado y puede ser persistente.
+  - Ubicacion: dentro de formularios, bajo o sobre el elemento afectado, en bloques o secciones especificas y siempre visible en el flujo de lectura.
+  - Debe incluir un diagrama visual simple que muestre la alerta integrada en desktop y mobile.
+- Medidas observadas:
+  - Ancho de ejemplo: 361px.
+  - Alto de ejemplo: 78px en hug content.
+  - Padding interno: 16px.
+  - Borde: 1px.
+  - Radio: 12px.
+  - Icono: 32 x 32px.
+  - Gap entre icono y contenido:
+    - Info: 8px.
+    - Error: 8px.
+    - Success: 16px.
+    - Warning: 16px.
+  - Gap entre titulo y cuerpo: 4px.
+- Tipografia:
+  - Titulo: Roboto SemiBold 16px, line-height 1.3.
+  - Cuerpo: Roboto Regular 14px, line-height 1.5.
+- Tokens y colores Light observados:
+  - Info: fondo `use/state/info/bg` `#e6f1fb`, borde `use/state/info/border` `#6c9fd0`, texto `use/state/info/text` `#2d4a67`.
+  - Success: fondo `use/state/success/bg` `#e6f7e8`, borde `use/state/success/border` `#44bd75`, texto `use/state/success/text` `#0d3d1f`.
+  - Warning: fondo `use/state/warning/bg` `#fff2d9`, borde `use/state/warning/border` `#fcce72`, texto `use/state/warning/text` `#111111`.
+  - Error: fondo `use/state/error/bg` `#f7eeed`, borde `use/state/error/border` `#db7165`, texto `use/state/error/text` `#521a14`.
+- Tokens y colores Dark observados:
+  - Info: fondo `#18428f`, borde `#296ff0`, texto `#f5f5f5`.
+  - Success: fondo `#0b853d`, borde `#22a152`, texto `#f5f5f5`.
+  - Warning: fondo `#967229`, borde `#fcbf44`, texto `#f5f5f5`.
+  - Error: fondo `#7d291f`, borde `#d14434`, texto `#f5f5f5`.
+- Tokens y colores Alto contraste observados:
+  - Info: fondo `#102c5e`, borde `#296ff0`, texto `#ffffff`.
+  - Success: fondo `#0d3d1f`, borde `#22a152`, texto `#ffffff`.
+  - Warning: fondo `#634a1a`, borde `#fcbf44`, texto `#ffffff`.
+  - Error: fondo `#521a14`, borde `#d14434`, texto `#ffffff`.
+- Reglas de comportamiento:
+  - Aparece tras una accion, evento o validacion.
+  - Debe ser clara y visible.
+  - No debe bloquear la interaccion innecesariamente.
+  - Puede ser persistente o temporal si el patron que lo usa lo permite.
+- Reglas de contenido:
+  - Usar el tipo correcto segun contexto.
+  - No abusar de mensajes en pantalla.
+  - Priorizar claridad sobre cantidad de informacion.
+  - Mostrar solo mensajes relevantes.
+  - Evitar duplicar mensajes para la misma accion.
+- Accesibilidad:
+  - Contraste minimo 4.5:1.
+  - No depender solo del color.
+  - Incluir icono y texto.
+  - Permitir cierre accesible por teclado cuando aplique.
+  - Usar `role="status"` para informacion contextual y `role="alert"` para errores que requieren atencion.
+
+## Decisiones principales encontradas en Figma para Toast
+
+- Nodo Figma revisado: `4590:22197` - `2.6.2 — Toast (Temporal / Flotante)`.
+- Subnodos revisados:
+  - `4590:22281` - caracteristicas, ubicacion y maqueta de uso.
+  - `4590:22212` - anatomia.
+  - `4595:27603` - dimensiones y medidas internas.
+- Es un componente transversal y productivo; sus estilos deben vivir en `core/components/web/_toasts.scss`.
+- La documentacion vive en `docs/transversales/components/toasts.html` y sus estilos propios en `portal/pages/_toasts.scss`.
+- Nombre de componente productivo definido: `.mp-toast`.
+- Variantes oficiales:
+  - `.mp-toast--info`
+  - `.mp-toast--success`
+  - `.mp-toast--warning`
+  - `.mp-toast--error`
+  - `.mp-toast-region` para la region flotante.
+- Tipo documentado: `Toast (Temporal / Flotante)`.
+- Caracteristicas:
+  - Flota sobre la interfaz.
+  - No bloquea la interaccion.
+  - Tiene alta visibilidad con baja intrusion.
+  - Desaparece automaticamente.
+- Ubicacion:
+  - Elemento flotante, no hace parte del layout.
+  - Posicion recomendada: esquina superior derecha.
+  - En mobile ocupa el ancho disponible con margen lateral.
+- Comportamiento:
+  - Aparece tras una accion del usuario o evento del sistema.
+  - Se puede cerrar manualmente.
+  - Se cierra automaticamente en 5 segundos para esta implementacion.
+  - Figma menciona 3 a 5 segundos segun longitud del contenido; el sistema adopta 5 segundos como regla base.
+  - Evitar multiples toast simultaneos; maximo 1 a 2 visibles al mismo tiempo.
+- Medidas observadas:
+  - Figma muestra ancho fijo de ejemplo de 427px.
+  - Regla productiva definida por el sistema: ancho maximo 350px.
+  - Alto de ejemplo: 78px.
+  - Padding: 16px.
+  - Gap principal: 16px.
+  - Radio: 12px.
+  - Icono: 32 x 32px.
+  - Boton de cierre: 24 x 24px.
+  - Gap entre titulo y mensaje: 4px.
+- Tipografia:
+  - Titulo: Roboto SemiBold 16px, line-height 1.3.
+  - Mensaje: Roboto Regular 14px, line-height 1.5.
+- Tokens y colores:
+  - Reutiliza los tokens de estado de Alertas: `use/state/info/*`, `use/state/success/*`, `use/state/warning/*`, `use/state/error/*`.
+  - Reutiliza los modos Light, Dark y Alto contraste definidos para mensajes de estado.
+- Reglas de uso:
+  - Usar solo para mensajes breves.
+  - No usar para errores criticos.
+  - No usar para decisiones del usuario.
+  - Evitar multiples toast simultaneos.
+- Accesibilidad:
+  - Debe ser visible sin bloquear contenido.
+  - Usar region `aria-live="polite"` para feedback no critico.
+  - No desaparecer demasiado rapido; base de 5 segundos.
+  - Permitir cierre manual con `aria-label`.
+  - Mantener contraste adecuado y no depender solo del color.
+
+## Decisiones principales encontradas en Figma para Modal
+
+- Nodo Figma revisado: `4595:28317` - `2.6.3 — Modal (Critico)`.
+- Subnodos revisados:
+  - `4595:28332` - anatomia.
+  - `4595:31047` - medidas del ejemplo.
+- Es un componente transversal y productivo; sus estilos deben vivir en `core/components/web/_modals.scss`.
+- La documentacion vive en `docs/transversales/components/modals.html` y sus estilos propios en `portal/pages/_modals.scss`.
+- Nombre de componente productivo definido: `.mp-modal`.
+- Base estructural obligatoria: Bootstrap 5 modal.
+  - `.modal`
+  - `.modal-dialog`
+  - `.modal-dialog-centered`
+  - `.modal-content`
+  - `.modal-sm` para pequeno.
+  - `.modal-lg` para grande.
+- Variantes oficiales:
+  - `.mp-modal--info`
+  - `.mp-modal--success`
+  - `.mp-modal--warning`
+  - `.mp-modal--error`
+- Tipo documentado: `Modal (Critico)`.
+- Caracteristicas:
+  - Bloquea la interaccion con el fondo.
+  - Se muestra sobre overlay `#111111` con opacidad 30%.
+  - Requiere accion del usuario.
+  - Tiene alta prioridad visual.
+- Ubicacion:
+  - Centrado en pantalla.
+  - Sobre fondo oscuro overlay.
+  - Nivel mas alto de jerarquia visual.
+- Medidas observadas:
+  - Ancho de ejemplo / mediano: 479px.
+  - Altura de ejemplo: entre 312px y 335px segun contenido.
+  - Padding interno: 24px.
+  - Gap interno: 24px.
+  - Borde: 1px `use/border/default` `#cccccc`.
+  - Radio del contenedor: 12px.
+  - Sombra: `2px 5px 16px rgba(0,0,0,.15)`.
+  - Icono de estado: contenedor 64 x 64px.
+  - Icono interno: 32px.
+  - Borde del icono: 5px.
+  - Boton de cierre: 32 x 32px.
+  - Posicion de cierre observada: top 19px, right 23px.
+- Tipografia:
+  - Titulo: Roboto Bold 28px, line-height 1.2.
+  - Mensaje: Roboto Regular 18px, line-height 1.3.
+- Tamanos ideales definidos para web:
+  - Pequeno: `.modal-sm`, ancho maximo 300px. Para confirmaciones cortas.
+  - Mediano: default Compensar, ancho maximo 479px. Es el tamano oficial observado en Figma.
+  - Grande: `.modal-lg`, ancho maximo 800px. Para flujos guiados o contenido breve ampliado.
+- Reglas de uso:
+  - Usar solo cuando la interrupcion sea necesaria.
+  - No usar multiples modales simultaneamente.
+  - Limitar a una accion primaria.
+  - Evitar contenido largo o complejo.
+  - Mantener mensajes claros y accionables.
+- Cuando no usar:
+  - Informacion simple: usar alerta contextual.
+  - Confirmacion rapida: usar toast.
+  - Listas largas: usar pagina o vista dedicada.
+  - Acciones secundarias de baja prioridad.
+- Comportamiento:
+  - Se abre tras una accion.
+  - Bloquea el fondo con overlay.
+  - Cierra con boton principal cuando aplique, accion secundaria, boton X o tecla ESC.
+  - Debe mantener el foco dentro del modal mientras este abierto.
+  - Debe devolver el foco al elemento que lo disparo al cerrarse.
+- Accesibilidad:
+  - Usar `role="dialog"` y `aria-modal="true"`.
+  - Conectar titulo con `aria-labelledby`.
+  - Conectar mensaje con `aria-describedby`.
+  - Mantener focus trap.
+  - Permitir cierre con ESC.
+  - Garantizar contraste en Light, Dark y Alto contraste.
+  - No depender unicamente del color para comunicar el tipo.
+
 ## Estructura obligatoria para todos los componentes
 
 Todos los componentes del sistema de diseno deben documentarse siempre con esta estructura, en este orden:

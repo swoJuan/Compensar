@@ -1,0 +1,499 @@
+<article class="component-doc-page modal-doc" data-component-doc="modals">
+  <nav class="component-doc-breadcrumb" aria-label="Breadcrumb">
+    <span>Sistema de diseño</span>
+    <span>/</span>
+    <span>Componentes transversales</span>
+    <span>/</span>
+    <strong>Modal</strong>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="modal-title">
+    <h1 id="modal-title">Modal</h1>
+    <p>Componente que interrumpe el flujo para presentar información importante o solicitar una decisión del usuario.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Bootstrap compatible</span>
+      <span class="component-chip">Categoría: feedback</span>
+      <span class="component-chip">Tipo: crítico / bloqueante</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-context-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="modal-context-title">Modal (Crítico)</h2>
+        <p>Este tipo bloquea la interacción con el fondo y requiere una acción explícita antes de volver al flujo.</p>
+      </div>
+    </div>
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-lg-4">
+        <h3>Características</h3>
+        <ul class="component-list mb-3">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Bloquea la interacción con el fondo.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Se muestra sobre overlay `#111` al 30%.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Requiere acción del usuario.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Tiene alta prioridad visual.</li>
+        </ul>
+        <h3>Ubicación</h3>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Centrado en pantalla.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Sobre fondo oscuro overlay.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Nivel más alto de jerarquía visual.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-8">
+        <div class="modal-context-diagram" aria-label="Diagrama de uso de modal en desktop y mobile">
+          <div class="modal-context-diagram__browser">
+            <span class="modal-context-diagram__bar"></span>
+            <div class="modal-context-diagram__grid">
+              <span class="modal-context-diagram__block"></span>
+              <span class="modal-context-diagram__block"></span>
+            </div>
+            <span class="modal-context-diagram__block"></span>
+            <div class="modal-context-diagram__overlay">
+              <span class="modal-context-diagram__modal">
+                <span class="modal-context-diagram__icon"></span>
+                <span class="modal-context-diagram__line"></span>
+                <span class="modal-context-diagram__line modal-context-diagram__line--short"></span>
+                <span class="modal-context-diagram__button"></span>
+              </span>
+            </div>
+          </div>
+          <div class="modal-context-diagram__phone">
+            <span class="modal-context-diagram__bar"></span>
+            <span class="modal-context-diagram__block"></span>
+            <span class="modal-context-diagram__block"></span>
+            <div class="modal-context-diagram__overlay">
+              <span class="modal-context-diagram__modal">
+                <span class="modal-context-diagram__icon"></span>
+                <span class="modal-context-diagram__line"></span>
+                <span class="modal-context-diagram__line modal-context-diagram__line--short"></span>
+                <span class="modal-context-diagram__button"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-summary">
+    <div class="component-section__header">
+      <h2 id="modal-summary">1. Resumen</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-4">
+        <h3>Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Confirmaciones importantes o irreversibles.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Información crítica que exige lectura.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Validaciones que detienen el flujo.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Flujos guiados de pocos pasos.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">close</span>No usar para mensajes simples, listas largas o feedback temporal.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-8">
+        <div class="component-example-card component-example-card--split">
+          <div>
+            <h3>Do</h3>
+            <p>Usa el modal cuando la decisión es necesaria para continuar.</p>
+            <div class="component-example-actions">
+              <button type="button" class="mp-btn mp-btn--primario" data-modal-demo>Ver demo</button>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3>Don’t</h3>
+            <p>No lo uses para confirmaciones rápidas. Para eso usa toast.</p>
+            <div class="component-example-actions">
+              <div class="mp-toast mp-toast--success" role="status">
+                <span class="mp-toast__icon material-symbols-rounded" aria-hidden="true">check_circle</span>
+                <div class="mp-toast__content">
+                  <p class="mp-toast__title">Cambios guardados</p>
+                  <p class="mp-toast__body">La acción se completó.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-anatomy">
+    <div class="component-section__header">
+      <div>
+        <h2 id="modal-anatomy">2. Anatomía interactiva</h2>
+        <p>La estructura usa clases Bootstrap y personalización `mp-modal`.</p>
+      </div>
+      <button type="button" class="mp-btn mp-btn--primario mp-btn--icon-left" data-modal-demo>
+        <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+        Ver demo
+      </button>
+    </div>
+    <div class="segmented-control" role="group" aria-label="Tipo de modal">
+      <button type="button" class="mp-btn mp-btn--terciario" data-modal-anatomy="warning" aria-pressed="true">Warning</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-modal-anatomy="info" aria-pressed="false">Info</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-modal-anatomy="success" aria-pressed="false">Success</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-modal-anatomy="error" aria-pressed="false">Error</button>
+    </div>
+
+    <div class="modal-anatomy-stage">
+      <span class="modal-measure modal-measure--width">479 px</span>
+      <span class="modal-measure modal-measure--icon">64 px</span>
+      <span class="modal-measure modal-measure--padding">Padding 24 px</span>
+      <div class="modal-doc-callout modal-doc-callout--container">
+        <strong>Contenedor</strong>
+        <span>Fondo, borde, radio 12 px, sombra 2/5/16 y ancho mediano 479 px.</span>
+      </div>
+      <div class="modal-doc-callout modal-doc-callout--icon">
+        <strong>Icono</strong>
+        <span>Contenedor 64 px, icono interno 32 px, borde 5 px.</span>
+      </div>
+      <div class="modal-doc-callout modal-doc-callout--title">
+        <strong>Título</strong>
+        <span>Roboto Bold 28 px · line-height 120%.</span>
+      </div>
+      <div class="modal-doc-callout modal-doc-callout--message">
+        <strong>Mensaje</strong>
+        <span>Roboto Regular 18 px · line-height 130%.</span>
+      </div>
+      <div class="modal-doc-callout modal-doc-callout--close">
+        <strong>Cierre</strong>
+        <span>Botón 32 x 32 px, top 19 px, right 23 px.</span>
+      </div>
+      <div class="modal-doc-callout modal-doc-callout--action">
+        <strong>Acción</strong>
+        <span>Usa `mp-btn`; máximo una acción primaria.</span>
+      </div>
+      <div class="modal-anatomy-preview" id="modal-anatomy-preview"></div>
+    </div>
+
+    <div class="modal-doc-controls">
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-modal-toggle="labels" checked>
+        Etiquetas
+      </label>
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-modal-toggle="measures" checked>
+        Medidas
+      </label>
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-modal-toggle="secondary">
+        Acción secundaria
+      </label>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-playground-title">
+    <div class="component-section__header">
+      <h2 id="modal-playground-title">3. Variantes / Playground</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-5 modal-playground__preview">
+        <h3>Vista previa</h3>
+        <div class="modal-preview-card" id="modal-playground-preview"></div>
+      </div>
+      <div class="col-12 col-lg-7">
+        <div class="modal-playground__controls">
+          <div class="modal-field">
+            <label for="modal-kind">Tipo</label>
+            <select id="modal-kind" data-modal-control="kind">
+              <option value="warning">Warning</option>
+              <option value="info">Info</option>
+              <option value="success">Success</option>
+              <option value="error">Error</option>
+            </select>
+          </div>
+          <div class="modal-field">
+            <label for="modal-size">Tamaño</label>
+            <select id="modal-size" data-modal-control="size">
+              <option value="md">Mediano · 479 px</option>
+              <option value="sm">Pequeño · 300 px</option>
+              <option value="lg">Grande · 800 px</option>
+            </select>
+          </div>
+          <div class="modal-field">
+            <label for="modal-theme">Tema</label>
+            <select id="modal-theme" data-modal-control="theme">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="high-contrast">Alto contraste</option>
+            </select>
+          </div>
+          <div class="modal-field">
+            <label for="modal-title-input">Título</label>
+            <input id="modal-title-input" type="text" value="La cita no fue posible agendarla" data-modal-control="title">
+          </div>
+          <div class="modal-field">
+            <label for="modal-message">Mensaje</label>
+            <textarea id="modal-message" data-modal-control="message">Por favor intenta más tarde o puedes comunicarte con uno de nuestros asesores a través de Vita.</textarea>
+          </div>
+          <div class="modal-field">
+            <label for="modal-action">Acción principal</label>
+            <input id="modal-action" type="text" value="Acción" data-modal-control="action">
+          </div>
+          <label class="button-doc-toggle">
+            <input type="checkbox" data-modal-control="secondary">
+            Acción secundaria
+          </label>
+          <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-modal-demo>
+            <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+            Probar modal
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Código de modal">
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="true" data-modal-code-tab="html">HTML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-modal-code-tab="css">Clases CSS</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-modal-code-tab="tokens">Tokens</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-copy-modal-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar código
+        </button>
+      </div>
+      <pre id="modal-code-output"></pre>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-sizes-title">
+    <div class="component-section__header">
+      <h2 id="modal-sizes-title">4. Tamaños ideales</h2>
+    </div>
+    <div class="modal-size-grid">
+      <div class="modal-size-card">
+        <strong>Pequeño · `.modal-sm`</strong>
+        <p>300 px. Para confirmaciones cortas y mensajes de una sola acción.</p>
+      </div>
+      <div class="modal-size-card">
+        <strong>Mediano · default</strong>
+        <p>479 px. Tamaño oficial observado en Figma y recomendado por defecto.</p>
+      </div>
+      <div class="modal-size-card">
+        <strong>Grande · `.modal-lg`</strong>
+        <p>800 px. Para contenido guiado, tablas pequeñas o formularios breves.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-states-title">
+    <div class="component-section__header">
+      <h2 id="modal-states-title">5. Estados y tipos</h2>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="modal-size-card">
+          <strong>Info</strong>
+          <p>Información relevante que detiene el flujo para confirmar lectura.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="modal-size-card">
+          <strong>Success</strong>
+          <p>Confirmación importante después de una acción de alto impacto.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="modal-size-card">
+          <strong>Warning</strong>
+          <p>Advertencia previa a una decisión sensible o irreversible.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="modal-size-card">
+          <strong>Error</strong>
+          <p>Bloqueo del flujo por error que requiere corrección o salida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-behavior">
+    <div class="component-section__header">
+      <h2 id="modal-behavior">6. Comportamiento</h2>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-md-6">
+        <div class="component-info-card">
+          <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+          <strong>Apertura</strong>
+          <p>Se abre después de una acción y mueve el foco al modal.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="component-info-card">
+          <span class="material-symbols-rounded" aria-hidden="true">block</span>
+          <strong>Bloqueo</strong>
+          <p>El overlay bloquea el contenido de fondo mientras el modal está activo.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="component-info-card">
+          <span class="material-symbols-rounded" aria-hidden="true">keyboard</span>
+          <strong>Teclado</strong>
+          <p>ESC cierra el modal y Tab mantiene el foco dentro del contenedor.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="component-info-card">
+          <span class="material-symbols-rounded" aria-hidden="true">close</span>
+          <strong>Cierre</strong>
+          <p>Permite cerrar con X, acción secundaria, botón principal cuando aplique o ESC.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-content-guides">
+    <div class="component-section__header">
+      <h2 id="modal-content-guides">7. Guías de contenido</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <h3>Do</h3>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usa títulos directos que expliquen el problema o decisión.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Redacta mensajes breves y accionables.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usa una sola acción primaria.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <h3>Don’t</h3>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">close</span>No incluyas textos largos o listas extensas.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">close</span>No uses etiquetas ambiguas como “Aceptar” si la acción es irreversible.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">close</span>No combines varias decisiones en el mismo modal.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-accessibility">
+    <div class="component-section__header">
+      <h2 id="modal-accessibility">8. Accesibilidad</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usar `role="dialog"` y `aria-modal="true"`.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Conectar título con `aria-labelledby`.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Conectar mensaje con `aria-describedby`.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Devolver el foco al botón que abrió el modal.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Focus visible en cierre y acciones.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Contraste mínimo AA.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No depender solo del color para comunicar tipo.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No abrir múltiples modales simultáneamente.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-responsive-title">
+    <div class="component-section__header">
+      <h2 id="modal-responsive-title">9. Responsive</h2>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-md-4">
+        <div class="modal-size-card">
+          <strong>Desktop</strong>
+          <p>Centrado, con ancho máximo según tamaño y overlay completo.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="modal-size-card">
+          <strong>Tablet</strong>
+          <p>Mantiene el ancho máximo disponible y conserva margen lateral.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="modal-size-card">
+          <strong>Mobile</strong>
+          <p>Ocupa el ancho disponible con 16 px de margen lateral mínimo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-tokens-title">
+    <div class="component-section__header">
+      <h2 id="modal-tokens-title">10. Tokens usados</h2>
+    </div>
+    <div class="token-table-wrapper">
+      <table class="component-token-table">
+        <thead>
+          <tr><th>Token / regla</th><th>Valor</th><th>Uso</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>`use/surface/white`</td><td>#ffffff / modos</td><td>Fondo del modal</td></tr>
+          <tr><td>`use/border/default`</td><td>#cccccc</td><td>Borde del contenedor</td></tr>
+          <tr><td>`space/24`</td><td>24 px</td><td>Padding interno y gap</td></tr>
+          <tr><td>`shadow/modal`</td><td>2px 5px 16px rgba(0,0,0,.15)</td><td>Elevación Figma</td></tr>
+          <tr><td>Radio</td><td>12 px</td><td>Radio del contenedor</td></tr>
+          <tr><td>Icono</td><td>64 px / interno 32 px</td><td>Elemento visual de estado</td></tr>
+          <tr><td>Overlay</td><td>#111 · 30%</td><td>Bloqueo de fondo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="component-downloads mt-3" aria-label="Descargas del modal">
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-modal-download="css">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>
+        Descargar CSS
+      </button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-modal-download="scss">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>
+        Descargar Sass
+      </button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-modal-download="json">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>
+        Descargar JSON
+      </button>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-code-title">
+    <div class="component-section__header">
+      <h2 id="modal-code-title">11. Código</h2>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-copy-modal-static>
+        <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+        Copiar
+      </button>
+    </div>
+    <pre id="modal-static-code"></pre>
+  </section>
+
+  <section class="component-section" aria-labelledby="modal-qa-title">
+    <div class="component-section__header">
+      <h2 id="modal-qa-title">12. Checklist QA</h2>
+    </div>
+    <div class="component-checklist">
+      <label><input type="checkbox"> Overlay bloquea la interacción del fondo.</label>
+      <label><input type="checkbox"> ESC cierra el modal.</label>
+      <label><input type="checkbox"> Focus queda atrapado dentro del modal.</label>
+      <label><input type="checkbox"> El foco vuelve al disparador al cerrar.</label>
+      <label><input type="checkbox"> Título y mensaje están asociados con ARIA.</label>
+      <label><input type="checkbox"> Tamaños sm, md y lg respetan Bootstrap.</label>
+      <label><input type="checkbox"> Botones usan `mp-btn` del core.</label>
+      <label><input type="checkbox"> Light, Dark y Alto contraste son legibles.</label>
+    </div>
+  </section>
+
+  <section class="component-support" aria-label="Soporte y actualización">
+    <div>
+      <strong>¿Necesitas ayuda?</strong>
+      <p>Usa el canal del sistema de diseño para validar casos especiales de modal.</p>
+    </div>
+    <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left">
+      <span class="material-symbols-rounded" aria-hidden="true">bug_report</span>
+      Reportar issue
+    </button>
+    <span>Última actualización: 04 mayo 2026 · v1.0.0</span>
+  </section>
+</article>

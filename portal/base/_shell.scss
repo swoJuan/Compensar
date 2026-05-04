@@ -14,8 +14,9 @@
   /* Shell aliases for the documentation portal. */
   --ui-bg: var(--use-background-page);
   --ui-surface: var(--use-surface-white);
-  --ui-surface-alt: var(--use-surface-subtle);
+  --ui-surface-alt: var(--product-gray-5);
   --ui-surface-hover: var(--use-surface-subtle);
+  --ui-surface-theme-gray-5: var(--product-gray-5);
   --ui-border: var(--use-border-default);
   --ui-text: var(--use-text-primary);
   --ui-text-secondary: var(--use-text-secondary);
@@ -88,6 +89,7 @@
   --ui-surface: var(--base-neutral-100-negro);
   --ui-surface-alt: var(--base-neutral-80);
   --ui-surface-hover: var(--base-neutral-80);
+  --ui-surface-theme-gray-5: var(--base-neutral-80);
   --ui-border: var(--base-neutral-70);
   --ui-text: var(--base-neutral-10);
   --ui-text-secondary: var(--base-neutral-20);
@@ -103,12 +105,13 @@
   --ui-surface: var(--base-neutral-black);
   --ui-surface-alt: var(--base-neutral-100-negro);
   --ui-surface-hover: var(--base-neutral-100-negro);
+  --ui-surface-theme-gray-5: var(--base-neutral-100-negro);
   --ui-border: var(--base-neutral-white);
   --ui-text: var(--base-neutral-white);
   --ui-text-secondary: var(--base-neutral-white);
   --ui-text-muted: var(--base-neutral-white);
-  --ui-accent: var(--use-text-theme-yellow);
-  --ui-accent-dark: var(--use-text-theme-yellow);
+  --ui-accent: var(--use-primary-default);
+  --ui-accent-dark: var(--use-primary-default);
   --ui-tag-bg: transparent;
   --ui-tag-text: var(--use-text-theme-yellow);
 }

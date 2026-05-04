@@ -4962,7 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
-    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'seleccion');
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -5031,6 +5031,21 @@
         window.selectionDocs.initSelectionDoc(document);
       });
     }
+    if (window.alertDocs) {
+      requestAnimationFrame(function() {
+        window.alertDocs.initAlertDoc(document);
+      });
+    }
+    if (window.toastDocs) {
+      requestAnimationFrame(function() {
+        window.toastDocs.initToastDoc(document);
+      });
+    }
+    if (window.modalDocs) {
+      requestAnimationFrame(function() {
+        window.modalDocs.initModalDoc(document);
+      });
+    }
     if (window.inputDocs) {
       requestAnimationFrame(function() {
         window.inputDocs.initInputDoc(document);
@@ -5065,6 +5080,9 @@
     'botones':            'docs/transversales/components/buttons.html',
     'inputs':             'docs/transversales/components/inputs.html',
     'seleccion':          'docs/transversales/components/selection-controls.html',
+    'alertas':            'docs/transversales/components/alerts.html',
+    'toast':              'docs/transversales/components/toasts.html',
+    'modales':            'docs/transversales/components/modals.html',
     'badges':             'docs/web/components/badges.html',
     'tokens-texto':       'docs/tokens/tokens-text.html',
     'tokens-tablas':      'docs/tokens/tokens-tables.html',

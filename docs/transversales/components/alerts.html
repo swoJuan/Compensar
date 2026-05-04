@@ -1,0 +1,401 @@
+<article class="component-doc-page alert-doc" data-component-doc="alerts">
+  <nav class="component-doc-breadcrumb" aria-label="Breadcrumb">
+    <span>Sistema de diseño</span>
+    <span>/</span>
+    <span>Componentes transversales</span>
+    <span>/</span>
+    <strong>Alertas</strong>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="alert-title">
+    <h1 id="alert-title">Alertas</h1>
+    <p>Comunican información relevante sobre el estado de una acción o del sistema. Esta página documenta la alerta contextual integrada en el contenido.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Bootstrap compatible</span>
+      <span class="component-chip">Categoría: feedback</span>
+      <span class="component-chip">Tipo: contextual</span>
+    </div>
+  </section>
+
+  <section class="component-section alert-context-zone" aria-labelledby="alert-context-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="alert-context-title">Contextual (Inline / Banner)</h2>
+        <p>Mensaje integrado dentro de la interfaz. Se usa para validaciones en formularios, mensajes informativos y advertencias no críticas.</p>
+      </div>
+    </div>
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-lg-4">
+        <h3>Características</h3>
+        <ul class="component-list mb-3">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No bloquea la interacción.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Aparece cerca del contenido relacionado.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Puede ser persistente dentro del flujo.</li>
+        </ul>
+        <h3>Ubicación</h3>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Dentro de formularios.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Bajo o sobre el elemento afectado.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>En bloques o secciones específicas.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Siempre visible en el flujo de lectura.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-8">
+        <div class="alert-context-diagram" aria-label="Diagrama de uso de alerta contextual">
+          <div class="alert-context-diagram__browser">
+            <div class="alert-context-diagram__body">
+              <span class="alert-context-diagram__field alert-context-diagram__field--header"></span>
+              <span class="alert-context-diagram__alert alert-context-diagram__alert--top">
+                <span class="material-symbols-rounded" aria-hidden="true">info</span>
+                <span><strong>Notification title</strong><small>Notification message.</small></span>
+              </span>
+              <span class="alert-context-diagram__field alert-context-diagram__field--side"></span>
+              <span class="alert-context-diagram__field alert-context-diagram__field--content"></span>
+              <span class="alert-context-diagram__alert alert-context-diagram__alert--inline">
+                <span class="material-symbols-rounded" aria-hidden="true">info</span>
+                <span><strong>Notification title</strong><small>Notification message.</small></span>
+              </span>
+              <span class="alert-context-diagram__field alert-context-diagram__field--footer"></span>
+            </div>
+          </div>
+          <div class="alert-context-diagram__phone">
+            <span class="alert-context-diagram__field alert-context-diagram__field--header"></span>
+            <span class="alert-context-diagram__alert">
+              <span class="material-symbols-rounded" aria-hidden="true">info</span>
+              <span><strong>Notification title</strong><small>Notification message.</small></span>
+            </span>
+            <span class="alert-context-diagram__field alert-context-diagram__field--content"></span>
+            <span class="alert-context-diagram__field alert-context-diagram__field--footer"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <section class="component-section" aria-labelledby="alert-summary">
+    <div class="component-section__header">
+      <h2 id="alert-summary">1. Resumen</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <h3>Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Validaciones dentro de formularios o secciones específicas.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Información que ayuda a completar una acción.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Advertencias no críticas dentro del flujo.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Feedback contextual que no debe bloquear al usuario.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split">
+          <div>
+            <h3>Do</h3>
+            <p>Usa el tipo correcto y ubícalo cerca del contenido relacionado.</p>
+            <div class="component-example-actions">
+              <div class="mp-alert mp-alert--success" role="status">
+                <span class="mp-alert__icon material-symbols-rounded" aria-hidden="true">check_circle</span>
+                <div class="mp-alert__content">
+                  <p class="mp-alert__title">Solicitud enviada</p>
+                  <p class="mp-alert__body">Recibirás la confirmación en tu correo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3>Don’t</h3>
+            <p>No dupliques mensajes ni uses alertas para decisiones que requieren confirmación.</p>
+            <div class="component-example-actions">
+              <div class="mp-alert mp-alert--warning" role="status">
+                <span class="mp-alert__icon material-symbols-rounded" aria-hidden="true">warning</span>
+                <div class="mp-alert__content">
+                  <p class="mp-alert__title">Revisa todo</p>
+                  <p class="mp-alert__body">Mensaje ambiguo y poco accionable.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="alert-anatomy">
+    <div class="component-section__header">
+      <h2 id="alert-anatomy">2. Anatomía interactiva</h2>
+    </div>
+    <div class="segmented-control" role="group" aria-label="Tipo de alerta">
+      <button type="button" class="mp-btn mp-btn--terciario" data-alert-anatomy="info" aria-pressed="true">Info</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-alert-anatomy="success" aria-pressed="false">Success</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-alert-anatomy="warning" aria-pressed="false">Warning</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-alert-anatomy="error" aria-pressed="false">Error</button>
+    </div>
+
+    <div class="alert-anatomy-stage" data-alert-anatomy-stage>
+      <span class="alert-measure alert-measure--width" data-alert-measure="width">361 px</span>
+      <span class="alert-measure alert-measure--height" data-alert-measure="height">78 px</span>
+      <span class="alert-measure alert-measure--gap" data-alert-measure="gap">Gap 8 px</span>
+      <span class="alert-measure alert-measure--padding">Padding 16 px</span>
+      <div class="alert-doc-callout alert-doc-callout--container">
+        <strong>Contenedor</strong>
+        <span>Padding 16 px · borde 1 px · radio 12 px.</span>
+      </div>
+      <div class="alert-doc-callout alert-doc-callout--icon">
+        <strong>Icono</strong>
+        <span>32 x 32 px según Figma.</span>
+      </div>
+      <div class="alert-doc-callout alert-doc-callout--content">
+        <strong>Contenido</strong>
+        <span>Stack vertical con gap 4 px.</span>
+      </div>
+      <div class="alert-doc-callout alert-doc-callout--padding">
+        <strong>Espaciado</strong>
+        <span data-alert-callout="spacing">Info/Error gap 8 px.</span>
+      </div>
+      <div class="alert-doc-callout alert-doc-callout--text">
+        <strong>Texto</strong>
+        <span>Título 16 px SemiBold · cuerpo 14 px Regular.</span>
+      </div>
+      <div class="alert-anatomy-preview" id="alert-anatomy-preview"></div>
+    </div>
+
+    <div class="alert-doc-controls">
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-alert-toggle="labels" checked>
+        Etiquetas
+      </label>
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-alert-toggle="measures" checked>
+        Medidas
+      </label>
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-alert-toggle="dismissible">
+        Cierre
+      </label>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="alert-playground-title">
+    <div class="component-section__header">
+      <h2 id="alert-playground-title">3. Variantes / Playground</h2>
+    </div>
+    <div class="row g-4 alert-playground">
+      <div class="col-12 col-lg-4 alert-playground__preview">
+        <h3>Vista previa</h3>
+        <div class="alert-preview-card" id="alert-playground-preview"></div>
+      </div>
+      <div class="col-12 col-lg-8">
+        <div class="alert-playground__controls">
+          <div class="alert-field">
+            <label for="alert-kind">Tipo</label>
+            <select id="alert-kind" data-alert-control="kind">
+              <option value="info">Info</option>
+              <option value="success">Success</option>
+              <option value="warning">Warning</option>
+              <option value="error">Error</option>
+            </select>
+          </div>
+          <div class="alert-field">
+            <label for="alert-theme">Tema</label>
+            <select id="alert-theme" data-alert-control="theme">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="high-contrast">Alto contraste</option>
+            </select>
+          </div>
+          <div class="alert-field">
+            <label for="alert-title-input">Título</label>
+            <input id="alert-title-input" type="text" value="Información importante" data-alert-control="title">
+          </div>
+          <div class="alert-field">
+            <label for="alert-message">Mensaje</label>
+            <textarea id="alert-message" data-alert-control="message">Revisa la información antes de continuar.</textarea>
+          </div>
+          <label class="button-doc-toggle">
+            <input type="checkbox" data-alert-control="dismissible">
+            Con cierre
+          </label>
+          <label class="button-doc-toggle">
+            <input type="checkbox" data-alert-control="focus">
+            Focus visible
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Código de alerta">
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="true" data-alert-code-tab="html">HTML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-alert-code-tab="css">Clases CSS</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-alert-code-tab="tokens">Tokens</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-copy-alert-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar código
+        </button>
+      </div>
+      <pre><code id="alert-code-output"></code></pre>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="alert-states">
+    <div class="component-section__header">
+      <h2 id="alert-states">4. Estados</h2>
+    </div>
+    <div class="alert-state-grid">
+      <div class="alert-state-card"><span>Info</span><div class="alert-demo-row" data-alert-state-demo="info"></div></div>
+      <div class="alert-state-card"><span>Success</span><div class="alert-demo-row" data-alert-state-demo="success"></div></div>
+      <div class="alert-state-card"><span>Warning</span><div class="alert-demo-row" data-alert-state-demo="warning"></div></div>
+      <div class="alert-state-card"><span>Error</span><div class="alert-demo-row" data-alert-state-demo="error"></div></div>
+    </div>
+  </section>
+
+  <div class="row g-3">
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="alert-behavior">
+        <div class="component-section__header">
+          <h2 id="alert-behavior">5. Comportamiento</h2>
+        </div>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Aparece tras una acción, evento o validación.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No bloquea la interacción cuando es contextual.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Puede ser persistente o temporal según el patrón que lo use.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Si tiene cierre, el botón debe ser accesible por teclado.</li>
+        </ul>
+      </section>
+    </div>
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="alert-content">
+        <div class="component-section__header">
+          <h2 id="alert-content">6. Guías de contenido</h2>
+        </div>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usa mensajes claros, visibles y accionables.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Prioriza claridad sobre cantidad de información.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No dupliques mensajes para la misma acción.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usa el tipo correcto: info, success, warning o error.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="alert-a11y">
+        <div class="component-section__header">
+          <h2 id="alert-a11y">7. Accesibilidad</h2>
+        </div>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Contraste mínimo 4.5:1.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No depender solo del color: incluir icono y texto.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usar `role="status"` para información y `role="alert"` para errores importantes.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>El cierre debe tener `aria-label` descriptivo.</li>
+        </ul>
+      </section>
+    </div>
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="alert-responsive">
+        <div class="component-section__header">
+          <h2 id="alert-responsive">8. Responsive</h2>
+        </div>
+        <div class="row g-3">
+          <div class="col-12 col-md-4"><h3>Desktop</h3><p>Puede ocupar el ancho de la sección o mantener ancho contextual.</p></div>
+          <div class="col-12 col-md-4"><h3>Tablet</h3><p>Mantiene padding 16 px y lectura en dos líneas cuando aplique.</p></div>
+          <div class="col-12 col-md-4"><h3>Mobile</h3><p>Debe ajustarse a una columna sin truncar texto ni icono.</p></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="component-section" aria-labelledby="alert-tokens">
+    <div class="component-section__header">
+      <h2 id="alert-tokens">9. Tokens usados</h2>
+    </div>
+    <div class="alert-token-grid">
+      <div class="alert-token-item"><code>--space-16</code><span>16px · padding interno y gap success/warning.</span></div>
+      <div class="alert-token-item"><code>--space-8</code><span>8px · gap info/error observado en Figma.</span></div>
+      <div class="alert-token-item"><code>--space-4</code><span>4px · separación entre título y cuerpo.</span></div>
+      <div class="alert-token-item"><code>--use-state-info-bg</code><span>#e6f1fb · fondo info light.</span></div>
+      <div class="alert-token-item"><code>--use-state-success-bg</code><span>#e6f7e8 · fondo success light.</span></div>
+      <div class="alert-token-item"><code>--use-state-warning-bg</code><span>#fff2d9 · fondo warning light.</span></div>
+      <div class="alert-token-item"><code>--use-state-error-bg</code><span>#f7eeed · fondo error light.</span></div>
+      <div class="alert-token-item"><code>--font-size-md</code><span>16px · título Roboto SemiBold.</span></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="alert-code">
+    <div class="component-section__header">
+      <div>
+        <h2 id="alert-code">10. Código</h2>
+        <p>Descarga estilos planos del componente transversal, unidos al core y organizados por modo.</p>
+      </div>
+      <div class="ct-downloads button-downloads" aria-label="Descargar estilos de alerta">
+        <span class="ct-downloads-label"><span class="material-symbols-rounded" aria-hidden="true">download</span> Descargar</span>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-alert-download="css"><span class="material-symbols-rounded" aria-hidden="true">code</span> CSS</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-alert-download="scss"><span class="material-symbols-rounded" aria-hidden="true">data_object</span> Sass</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-alert-download="json"><span class="material-symbols-rounded" aria-hidden="true">data_object</span> JSON</button>
+      </div>
+    </div>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Ejemplos de código">
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="true" data-alert-static-tab="info">Info</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-alert-static-tab="success">Success</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-alert-static-tab="warning">Warning</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-alert-static-tab="error">Error</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-copy-alert-static>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+      </div>
+      <pre><code id="alert-static-code"></code></pre>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="alert-qa">
+    <div class="component-section__header">
+      <h2 id="alert-qa">11. Checklist QA</h2>
+    </div>
+    <div class="button-qa-grid">
+      <label class="button-qa-item"><input type="checkbox">Padding interno 16 px.</label>
+      <label class="button-qa-item"><input type="checkbox">Radio 12 px y borde 1 px.</label>
+      <label class="button-qa-item"><input type="checkbox">Icono 32 x 32 px.</label>
+      <label class="button-qa-item"><input type="checkbox">Título 16 px SemiBold y cuerpo 14 px Regular.</label>
+      <label class="button-qa-item"><input type="checkbox">Tipos info, success, warning y error correctos.</label>
+      <label class="button-qa-item"><input type="checkbox">Light, dark y alto contraste coinciden con Figma.</label>
+      <label class="button-qa-item"><input type="checkbox">No depende solo del color.</label>
+      <label class="button-qa-item"><input type="checkbox">Cierre accesible si aplica.</label>
+      <label class="button-qa-item"><input type="checkbox">Texto no se trunca en mobile.</label>
+      <label class="button-qa-item"><input type="checkbox">Tokens aplicados desde core.</label>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="alert-support">
+    <div class="component-section__header">
+      <h2 id="alert-support">12. Issues / soporte / actualización</h2>
+    </div>
+    <div class="component-support">
+      <div class="component-support__item">
+        <span class="component-support__icon material-symbols-rounded" aria-hidden="true">help</span>
+        <div>
+          <h3>¿Necesitas ayuda?</h3>
+          <p>Usa el canal #diseno-sistema o escribe al equipo responsable.</p>
+        </div>
+      </div>
+      <span class="component-divider" aria-hidden="true"></span>
+      <div class="component-support__item">
+        <span class="component-support__icon material-symbols-rounded" aria-hidden="true">bug_report</span>
+        <div>
+          <h3>¿Encontraste un problema?</h3>
+          <p>Repórtalo para mejorar la documentación y el componente.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="component-support__footer">
+      <span>Última actualización: 4 mayo 2026</span>
+      <span>Versión del componente: v1.0</span>
+      <span>Fuente: Figma Compensar v2 · nodo 4574:1918</span>
+    </footer>
+  </section>
+</article>

@@ -409,7 +409,7 @@
 }
 
 [data-theme='high-contrast'] .segmented-control button[aria-pressed='true'] {
-  background: var(--use-text-theme-yellow);
+  background: var(--use-primary-default);
   color: var(--base-neutral-black);
   box-shadow: 0 0 0 rem(2px) var(--base-neutral-white);
 }
@@ -478,7 +478,7 @@
   border-color: var(--product-gray-80);
 }
 
-.button-preview-card[data-theme='high-contrast'] {
+[data-theme='high-contrast'] .button-preview-card {
   --use-surface-white: #000000;
   --use-text-primary: #ffffff;
   --use-text-inverse: #000000;
@@ -487,6 +487,11 @@
   background: var(--use-surface-white);
   border-color: var(--use-primary-default);
   box-shadow: inset 0 0 0 rem(1px) var(--use-primary-default);
+}
+
+[data-theme='high-contrast'] .button-doc-guide-label,
+[data-theme='high-contrast'] .button-doc-measure {
+  color: var(--base-neutral-black);
 }
 
 .button-playground__controls {

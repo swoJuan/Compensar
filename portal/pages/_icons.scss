@@ -87,7 +87,7 @@
     radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--use-surface-theme-violet-20) 72%, transparent), transparent 28%),
     radial-gradient(circle at 12% 92%, color-mix(in srgb, var(--use-surface-theme-orange-20) 78%, transparent), transparent 30%),
     linear-gradient(135deg, color-mix(in srgb, var(--use-state-info-bg) 76%, transparent), transparent 50%),
-    $use-surface-theme-gray-5;
+    var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-1);
@@ -160,12 +160,12 @@
 }
 
 .ic-hero-link--secondary {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   color: var(--ui-accent);
 }
 
 .ic-hero-link--secondary:hover {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   color: var(--ui-accent);
 }
 
@@ -181,7 +181,7 @@
   padding: var(--space-24);
   border-radius: var(--radius-lg);
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--use-surface-theme-violet-5) 82%, transparent), $use-surface-theme-gray-5);
+    linear-gradient(180deg, color-mix(in srgb, var(--use-surface-theme-violet-5) 82%, transparent), var(--ui-surface));
   border: rem(1px) solid color-mix(in srgb, var(--product-violet-40) 48%, var(--ui-border));
 }
 
@@ -197,7 +197,7 @@
   justify-content: center;
   min-height: rem(64px);
   border-radius: var(--radius-md);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   color: var(--ui-text);
   box-shadow: 0 rem(6px) rem(14px) color-mix(in srgb, var(--ui-text) 5%, transparent);
@@ -207,7 +207,7 @@
 .ic-hero-grid .icon:nth-child(5),
 .ic-hero-grid .icon:nth-child(9) {
   color: var(--ui-accent);
-  background: color-mix(in srgb, var(--ui-accent) 8%, $use-surface-theme-gray-5);
+  background: color-mix(in srgb, var(--ui-accent) 8%, var(--ui-surface));
 }
 
 .ic-hero-grid .icon:nth-child(2),
@@ -253,7 +253,7 @@
   display: grid;
   gap: var(--space-8);
   padding: var(--space-24);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: var(--radius-md);
   box-shadow: 0 rem(8px) rem(18px) color-mix(in srgb, var(--ui-text) 4%, transparent);
@@ -296,7 +296,7 @@
 .ic-principle-card code {
   font-size: rem(14px);
   color: var(--ui-accent);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border-radius: var(--radius-xs);
   padding: rem(16px);
 }
@@ -325,7 +325,7 @@
 .ic-count-badge {
   margin-left: auto;
   font-size: rem(14px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(20px);
   padding: rem(16px) rem(16px);
@@ -419,7 +419,7 @@
   gap: var(--space-8);
   padding: rem(16px);
   border-radius: rem(8px);
-  background: $use-surface-theme-gray-5
+  background: var(--ui-surface)
 }
 
 .ic-preview-item .icon {
@@ -436,7 +436,7 @@
 }
 
 .ic-order-card {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
   padding: var(--space-24);
@@ -505,7 +505,7 @@
 }
 
 .ic-order-config {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border-radius: rem(8px);
   padding: rem(16px) rem(16px);
   margin-top: var(--space-8)
@@ -554,7 +554,7 @@
 }
 
 .ic-sizes-table th {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   padding: rem(16px) rem(16px);
   text-align: left;
   font-size: rem(14px);
@@ -616,7 +616,7 @@
   background:
     radial-gradient(circle at 96% 8%, color-mix(in srgb, var(--use-surface-theme-orange-20) 74%, transparent), transparent 30%),
     radial-gradient(circle at 16% 100%, color-mix(in srgb, var(--use-surface-theme-violet-20) 62%, transparent), transparent 32%),
-    $use-surface-theme-gray-5;
+    var(--ui-surface);
   border: rem(1px) solid color-mix(in srgb, var(--ui-accent) 18%, var(--ui-border));
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-1);
@@ -666,7 +666,7 @@
   display: grid;
   gap: var(--space-8);
   padding: var(--space-24);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: var(--radius-md);
   box-shadow: 0 rem(8px) rem(18px) color-mix(in srgb, var(--ui-text) 4%, transparent);
@@ -709,7 +709,7 @@
 .ic-impl-step-card code {
   font-size: rem(14px);
   color: var(--ui-accent);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border-radius: var(--radius-xs);
   padding: rem(16px);
 }
@@ -722,7 +722,7 @@
 }
 
 .ic-impl-card {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid color-mix(in srgb, var(--ui-accent) 12%, var(--ui-border));
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -734,7 +734,7 @@
   align-items: center;
   gap: var(--space-8);
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--ui-accent) 8%, $use-surface-theme-gray-5), $use-surface-theme-gray-5);
+    linear-gradient(90deg, color-mix(in srgb, var(--ui-accent) 8%, var(--ui-surface)), var(--ui-surface));
   border-bottom: rem(1px) solid var(--ui-border);
   padding: var(--space-16) var(--space-24);
   font-size: rem(14px);
@@ -786,7 +786,7 @@
   width: fit-content;
   font-family: var(--font-code);
   font-size: rem(14px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   padding: rem(16px);
   border-radius: var(--radius-xs);
   color: var(--ui-accent);
@@ -813,7 +813,7 @@
 .ic-steps code {
   font-family: var(--font-code);
   font-size: rem(14px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   padding: rem(16px);
   border-radius: var(--radius-xs);
   color: var(--ui-accent);
@@ -828,7 +828,7 @@
 .ic-code-tabs-bar {
   display: flex;
   gap: var(--space-8);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   padding: rem(16px) rem(16px);
   border-bottom: rem(1px) solid var(--ui-border)
 }
@@ -846,7 +846,7 @@
 }
 
 .ic-code-tab.active {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   color: var(--ui-accent);
   box-shadow: 0 rem(1px) rem(3px) color-mix(in srgb, var(--ui-text) 10%, transparent)
 }
@@ -909,7 +909,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-16);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(14px);
   padding: rem(16px);
@@ -954,7 +954,7 @@
   gap: var(--space-8);
   font-size: rem(14px);
   color: var(--ui-text-muted);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(8px);
   padding: rem(16px) rem(16px)
@@ -973,7 +973,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-8);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1.5px) solid var(--ui-border);
   border-radius: rem(12px);
   padding: rem(16px) rem(24px);
@@ -1019,7 +1019,7 @@
 
 .ic-search-clear:hover {
   color: var(--ui-text);
-  background: $use-surface-theme-gray-5
+  background: var(--ui-surface)
 }
 
 .ic-search-clear .material-symbols-rounded {
@@ -1050,7 +1050,7 @@
 }
 
 .ic-cat-pill {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(20px);
   padding: rem(16px) rem(24px);
@@ -1088,7 +1088,7 @@
   align-items: center;
   gap: var(--space-8);
   padding: rem(16px) rem(16px) rem(16px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
   cursor: pointer;
@@ -1099,7 +1099,7 @@
 }
 
 .ic-card:hover {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border-color: var(--ui-accent);
   box-shadow: 0 rem(2px) rem(12px) color-mix(in srgb, var(--ui-text) 8%, transparent);
   transform: translateY(rem(-2px))
@@ -1208,7 +1208,7 @@
 .ic-popover {
   position: fixed;
   z-index: 1001;
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(20px);
   width: min(rem(380px), calc(100vw - #{rem(32px)}));
@@ -1223,7 +1223,7 @@
   gap: var(--space-16);
   padding: var(--space-24);
   padding-right: calc(var(--space-24) + #{rem(40px)});
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border-bottom: rem(1px) solid var(--ui-border)
 }
 
@@ -1245,7 +1245,7 @@
 .ic-pop-preview {
   width: rem(72px);
   height: rem(72px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(14px);
   display: flex;
@@ -1316,13 +1316,13 @@
 }
 
 .ic-pop-tag--unicode {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   color: var(--ui-accent)
 }
 
 .ic-pop-tag--cls {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   color: var(--product-violet-50)
 }
@@ -1349,7 +1349,7 @@
 }
 
 .ic-pop-close:hover {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   color: var(--ui-text)
 }
 
@@ -1445,7 +1445,7 @@
 .sp-access-block {
   display: flex;
   gap: var(--space-24);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-left: rem(4px) solid var(--ui-accent);
   border-radius: rem(12px);
@@ -1514,7 +1514,7 @@
 .sp-access-list code {
   font-family: var(--font-code);
   font-size: rem(14px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   padding: rem(16px);
   border-radius: rem(4px);
   color: var(--ui-accent)
@@ -1591,7 +1591,7 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: var(--radius-md);
 }
@@ -1668,4 +1668,21 @@
   .ic-grid {
     grid-template-columns: repeat(auto-fill, minmax(rem(80px), 1fr))
   }
+}
+
+[data-theme="high-contrast"] .ic-cat-pill {
+  background: transparent;
+  border-color: var(--ui-border);
+  color: var(--ui-text);
+}
+
+[data-theme="high-contrast"] .ic-cat-pill:hover {
+  border-color: var(--ui-accent);
+  color: var(--ui-accent);
+}
+
+[data-theme="high-contrast"] .ic-cat-pill.active {
+  background: var(--ui-accent);
+  border-color: var(--ui-accent);
+  color: #000000;
 }

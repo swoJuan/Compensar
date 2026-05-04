@@ -906,3 +906,13 @@
     justify-content: center;
   }
 }
+
+[data-theme="high-contrast"] .ct-filter-tab {
+  border: rem(1px) solid var(--ui-border);
+}
+
+[data-theme="high-contrast"] .ct-copy-mode {
+  opacity: 1;
+  border: rem(1px) solid var(--ui-border);
+  background: var(--ui-surface-alt);
+}

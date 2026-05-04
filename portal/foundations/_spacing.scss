@@ -839,14 +839,14 @@
   border-radius: 5px;
   padding: 2px 8px;
   font-size: 10px;
-  color: #aaa;
+  color: var(--ui-text-muted);
   cursor: pointer;
   transition: background .12s, color .12s;
 }
 
 .sp-code-copy:hover {
   background: rgba(255, 255, 255, .14);
-  color: #fff
+  color: var(--ui-text)
 }
 
 .sp-code-copy .material-symbols-rounded {
@@ -994,4 +994,18 @@
   .sp-util-tabs {
     flex-wrap: wrap
   }
+}
+
+[data-theme="high-contrast"] .sp-row-copy {
+  border-width: 2px;
+}
+
+[data-theme="high-contrast"] .sp-code-copy {
+  background: var(--ui-surface-alt);
+  border-color: var(--ui-border);
+  color: var(--ui-text);
+}
+
+[data-theme="high-contrast"] .sp-code-copy:hover {
+  background: var(--ui-tag-bg);
 }

@@ -325,3 +325,22 @@
   --bs-nav-link-font-size: 1rem;
   --bs-scroll-height: 340px;
 }
+
+// ============================================================
+//  High-contrast token overrides
+//  Redefines base-brand-* so every use-* alias and component
+//  that references var(--base-brand-80) automatically gets the
+//  correct HC yellow without any hardcoded #ffff00 values.
+// ============================================================
+[data-theme='high-contrast'] {
+  --base-brand-80:  #{color-tokens.$base-brand-hc};
+  --base-brand-90:  #{color-tokens.$base-brand-hc-hover};
+  --base-brand-100: #{color-tokens.$base-brand-hc-active};
+
+  // Explicitly override the key semantic tokens for HC clarity.
+  --use-primary-default:  #{color-tokens.$base-brand-hc};
+  --use-primary-hover:    #{color-tokens.$base-brand-hc-hover};
+  --use-primary-active:   #{color-tokens.$base-brand-hc-active};
+  --use-text-link:        #{color-tokens.$base-brand-hc};
+  --use-focus-outline:    #{color-tokens.$base-brand-hc};
+}

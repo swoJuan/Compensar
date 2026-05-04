@@ -1,0 +1,406 @@
+<article class="component-doc-page toast-doc" data-component-doc="toasts">
+  <nav class="component-doc-breadcrumb" aria-label="Breadcrumb">
+    <span>Sistema de diseño</span>
+    <span>/</span>
+    <span>Componentes transversales</span>
+    <span>/</span>
+    <strong>Toast</strong>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="toast-title">
+    <h1 id="toast-title">Toast</h1>
+    <p>Mensaje breve y flotante que aparece temporalmente para confirmar una acción o informar un estado del sistema.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Bootstrap compatible</span>
+      <span class="component-chip">Categoría: feedback</span>
+      <span class="component-chip">Tipo: temporal / flotante</span>
+    </div>
+  </section>
+
+  <section class="component-section toast-context-zone" aria-labelledby="toast-context-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="toast-context-title">Toast (Temporal / Flotante)</h2>
+        <p>Los toast flotan sobre la interfaz, no hacen parte del layout y desaparecen automáticamente después de 5 segundos.</p>
+      </div>
+    </div>
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-lg-4">
+        <h3>Características</h3>
+        <ul class="component-list mb-3">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Flotan sobre la interfaz.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No bloquean la interacción.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Tienen alta visibilidad y baja intrusión.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Se cierran automáticamente en 5 segundos.</li>
+        </ul>
+        <h3>Ubicación</h3>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No ocupa espacio dentro del layout.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Posición recomendada: esquina superior derecha.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Máximo 1 a 2 visibles simultáneamente.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-8">
+        <div class="toast-context-diagram" aria-label="Diagrama de ubicación del toast">
+          <div class="toast-context-diagram__browser">
+            <span class="toast-context-diagram__bar"></span>
+            <span class="toast-context-diagram__toast">
+              <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
+              Toast
+            </span>
+            <div class="toast-context-diagram__row">
+              <span class="toast-context-diagram__block"></span>
+              <span class="toast-context-diagram__block"></span>
+            </div>
+            <span class="toast-context-diagram__block"></span>
+          </div>
+          <div class="toast-context-diagram__phone">
+            <span class="toast-context-diagram__bar"></span>
+            <span class="toast-context-diagram__toast">
+              <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
+              Toast
+            </span>
+            <div class="toast-context-diagram__row">
+              <span class="toast-context-diagram__block"></span>
+            </div>
+            <span class="toast-context-diagram__block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="toast-summary">
+    <div class="component-section__header">
+      <h2 id="toast-summary">1. Resumen</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-4">
+        <h3>Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Confirmar acciones breves y no críticas.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Informar estados del sistema sin interrumpir el flujo.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Mostrar feedback que no requiere decisión del usuario.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Dar visibilidad temporal a una acción completada.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-8">
+        <div class="component-example-card component-example-card--split">
+          <div>
+            <h3>Do</h3>
+            <p>Usa mensajes breves y claros.</p>
+            <div class="component-example-actions">
+              <div class="mp-toast mp-toast--success" role="status">
+                <span class="mp-toast__icon material-symbols-rounded" aria-hidden="true">check_circle</span>
+                <div class="mp-toast__content">
+                  <p class="mp-toast__title">Cambios guardados</p>
+                  <p class="mp-toast__body">La información se actualizó correctamente.</p>
+                </div>
+                <button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-toast__close" aria-label="Cerrar toast">
+                  <span class="material-symbols-rounded" aria-hidden="true">close</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3>Don’t</h3>
+            <p>No uses toast para errores críticos, decisiones o información extensa.</p>
+            <div class="component-example-actions">
+              <div class="mp-toast mp-toast--warning" role="status">
+                <span class="mp-toast__icon material-symbols-rounded" aria-hidden="true">warning</span>
+                <div class="mp-toast__content">
+                  <p class="mp-toast__title">Texto demasiado largo</p>
+                  <p class="mp-toast__body">Evita convertir el toast en una lectura extensa.</p>
+                </div>
+                <button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-toast__close" aria-label="Cerrar toast">
+                  <span class="material-symbols-rounded" aria-hidden="true">close</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="toast-anatomy">
+    <div class="component-section__header">
+      <div>
+        <h2 id="toast-anatomy">2. Anatomía interactiva</h2>
+        <p>El demo se muestra en la esquina superior derecha y se cierra automáticamente en 5 segundos.</p>
+      </div>
+      <button type="button" class="mp-btn mp-btn--primario mp-btn--icon-left" data-toast-demo>
+        <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+        Ver demo
+      </button>
+    </div>
+    <div class="segmented-control" role="group" aria-label="Tipo de toast">
+      <button type="button" class="mp-btn mp-btn--terciario" data-toast-anatomy="success" aria-pressed="true">Success</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-toast-anatomy="info" aria-pressed="false">Info</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-toast-anatomy="warning" aria-pressed="false">Warning</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-toast-anatomy="error" aria-pressed="false">Error</button>
+    </div>
+
+    <div class="toast-anatomy-stage">
+      <span class="toast-measure toast-measure--width">Máx. 350 px</span>
+      <span class="toast-measure toast-measure--height">78 px</span>
+      <span class="toast-measure toast-measure--gap">Gap 16 px</span>
+      <div class="toast-doc-callout toast-doc-callout--container">
+        <strong>Contenedor</strong>
+        <span>Padding 16 px · borde 1 px · radio 12 px · ancho máximo 350 px.</span>
+      </div>
+      <div class="toast-doc-callout toast-doc-callout--icon">
+        <strong>Icono</strong>
+        <span>32 x 32 px según Figma.</span>
+      </div>
+      <div class="toast-doc-callout toast-doc-callout--close">
+        <strong>Cierre</strong>
+        <span>Botón a demanda, 24 x 24 px.</span>
+      </div>
+      <div class="toast-doc-callout toast-doc-callout--content">
+        <strong>Texto</strong>
+        <span>Título 16 px SemiBold · mensaje 14 px Regular.</span>
+      </div>
+      <div class="toast-anatomy-preview" id="toast-anatomy-preview"></div>
+    </div>
+
+    <div class="toast-doc-controls">
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-toast-toggle="labels" checked>
+        Etiquetas
+      </label>
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-toast-toggle="measures" checked>
+        Medidas
+      </label>
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-toast-toggle="close" checked>
+        Botón cerrar
+      </label>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="toast-playground-title">
+    <div class="component-section__header">
+      <h2 id="toast-playground-title">3. Variantes / Playground</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-5 toast-playground__preview">
+        <h3>Vista previa</h3>
+        <div class="toast-preview-card" id="toast-playground-preview"></div>
+      </div>
+      <div class="col-12 col-lg-7">
+        <div class="toast-playground__controls">
+          <div class="toast-field">
+            <label for="toast-kind">Tipo</label>
+            <select id="toast-kind" data-toast-control="kind">
+              <option value="success">Success</option>
+              <option value="info">Info</option>
+              <option value="warning">Warning</option>
+              <option value="error">Error</option>
+            </select>
+          </div>
+          <div class="toast-field">
+            <label for="toast-theme">Tema</label>
+            <select id="toast-theme" data-toast-control="theme">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="high-contrast">Alto contraste</option>
+            </select>
+          </div>
+          <div class="toast-field">
+            <label for="toast-title-input">Título</label>
+            <input id="toast-title-input" type="text" value="Toast title" data-toast-control="title">
+          </div>
+          <div class="toast-field">
+            <label for="toast-message">Mensaje</label>
+            <textarea id="toast-message" data-toast-control="message">Toast message</textarea>
+          </div>
+          <label class="button-doc-toggle">
+            <input type="checkbox" data-toast-control="close" checked>
+            Botón cerrar
+          </label>
+          <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-toast-demo>
+            <span class="material-symbols-rounded" aria-hidden="true">notifications</span>
+            Probar toast
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Código de toast">
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="true" data-toast-code-tab="html">HTML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-toast-code-tab="css">Clases CSS</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-toast-code-tab="tokens">Tokens</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-copy-toast-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar código
+        </button>
+      </div>
+      <pre><code id="toast-code-output"></code></pre>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="toast-states">
+    <div class="component-section__header">
+      <h2 id="toast-states">4. Estados</h2>
+    </div>
+    <div class="toast-state-grid">
+      <div class="toast-state-card"><span>Success</span><div class="toast-demo-row" data-toast-state-demo="success"></div></div>
+      <div class="toast-state-card"><span>Info</span><div class="toast-demo-row" data-toast-state-demo="info"></div></div>
+      <div class="toast-state-card"><span>Warning</span><div class="toast-demo-row" data-toast-state-demo="warning"></div></div>
+      <div class="toast-state-card"><span>Error</span><div class="toast-demo-row" data-toast-state-demo="error"></div></div>
+    </div>
+  </section>
+
+  <div class="row g-3">
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="toast-behavior">
+        <div class="component-section__header">
+          <h2 id="toast-behavior">5. Comportamiento</h2>
+        </div>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Aparece tras una acción del usuario o evento del sistema.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Se cierra automáticamente en 5 segundos.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Permite cierre manual con botón accesible.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Evitar acumulación: máximo 1 a 2 visibles.</li>
+        </ul>
+      </section>
+    </div>
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="toast-content">
+        <div class="component-section__header">
+          <h2 id="toast-content">6. Guías de contenido</h2>
+        </div>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usa mensajes breves y directos.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No incluyas información extensa ni instrucciones complejas.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>El título debe resumir el resultado de la acción.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>El mensaje puede ampliar el contexto en una línea corta.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="toast-a11y">
+        <div class="component-section__header">
+          <h2 id="toast-a11y">7. Accesibilidad</h2>
+        </div>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usar región `aria-live="polite"` para feedback no crítico.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No desaparecer demasiado rápido: 5 segundos como regla base.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>El botón cerrar requiere `aria-label`.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No depender solo del color: incluir icono y texto.</li>
+        </ul>
+      </section>
+    </div>
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="toast-responsive">
+        <div class="component-section__header">
+          <h2 id="toast-responsive">8. Responsive</h2>
+        </div>
+        <div class="row g-3">
+          <div class="col-12 col-md-4"><h3>Desktop</h3><p>Esquina superior derecha, ancho máximo 350 px.</p></div>
+          <div class="col-12 col-md-4"><h3>Tablet</h3><p>Mantiene posición flotante y ancho máximo.</p></div>
+          <div class="col-12 col-md-4"><h3>Mobile</h3><p>Ocupa el ancho disponible con margen lateral 16 px.</p></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="component-section" aria-labelledby="toast-tokens">
+    <div class="component-section__header">
+      <h2 id="toast-tokens">9. Tokens usados</h2>
+    </div>
+    <div class="toast-token-grid">
+      <div class="toast-token-item"><code>--space-16</code><span>16px · padding y gap principal.</span></div>
+      <div class="toast-token-item"><code>--space-4</code><span>4px · separación entre título y mensaje.</span></div>
+      <div class="toast-token-item"><code>--use-state-success-bg</code><span>#e6f7e8 · fondo success light.</span></div>
+      <div class="toast-token-item"><code>--use-state-success-border</code><span>#44bd75 · borde success light.</span></div>
+      <div class="toast-token-item"><code>--font-size-md</code><span>16px · título Roboto SemiBold.</span></div>
+      <div class="toast-token-item"><code>--font-size-sm</code><span>14px · mensaje Roboto Regular.</span></div>
+      <div class="toast-token-item"><code>--z-toast</code><span>1080 · capa flotante recomendada.</span></div>
+      <div class="toast-token-item"><code>max-width</code><span>350px · regla definida para el sistema.</span></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="toast-code">
+    <div class="component-section__header">
+      <div>
+        <h2 id="toast-code">10. Código</h2>
+        <p>Descarga estilos planos del componente transversal, unidos al core y organizados por modo.</p>
+      </div>
+      <div class="ct-downloads button-downloads" aria-label="Descargar estilos de toast">
+        <span class="ct-downloads-label"><span class="material-symbols-rounded" aria-hidden="true">download</span> Descargar</span>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-toast-download="css"><span class="material-symbols-rounded" aria-hidden="true">code</span> CSS</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-toast-download="scss"><span class="material-symbols-rounded" aria-hidden="true">data_object</span> Sass</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-toast-download="json"><span class="material-symbols-rounded" aria-hidden="true">data_object</span> JSON</button>
+      </div>
+    </div>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Ejemplos de código">
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="true" data-toast-static-tab="success">Success</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-toast-static-tab="info">Info</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-toast-static-tab="warning">Warning</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-toast-static-tab="error">Error</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-copy-toast-static>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+      </div>
+      <pre><code id="toast-static-code"></code></pre>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="toast-qa">
+    <div class="component-section__header">
+      <h2 id="toast-qa">11. Checklist QA</h2>
+    </div>
+    <div class="button-qa-grid">
+      <label class="button-qa-item"><input type="checkbox">Ancho máximo 350 px.</label>
+      <label class="button-qa-item"><input type="checkbox">Se cierra automáticamente en 5 segundos.</label>
+      <label class="button-qa-item"><input type="checkbox">Botón cerrar funciona y tiene `aria-label`.</label>
+      <label class="button-qa-item"><input type="checkbox">Padding 16 px, gap 16 px y radio 12 px.</label>
+      <label class="button-qa-item"><input type="checkbox">Icono 32 px y cierre 24 px.</label>
+      <label class="button-qa-item"><input type="checkbox">Tipos info, success, warning y error correctos.</label>
+      <label class="button-qa-item"><input type="checkbox">Light, dark y alto contraste legibles.</label>
+      <label class="button-qa-item"><input type="checkbox">No bloquea interacción de la pantalla.</label>
+      <label class="button-qa-item"><input type="checkbox">Responsive correcto en mobile.</label>
+      <label class="button-qa-item"><input type="checkbox">Tokens aplicados desde core.</label>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="toast-support">
+    <div class="component-section__header">
+      <h2 id="toast-support">12. Issues / soporte / actualización</h2>
+    </div>
+    <div class="component-support">
+      <div class="component-support__item">
+        <span class="component-support__icon material-symbols-rounded" aria-hidden="true">help</span>
+        <div>
+          <h3>¿Necesitas ayuda?</h3>
+          <p>Usa el canal #diseno-sistema o escribe al equipo responsable.</p>
+        </div>
+      </div>
+      <span class="component-divider" aria-hidden="true"></span>
+      <div class="component-support__item">
+        <span class="component-support__icon material-symbols-rounded" aria-hidden="true">bug_report</span>
+        <div>
+          <h3>¿Encontraste un problema?</h3>
+          <p>Repórtalo para mejorar la documentación y el componente.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="component-support__footer">
+      <span>Última actualización: 4 mayo 2026</span>
+      <span>Versión del componente: v1.0</span>
+      <span>Fuente: Figma Compensar v2 · nodo 4590:22197</span>
+    </footer>
+  </section>
+</article>

@@ -36,9 +36,9 @@
 /* Las variables y clases .mp-* viven en core/base/_theme.scss y core/base/_typography.scss. */
 
 #tipografia {
-  --ty-surface: #ffffff;
-  --ty-surface-soft: color-mix(in srgb, var(--base-brand-80) 6%, #ffffff);
-  --ty-surface-alt: color-mix(in srgb, var(--ui-bg) 74%, #ffffff);
+  --ty-surface: var(--ui-surface);
+  --ty-surface-soft: color-mix(in srgb, var(--base-brand-80) 6%, var(--ui-surface));
+  --ty-surface-alt: color-mix(in srgb, var(--ui-surface-alt) 74%, var(--ui-surface));
   --ty-border: color-mix(in srgb, var(--ui-border) 92%, var(--base-brand-80) 8%);
 }
 
@@ -150,8 +150,8 @@
 .ty-code-panel.open { display: flex; }
 .ty-code-block { position: relative; background: var(--ui-code-bg); border-radius: 0.5rem; overflow: hidden; }
 .ty-code-lang { position: absolute; top: 0.375rem; left: 0.625rem; font-family: var(--font-code); font-size: 0.875rem; color: var(--ui-text-muted); letter-spacing: 0.06em; text-transform: uppercase; pointer-events: none; }
-.ty-code-copy { position: absolute; top: 0.25rem; right: 0.375rem; display: inline-flex; align-items: center; gap: 0.1875rem; background: rgba(255, 255, 255, 0.06); border: 0.0625rem solid rgba(255, 255, 255, 0.1); border-radius: 0.3125rem; padding: 0.125rem 0.4375rem; font-size: 0.875rem; color: #aaa; cursor: pointer; transition: background 0.12s, color 0.12s; }
-.ty-code-copy:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.ty-code-copy { position: absolute; top: 0.25rem; right: 0.375rem; display: inline-flex; align-items: center; gap: 0.1875rem; background: rgba(255, 255, 255, 0.06); border: 0.0625rem solid rgba(255, 255, 255, 0.1); border-radius: 0.3125rem; padding: 0.125rem 0.4375rem; font-size: 0.875rem; color: var(--ui-text-muted); cursor: pointer; transition: background 0.12s, color 0.12s; }
+.ty-code-copy:hover { background: rgba(255, 255, 255, 0.12); color: var(--ui-text); }
 .ty-code-copy .material-symbols-rounded { font-size: 0.875rem; }
 .ty-code-pre { font-family: var(--font-code); font-size: 0.875rem; line-height: 1.6; color: var(--ui-code-text); padding: 1.375rem 0.625rem 0.625rem; margin: 0; overflow-x: auto; white-space: pre; }
 
@@ -372,4 +372,14 @@
   .ty-meta { border-left: none; padding-left: 0; border-top: 0.0625rem solid var(--ty-border); padding-top: var(--space-4); }
   .ty-util-tabs { padding-bottom: 0.125rem; }
   .ty-standard-wrap { margin-top: var(--space-24); }
+}
+
+[data-theme="high-contrast"] .ty-code-copy {
+  background: var(--ui-surface-alt);
+  border-color: var(--ui-border);
+  color: var(--ui-text);
+}
+
+[data-theme="high-contrast"] .ty-code-copy:hover {
+  background: var(--ui-tag-bg);
 }

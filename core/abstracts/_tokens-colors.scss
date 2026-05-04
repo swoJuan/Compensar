@@ -11,6 +11,11 @@ $base-brand-80: #ff6600;
 $base-brand-90: #e63f0c;
 $base-brand-100: #cc5200;
 $base-brand-yellow: #ff980d;
+
+// High-contrast brand palette (from tokens/compensar.tokens.json highContrast modes)
+$base-brand-hc: #ffff00;        // base/brand/80 highContrast
+$base-brand-hc-hover: #e6e600;  // base/brand/90 highContrast (darkened for hover/active)
+$base-brand-hc-active: #cccc00; // base/brand/100 highContrast
 $base-blue-30: #e6f1fb;
 $base-blue-40: #d4e2fa;
 $base-blue-50: #9fbef5;

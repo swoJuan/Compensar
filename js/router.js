@@ -100,6 +100,24 @@ const router = (() => {
       icon: 'check_box',
       group: 'web-componentes'
     },
+    'web/componentes/alertas': {
+      label: 'Alertas',
+      path: 'transversales/components/alerts.html',
+      icon: 'notification_important',
+      group: 'web-componentes'
+    },
+    'web/componentes/toast': {
+      label: 'Toast',
+      path: 'transversales/components/toasts.html',
+      icon: 'notifications',
+      group: 'web-componentes'
+    },
+    'web/componentes/modales': {
+      label: 'Modales',
+      path: 'transversales/components/modals.html',
+      icon: 'web_asset',
+      group: 'web-componentes'
+    },
     'web/componentes/badges': {
       label: 'Badges',
       path: 'web/components/badges.html',
@@ -198,6 +216,9 @@ const router = (() => {
       document.body.classList.toggle('component-doc-full',
         section === 'web/componentes/botones' ||
         section === 'web/componentes/seleccion' ||
+        section === 'web/componentes/alertas' ||
+        section === 'web/componentes/toast' ||
+        section === 'web/componentes/modales' ||
         section === 'web/componentes/inputs'
       );
 
@@ -214,6 +235,15 @@ const router = (() => {
       }
       if (window.selectionDocs) {
         window.requestAnimationFrame(() => window.selectionDocs.initSelectionDoc(document));
+      }
+      if (window.alertDocs) {
+        window.requestAnimationFrame(() => window.alertDocs.initAlertDoc(document));
+      }
+      if (window.toastDocs) {
+        window.requestAnimationFrame(() => window.toastDocs.initToastDoc(document));
+      }
+      if (window.modalDocs) {
+        window.requestAnimationFrame(() => window.modalDocs.initModalDoc(document));
       }
       if (window.inputDocs) {
         window.requestAnimationFrame(() => window.inputDocs.initInputDoc(document));

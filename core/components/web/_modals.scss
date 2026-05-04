@@ -1,0 +1,250 @@
+// ============================================================
+//  mp-modal
+//  Componente transversal de modal critico.
+//  Fuente Figma: 1zVGMpzqBgiBUqhmfFEAoT / 4595:28317
+//  Base estructural: Bootstrap 5 modal.
+// ============================================================
+
+.mp-modal {
+  --mp-modal-width: 479px;
+  --mp-modal-bg: var(--use-surface-white, #ffffff);
+  --mp-modal-border: var(--use-border-default, #cccccc);
+  --mp-modal-text: var(--use-text-primary, #111111);
+  --mp-modal-muted: var(--use-text-secondary, #4d4d4d);
+  --mp-modal-shadow: 2px 5px 16px rgba(0, 0, 0, .15);
+  --mp-modal-overlay: rgba(17, 17, 17, .30);
+  --mp-modal-icon-bg: var(--use-state-warning-icon-bg, #ffc154);
+  --mp-modal-icon-border: var(--use-state-warning-bg, #fff2d9);
+  --mp-modal-icon-color: var(--use-text-primary, #111111);
+
+  color: var(--mp-modal-text);
+  font-family: var(--font-body, Roboto, Arial, sans-serif);
+}
+
+.mp-modal.modal,
+.mp-modal.mp-modal--open {
+  background: transparent;
+}
+
+.mp-modal.mp-modal--open {
+  display: block;
+}
+
+.mp-modal .modal-dialog,
+.mp-modal__dialog {
+  max-width: var(--mp-modal-width);
+}
+
+.mp-modal .modal-dialog.modal-sm,
+.mp-modal__dialog.modal-sm,
+.mp-modal--sm {
+  --mp-modal-width: 300px;
+}
+
+.mp-modal .modal-dialog.modal-lg,
+.mp-modal__dialog.modal-lg,
+.mp-modal--lg {
+  --mp-modal-width: 800px;
+}
+
+.mp-modal .modal-content,
+.mp-modal__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  padding: var(--space-24);
+  border: 1px solid var(--mp-modal-border);
+  border-radius: 12px;
+  background: var(--mp-modal-bg);
+  color: var(--mp-modal-text);
+  box-shadow: var(--mp-modal-shadow);
+  text-align: center;
+}
+
+.mp-modal__close {
+  position: absolute;
+  top: 19px;
+  right: 23px;
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  min-height: 32px;
+  padding: 0;
+  color: var(--mp-modal-muted);
+}
+
+.mp-modal__close .material-symbols-rounded {
+  font-size: 32px;
+}
+
+.mp-modal__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  padding: var(--space-16);
+  border: 5px solid var(--mp-modal-icon-border);
+  border-radius: 48px;
+  background: var(--mp-modal-icon-bg);
+  color: var(--mp-modal-icon-color);
+}
+
+.mp-modal__icon .material-symbols-rounded,
+.mp-modal__icon.material-symbols-rounded {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.mp-modal .mp-modal__title {
+  max-width: 100%;
+  margin: 0;
+  color: var(--mp-modal-text);
+  font-size: 28px;
+  font-weight: var(--font-weight-bold, 700);
+  line-height: 1.2;
+}
+
+.mp-modal .mp-modal__body {
+  max-width: 100%;
+  margin: 0;
+  color: var(--mp-modal-text);
+  font-size: 18px;
+  font-weight: var(--font-weight-regular, 400);
+  line-height: 1.3;
+}
+
+.mp-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-24);
+  width: 100%;
+}
+
+.mp-modal--info {
+  --mp-modal-icon-bg: var(--use-state-info-bg, #e6f1fb);
+  --mp-modal-icon-border: var(--use-state-info-border, #6c9fd0);
+  --mp-modal-icon-color: var(--use-state-info-text, #2d4a67);
+}
+
+.mp-modal--success {
+  --mp-modal-icon-bg: var(--use-state-success-bg, #e6f7e8);
+  --mp-modal-icon-border: var(--use-state-success-border, #44bd75);
+  --mp-modal-icon-color: var(--use-state-success-text, #0d3d1f);
+}
+
+.mp-modal--warning {
+  --mp-modal-icon-bg: var(--use-state-warning-icon-bg, #ffc154);
+  --mp-modal-icon-border: var(--use-state-warning-bg, #fff2d9);
+  --mp-modal-icon-color: var(--use-text-primary, #111111);
+}
+
+.mp-modal--error {
+  --mp-modal-icon-bg: var(--use-state-error-bg, #f7eeed);
+  --mp-modal-icon-border: var(--use-state-error-border, #db7165);
+  --mp-modal-icon-color: var(--use-state-error-text, #521a14);
+}
+
+.mp-modal-backdrop,
+.modal-backdrop.mp-modal-backdrop {
+  background-color: var(--mp-modal-overlay);
+}
+
+[data-theme='dark'] {
+  .mp-modal {
+    --mp-modal-bg: #292929;
+    --mp-modal-border: #4d4746;
+    --mp-modal-text: #f5f5f5;
+    --mp-modal-muted: #f5f5f5;
+    --mp-modal-overlay: rgba(0, 0, 0, .62);
+  }
+
+  .mp-modal--info {
+    --mp-modal-icon-bg: #18428f;
+    --mp-modal-icon-border: #296ff0;
+    --mp-modal-icon-color: #f5f5f5;
+  }
+
+  .mp-modal--success {
+    --mp-modal-icon-bg: #0b853d;
+    --mp-modal-icon-border: #22a152;
+    --mp-modal-icon-color: #f5f5f5;
+  }
+
+  .mp-modal--warning {
+    --mp-modal-icon-bg: #967229;
+    --mp-modal-icon-border: #fcbf44;
+    --mp-modal-icon-color: #f5f5f5;
+  }
+
+  .mp-modal--error {
+    --mp-modal-icon-bg: #7d291f;
+    --mp-modal-icon-border: #d14434;
+    --mp-modal-icon-color: #f5f5f5;
+  }
+}
+
+[data-theme='high-contrast'] {
+  .mp-modal {
+    --mp-modal-bg: #000000;
+    --mp-modal-border: #ffffff;
+    --mp-modal-text: #ffffff;
+    --mp-modal-muted: #ffffff;
+    --mp-modal-shadow: none;
+    --mp-modal-overlay: rgba(0, 0, 0, .82);
+  }
+
+  .mp-modal--info {
+    --mp-modal-icon-bg: #102c5e;
+    --mp-modal-icon-border: #296ff0;
+    --mp-modal-icon-color: #ffffff;
+  }
+
+  .mp-modal--success {
+    --mp-modal-icon-bg: #0d3d1f;
+    --mp-modal-icon-border: #22a152;
+    --mp-modal-icon-color: #ffffff;
+  }
+
+  .mp-modal--warning {
+    --mp-modal-icon-bg: #634a1a;
+    --mp-modal-icon-border: #fcbf44;
+    --mp-modal-icon-color: #ffffff;
+  }
+
+  .mp-modal--error {
+    --mp-modal-icon-bg: #521a14;
+    --mp-modal-icon-border: #d14434;
+    --mp-modal-icon-color: #ffffff;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .mp-modal .modal-dialog,
+  .mp-modal__dialog {
+    max-width: calc(100% - 32px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .mp-modal .modal-content,
+  .mp-modal__content {
+    gap: var(--space-16);
+    padding: var(--space-24) var(--space-16);
+  }
+
+  .mp-modal .mp-modal__title {
+    font-size: 24px;
+  }
+
+  .mp-modal .mp-modal__body {
+    font-size: 16px;
+  }
+
+  .mp-modal__actions {
+    gap: var(--space-12);
+  }
+}

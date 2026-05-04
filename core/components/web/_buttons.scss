@@ -225,9 +225,9 @@
 
 [data-theme='high-contrast'] {
   .mp-btn--primario {
-    --mp-btn-bg: var(--use-text-theme-yellow);
-    --mp-btn-bg-hover: var(--use-text-theme-yellow);
-    --mp-btn-bg-active: var(--use-text-theme-yellow);
+    --mp-btn-bg: var(--use-primary-default);
+    --mp-btn-bg-hover: var(--use-primary-hover);
+    --mp-btn-bg-active: var(--use-primary-active);
     --mp-btn-color: var(--base-neutral-black);
     --mp-btn-border-color: transparent;
     --mp-btn-border-width: 1.5px;
@@ -238,8 +238,8 @@
     --mp-btn-bg: transparent;
     --mp-btn-bg-hover: transparent;
     --mp-btn-bg-active: transparent;
-    --mp-btn-color: var(--use-text-theme-yellow);
-    --mp-btn-border-color: var(--use-text-theme-yellow);
+    --mp-btn-color: var(--use-primary-default);
+    --mp-btn-border-color: var(--use-primary-default);
   }
 
   .mp-btn--terciario {
@@ -248,14 +248,14 @@
   }
 
   .mp-btn--especial {
-    --mp-btn-bg: var(--use-text-theme-yellow);
-    --mp-btn-bg-hover: var(--use-text-theme-yellow);
-    --mp-btn-bg-active: var(--use-text-theme-yellow);
+    --mp-btn-bg: var(--use-primary-default);
+    --mp-btn-bg-hover: var(--use-primary-hover);
+    --mp-btn-bg-active: var(--use-primary-active);
     --mp-btn-color: var(--base-neutral-black);
   }
 
   .mp-btn {
-    --mp-btn-focus-color: var(--use-text-theme-yellow);
+    --mp-btn-focus-color: var(--use-primary-default);
   }
 }
 
