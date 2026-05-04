@@ -15,7 +15,7 @@
   align-items: center;
   gap: var(--space-16);
   padding: rem(8px) var(--space-16);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(8px);
   font-size: rem(13px);
@@ -266,7 +266,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-12);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border-left: 3px solid var(--ui-accent);
   border-radius: 0 8px 8px 0;
   padding: var(--space-12) var(--space-24);
@@ -284,7 +284,7 @@
 #espaciado .ty-figma-bar code {
   font-family: var(--font-code);
   font-size: 11.5px;
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   padding: 1px 5px;
   border-radius: 4px;
   color: var(--ui-accent)
@@ -304,7 +304,7 @@
   display: inline-block;
   font-size: 9.5px;
   font-weight: 700;
-  background: #fff4e0;
+  background: var(--ui-surface-alt);
   color: #a0620f;
   border: 1px solid #f5d07a;
   border-radius: 4px;
@@ -335,7 +335,7 @@
 }
 
 .sp-base-card {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: 1px solid var(--ui-border);
   border-radius: 14px;
   padding: var(--space-24);
@@ -377,7 +377,7 @@
 }
 
 .sp-base-info {
-  background: white;
+  background: var(--ui-surface);
   border: 1px solid var(--ui-border);
   border-radius: 14px;
   padding: var(--space-24);
@@ -408,7 +408,7 @@
 .sp-base-info-row code {
   font-family: var(--font-code);
   font-size: 11px;
-  background: white;
+  background: var(--ui-surface-alt);
   padding: 1px 5px;
   border-radius: 4px;
   color: var(--ui-accent)
@@ -429,7 +429,7 @@
 }
 
 .sp-table thead th {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -469,7 +469,7 @@
 }
 
 .sp-table .sp-group-row td {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   padding: 5px 12px;
   border-bottom: 1px solid var(--ui-border);
 }
@@ -486,12 +486,12 @@
   padding: 10px 12px;
   border-bottom: 1px solid var(--ui-border);
   vertical-align: middle;
-  background: white;
+  background: var(--ui-surface);
   transition: background .1s;
 }
 
 .sp-table .sp-data-row:hover td {
-  background: white
+  background: var(--ui-surface-alt)
 }
 
 .sp-table .sp-data-row:last-child td {
@@ -546,7 +546,7 @@
 .sp-token-chip {
   font-family: var(--font-code);
   font-size: 11px;
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: 1px solid var(--ui-border);
   border-radius: 5px;
   padding: 2px 7px;
@@ -577,7 +577,7 @@
 }
 
 .sp-var-chip:hover {
-  background: $use-surface-theme-gray-5
+  background: var(--ui-surface-alt)
 }
 
 /* Classes cell */
@@ -590,7 +590,7 @@
 .sp-cls-chip {
   font-family: var(--font-code);
   font-size: 10.5px;
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: 1px solid var(--ui-border);
   border-radius: 4px;
   padding: 1px 6px;
@@ -636,7 +636,7 @@
 .sp-util-tabs {
   display: flex;
   gap: 4px;
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border-radius: 10px 10px 0 0;
   padding: 4px;
   border: 1px solid var(--ui-border);
@@ -663,14 +663,14 @@
 }
 
 .sp-util-tab.active {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   color: var(--ui-accent);
   box-shadow: 0 1px 3px rgba(0, 0, 0, .1)
 }
 
 .sp-util-panel {
   display: none;
-  background: white;
+  background: var(--ui-surface);
   border: 1px solid var(--ui-border);
   border-radius: 0 0 10px 10px;
   padding: var(--space-24);
@@ -688,7 +688,7 @@
 }
 
 .sp-util-item {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: 1px solid var(--ui-border);
   border-radius: 8px;
   padding: var(--space-12) var(--space-16);
@@ -730,7 +730,7 @@
 }
 
 .sp-stack-demo {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: 1px solid var(--ui-border);
   border-radius: 8px;
   padding: var(--space-16)
@@ -746,7 +746,7 @@
 }
 
 .sp-stack-item {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: 1px solid var(--ui-border);
   border-radius: 6px;
   padding: 8px 12px;
@@ -780,7 +780,7 @@
 .sp-stack-intro code {
   font-family: var(--font-code);
   font-size: 11px;
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   padding: 1px 5px;
   border-radius: 4px;
 }
@@ -798,14 +798,14 @@
 }
 
 .sp-bs-card {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: 1px solid var(--ui-border);
   border-radius: 12px;
   overflow: hidden
 }
 
 .sp-bs-card-head {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border-bottom: 1px solid var(--ui-border);
   padding: var(--space-12) var(--space-24);
   font-size: 12px;
@@ -878,7 +878,7 @@
 .sp-code-tabs-bar {
   display: flex;
   gap: 4px;
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border-radius: 10px 10px 0 0;
   padding: 4px;
   border: 1px solid var(--ui-border);
@@ -905,7 +905,7 @@
 }
 
 .sp-code-tab.active {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   color: var(--ui-accent);
   box-shadow: 0 1px 3px rgba(0, 0, 0, .1)
 }
@@ -914,7 +914,7 @@
 .sp-access-block {
   display: flex;
   gap: var(--space-24);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: 1px solid var(--ui-border);
   border-radius: 14px;
   padding: var(--space-32);

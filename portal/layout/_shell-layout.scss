@@ -7,7 +7,7 @@
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--ui-header-h);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border-bottom: rem(1px) solid var(--ui-border);
   display: flex;
   align-items: center;
@@ -149,7 +149,7 @@
   left: 0;
   bottom: 0;
   width: var(--ui-sidebar-w);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border-right: rem(1px) solid var(--ui-border);
   overflow-y: auto;
   padding: var(--space-16) 0 var(--space-64);

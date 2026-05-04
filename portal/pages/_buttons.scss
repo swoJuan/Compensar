@@ -384,6 +384,36 @@
   box-shadow: 0 0 0 rem(1px) var(--doc-card-border);
 }
 
+[data-theme='dark'] .segmented-control {
+  border-color: color-mix(in srgb, var(--base-neutral-white) 16%, transparent);
+  background: color-mix(in srgb, var(--base-neutral-black) 82%, var(--use-surface-theme-violet-5));
+}
+
+[data-theme='dark'] .segmented-control button {
+  color: var(--use-text-tertiary);
+}
+
+[data-theme='dark'] .segmented-control button[aria-pressed='true'] {
+  background: var(--base-neutral-90);
+  color: var(--use-primary-default-dark);
+  box-shadow: 0 0 0 rem(1px) color-mix(in srgb, var(--base-neutral-white) 12%, transparent);
+}
+
+[data-theme='high-contrast'] .segmented-control {
+  border-color: var(--base-neutral-white);
+  background: var(--base-neutral-black);
+}
+
+[data-theme='high-contrast'] .segmented-control button {
+  color: var(--base-neutral-white);
+}
+
+[data-theme='high-contrast'] .segmented-control button[aria-pressed='true'] {
+  background: var(--use-text-theme-yellow);
+  color: var(--base-neutral-black);
+  box-shadow: 0 0 0 rem(2px) var(--base-neutral-white);
+}
+
 .button-doc-toggle {
   display: inline-flex;
   align-items: center;

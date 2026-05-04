@@ -962,6 +962,23 @@ window.componentDocs = componentDocs;
 function bootComponentDocs() {
   componentDocs.bindDelegatedEvents();
   componentDocs.initButtonDoc(document);
+
+  const syncButtonPlaygroundTheme = (theme) => {
+    const page = document.querySelector('[data-component-doc="button"]');
+    if (!page) return;
+    const themeControl = page.querySelector('[data-button-control="theme"]');
+    if (!themeControl) return;
+    themeControl.value = theme;
+    componentDocs.renderPlayground(page);
+  };
+
+  document.addEventListener('ds:theme-change', (event) => {
+    const theme = event?.detail?.theme || document.documentElement.getAttribute('data-theme') || 'light';
+    syncButtonPlaygroundTheme(theme);
+  });
+
+  syncButtonPlaygroundTheme(document.documentElement.getAttribute('data-theme') || 'light');
+
   if (typeof router !== 'undefined') {
     router.on('navigate', () => {
       window.requestAnimationFrame(() => componentDocs.initButtonDoc(document));
@@ -971,6 +988,7 @@ function bootComponentDocs() {
 
 document.addEventListener('component-docs:init', () => {
   window.requestAnimationFrame(() => componentDocs.initButtonDoc(document));
+  window.requestAnimationFrame(() => inputDocs.initInputDoc(document));
 });
 
 if (document.readyState === 'loading') {
@@ -978,3 +996,929 @@ if (document.readyState === 'loading') {
 } else {
   bootComponentDocs();
 }
+
+// ============================================================
+//  INPUT DOCS — Playground, Anatomía, Código y Descargas
+//  Paralelo a componentDocs para el componente mp-input.
+// ============================================================
+const inputDocs = (() => {
+
+  // ──────────────────────────────────────────────────────────
+  // Configuración de anatomía por variante
+  // ──────────────────────────────────────────────────────────
+  const anatomyConfig = {
+    simple: {
+      label: 'Simple',
+      iconLeft: '',
+      iconRight: '',
+      tipo: 'text',
+      height: '56 px',
+      width: '320 px',
+      padding: '16 px horizontal',
+      description: 'Sin íconos · padding 16 px · altura 56 px'
+    },
+    'icon-left': {
+      label: 'Ícono izquierdo',
+      iconLeft: 'search',
+      iconRight: '',
+      tipo: 'text',
+      height: '56 px',
+      width: '320 px',
+      padding: '50 px izquierda (16 + 24 + 10) · 16 px derecha',
+      description: 'Ícono decorativo izquierdo · gap ícono→texto 10 px'
+    },
+    'icon-right': {
+      label: 'Ícono derecho',
+      iconLeft: '',
+      iconRight: 'visibility',
+      tipo: 'password',
+      height: '56 px',
+      width: '320 px',
+      padding: '16 px izquierda · 50 px derecha (16 + 24 + 10)',
+      description: 'Ícono accionable derecho · se renderiza como button'
+    },
+    'icon-both': {
+      label: 'Íconos dobles',
+      iconLeft: 'attach_money',
+      iconRight: 'info',
+      tipo: 'number',
+      height: '56 px',
+      width: '320 px',
+      padding: '50 px horizontal (16 + 24 + 10) cada lado',
+      description: 'Ícono contextual izquierdo + información/acción derecha'
+    },
+    textarea: {
+      label: 'Textarea',
+      iconLeft: '',
+      iconRight: '',
+      tipo: 'textarea',
+      height: 'min 112 px',
+      width: '320 px',
+      padding: '8 px vertical · 16 px horizontal',
+      description: 'Área de texto · resize vertical · min-height 112 px'
+    },
+    select: {
+      label: 'Select',
+      iconLeft: '',
+      iconRight: 'expand_more',
+      tipo: 'select',
+      height: '56 px',
+      width: '320 px',
+      padding: '16 px izquierda · 50 px derecha (ícono expand_more)',
+      description: 'Lista nativa · ícono expand_more fijo · mismo estilo que input'
+    }
+  };
+
+  // ──────────────────────────────────────────────────────────
+  // Código estático (sección 10)
+  // ──────────────────────────────────────────────────────────
+  const staticCode = {
+    html: `<div class="mp-input-group">
+  <label class="mp-input-label" for="inp1">Nombre</label>
+  <div class="mp-input-wrapper">
+    <input class="mp-input-field" id="inp1" type="text" placeholder="Tu nombre">
+  </div>
+  <span class="mp-input-helper">Texto de apoyo</span>
+</div>`,
+    variants: `<!-- Simple -->
+<div class="mp-input-group">
+  <label class="mp-input-label" for="i1">Label</label>
+  <div class="mp-input-wrapper">
+    <input class="mp-input-field" id="i1" type="text" placeholder="Placeholder">
+  </div>
+</div>
+
+<!-- Ícono izquierdo -->
+<div class="mp-input-group">
+  <label class="mp-input-label" for="i2">Buscar</label>
+  <div class="mp-input-wrapper">
+    <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">search</span>
+    <input class="mp-input-field has-icon-left" id="i2" type="search" placeholder="Buscar…">
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="mp-input-group">
+  <label class="mp-input-label" for="i3">Observaciones</label>
+  <div class="mp-input-wrapper">
+    <textarea class="mp-input-field mp-textarea" id="i3" placeholder="Describe tu solicitud…" rows="3"></textarea>
+  </div>
+</div>
+
+<!-- Select -->
+<div class="mp-input-group">
+  <label class="mp-input-label" for="i4">Tipo <span class="mp-input-required" aria-hidden="true">*</span></label>
+  <div class="mp-input-wrapper">
+    <select class="mp-input-field mp-select" id="i4">
+      <option value="" disabled selected>Selecciona…</option>
+      <option>Opción A</option>
+      <option>Opción B</option>
+    </select>
+    <span class="material-symbols-rounded mp-input-icon mp-input-icon--right" aria-hidden="true">expand_more</span>
+  </div>
+</div>`,
+    accessible: `<!-- Campo requerido con error accesible -->
+<div class="mp-input-group">
+  <label class="mp-input-label" for="email1">
+    Correo electrónico
+    <span class="mp-input-required" aria-hidden="true">*</span>
+  </label>
+  <div class="mp-input-wrapper">
+    <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+    <input
+      class="mp-input-field has-icon-left error"
+      id="email1"
+      type="email"
+      required
+      aria-required="true"
+      aria-invalid="true"
+      aria-describedby="email1-helper"
+      value="usuario@">
+  </div>
+  <span class="mp-input-helper error" id="email1-helper">
+    <span class="material-symbols-rounded" aria-hidden="true" style="font-size:16px">error</span>
+    Formato inválido. Ej: usuario@compensar.com
+  </span>
+</div>
+
+<!-- Contraseña con toggle accesible -->
+<div class="mp-input-group">
+  <label class="mp-input-label" for="pass1">Contraseña</label>
+  <div class="mp-input-wrapper">
+    <input class="mp-input-field has-icon-right" id="pass1" type="password"
+           aria-describedby="pass1-helper">
+    <button type="button"
+            class="mp-input-icon mp-input-icon--right interactive"
+            aria-label="Mostrar contraseña"
+            onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
+      <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
+    </button>
+  </div>
+  <span class="mp-input-helper" id="pass1-helper">Mínimo 8 caracteres</span>
+</div>`
+  };
+
+  // ──────────────────────────────────────────────────────────
+  // Exportables CSS/SCSS/JSON (descargas sección 10)
+  // ──────────────────────────────────────────────────────────
+  const inputExportMeta = {
+    component: 'Input',
+    cssPrefix: 'mp',
+    source: 'Core + Figma Compensar v2',
+    figmaNodes: ['4517:7746', '4527:13712'],
+    updatedAt: '2026-05-04',
+    figmaSpecs: {
+      height: '56px',
+      borderRadius: '16px',
+      border: '1px solid',
+      fontSize: '16px',
+      padding: '16px',
+      iconSize: '24px',
+      iconPadding: '50px',
+      iconGap: '10px'
+    },
+    tokens: {
+      borderDefault: '--use-border-subtle → base-neutral-20 ≈ #e0e0e0',
+      borderHover: '--use-border-hover → use-primary-hover = #e63f0c',
+      borderActive: '--use-border-strong → base-neutral-70 = #666',
+      borderFocus: '--use-primary-default = #ff6600',
+      borderError: '--use-state-error-icon',
+      borderRadius: '--radius-sm = 16px',
+      background: '--use-surface-white',
+      textPrimary: '--use-text-primary = #111',
+      textTertiary: '--use-text-tertiary = #666 (placeholder, icons)',
+      required: '--use-state-error-mandatory = #bb4945',
+      focusRing: '3px · color-mix use-primary-default 18%'
+    },
+    classes: [
+      '.mp-input-group',
+      '.mp-input-label',
+      '.mp-input-required',
+      '.mp-input-wrapper',
+      '.mp-input-field',
+      '.mp-input-field.has-icon-left',
+      '.mp-input-field.has-icon-right',
+      '.mp-input-field.mp-textarea',
+      '.mp-input-field.mp-select',
+      '.mp-input-field.error',
+      '.mp-input-field.success',
+      '.mp-input-field.filled',
+      '.mp-input-field.is-focus-demo',
+      '.mp-input-icon',
+      '.mp-input-icon--left',
+      '.mp-input-icon--right',
+      '.mp-input-icon--right.interactive',
+      '.mp-input-helper',
+      '.mp-input-helper.error',
+      '.mp-input-helper.success'
+    ],
+    states: ['default', 'hover', 'focus', 'active', 'error', 'success', 'disabled']
+  };
+
+  const inputExportCss = `/* ==========================================================================
+   Input - Compensar Design System
+   Fuente: core/components/web/_inputs.scss + tokens Figma Compensar v2
+   Figma: nodo 4517:7746
+   Uso: estilos planos para dummy/demo. No contiene mixins.
+   ========================================================================== */
+
+:root,
+[data-theme="light"] {
+  --use-border-subtle: #e0e0e0;
+  --use-border-hover: #e63f0c;
+  --use-border-strong: #666666;
+  --use-border-default: #d9d9d9;
+  --use-primary-default: #ff6600;
+  --use-surface-white: #ffffff;
+  --use-surface-subtle: #f5f5f5;
+  --use-text-primary: #111111;
+  --use-text-tertiary: #666666;
+  --use-state-error-icon: #c0392b;
+  --use-state-error-text: #c0392b;
+  --use-state-error-mandatory: #bb4945;
+  --use-state-success-border: #27ae60;
+  --use-state-success-text: #1a7a42;
+  --use-focus-outline: #006fff;
+}
+
+[data-theme="dark"] {
+  --use-surface-white: #292929;
+  --use-text-primary: #f5f5f5;
+  --use-text-tertiary: #aaaaaa;
+  --use-border-subtle: rgba(255,255,255,0.18);
+  --use-primary-default: #ff9d5c;
+  --use-border-hover: #ff9d5c;
+}
+
+[data-theme="high-contrast"] {
+  --use-surface-white: #000000;
+  --use-text-primary: #ffffff;
+  --use-text-tertiary: #cccccc;
+  --use-border-subtle: #ffffff;
+  --use-primary-default: #ffff00;
+  --use-border-hover: #ffff00;
+  --use-state-error-icon: #ff6666;
+  --use-focus-outline: #ffff00;
+}
+
+.mp-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.mp-input-label {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.012em;
+  color: var(--use-text-primary);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.mp-input-required {
+  color: var(--use-state-error-mandatory, #bb4945);
+  letter-spacing: 0.02em;
+}
+
+.mp-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mp-input-field {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  line-height: 1;
+  color: var(--use-text-primary);
+  background: var(--use-surface-white);
+  border: 1px solid var(--use-border-subtle);
+  border-radius: 16px;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.mp-input-field::placeholder {
+  color: var(--use-text-tertiary);
+  opacity: 1;
+}
+
+.mp-input-field:hover:not(:disabled):not(.error):not(:focus) {
+  border-color: var(--use-border-hover);
+}
+
+.mp-input-field:active:not(:disabled):not(.error) {
+  border-color: var(--use-border-strong);
+}
+
+.mp-input-field:focus:not(:disabled) {
+  border-color: var(--use-primary-default);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--use-primary-default) 18%, transparent);
+}
+
+.mp-input-field.error {
+  border-color: var(--use-state-error-icon);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--use-state-error-icon) 15%, transparent);
+}
+
+.mp-input-field:disabled {
+  background: var(--use-surface-subtle);
+  color: var(--use-text-tertiary);
+  border-color: var(--use-border-subtle);
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.mp-input-field.filled:not(:focus):not(.error):not(:disabled) {
+  border-color: var(--use-border-default);
+}
+
+.mp-input-field.has-icon-left  { padding-left:  50px; }
+.mp-input-field.has-icon-right { padding-right: 50px; }
+
+.mp-input-field.mp-textarea {
+  height: auto;
+  min-height: 112px;
+  padding: 8px 16px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.mp-input-field.mp-select {
+  padding-right: 50px;
+  cursor: pointer;
+  appearance: none;
+}
+
+.mp-input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--use-text-tertiary);
+  font-size: 24px;
+  line-height: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.mp-input-icon--left  { left:  12px; }
+.mp-input-icon--right { right: 12px; }
+
+.mp-input-icon--right.interactive {
+  pointer-events: auto;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+.mp-input-icon--right.interactive:hover { color: var(--use-text-primary); }
+.mp-input-icon--right.interactive:focus-visible {
+  outline: 3px solid var(--use-focus-outline);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.mp-input-helper {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  line-height: 1.45;
+  color: var(--use-text-tertiary);
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.mp-input-helper.error   { color: var(--use-state-error-text);   font-weight: 500; }
+.mp-input-helper.success { color: var(--use-state-success-text); }
+
+[data-theme="high-contrast"] .mp-input-field {
+  border-width: 2px;
+  border-color: #ffffff;
+  background: #000000;
+  color: #ffffff;
+}
+
+[data-theme="high-contrast"] .mp-input-field:focus:not(:disabled) {
+  outline: 3px solid var(--use-focus-outline);
+  outline-offset: 2px;
+  box-shadow: none;
+}`;
+
+  // ──────────────────────────────────────────────────────────
+  // Builders de HTML del campo
+  // ──────────────────────────────────────────────────────────
+  function makeInputGroup({ tipo = 'text', state = 'default', iconLeft = '', iconRight = '',
+    label = 'Label', placeholder = 'Placeholder', helperText = 'Texto de apoyo', required = false } = {}) {
+
+    const group = document.createElement('div');
+    group.className = 'mp-input-group';
+    group.style.cssText = 'width:100%;max-width:320px';
+
+    // Label
+    const lbl = document.createElement('label');
+    lbl.className = 'mp-input-label';
+    lbl.setAttribute('for', 'pg-inp-field');
+    lbl.textContent = label;
+    if (required) {
+      const req = document.createElement('span');
+      req.className = 'mp-input-required';
+      req.setAttribute('aria-hidden', 'true');
+      req.textContent = '*';
+      lbl.appendChild(req);
+    }
+    group.appendChild(lbl);
+
+    // Wrapper
+    const wrapper = document.createElement('div');
+    wrapper.className = 'mp-input-wrapper';
+
+    // Ícono izquierdo
+    if (iconLeft) {
+      const ic = document.createElement('span');
+      ic.className = 'material-symbols-rounded mp-input-icon mp-input-icon--left';
+      ic.setAttribute('aria-hidden', 'true');
+      ic.textContent = iconLeft;
+      wrapper.appendChild(ic);
+    }
+
+    // Campo
+    let field;
+    const fieldClasses = ['mp-input-field'];
+    if (iconLeft)  fieldClasses.push('has-icon-left');
+    if (iconRight) fieldClasses.push('has-icon-right');
+
+    if (state === 'hover')   { /* inline style */ }
+    if (state === 'focus')   fieldClasses.push('is-focus-demo');
+    if (state === 'error')   fieldClasses.push('error');
+    if (state === 'success') fieldClasses.push('filled');
+
+    if (tipo === 'textarea') {
+      field = document.createElement('textarea');
+      field.className = fieldClasses.join(' ') + ' mp-textarea';
+      field.placeholder = placeholder;
+      field.rows = 3;
+      if (state === 'disabled') field.disabled = true;
+    } else if (tipo === 'select') {
+      field = document.createElement('select');
+      field.className = fieldClasses.join(' ') + ' mp-select';
+      const opt0 = document.createElement('option');
+      opt0.value = ''; opt0.disabled = true; opt0.selected = true;
+      opt0.textContent = placeholder;
+      field.appendChild(opt0);
+      ['Opción A', 'Opción B', 'Opción C'].forEach(o => {
+        const opt = document.createElement('option');
+        opt.textContent = o;
+        field.appendChild(opt);
+      });
+      if (state === 'disabled') field.disabled = true;
+    } else {
+      field = document.createElement('input');
+      field.className = fieldClasses.join(' ');
+      field.type = tipo;
+      field.placeholder = placeholder;
+      field.id = 'pg-inp-field';
+      if (state === 'hover')   field.style.borderColor = 'var(--use-border-hover)';
+      if (state === 'error')   { field.setAttribute('aria-invalid', 'true'); field.value = 'Valor inválido'; }
+      if (state === 'success') field.value = 'valor@compensar.com';
+      if (state === 'disabled') field.disabled = true;
+    }
+    if (required) { field.setAttribute('required', ''); field.setAttribute('aria-required', 'true'); }
+    if (helperText) field.setAttribute('aria-describedby', 'pg-inp-helper');
+
+    wrapper.appendChild(field);
+
+    // Ícono derecho
+    if (iconRight) {
+      const ic = document.createElement('span');
+      ic.className = 'material-symbols-rounded mp-input-icon mp-input-icon--right';
+      ic.setAttribute('aria-hidden', 'true');
+      ic.textContent = tipo === 'select' ? 'expand_more' : iconRight;
+      wrapper.appendChild(ic);
+    }
+
+    group.appendChild(wrapper);
+
+    // Helper
+    if (helperText) {
+      const hlp = document.createElement('span');
+      hlp.className = 'mp-input-helper' + (state === 'error' ? ' error' : state === 'success' ? ' success' : '');
+      hlp.id = 'pg-inp-helper';
+      if (state === 'error')   hlp.textContent = '✕ ' + (helperText || 'Mensaje de error');
+      else if (state === 'success') hlp.textContent = '✓ ' + helperText;
+      else hlp.textContent = helperText;
+      group.appendChild(hlp);
+    }
+
+    return group;
+  }
+
+  function inputHtml({ tipo, state, iconLeft, iconRight, label, placeholder, helperText, required }) {
+    const id = 'inp1';
+    const helpId = 'inp1-helper';
+    const fieldClasses = ['mp-input-field'];
+    if (iconLeft)  fieldClasses.push('has-icon-left');
+    if (iconRight) fieldClasses.push('has-icon-right');
+    if (state === 'focus')   fieldClasses.push('is-focus-demo');
+    if (state === 'error')   fieldClasses.push('error');
+    if (state === 'success') fieldClasses.push('filled');
+    if (tipo === 'textarea') fieldClasses.push('mp-textarea');
+    if (tipo === 'select')   fieldClasses.push('mp-select');
+
+    const labelRequired = required ? `\n    <span class="mp-input-required" aria-hidden="true">*</span>` : '';
+    const ariaInvalid    = state === 'error' ? '\n       aria-invalid="true"' : '';
+    const ariaReq        = required ? '\n       required aria-required="true"' : '';
+    const ariaDescribedby = helperText ? `\n       aria-describedby="${helpId}"` : '';
+    const disabledAttr   = state === 'disabled' ? '\n       disabled' : '';
+
+    const iconLeftHtml = iconLeft
+      ? `\n    <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">${iconLeft}</span>`
+      : '';
+    const iconRightHtml = iconRight
+      ? `\n    <span class="material-symbols-rounded mp-input-icon mp-input-icon--right" aria-hidden="true">${iconRight}</span>`
+      : '';
+
+    let fieldHtml = '';
+    if (tipo === 'textarea') {
+      fieldHtml = `\n    <textarea class="${fieldClasses.join(' ')}" id="${id}"${ariaDescribedby}${ariaReq}${ariaInvalid}${disabledAttr}\n             placeholder="${placeholder}" rows="3"></textarea>`;
+    } else if (tipo === 'select') {
+      fieldHtml = `\n    <select class="${fieldClasses.join(' ')}" id="${id}"${ariaDescribedby}${ariaReq}${ariaInvalid}${disabledAttr}>
+      <option value="" disabled selected>${placeholder}</option>
+      <option>Opción A</option>
+      <option>Opción B</option>
+    </select>${iconRightHtml}`;
+    } else {
+      fieldHtml = `\n    <input class="${fieldClasses.join(' ')}" id="${id}" type="${tipo}"${ariaDescribedby}${ariaReq}${ariaInvalid}${disabledAttr}\n           placeholder="${placeholder}">${iconRightHtml}`;
+    }
+
+    const helperClass = state === 'error' ? ' error' : state === 'success' ? ' success' : '';
+    const helperHtml = helperText
+      ? `\n  <span class="mp-input-helper${helperClass}" id="${helpId}">${helperText}</span>`
+      : '';
+
+    return `<div class="mp-input-group">
+  <label class="mp-input-label" for="${id}">${label}${labelRequired}
+  </label>
+  <div class="mp-input-wrapper">${iconLeftHtml}${fieldHtml}
+  </div>${helperHtml}
+</div>`;
+  }
+
+  function cssClassesFor({ tipo, state, iconLeft, iconRight, theme }) {
+    const classes = ['mp-input-field'];
+    if (iconLeft)  classes.push('has-icon-left');
+    if (iconRight) classes.push('has-icon-right');
+    if (tipo === 'textarea') classes.push('mp-textarea');
+    if (tipo === 'select')   classes.push('mp-select');
+    if (state === 'error')   classes.push('error');
+    if (state === 'success') classes.push('filled');
+    if (theme !== 'light')   classes.push(`/* [data-theme="${theme}"] */`);
+    return classes.join('\n');
+  }
+
+  function tokensFor({ theme }) {
+    const base = `height: 56px
+padding: 16px horizontal
+border-radius: 16px (--radius-sm)
+border: 1px solid var(--use-border-subtle)
+font-size: 16px Roboto
+icon-size: 24px
+icon-padding: 50px (16 + 24 + 10)`;
+    if (theme === 'dark') return base + `
+
+theme: dark
+--use-surface-white: #292929
+--use-text-primary: #f5f5f5
+--use-primary-default: #ff9d5c`;
+    if (theme === 'high-contrast') return base + `
+
+theme: high-contrast
+--use-surface-white: #000000
+--use-text-primary: #ffffff
+--use-primary-default: #ffff00
+--use-border-subtle: #ffffff`;
+    return base + `
+
+theme: light
+--use-border-subtle: #e0e0e0
+--use-border-hover: #e63f0c (use-primary-hover)
+--use-border-strong: #666666
+--use-primary-default: #ff6600 (focus + ring)`;
+  }
+
+  // ──────────────────────────────────────────────────────────
+  // Estado del playground
+  // ──────────────────────────────────────────────────────────
+  function getPlaygroundState(page) {
+    return {
+      tipo:        page.querySelector('[data-inp-control="tipo"]')?.value       || 'text',
+      state:       page.querySelector('[data-inp-control="state"]')?.value      || 'default',
+      iconLeft:    page.querySelector('[data-inp-control="iconLeft"]')?.value   || '',
+      iconRight:   page.querySelector('[data-inp-control="iconRight"]')?.value  || '',
+      theme:       page.querySelector('[data-inp-control="theme"]')?.value      || 'light',
+      label:       page.querySelector('[data-inp-control="label"]')?.value      || 'Label',
+      placeholder: page.querySelector('[data-inp-control="placeholder"]')?.value || 'Placeholder',
+      helperText:  page.querySelector('[data-inp-control="helperText"]')?.value || 'Texto de apoyo',
+      required:    page.querySelector('[data-inp-control="required"]')?.checked || false
+    };
+  }
+
+  // ──────────────────────────────────────────────────────────
+  // Render playground
+  // ──────────────────────────────────────────────────────────
+  function renderPlayground(page) {
+    const preview  = page.querySelector('#inp-playground-preview');
+    const output   = page.querySelector('#inp-code-output');
+    const activeTab = page.querySelector('[data-inp-code-tab][aria-selected="true"]')?.dataset.inpCodeTab || 'html';
+    if (!preview || !output) return;
+
+    const s = getPlaygroundState(page);
+    preview.dataset.theme = s.theme;
+
+    preview.replaceChildren(makeInputGroup(s));
+
+    if (activeTab === 'css')    output.textContent = cssClassesFor(s);
+    else if (activeTab === 'tokens') output.textContent = tokensFor(s);
+    else output.textContent = inputHtml(s);
+  }
+
+  // ──────────────────────────────────────────────────────────
+  // Render código estático
+  // ──────────────────────────────────────────────────────────
+  function renderStaticCode(page, key = 'html') {
+    const output = page.querySelector('#inp-static-code');
+    const tabs   = [...page.querySelectorAll('[data-inp-static-code-tab]')];
+    if (!output || !tabs.length) return;
+    output.textContent = staticCode[key] || staticCode.html;
+    tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.inpStaticCodeTab === key)));
+  }
+
+  // ──────────────────────────────────────────────────────────
+  // Render anatomía
+  // ──────────────────────────────────────────────────────────
+  function renderAnatomy(page, variant) {
+    const options    = [...page.querySelectorAll('[data-inp-anatomy-option]')];
+    const preview    = page.querySelector('#inp-anatomy-preview');
+    const height     = page.querySelector('[data-inp-anatomy-height]');
+    const width      = page.querySelector('[data-inp-anatomy-width]');
+    const paddingEl  = page.querySelector('[data-inp-anatomy-padding]');
+    const callouts   = [...page.querySelectorAll('[data-inp-callout]')];
+    const measures   = [...page.querySelectorAll('.inp-doc-measure')];
+    const showLabels  = page.querySelector('[data-inp-anatomy-toggle="labels"]')?.checked ?? true;
+    const showMeasures = page.querySelector('[data-inp-anatomy-toggle="measures"]')?.checked ?? true;
+
+    const selected = variant || options.find(b => b.getAttribute('aria-pressed') === 'true')?.dataset.inpAnatomyOption || 'simple';
+    const cfg = anatomyConfig[selected] || anatomyConfig.simple;
+
+    options.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.inpAnatomyOption === selected)));
+
+    if (height) height.textContent = cfg.height;
+    if (width)  width.textContent  = cfg.width;
+    if (paddingEl) paddingEl.textContent = cfg.padding;
+
+    // Toggle callouts
+    callouts.forEach(c => {
+      const key = c.dataset.inpCallout;
+      const isIconCallout = key === 'icon';
+      const hasIcon = cfg.iconLeft || cfg.iconRight;
+      c.hidden = !showLabels || (isIconCallout && !hasIcon);
+    });
+    measures.forEach(m => { m.hidden = !showMeasures; });
+
+    // Rebuild preview
+    if (!preview) return;
+    const group = document.createElement('div');
+    group.className = 'mp-input-group';
+
+    const lbl = document.createElement('label');
+    lbl.className = 'mp-input-label';
+    lbl.innerHTML = 'Label <span class="mp-input-required" aria-hidden="true">*</span>';
+    group.appendChild(lbl);
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'mp-input-wrapper';
+
+    if (cfg.iconLeft) {
+      const ic = document.createElement('span');
+      ic.className = 'material-symbols-rounded mp-input-icon mp-input-icon--left';
+      ic.setAttribute('aria-hidden', 'true');
+      ic.textContent = cfg.iconLeft;
+      wrapper.appendChild(ic);
+    }
+
+    if (cfg.tipo === 'textarea') {
+      const ta = document.createElement('textarea');
+      ta.className = 'mp-input-field mp-textarea';
+      ta.placeholder = 'Placeholder';
+      ta.rows = 3;
+      wrapper.appendChild(ta);
+    } else if (cfg.tipo === 'select') {
+      const sel = document.createElement('select');
+      sel.className = 'mp-input-field mp-select';
+      const opt = document.createElement('option');
+      opt.textContent = 'Selecciona una opción'; opt.disabled = true; opt.selected = true;
+      sel.appendChild(opt);
+      ['Opción A', 'Opción B'].forEach(o => {
+        const op = document.createElement('option'); op.textContent = o; sel.appendChild(op);
+      });
+      wrapper.appendChild(sel);
+    } else {
+      const inp = document.createElement('input');
+      inp.className = 'mp-input-field' + (cfg.iconLeft ? ' has-icon-left' : '') + (cfg.iconRight ? ' has-icon-right' : '');
+      inp.type = cfg.tipo;
+      inp.placeholder = 'Placeholder';
+      wrapper.appendChild(inp);
+    }
+
+    if (cfg.iconRight) {
+      const ic = document.createElement('span');
+      ic.className = 'material-symbols-rounded mp-input-icon mp-input-icon--right';
+      ic.setAttribute('aria-hidden', 'true');
+      ic.textContent = cfg.iconRight;
+      wrapper.appendChild(ic);
+    }
+
+    group.appendChild(wrapper);
+
+    const helper = document.createElement('span');
+    helper.className = 'mp-input-helper';
+    helper.textContent = 'Texto de apoyo';
+    group.appendChild(helper);
+
+    preview.replaceChildren(group);
+  }
+
+  // ──────────────────────────────────────────────────────────
+  // Descargas
+  // ──────────────────────────────────────────────────────────
+  function downloadInputAsset(type, trigger) {
+    const assets = {
+      css: {
+        filename: 'mp-input-core.css',
+        mime: 'text/css',
+        content: inputExportCss
+      },
+      scss: {
+        filename: '_mp-input-core.scss',
+        mime: 'text/x-scss',
+        content: `// Input - Compensar Design System
+// Figma: nodo 4517:7746
+// Uso: plano para dummy/demo.
+${inputExportCss}`
+      },
+      json: {
+        filename: 'mp-input-core.tokens.json',
+        mime: 'application/json',
+        content: JSON.stringify(inputExportMeta, null, 2) + '\n'
+      }
+    };
+    const asset = assets[type];
+    if (!asset) return;
+
+    const blob = new Blob([asset.content], { type: `${asset.mime};charset=utf-8` });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = asset.filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+
+    if (trigger) {
+      const orig = trigger.innerHTML;
+      trigger.innerHTML = '<span class="material-symbols-rounded" aria-hidden="true">check</span>Descargado';
+      setTimeout(() => { trigger.innerHTML = orig; }, 1400);
+    }
+  }
+
+  // ──────────────────────────────────────────────────────────
+  // Copy helper
+  // ──────────────────────────────────────────────────────────
+  function copyText(text, btn) {
+    const write = navigator.clipboard
+      ? navigator.clipboard.writeText(text)
+      : Promise.reject();
+    write.then(() => flashCopied(btn)).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+      flashCopied(btn);
+    });
+  }
+
+  function flashCopied(btn) {
+    if (!btn) return;
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-rounded" aria-hidden="true">check</span>Copiado';
+    setTimeout(() => { btn.innerHTML = orig; }, 1400);
+  }
+
+  // ──────────────────────────────────────────────────────────
+  // Init
+  // ──────────────────────────────────────────────────────────
+  function initInputDoc(root = document) {
+    const page = root.querySelector('[data-component-doc="input"]');
+    if (!page || page.dataset.inputInitialized === 'true') return;
+
+    try {
+      // Anatomía
+      page.querySelectorAll('[data-inp-anatomy-option]').forEach(btn => {
+        btn.addEventListener('click', () => renderAnatomy(page, btn.dataset.inpAnatomyOption));
+      });
+      page.querySelectorAll('[data-inp-anatomy-toggle]').forEach(ctrl => {
+        ctrl.addEventListener('change', () => renderAnatomy(page));
+      });
+      renderAnatomy(page, 'simple');
+
+      // Playground controles
+      page.querySelectorAll('[data-inp-control]').forEach(ctrl => {
+        ctrl.addEventListener('input',  () => renderPlayground(page));
+        ctrl.addEventListener('change', () => renderPlayground(page));
+      });
+
+      // Playground tabs de código
+      page.querySelectorAll('[data-inp-code-tab]').forEach(tab => {
+        tab.addEventListener('click', () => {
+          page.querySelectorAll('[data-inp-code-tab]').forEach(t =>
+            t.setAttribute('aria-selected', String(t === tab))
+          );
+          renderPlayground(page);
+        });
+      });
+
+      // Copy playground
+      const copyPG = page.querySelector('[data-inp-copy-playground]');
+      if (copyPG) {
+        copyPG.addEventListener('click', () => {
+          copyText(page.querySelector('#inp-code-output')?.textContent || '', copyPG);
+        });
+      }
+
+      renderPlayground(page);
+
+      // Código estático tabs
+      page.querySelectorAll('[data-inp-static-code-tab]').forEach(tab => {
+        tab.addEventListener('click', () => renderStaticCode(page, tab.dataset.inpStaticCodeTab));
+      });
+
+      // Copy estático
+      const copyStatic = page.querySelector('[data-inp-copy-static]');
+      if (copyStatic) {
+        copyStatic.addEventListener('click', () => {
+          copyText(page.querySelector('#inp-static-code')?.textContent || '', copyStatic);
+        });
+      }
+
+      renderStaticCode(page, 'html');
+
+      page.dataset.inputInitialized = 'true';
+    } catch (e) {
+      console.error('No se pudo inicializar la documentación del input.', e);
+    }
+  }
+
+  // Delegación global para downloads
+  function bindInputDelegated() {
+    if (document.documentElement.dataset.inputDocsDelegated === 'true') return;
+    document.documentElement.dataset.inputDocsDelegated = 'true';
+
+    document.addEventListener('click', e => {
+      const dl = e.target.closest('[data-inp-download]');
+      if (dl) downloadInputAsset(dl.dataset.inpDownload, dl);
+    });
+  }
+
+  return { initInputDoc, bindInputDelegated };
+})();
+
+window.inputDocs = inputDocs;
+
+// Boot input docs junto con el boot principal
+(function bootInputDocs() {
+  inputDocs.bindInputDelegated();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => inputDocs.initInputDoc(document));
+  } else {
+    inputDocs.initInputDoc(document);
+  }
+  if (typeof router !== 'undefined') {
+    router.on('navigate', () => {
+      window.requestAnimationFrame(() => inputDocs.initInputDoc(document));
+    });
+  }
+})();

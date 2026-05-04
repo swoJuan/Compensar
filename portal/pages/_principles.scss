@@ -14,7 +14,7 @@
 .principle-card {
   position: relative;
   overflow: hidden;
-  background: white;
+  background: var(--ui-surface);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(14px);
   padding: var(--space-32);
@@ -152,7 +152,7 @@
 
 .principle-rule
 {
-  background-color: $use-surface-theme-gray-5;
+  background-color: var(--ui-surface-alt);
   padding: rem(16px);
   border-radius: $border-radius-sm;
 }

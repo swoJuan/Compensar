@@ -1,11 +1,28 @@
 // ============================================================
 //  _inputs.scss
+//  Consume SOLO tokens semánticos. Nunca colores base directos.
+//  Fuente de verdad: Figma Compensar v2 — nodo 4517:7746
+//  Medidas clave (Figma):
+//    height 56px · radius 16px · border 1px
+//    font-size 16px (body/L Roboto) · padding 16px
+//    icon 24px · gap icon→texto 10px · icon-padding 50px
+//  Estados (Figma):
+//    default:  use-border-subtle  (#e0e0e0)
+//    hover:    use-border-hover   (naranja brand = use-primary-hover)
+//    active:   use-border-strong  (#666)
+//    focus:    use-primary-default + ring 3px
+//    error:    use-state-error-icon + ring 3px
 // ============================================================
 
 @use '../../abstracts/mixins'          as *;
+@use '../../abstracts/functions'       as *;
 @use '../../abstracts/tokens-spacing'  as *;
 @use '../../abstracts/tokens-radius'   as *;
 @use '../../abstracts/tokens-typography' as *;
+
+// ────────────────────────────────────────────────────────────
+// Legacy field API (Bootstrap-compatible)
+// ────────────────────────────────────────────────────────────
 
 // ── Field wrapper ─────────────────────────────────────────
 .field {
@@ -72,7 +89,6 @@
   &.icon-right { .icon { right: $space-12; } .input { padding-right: 2.5rem; } }
 }
 
-
 // ── Estados ──────────────────────────────────────────────
 .field-success {
   .input, .select, .textarea {
@@ -89,7 +105,7 @@
 }
 
 // ── Hint / error message ─────────────────────────────────
-.field-hint    { @include ty-hint; color: var(--color-text-tertiary); }
+.field-hint      { @include ty-hint; color: var(--color-text-tertiary); }
 .field-error-msg { @include ty-hint; color: var(--color-error-field); display: flex; align-items: center; gap: $space-4; }
 
 // ── Textarea ─────────────────────────────────────────────
@@ -158,5 +174,276 @@
       background: var(--color-primary);
       &::after { transform: translateX(20px); }
     }
+  }
+}
+
+// ────────────────────────────────────────────────────────────
+// mp-input — Design System input component
+// Source of truth for documentation and Angular-friendly HTML.
+// Figma: nodo 4517:7746 / 4527:13712 (text field instances)
+// ────────────────────────────────────────────────────────────
+
+// ── Grupo completo (label + wrapper + helper) ─────────────
+.mp-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+  width: 100%;
+}
+
+// ── Label ────────────────────────────────────────────────
+// Figma: Roboto Regular 16px · lh 1 · ls 0.012em · color use/text/primary
+.mp-input-label {
+  font-family: var(--font-body);
+  font-size: rem(16px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.012em;
+  color: var(--use-text-primary);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: rem(4px);
+
+  .mp-input-required {
+    // Figma: use/state/error/mandatory #bb4945
+    color: var(--use-state-error-mandatory, var(--use-state-error-icon));
+    letter-spacing: 0.02em;
+  }
+}
+
+// ── Wrapper relativo para iconos ──────────────────────────
+.mp-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+// ── Campo base ────────────────────────────────────────────
+// Figma: height 56px · padding 16px · radius 16px · border 1px
+//        font 16px Roboto Regular · bg use/surface/white
+.mp-input-field {
+  --mp-inp-border: var(--use-border-subtle);
+
+  width: 100%;
+  height: rem(56px);
+  padding: 0 rem(16px);
+  font-family: var(--font-body);
+  font-size: rem(16px);
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  line-height: 1;
+  color: var(--use-text-primary);
+  background: var(--use-surface-white);
+  border: rem(1px) solid var(--mp-inp-border);
+  border-radius: rem(16px);
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.15s;
+  appearance: none;
+  -webkit-appearance: none;
+
+  &::placeholder {
+    color: var(--use-text-tertiary);
+    opacity: 1;
+  }
+
+  // Hover: borde naranja brand (Figma: use/border/hover = use-primary-hover)
+  &:hover:not(:disabled):not(.error):not(:focus) {
+    --mp-inp-border: var(--use-border-hover);
+  }
+
+  // Active mousedown: borde gris fuerte (Figma: use/border/strong)
+  &:active:not(:disabled):not(.error) {
+    --mp-inp-border: var(--use-border-strong);
+  }
+
+  // Focus: borde primario naranja + ring de 3 px
+  &:focus:not(:disabled),
+  &.is-focus-demo:not(:disabled) {
+    --mp-inp-border: var(--use-primary-default);
+    border-color: var(--mp-inp-border);
+    box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--use-primary-default) 18%, transparent);
+  }
+
+  // Error
+  &.error {
+    --mp-inp-border: var(--use-state-error-icon);
+    border-color: var(--mp-inp-border);
+    box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--use-state-error-icon) 15%, transparent);
+  }
+
+  &.error:focus {
+    box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--use-state-error-icon) 22%, transparent);
+  }
+
+  // Success (border only, helper comunica el estado)
+  &.success:not(:focus):not(.error) {
+    --mp-inp-border: var(--use-state-success-border);
+  }
+
+  // Disabled
+  &:disabled {
+    background: var(--use-surface-subtle);
+    color: var(--use-text-tertiary);
+    --mp-inp-border: var(--use-border-subtle);
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+
+  // Filled: borde un tono más visible para indicar contenido
+  &.filled:not(:focus):not(.error):not(:disabled) {
+    --mp-inp-border: var(--use-border-default);
+  }
+}
+
+// ── Con ícono izquierdo ───────────────────────────────────
+// padding-left = 16 (pad) + 24 (icon) + 10 (gap) = 50px
+.mp-input-field.has-icon-left {
+  padding-left: rem(50px);
+}
+
+// ── Con ícono derecho ─────────────────────────────────────
+// padding-right = 16 (pad) + 24 (icon) + 10 (gap) = 50px
+.mp-input-field.has-icon-right {
+  padding-right: rem(50px);
+}
+
+// ── Ícono decorativo / interactivo ───────────────────────
+// Figma: 24px · color use/text/tertiary · izq 12px · der 12px
+.mp-input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--use-text-tertiary);
+  font-size: rem(24px);
+  line-height: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.mp-input-icon--left  { left:  rem(12px); }
+.mp-input-icon--right { right: rem(12px); }
+
+.mp-input-icon--right.interactive {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: color 0.15s;
+
+  &:hover { color: var(--use-text-primary); }
+
+  &:focus-visible {
+    outline: rem(3px) solid var(--use-focus-outline);
+    outline-offset: rem(2px);
+    border-radius: rem(4px);
+  }
+}
+
+// ── Textarea ─────────────────────────────────────────────
+// Figma: min-height 112px · padding 8px 16px · resize vertical
+.mp-input-field.mp-textarea {
+  height: auto;
+  min-height: rem(112px);
+  padding: $space-8 rem(16px);
+  resize: vertical;
+  line-height: 1.6;
+}
+
+// ── Select ───────────────────────────────────────────────
+// Usa ícono expand_more de Material Symbols como flecha custom
+.mp-input-field.mp-select {
+  padding-right: rem(50px);
+  cursor: pointer;
+  appearance: none;
+}
+
+// ── Helper / error / success text ─────────────────────────
+// Figma: Roboto Regular 14px · ls 0.012em · color use/text/primary (default)
+.mp-input-helper {
+  font-family: var(--font-body);
+  font-size: rem(14px);
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  line-height: 1.45;
+  color: var(--use-text-tertiary);
+  display: flex;
+  align-items: flex-start;
+  gap: rem(4px);
+}
+
+.mp-input-helper.error {
+  color: var(--use-state-error-text);
+  font-weight: 500;
+}
+
+.mp-input-helper.success {
+  color: var(--use-state-success-text);
+}
+
+// ────────────────────────────────────────────────────────────
+// Modos de color
+// ────────────────────────────────────────────────────────────
+
+[data-theme='dark'] {
+  .mp-input-field {
+    background: var(--use-surface-white); // dark theme: use-surface-white = #292929
+    color: var(--use-text-primary);
+    --mp-inp-border: var(--use-border-subtle);
+  }
+
+  .mp-input-field:focus:not(:disabled),
+  .mp-input-field.is-focus-demo:not(:disabled) {
+    --mp-inp-border: var(--use-primary-default);
+    box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--use-primary-default) 22%, transparent);
+  }
+
+  .mp-input-label {
+    color: var(--use-text-primary);
+  }
+
+  .mp-input-helper {
+    color: var(--use-text-tertiary);
+  }
+}
+
+[data-theme='high-contrast'] {
+  .mp-input-field {
+    border-width: rem(2px);
+    border-color: var(--base-neutral-white);
+    background: var(--base-neutral-black);
+    color: var(--base-neutral-white);
+  }
+
+  .mp-input-field:focus:not(:disabled),
+  .mp-input-field.is-focus-demo:not(:disabled) {
+    outline: rem(3px) solid var(--use-focus-outline);
+    outline-offset: rem(2px);
+    box-shadow: none;
+    border-color: var(--base-neutral-white);
+  }
+
+  .mp-input-field.error {
+    border-color: var(--use-state-error-icon);
+    box-shadow: none;
+  }
+
+  .mp-input-field:hover:not(:disabled):not(.error):not(:focus) {
+    border-color: var(--use-primary-default, #ffff00);
+  }
+
+  .mp-input-label {
+    color: var(--base-neutral-white);
+  }
+
+  .mp-input-required {
+    color: var(--use-state-error-icon) !important;
+  }
+
+  .mp-input-helper { color: var(--base-neutral-white); }
+  .mp-input-helper.error { color: var(--use-state-error-text); }
+
+  .mp-input-icon {
+    color: var(--base-neutral-white);
   }
 }

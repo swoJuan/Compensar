@@ -83,6 +83,36 @@
   --colors-gris-1000: var(--product-gray-100);
 }
 
+[data-theme="dark"] {
+  --ui-bg: var(--base-neutral-90);
+  --ui-surface: var(--base-neutral-100-negro);
+  --ui-surface-alt: var(--base-neutral-80);
+  --ui-surface-hover: var(--base-neutral-80);
+  --ui-border: var(--base-neutral-70);
+  --ui-text: var(--base-neutral-10);
+  --ui-text-secondary: var(--base-neutral-20);
+  --ui-text-muted: var(--base-neutral-40);
+  --ui-accent: var(--use-primary-default-dark);
+  --ui-accent-dark: var(--use-primary-default);
+  --ui-tag-bg: color-mix(in srgb, var(--use-primary-default-dark) 18%, transparent);
+  --ui-tag-text: var(--use-primary-default-dark);
+}
+
+[data-theme="high-contrast"] {
+  --ui-bg: var(--base-neutral-black);
+  --ui-surface: var(--base-neutral-black);
+  --ui-surface-alt: var(--base-neutral-100-negro);
+  --ui-surface-hover: var(--base-neutral-100-negro);
+  --ui-border: var(--base-neutral-white);
+  --ui-text: var(--base-neutral-white);
+  --ui-text-secondary: var(--base-neutral-white);
+  --ui-text-muted: var(--base-neutral-white);
+  --ui-accent: var(--use-text-theme-yellow);
+  --ui-accent-dark: var(--use-text-theme-yellow);
+  --ui-tag-bg: transparent;
+  --ui-tag-text: var(--use-text-theme-yellow);
+}
+
 body {
   background: var(--ui-bg);
   color: var(--ui-text);
@@ -91,7 +121,7 @@ body {
 .header {
   height: rem(58px);
   padding: 0 rem(22px);
-  background: color-mix(in srgb, $use-surface-theme-gray-5 96%, transparent);
+  background: color-mix(in srgb, var(--ui-surface) 96%, transparent);
   border-bottom: rem(1px) solid color-mix(in srgb, var(--ui-border) 82%, transparent);
   box-shadow: none;
   backdrop-filter: blur(rem(12px));
@@ -144,7 +174,7 @@ body {
   padding: 0 rem(11px);
   border-radius: rem(999px);
   font-size: rem(11px);
-  background: color-mix(in srgb, var(--use-primary-default) 8%, $use-surface-theme-gray-5);
+  background: color-mix(in srgb, var(--use-primary-default) 8%, var(--ui-surface));
   border-color: color-mix(in srgb, var(--use-primary-default) 28%, transparent);
 }
 
@@ -155,7 +185,7 @@ body {
 .search-box input {
   width: min(rem(260px), 26vw);
   height: rem(34px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border-color: var(--ui-border);
   border-radius: rem(8px);
   padding: 0 rem(12px) 0 rem(36px);
@@ -163,7 +193,7 @@ body {
 }
 
 .search-box input:focus {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border-color: color-mix(in srgb, var(--ui-accent) 45%, var(--ui-border));
   box-shadow: 0 0 0 rem(3px) color-mix(in srgb, var(--ui-accent) 12%, transparent);
 }
@@ -173,7 +203,7 @@ body {
   height: rem(34px);
   border-radius: rem(8px);
   border: rem(1px) solid var(--ui-border);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   box-shadow: 0 rem(10px) rem(24px) color-mix(in srgb, var(--ui-text) 8%, transparent);
 }
 
@@ -199,7 +229,7 @@ body {
   top: rem(58px);
   width: rem(256px);
   padding: rem(26px) rem(8px) rem(48px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface);
   border-right: rem(1px) solid var(--ui-border);
 }
 
@@ -231,14 +261,14 @@ body {
 }
 
 .sidebar-link:hover {
-  background: var(--use-primary-default);
-  color: $use-text-on-dark-primary;
+  background: var(--ui-surface-hover);
+  color: var(--ui-text);
   text-decoration: none;
 }
 
 .sidebar-link.active,
 .sidebar-accordion.open {
-  background: color-mix(in srgb, var(--ui-accent) 9%, $use-surface-theme-gray-5);
+  background: color-mix(in srgb, var(--ui-accent) 16%, var(--ui-surface));
   color: var(--ui-accent);
 }
 

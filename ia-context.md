@@ -119,6 +119,46 @@ La pagina del componente Boton queda como referencia base para construir futuras
 - Las acciones deben tener feedback inmediato visual o de estado.
 - Botones solo icono deben tener etiqueta accesible (`aria-label`).
 
+## Decisiones principales encontradas en Figma para Checkbox / Radio / Switch
+
+- Nodo Figma revisado: `4540:38053` - `2.5 — Checkbox / Radio / Switch`.
+- Son componentes transversales y productivos; sus estilos deben vivir en `core/components/web/_selection-controls.scss`.
+- La documentacion vive en `docs/transversales/components/selection-controls.html` y sus estilos propios en `portal/pages/_selection-controls.scss`.
+- Fuente de label: Roboto Regular.
+- Tamano de label: 16px.
+- Line-height del label: 1.5.
+- Letter spacing observado: 0.16px aprox.
+- Gap entre control y label:
+  - Checkbox: 8px.
+  - Radio: 8px.
+  - Switch: 10px.
+- Area clicable minima: 44px.
+- Checkbox:
+  - State layer / area interactiva: 44 x 44px.
+  - Icono/control: 24px.
+  - Caja visual interna: 18px.
+  - Radio visual de caja: 2px.
+  - Uso: seleccion multiple.
+- Radio:
+  - State layer / area interactiva: 44 x 44px.
+  - Icono/control: 24px.
+  - Caja visual interna: 18px.
+  - Uso: seleccion unica dentro de un grupo.
+- Switch:
+  - Area del control: 52 x 40px.
+  - Track: 52 x 32px.
+  - Knob: 28px.
+  - Desplazamiento del knob: 20px.
+  - Uso: activacion o desactivacion inmediata.
+- Estados documentados: por defecto, seleccionado, error, disabled y focus.
+- Modos documentados: Light, Dark y Alto contraste.
+- Reglas de accesibilidad observadas:
+  - Label asociado al control.
+  - Focus visible obligatorio.
+  - No depender solo del color.
+  - Interaccion por teclado.
+  - Radio buttons deben compartir `name` cuando pertenecen al mismo grupo.
+
 ## Estructura obligatoria para todos los componentes
 
 Todos los componentes del sistema de diseno deben documentarse siempre con esta estructura, en este orden:

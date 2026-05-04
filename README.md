@@ -130,6 +130,7 @@ docs/
 │       ├── shadows.html
 │   └── components/
 │       ├── buttons.html
+│       ├── inputs.html
 ├── web/
 │   └── components/         # Web component documentation
 │       ├── inputs.html
@@ -507,6 +508,7 @@ Docs should contain **only the content**, not full HTML structure:
 ✅ **Correct:**
 ```html
 <!-- docs/transversales/components/buttons.html -->
+<!-- docs/transversales/components/inputs.html -->
 <div class="section-header">
   <h1>Botones</h1>
   <p>Botones primarios, secundarios, ghost</p>

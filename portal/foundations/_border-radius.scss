@@ -333,9 +333,9 @@
 }
 
 .br-alert--warning {
-  background: #fff2d9;
+  background: var(--ui-surface-alt);
   border-color: #fcce72;
-  color: #111;
+  color: var(--ui-text);
 }
 
 .br-alert-icon {
@@ -393,7 +393,7 @@
 }
 
 .br-a11y-icon {
-  background: #fff;
+  background: var(--ui-surface);
   border-radius: 50%;
   width: 44px;
   height: 44px;

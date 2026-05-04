@@ -2,15 +2,25 @@
    APP.JS — Funcionalidad compartida del Design System
    ============================================================ */
 
-import { TOKEN_GROUPS, TEXT_TOKENS, TABLE_TOKENS, SPACING } from './tokens.js';
+import { TOKENS, TOKEN_GROUPS, TEXT_TOKENS, TABLE_TOKENS, SPACING } from './tokens.js';
 
 /* ——— THEME ——————————————————————————————————————————— */
 export function setTheme(theme) {
+  const modeKey = theme === 'high-contrast' ? 'highContrast' : theme;
+  Object.values(TOKENS).forEach((token) => {
+    if (!token?.css || !token?.modes) return;
+    const value = token.modes[modeKey] ?? token.modes.light;
+    if (value) document.documentElement.style.setProperty(token.css, value);
+  });
+
   document.documentElement.setAttribute('data-theme', theme);
   document.querySelectorAll('.theme-switcher button').forEach(b => b.classList.remove('active'));
   const map = { light: 'btn-light', dark: 'btn-dark', 'high-contrast': 'btn-hc' };
   document.getElementById(map[theme])?.classList.add('active');
   localStorage.setItem('ds-theme', theme);
+  document.dispatchEvent(new CustomEvent('ds:theme-change', {
+    detail: { theme }
+  }));
 }
 
 /* ——— CODE TABS —————————————————————————————————————— */
@@ -199,7 +209,7 @@ export function onSectionReady(sectionId) {
 
     const btn = document.createElement('button');
     btn.id = 'ct-download-maui';
-    btn.className = 'ct-download-btn ct-download-btn--primary';
+    btn.className = 'mp-btn mp-btn--primario mp-btn--icon-left ct-download-btn ct-download-btn--primary';
     btn.innerHTML = '<span class="material-symbols-rounded">smartphone</span> MAUI XAML';
     btn.addEventListener('click', () => {
       if (typeof window.ctDownloadMAUI === 'function') {

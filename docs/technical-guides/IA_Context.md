@@ -337,6 +337,7 @@ Se decidio que algunas paginas son transversales porque aplican tanto a Drupal/Z
 - Border radius
 - Sombras
 - Botones
+- Inputs
 
 Estas paginas viven bajo:
 
@@ -347,6 +348,7 @@ Estas paginas viven bajo:
 - `docs/transversales/fundamentos/border-radius.html`
 - `docs/transversales/fundamentos/shadows.html`
 - `docs/transversales/components/buttons.html`
+- `docs/transversales/components/inputs.html`
 
 Regla operativa del sistema para contenido transversal:
 
@@ -581,7 +583,7 @@ Fragmentos de documentacion:
 - `docs/app/fundamentos/layout.html`
 - `docs/transversales/fundamentos/shadows.html`
 - `docs/transversales/components/buttons.html`
-- `docs/web/components/inputs.html`
+- `docs/transversales/components/inputs.html`
 - `docs/web/components/badges.html`
 - `docs/web/components/icons-intro.html`
 - `docs/web/components/icons-connect.html`

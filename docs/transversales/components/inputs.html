@@ -1,0 +1,654 @@
+<article class="component-doc-page input-doc" data-component-doc="input">
+  <nav class="component-doc-breadcrumb" aria-label="Breadcrumb">
+    <span>Sistema de diseño</span>
+    <span>/</span>
+    <span>Componentes</span>
+    <span>/</span>
+    <strong>Input</strong>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="input-title">
+    <h1 id="input-title">Input / Campo de texto</h1>
+    <p>Captura información del usuario en formularios. Soporta texto, email, número, contraseña, teléfono, textarea y select con estados interactivos completos y soporte para íconos decorativos y accionables.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Bootstrap compatible</span>
+      <span class="component-chip">Categoría: formulario</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       1. RESUMEN
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="input-summary">
+    <div class="component-section__header">
+      <h2 id="input-summary">1. Resumen</h2>
+    </div>
+    <div class="component-grid-2">
+      <div>
+        <h3>Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Para capturar texto libre: nombres, documentos, correos, contraseñas.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Para seleccionar una opción de una lista corta y fija con <code>mp-select</code>.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Para contenido de múltiples líneas con <code>mp-textarea</code>.</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Para campos de búsqueda con ícono decorativo.</li>
+        </ul>
+      </div>
+      <div class="component-example-card component-example-card--split">
+        <div>
+          <h3>Do</h3>
+          <p>Usa siempre label visible y texto de apoyo cuando se necesite.</p>
+          <div class="component-example-actions">
+            <div class="mp-input-group">
+              <label class="mp-input-label" for="do-inp">Nombre completo</label>
+              <div class="mp-input-wrapper">
+                <input class="mp-input-field" type="text" id="do-inp" placeholder="Ej. Ana Torres">
+              </div>
+              <span class="mp-input-helper">Como aparece en tu documento</span>
+            </div>
+          </div>
+        </div>
+        <span class="component-divider" aria-hidden="true"></span>
+        <div>
+          <h3>Don't</h3>
+          <p>No uses solo el placeholder como etiqueta del campo.</p>
+          <div class="component-example-actions">
+            <div class="mp-input-group">
+              <div class="mp-input-wrapper">
+                <input class="mp-input-field" type="text" placeholder="Nombre completo (reemplaza label)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       2. ANATOMÍA INTERACTIVA
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="input-anatomy">
+    <div class="component-section__header">
+      <h2 id="input-anatomy">2. Anatomía interactiva</h2>
+    </div>
+
+    <div class="segmented-control" role="group" aria-label="Variación anatómica">
+      <button type="button" class="mp-btn mp-btn--terciario" data-inp-anatomy-option="simple"    aria-pressed="true">Simple</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-inp-anatomy-option="icon-left"  aria-pressed="false">Ícono izquierdo</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-inp-anatomy-option="icon-right" aria-pressed="false">Ícono derecho</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-inp-anatomy-option="icon-both"  aria-pressed="false">Íconos dobles</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-inp-anatomy-option="textarea"   aria-pressed="false">Textarea</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-inp-anatomy-option="select"     aria-pressed="false">Select</button>
+    </div>
+
+    <div class="inp-doc-stage" id="inp-anatomy-stage">
+      <!-- Medidas -->
+      <span class="inp-doc-measure inp-doc-measure--height" data-inp-anatomy-height>56 px</span>
+      <span class="inp-doc-measure inp-doc-measure--width"  data-inp-anatomy-width>320 px</span>
+      <span class="inp-doc-measure inp-doc-measure--radius">radio 16 px</span>
+
+      <!-- Callouts -->
+      <div class="inp-doc-callout inp-doc-callout--label" data-inp-callout="label">
+        <strong>Label</strong>
+        <span>Roboto 16 px · ls 0.012em</span>
+      </div>
+      <div class="inp-doc-callout inp-doc-callout--field" data-inp-callout="field">
+        <strong>Campo</strong>
+        <span>56 px · fondo blanco · borde 1 px</span>
+      </div>
+      <div class="inp-doc-callout inp-doc-callout--icon" data-inp-callout="icon">
+        <strong>Ícono</strong>
+        <span>24 px · gap 10 px</span>
+      </div>
+      <div class="inp-doc-callout inp-doc-callout--padding" data-inp-callout="padding">
+        <strong>Padding</strong>
+        <span data-inp-anatomy-padding>16 px horizontal</span>
+      </div>
+      <div class="inp-doc-callout inp-doc-callout--helper" data-inp-callout="helper">
+        <strong>Helper</strong>
+        <span>14 px · color text-tertiary</span>
+      </div>
+
+      <!-- Preview -->
+      <div class="inp-doc-stage__field-wrap" id="inp-anatomy-preview">
+        <div class="mp-input-group">
+          <label class="mp-input-label">Label <span class="mp-input-required" aria-hidden="true">*</span></label>
+          <div class="mp-input-wrapper">
+            <input class="mp-input-field" type="text" placeholder="Placeholder">
+          </div>
+          <span class="mp-input-helper">Texto de apoyo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="inp-doc-controls">
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-inp-anatomy-toggle="labels" checked>
+        Etiquetas
+      </label>
+      <label class="button-doc-toggle">
+        <input type="checkbox" data-inp-anatomy-toggle="measures" checked>
+        Medidas
+      </label>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       3. VARIANTES / PLAYGROUND
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="input-playground-title">
+    <div class="component-section__header">
+      <h2 id="input-playground-title">3. Variantes / Playground</h2>
+    </div>
+    <div class="inp-playground">
+      <div class="inp-playground__preview">
+        <h3>Vista previa</h3>
+        <div class="inp-preview-card" id="inp-playground-preview">
+          <div class="mp-input-group" style="width:100%;max-width:320px">
+            <label class="mp-input-label">Label</label>
+            <div class="mp-input-wrapper">
+              <input class="mp-input-field" type="text" placeholder="Placeholder">
+            </div>
+            <span class="mp-input-helper">Texto de apoyo</span>
+          </div>
+        </div>
+      </div>
+      <div class="inp-playground__controls">
+        <div class="inp-field">
+          <label for="inp-ctrl-tipo">Tipo</label>
+          <select id="inp-ctrl-tipo" data-inp-control="tipo">
+            <option value="text">text</option>
+            <option value="email">email</option>
+            <option value="password">password</option>
+            <option value="number">number</option>
+            <option value="search">search</option>
+            <option value="textarea">textarea</option>
+            <option value="select">select</option>
+          </select>
+        </div>
+        <div class="inp-field">
+          <label for="inp-ctrl-state">Estado</label>
+          <select id="inp-ctrl-state" data-inp-control="state">
+            <option value="default">Default</option>
+            <option value="hover">Hover</option>
+            <option value="focus">Focus</option>
+            <option value="error">Error</option>
+            <option value="success">Success</option>
+            <option value="disabled">Disabled</option>
+          </select>
+        </div>
+        <div class="inp-field">
+          <label for="inp-ctrl-icon-left">Ícono izquierdo</label>
+          <select id="inp-ctrl-icon-left" data-inp-control="iconLeft">
+            <option value="">Ninguno</option>
+            <option value="mail">mail</option>
+            <option value="search">search</option>
+            <option value="person">person</option>
+            <option value="phone">phone</option>
+            <option value="lock">lock</option>
+            <option value="attach_money">attach_money</option>
+            <option value="badge">badge</option>
+          </select>
+        </div>
+        <div class="inp-field">
+          <label for="inp-ctrl-icon-right">Ícono derecho</label>
+          <select id="inp-ctrl-icon-right" data-inp-control="iconRight">
+            <option value="">Ninguno</option>
+            <option value="search">search</option>
+            <option value="visibility">visibility</option>
+            <option value="close">close</option>
+            <option value="info">info</option>
+            <option value="expand_more">expand_more</option>
+            <option value="calendar_today">calendar_today</option>
+          </select>
+        </div>
+        <div class="inp-field">
+          <label for="inp-ctrl-theme">Tema</label>
+          <select id="inp-ctrl-theme" data-inp-control="theme">
+            <option value="light">Claro</option>
+            <option value="dark">Dark</option>
+            <option value="high-contrast">High contrast</option>
+          </select>
+        </div>
+        <div class="inp-field">
+          <label for="inp-ctrl-label">Label</label>
+          <input id="inp-ctrl-label" type="text" value="Label" data-inp-control="label">
+        </div>
+        <div class="inp-field">
+          <label for="inp-ctrl-placeholder">Placeholder</label>
+          <input id="inp-ctrl-placeholder" type="text" value="Placeholder" data-inp-control="placeholder">
+        </div>
+        <div class="inp-field">
+          <label for="inp-ctrl-helper">Texto de apoyo</label>
+          <input id="inp-ctrl-helper" type="text" value="Texto de apoyo" data-inp-control="helperText">
+        </div>
+        <label class="button-doc-toggle">
+          <input type="checkbox" data-inp-control="required">
+          Requerido (*)
+        </label>
+      </div>
+    </div>
+
+    <div class="inp-code-panel">
+      <div class="inp-code-tabs" role="tablist" aria-label="Código del input">
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="true"  data-inp-code-tab="html">HTML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-inp-code-tab="css">Clases CSS</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-inp-code-tab="tokens">Tokens</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left inp-copy-btn" data-inp-copy-playground>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar código
+        </button>
+      </div>
+      <pre><code id="inp-code-output">&lt;div class="mp-input-group"&gt;
+  &lt;label class="mp-input-label" for="campo1"&gt;Label&lt;/label&gt;
+  &lt;div class="mp-input-wrapper"&gt;
+    &lt;input class="mp-input-field" id="campo1" type="text" placeholder="Placeholder"&gt;
+  &lt;/div&gt;
+  &lt;span class="mp-input-helper"&gt;Texto de apoyo&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       4. ESTADOS
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="input-states">
+    <div class="component-section__header">
+      <h2 id="input-states">4. Estados</h2>
+    </div>
+    <div class="inp-state-grid">
+
+      <div class="inp-state-card">
+        <div class="inp-state-card__label">Default</div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Label</label>
+          <div class="mp-input-wrapper">
+            <input class="mp-input-field" type="text" placeholder="Placeholder">
+          </div>
+          <span class="mp-input-helper">Texto de apoyo</span>
+        </div>
+      </div>
+
+      <div class="inp-state-card">
+        <div class="inp-state-card__label">Hover</div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Label</label>
+          <div class="mp-input-wrapper">
+            <input class="mp-input-field" type="text" placeholder="Placeholder" style="border-color: var(--use-border-hover);">
+          </div>
+          <span class="mp-input-helper">Texto de apoyo</span>
+        </div>
+      </div>
+
+      <div class="inp-state-card">
+        <div class="inp-state-card__label">Focus</div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Label</label>
+          <div class="mp-input-wrapper">
+            <input class="mp-input-field is-focus-demo" type="text" placeholder="Placeholder">
+          </div>
+          <span class="mp-input-helper">Texto de apoyo</span>
+        </div>
+      </div>
+
+      <div class="inp-state-card">
+        <div class="inp-state-card__label">Error</div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Label</label>
+          <div class="mp-input-wrapper">
+            <input class="mp-input-field error" type="text" value="Valor inválido" aria-invalid="true">
+          </div>
+          <span class="mp-input-helper error"><span class="material-symbols-rounded" aria-hidden="true" style="font-size:16px">error</span> Mensaje de error</span>
+        </div>
+      </div>
+
+      <div class="inp-state-card">
+        <div class="inp-state-card__label">Success</div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Label</label>
+          <div class="mp-input-wrapper">
+            <input class="mp-input-field filled" type="text" value="valor@compensar.com">
+          </div>
+          <span class="mp-input-helper success"><span class="material-symbols-rounded" aria-hidden="true" style="font-size:16px">check_circle</span> Valor confirmado</span>
+        </div>
+      </div>
+
+      <div class="inp-state-card">
+        <div class="inp-state-card__label">Disabled</div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Label</label>
+          <div class="mp-input-wrapper">
+            <input class="mp-input-field" type="text" placeholder="No disponible" disabled>
+          </div>
+          <span class="mp-input-helper">Campo deshabilitado</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       5. COMPORTAMIENTO  +  6. GUÍAS DE CONTENIDO
+       ══════════════════════════════════════════════════════ -->
+  <div class="component-grid-2">
+    <section class="component-section" aria-labelledby="input-behavior">
+      <div class="component-section__header">
+        <h2 id="input-behavior">5. Comportamiento</h2>
+      </div>
+      <div class="button-behavior-grid">
+        <div class="button-behavior-item">
+          <span class="material-symbols-rounded" aria-hidden="true">ads_click</span>
+          <h3>Foco</h3>
+          <p>Al hacer clic o navegar con Tab el campo recibe foco con borde naranja y ring de 3 px.</p>
+        </div>
+        <div class="button-behavior-item">
+          <span class="material-symbols-rounded" aria-hidden="true">error</span>
+          <h3>Validación</h3>
+          <p>El error se muestra en el helper text. No eliminar el label ni el campo al mostrar error.</p>
+        </div>
+        <div class="button-behavior-item">
+          <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
+          <h3>Contraseña</h3>
+          <p>El ícono derecho interactivo alterna visibilidad. Renderizado como botón con aria-label.</p>
+        </div>
+        <div class="button-behavior-item">
+          <span class="material-symbols-rounded" aria-hidden="true">phone_iphone</span>
+          <h3>Responsive</h3>
+          <p>El campo ocupa el ancho disponible del contenedor. Altura fija 56 px en todas las pantallas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="component-section" aria-labelledby="input-content">
+      <div class="component-section__header">
+        <h2 id="input-content">6. Guías de contenido</h2>
+      </div>
+      <div class="component-grid-2">
+        <div>
+          <h3>Labels correctos</h3>
+          <p>Concisos, descriptivos y siempre visibles.</p>
+          <div class="component-example-actions" style="flex-direction:column;gap:6px;align-items:flex-start">
+            <span class="component-chip">Nombre completo</span>
+            <span class="component-chip">Correo electrónico</span>
+            <span class="component-chip">N.° de documento</span>
+          </div>
+        </div>
+        <div>
+          <h3>Labels incorrectos</h3>
+          <p>Ambiguos, redundantes o en mayúsculas.</p>
+          <div class="component-example-actions" style="flex-direction:column;gap:6px;align-items:flex-start">
+            <span class="component-chip">Campo 1</span>
+            <span class="component-chip">Ingrese aquí</span>
+            <span class="component-chip">NOMBRE</span>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:1rem;font-size:.875rem;color:var(--use-text-secondary)">
+        El placeholder es orientativo, no reemplaza la etiqueta. Los mensajes de error deben ser específicos: "Formato inválido. Ej: AF-12345" en lugar de "Campo inválido".
+      </p>
+    </section>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       7. ACCESIBILIDAD  +  8. RESPONSIVE
+       ══════════════════════════════════════════════════════ -->
+  <div class="component-grid-2">
+    <section class="component-section" aria-labelledby="input-a11y">
+      <div class="component-section__header">
+        <h2 id="input-a11y">7. Accesibilidad</h2>
+      </div>
+      <ul class="component-list">
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Cada campo tiene <code>&lt;label for="…"&gt;</code> explícito. Nunca depender solo del placeholder.</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span><code>aria-invalid="true"</code> + <code>aria-describedby</code> conectan el mensaje de error al campo para lectores de pantalla.</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Campos requeridos: asterisco con <code>aria-hidden="true"</code> más <code>required</code> y <code>aria-required="true"</code>.</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Íconos decorativos con <code>aria-hidden="true"</code>. Íconos accionables como <code>&lt;button&gt;</code> con <code>aria-label</code>.</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Focus visible en todos los estados. Contraste mínimo AA 4.5:1.</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Área táctil mínima 44 px. El campo tiene 56 px de altura.</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No depender solo del color para comunicar error o success.</li>
+      </ul>
+    </section>
+
+    <section class="component-section" aria-labelledby="input-responsive">
+      <div class="component-section__header">
+        <h2 id="input-responsive">8. Responsive</h2>
+      </div>
+      <div class="component-grid-3">
+        <div>
+          <h3>Desktop</h3>
+          <p>Ancho controlado por el contenedor. Recomendado máx. 480 px para campos de texto simples.</p>
+        </div>
+        <div>
+          <h3>Tablet</h3>
+          <p>Puede ocupar una o dos columnas en grids Bootstrap. Mantiene altura 56 px y padding 16 px.</p>
+        </div>
+        <div>
+          <h3>Mobile</h3>
+          <p>Full width del contenedor. Los íconos se mantienen alineados. Teclado virtual no afecta altura.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       MODOS DE COLOR (demo extra)
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="input-color-modes">
+    <div class="component-section__header">
+      <h2 id="input-color-modes">Modos de color</h2>
+      <p>El componente adapta colores automáticamente según el atributo <code>data-theme</code> del contenedor.</p>
+    </div>
+    <div class="inp-modo-grid">
+
+      <div class="inp-modo-box" data-theme="light">
+        <div class="inp-modo-label">Light</div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Correo <span class="mp-input-required" aria-hidden="true">*</span></label>
+          <div class="mp-input-wrapper">
+            <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+            <input class="mp-input-field has-icon-left" type="email" placeholder="usuario@compensar.com">
+          </div>
+        </div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Campo con error</label>
+          <div class="mp-input-wrapper">
+            <input class="mp-input-field error" type="text" value="valor@" aria-invalid="true">
+          </div>
+          <span class="mp-input-helper error">Formato incorrecto</span>
+        </div>
+      </div>
+
+      <div class="inp-modo-box" data-theme="dark">
+        <div class="inp-modo-label inp-modo-label--on-dark">Dark</div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Correo <span class="mp-input-required" aria-hidden="true">*</span></label>
+          <div class="mp-input-wrapper">
+            <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+            <input class="mp-input-field has-icon-left" type="email" placeholder="usuario@compensar.com">
+          </div>
+        </div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Campo con error</label>
+          <div class="mp-input-wrapper">
+            <input class="mp-input-field error" type="text" value="valor@" aria-invalid="true">
+          </div>
+          <span class="mp-input-helper error">Formato incorrecto</span>
+        </div>
+      </div>
+
+      <div class="inp-modo-box" data-theme="high-contrast">
+        <div class="inp-modo-label inp-modo-label--on-dark">High Contrast</div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Correo <span class="mp-input-required" aria-hidden="true">*</span></label>
+          <div class="mp-input-wrapper">
+            <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+            <input class="mp-input-field has-icon-left" type="email" placeholder="usuario@compensar.com">
+          </div>
+        </div>
+        <div class="mp-input-group">
+          <label class="mp-input-label">Campo con error</label>
+          <div class="mp-input-wrapper">
+            <input class="mp-input-field error" type="text" value="valor@" aria-invalid="true">
+          </div>
+          <span class="mp-input-helper error">Formato incorrecto</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       9. TOKENS USADOS
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="input-tokens">
+    <div class="component-section__header">
+      <h2 id="input-tokens">9. Tokens usados</h2>
+    </div>
+    <div class="inp-token-grid">
+      <div class="inp-token-item">
+        <code>--use-border-subtle</code>
+        <span>#e0e0e0 · borde por defecto (base-neutral-20)</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--use-border-hover</code>
+        <span>Naranja brand · borde en hover (= use-primary-hover)</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--use-border-strong</code>
+        <span>#666 · borde en active mousedown (base-neutral-70)</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--use-primary-default</code>
+        <span>#FF6600 · borde y ring en focus</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--use-state-error-icon</code>
+        <span>Rojo · borde en estado error</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--use-state-error-mandatory</code>
+        <span>#bb4945 · asterisco de campo requerido</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--radius-sm</code>
+        <span>16 px · border-radius del campo (border-radius/sm)</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--use-surface-white</code>
+        <span>Blanco · fondo del campo (varía por tema)</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--use-text-primary</code>
+        <span>#111 · texto del campo y label</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--use-text-tertiary</code>
+        <span>#666 · placeholder e íconos decorativos</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--use-state-success-text</code>
+        <span>Verde · helper text en estado success</span>
+      </div>
+      <div class="inp-token-item">
+        <code>--use-focus-outline</code>
+        <span>Azul · outline de focus-visible (accesibilidad)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       10. CÓDIGO
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="input-code">
+    <div class="component-section__header">
+      <div>
+        <h2 id="input-code">10. Código</h2>
+        <p>Descarga estilos planos del input, unidos al core y listos para validar en dummy con tokens Figma.</p>
+      </div>
+      <div class="ct-downloads" aria-label="Descargar estilos del input">
+        <span class="ct-downloads-label"><span class="material-symbols-rounded" aria-hidden="true">download</span> Descargar</span>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-inp-download="css"><span class="material-symbols-rounded" aria-hidden="true">code</span> CSS</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-inp-download="scss"><span class="material-symbols-rounded" aria-hidden="true">data_object</span> Sass</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-inp-download="json"><span class="material-symbols-rounded" aria-hidden="true">data_object</span> JSON</button>
+      </div>
+    </div>
+    <div class="inp-code-panel">
+      <div class="inp-code-tabs" role="tablist" aria-label="Ejemplos de código">
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="true"  data-inp-static-code-tab="html">HTML base</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-inp-static-code-tab="variants">Variantes</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-inp-static-code-tab="accessible">Ejemplo accesible</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left inp-copy-btn" data-inp-copy-static>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+      </div>
+      <pre><code id="inp-static-code">&lt;div class="mp-input-group"&gt;
+  &lt;label class="mp-input-label" for="inp1"&gt;Nombre&lt;/label&gt;
+  &lt;div class="mp-input-wrapper"&gt;
+    &lt;input class="mp-input-field" id="inp1" type="text" placeholder="Tu nombre"&gt;
+  &lt;/div&gt;
+  &lt;span class="mp-input-helper"&gt;Texto de apoyo&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       11. CHECKLIST QA
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="input-qa">
+    <div class="component-section__header">
+      <h2 id="input-qa">11. Checklist QA</h2>
+    </div>
+    <div class="inp-qa-grid">
+      <label class="inp-qa-item"><input type="checkbox">Label visible y asociado con <code>for</code>.</label>
+      <label class="inp-qa-item"><input type="checkbox">Placeholder no reemplaza la etiqueta.</label>
+      <label class="inp-qa-item"><input type="checkbox">Focus visible con teclado (borde naranja + ring).</label>
+      <label class="inp-qa-item"><input type="checkbox">Hover muestra borde naranja brand.</label>
+      <label class="inp-qa-item"><input type="checkbox">Estado error con <code>aria-invalid</code> y helper rojo.</label>
+      <label class="inp-qa-item"><input type="checkbox">Mensaje de error es específico y accionable.</label>
+      <label class="inp-qa-item"><input type="checkbox">Campos requeridos con asterisco + <code>aria-required</code>.</label>
+      <label class="inp-qa-item"><input type="checkbox">Íconos decorativos con <code>aria-hidden="true"</code>.</label>
+      <label class="inp-qa-item"><input type="checkbox">Ícono interactivo como <code>&lt;button&gt;</code> con <code>aria-label</code>.</label>
+      <label class="inp-qa-item"><input type="checkbox">Contraste cumple AA en todos los estados.</label>
+      <label class="inp-qa-item"><input type="checkbox">Altura mínima 56 px en todos los breakpoints.</label>
+      <label class="inp-qa-item"><input type="checkbox">Tokens aplicados correctamente (sin valores hardcoded).</label>
+      <label class="inp-qa-item"><input type="checkbox">Responsive correcto en mobile, tablet y desktop.</label>
+      <label class="inp-qa-item"><input type="checkbox">Dark y High Contrast funcionan con <code>data-theme</code>.</label>
+      <label class="inp-qa-item"><input type="checkbox">Disabled no recibe foco ni validaciones.</label>
+      <label class="inp-qa-item"><input type="checkbox">Select tiene ícono <code>expand_more</code> visible.</label>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       12. ISSUES / SOPORTE / ACTUALIZACIÓN
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="input-support">
+    <div class="component-section__header">
+      <h2 id="input-support">12. Issues / soporte / actualización</h2>
+    </div>
+    <div class="component-support">
+      <div class="component-support__item">
+        <span class="component-support__icon material-symbols-rounded" aria-hidden="true">help</span>
+        <div>
+          <h3>¿Necesitas ayuda?</h3>
+          <p>Usa el canal #diseno-sistema o escribe al equipo responsable.</p>
+        </div>
+      </div>
+      <span class="component-divider" aria-hidden="true"></span>
+      <div class="component-support__item">
+        <span class="component-support__icon material-symbols-rounded" aria-hidden="true">bug_report</span>
+        <div>
+          <h3>¿Encontraste un problema?</h3>
+          <p>Repórtalo para mejorar la documentación y el componente.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="component-support__footer">
+      <span>Última actualización: 4 mayo 2026</span>
+      <span>Versión del componente: v1.0</span>
+      <span>Fuente: Figma Compensar v2 · nodo 4517:7746</span>
+    </footer>
+  </section>
+
+</article>

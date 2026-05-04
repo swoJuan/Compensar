@@ -1,0 +1,312 @@
+// ============================================================
+//  _selection-controls.scss
+//  Checkbox, radio button and switch.
+//  Built on native inputs + Bootstrap-compatible form structure.
+// ============================================================
+
+.mp-choice {
+  --mp-choice-control-size: 24px;
+  --mp-choice-visual-size: 18px;
+  --mp-choice-hit-size: 44px;
+  --mp-choice-gap: 0;
+  --mp-choice-color: var(--use-primary-default);
+  --mp-choice-border: var(--use-text-primary);
+  --mp-choice-bg: transparent;
+  --mp-choice-label: var(--use-text-primary);
+  --mp-choice-helper: var(--use-text-tertiary);
+  --mp-choice-error: var(--use-state-error-text-error-field);
+  --mp-choice-disabled-opacity: .38;
+
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--mp-choice-gap);
+  min-height: var(--mp-choice-hit-size);
+  color: var(--mp-choice-label);
+  font-family: var(--font-body);
+  font-size: var(--body---m);
+  line-height: 1.5;
+  letter-spacing: .01em;
+}
+
+.mp-choice__field {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 var(--mp-choice-hit-size);
+  width: var(--mp-choice-hit-size);
+  height: var(--mp-choice-hit-size);
+  margin: 0;
+}
+
+.mp-choice__input {
+  position: absolute;
+  inset: 0;
+  width: var(--mp-choice-hit-size);
+  height: var(--mp-choice-hit-size);
+  margin: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.mp-choice__control {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: var(--mp-choice-control-size);
+  height: var(--mp-choice-control-size);
+  color: var(--mp-choice-color);
+  pointer-events: none;
+}
+
+.mp-choice__control::before {
+  content: '';
+  width: var(--mp-choice-visual-size);
+  height: var(--mp-choice-visual-size);
+  border: 1.5px solid var(--mp-choice-border);
+  background: var(--mp-choice-bg);
+  transition: background .16s, border-color .16s, box-shadow .16s;
+}
+
+.mp-choice__text {
+  display: grid;
+  gap: var(--space-4);
+  padding-top: 10px;
+}
+
+.mp-choice__label {
+  color: var(--mp-choice-label);
+}
+
+.mp-choice__helper {
+  display: none;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--mp-choice-helper);
+  font-size: var(--body---s);
+  line-height: 1;
+  letter-spacing: .012em;
+}
+
+.mp-choice__helper .material-symbols-rounded {
+  font-size: 16px;
+}
+
+.mp-choice__input:checked + .mp-choice__control::before {
+  border-color: var(--mp-choice-color);
+  background: var(--mp-choice-color);
+}
+
+.mp-choice__input:focus-visible + .mp-choice__control {
+  outline: var(--color-focus-ring-width) solid var(--use-focus-outline);
+  outline-offset: 2px;
+  border-radius: var(--radius-full);
+}
+
+.mp-choice__input.is-focus-demo + .mp-choice__control {
+  outline: var(--color-focus-ring-width) solid var(--use-focus-outline);
+  outline-offset: 2px;
+  border-radius: var(--radius-full);
+}
+
+.mp-choice__input:disabled {
+  cursor: not-allowed;
+}
+
+.mp-choice:has(.mp-choice__input:disabled) {
+  opacity: var(--mp-choice-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.mp-choice--error {
+  --mp-choice-color: var(--use-state-error-icon);
+  --mp-choice-border: var(--use-state-error-icon);
+  --mp-choice-helper: var(--mp-choice-error);
+}
+
+.mp-choice--error .mp-choice__helper {
+  display: inline-flex;
+}
+
+.mp-checkbox .mp-choice__control::before {
+  border-radius: 2px;
+}
+
+.mp-checkbox .mp-choice__input:checked + .mp-choice__control::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 6px;
+  margin-top: -1px;
+  border-left: 2px solid var(--use-text-on-dark-primary);
+  border-bottom: 2px solid var(--use-text-on-dark-primary);
+  transform: rotate(-45deg);
+}
+
+.mp-radio .mp-choice__control::before {
+  border-radius: 50%;
+}
+
+.mp-radio .mp-choice__input:checked + .mp-choice__control::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--use-text-on-dark-primary);
+}
+
+.mp-switch {
+  --mp-switch-width: 52px;
+  --mp-switch-height: 40px;
+  --mp-switch-track-height: 32px;
+  --mp-switch-knob: 28px;
+  --mp-switch-gap: 10px;
+  --mp-switch-off: var(--base-neutral-50);
+  --mp-switch-on: var(--use-primary-default);
+  --mp-switch-knob-bg: var(--use-surface-white);
+  --mp-switch-label: var(--use-text-primary);
+  --mp-switch-helper: var(--use-state-error-text-error-field);
+
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--mp-switch-gap);
+  min-height: 44px;
+  color: var(--mp-switch-label);
+  font-family: var(--font-body);
+  font-size: var(--body---m);
+  line-height: 1.5;
+  letter-spacing: .01em;
+}
+
+.mp-switch__field {
+  position: relative;
+  flex: 0 0 var(--mp-switch-width);
+  width: var(--mp-switch-width);
+  height: var(--mp-switch-height);
+  margin: 0;
+}
+
+.mp-switch__input {
+  position: absolute;
+  inset: 0;
+  width: var(--mp-switch-width);
+  height: var(--mp-switch-height);
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.mp-switch__track {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: var(--mp-switch-width);
+  height: var(--mp-switch-track-height);
+  border-radius: var(--radius-full);
+  background: var(--mp-switch-off);
+  pointer-events: none;
+  transition: background .18s;
+}
+
+.mp-switch__track::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: var(--mp-switch-knob);
+  height: var(--mp-switch-knob);
+  border-radius: 50%;
+  background: var(--mp-switch-knob-bg);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+  transition: transform .18s;
+}
+
+.mp-switch__input:checked + .mp-switch__track {
+  background: var(--mp-switch-on);
+}
+
+.mp-switch__input:checked + .mp-switch__track::after {
+  transform: translateX(20px);
+}
+
+.mp-switch__input:focus-visible + .mp-switch__track {
+  outline: var(--color-focus-ring-width) solid var(--use-focus-outline);
+  outline-offset: 2px;
+}
+
+.mp-switch__input.is-focus-demo + .mp-switch__track {
+  outline: var(--color-focus-ring-width) solid var(--use-focus-outline);
+  outline-offset: 2px;
+}
+
+.mp-switch__text {
+  display: grid;
+  gap: var(--space-4);
+  padding-top: 8px;
+}
+
+.mp-switch__label {
+  color: var(--mp-switch-label);
+}
+
+.mp-switch__helper {
+  display: none;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--mp-switch-helper);
+  font-size: var(--body---s);
+  line-height: 1;
+}
+
+.mp-switch__helper .material-symbols-rounded {
+  font-size: 16px;
+}
+
+.mp-switch--error {
+  --mp-switch-on: var(--use-state-error-icon);
+}
+
+.mp-switch--error .mp-switch__helper {
+  display: inline-flex;
+}
+
+.mp-switch:has(.mp-switch__input:disabled) {
+  opacity: .38;
+  cursor: not-allowed;
+}
+
+.mp-switch__input:disabled {
+  cursor: not-allowed;
+}
+
+[data-theme='dark'] {
+  .mp-choice {
+    --mp-choice-color: var(--use-primary-default-dark, #ff9d5c);
+    --mp-choice-border: var(--use-text-primary);
+  }
+
+  .mp-switch {
+    --mp-switch-on: var(--use-primary-default-dark, #ff9d5c);
+    --mp-switch-off: var(--base-neutral-50);
+  }
+}
+
+[data-theme='high-contrast'] {
+  .mp-choice {
+    --mp-choice-color: var(--use-primary-default, #ffff00);
+    --mp-choice-border: var(--use-text-primary, #ffffff);
+  }
+
+  .mp-checkbox .mp-choice__input:checked + .mp-choice__control::after,
+  .mp-radio .mp-choice__input:checked + .mp-choice__control::after {
+    border-color: var(--use-text-inverse, #000000);
+    background: var(--use-text-inverse, #000000);
+  }
+
+  .mp-switch {
+    --mp-switch-on: var(--use-primary-default, #ffff00);
+    --mp-switch-off: var(--base-neutral-50, #808080);
+    --mp-switch-knob-bg: var(--use-text-inverse, #000000);
+  }
+}

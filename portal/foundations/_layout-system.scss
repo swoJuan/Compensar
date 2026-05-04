@@ -94,7 +94,7 @@
   display: inline-flex; align-items: center; gap: rem(7px);
   padding: rem(8px) rem(14px); border-radius: rem(8px);
   border: rem(1px) solid var(--use-border-subtle);
-  background: var(--use-surface-theme-gray-5);
+  background: var(--ui-surface-alt);
   font-size: 0.875rem; font-weight: 600;
   color: var(--use-text-primary);
   cursor: pointer; transition: all 0.15s; width: fit-content;
@@ -105,7 +105,7 @@
 /* Grid canvas */
 .lys-grid-canvas {
   position: relative;
-  background: var(--use-surface-theme-gray-5);
+  background: var(--ui-surface-alt);
   padding: rem(20px);
   min-height: rem(240px);
   display: flex; align-items: center; justify-content: center;
@@ -114,19 +114,19 @@
 /* Page demo */
 .lys-page-demo {
   width: 100%; max-width: rem(560px);
-  background: var(--base-neutral-white);
+  background: var(--ui-surface);
   border-radius: rem(8px);
   border: rem(1px) solid var(--use-border-subtle);
   overflow: hidden;
   box-shadow: var(--shadow-1);
 }
 .lys-pd-nav {
-  height: rem(32px); background: var(--use-surface-theme-gray-10);
+  height: rem(32px); background: var(--ui-surface-alt);
   border-bottom: rem(1px) solid var(--use-border-subtle);
 }
 .lys-pd-hero {
   display: flex; gap: rem(12px); align-items: center;
-  padding: rem(16px); background: var(--base-neutral-white);
+  padding: rem(16px); background: var(--ui-surface);
 }
 .lys-pd-hero-text { flex: 1; display: flex; flex-direction: column; gap: rem(6px); }
 .lys-pd-hero-img { width: rem(80px); height: rem(60px); background: var(--use-surface-theme-violet-10); border-radius: rem(6px); flex-shrink: 0; }
@@ -137,7 +137,7 @@
 .lys-pd-cta { width: rem(64px); height: rem(22px); background: var(--product-violet-20); border-radius: rem(100px); margin-top: rem(4px); }
 .lys-pd-cards {
   display: grid; grid-template-columns: repeat(4,1fr); gap: rem(8px);
-  padding: rem(10px) rem(16px) rem(16px); background: var(--use-surface-theme-gray-5);
+  padding: rem(10px) rem(16px) rem(16px); background: var(--ui-surface-alt);
 }
 .lys-pd-card { height: rem(36px); background: var(--use-surface-theme-violet-10); border-radius: rem(6px); opacity: 0.7; }
 
@@ -185,12 +185,12 @@
     border-radius: rem(24px);
     border-width: rem(2px);
     border-color: color-mix(in srgb, var(--use-border-default) 70%, transparent);
-    background: var(--base-neutral-white);
+    background: var(--ui-surface);
   }
 
   .lys-page-demo--app .lys-pd-nav {
     height: rem(24px);
-    background: linear-gradient(180deg, var(--use-surface-theme-gray-10) 0%, var(--use-surface-theme-gray-5) 100%);
+    background: linear-gradient(180deg, var(--ui-surface) 0%, var(--ui-surface-alt) 100%);
   }
 
   .lys-page-demo--app .lys-pd-hero {
@@ -232,7 +232,7 @@
 .lys-compare-card {
   border: rem(1px) solid var(--use-border-subtle);
   border-radius: rem(14px); overflow: hidden;
-  background: var(--base-neutral-white);
+  background: var(--ui-surface);
 }
 .lys-compare-card--container { border-top: rem(3px) solid var(--product-violet-60); }
 .lys-compare-card--fluid     { border-top: rem(3px) solid var(--use-text-theme-orange); }
@@ -251,11 +251,11 @@
 .lys-compare-visual { padding: rem(16px) rem(20px); }
 .lys-cv-screen {
   width: 100%; height: rem(80px);
-  background: var(--use-surface-theme-gray-5); border-radius: rem(8px);
+  background: var(--ui-surface-alt); border-radius: rem(8px);
   position: relative; overflow: hidden;
   border: rem(1px) solid var(--use-border-subtle); margin-bottom: rem(8px);
 }
-.lys-cv-bg { position: absolute; inset: 0; background: var(--use-surface-theme-gray-5); }
+.lys-cv-bg { position: absolute; inset: 0; background: var(--ui-surface-alt); }
 .lys-cv-box {
   position: absolute; top: 50%; transform: translateY(-50%);
   height: 70%; border-radius: rem(5px);
@@ -295,7 +295,7 @@
   color: var(--use-text-primary);
 }
 .lys-compare-widths {
-  padding: rem(14px) rem(20px); background: var(--use-surface-theme-gray-5);
+  padding: rem(14px) rem(20px); background: var(--ui-surface-alt);
   border-top: rem(1px) solid var(--use-surface-theme-gray-10);
 }
 .lys-compare-label-small {
@@ -317,7 +317,7 @@
 .lys-vs {
   font-size: 0.875rem; font-weight: 700;
   color: var(--use-text-tertiary);
-  background: var(--use-surface-theme-gray-5);
+  background: var(--ui-surface-alt);
   border-radius: 50%; width: rem(36px); height: rem(36px);
   display: flex; align-items: center; justify-content: center;
   align-self: center; flex-shrink: 0;
@@ -338,7 +338,7 @@
   border: rem(1px) solid var(--use-border-subtle);
   border-radius: rem(12px); padding: rem(16px) rem(12px);
   display: flex; flex-direction: column; align-items: center; gap: rem(8px);
-  background: var(--base-neutral-white); text-align: center;
+  background: var(--ui-surface); text-align: center;
   transition: box-shadow 0.15s;
 }
 .lys-use-card:hover { box-shadow: var(--shadow-1); }
@@ -350,7 +350,7 @@
 .lys-use-icon--purple { background: var(--use-surface-theme-violet-5); color: var(--use-text-theme-violet); }
 .lys-use-icon--orange { background: var(--use-surface-theme-orange-10); color: var(--use-text-theme-orange); }
 .lys-use-label { font-size: 0.8125rem; font-weight: 600; color: var(--use-text-primary); line-height: 1.3; }
-.lys-use-token { font-family: 'Roboto Mono',monospace; font-size: 0.7rem; color: var(--use-text-tertiary); background: var(--use-surface-theme-gray-5); padding: rem(2px) rem(6px); border-radius: rem(4px); }
+.lys-use-token { font-family: 'Roboto Mono',monospace; font-size: 0.7rem; color: var(--use-text-tertiary); background: var(--ui-surface-alt); padding: rem(2px) rem(6px); border-radius: rem(4px); }
 
 /* ── Do / Don't ──────────────────────────────── */
 .lys-rules-grid {
@@ -382,7 +382,7 @@
   align-items: flex-end;
   margin: rem(20px) 0 rem(40px);
   padding: rem(24px);
-  background: var(--use-surface-theme-gray-5);
+  background: var(--ui-surface-alt);
   border-radius: rem(14px);
   border: rem(1px) solid var(--use-border-subtle);
   overflow-x: auto;
@@ -419,14 +419,14 @@
 }
 .lys-adapt-device {
   border: rem(2px) solid var(--use-border-subtle); border-radius: rem(10px);
-  background: var(--base-neutral-white); overflow: hidden;
+  background: var(--ui-surface); overflow: hidden;
   box-shadow: var(--shadow-1);
 }
 .lys-adapt-device--mobile  { width: rem(80px); }
 .lys-adapt-device--tablet  { width: rem(120px); }
 .lys-adapt-device--desktop { width: rem(180px); }
 
-.lys-ad-screen { padding: rem(8px); display: flex; flex-direction: column; gap: rem(5px); background: var(--use-surface-theme-gray-5); }
+.lys-ad-screen { padding: rem(8px); display: flex; flex-direction: column; gap: rem(5px); background: var(--ui-surface-alt); }
 .lys-ad-row { display: flex; gap: rem(4px); }
 .lys-ad-col-full  { height: rem(18px); background: var(--use-surface-theme-violet-10); border-radius: rem(3px); }
 .lys-ad-col-half  { flex: 1; height: rem(28px); background: var(--use-surface-theme-violet-10); border-radius: rem(3px); }
@@ -463,7 +463,7 @@
 
 .lys-qa-item {
   display: flex; gap: rem(12px); align-items: flex-start;
-  background: color-mix(in srgb, var(--base-neutral-white) 70%, transparent);
+  background: color-mix(in srgb, var(--ui-surface) 70%, transparent);
   border-radius: rem(10px); padding: rem(12px) rem(14px);
   border: rem(1px) solid color-mix(in srgb, var(--use-primary-default) 10%, transparent);
 }
@@ -491,4 +491,4 @@
 }
 .lys-dev-chip--p1 { background: var(--use-state-success-bg); color: var(--use-state-success-text); border: rem(1px) solid var(--use-state-success-border); }
 .lys-dev-chip--p2 { background: var(--use-surface-theme-yellow-30); color: var(--base-yellow-100); border: rem(1px) solid var(--base-yellow-50); }
-.lys-dev-chip--p3 { background: var(--use-surface-theme-gray-5); color: var(--use-text-secondary); border: rem(1px) solid var(--use-border-subtle); }
+.lys-dev-chip--p3 { background: var(--ui-surface-alt); color: var(--use-text-secondary); border: rem(1px) solid var(--use-border-subtle); }

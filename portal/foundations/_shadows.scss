@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-8);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border-left: rem(3px) solid var(--ui-accent);
   border-radius: 0 rem(8px) rem(8px) 0;
   padding: var(--space-8) var(--space-24);
@@ -25,7 +25,7 @@
 .sh-figma-bar code {
   font-family: var(--font-code);
   font-size: rem(11.5px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   padding: rem(1px) rem(5px);
   border-radius: rem(4px);
   color: var(--ui-accent);
@@ -68,7 +68,7 @@
 }
 
 .sh-card {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(14px);
   overflow: hidden;
@@ -80,7 +80,7 @@
 }
 
 .sh-preview-wrap {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   padding: var(--space-48) var(--space-24);
   display: flex;
   align-items: center;
@@ -90,7 +90,7 @@
 }
 
 .sh-preview-card {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border-radius: rem(10px);
   padding: var(--space-4) var(--space-32);
   font-size: rem(12px);
@@ -150,7 +150,7 @@
 .sh-chip {
   font-family: var(--font-code);
   font-size: rem(10.5px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   color: var(--ui-accent);
   padding: rem(2px) rem(7px);
   border-radius: rem(5px);
@@ -212,7 +212,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-24);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
   padding: var(--space-4) var(--space-24);
@@ -227,7 +227,7 @@
   width: rem(60px);
   height: rem(60px);
   border-radius: rem(10px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   flex-shrink: 0;
 }
 
@@ -252,7 +252,7 @@
 .sh-list-use code {
   font-family: var(--font-code);
   font-size: rem(10.5px);
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   padding: rem(1px) rem(4px);
   border-radius: rem(3px);
   color: var(--ui-accent);
@@ -265,7 +265,7 @@
 }
 
 .sh-int-card {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(14px);
   overflow: hidden;
@@ -277,7 +277,7 @@
 }
 
 .sh-int-preview {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   padding: var(--space-32) var(--space-24);
   display: flex;
   align-items: center;
@@ -308,7 +308,7 @@
 }
 
 .sh-btn-pressed {
-  background: $use-surface-theme-gray-5;
+  background: var(--ui-surface-alt);
   color: var(--ui-text);
   border: rem(1px) solid var(--ui-border) !important;
 }

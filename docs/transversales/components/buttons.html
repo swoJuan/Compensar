@@ -60,11 +60,11 @@
       <h2 id="button-anatomy">2. Anatomía interactiva</h2>
     </div>
     <div class="segmented-control" role="group" aria-label="Variación anatómica">
-      <button type="button" class="mp-btn mp-btn--terciario" data-anatomy-option="text" aria-pressed="true">Solo texto</button>
-      <button type="button" class="mp-btn mp-btn--terciario" data-anatomy-option="icon-left" aria-pressed="false">Icono + texto</button>
-      <button type="button" class="mp-btn mp-btn--terciario" data-anatomy-option="icon-right" aria-pressed="false">Texto + icono</button>
-      <button type="button" class="mp-btn mp-btn--terciario" data-anatomy-option="icon-both" aria-pressed="false">Icono + texto + icono</button>
-      <button type="button" class="mp-btn mp-btn--terciario" data-anatomy-option="icon-only" aria-pressed="false">Solo icono</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-anatomy-option="text" aria-pressed="true" onclick="window.componentDocs?.renderAnatomy?.(this.closest('[data-component-doc=\'button\']'),'text')">Solo texto</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-anatomy-option="icon-left" aria-pressed="false" onclick="window.componentDocs?.renderAnatomy?.(this.closest('[data-component-doc=\'button\']'),'icon-left')">Icono + texto</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-anatomy-option="icon-right" aria-pressed="false" onclick="window.componentDocs?.renderAnatomy?.(this.closest('[data-component-doc=\'button\']'),'icon-right')">Texto + icono</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-anatomy-option="icon-both" aria-pressed="false" onclick="window.componentDocs?.renderAnatomy?.(this.closest('[data-component-doc=\'button\']'),'icon-both')">Icono + texto + icono</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-anatomy-option="icon-only" aria-pressed="false" onclick="window.componentDocs?.renderAnatomy?.(this.closest('[data-component-doc=\'button\']'),'icon-only')">Solo icono</button>
     </div>
 
     <div class="button-doc-stage" id="button-anatomy-stage">

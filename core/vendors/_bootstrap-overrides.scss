@@ -43,8 +43,6 @@
 // ── Focus ring ──────────────────────────────────────────────────────────────
 // Replace Bootstrap's blue outline with our design token focus ring.
 .btn:focus-visible,
-.form-control:focus,
-.form-select:focus,
 .form-check-input:focus {
   outline: none;
   box-shadow: 0 0 0 3px var(--color-focus-ring) !important;
@@ -67,23 +65,101 @@
 .form-select,
 .form-floating > .form-control,
 .form-floating > .form-select {
-  background-color: var(--color-surface-default);
-  border-color:     var(--color-border-default);
-  color:            var(--color-text-primary);
-  border-radius:    var(--radius-sm);
+  min-height:       48px;
+  padding:          0 var(--space-16);
+  font-family:      var(--font-body);
+  font-size:        14px;
+  line-height:      1.3;
+  background-color: var(--use-surface-theme-gray-5);
+  border:           1.5px solid var(--use-border-default);
+  color:            var(--use-text-primary);
+  border-radius:    8px;
+  transition:       border-color .18s ease, box-shadow .18s ease, background-color .15s ease;
 
   &::placeholder {
-    color:   var(--color-text-muted);
+    color:   var(--use-text-tertiary);
     opacity: 1;
+  }
+
+  &:hover:not(:disabled):not(:focus) {
+    border-color: var(--base-neutral-60);
+  }
+
+  &:focus {
+    border-color: var(--use-primary-default);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--use-primary-default) 18%, transparent) !important;
+    outline: none;
   }
 
   &:disabled,
   &[readonly] {
-    background-color: var(--color-surface-disabled);
-    color:            var(--color-text-disabled);
-    border-color:     var(--color-border-subtle);
+    background-color: var(--use-surface-subtle);
+    color:            var(--use-text-tertiary);
+    border-color:     var(--use-border-default);
     cursor:           not-allowed;
+    opacity:          .65;
   }
+}
+
+textarea.form-control,
+.form-floating > textarea.form-control {
+  min-height: 112px;
+  padding: var(--space-8) var(--space-16);
+  line-height: 1.6;
+}
+
+.form-select {
+  cursor: pointer;
+  padding-right: 44px;
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid,
+.form-select.is-invalid,
+.was-validated .form-select:invalid {
+  border-color: var(--use-state-error-icon);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--use-state-error-icon) 15%, transparent) !important;
+}
+
+.form-control.is-valid,
+.was-validated .form-control:valid,
+.form-select.is-valid,
+.was-validated .form-select:valid {
+  border-color: var(--use-state-success-border);
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--use-text-primary);
+  margin-bottom: var(--space-8);
+}
+
+.form-text,
+.invalid-feedback,
+.valid-feedback {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.form-text {
+  color: var(--use-text-tertiary);
+}
+
+.invalid-feedback {
+  color: var(--use-state-error-text);
+}
+
+.valid-feedback {
+  color: var(--use-state-success-text);
+}
+
+.input-group-text {
+  min-height: 48px;
+  background-color: var(--use-surface-theme-gray-5);
+  border: 1.5px solid var(--use-border-default);
+  color: var(--use-text-tertiary);
+  border-radius: 8px;
 }
 
 .form-check-input {
@@ -93,13 +169,6 @@
     background-color: var(--color-primary);
     border-color:     var(--color-primary);
   }
-}
-
-.form-label {
-  font-size:   var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color:       var(--color-text-secondary);
-  margin-bottom: var(--space-4);
 }
 
 // ── Cards ───────────────────────────────────────────────────────────────────

@@ -90,8 +90,14 @@ const router = (() => {
     },
     'web/componentes/inputs': {
       label: 'Inputs',
-      path: 'web/components/inputs.html',
+      path: 'transversales/components/inputs.html',
       icon: 'input',
+      group: 'web-componentes'
+    },
+    'web/componentes/seleccion': {
+      label: 'Checkbox / Radio / Switch',
+      path: 'transversales/components/selection-controls.html',
+      icon: 'check_box',
       group: 'web-componentes'
     },
     'web/componentes/badges': {
@@ -189,11 +195,15 @@ const router = (() => {
 
       state.currentSection = section;
       window.location.hash = `#${section}`;
-      document.body.classList.toggle('component-doc-full', section === 'web/componentes/botones');
-      
+      document.body.classList.toggle('component-doc-full',
+        section === 'web/componentes/botones' ||
+        section === 'web/componentes/seleccion' ||
+        section === 'web/componentes/inputs'
+      );
+
       // Update active nav states
       updateActiveNav(section);
-      
+
       // Emit event
       emit('navigate', section);
       document.dispatchEvent(new CustomEvent('component-docs:init', {
@@ -201,6 +211,12 @@ const router = (() => {
       }));
       if (window.componentDocs) {
         window.requestAnimationFrame(() => window.componentDocs.initButtonDoc(document));
+      }
+      if (window.selectionDocs) {
+        window.requestAnimationFrame(() => window.selectionDocs.initSelectionDoc(document));
+      }
+      if (window.inputDocs) {
+        window.requestAnimationFrame(() => window.inputDocs.initInputDoc(document));
       }
 
       return true;

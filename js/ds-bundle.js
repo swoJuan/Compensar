@@ -4792,13 +4792,30 @@
   /* ══════════════════════════════════════════════════════════
      APP — THEME, TABS, COPY, TOAST
      ══════════════════════════════════════════════════════════ */
+  function applyThemeTokenMode(theme) {
+    var modeKey = theme === 'high-contrast' ? 'highContrast' : theme;
+    var rootStyle = document.documentElement.style;
+
+    Object.keys(TOKENS).forEach(function(tokenName) {
+      var token = TOKENS[tokenName];
+      if (!token || !token.css || !token.modes) return;
+
+      var value = token.modes[modeKey] || token.modes.light;
+      if (value) rootStyle.setProperty(token.css, value);
+    });
+  }
+
   function setTheme(theme) {
+    applyThemeTokenMode(theme);
     document.documentElement.setAttribute('data-theme', theme);
     document.querySelectorAll('.theme-switcher button').forEach(function(b) { b.classList.remove('active'); });
     var map = { light: 'btn-light', dark: 'btn-dark', 'high-contrast': 'btn-hc' };
     var btn = document.getElementById(map[theme]);
     if (btn) btn.classList.add('active');
     try { localStorage.setItem('ds-theme', theme); } catch(e) {}
+    document.dispatchEvent(new CustomEvent('ds:theme-change', {
+      detail: { theme: theme }
+    }));
   }
 
   function switchTab(btn, targetId) {
@@ -4945,6 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'seleccion');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -4962,7 +4980,7 @@
 
       var btn = document.createElement('button');
       btn.id = 'ct-download-maui';
-      btn.className = 'ct-download-btn ct-download-btn--primary';
+      btn.className = 'mp-btn mp-btn--primario mp-btn--icon-left ct-download-btn ct-download-btn--primary';
       btn.innerHTML = '<span class="material-symbols-rounded">smartphone</span> MAUI XAML';
       btn.addEventListener('click', function() {
         if (typeof window.ctDownloadMAUI === 'function') {
@@ -5008,6 +5026,16 @@
         window.componentDocs.initButtonDoc(document);
       });
     }
+    if (window.selectionDocs) {
+      requestAnimationFrame(function() {
+        window.selectionDocs.initSelectionDoc(document);
+      });
+    }
+    if (window.inputDocs) {
+      requestAnimationFrame(function() {
+        window.inputDocs.initInputDoc(document);
+      });
+    }
   }
 
   /* ══════════════════════════════════════════════════════════
@@ -5035,7 +5063,8 @@
     'iconos-conectar':    'docs/web/components/icons-connect.html',
     'iconos-libreria':    'docs/web/components/icons-library.html',
     'botones':            'docs/transversales/components/buttons.html',
-    'inputs':             'docs/web/components/inputs.html',
+    'inputs':             'docs/transversales/components/inputs.html',
+    'seleccion':          'docs/transversales/components/selection-controls.html',
     'badges':             'docs/web/components/badges.html',
     'tokens-texto':       'docs/tokens/tokens-text.html',
     'tokens-tablas':      'docs/tokens/tokens-tables.html',
