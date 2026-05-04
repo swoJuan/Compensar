@@ -190,6 +190,34 @@ export function onSectionReady(sectionId) {
   window.switchTab       = switchTab;
   window.copyCode        = copyCode;
 
+  const ensureMauiDownloadButton = () => {
+    const root = document.getElementById('colores');
+    if (!root) return false;
+    const downloads = root.querySelector('.ct-downloads');
+    if (!downloads) return false;
+    if (downloads.querySelector('#ct-download-maui')) return true;
+
+    const btn = document.createElement('button');
+    btn.id = 'ct-download-maui';
+    btn.className = 'ct-download-btn ct-download-btn--primary';
+    btn.innerHTML = '<span class="material-symbols-rounded">smartphone</span> MAUI XAML';
+    btn.addEventListener('click', () => {
+      if (typeof window.ctDownloadMAUI === 'function') {
+        window.ctDownloadMAUI();
+        return;
+      }
+      showToast('La accion MAUI aun no esta lista. Intenta de nuevo.');
+    });
+
+    const firstAction = downloads.querySelector('.ct-download-btn');
+    if (firstAction) {
+      downloads.insertBefore(btn, firstAction);
+    } else {
+      downloads.appendChild(btn);
+    }
+    return true;
+  };
+
   // 3. Lógica específica por sección
   switch (sectionId) {
     case 'espaciado':
@@ -201,6 +229,18 @@ export function onSectionReady(sectionId) {
     case 'tokens-tablas':
       renderTokenTable('table-table-tokens', TABLE_TOKENS);
       break;
+  }
+
+  if (sectionId === 'fundamentos/colores' || sectionId === 'colores-base' || sectionId === 'colores-producto' || sectionId === 'colores-uso' || sectionId === 'colores-utilidades') {
+    let tries = 0;
+    const syncMauiButton = () => {
+      const ready = ensureMauiDownloadButton();
+      if (!ready && tries < 6) {
+        tries += 1;
+        setTimeout(syncMauiButton, 120);
+      }
+    };
+    syncMauiButton();
   }
 }
 

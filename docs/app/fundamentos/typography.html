@@ -14,23 +14,24 @@
   </div>
 
   <!-- DESCARGAS -->
-  <div class="ct-downloads" style="margin-bottom:var(--space-24)">
+  <div class="ct-downloads ty-downloads">
     <span class="ct-downloads-label"><span class="material-symbols-rounded">download</span> Descargar tokens</span>
+    <button class="ct-download-btn ct-download-btn--primary" onclick="tyDownloadMAUI()"><span class="material-symbols-rounded">smartphone</span> MAUI XAML</button>
     <button class="ct-download-btn" onclick="tyDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS vars</button>
     <button class="ct-download-btn" onclick="tyDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
     <button class="ct-download-btn" onclick="tyDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
   </div>
   <p class="ct-download-note">Descarga generada en vivo desde <code>core/abstracts/_tokens-typography.scss</code>, <code>core/base/_typography.scss</code> y <code>core/utils/_typography.scss</code>.</p>
 
-  <!-- TOGGLE DESKTOP / MOBILE -->
+  <!-- TOGGLE DESKTOP / APP -->
   <div class="ty-toggle-bar">
     <span class="ty-toggle-label"><span class="material-symbols-rounded">devices</span> Vista previa</span>
     <div class="ty-toggle-btns">
       <button id="ty-btn-desk" class="ty-toggle-btn active" onclick="tySetMode('desktop')">
         <span class="material-symbols-rounded">desktop_mac</span> Desktop
       </button>
-      <button id="ty-btn-mob" class="ty-toggle-btn" onclick="tySetMode('mobile')">
-        <span class="material-symbols-rounded">smartphone</span> Mobile
+      <button id="ty-btn-app" class="ty-toggle-btn" onclick="tySetMode('app')">
+        <span class="material-symbols-rounded">smartphone</span> App
       </button>
     </div>
     <span class="ty-toggle-hint" id="ty-mode-hint">Mostrando tamaños desktop</span>
@@ -41,7 +42,7 @@
   <div class="ty-font-card-single mb-5">
     <div class="ty-font-card-head">
       <div>
-        <div class="ty-font-name" style="font-family:Roboto,sans-serif;font-weight:700">Roboto</div>
+        <div class="ty-font-name">Roboto</div>
         <div class="ty-font-role">Todas las vistas — titulares, cuerpo, labels y UI</div>
       </div>
       <div class="ty-font-actions">
@@ -50,21 +51,21 @@
         <a class="ty-gfonts-link" href="https://fonts.google.com/specimen/Roboto" target="_blank" rel="noopener"><span class="material-symbols-rounded">open_in_new</span></a>
       </div>
     </div>
-    <div class="ty-alphabet" style="font-family:Roboto,sans-serif">
+    <div class="ty-alphabet">
       Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz &nbsp;&middot;&nbsp; 0 1 2 3 4 5 6 7 8 9 &nbsp;&middot;&nbsp; ! @ # $ % &amp; ( )
     </div>
     <div class="ty-weights-grid">
-      <div class="ty-w-row"><span class="ty-w-label">100</span><span class="ty-w-name">Thin</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:100">Compensar Medicina Prepagada</span></div>
-      <div class="ty-w-row"><span class="ty-w-label">300</span><span class="ty-w-name">Light</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:300">Compensar Medicina Prepagada</span></div>
-      <div class="ty-w-row"><span class="ty-w-label">400</span><span class="ty-w-name">Regular</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:400">Compensar Medicina Prepagada</span></div>
-      <div class="ty-w-row"><span class="ty-w-label">500</span><span class="ty-w-name">Medium</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:500">Compensar Medicina Prepagada</span></div>
-      <div class="ty-w-row"><span class="ty-w-label">700</span><span class="ty-w-name">Bold</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:700">Compensar Medicina Prepagada</span></div>
-      <div class="ty-w-row"><span class="ty-w-label">900</span><span class="ty-w-name">Black</span><span class="ty-w-sample" style="font-family:Roboto,sans-serif;font-weight:900">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">100</span><span class="ty-w-name">Thin</span><span class="ty-w-sample ty-w-sample--100">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">300</span><span class="ty-w-name">Light</span><span class="ty-w-sample ty-w-sample--300">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">400</span><span class="ty-w-name">Regular</span><span class="ty-w-sample ty-w-sample--400">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">500</span><span class="ty-w-name">Medium</span><span class="ty-w-sample ty-w-sample--500">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">700</span><span class="ty-w-name">Bold</span><span class="ty-w-sample ty-w-sample--700">Compensar Medicina Prepagada</span></div>
+      <div class="ty-w-row"><span class="ty-w-label">900</span><span class="ty-w-name">Black</span><span class="ty-w-sample ty-w-sample--900">Compensar Medicina Prepagada</span></div>
     </div>
   </div>
 
   <!-- 2 · ESCALA -->
-  <div class="ty-section-label" style="margin-top:var(--space-8)"><span class="material-symbols-rounded">format_size</span> Escala tipográfica &middot; base 1rem = 16px</div>
+  <div class="ty-section-label ty-section-label--tight"><span class="material-symbols-rounded">format_size</span> Escala tipográfica &middot; base 1rem = 16px</div>
   <div id="ty-scale-root" class="mb-5"></div>
 
   <!-- 3 · UTILIDADES -->
@@ -198,20 +199,20 @@ const CATS = [
     ]
   },
   {
-    id:'display-mobile', title:'Display — Mobile',
-    desc:'Tamaños de display adaptados para pantallas pequeñas.',
+    id:'display-mobile', title:'Display — App',
+    desc:'Tamaños de display adaptados para pantallas de app (iOS/Android).',
     items:[
-      { name:'Display XL mob.', cls:'mp-display-xl-mob', token:'--display--mobile---display--x-l',
+      { name:'Display XL app.', cls:'mp-display-xl-mob', token:'--display--mobile---display--x-l',
         desk:{rem:'2.5rem',px:40}, mob:{rem:'2.5rem',px:40},
         clamp:'2.5rem',
         w:700, wn:'Bold', lh:1.1, color:'--use-text-heading',
         preview:'Compensar', html:'<h1 class="mp-display-xl-mob">Compensar</h1>' },
-      { name:'Display L mob.', cls:'mp-display-l-mob', token:'--display--mobile---display--l',
+      { name:'Display L app.', cls:'mp-display-l-mob', token:'--display--mobile---display--l',
         desk:{rem:'2.25rem',px:36}, mob:{rem:'2.25rem',px:36},
         clamp:'2.25rem',
         w:700, wn:'Bold', lh:1.1, color:'--use-text-heading',
         preview:'Medicina Prepagada', html:'<h1 class="mp-display-l-mob">Medicina Prepagada</h1>' },
-      { name:'Display M mob.', cls:'mp-display-m-mob', token:'--display--mobile---display--m',
+      { name:'Display M app.', cls:'mp-display-m-mob', token:'--display--mobile---display--m',
         desk:{rem:'2rem',px:32}, mob:{rem:'2rem',px:32},
         clamp:'2rem',
         w:700, wn:'Bold', lh:1.1, color:'--use-text-heading',
@@ -220,7 +221,7 @@ const CATS = [
   },
   {
     id:'headings', title:'Headings H1–H6',
-    desc:'Jerarquía de títulos de contenido. Usar tags semánticos h1–h6.',
+    desc:'Jerarquía de títulos de contenido. En app mantiene legibilidad UX: H1 32px, H2 28px, H3 24px, H4 20px, H5 18px, H6 16px.',
     items:[
       { name:'H1', cls:'mp-h1', token:'--heading--h1',
         desk:{rem:'3rem',px:48}, mob:{rem:'2rem',px:32},
@@ -356,14 +357,14 @@ window.tyCopy = tyCopy;
 function tySetMode(mode){
   tyMode = mode;
   document.getElementById('ty-btn-desk').classList.toggle('active', mode==='desktop');
-  document.getElementById('ty-btn-mob').classList.toggle('active', mode==='mobile');
+  document.getElementById('ty-btn-app').classList.toggle('active', mode==='app');
   document.getElementById('ty-mode-hint').textContent =
-    mode==='desktop' ? 'Mostrando tamaños desktop' : 'Mostrando tamaños mobile';
+    mode==='desktop' ? 'Mostrando tamaños desktop' : 'Mostrando tamaños app';
   document.querySelectorAll('[data-ty-desk][data-ty-mob]').forEach(el=>{
     const size = mode==='desktop' ? el.dataset.tyDesk : el.dataset.tyMob;
     el.style.fontSize = size;
     el.closest('.ty-row')?.querySelector('.ty-size-desk')?.classList.toggle('active', mode==='desktop');
-    el.closest('.ty-row')?.querySelector('.ty-size-mob')?.classList.toggle('active', mode==='mobile');
+    el.closest('.ty-row')?.querySelector('.ty-size-mob')?.classList.toggle('active', mode==='app');
   });
 }
 window.tySetMode = tySetMode;
@@ -381,7 +382,6 @@ function escape(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(
 
 function renderItem(item){
   const clsId = item.cls.replace(/-/g,'_');
-  const extra = item.extra || '';
   const cssSnippet = `.${item.cls} {\n  font-size: var(--${item.cls}-size); /* ${item.desk.rem} / ${item.desk.px}px */\n  font-weight: var(--${item.cls}-weight); /* ${item.w} */\n  line-height: var(--${item.cls}-lh); /* ${item.lh} */\n  font-family: var(--font-body);\n${item.extra ? '  '+item.extra.replace(/;(\s*)/g,';\n  ').trim()+'\n' : ''}  color: var(${item.color});\n}`;
   const clampSnippet = `.${item.cls} {\n  font-size: ${item.clamp};\n  font-weight: ${item.w};\n  line-height: ${item.lh};\n  font-family: var(--font-body);\n  color: var(${item.color});\n}`;
 
@@ -389,8 +389,7 @@ function renderItem(item){
 <div class="ty-row" id="tr-${clsId}">
   <div class="ty-row-main">
     <div class="ty-preview-wrap">
-      <span class="ty-preview-text" data-ty-desk="${item.desk.rem}" data-ty-mob="${item.mob.rem}"
-        style="font-size:${item.desk.rem};font-weight:${item.w};line-height:${item.lh};font-family:var(--font-body);color:var(${item.color});display:block;${extra}">${item.preview}</span>
+      <span class="ty-preview-text ${item.cls}" data-ty-desk="${item.desk.rem}" data-ty-mob="${item.mob.rem}">${item.preview}</span>
     </div>
     <div class="ty-meta">
       <div class="ty-row-name">${item.name}</div>
@@ -399,13 +398,13 @@ function renderItem(item){
           <span class="ty-spec-lbl">Tamaño desk</span>
           <span class="ty-spec-val accent ty-size-desk active">${item.desk.rem}</span>
           <span class="ty-spec-sep">/</span>
-          <span class="ty-spec-val" style="color:var(--ui-text-muted)">${item.desk.px}px</span>
+          <span class="ty-spec-val ty-spec-val--muted">${item.desk.px}px</span>
         </div>
         ${item.desk.rem !== item.mob.rem ? `<div class="ty-spec-row">
-          <span class="ty-spec-lbl">Tamaño mob</span>
-          <span class="ty-spec-val ty-size-mob" style="color:var(--base-green-70)">${item.mob.rem}</span>
+          <span class="ty-spec-lbl">Tamaño app</span>
+          <span class="ty-spec-val ty-size-mob ty-spec-val--mobile">${item.mob.rem}</span>
           <span class="ty-spec-sep">/</span>
-          <span class="ty-spec-val" style="color:var(--ui-text-muted)">${item.mob.px}px</span>
+          <span class="ty-spec-val ty-spec-val--muted">${item.mob.px}px</span>
         </div>` : ''}
         <div class="ty-spec-row">
           <span class="ty-spec-lbl">Grosor</span>
@@ -759,6 +758,52 @@ function tyDownloadFile(filename, content, type){
   URL.revokeObjectURL(a.href);
 }
 
+function tyToMauiKey(cls){
+  return cls
+    .replace(/^mp-/, 'Mp-')
+    .split('-')
+    .map(part => part ? part.charAt(0).toUpperCase() + part.slice(1) : '')
+    .join('');
+}
+
+async function tyDownloadMAUI(){
+  const cats = await tyGetLiveCats();
+  const d = new Date().toISOString().split('T')[0];
+  const lines = [
+    '<?xml version="1.0" encoding="utf-8" ?>',
+    '<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"',
+    '                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"',
+    '                    xmlns:sys="clr-namespace:System;assembly=netstandard">',
+    `  <!-- Typography tokens for .NET MAUI · ${d} -->`,
+    '  <!-- Source: core/abstracts/_tokens-typography.scss + docs/app/fundamentos/typography.html -->',
+    '  <x:String x:Key="MpFontFamilyBody">Roboto</x:String>',
+    '  <x:String x:Key="MpFontFamilyHeading">Roboto</x:String>',
+    ''
+  ];
+
+  cats.forEach(cat => {
+    lines.push(`  <!-- ${cat.title} -->`);
+    cat.items.forEach(it => {
+      const key = tyToMauiKey(it.cls);
+      lines.push(`  <x:Double x:Key="${key}Size">${it.mob.px}</x:Double>`);
+      lines.push(`  <x:Double x:Key="${key}LineHeight">${it.lh}</x:Double>`);
+      lines.push(`  <sys:Int32 x:Key="${key}Weight">${it.w}</sys:Int32>`);
+      lines.push(`  <Style x:Key="${key}Style" TargetType="Label">`);
+      lines.push(`    <Setter Property="FontFamily" Value="{StaticResource MpFontFamilyBody}" />`);
+      lines.push(`    <Setter Property="FontSize" Value="{StaticResource ${key}Size}" />`);
+      lines.push(`    <Setter Property="LineHeight" Value="{StaticResource ${key}LineHeight}" />`);
+      if (it.w >= 700) {
+        lines.push('    <Setter Property="FontAttributes" Value="Bold" />');
+      }
+      lines.push('  </Style>');
+      lines.push('');
+    });
+  });
+
+  lines.push('</ResourceDictionary>');
+  tyDownloadFile('Typography.Maui.xaml', lines.join('\n'), 'application/xml');
+}
+
 function tyBuildUtilitiesCss(utilsScss){
   const re = /\.([a-z0-9-]+)\s*\{([\s\S]*?)\}/gim;
   const lines = [];
@@ -1019,6 +1064,7 @@ async function tyDownloadJSON(){
 window.tyDownloadCSS = tyDownloadCSS;
 window.tyDownloadSCSS = tyDownloadSCSS;
 window.tyDownloadJSON = tyDownloadJSON;
+window.tyDownloadMAUI = tyDownloadMAUI;
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', tyRenderUtilitiesFromSource);

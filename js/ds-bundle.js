@@ -4953,14 +4953,60 @@
     window.copyCode        = copyCode;
     window.setTheme        = setTheme;
 
+    function ensureMauiDownloadButton() {
+      var root = document.getElementById('colores');
+      if (!root) return false;
+      var downloads = root.querySelector('.ct-downloads');
+      if (!downloads) return false;
+      if (downloads.querySelector('#ct-download-maui')) return true;
+
+      var btn = document.createElement('button');
+      btn.id = 'ct-download-maui';
+      btn.className = 'ct-download-btn ct-download-btn--primary';
+      btn.innerHTML = '<span class="material-symbols-rounded">smartphone</span> MAUI XAML';
+      btn.addEventListener('click', function() {
+        if (typeof window.ctDownloadMAUI === 'function') {
+          window.ctDownloadMAUI();
+          return;
+        }
+        showToast('La accion MAUI aun no esta lista. Intenta de nuevo.');
+      });
+
+      var firstAction = downloads.querySelector('.ct-download-btn');
+      if (firstAction) downloads.insertBefore(btn, firstAction);
+      else downloads.appendChild(btn);
+      return true;
+    }
+
     switch (sectionId) {
       case 'espaciado':    renderSpacing();    break;
+      case 'fundamentos/colores':
       case 'colores-base':
       case 'colores-producto':
       case 'colores-uso':
       case 'colores-utilidades': renderColorGrids(); break;
       case 'tokens-texto':  renderTokenTable('table-text-tokens',  TEXT_TOKENS);  break;
       case 'tokens-tablas': renderTokenTable('table-table-tokens', TABLE_TOKENS); break;
+    }
+
+    if (sectionId === 'fundamentos/colores' || sectionId === 'colores-base' || sectionId === 'colores-producto' || sectionId === 'colores-uso' || sectionId === 'colores-utilidades') {
+      var tries = 0;
+      (function syncMauiButton() {
+        var ready = ensureMauiDownloadButton();
+        if (!ready && tries < 6) {
+          tries += 1;
+          setTimeout(syncMauiButton, 120);
+        }
+      })();
+    }
+
+    document.dispatchEvent(new CustomEvent('component-docs:init', {
+      detail: { section: sectionId }
+    }));
+    if (window.componentDocs) {
+      requestAnimationFrame(function() {
+        window.componentDocs.initButtonDoc(document);
+      });
     }
   }
 

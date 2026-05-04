@@ -189,12 +189,19 @@ const router = (() => {
 
       state.currentSection = section;
       window.location.hash = `#${section}`;
+      document.body.classList.toggle('component-doc-full', section === 'web/componentes/botones');
       
       // Update active nav states
       updateActiveNav(section);
       
       // Emit event
       emit('navigate', section);
+      document.dispatchEvent(new CustomEvent('component-docs:init', {
+        detail: { section }
+      }));
+      if (window.componentDocs) {
+        window.requestAnimationFrame(() => window.componentDocs.initButtonDoc(document));
+      }
 
       return true;
     } catch (error) {

@@ -12,14 +12,25 @@
 // Source of truth for documentation and Angular-friendly HTML examples.
 // ────────────────────────────────────────────────────────────
 .mp-btn {
+  --mp-btn-bg: transparent;
+  --mp-btn-bg-hover: var(--mp-btn-bg);
+  --mp-btn-bg-active: var(--mp-btn-bg-hover);
+  --mp-btn-color: var(--color-text-primary);
+  --mp-btn-border-color: transparent;
+  --mp-btn-border-width: 1.5px;
+  --mp-btn-focus-color: var(--color-focus-ring);
+  --mp-btn-hover-shadow: var(--shadow-button-hover);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  height: 48px;
-  padding: 0 1.5rem;
-  border: none;
+  gap: var(--space-16);
+  min-height: var(--space-48);
+  padding: var(--space-16) var(--space-32);
+  border: var(--mp-btn-border-width) solid var(--mp-btn-border-color);
   border-radius: var(--radius-md);
+  background: var(--mp-btn-bg);
+  color: var(--mp-btn-color);
   font-family: var(--font-body);
   font-size: var(--font-size-btn);
   font-weight: var(--font-weight-bold);
@@ -33,14 +44,31 @@
   vertical-align: middle;
 
   .material-symbols-rounded {
-    font-size: 22px;
+    font-size: 24px;
     line-height: 1;
     flex-shrink: 0;
   }
 
-  &:has(.material-symbols-rounded) {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  &:hover:not(:disabled),
+  &.mp-btn--is-hover {
+    background: var(--mp-btn-bg-hover);
+    color: var(--mp-btn-color);
+    border-color: var(--mp-btn-border-color);
+    box-shadow: var(--mp-btn-hover-shadow);
+  }
+
+  &:active:not(:disabled),
+  &.mp-btn--is-active {
+    background: var(--mp-btn-bg-active);
+    color: var(--mp-btn-color);
+    border-color: var(--mp-btn-border-color);
+    box-shadow: var(--shadow-button-pressed);
+  }
+
+  &:focus-visible,
+  &.mp-btn--is-focus {
+    outline: var(--color-focus-ring-width) solid var(--mp-btn-focus-color);
+    outline-offset: var(--color-focus-ring-width);
   }
 
   &:disabled,
@@ -54,123 +82,143 @@
   }
 }
 
+.mp-btn--icon-left {
+  padding: var(--space-12) var(--space-32) var(--space-12) var(--space-16);
+}
+
+.mp-btn--icon-right {
+  padding: var(--space-12) var(--space-16) var(--space-12) var(--space-32);
+}
+
+.mp-btn--icon-both {
+  padding: var(--space-12) var(--space-16);
+}
+
+.mp-btn--icon-only {
+  width: var(--space-56);
+  min-width: var(--space-56);
+  padding: var(--space-12) var(--space-16);
+}
+
+.mp-btn--loading {
+  pointer-events: none;
+}
+
+.mp-btn--loading .material-symbols-rounded {
+  animation: mp-btn-spin .9s linear infinite;
+}
+
+@keyframes mp-btn-spin {
+  to { transform: rotate(360deg); }
+}
+
 .mp-btn--primario {
-  background: linear-gradient(180deg, var(--base-brand-80) 0%, var(--base-brand-90) 100%);
-  color: #ffffff;
-
-  &:hover:not(:disabled) {
-    background: linear-gradient(180deg, var(--base-brand-100) 0%, var(--base-brand-80) 100%);
-    box-shadow: var(--shadow-button-hover);
-  }
-
-  &:active:not(:disabled) {
-    box-shadow: var(--shadow-button-pressed);
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--base-brand-80);
-    outline-offset: 3px;
-  }
+  --mp-btn-bg: linear-gradient(180deg, var(--use-primary-default) 0%, var(--use-primary-hover) 100%);
+  --mp-btn-bg-hover: linear-gradient(180deg, var(--use-primary-active) 0%, var(--use-primary-default) 100%);
+  --mp-btn-bg-active: var(--use-primary-active);
+  --mp-btn-color: var(--use-text-on-dark-primary);
 }
 
 .mp-btn--secundario {
-  background: transparent;
-  color: var(--base-brand-80);
-  border: 1.5px solid var(--base-brand-80);
-
-  &:hover:not(:disabled) {
-    background: color-mix(in srgb, var(--base-brand-80) 8%, transparent);
-    box-shadow: var(--shadow-button-hover);
-  }
-
-  &:active:not(:disabled) {
-    background: color-mix(in srgb, var(--base-brand-80) 14%, transparent);
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--base-brand-80);
-    outline-offset: 3px;
-  }
+  --mp-btn-bg: transparent;
+  --mp-btn-bg-hover: color-mix(in srgb, var(--use-primary-default) 8%, transparent);
+  --mp-btn-bg-active: color-mix(in srgb, var(--use-primary-default) 14%, transparent);
+  --mp-btn-color: var(--use-primary-default);
+  --mp-btn-border-color: var(--use-primary-default);
 }
 
 .mp-btn--terciario {
-  height: 32px;
-  padding: 0 0.75rem;
+  height: var(--space-32);
+  min-height: var(--space-32);
+  padding: var(--space-8) var(--space-24);
   border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--base-brand-80);
+  --mp-btn-bg: transparent;
+  --mp-btn-bg-hover: color-mix(in srgb, var(--use-primary-default) 8%, transparent);
+  --mp-btn-bg-active: color-mix(in srgb, var(--use-primary-default) 14%, transparent);
+  --mp-btn-color: var(--use-primary-default);
+  --mp-btn-border-width: 0;
   font-size: var(--font-size-md);
 
-  &:hover:not(:disabled) {
-    background: color-mix(in srgb, var(--base-brand-80) 8%, transparent);
+  &:hover:not(:disabled),
+  &.mp-btn--is-hover {
     text-decoration: underline;
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--base-brand-80);
-    outline-offset: 2px;
   }
 }
 
 .mp-btn--especial {
-  background: linear-gradient(180deg, var(--product-violet-50) 0%, var(--product-violet-70) 100%);
-  color: #ffffff;
-
-  &:hover:not(:disabled) {
-    background: linear-gradient(180deg, var(--product-violet-70) 0%, var(--product-violet-50) 100%);
-    box-shadow: var(--shadow-button-special-hover);
-  }
-
-  &:active:not(:disabled) {
-    box-shadow: var(--shadow-button-pressed);
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--product-violet-50);
-    outline-offset: 3px;
-  }
+  --mp-btn-bg: linear-gradient(180deg, var(--product-violet-50) 0%, var(--product-violet-70) 100%);
+  --mp-btn-bg-hover: linear-gradient(180deg, var(--product-violet-70) 0%, var(--product-violet-50) 100%);
+  --mp-btn-bg-active: var(--product-violet-70);
+  --mp-btn-color: var(--use-text-on-dark-primary);
+  --mp-btn-hover-shadow: var(--shadow-button-special-hover);
 }
 
 [data-theme='dark'] {
-  .mp-btn--secundario,
-  .mp-btn--terciario {
-    color: var(--ui-accent);
-    border-color: var(--ui-accent);
+  .mp-btn--primario {
+    --mp-btn-bg: linear-gradient(180deg, var(--use-primary-default-dark, #ff9d5c) 0%, var(--base-brand-70) 100%);
+    --mp-btn-bg-hover: linear-gradient(180deg, var(--base-brand-60) 0%, var(--use-primary-default-dark, #ff9d5c) 100%);
+    --mp-btn-bg-active: var(--base-brand-60);
+    --mp-btn-color: var(--base-neutral-100-negro);
   }
 
-  .mp-btn--secundario:hover:not(:disabled) {
-    background: color-mix(in srgb, var(--ui-accent) 12%, transparent);
+  .mp-btn--secundario,
+  .mp-btn--terciario {
+    --mp-btn-bg-hover: color-mix(in srgb, var(--use-primary-default-dark, #ff9d5c) 16%, transparent);
+    --mp-btn-bg-active: color-mix(in srgb, var(--use-primary-default-dark, #ff9d5c) 24%, transparent);
+    --mp-btn-color: var(--use-primary-default-dark, #ff9d5c);
+    --mp-btn-border-color: var(--use-primary-default-dark, #ff9d5c);
+  }
+
+  .mp-btn--especial {
+    --mp-btn-bg: linear-gradient(180deg, var(--product-violet-20) 0%, var(--product-violet-40) 100%);
+    --mp-btn-bg-hover: linear-gradient(180deg, var(--product-violet-10) 0%, var(--product-violet-30) 100%);
+    --mp-btn-bg-active: var(--product-violet-20);
+    --mp-btn-color: var(--base-neutral-100-negro);
   }
 }
 
 [data-theme='high-contrast'] {
   .mp-btn--primario {
-    background: var(--base-brand-80);
-    color: #000000;
+    --mp-btn-bg: var(--use-primary-default, #ffff00);
+    --mp-btn-bg-hover: var(--use-primary-default, #ffff00);
+    --mp-btn-bg-active: var(--use-primary-default, #ffff00);
+    --mp-btn-color: var(--use-text-inverse, #000000);
+    --mp-btn-border-color: transparent;
+    --mp-btn-border-width: 1.5px;
   }
 
-  .mp-btn--secundario {
-    color: var(--base-brand-80);
-    border: 2px solid var(--base-brand-80);
+  .mp-btn--secundario,
+  .mp-btn--terciario {
+    --mp-btn-bg: transparent;
+    --mp-btn-bg-hover: transparent;
+    --mp-btn-bg-active: transparent;
+    --mp-btn-color: var(--use-text-link, #ffff00);
+    --mp-btn-border-color: var(--use-text-link, #ffff00);
   }
 
   .mp-btn--terciario {
-    color: var(--base-brand-80);
+    --mp-btn-border-width: 0;
     text-decoration: underline;
   }
 
   .mp-btn--especial {
-    background: var(--base-brand-80);
-    color: #000000;
+    --mp-btn-bg: var(--use-primary-default, #ffff00);
+    --mp-btn-bg-hover: var(--use-primary-default, #ffff00);
+    --mp-btn-bg-active: var(--use-primary-default, #ffff00);
+    --mp-btn-color: var(--use-text-inverse, #000000);
   }
 
-  .mp-btn:focus-visible {
-    outline-color: var(--color-focus-ring, #ffff00);
-    outline-width: var(--color-focus-ring-width, 3px);
+  .mp-btn {
+    --mp-btn-focus-color: var(--use-primary-default, #ffff00);
   }
 }
 
-// ── Base ─────────────────────────────────────────────────
+// ────────────────────────────────────────────────────────────
+// Legacy Bootstrap-compatible API
+// Keep only for existing Bootstrap/old documentation snippets.
+// New design-system components must use .mp-btn + Spanish variants:
+// .mp-btn--primario, .mp-btn--secundario, .mp-btn--terciario, .mp-btn--especial.
+// ────────────────────────────────────────────────────────────
 .btn {
   @include ty-button;
   @include focus-visible-ring;

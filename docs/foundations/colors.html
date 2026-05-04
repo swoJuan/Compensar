@@ -13,6 +13,7 @@
       <span class="material-symbols-rounded">download</span>
       Descargar tokens de color
     </span>
+    <button id="ct-download-maui" class="ct-download-btn ct-download-btn--primary" onclick="ctDownloadMAUI()"><span class="material-symbols-rounded">smartphone</span> MAUI XAML</button>
     <button class="ct-download-btn" onclick="ctDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
     <button class="ct-download-btn" onclick="ctDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
     <button class="ct-download-btn" onclick="ctDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
@@ -2495,6 +2496,81 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
     };
   }
 
+  function ctCssVarToMauiKey(value) {
+    const token = String(value || '').trim().replace(/^--/, '');
+    if (!token) return 'Token';
+    return token
+      .split('-')
+      .filter(Boolean)
+      .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+      .join('');
+  }
+
+  function ctNormalizeRef(ref) {
+    const v = String(ref || '').trim();
+    if (!v) return '';
+    const varMatch = v.match(/^var\((--[^)]+)\)$/i);
+    if (varMatch) return varMatch[1].trim();
+    return v;
+  }
+
+  function ctBuildMauiXaml(abstractScss, semanticRows = []) {
+    const coreVars = ctParseCoreColorVars(abstractScss);
+    const coreMap = {};
+    coreVars.forEach(v => {
+      coreMap[v.name] = v.value;
+    });
+
+    const lines = [
+      '<?xml version="1.0" encoding="utf-8" ?>',
+      '<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"',
+      '                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">',
+      `  <!-- Generated from core/abstracts/_tokens-colors.scss · ${today()} -->`,
+      '',
+      '  <!-- Base + product palette -->',
+    ];
+
+    coreVars
+      .filter(v => v.group === 'base' || v.group === 'product')
+      .forEach(v => {
+        const key = ctCssVarToMauiKey(v.css);
+        lines.push(`  <Color x:Key="${key}">${v.value}</Color>`);
+      });
+
+    const fromCoreSemantic = coreVars
+      .filter(v => v.group === 'use')
+      .map(v => ({
+        token: v.css,
+        light: ctNormalizeRef(v.value),
+        dark: ctNormalizeRef(v.value),
+        hc: ctNormalizeRef(v.value),
+      }));
+
+    const semantic = semanticRows.length
+      ? semanticRows.map(s => ({
+          token: s.token,
+          light: ctNormalizeRef(s.light),
+          dark: ctNormalizeRef(s.dark || s.light),
+          hc: ctNormalizeRef(s.hc || s.dark || s.light),
+        }))
+      : fromCoreSemantic;
+
+    if (semantic.length) {
+      lines.push('', '  <!-- Semantic mapping layer (use-*) -->');
+      semantic.forEach(s => {
+        const key = ctCssVarToMauiKey(s.token);
+        const lightVal = /^--/.test(s.light) ? `{StaticResource ${ctCssVarToMauiKey(s.light)}}` : (s.light || '#000000');
+        const darkVal = /^--/.test(s.dark) ? `{StaticResource ${ctCssVarToMauiKey(s.dark)}}` : (s.dark || lightVal);
+        const hcVal = /^--/.test(s.hc) ? `{StaticResource ${ctCssVarToMauiKey(s.hc)}}` : (s.hc || darkVal);
+        lines.push(`  <AppThemeColor x:Key="${key}" Light="${lightVal}" Dark="${darkVal}" />`);
+        lines.push(`  <Color x:Key="${key}HighContrast">${hcVal}</Color>`);
+      });
+    }
+
+    lines.push('</ResourceDictionary>');
+    return lines.join('\n');
+  }
+
   // ── CSS ─────────────────────────────────────────────────────────────────
   window.ctDownloadCSS = async function() {
     const [tokensScss, utilsScss] = await Promise.all([
@@ -2804,6 +2880,41 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
     };
 
     ctTrigger(JSON.stringify(out, null, 2), 'color-tokens.json', 'application/json');
+  };
+
+  // ── MAUI XAML ──────────────────────────────────────────────────────────
+  window.ctDownloadMAUI = async function() {
+    const tokensScss = await ctLoadAsset(CORE_COLOR_TOKENS_URL);
+    const semantic = collectSemantic();
+
+    if (tokensScss) {
+      ctTrigger(ctBuildMauiXaml(tokensScss, semantic), 'Colors.Maui.xaml', 'application/xml');
+      return;
+    }
+
+    // Fallback con datos visibles de la tabla, si no se puede leer el source.
+    const lines = [
+      '<?xml version="1.0" encoding="utf-8" ?>',
+      '<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"',
+      '                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">',
+      `  <!-- Fallback generated from docs table · ${today()} -->`,
+      '  <!-- Semantic mapping layer (use-*) -->',
+    ];
+
+    semantic.forEach(s => {
+      const key = ctCssVarToMauiKey(s.token);
+      const light = ctNormalizeRef(s.light);
+      const dark = ctNormalizeRef(s.dark || s.light);
+      const hc = ctNormalizeRef(s.hc || s.dark || s.light);
+      const lightVal = /^--/.test(light) ? `{StaticResource ${ctCssVarToMauiKey(light)}}` : (light || '#000000');
+      const darkVal = /^--/.test(dark) ? `{StaticResource ${ctCssVarToMauiKey(dark)}}` : (dark || lightVal);
+      const hcVal = /^--/.test(hc) ? `{StaticResource ${ctCssVarToMauiKey(hc)}}` : (hc || darkVal);
+      lines.push(`  <AppThemeColor x:Key="${key}" Light="${lightVal}" Dark="${darkVal}" />`);
+      lines.push(`  <Color x:Key="${key}HighContrast">${hcVal}</Color>`);
+    });
+
+    lines.push('</ResourceDictionary>');
+    ctTrigger(lines.join('\n'), 'Colors.Maui.xaml', 'application/xml');
   };
 
   // ── Copy vars ───────────────────────────────────────────────────────────
