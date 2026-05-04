@@ -332,9 +332,20 @@ $mp-alert-content-gap: 4px;
     return target?.closest('[data-component-doc="alerts"]') || document.querySelector('[data-component-doc="alerts"]');
   }
 
+  function syncThemeWithPortal(page, explicitTheme) {
+    if (!page) return;
+    const themeControl = page.querySelector('[data-alert-control="theme"]');
+    if (!themeControl) return;
+    const globalTheme = explicitTheme || document.documentElement.getAttribute('data-theme') || 'light';
+    if ([...themeControl.options].some((opt) => opt.value === globalTheme)) {
+      themeControl.value = globalTheme;
+    }
+  }
+
   function initAlertDoc(root = document) {
     const page = root.querySelector('[data-component-doc="alerts"]');
     if (!page || page.dataset.alertInitialized === 'true') return;
+    syncThemeWithPortal(page);
     renderAnatomy(page, 'info');
     renderPlayground(page);
     renderStates(page);
@@ -390,6 +401,23 @@ window.alertDocs = alertDocs;
 function bootAlertDocs() {
   alertDocs.bindDelegatedEvents();
   alertDocs.initAlertDoc(document);
+}
+
+if (document.documentElement.dataset.alertDocsThemeSync !== 'true') {
+  document.documentElement.dataset.alertDocsThemeSync = 'true';
+  document.addEventListener('ds:theme-change', (event) => {
+    const page = document.querySelector('[data-component-doc="alerts"]');
+    if (!page) return;
+    const theme = event?.detail?.theme || document.documentElement.getAttribute('data-theme') || 'light';
+    const themeControl = page.querySelector('[data-alert-control="theme"]');
+    if (themeControl && [...themeControl.options].some((opt) => opt.value === theme)) {
+      themeControl.value = theme;
+      themeControl.dispatchEvent(new Event('input', { bubbles: true }));
+      return;
+    }
+
+    alertDocs.initAlertDoc(document);
+  });
 }
 
 document.addEventListener('component-docs:init', () => {

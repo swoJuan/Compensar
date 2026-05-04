@@ -188,16 +188,6 @@
 }
 
 .selection-field select,
-.selection-field input[type='text'] {
-  min-height: rem(44px);
-  padding: 0 var(--space-12);
-  border: rem(1px) solid var(--doc-card-border);
-  border-radius: rem(8px);
-  background: var(--use-surface-white);
-  color: var(--use-text-primary);
-  font-family: var(--font-body);
-  font-size: rem(14px);
-}
 
 .selection-state-grid {
   display: grid;

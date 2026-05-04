@@ -661,6 +661,8 @@ ${themeTokens}`;
   function renderAnatomy(page, kind) {
     if (!page) return;
     const preview = page.querySelector('#button-anatomy-preview');
+    const stage = page.querySelector('#button-anatomy-stage');
+    const segmented = page.querySelector('.segmented-control');
     const width = page.querySelector('[data-anatomy-width]');
     const padding = page.querySelector('[data-anatomy-padding]');
     const guides = page.querySelector('[data-anatomy-guides]');
@@ -670,6 +672,7 @@ ${themeTokens}`;
     const hit = page.querySelector('.button-doc-callout--hit');
     const selectedKind = kind || options.find((button) => button.getAttribute('aria-pressed') === 'true')?.dataset.anatomyOption || 'text';
     const cfg = anatomy[selectedKind] || anatomy.text;
+    const theme = page.querySelector('[data-button-control="theme"]')?.value || 'light';
     const showLabels = page.querySelector('[data-anatomy-toggle="labels"]')?.checked ?? true;
     const showMeasures = page.querySelector('[data-anatomy-toggle="measures"]')?.checked ?? true;
     const showHit = page.querySelector('[data-anatomy-toggle="hit"]')?.checked ?? true;
@@ -677,6 +680,8 @@ ${themeTokens}`;
     if (!preview || !width || !padding || !options.length) return;
 
     preview.replaceChildren(makeButton({ kind: selectedKind, variant: 'primario', label: cfg.label || 'Descargar' }));
+    if (stage) stage.dataset.theme = theme;
+    if (segmented) segmented.dataset.theme = theme;
     width.textContent = cfg.width;
     padding.textContent = cfg.padding;
     renderAnatomyGuides(guides, cfg, showMeasures);

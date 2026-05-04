@@ -258,20 +258,7 @@
   font-weight: 800;
 }
 
-.toast-field select,
-.toast-field input,
-.toast-field textarea {
-  min-height: rem(44px);
-  padding: 0 var(--space-12);
-  border: rem(1px) solid var(--doc-card-border);
-  border-radius: rem(8px);
-  background: var(--use-surface-white);
-  color: var(--use-text-primary);
-  font-family: var(--font-body);
-  font-size: rem(14px);
-}
-
-.toast-field textarea {
+.toast-field textarea.mp-input-field {
   min-height: rem(78px);
   padding-top: var(--space-12);
   line-height: 1.45;

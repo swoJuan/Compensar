@@ -197,7 +197,7 @@
         <div class="toast-playground__controls">
           <div class="toast-field">
             <label for="toast-kind">Tipo</label>
-            <select id="toast-kind" data-toast-control="kind">
+            <select class="mp-input-field mp-select" id="toast-kind" data-toast-control="kind">
               <option value="success">Success</option>
               <option value="info">Info</option>
               <option value="warning">Warning</option>
@@ -206,7 +206,7 @@
           </div>
           <div class="toast-field">
             <label for="toast-theme">Tema</label>
-            <select id="toast-theme" data-toast-control="theme">
+            <select class="mp-input-field mp-select" id="toast-theme" data-toast-control="theme">
               <option value="light">Light</option>
               <option value="dark">Dark</option>
               <option value="high-contrast">Alto contraste</option>
@@ -214,11 +214,11 @@
           </div>
           <div class="toast-field">
             <label for="toast-title-input">Título</label>
-            <input id="toast-title-input" type="text" value="Toast title" data-toast-control="title">
+            <input class="mp-input-field" id="toast-title-input" type="text" value="Toast title" data-toast-control="title">
           </div>
           <div class="toast-field">
             <label for="toast-message">Mensaje</label>
-            <textarea id="toast-message" data-toast-control="message">Toast message</textarea>
+            <textarea class="mp-input-field mp-textarea" id="toast-message" data-toast-control="message">Toast message</textarea>
           </div>
           <label class="button-doc-toggle">
             <input type="checkbox" data-toast-control="close" checked>

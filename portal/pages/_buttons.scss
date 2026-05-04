@@ -384,31 +384,31 @@
   box-shadow: 0 0 0 rem(1px) var(--doc-card-border);
 }
 
-[data-theme='dark'] .segmented-control {
+.segmented-control[data-theme='dark'] {
   border-color: color-mix(in srgb, var(--base-neutral-white) 16%, transparent);
   background: color-mix(in srgb, var(--base-neutral-black) 82%, var(--use-surface-theme-violet-5));
 }
 
-[data-theme='dark'] .segmented-control button {
+.segmented-control[data-theme='dark'] button {
   color: var(--use-text-tertiary);
 }
 
-[data-theme='dark'] .segmented-control button[aria-pressed='true'] {
+.segmented-control[data-theme='dark'] button[aria-pressed='true'] {
   background: var(--base-neutral-90);
   color: var(--use-primary-default-dark);
   box-shadow: 0 0 0 rem(1px) color-mix(in srgb, var(--base-neutral-white) 12%, transparent);
 }
 
-[data-theme='high-contrast'] .segmented-control {
+.segmented-control[data-theme='high-contrast'] {
   border-color: var(--base-neutral-white);
   background: var(--base-neutral-black);
 }
 
-[data-theme='high-contrast'] .segmented-control button {
+.segmented-control[data-theme='high-contrast'] button {
   color: var(--base-neutral-white);
 }
 
-[data-theme='high-contrast'] .segmented-control button[aria-pressed='true'] {
+.segmented-control[data-theme='high-contrast'] button[aria-pressed='true'] {
   background: var(--use-primary-default);
   color: var(--base-neutral-black);
   box-shadow: 0 0 0 rem(2px) var(--base-neutral-white);
@@ -478,7 +478,7 @@
   border-color: var(--product-gray-80);
 }
 
-[data-theme='high-contrast'] .button-preview-card {
+.button-preview-card[data-theme='high-contrast'] {
   --use-surface-white: #000000;
   --use-text-primary: #ffffff;
   --use-text-inverse: #000000;
@@ -489,8 +489,8 @@
   box-shadow: inset 0 0 0 rem(1px) var(--use-primary-default);
 }
 
-[data-theme='high-contrast'] .button-doc-guide-label,
-[data-theme='high-contrast'] .button-doc-measure {
+.button-doc-stage[data-theme='high-contrast'] .button-doc-guide-label,
+.button-doc-stage[data-theme='high-contrast'] .button-doc-measure {
   color: var(--base-neutral-black);
 }
 
@@ -510,18 +510,6 @@
   color: var(--use-text-secondary);
   font-size: rem(12px);
   font-weight: 800;
-}
-
-.button-field select,
-.button-field input[type='text'] {
-  width: 100%;
-  min-height: rem(40px);
-  padding: 0 var(--space-12);
-  border: rem(1px) solid var(--doc-card-border);
-  border-radius: rem(8px);
-  background: var(--use-surface-white);
-  color: var(--use-text-primary);
-  font-size: rem(14px);
 }
 
 .button-code-panel {
@@ -601,6 +589,95 @@
 .button-state-card span {
   font-size: rem(13px);
   font-weight: 700;
+}
+
+.button-text-link-zone {
+  display: grid;
+  gap: var(--space-16);
+  margin-top: var(--space-24);
+  padding-top: var(--space-24);
+  border-top: rem(1px) solid var(--doc-card-border);
+}
+
+.button-text-link-zone__header {
+  margin-bottom: 0;
+}
+
+.button-text-link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-16);
+}
+
+.button-text-link-card {
+  display: grid;
+  gap: var(--space-12);
+  padding: var(--space-20);
+  border: 0;
+  border-radius: rem(10px);
+}
+
+.button-text-link-card h4,
+.button-text-link-card p {
+  margin: 0;
+}
+
+.button-text-link-card p {
+  color: var(--use-text-secondary);
+}
+
+.button-text-link-samples {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.button-text-link-sample {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  border: rem(1px) solid var(--doc-card-border);
+  border-radius: rem(8px);
+  background: var(--use-surface-white);
+}
+
+.button-text-link-sample--text {
+  justify-content: flex-start;
+}
+
+.button-text-link-label {
+  flex: 0 0 auto;
+  color: var(--use-text-secondary);
+  font-size: rem(12px);
+  font-weight: 800;
+}
+
+.button-text-link-token {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.button-text-link-token code {
+  font-family: var(--font-code);
+  font-size: rem(12px);
+}
+
+.button-text-link-swatch {
+  width: rem(16px);
+  height: rem(16px);
+  border: rem(1px) solid color-mix(in srgb, var(--color-text-link) 35%, var(--doc-card-border));
+  border-radius: 50%;
+  background: var(--color-text-link);
+}
+
+.button-text-link-sample a {
+  font-weight: 700;
+}
+
+.button-text-link-sample--hover a {
+  text-decoration: underline;
 }
 
 .button-behavior-grid,
@@ -706,6 +783,7 @@ body.component-doc-full #main-content {
   .button-playground,
   .button-playground__controls,
   .button-state-grid,
+  .button-text-link-grid,
   .button-behavior-grid,
   .button-token-grid,
   .button-qa-grid,

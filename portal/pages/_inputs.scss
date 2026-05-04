@@ -222,22 +222,6 @@
 }
 
 .inp-field select,
-.inp-field input[type='text'] {
-  width: 100%;
-  min-height: rem(40px);
-  padding: 0 var(--space-12);
-  border: rem(1px) solid var(--doc-card-border);
-  border-radius: rem(8px);
-  background: var(--use-surface-white);
-  color: var(--use-text-primary);
-  font-size: rem(14px);
-  outline: none;
-
-  &:focus {
-    border-color: var(--use-primary-default);
-    box-shadow: 0 0 0 rem(2px) color-mix(in srgb, var(--use-primary-default) 20%, transparent);
-  }
-}
 
 // ────────────────────────────────────────────────────────────
 // Panel de código (compartido para playground y sección Código)

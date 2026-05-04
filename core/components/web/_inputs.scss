@@ -356,6 +356,14 @@
   padding-right: rem(50px);
   cursor: pointer;
   appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--use-text-tertiary) 50%),
+    linear-gradient(135deg, var(--use-text-tertiary) 50%, transparent 50%);
+  background-repeat: no-repeat;
+  background-position:
+    calc(100% - #{rem(18px)}) calc(50% - #{rem(2px)}),
+    calc(100% - #{rem(12px)}) calc(50% - #{rem(2px)});
+  background-size: rem(6px) rem(6px), rem(6px) rem(6px);
 }
 
 // ── Helper / error / success text ─────────────────────────
@@ -387,9 +395,19 @@
 
 [data-theme='dark'] {
   .mp-input-field {
-    background: var(--use-surface-white); // dark theme: use-surface-white = #292929
-    color: var(--use-text-primary);
-    --mp-inp-border: var(--use-border-subtle);
+    background: var(--base-neutral-100-negro);
+    color: var(--base-neutral-white);
+    --mp-inp-border: var(--base-neutral-70);
+  }
+
+  .mp-input-field::placeholder {
+    color: var(--base-neutral-40);
+  }
+
+  .mp-input-field.mp-select {
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--base-neutral-40) 50%),
+      linear-gradient(135deg, var(--base-neutral-40) 50%, transparent 50%);
   }
 
   .mp-input-field:focus:not(:disabled),
@@ -413,6 +431,12 @@
     border-color: var(--base-neutral-white);
     background: var(--base-neutral-black);
     color: var(--base-neutral-white);
+  }
+
+  .mp-input-field.mp-select {
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--base-neutral-white) 50%),
+      linear-gradient(135deg, var(--base-neutral-white) 50%, transparent 50%);
   }
 
   .mp-input-field:focus:not(:disabled),

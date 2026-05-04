@@ -126,7 +126,7 @@
       <div class="button-playground__controls">
         <div class="button-field">
           <label for="button-variant">Variante</label>
-          <select id="button-variant" data-button-control="variant">
+          <select class="mp-input-field mp-select" id="button-variant" data-button-control="variant">
             <option value="primario">Primario</option>
             <option value="secundario">Secundario</option>
             <option value="terciario">Terciario</option>
@@ -135,7 +135,7 @@
         </div>
         <div class="button-field">
           <label for="button-anatomy-select">Anatomía</label>
-          <select id="button-anatomy-select" data-button-control="anatomy">
+          <select class="mp-input-field mp-select" id="button-anatomy-select" data-button-control="anatomy">
             <option value="text">Solo texto</option>
             <option value="icon-left">Icono + texto</option>
             <option value="icon-right">Texto + icono</option>
@@ -145,7 +145,7 @@
         </div>
         <div class="button-field">
           <label for="button-state">Estado</label>
-          <select id="button-state" data-button-control="state">
+          <select class="mp-input-field mp-select" id="button-state" data-button-control="state">
             <option value="default">Default</option>
             <option value="hover">Hover</option>
             <option value="focus">Focus</option>
@@ -156,7 +156,7 @@
         </div>
         <div class="button-field">
           <label for="button-theme">Tema</label>
-          <select id="button-theme" data-button-control="theme">
+          <select class="mp-input-field mp-select" id="button-theme" data-button-control="theme">
             <option value="light">Claro</option>
             <option value="dark">Dark</option>
             <option value="high-contrast">High contrast</option>
@@ -164,7 +164,7 @@
         </div>
         <div class="button-field">
           <label for="button-label">Contenido</label>
-          <input id="button-label" type="text" value="Guardar" data-button-control="label">
+          <input class="mp-input-field" id="button-label" type="text" value="Guardar" data-button-control="label">
         </div>
         <label class="button-doc-toggle">
           <input type="checkbox" data-button-control="fullWidth">
@@ -199,6 +199,32 @@
       <div class="button-state-card"><span>Active</span><button class="mp-btn mp-btn--primario mp-btn--icon-left mp-btn--is-active"><span class="material-symbols-rounded" aria-hidden="true">download</span>Guardar</button></div>
       <div class="button-state-card"><span>Disabled</span><button class="mp-btn mp-btn--primario mp-btn--icon-left" disabled><span class="material-symbols-rounded" aria-hidden="true">download</span>Guardar</button></div>
       <div class="button-state-card"><span>Loading</span><button class="mp-btn mp-btn--primario mp-btn--icon-left mp-btn--loading" aria-busy="true"><span class="material-symbols-rounded" aria-hidden="true">progress_activity</span>Guardando...</button></div>
+    </div>
+    <div class="button-text-link-zone">
+      <div class="component-section__header button-text-link-zone__header">
+        <h3>Texto con enlace</h3>
+        <p>Si no hay acción, usa texto plano. Si navega a otra vista o URL, usa un enlace <code>&lt;a&gt;</code> con los tokens existentes del sistema.</p>
+      </div>
+      <div class="button-text-link-grid">
+        <article class="button-text-link-card p-4">
+          <h4>Enlace con tag a</h4>
+          <p>Usa el color de enlace existente: <code>--use-text-link</code>, expuesto como <code>--color-text-link</code> y utilidad <code>.mp-text-link</code>.</p>
+          <div class="button-text-link-samples">
+            <div class="button-text-link-sample">
+              <span class="button-text-link-label">Color</span>
+              <span class="button-text-link-token"><span class="button-text-link-swatch" aria-hidden="true"></span><code>--use-text-link</code></span>
+            </div>
+            <div class="button-text-link-sample">
+              <span class="button-text-link-label">Default</span>
+              <a href="#" class="mp-text-link" onclick="return false;">Ver términos y condiciones</a>
+            </div>
+            <div class="button-text-link-sample button-text-link-sample--hover">
+              <span class="button-text-link-label">Hover</span>
+              <a href="#" class="mp-text-link" onclick="return false;">Ver términos y condiciones</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 

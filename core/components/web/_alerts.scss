@@ -135,6 +135,13 @@
 }
 
 [data-theme='dark'] {
+  .mp-alert,
+  .alert {
+    --mp-alert-title: #f5f5f5;
+    --mp-alert-body: #f5f5f5;
+    --mp-alert-icon: #f5f5f5;
+  }
+
   .mp-alert--info,
   .alert-info {
     --mp-alert-bg: #18428f;
@@ -170,6 +177,13 @@
 }
 
 [data-theme='high-contrast'] {
+  .mp-alert,
+  .alert {
+    --mp-alert-title: #ffffff;
+    --mp-alert-body: #ffffff;
+    --mp-alert-icon: #ffffff;
+  }
+
   .mp-alert--info,
   .alert-info {
     --mp-alert-bg: #102c5e;

@@ -284,20 +284,7 @@
   font-weight: 800;
 }
 
-.modal-field select,
-.modal-field input,
-.modal-field textarea {
-  min-height: rem(40px);
-  padding: var(--space-8) var(--space-12);
-  border: rem(1px) solid var(--doc-card-border);
-  border-radius: rem(8px);
-  background: var(--use-surface-white);
-  color: var(--use-text-primary);
-  font-family: var(--font-body);
-  font-size: rem(14px);
-}
-
-.modal-field textarea {
+.modal-field textarea.mp-input-field {
   min-height: rem(86px);
   resize: vertical;
 }
