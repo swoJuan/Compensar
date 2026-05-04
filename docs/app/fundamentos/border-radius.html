@@ -295,7 +295,7 @@
   .br-two-col { grid-template-columns: 1fr; }
 }
 
-.br-col { display: flex; flex-direction: column; gap: 14px; }
+.br-col { display: flex; flex-direction: column; gap: 16px; }
 .br-subtitle { font-size: 1.5rem; font-weight: 700; line-height: 1.3; color: var(--text-primary, #111); margin: 0; }
 .br-h3 { font-size: 1.125rem; font-weight: 700; line-height: 1.3; color: var(--text-primary, #111); margin: 0; }
 .br-body { font-size: 1rem; font-weight: 400; line-height: 1.5; color: var(--text-primary, #111); margin: 0; }
@@ -316,7 +316,7 @@
 .br-scale-header {
   background: var(--surface-secondary, #f5f5f5);
   padding: 8px 16px;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-secondary, #555);
   border-bottom: 1px solid #e6e6e6;
@@ -325,7 +325,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 16px 24px;
   border-bottom: 1px solid #e6e6e6;
   cursor: pointer;
   transition: background 0.15s;
@@ -335,7 +335,7 @@
 .br-scale-cell-l {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 .br-preview {
   width: 24px;
@@ -352,7 +352,7 @@
 .br-scale-cell-r {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 .br-px-val {
   font-size: 0.875rem;
@@ -364,7 +364,7 @@
   background: none;
   border: 1px solid var(--border-default, #e0e0e0);
   border-radius: 5px;
-  padding: 4px 6px;
+  padding: 8px 16px;
   cursor: pointer;
   color: var(--text-tertiary, #aaa);
   display: flex;
@@ -391,7 +391,7 @@
 .br-use-th {
   flex: 1;
   padding: 8px 16px;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--text-primary, #111);
 }
@@ -402,14 +402,14 @@
 .br-use-row:last-child { border-bottom: none; }
 .br-use-px {
   flex: 1;
-  padding: 10px 16px;
+  padding: 16px 24px;
   font-size: 0.875rem;
   color: var(--text-primary, #111);
   white-space: nowrap;
 }
 .br-use-desc {
   flex: 1;
-  padding: 10px 16px;
+  padding: 16px 24px;
   font-size: 0.875rem;
   color: var(--text-primary, #111);
 }
@@ -422,11 +422,11 @@
 .br-demo-block {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 .br-demo-label-row {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   font-size: 1rem;
   line-height: 1;
   align-items: center;
@@ -438,18 +438,18 @@
   align-items: center;
   justify-content: space-between;
   min-height: 52px;
-  padding: 14px 16px;
+  padding: 16px 24px;
   background: var(--surface-white, #fff);
   border: 1px solid var(--border-subtle, #e0e0e0);
   border-radius: var(--radius-sm, 1rem);
   max-width: 320px;
 }
 .br-placeholder { font-size: 1rem; color: var(--text-tertiary, #666); }
-.br-support-text { font-size: 0.875rem; color: var(--text-primary, #111); padding: 2px 4px; }
+.br-support-text { font-size: 0.875rem; color: var(--text-primary, #111); padding: 8px 8px; }
 
 .br-card-demo {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: flex-start;
   padding: 16px;
   background: var(--surface-white, #fff);
@@ -467,7 +467,7 @@
   align-items: center;
   justify-content: center;
 }
-.br-card-content { display: flex; flex-direction: column; gap: 4px; }
+.br-card-content { display: flex; flex-direction: column; gap: 8px; }
 .br-card-title { font-size: 1.125rem; font-weight: 700; line-height: 1.3; margin: 0; color: var(--text-primary, #111); }
 .br-card-body { font-size: 0.875rem; line-height: 1.5; margin: 0; color: var(--text-primary, #111); }
 
@@ -479,7 +479,7 @@
   background: #efecf9;
   color: #4e3199;
   font-size: 0.875rem;
-  padding: 4px 12px;
+  padding: 8px 16px;
   border-radius: var(--radius-lg, 2rem);
   cursor: default;
 }
@@ -518,7 +518,7 @@
   font-size: 0.875rem;
   line-height: 1.5;
 }
-.br-alert-list li { margin-bottom: 2px; }
+.br-alert-list li { margin-bottom: 8px; }
 .br-alert-list li:last-child { margin-bottom: 0; }
 
 /* Accessibility block */
@@ -528,13 +528,13 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 32px;
 }
 .br-a11y-head {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 .br-a11y-icon {
   background: #fff;
@@ -554,7 +554,7 @@
   font-size: 1rem;
   line-height: 1.5;
 }
-.br-a11y-list li { margin-bottom: 4px; }
+.br-a11y-list li { margin-bottom: 8px; }
 .br-a11y-list li:last-child { margin-bottom: 0; }
 </style>
 

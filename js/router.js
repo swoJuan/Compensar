@@ -19,7 +19,7 @@ const router = (() => {
 
   const config = {
     containerSelector: '#main-content',
-    defaultSection: 'fundamentos/colores',
+    defaultSection: 'inicio',
     fragmentBase: '/docs'
   };
 
@@ -28,11 +28,113 @@ const router = (() => {
    * Defines all available sections and their fragment paths
    */
   const navigationMap = {
+    'inicio': {
+      label: 'Inicio',
+      path: 'intro.html',
+      icon: 'home',
+      group: 'inicio'
+    },
+    'fundamentos/principios': {
+      label: 'Principios',
+      path: 'foundations/principles.html',
+      icon: 'stars',
+      group: 'fundamentos'
+    },
     'fundamentos/colores': {
       label: 'Colores',
       path: 'foundations/colors.html',
       icon: 'palette',
       group: 'fundamentos'
+    },
+    'app/intro': {
+      label: 'Introducción App',
+      path: 'app/intro.html',
+      icon: 'phone_iphone',
+      group: 'app'
+    },
+    'app/fundamentos/tipografia': {
+      label: 'Tipografía',
+      path: 'app/fundamentos/typography.html',
+      icon: 'title',
+      group: 'app-fundamentos'
+    },
+    'app/fundamentos/espaciado': {
+      label: 'Espaciado',
+      path: 'app/fundamentos/spacing.html',
+      icon: 'space_bar',
+      group: 'app-fundamentos'
+    },
+    'app/fundamentos/layout': {
+      label: 'Layout',
+      path: 'app/fundamentos/layout.html',
+      icon: 'view_quilt',
+      group: 'app-fundamentos'
+    },
+    'app/fundamentos/sombras': {
+      label: 'Sombras',
+      path: 'app/fundamentos/shadows.html',
+      icon: 'layers',
+      group: 'app-fundamentos'
+    },
+    'app/fundamentos/radius': {
+      label: 'Border radius',
+      path: 'app/fundamentos/border-radius.html',
+      icon: 'rounded_corner',
+      group: 'app-fundamentos'
+    },
+    'web/componentes/botones': {
+      label: 'Botones',
+      path: 'web/components/buttons.html',
+      icon: 'smart_button',
+      group: 'web-componentes'
+    },
+    'web/componentes/inputs': {
+      label: 'Inputs',
+      path: 'web/components/inputs.html',
+      icon: 'input',
+      group: 'web-componentes'
+    },
+    'web/componentes/badges': {
+      label: 'Badges',
+      path: 'web/components/badges.html',
+      icon: 'award_star',
+      group: 'web-componentes'
+    },
+    'web/componentes/iconos/intro': {
+      label: 'Iconos',
+      path: 'web/components/icons-intro.html',
+      icon: 'interests',
+      group: 'web-iconos'
+    },
+    'web/componentes/iconos/libreria': {
+      label: 'Biblioteca',
+      path: 'web/components/icons-library.html',
+      icon: 'category',
+      group: 'web-iconos'
+    },
+    'web/componentes/iconos/conectar': {
+      label: 'Conexión',
+      path: 'web/components/icons-connect.html',
+      icon: 'hub',
+      group: 'web-iconos'
+    },
+    'tokens/tablas': {
+      label: 'Tablas de tokens',
+      path: 'tokens/tokens-tables.html',
+      icon: 'table_chart',
+      group: 'tokens'
+    },
+    'tokens/texto': {
+      label: 'Tokens de texto',
+      path: 'tokens/tokens-text.html',
+      icon: 'text_fields',
+      group: 'tokens'
+    },
+    'qa/checklist': {
+      label: 'Checklist QA',
+      path: 'qa/checklist.html',
+      icon: 'fact_check',
+      group: 'qa'
     }
   };
 

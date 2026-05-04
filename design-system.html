@@ -44,7 +44,7 @@
     /* ──────────────────────────────────────────────────────────── */
     
     header {
-      background: $use-surface-theme-gray-5;
+      background: var(--ui-surface);
       border-bottom: 1px solid var(--ui-border);
       padding: var(--space-12) var(--space-16);
       display: flex;
@@ -345,28 +345,55 @@
     const sidebar = document.getElementById('sidebar');
     const navMap = router.getNav();
     
-    // Build simplified sidebar with single item
-    for (const [id, def] of Object.entries(navMap)) {
-      const link = document.createElement('a');
-      link.className = 'nav-item';
-      link.href = `#${id}`;
-      link.setAttribute('data-nav-item', id);
-      link.onclick = (e) => {
-        e.preventDefault();
-        router.navigate(id);
-      };
-      
-      const icon = document.createElement('span');
-      icon.className = 'icon material-symbols-rounded';
-      icon.textContent = def.icon;
-      
-      const label = document.createElement('span');
-      label.textContent = def.label;
-      
-      link.appendChild(icon);
-      link.appendChild(label);
-      sidebar.appendChild(link);
-    }
+    const navGroups = [
+      { id: 'inicio', label: 'Inicio' },
+      { id: 'fundamentos', label: 'Fundamentos' },
+      { id: 'app', label: 'App' },
+      { id: 'app-fundamentos', label: 'App · Fundamentos' },
+      { id: 'web-componentes', label: 'Web · Componentes' },
+      { id: 'web-iconos', label: 'Web · Iconos' },
+      { id: 'tokens', label: 'Tokens semánticos' },
+      { id: 'qa', label: 'QA' }
+    ];
+
+    navGroups.forEach((group) => {
+      const entries = Object.entries(navMap).filter(([, def]) => def.group === group.id);
+      if (!entries.length) return;
+
+      const section = document.createElement('nav');
+      section.className = 'nav-section';
+      section.setAttribute('aria-label', group.label);
+
+      const title = document.createElement('div');
+      title.className = 'nav-section-label';
+      title.textContent = group.label;
+      section.appendChild(title);
+
+      entries.forEach(([id, def]) => {
+        const link = document.createElement('a');
+        link.className = 'nav-item';
+        link.href = `#${id}`;
+        link.setAttribute('data-nav-item', id);
+        link.onclick = (e) => {
+          e.preventDefault();
+          router.navigate(id);
+        };
+
+        const icon = document.createElement('span');
+        icon.className = 'icon material-symbols-rounded';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.textContent = def.icon;
+
+        const label = document.createElement('span');
+        label.textContent = def.label;
+
+        link.appendChild(icon);
+        link.appendChild(label);
+        section.appendChild(link);
+      });
+
+      sidebar.appendChild(section);
+    });
 
     // Initialize router and load initial page
     router.init();

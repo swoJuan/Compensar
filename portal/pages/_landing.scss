@@ -3,6 +3,8 @@
 //  Landing page styles used by index.html
 // ============================================================
 
+@use '../../core/abstracts' as *;
+
 /* ── Portal layout ─────────────────────────────────── */
 .portal-page {
   min-height: 100vh;
@@ -11,8 +13,8 @@
   align-items: center;
   justify-content: center;
   background: var(--ui-bg);
-  padding: 72px 24px;
-  gap: 62px;
+  padding: rem(72px) rem(24px);
+  gap: rem(64px);
 }
 
 /* ── Header del portal ─────────────────────────────── */
@@ -22,21 +24,21 @@
 .portal-logo {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 22px;
+  gap: rem(16px);
+  margin-bottom: rem(24px);
 }
 .portal-logo-mark {
-  width: 52px;
-  height: 52px;
+  width: rem(48px);
+  height: rem(48px);
   background: var(--use-primary-default);
-  border-radius: 14px;
+  border-radius: rem(16px);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--use-text-on-dark-primary);
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 22px;
+  font-size: rem(24px);
   box-shadow: 0 14px 28px color-mix(in srgb, var(--use-primary-default) 18%, transparent);
   flex-shrink: 0;
 }
@@ -45,29 +47,29 @@
 }
 .portal-logo-name {
   font-family: var(--font-heading);
-  font-size: 22px;
+  font-size: rem(24px);
   font-weight: 800;
   color: var(--ui-text);
   letter-spacing: 0;
   line-height: 1.1;
 }
 .portal-logo-sub {
-  font-size: 12px;
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   font-weight: 400;
-  margin-top: 2px;
+  margin-top: rem(8px);
 }
 .portal-title {
   font-family: var(--font-heading);
-  font-size: 38px;
+  font-size: rem(40px);
   font-weight: 800;
   color: var(--ui-text);
   letter-spacing: 0;
   line-height: 1.08;
-  margin-bottom: 14px;
+  margin-bottom: rem(16px);
 }
 .portal-subtitle {
-  font-size: 15px;
+  font-size: rem(16px);
   color: var(--ui-text-muted);
   line-height: 1.6;
   max-width: 520px;
@@ -78,7 +80,7 @@
 .portal-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: rem(24px);
   width: 100%;
   max-width: 720px;
 }
@@ -86,11 +88,11 @@
 .portal-card {
   display: flex;
   flex-direction: column;
-  min-height: 288px;
-  padding: 32px;
+  min-height: rem(288px);
+  padding: rem(32px);
   background: var(--use-surface-theme-gray-5);
   border: 1px solid var(--ui-border);
-  border-radius: 18px;
+  border-radius: rem(16px);
   text-decoration: none;
   color: var(--ui-text);
   cursor: pointer;
@@ -101,6 +103,7 @@
 .portal-card:hover {
   box-shadow: 0 18px 42px color-mix(in srgb, var(--ui-text) 6%, transparent);
   transform: translateY(-2px);
+  text-decoration: none;
 }
 .portal-card:active {
   transform: translateY(-1px);
@@ -128,10 +131,10 @@
 .portal-card::before {
   content: '';
   position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 120px;
-  height: 120px;
+  top: rem(-40px);
+  right: rem(-40px);
+  width: rem(120px);
+  height: rem(120px);
   border-radius: 50%;
   opacity: 0.07;
 }
@@ -149,8 +152,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  font-size: 22px;
+  margin-bottom: rem(24px);
+  font-size: rem(24px);
   flex-shrink: 0;
 }
 .portal-card--drupal .portal-card-icon {
@@ -167,34 +170,35 @@
   font-size: 18px;
   font-weight: 800;
   color: var(--ui-text);
-  margin-bottom: 8px;
+  margin-bottom: rem(8px);
   letter-spacing: 0;
 }
 .portal-card-desc {
-  font-size: 13px;
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   line-height: 1.6;
   flex: 1;
 }
 
+
 .portal-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 26px;
-  padding-top: 18px;
+  margin-top: rem(24px);
+  padding-top: rem(16px);
   border-top: 1px solid var(--ui-border);
 }
 .portal-card-tags {
   display: flex;
-  gap: 6px;
+  gap: rem(8px);
   flex-wrap: wrap;
 }
 .portal-tag {
-  font-size: 10px;
+  font-size: rem(14px);
   font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 20px;
+  padding: rem(16px) rem(16px);
+  border-radius: rem(20px);
   background: var(--ui-surface-alt);
   color: var(--ui-text-muted);
   border: 1px solid var(--ui-border);
@@ -211,7 +215,7 @@
 }
 
 .portal-card-arrow {
-  font-size: 20px;
+  font-size: rem(20px);
   color: var(--ui-text-muted);
   transition: color 0.2s, transform 0.2s;
 }
@@ -228,7 +232,7 @@
 /* ── Footer del portal ─────────────────────────────── */
 .portal-footer {
   text-align: center;
-  font-size: 12px;
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   display: flex;
   align-items: center;
@@ -241,8 +245,8 @@
 /* ── Theme switcher flotante ───────────────────────── */
 .portal-theme {
   position: fixed;
-  top: var(--space-4);
-  right: 28px;
+  top: var(--space-8);
+  right: rem(24px);
   display: flex;
   background: var(--use-surface-theme-gray-5);
   border: 1px solid var(--ui-border);
@@ -253,8 +257,8 @@
 .portal-theme button {
   border: none;
   background: transparent;
-  padding: 6px 12px;
-  font-size: 11.5px;
+  padding: rem(16px) rem(16px);
+  font-size: rem(14px);
   font-family: var(--font-body);
   cursor: pointer;
   color: var(--ui-text-muted);
@@ -280,10 +284,10 @@
     max-width: 380px;
   }
   .portal-title {
-    font-size: 26px;
+    font-size: rem(24px);
   }
   .portal-page {
     justify-content: flex-start;
-    padding-top: 96px;
+    padding-top: rem(96px);
   }
 }

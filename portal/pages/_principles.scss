@@ -53,7 +53,7 @@
 
 .principle-number {
   font-family: var(--font-heading);
-  font-size: rem(12px);
+  font-size: rem(14px);
   font-weight: 800;
   color: var(--ui-accent);
   letter-spacing: .08em;
@@ -78,24 +78,24 @@
 
 .principle-title {
   font-family: var(--font-heading);
-  font-size: rem(17px);
+  font-size: rem(16px);
   font-weight: 700;
   color: var(--ui-accent);
   margin-bottom: var(--space-8);
 }
 
 .principle-desc {
-  font-size: rem(13.5px);
+  font-size: rem(14px);
   color: var(--ui-text);
   line-height: 1.65;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-8);
 }
 
 .principle-note {
   grid-column: 2;
   display: flex;
   align-items: flex-start;
-  gap: var(--space-4);
+  gap: var(--space-8);
   align-self: end;
   background: var(--product-accent-40);
   border: rem(1px) solid var(--product-accent-50);
@@ -130,7 +130,7 @@
 }
 
 .principle-note p {
-  font-size: rem(13.5px);
+  font-size: rem(14px);
   color: var(--use-text-primary);
   line-height: 1.6;
 }
@@ -153,6 +153,6 @@
 .principle-rule
 {
   background-color: $use-surface-theme-gray-5;
-  padding: 0.8rem;
+  padding: rem(16px);
   border-radius: $border-radius-sm;
 }

@@ -104,11 +104,11 @@
   width: fit-content;
   display: inline-flex;
   align-items: center;
-  padding: rem(4px) var(--space-12);
+  padding: rem(16px) rem(16px);
   border-radius: var(--radius-pill);
   background: var(--use-surface-theme-orange-10);
   color: var(--use-text-theme-orange);
-  font-size: rem(11px);
+  font-size: rem(14px);
   font-weight: 800;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -135,7 +135,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-8);
-  margin-top: var(--space-4);
+  margin-top: var(--space-8);
 }
 
 .ic-hero-link {
@@ -147,7 +147,7 @@
   border-radius: var(--radius-sm);
   background: var(--ui-accent);
   color: var(--base-neutral-white);
-  font-size: rem(13px);
+  font-size: rem(14px);
   font-weight: 700;
   text-decoration: none;
   border: rem(1px) solid var(--ui-accent);
@@ -170,7 +170,7 @@
 }
 
 .ic-hero-link .material-symbols-rounded {
-  font-size: rem(17px);
+  font-size: rem(16px);
 }
 
 .ic-hero-panel {
@@ -188,7 +188,7 @@
 .ic-hero-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-12);
+  gap: var(--space-16);
 }
 
 .ic-hero-grid .icon {
@@ -229,7 +229,7 @@
 }
 
 .ic-hero-code {
-  padding: var(--space-12);
+  padding: var(--space-16);
   border-radius: var(--radius-sm);
   background: var(--ui-code-bg);
   overflow-x: auto;
@@ -238,7 +238,7 @@
 .ic-hero-code code {
   color: var(--ui-code-text);
   font-family: var(--font-code);
-  font-size: rem(11px);
+  font-size: rem(14px);
   white-space: nowrap;
 }
 
@@ -289,16 +289,16 @@
 .ic-principle-card p {
   margin: 0;
   color: var(--ui-text-secondary);
-  font-size: rem(12.5px);
+  font-size: rem(14px);
   line-height: 1.55;
 }
 
 .ic-principle-card code {
-  font-size: rem(11px);
+  font-size: rem(14px);
   color: var(--ui-accent);
   background: $use-surface-theme-gray-5;
   border-radius: var(--radius-xs);
-  padding: rem(1px) rem(5px);
+  padding: rem(16px);
 }
 
 
@@ -307,28 +307,28 @@
   display: flex;
   align-items: center;
   gap: rem(8px);
-  font-size: rem(11px);
+  font-size: rem(24px);
   font-weight: 700;
-  color: var(--ui-text-muted);
+  color: var(--ui-text-secondary);
   letter-spacing: .08em;
   text-transform: uppercase;
   margin: var(--space-48) 0 var(--space-24);
   border-bottom: rem(1px) solid var(--ui-border);
-  padding-bottom: var(--space-8);
+  padding-bottom: rem(16px);
 }
 
 .ic-section-label .material-symbols-rounded {
-  font-size: rem(15px);
+  font-size: rem(16px);
   color: var(--ui-accent)
 }
 
 .ic-count-badge {
   margin-left: auto;
-  font-size: rem(10px);
+  font-size: rem(14px);
   background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(20px);
-  padding: rem(2px) rem(10px);
+  padding: rem(16px) rem(16px);
   letter-spacing: 0;
   text-transform: none;
   font-weight: 600
@@ -343,7 +343,7 @@
 }
 
 .ic-body {
-  font-size: rem(13.5px);
+  font-size: rem(14px);
   color: var(--ui-text);
   line-height: 1.6;
   margin-bottom: var(--space-8)
@@ -351,8 +351,8 @@
 
 .ic-list {
   margin: 0 0 var(--space-8);
-  padding-left: rem(18px);
-  font-size: rem(13px);
+  padding-left: var(--space-24);
+  font-size: rem(14px);
   color: var(--ui-text);
   line-height: 2
 }
@@ -360,10 +360,10 @@
 /* ── Alert blocks ──────────────────────────────────────── */
 .ic-alert {
   display: flex;
-  gap: rem(10px);
+  gap: var(--space-8);
   border-radius: rem(10px);
-  padding: var(--space-4) var(--space-24);
-  font-size: rem(12.5px);
+  padding: rem(16px) rem(24px);
+  font-size: rem(14px);
   line-height: 1.6
 }
 
@@ -377,7 +377,7 @@
   color: var(--use-state-warning-icon);
   flex-shrink: 0;
   font-size: rem(18px);
-  margin-top: rem(1px)
+  margin-top: 0
 }
 
 .ic-alert--blue {
@@ -390,27 +390,25 @@
   color: var(--use-state-info-icon);
   flex-shrink: 0;
   font-size: rem(18px);
-  margin-top: rem(1px)
+  margin-top: 0
 }
 
 .ic-alert-list {
-  margin: rem(6px) 0 0;
-  padding-left: rem(16px)
+  margin: var(--space-8) 0 0;
+  padding-left: var(--space-16)
 }
 
 .ic-alert-list li {
-  margin-bottom: rem(2px)
+  margin-bottom: var(--space-8)
 }
 
 /* ── Preview grid (style sample) ──────────────────────── */
 .ic-preview-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: var(--space-8);
-  background: $use-surface-theme-gray-5;
-  border: rem(1px) solid var(--ui-border);
+  gap: rem(8px);
   border-radius: rem(12px);
-  padding: var(--space-4);
+  padding: rem(16px);
   align-content: start
 }
 
@@ -418,14 +416,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: rem(4px);
-  padding: var(--space-8);
+  gap: var(--space-8);
+  padding: rem(16px);
   border-radius: rem(8px);
   background: $use-surface-theme-gray-5
 }
 
 .ic-preview-item .icon {
-  font-size: rem(24px);
+  font-size: rem(32px);
   color: var(--ui-text)
 }
 
@@ -433,7 +431,7 @@
 .ic-order-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: var(--space-4);
+  gap: var(--space-8);
   margin-bottom: var(--space-24)
 }
 
@@ -443,7 +441,7 @@
   border-radius: rem(12px);
   padding: var(--space-24);
   display: flex;
-  gap: var(--space-4)
+  gap: var(--space-8)
 }
 
 .ic-order-card--1 {
@@ -464,7 +462,7 @@
   color: var(--ui-accent);
   min-width: rem(32px);
   line-height: 1;
-  margin-top: rem(2px)
+  margin-top: 0
 }
 
 .ic-order-card--2 .ic-order-num {
@@ -476,14 +474,14 @@
 }
 
 .ic-order-title {
-  font-size: rem(13px);
+  font-size: rem(14px);
   font-weight: 700;
   color: var(--ui-text);
   margin-bottom: var(--space-8)
 }
 
 .ic-order-desc {
-  font-size: rem(12.5px);
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   line-height: 1.6;
   margin-bottom: var(--space-8)
@@ -492,25 +490,25 @@
 .ic-order-badge {
   display: inline-flex;
   align-items: center;
-  gap: rem(5px);
+  gap: var(--space-8);
   background: var(--base-green-40);
   color: var(--base-green-90);
   border: rem(1px) solid var(--base-green-50);
   border-radius: rem(6px);
-  padding: rem(3px) rem(10px);
-  font-size: rem(11px);
+  padding: rem(16px) rem(16px);
+  font-size: rem(14px);
   font-weight: 700
 }
 
 .ic-order-badge .material-symbols-rounded {
-  font-size: rem(13px)
+  font-size: rem(14px)
 }
 
 .ic-order-config {
   background: $use-surface-theme-gray-5;
   border-radius: rem(8px);
-  padding: var(--space-8) var(--space-4);
-  margin-top: var(--space-2)
+  padding: rem(16px) rem(16px);
+  margin-top: var(--space-8)
 }
 
 /* ── Sizes ─────────────────────────────────────────────── */
@@ -522,28 +520,28 @@
 }
 
 .ic-sizes-title {
-  font-size: rem(13px);
+  font-size: rem(14px);
   font-weight: 700;
   color: var(--ui-text);
-  margin: 0 0 var(--space-4)
+  margin: 0 0 var(--space-8)
 }
 
 .ic-sizes-preview {
   display: flex;
   align-items: flex-end;
   gap: var(--space-24);
-  margin-bottom: var(--space-4)
+  margin-bottom: var(--space-8)
 }
 
 .ic-size-demo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: rem(4px)
+  gap: var(--space-8)
 }
 
 .ic-size-label {
-  font-size: rem(10px);
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   font-family: var(--font-code)
 }
@@ -551,15 +549,15 @@
 .ic-sizes-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: rem(12.5px);
+  font-size: rem(14px);
   margin-bottom: var(--space-8)
 }
 
 .ic-sizes-table th {
   background: $use-surface-theme-gray-5;
-  padding: rem(7px) rem(12px);
+  padding: rem(16px) rem(16px);
   text-align: left;
-  font-size: rem(10.5px);
+  font-size: rem(14px);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .06em;
@@ -568,7 +566,7 @@
 }
 
 .ic-sizes-table td {
-  padding: rem(8px) rem(12px);
+  padding: rem(16px) rem(16px);
   border: rem(1px) solid var(--ui-border);
   color: var(--ui-text)
 }
@@ -577,14 +575,14 @@
   display: flex;
   align-items: center;
   gap: var(--space-24);
-  margin: var(--space-4) 0
+  margin: var(--space-8) 0
 }
 
 .ic-touch-target {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: rem(4px)
+  gap: var(--space-8)
 }
 
 .ic-touch-box {
@@ -600,17 +598,17 @@
 
 // 5.5rem = 88px; visualiza 2x el area tactil minima de 2.75rem = 44px
 .ic-touch-label {
-  font-size: rem(10px);
+  font-size: rem(14px);
   color: var(--ui-accent);
   font-weight: 600;
   text-align: center;
-  padding: rem(4px)
+  padding: rem(16px)
 }
 
 /* ── Implementation cards ──────────────────────────────── */
 .ic-impl-overview {
   display: grid;
-  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-24);
   align-items: stretch;
   margin: var(--space-24) 0 var(--space-32);
@@ -628,16 +626,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: var(--space-12);
+  gap: var(--space-16);
 }
 
 .ic-impl-kicker {
   width: fit-content;
-  padding: rem(4px) var(--space-12);
+  padding: rem(16px) rem(16px);
   border-radius: var(--radius-pill);
   background: var(--use-surface-theme-violet-5);
   color: var(--use-text-theme-violet);
-  font-size: rem(11px);
+  font-size: rem(14px);
   font-weight: 800;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -661,7 +659,7 @@
 .ic-impl-steps-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-12);
+  gap: var(--space-16);
 }
 
 .ic-impl-step-card {
@@ -698,27 +696,27 @@
 
 .ic-impl-step-card strong {
   color: var(--ui-text);
-  font-size: rem(13.5px);
+  font-size: rem(14px);
 }
 
 .ic-impl-step-card p {
   margin: 0;
   color: var(--ui-text-secondary);
-  font-size: rem(12px);
+  font-size: rem(14px);
   line-height: 1.55;
 }
 
 .ic-impl-step-card code {
-  font-size: rem(11px);
+  font-size: rem(14px);
   color: var(--ui-accent);
   background: $use-surface-theme-gray-5;
   border-radius: var(--radius-xs);
-  padding: rem(1px) rem(5px);
+  padding: rem(16px);
 }
 
 .ic-impl-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-32);
   margin-bottom: var(--space-40);
 }
@@ -739,7 +737,7 @@
     linear-gradient(90deg, color-mix(in srgb, var(--ui-accent) 8%, $use-surface-theme-gray-5), $use-surface-theme-gray-5);
   border-bottom: rem(1px) solid var(--ui-border);
   padding: var(--space-16) var(--space-24);
-  font-size: rem(12px);
+  font-size: rem(14px);
   font-weight: 800;
   color: var(--ui-text);
   letter-spacing: .01em;
@@ -773,23 +771,23 @@
   padding: var(--space-24);
   display: flex;
   flex-direction: column;
-  gap: var(--space-12);
+  gap: var(--space-16);
 }
 
 .ic-impl-desc-row {
   display: grid;
   grid-template-columns: minmax(rem(92px), auto) minmax(0, 1fr);
   align-items: baseline;
-  gap: var(--space-12);
-  font-size: rem(12.5px);
+  gap: var(--space-16);
+  font-size: rem(14px);
 }
 
 .ic-impl-desc-row code {
   width: fit-content;
   font-family: var(--font-code);
-  font-size: rem(11px);
+  font-size: rem(14px);
   background: $use-surface-theme-gray-5;
-  padding: rem(3px) rem(8px);
+  padding: rem(16px);
   border-radius: var(--radius-xs);
   color: var(--ui-accent);
   flex-shrink: 0;
@@ -803,20 +801,20 @@
 .ic-steps {
   margin: 0;
   padding: var(--space-24) var(--space-24) var(--space-24) rem(48px);
-  font-size: rem(12.5px);
+  font-size: rem(14px);
   line-height: 1.9;
   color: var(--ui-text);
 }
 
 .ic-steps li+li {
-  margin-top: var(--space-4);
+  margin-top: var(--space-8);
 }
 
 .ic-steps code {
   font-family: var(--font-code);
-  font-size: rem(11px);
+  font-size: rem(14px);
   background: $use-surface-theme-gray-5;
-  padding: rem(2px) rem(6px);
+  padding: rem(16px);
   border-radius: var(--radius-xs);
   color: var(--ui-accent);
 }
@@ -829,9 +827,9 @@
 /* ── Code blocks ───────────────────────────────────────── */
 .ic-code-tabs-bar {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-8);
   background: $use-surface-theme-gray-5;
-  padding: var(--space-8) var(--space-12);
+  padding: rem(16px) rem(16px);
   border-bottom: rem(1px) solid var(--ui-border)
 }
 
@@ -839,8 +837,8 @@
   background: none;
   border: none;
   border-radius: var(--radius-xs);
-  padding: rem(6px) var(--space-12);
-  font-size: rem(11.5px);
+  padding: rem(16px) rem(16px);
+  font-size: rem(14px);
   font-weight: 700;
   color: var(--ui-text-muted);
   cursor: pointer;
@@ -860,16 +858,16 @@
 
 .ic-code-copy {
   position: absolute;
-  top: rem(6px);
+  top: var(--space-8);
   right: rem(8px);
   display: inline-flex;
   align-items: center;
-  gap: rem(3px);
+  gap: var(--space-8);
   background: color-mix(in srgb, var(--base-neutral-white) 6%, transparent);
   border: rem(1px) solid color-mix(in srgb, var(--base-neutral-white) 12%, transparent);
   border-radius: rem(5px);
-  padding: rem(2px) rem(8px);
-  font-size: rem(10px);
+  padding: rem(16px);
+  font-size: rem(14px);
   color: var(--use-text-on-dark-secondary);
   cursor: pointer;
   transition: background .12s, color .12s;
@@ -882,12 +880,12 @@
 }
 
 .ic-code-copy .material-symbols-rounded {
-  font-size: rem(11px)
+  font-size: rem(14px)
 }
 
 .ic-code-pre {
   font-family: var(--font-code);
-  font-size: rem(11px);
+  font-size: rem(14px);
   line-height: 1.8;
   color: var(--ui-code-text);
   padding: var(--space-40) var(--space-24) var(--space-24);
@@ -910,11 +908,11 @@
 .ic-stats-strip {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-16);
   background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(14px);
-  padding: var(--space-4) var(--space-24);
+  padding: rem(16px);
   margin-bottom: var(--space-24)
 }
 
@@ -933,9 +931,9 @@
 }
 
 .ic-stat-lbl {
-  font-size: rem(10px);
+  font-size: rem(14px);
   color: var(--ui-text-muted);
-  margin-top: rem(2px);
+  margin-top: var(--space-8);
   white-space: nowrap
 }
 
@@ -953,13 +951,13 @@
 .ic-stat-hint {
   display: flex;
   align-items: center;
-  gap: rem(5px);
-  font-size: rem(11.5px);
+  gap: var(--space-8);
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(8px);
-  padding: rem(5px) rem(12px)
+  padding: rem(16px) rem(16px)
 }
 
 .ic-stat-hint .material-symbols-rounded {
@@ -974,11 +972,11 @@
 .ic-search-bar {
   display: flex;
   align-items: center;
-  gap: rem(10px);
+  gap: var(--space-8);
   background: $use-surface-theme-gray-5;
   border: rem(1.5px) solid var(--ui-border);
   border-radius: rem(12px);
-  padding: rem(10px) var(--space-24);
+  padding: rem(16px) rem(24px);
   transition: border-color .15s, box-shadow .15s
 }
 
@@ -1015,7 +1013,7 @@
   color: var(--ui-text-muted);
   display: flex;
   align-items: center;
-  padding: rem(2px);
+  padding: rem(16px);
   border-radius: rem(4px)
 }
 
@@ -1032,13 +1030,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-8) var(--space-2) 0;
+  padding: rem(16px) rem(16px) 0;
   flex-wrap: wrap;
   gap: var(--space-8)
 }
 
 .ic-results-count {
-  font-size: rem(11.5px);
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   font-family: var(--font-code);
   flex-shrink: 0
@@ -1047,7 +1045,7 @@
 /* ── Category pills ────────────────────────────────────── */
 .ic-cat-pills {
   display: flex;
-  gap: rem(5px);
+  gap: rem(8px);
   flex-wrap: wrap
 }
 
@@ -1055,8 +1053,8 @@
   background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(20px);
-  padding: rem(3px) rem(12px);
-  font-size: rem(11.5px);
+  padding: rem(16px) rem(24px);
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   cursor: pointer;
   transition: background .12s, border-color .12s, color .12s;
@@ -1080,7 +1078,7 @@
 .ic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(rem(96px), 1fr));
-  gap: rem(6px);
+  gap: var(--space-16);
   margin-bottom: var(--space-48)
 }
 
@@ -1088,8 +1086,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: rem(6px);
-  padding: rem(14px) rem(8px) rem(10px);
+  gap: var(--space-8);
+  padding: rem(16px) rem(16px) rem(16px);
   background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(12px);
@@ -1125,7 +1123,7 @@
 }
 
 .ic-card-name {
-  font-size: rem(9px);
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   line-height: 1.3;
   pointer-events: none;
@@ -1143,9 +1141,9 @@
   right: 0;
   background: var(--ui-accent);
   color: var(--base-neutral-white);
-  font-size: rem(8.5px);
+  font-size: rem(14px);
   font-family: var(--font-code);
-  padding: rem(2px) rem(4px);
+  padding: rem(16px);
   transform: translateY(100%);
   transition: transform .14s;
   text-align: center
@@ -1165,19 +1163,19 @@
 .ic-empty .material-symbols-rounded {
   font-size: rem(48px);
   display: block;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-8);
   color: var(--ui-border)
 }
 
 .ic-empty-title {
-  font-size: rem(15px);
+  font-size: rem(16px);
   font-weight: 700;
   color: var(--ui-text);
-  margin-bottom: rem(6px)
+  margin-bottom: var(--space-8)
 }
 
 .ic-empty-sub {
-  font-size: rem(13px);
+  font-size: rem(14px);
   margin-bottom: var(--space-24)
 }
 
@@ -1186,8 +1184,8 @@
   color: var(--base-neutral-white);
   border: none;
   border-radius: rem(8px);
-  padding: rem(8px) rem(20px);
-  font-size: rem(12.5px);
+  padding: rem(16px) rem(24px);
+  font-size: rem(14px);
   cursor: pointer;
   font-family: var(--font-body);
   font-weight: 500
@@ -1221,7 +1219,7 @@
 .ic-pop-header {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: var(--space-4);
+  gap: var(--space-8);
   align-items: start;
   padding: var(--space-24);
   background: $use-surface-theme-gray-5;
@@ -1232,7 +1230,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: rem(6px)
+  gap: var(--space-8)
 }
 
 .ic-pop-preview {
@@ -1253,15 +1251,15 @@
 
 .ic-pop-size-strip {
   display: flex;
-  gap: rem(3px)
+  gap: var(--space-8)
 }
 
 .ic-pop-sz {
   background: none;
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(4px);
-  padding: rem(1px) rem(5px);
-  font-size: rem(9px);
+  padding: rem(16px);
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   cursor: pointer;
   font-family: var(--font-code);
@@ -1278,13 +1276,13 @@
 .ic-pop-meta {
   display: flex;
   flex-direction: column;
-  gap: rem(6px);
+  gap: var(--space-8);
   min-width: 0;
-  padding-top: rem(2px)
+  padding-top: rem(16px)
 }
 
 .ic-pop-name {
-  font-size: rem(13px);
+  font-size: rem(14px);
   font-weight: 700;
   color: var(--ui-text);
   line-height: 1.3;
@@ -1294,13 +1292,13 @@
 .ic-pop-tags {
   display: flex;
   flex-direction: column;
-  gap: rem(4px)
+  gap: var(--space-8)
 }
 
 .ic-pop-tag {
   font-family: var(--font-code);
-  font-size: rem(10px);
-  padding: rem(2px) rem(8px);
+  font-size: rem(14px);
+  padding: rem(16px);
   border-radius: rem(5px);
   display: inline-block;
   width: fit-content
@@ -1344,14 +1342,14 @@
 
 .ic-pop-snippet {
   margin: 0 var(--space-24) 0;
-  padding: var(--space-8) var(--space-4);
+  padding: rem(16px);
   background: var(--ui-code-bg);
   border-bottom: rem(1px) solid color-mix(in srgb, var(--base-neutral-white) 6%, transparent)
 }
 
 .ic-pop-snippet pre {
   font-family: var(--font-code);
-  font-size: rem(10px);
+  font-size: rem(14px);
   color: var(--ui-code-text);
   margin: 0;
   white-space: pre-wrap;
@@ -1361,8 +1359,8 @@
 
 .ic-pop-actions {
   display: flex;
-  gap: rem(6px);
-  padding: var(--space-4) var(--space-24) var(--space-24)
+  gap: var(--space-8);
+  padding: rem(16px) rem(24px) rem(24px)
 }
 
 .ic-pop-btn {
@@ -1370,11 +1368,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: rem(4px);
+  gap: var(--space-8);
   border: rem(1px) solid var(--ui-border);
   border-radius: rem(9px);
-  padding: rem(7px) rem(8px);
-  font-size: rem(10.5px);
+  padding: rem(16px);
+  font-size: rem(14px);
   cursor: pointer;
   background: $use-surface-theme-gray-5;
   color: var(--ui-text);
@@ -1401,7 +1399,7 @@
 }
 
 .ic-pop-btn .material-symbols-rounded {
-  font-size: rem(12px)
+  font-size: rem(14px)
 }
 
 /* Mobile bottom sheet */
@@ -1471,43 +1469,43 @@
   font-size: rem(16px);
   font-weight: 700;
   color: var(--ui-text);
-  margin-bottom: var(--space-2)
+  margin-bottom: var(--space-8)
 }
 
 .sp-access-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4)
+  gap: var(--space-8)
 }
 
 .sp-access-sub {
-  font-size: rem(12px);
+  font-size: rem(14px);
   font-weight: 700;
   color: var(--ui-text);
   text-transform: uppercase;
   letter-spacing: .05em;
-  margin-bottom: var(--space-2);
-  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-8);
+  padding-bottom: rem(16px);
   border-bottom: rem(1px) solid var(--ui-border)
 }
 
 .sp-access-list {
   margin: 0;
   padding-left: rem(16px);
-  font-size: rem(12.5px);
+  font-size: rem(14px);
   color: var(--ui-text-muted);
   line-height: 1.9
 }
 
 .sp-access-list li {
-  margin-bottom: rem(2px)
+  margin-bottom: var(--space-8)
 }
 
 .sp-access-list code {
   font-family: var(--font-code);
-  font-size: rem(11px);
+  font-size: rem(14px);
   background: $use-surface-theme-gray-5;
-  padding: rem(1px) rem(5px);
+  padding: rem(16px);
   border-radius: rem(4px);
   color: var(--ui-accent)
 }
@@ -1518,12 +1516,12 @@
 }
 
 .ic-body--small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .ic-body--access {
-  font-size: 0.8125rem;
-  margin-bottom: var(--space-4);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-8);
 }
 
 .ic-section-label--compact {
@@ -1535,15 +1533,15 @@
 }
 
 .ic-alert--mt-4 {
-  margin-top: var(--space-4);
+  margin-top: var(--space-8);
 }
 
 .ic-alert-text-small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .ic-size-label--offset {
-  margin-top: var(--space-4);
+  margin-top: var(--space-8);
 }
 
 .ic-downloads {
@@ -1564,13 +1562,13 @@
 }
 
 .ic-size-doc {
-  padding: var(--space-24);
+  padding: rem(24px);
 }
 
 .ic-size-doc-desc {
   font-size: 0.875rem;
   color: var(--ui-text-muted);
-  margin-bottom: var(--space-20);
+  margin-bottom: var(--space-24);
   line-height: 1.6;
 }
 
@@ -1578,9 +1576,11 @@
   display: flex;
   align-items: flex-end;
   gap: var(--space-24);
-  padding: var(--space-24);
+  padding: rem(24px);
   margin-bottom: var(--space-24);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
   background: $use-surface-theme-gray-5;
   border: rem(1px) solid var(--ui-border);
   border-radius: var(--radius-md);
@@ -1592,11 +1592,13 @@
   align-items: center;
   gap: var(--space-8);
   min-width: rem(64px);
+  flex: 0 0 auto;
 }
 
 .ic-size-class-item code {
-  font-size: 0.625rem;
+  font-size: 0.875rem;
   color: var(--ui-text-muted);
+  white-space: nowrap;
 }
 
 .sp-access-block--icons {

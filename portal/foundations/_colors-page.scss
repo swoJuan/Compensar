@@ -58,7 +58,7 @@
 /* Grupos */
 .ct-use-group {
   margin-bottom: var(--space-48);
-  border: rem(1px) solid var(--ui-border);
+  border: 0;
   border-radius: rem(12px);
   overflow: hidden;
 }
@@ -68,8 +68,8 @@
   align-items: center;
   gap: var(--space-4);
   padding: rem(12px);
-  background: $use-surface-theme-gray-5;
-  border-bottom: rem(1px) solid var(--ui-border);
+  background: white;
+  border: 0;
   gap: rem(12px);
 }
 
@@ -86,7 +86,7 @@
 
 .ct-use-title {
   font-family: var(--font-heading);
-  font-size: rem(14px);
+  font-size: rem(16px);
   font-weight: 700;
   color: var(--ui-text);
   margin-bottom: rem(2px);
@@ -212,17 +212,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-2) var(--space-4);
-  background: $use-surface-theme-gray-5;
-  border: rem(1px) solid var(--ui-border);
+  padding: rem(12px) 0;
+  background: white;
+  border:0;
   border-bottom: none;
   border-radius: rem(10px) rem(10px) 0 0;
-  padding: rem(12px);
 }
 
 .ct-group-name {
   font-family: var(--font-heading);
-  font-size: rem(12px);
+  font-size: rem(14px);
   font-weight: 700;
   color: var(--ui-text);
   text-transform: uppercase;
@@ -264,8 +263,8 @@
 .ct-cell {
   padding: rem(8px) var(--space-4);
   border-bottom: rem(1px) solid var(--ui-border);
-  background: $use-surface-theme-gray-5;
   vertical-align: middle;
+  background-color:white;
 }
 
 /* Columna Nombre (Figma path) */

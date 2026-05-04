@@ -33,6 +33,9 @@
       <span class="icon icon-bell-ringing icon-24" aria-hidden="true"></span>
       <span class="icon icon-magnifying-glass icon-24" aria-hidden="true"></span>
       <span class="icon icon-warning icon-24" aria-hidden="true"></span>
+      <span class="icon icon-map-pin icon-24" aria-hidden="true"></span>
+      <span class="icon icon-globe icon-24" aria-hidden="true"></span>
+      <span class="icon icon-key icon-24" aria-hidden="true"></span>
     </div>
     <div class="ic-hero-code">
       <code>&lt;i class="icon icon-name icon-24" aria-hidden="true"&gt;&lt;/i&gt;</code>
@@ -231,11 +234,6 @@
 <script>
 function normStr(s){ return s.toLowerCase().replace(/[áàä]/g,'a').replace(/[éèë]/g,'e').replace(/[íìï]/g,'i').replace(/[óòö]/g,'o').replace(/[úùü]/g,'u').replace(/ñ/g,'n'); }
 
-const SAMPLE_UNICODES = [
-  'f3b2','f3b3','f398','f3a5','f3c1','f2c2','f34c','f4e9','f4a6','f44a',
-  'f3d2','f2a5'
-];
-
 const SAMPLE_ICONS = [
   {n:"WarningOctagon",c:"icon-warning-octagon",u:"f398"},
   {n:"WarningCircle",c:"icon-warning-circle",u:"f399"},
@@ -260,10 +258,13 @@ const SAMPLE_ICONS = [
 function renderStylePreview(){
   const el = document.getElementById('ic-style-preview');
   if(!el) return;
-  SAMPLE_UNICODES.forEach(u=>{
+
+  // Use icon classes from the installed font set to avoid missing-unicode placeholders.
+  const previewIcons = SAMPLE_ICONS.slice(0, 12);
+  previewIcons.forEach(icon => {
     const d = document.createElement('div');
     d.className = 'ic-preview-item';
-    d.innerHTML = `<span class="icon" aria-hidden="true">&#x${u};</span>`;
+    d.innerHTML = `<span class="icon ${icon.c} icon-24" aria-hidden="true"></span>`;
     el.appendChild(d);
   });
 }
