@@ -84,7 +84,7 @@ const router = (() => {
     },
     'web/componentes/botones': {
       label: 'Botones',
-      path: 'web/components/buttons.html',
+      path: 'transversales/components/buttons.html',
       icon: 'smart_button',
       group: 'web-componentes'
     },

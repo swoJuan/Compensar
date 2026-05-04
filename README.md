@@ -128,9 +128,10 @@ docs/
 │       ├── border-radius.html
 │       ├── layout.html
 │       ├── shadows.html
+│   └── components/
+│       ├── buttons.html
 ├── web/
 │   └── components/         # Web component documentation
-│       ├── buttons.html
 │       ├── inputs.html
 │       ├── alerts.html
 │       ├── cards.html
@@ -166,6 +167,19 @@ docs/*.html → Rendered into #main-content
     ↓
 User interacts → code-copy.js handles tab switching and code copying
 ```
+
+### Regla De Contenido Transversal
+
+Cuando una pagina aplica a Web y App, el sistema debe tratarla como transversal:
+
+1. Guardar el fragmento bajo `docs/transversales/...`.
+2. Evitar copias duplicadas en `docs/web/...` y `docs/app/...`.
+3. Resolver la misma ruta desde ambos portales usando los mapas de rutas (`ROUTES` y, si aplica, `APP_ROUTES`).
+4. Solo crear una variante por plataforma cuando haya diferencias reales de UX/comportamiento.
+
+Excepcion vigente:
+
+- `layout` tiene variante especifica de App en `docs/app/fundamentos/layout.html`.
 
 ---
 
@@ -492,7 +506,7 @@ Docs should contain **only the content**, not full HTML structure:
 
 ✅ **Correct:**
 ```html
-<!-- docs/web/components/buttons.html -->
+<!-- docs/transversales/components/buttons.html -->
 <div class="section-header">
   <h1>Botones</h1>
   <p>Botones primarios, secundarios, ghost</p>

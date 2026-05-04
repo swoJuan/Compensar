@@ -332,11 +332,32 @@ Se decidio que algunas paginas son transversales porque aplican tanto a Drupal/Z
 
 - Colores
 - Principios
+- Tipografia
+- Espaciado
+- Border radius
+- Sombras
+- Botones
 
 Estas paginas viven bajo:
 
 - `docs/foundations/colors.html`
 - `docs/foundations/principles.html`
+- `docs/transversales/fundamentos/typography.html`
+- `docs/transversales/fundamentos/spacing.html`
+- `docs/transversales/fundamentos/border-radius.html`
+- `docs/transversales/fundamentos/shadows.html`
+- `docs/transversales/components/buttons.html`
+
+Regla operativa del sistema para contenido transversal:
+
+1. El fragmento debe existir una sola vez en `docs/transversales/...`.
+2. El router debe apuntar Web y App al mismo archivo en `ROUTES`.
+3. `APP_ROUTES` solo debe sobreescribir cuando exista una diferencia real de plataforma.
+4. Si una pagina pasa a transversal, se mueve el archivo y se actualizan `js/loader.js`, `js/router.js` y `js/ds-bundle.js`.
+
+Excepcion vigente:
+
+- `layout` mantiene variante de App en `docs/app/fundamentos/layout.html`.
 
 La intencion es evitar duplicar contenido cuando el fundamento aplica a varias plataformas.
 
@@ -554,12 +575,12 @@ Fragmentos de documentacion:
 - `docs/app/intro.html`
 - `docs/foundations/colors.html`
 - `docs/foundations/principles.html`
-- `docs/app/fundamentos/typography.html`
-- `docs/app/fundamentos/spacing.html`
-- `docs/app/fundamentos/border-radius.html`
+- `docs/transversales/fundamentos/typography.html`
+- `docs/transversales/fundamentos/spacing.html`
+- `docs/transversales/fundamentos/border-radius.html`
 - `docs/app/fundamentos/layout.html`
-- `docs/app/fundamentos/shadows.html`
-- `docs/web/components/buttons.html`
+- `docs/transversales/fundamentos/shadows.html`
+- `docs/transversales/components/buttons.html`
 - `docs/web/components/inputs.html`
 - `docs/web/components/badges.html`
 - `docs/web/components/icons-intro.html`

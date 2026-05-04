@@ -5034,7 +5034,7 @@
     'iconos-intro':       'docs/web/components/icons-intro.html',
     'iconos-conectar':    'docs/web/components/icons-connect.html',
     'iconos-libreria':    'docs/web/components/icons-library.html',
-    'botones':            'docs/web/components/buttons.html',
+    'botones':            'docs/transversales/components/buttons.html',
     'inputs':             'docs/web/components/inputs.html',
     'badges':             'docs/web/components/badges.html',
     'tokens-texto':       'docs/tokens/tokens-text.html',
