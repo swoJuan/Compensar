@@ -199,7 +199,8 @@ const router = (() => {
     if (state.currentSection === section) return true;
 
     const def = navigationMap[section];
-    const fragmentPath = `${config.fragmentBase}/${def.path}`;
+    const fragmentVersion = '20260504-10';
+    const fragmentPath = `${config.fragmentBase}/${def.path}?v=${fragmentVersion}`;
 
     try {
       const response = await fetch(fragmentPath);

@@ -86,7 +86,7 @@ const alertDocs = (() => {
     }
   };
 
-  function makeAlert({ kind = 'info', title, message, dismissible = false, focus = false } = {}) {
+  function makeAlert({ kind = 'info', title, message, dismissible = false, focus = false, theme = 'light' } = {}) {
     const spec = specs[kind] || specs.info;
     const root = document.createElement('div');
     root.className = `mp-alert mp-alert--${kind}${dismissible ? ' mp-alert--dismissible' : ''}${focus ? ' mp-alert--is-focus' : ''}`;
@@ -98,6 +98,18 @@ const alertDocs = (() => {
         <p class="mp-alert__body">${escapeHtml(message || spec.message)}</p>
       </div>
       ${dismissible ? '<button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-alert__close" aria-label="Cerrar alerta"><span class="material-symbols-rounded" aria-hidden="true">close</span></button>' : ''}`;
+
+    // Apply theme colors locally to avoid leaking styles into surrounding sections.
+    const modeKey = theme === 'high-contrast' ? 'highContrast' : theme;
+    const mode = exportJson.modes[modeKey]?.[kind] || exportJson.modes.light[kind] || exportJson.modes.light.info;
+    if (mode) {
+      root.style.setProperty('--mp-alert-bg', mode.bg);
+      root.style.setProperty('--mp-alert-border', mode.border);
+      root.style.setProperty('--mp-alert-title', mode.text);
+      root.style.setProperty('--mp-alert-body', mode.text);
+      root.style.setProperty('--mp-alert-icon', mode.text);
+    }
+
     return root;
   }
 
@@ -130,7 +142,7 @@ const alertDocs = (() => {
     page.querySelector('[data-alert-callout="spacing"]').textContent = `${spec.label}: ${spec.gap.replace('Gap ', '')}.`;
     page.querySelectorAll('.alert-doc-callout').forEach((item) => { item.hidden = !showLabels; });
     page.querySelectorAll('.alert-measure').forEach((item) => { item.hidden = !showMeasures; });
-    preview.replaceChildren(makeAlert({ kind: activeKind, dismissible }));
+    preview.replaceChildren(makeAlert({ kind: activeKind, dismissible, theme: stateFromPage(page).theme }));
   }
 
   function renderPlayground(page) {
@@ -183,7 +195,7 @@ content-gap: 4px`;
     page.querySelectorAll('[data-alert-state-demo]').forEach((slot) => {
       const kind = slot.dataset.alertStateDemo;
       const spec = specs[kind] || specs.info;
-      slot.replaceChildren(makeAlert({ kind, title: spec.title, message: spec.message }));
+      slot.replaceChildren(makeAlert({ kind, title: spec.title, message: spec.message, theme: 'light' }));
     });
   }
 
