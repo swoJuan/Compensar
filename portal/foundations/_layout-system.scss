@@ -178,6 +178,44 @@
   text-align: center; line-height: 1;
 }
 
+/* App-specific base structural demo (max 4 columns) */
+.lys-app-layout {
+  .lys-page-demo--app {
+    max-width: rem(280px);
+    border-radius: rem(24px);
+    border-width: rem(2px);
+    border-color: color-mix(in srgb, var(--use-border-default) 70%, transparent);
+    background: var(--base-neutral-white);
+  }
+
+  .lys-page-demo--app .lys-pd-nav {
+    height: rem(24px);
+    background: linear-gradient(180deg, var(--use-surface-theme-gray-10) 0%, var(--use-surface-theme-gray-5) 100%);
+  }
+
+  .lys-page-demo--app .lys-pd-hero {
+    flex-direction: column;
+    align-items: stretch;
+    gap: rem(10px);
+  }
+
+  .lys-page-demo--app .lys-pd-hero-img {
+    width: 100%;
+    height: rem(72px);
+  }
+
+  .lys-page-demo--app .lys-pd-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lys-grid-overlay,
+  .lys-col-nums {
+    left: calc(50% - rem(140px));
+    right: calc(50% - rem(140px));
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* ── Container compare ───────────────────────── */
 .lys-compare {
   display: grid;

@@ -1,53 +1,49 @@
-<section class="section" id="layout">
+<section class="section lys-app-layout" id="layout">
 
-  <!-- ── 1. HEADER ──────────────────────────────────────────── -->
   <div class="lys-header">
-    <div class="section-eyebrow">Fundamentos</div>
-    <h1 class="section-title">Layout System</h1>
-    <p class="lys-lead">Estructura macro de las interfaces. Bootstrap 5 · 12 columnas · Gutter 24px · Totalmente responsive.</p>
+    <div class="section-eyebrow">Fundamentos App</div>
+    <h1 class="section-title">Layout System MAUI</h1>
+    <p class="lys-lead">Guía de rejilla para .NET MAUI. En App usamos maximo 4 columnas y el contenido se redistribuye por zonas segun el ancho disponible.</p>
     <div class="lys-pills">
-      <span class="lys-pill lys-pill--blue">Bootstrap 5</span>
-      <span class="lys-pill lys-pill--purple">12 columnas</span>
-      <span class="lys-pill lys-pill--gray">Gutter 24px</span>
-      <span class="lys-pill lys-pill--green">Responsive</span>
+      <span class="lys-pill lys-pill--blue">.NET MAUI</span>
+      <span class="lys-pill lys-pill--purple">Grid</span>
+      <span class="lys-pill lys-pill--gray">Spacing 16dp</span>
+      <span class="lys-pill lys-pill--green">Adaptive</span>
     </div>
   </div>
 
-  <!-- ── 2. BASE ESTRUCTURAL + GRID TOGGLE ──────────────────── -->
   <div class="lys-card lys-grid-section">
     <div class="lys-grid-info">
-      <h2 class="lys-card-title">Base estructural</h2>
+      <h2 class="lys-card-title">Base estructural App</h2>
       <div class="lys-fact-list">
         <div class="lys-fact">
-          <span class="lys-fact-num">12</span>
+          <span class="lys-fact-num">4</span>
           <span class="lys-fact-label">columnas</span>
         </div>
         <div class="lys-fact-divider"></div>
         <div class="lys-fact">
-          <span class="lys-fact-num">24px</span>
-          <span class="lys-fact-label">gutter</span>
+          <span class="lys-fact-num">16dp</span>
+          <span class="lys-fact-label">separación base</span>
         </div>
         <div class="lys-fact-divider"></div>
         <div class="lys-fact">
-          <span class="lys-fact-num">B5</span>
-          <span class="lys-fact-label">Bootstrap</span>
+          <span class="lys-fact-num">Grid</span>
+          <span class="lys-fact-label">layout core</span>
         </div>
       </div>
       <ul class="lys-rules-mini">
-        <li><span class="lys-check">✓</span> No modificar cantidad de columnas</li>
-        <li><span class="lys-check">✓</span> No crear grids fuera del sistema</li>
-        <li><span class="lys-check">✓</span> Siempre respetar el gutter de 24px</li>
+        <li><span class="lys-check">✓</span> Maximo 4 columnas en todos los anchos</li>
+        <li><span class="lys-check">✓</span> Compacto: contenido en 1 columna</li>
+        <li><span class="lys-check">✓</span> Medio/expandido: 2 a 4 columnas segun prioridad</li>
       </ul>
       <button class="lys-toggle-btn" id="lys-grid-toggle" onclick="lysToggleGrid()">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        Mostrar grid
+        Mostrar rejilla
       </button>
     </div>
 
-    <!-- Grid visual interactivo -->
     <div class="lys-grid-canvas" id="lys-grid-canvas">
-      <!-- Página demo -->
-      <div class="lys-page-demo">
+      <div class="lys-page-demo lys-page-demo--app">
         <div class="lys-pd-nav"></div>
         <div class="lys-pd-hero">
           <div class="lys-pd-hero-text">
@@ -65,218 +61,175 @@
           <div class="lys-pd-card"></div>
         </div>
       </div>
-      <!-- Grid overlay (12 cols) -->
       <div class="lys-grid-overlay" id="lys-grid-overlay">
-        <div class="lys-go-col"></div><div class="lys-go-col"></div><div class="lys-go-col"></div>
-        <div class="lys-go-col"></div><div class="lys-go-col"></div><div class="lys-go-col"></div>
-        <div class="lys-go-col"></div><div class="lys-go-col"></div><div class="lys-go-col"></div>
-        <div class="lys-go-col"></div><div class="lys-go-col"></div><div class="lys-go-col"></div>
+        <div class="lys-go-col"></div><div class="lys-go-col"></div><div class="lys-go-col"></div><div class="lys-go-col"></div>
       </div>
-      <!-- Col numbers -->
       <div class="lys-col-nums" id="lys-col-nums">
-        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
-        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+        <span>1</span><span>2</span><span>3</span><span>4</span>
       </div>
     </div>
   </div>
 
-  <!-- ── 3. CONTAINER VS FLUID ──────────────────────────────── -->
-  <h2 class="lys-section-title">Container</h2>
-  <p class="lys-section-desc">Elige el tipo de container según el contexto de uso.</p>
+  <h2 class="lys-section-title">Rejillas por contexto MAUI</h2>
+  <p class="lys-section-desc">En App no usamos container/container-fluid. El comportamiento se define por ancho disponible y cambio de columnas del Grid.</p>
 
   <div class="lys-compare">
-
-    <!-- Container -->
     <div class="lys-compare-card lys-compare-card--container">
       <div class="lys-compare-header">
-        <span class="lys-compare-badge lys-compare-badge--purple">Portal · Drupal</span>
-        <h3 class="lys-compare-title">.container</h3>
-        <p class="lys-compare-sub">Ancho máximo · centrado automáticamente</p>
+        <span class="lys-compare-badge lys-compare-badge--purple">Compacto y medio</span>
+        <h3 class="lys-compare-title">1 a 4 columnas</h3>
+        <p class="lys-compare-sub">Pantallas de teléfono y tablet en portrait</p>
       </div>
       <div class="lys-compare-visual">
         <div class="lys-cv-screen">
           <div class="lys-cv-bg"></div>
           <div class="lys-cv-box lys-cv-box--centered">
-            <span class="lys-cv-label">container</span>
+            <span class="lys-cv-label">Grid.ColumnDefinitions</span>
           </div>
         </div>
         <div class="lys-cv-arrows">
           <div class="lys-cv-margin"></div>
-          <div class="lys-cv-content-bar">max-width</div>
+          <div class="lys-cv-content-bar">1 a 2 columnas de contenido</div>
           <div class="lys-cv-margin"></div>
         </div>
       </div>
       <ul class="lys-compare-list">
-        <li>Landings y páginas informativas</li>
-        <li>Contenido editorial</li>
-        <li>Secciones de marketing</li>
+        <li>Forms y flujos de captura</li>
+        <li>Listados con tarjetas</li>
+        <li>Resumenes por bloques</li>
       </ul>
-      <div class="lys-compare-widths">
-        <span class="lys-compare-label-small">Anchos máximos</span>
-        <div class="lys-bpw-list">
-          <div class="lys-bpw"><span>SM</span><code>540px</code></div>
-          <div class="lys-bpw"><span>MD</span><code>720px</code></div>
-          <div class="lys-bpw"><span>LG</span><code>960px</code></div>
-          <div class="lys-bpw"><span>XL</span><code>1140px</code></div>
-          <div class="lys-bpw"><span>XXL</span><code>1320px</code></div>
-        </div>
-      </div>
     </div>
 
-    <!-- VS divider -->
-    <div class="lys-vs">VS</div>
+    <div class="lys-vs">→</div>
 
-    <!-- Container-fluid -->
     <div class="lys-compare-card lys-compare-card--fluid">
       <div class="lys-compare-header">
-        <span class="lys-compare-badge lys-compare-badge--orange">Zona transaccional</span>
-        <h3 class="lys-compare-title">.container-fluid</h3>
-        <p class="lys-compare-sub">100% del ancho · sin límite</p>
+        <span class="lys-compare-badge lys-compare-badge--orange">Expandido</span>
+        <h3 class="lys-compare-title">Maximo 4 columnas</h3>
+        <p class="lys-compare-sub">Tablet landscape, escritorio o ventanas amplias</p>
       </div>
       <div class="lys-compare-visual">
         <div class="lys-cv-screen">
           <div class="lys-cv-bg"></div>
           <div class="lys-cv-box lys-cv-box--fluid">
-            <span class="lys-cv-label">container-fluid</span>
+            <span class="lys-cv-label">Panel + contenido + soporte</span>
           </div>
         </div>
         <div class="lys-cv-arrows">
-          <div class="lys-cv-content-bar lys-cv-content-bar--full">100% del ancho</div>
+          <div class="lys-cv-content-bar lys-cv-content-bar--full">Hasta 3 zonas simultáneas</div>
         </div>
       </div>
       <ul class="lys-compare-list">
-        <li>Formularios extensos</li>
-        <li>Tablas de datos</li>
-        <li>Paneles administrativos</li>
+        <li>Master-detail</li>
+        <li>Tablas o grillas densas</li>
+        <li>Flujos con panel lateral</li>
       </ul>
       <div class="lys-compare-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        En desktop mantener jerarquía visual clara y alineación a la izquierda.
+        En expandido conservar max-width de contenido principal para no perder legibilidad.
       </div>
     </div>
   </div>
 
-  <!-- ── 4. USO EN CARDS ────────────────────────────────────── -->
   <div class="lys-use-grid">
     <div class="lys-use-card">
       <div class="lys-use-icon lys-use-icon--purple">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
       </div>
-      <span class="lys-use-label">Landings</span>
-      <span class="lys-use-token">.container</span>
+      <span class="lys-use-label">Login y onboarding</span>
+      <span class="lys-use-token">4 columnas</span>
     </div>
     <div class="lys-use-card">
       <div class="lys-use-icon lys-use-icon--purple">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
       </div>
-      <span class="lys-use-label">Contenido editorial</span>
-      <span class="lys-use-token">.container</span>
+      <span class="lys-use-label">Formularios</span>
+      <span class="lys-use-token">1-4 columnas</span>
+    </div>
+    <div class="lys-use-card">
+      <div class="lys-use-icon lys-use-icon--purple">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+      </div>
+      <span class="lys-use-label">Listado de cards</span>
+      <span class="lys-use-token">2 columnas en medium</span>
     </div>
     <div class="lys-use-card">
       <div class="lys-use-icon lys-use-icon--orange">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="5" width="20" height="14" rx="2"/></svg>
       </div>
-      <span class="lys-use-label">Tablas de datos</span>
-      <span class="lys-use-token">.container-fluid</span>
+      <span class="lys-use-label">Tablet landscape</span>
+      <span class="lys-use-token">4 columnas</span>
     </div>
     <div class="lys-use-card">
       <div class="lys-use-icon lys-use-icon--orange">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
       </div>
-      <span class="lys-use-label">Paneles admin</span>
-      <span class="lys-use-token">.container-fluid</span>
+      <span class="lys-use-label">Master-detail</span>
+      <span class="lys-use-token">3 zonas</span>
     </div>
     <div class="lys-use-card">
       <div class="lys-use-icon lys-use-icon--orange">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/></svg>
       </div>
-      <span class="lys-use-label">Formularios extensos</span>
-      <span class="lys-use-token">.container-fluid</span>
-    </div>
-    <div class="lys-use-card">
-      <div class="lys-use-icon lys-use-icon--purple">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      </div>
-      <span class="lys-use-label">Secciones marketing</span>
-      <span class="lys-use-token">.container</span>
+      <span class="lys-use-label">Desktop MAUI</span>
+      <span class="lys-use-token">4 + zonas adaptadas</span>
     </div>
   </div>
 
-  <!-- ── 5. DO / DON'T ─────────────────────────────────────── -->
-  <h2 class="lys-section-title">Reglas clave</h2>
+  <h2 class="lys-section-title">Reglas clave de implementación</h2>
   <div class="lys-rules-grid">
     <div class="lys-rule lys-rule--do">
       <div class="lys-rule-icon">✓</div>
-      <p>Usar <code>.container</code> para centrar contenido con max-width</p>
+      <p>Definir layout base con <code>Grid</code> (filas y columnas), no con posiciones absolutas.</p>
     </div>
     <div class="lys-rule lys-rule--dont">
       <div class="lys-rule-icon">✗</div>
-      <p>No usar anchos arbitrarios (<code>width: 56.25rem</code>, etc.)</p>
+      <p>No fijar anchos en px para contenedores principales.</p>
     </div>
     <div class="lys-rule lys-rule--do">
       <div class="lys-rule-icon">✓</div>
-      <p>Usar <code>.container-fluid</code> en interfaces operativas y dashboards</p>
+      <p>Usar spacing en múltiplos de 4dp y mantener base de 16dp entre bloques.</p>
     </div>
     <div class="lys-rule lys-rule--dont">
       <div class="lys-rule-icon">✗</div>
-      <p>No mezclar containers sin intención ni documentar el motivo</p>
+      <p>No mezclar márgenes y paddings arbitrarios por pantalla.</p>
     </div>
     <div class="lys-rule lys-rule--do">
       <div class="lys-rule-icon">✓</div>
-      <p>Siempre usar <code>.row</code> + <code>.col-*</code> para la distribución interna</p>
+      <p>Respetar Safe Area en iOS y separación de barras del sistema en Android.</p>
     </div>
     <div class="lys-rule lys-rule--dont">
       <div class="lys-rule-icon">✗</div>
-      <p>No crear grids personalizados con CSS fuera del sistema Bootstrap</p>
+      <p>No aprobar pantallas con clipping, solapamientos o scroll horizontal.</p>
     </div>
   </div>
 
-  <!-- ── 6. BREAKPOINTS ─────────────────────────────────────── -->
-  <h2 class="lys-section-title">Responsive — breakpoints</h2>
-  <p class="lys-section-desc">El layout responde por breakpoints, no por dispositivos específicos.</p>
+  <h2 class="lys-section-title">Rangos recomendados para App</h2>
+  <p class="lys-section-desc">Las revisiones se hacen por ancho lógico (dp), no solo por nombre de dispositivo.</p>
 
   <div class="lys-bp-visual">
     <div class="lys-bp-bar-track">
       <div class="lys-bp-item lys-bp-xs">
         <div class="lys-bp-bar"></div>
-        <span class="lys-bp-name">xs</span>
-        <span class="lys-bp-range">&lt; 576px</span>
-        <span class="lys-bp-uso">Móvil pequeño</span>
-      </div>
-      <div class="lys-bp-item lys-bp-sm">
-        <div class="lys-bp-bar"></div>
-        <span class="lys-bp-name">sm</span>
-        <span class="lys-bp-range">≥ 576px</span>
-        <span class="lys-bp-uso">Móvil grande</span>
+        <span class="lys-bp-name">compact</span>
+        <span class="lys-bp-range">&lt; 600dp</span>
+        <span class="lys-bp-uso">Teléfono portrait</span>
       </div>
       <div class="lys-bp-item lys-bp-md">
         <div class="lys-bp-bar"></div>
-        <span class="lys-bp-name">md</span>
-        <span class="lys-bp-range">≥ 768px</span>
-        <span class="lys-bp-uso">Tablet</span>
-      </div>
-      <div class="lys-bp-item lys-bp-lg">
-        <div class="lys-bp-bar"></div>
-        <span class="lys-bp-name">lg</span>
-        <span class="lys-bp-range">≥ 992px</span>
-        <span class="lys-bp-uso">Desktop sm</span>
+        <span class="lys-bp-name">medium</span>
+        <span class="lys-bp-range">600–839dp</span>
+        <span class="lys-bp-uso">Tablet portrait / foldable</span>
       </div>
       <div class="lys-bp-item lys-bp-xl">
         <div class="lys-bp-bar"></div>
-        <span class="lys-bp-name">xl</span>
-        <span class="lys-bp-range">≥ 1200px</span>
-        <span class="lys-bp-uso">Desktop std</span>
-      </div>
-      <div class="lys-bp-item lys-bp-xxl">
-        <div class="lys-bp-bar"></div>
-        <span class="lys-bp-name">xxl</span>
-        <span class="lys-bp-range">≥ 1400px</span>
-        <span class="lys-bp-uso">Desktop amplio</span>
+        <span class="lys-bp-name">expanded</span>
+        <span class="lys-bp-range">≥ 840dp</span>
+        <span class="lys-bp-uso">Tablet landscape / desktop</span>
       </div>
     </div>
   </div>
 
-  <!-- ── 7. CÓMO SE ADAPTA ──────────────────────────────────── -->
   <div class="lys-adapt-grid">
     <div class="lys-adapt-card">
       <div class="lys-adapt-device lys-adapt-device--mobile">
@@ -286,9 +239,9 @@
           <div class="lys-ad-col-full"></div>
         </div>
       </div>
-      <span class="lys-adapt-label">Mobile</span>
-      <span class="lys-adapt-sub">1 columna</span>
-      <code class="lys-adapt-code">col-12</code>
+      <span class="lys-adapt-label">Compact</span>
+      <span class="lys-adapt-sub">1 columna de contenido</span>
+      <code class="lys-adapt-code">hasta 4 columnas</code>
     </div>
     <div class="lys-adapt-arrow">→</div>
     <div class="lys-adapt-card">
@@ -301,9 +254,9 @@
           <div class="lys-ad-col-full lys-ad-col--sm"></div>
         </div>
       </div>
-      <span class="lys-adapt-label">Tablet</span>
-      <span class="lys-adapt-sub">2 columnas</span>
-      <code class="lys-adapt-code">col-md-6</code>
+      <span class="lys-adapt-label">Medium</span>
+      <span class="lys-adapt-sub">2 columnas de contenido</span>
+      <code class="lys-adapt-code">hasta 4 columnas</code>
     </div>
     <div class="lys-adapt-arrow">→</div>
     <div class="lys-adapt-card">
@@ -321,137 +274,132 @@
           </div>
         </div>
       </div>
-      <span class="lys-adapt-label">Desktop</span>
-      <span class="lys-adapt-sub">3–4 columnas</span>
-      <code class="lys-adapt-code">col-xl-4</code>
+      <span class="lys-adapt-label">Expanded</span>
+      <span class="lys-adapt-sub">hasta 3 zonas funcionales</span>
+      <code class="lys-adapt-code">hasta 4 columnas</code>
     </div>
   </div>
 
-  <!-- ── 8. VALIDACIÓN RÁPIDA QA ───────────────────────────── -->
   <div class="lys-qa-block">
     <div class="lys-qa-title-row">
       <div class="lys-qa-icon-wrap">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </div>
-      <h2 class="lys-section-title lys-section-title--inline">Validación rápida</h2>
+      <h2 class="lys-section-title lys-section-title--inline">QA de estilos en App</h2>
     </div>
 
     <div class="lys-qa-grid">
       <div class="lys-qa-item">
         <span class="lys-qa-num">1</span>
         <div>
-          <strong>Revisar dispositivos clave</strong>
-          <span>Mobile 375px · Tablet 820px · Desktop 1280px como base de QA.</span>
+          <strong>Revisión por perfil de ancho</strong>
+          <span>Validar compact, medium y expanded en portrait y landscape.</span>
         </div>
       </div>
       <div class="lys-qa-item">
         <span class="lys-qa-num">2</span>
         <div>
-          <strong>Sin scroll horizontal</strong>
-          <span>En ningún breakpoint. Bloqueante para aprobación.</span>
+          <strong>Sin clipping ni overlap</strong>
+          <span>Texto, íconos y CTAs no deben recortarse ni montarse.</span>
         </div>
       </div>
       <div class="lys-qa-item">
         <span class="lys-qa-num">3</span>
         <div>
-          <strong>Usar DevTools responsive</strong>
-          <span>F12 → modo dispositivo → cambiar viewports manualmente</span>
+          <strong>Consistencia de spacing</strong>
+          <span>Comprobar separaciones base de 16dp y submúltiplos de 8/4dp.</span>
         </div>
       </div>
       <div class="lys-qa-item">
         <span class="lys-qa-num">4</span>
         <div>
-          <strong>Respetar grilla de 12 col</strong>
-          <span>Activar grid overlay para verificar alineación</span>
+          <strong>Tema y contraste</strong>
+          <span>Probar claro, oscuro y alto contraste con foco visible.</span>
         </div>
       </div>
       <div class="lys-qa-item">
         <span class="lys-qa-num">5</span>
         <div>
-          <strong>Probar con contenido real</strong>
-          <span>No usar Lorem ipsum. Textos largos y cortos.</span>
+          <strong>Accesibilidad tipográfica</strong>
+          <span>Escalar fuente del sistema y validar reflow sin cortes.</span>
         </div>
       </div>
       <div class="lys-qa-item">
         <span class="lys-qa-num">6</span>
         <div>
-          <strong>iOS Safari obligatorio</strong>
-          <span>Inputs ≥ 16px para evitar zoom automático</span>
+          <strong>Evidencia QA</strong>
+          <span>Captura por cada perfil (compact/medium/expanded) con check de estados.</span>
         </div>
       </div>
     </div>
 
-    <!-- Dispositivos prioritarios -->
     <div class="lys-devices-row">
       <div class="lys-dev-chip lys-dev-chip--p1">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
-        Recomendado QA · iPhone SE · 375px
+        Recomendado · iPhone 14 (390x844 pt)
       </div>
       <div class="lys-dev-chip lys-dev-chip--p1">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
-        iPhone 14 · 393px
+        Recomendado · Pixel 7 (412x915 dp)
       </div>
       <div class="lys-dev-chip lys-dev-chip--p2">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/></svg>
-        Recomendado tablet · iPad Air · 820px
+        Recomendado · iPad 11" portrait (834x1194)
       </div>
       <div class="lys-dev-chip lys-dev-chip--p2">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        Recomendado desktop · Laptop 1280px
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/></svg>
+        Recomendado · iPad 11" landscape (1194x834)
       </div>
       <div class="lys-dev-chip lys-dev-chip--p3">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        Monitor 1920px
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>
+        Opcional desktop · Windows 1366x768+
       </div>
     </div>
   </div>
 
-  <!-- ── CÓDIGO ─────────────────────────────────────────────── -->
   <div class="code-block">
     <div class="code-tabs">
-      <button class="code-tab active" onclick="switchTab(this,'lys-css-tab')">HTML / Drupal</button>
-      <button class="code-tab" onclick="switchTab(this,'lys-scss-tab')">Angular</button>
+      <button class="code-tab active" onclick="switchTab(this,'lys-css-tab')">XAML</button>
+      <button class="code-tab" onclick="switchTab(this,'lys-scss-tab')">C# (adaptive)</button>
     </div>
     <div class="code-content">
       <button class="copy-btn" onclick="copyCode(this)">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         Copiar
       </button>
-      <pre class="active" id="lys-css-tab"><span class="cmt">&lt;!-- Portal (Drupal) — contenido centrado --&gt;</span>
-<span class="sel">&lt;div</span> <span class="val">class="container"</span><span class="sel">&gt;</span>
-  <span class="sel">&lt;div</span> <span class="val">class="row"</span><span class="sel">&gt;</span>
-    <span class="sel">&lt;div</span> <span class="val">class="col-12 col-md-6 col-xl-4"</span><span class="sel">&gt;</span>
-      <span class="cmt">&lt;!-- Contenido --&gt;</span>
-    <span class="sel">&lt;/div&gt;</span>
-  <span class="sel">&lt;/div&gt;</span>
-<span class="sel">&lt;/div&gt;</span>
+      <pre class="active" id="lys-css-tab"><span class="cmt">&lt;!-- MAUI: layout base de pantalla --&gt;</span>
+<span class="sel">&lt;Grid</span>
+  <span class="val">Padding="16"</span>
+  <span class="val">ColumnSpacing="16"</span>
+  <span class="val">RowSpacing="16"</span>
+  <span class="val">RowDefinitions="Auto,*"</span>
+  <span class="val">ColumnDefinitions="*,*"</span><span class="sel">&gt;</span>
 
-<span class="cmt">&lt;!-- Zona transaccional — ancho completo --&gt;</span>
-<span class="sel">&lt;div</span> <span class="val">class="container-fluid"</span><span class="sel">&gt;</span>
-  <span class="sel">&lt;div</span> <span class="val">class="row"</span><span class="sel">&gt;</span>
-    <span class="sel">&lt;div</span> <span class="val">class="col-12 col-md-3"</span><span class="sel">&gt;</span><span class="cmt">&lt;!-- Sidebar --&gt;</span><span class="sel">&lt;/div&gt;</span>
-    <span class="sel">&lt;div</span> <span class="val">class="col-12 col-md-9"</span><span class="sel">&gt;</span><span class="cmt">&lt;!-- Contenido --&gt;</span><span class="sel">&lt;/div&gt;</span>
-  <span class="sel">&lt;/div&gt;</span>
-<span class="sel">&lt;/div&gt;</span></pre>
-      <pre id="lys-scss-tab"><span class="cmt">// Angular — en el template del componente</span>
+  <span class="sel">&lt;Label</span> <span class="val">Grid.ColumnSpan="2"</span> <span class="val">Text="Resumen"</span> <span class="sel">/&gt;</span>
 
-<span class="cmt">// Landing o sección informativa</span>
-<span class="sel">&lt;section</span> <span class="val">class="container"</span><span class="sel">&gt;</span>
-  <span class="sel">&lt;div</span> <span class="val">class="row"</span><span class="sel">&gt;</span>
-    <span class="sel">&lt;div</span> <span class="val">class="col-12 col-md-4"</span>
-         <span class="val">*ngFor="let item of items"</span><span class="sel">&gt;</span>
-      <span class="sel">&lt;app-card</span> <span class="val">[data]="item"</span> <span class="sel">/&gt;</span>
-    <span class="sel">&lt;/div&gt;</span>
-  <span class="sel">&lt;/div&gt;</span>
-<span class="sel">&lt;/section&gt;</span>
+  <span class="sel">&lt;Border</span> <span class="val">Grid.Row="1"</span> <span class="val">Grid.Column="0"</span> <span class="sel">/&gt;</span>
+  <span class="sel">&lt;Border</span> <span class="val">Grid.Row="1"</span> <span class="val">Grid.Column="1"</span> <span class="sel">/&gt;</span>
 
-<span class="cmt">// Dashboard / zona transaccional</span>
-<span class="sel">&lt;main</span> <span class="val">class="container-fluid"</span><span class="sel">&gt;</span>
-  <span class="sel">&lt;div</span> <span class="val">class="row"</span><span class="sel">&gt;</span>
-    <span class="sel">&lt;aside</span> <span class="val">class="col-md-3"</span><span class="sel">&gt;</span><span class="sel">&lt;app-sidebar /&gt;</span><span class="sel">&lt;/aside&gt;</span>
-    <span class="sel">&lt;div</span>   <span class="val">class="col-md-9"</span><span class="sel">&gt;</span><span class="sel">&lt;router-outlet /&gt;</span><span class="sel">&lt;/div&gt;</span>
-  <span class="sel">&lt;/div&gt;</span>
-<span class="sel">&lt;/main&gt;</span></pre>
+<span class="sel">&lt;/Grid&gt;</span>
+
+<span class="cmt">&lt;!-- Regla: en compacto usar una sola columna de contenido --&gt;</span>
+<span class="cmt">&lt;!-- Regla: en expanded dividir en 2 o 3 zonas segun flujo --&gt;</span></pre>
+      <pre id="lys-scss-tab"><span class="cmt">// MAUI code-behind: cambiar columnas segun ancho disponible</span>
+<span class="kw">protected override void</span> <span class="fn">OnSizeAllocated</span>(<span class="kw">double</span> width, <span class="kw">double</span> height)
+{
+    <span class="kw">base</span>.OnSizeAllocated(width, height);
+
+    <span class="kw">int</span> cols = width &lt; 600 ? 1 : (width &lt; 840 ? 2 : 4);
+
+    ContentGrid.ColumnDefinitions.Clear();
+    <span class="kw">for</span> (<span class="kw">int</span> i = 0; i &lt; cols; i++)
+        ContentGrid.ColumnDefinitions.Add(<span class="kw">new</span> ColumnDefinition(GridLength.Star));
+
+    ContentGrid.ColumnSpacing = 16;
+    ContentGrid.RowSpacing    = 16;
+}
+
+<span class="cmt">// QA: registrar capturas en compact/medium/expanded y ambos temas</span></pre>
     </div>
   </div>
 
@@ -472,8 +420,8 @@
     if (btn) {
       btn.classList.toggle('active', gridOn);
       btn.innerHTML = gridOn
-        ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Ocultar grid'
-        : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Mostrar grid';
+        ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Ocultar rejilla'
+        : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Mostrar rejilla';
     }
   }
   window.lysToggleGrid = lysToggleGrid;

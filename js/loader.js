@@ -16,11 +16,11 @@ const ROUTES = {
   'colores-utilidades':   'docs/foundations/colors.html',
   'fundamentos/colores':  'docs/foundations/colors.html',
 
-  'tipografia':     'docs/app/fundamentos/typography.html',
-  'espaciado':      'docs/app/fundamentos/spacing.html',
-  'border-radius':  'docs/app/fundamentos/border-radius.html',
-  'layout':         'docs/app/fundamentos/layout.html',
-  'sombras':        'docs/app/fundamentos/shadows.html',
+  'tipografia':     'docs/transversales/fundamentos/typography.html',
+  'espaciado':      'docs/transversales/fundamentos/spacing.html',
+  'border-radius':  'docs/transversales/fundamentos/border-radius.html',
+  'layout':         'docs/transversales/fundamentos/layout.html',
+  'sombras':        'docs/transversales/fundamentos/shadows.html',
 
   'iconos-intro':    'docs/web/components/icons-intro.html',
   'iconos-conectar': 'docs/web/components/icons-connect.html',

@@ -2,7 +2,7 @@
   <div class="section-header">
     <div class="section-eyebrow">1.4</div>
     <h1 class="section-title">Espaciado</h1>
-    <p class="section-desc">Sistema espacial basado en una unidad base de <strong>8px</strong>. Usar siempre los tokens — nunca valores sueltos. Alineado con Bootstrap 5 y la grilla de 8pt de Figma.</p>
+    <p class="section-desc">Sistema espacial transversal basado en una unidad base de <strong>8px</strong>. Usar siempre los tokens — nunca valores sueltos. Alineado con la grilla de 8pt de Figma y listo para implementaciones web y app.</p>
   </div>
 
   <!-- Figma bar -->
@@ -17,10 +17,11 @@
   <!-- Download bar -->
   <div class="ct-downloads sp-downloads-bar">
     <span class="ct-downloads-label"><span class="material-symbols-rounded">download</span> Descargar tokens</span>
-    <button class="ct-download-btn" onclick="spDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
-    <button class="ct-download-btn" onclick="spDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
-    <button class="ct-download-btn" onclick="spDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
-    <button class="ct-download-btn" onclick="spCopyVars()"><span class="material-symbols-rounded">content_copy</span> Copiar variables</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="spDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="spDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="spDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="spCopyVars()"><span class="material-symbols-rounded">content_copy</span> Copiar variables</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="spDownloadMAUI()"><span class="material-symbols-rounded">smartphone</span> MAUI XAML</button>
   </div>
 
   <!-- Base unit card -->
@@ -45,7 +46,7 @@
       </div>
       <div class="sp-base-info-row">
         <span class="material-symbols-rounded sp-info-icon-sm">grid_on</span>
-        <span>Compatible con Bootstrap 5 <code>$spacers</code> · Alineado con grilla de 8pt Figma</span>
+        <span>Transversal para Web y App · Alineado con grilla de 8pt Figma</span>
       </div>
     </div>
   </div>
@@ -80,8 +81,8 @@
   <div id="util-gap"     class="sp-util-panel"></div>
   <div id="util-stack"   class="sp-util-panel"></div>
 
-  <!-- BOOTSTRAP 5 -->
-  <div class="sp-section-label"><span class="material-symbols-rounded">integration_instructions</span> Integración Bootstrap 5</div>
+  <!-- IMPLEMENTACIÓN TRANSVERSAL -->
+  <div class="sp-section-label"><span class="material-symbols-rounded">integration_instructions</span> Implementación transversal</div>
   <div class="sp-bs-grid">
     <div class="sp-bs-card">
       <div class="sp-bs-card-head">Mapa <code>$spacers</code></div>
@@ -106,7 +107,7 @@ $spacers: (
       </div>
     </div>
     <div class="sp-bs-card">
-      <div class="sp-bs-card-head">Uso en Angular / React</div>
+      <div class="sp-bs-card-head">Uso en Web / App</div>
       <div class="sp-code-block">
         <button class="sp-code-copy" onclick="spCopyCode('sp-bs-angular',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
         <pre class="sp-code-pre" id="sp-bs-angular">// Bootstrap utility → token CSS
@@ -203,7 +204,7 @@ $spacers: (
         <div>
           <div class="sp-access-sub">Elementos interactivos</div>
           <ul class="sp-access-list">
-            <li>Altura mínima táctil en móvil: <strong>44px</strong></li>
+            <li>Altura mínima táctil: <strong>44px</strong></li>
             <li>Separación mínima entre botones: <strong>8px – 16px</strong></li>
             <li>Evitar botones demasiado juntos sin separación clara.</li>
           </ul>
@@ -251,7 +252,7 @@ let SP_TOKENS = [
   { group:'Mediano',token:'spacing/32px', px:32,  var:'--space-32',  usage:'standard',
     classes:['.p-32','.px-32','.mb-32','.pb-32','.stack-32'], desc:'Margin-bottom entre bloques de contenido' },
   { group:'Mediano',token:'spacing/48px', px:48,  var:'--space-48',  usage:'standard',
-    classes:['.p-48','.py-48','.stack-48'], desc:'Padding lateral mobile, gap entre secciones' },
+    classes:['.p-48','.py-48','.stack-48'], desc:'Padding lateral en layouts compactos, gap entre secciones' },
   { group:'Grande', token:'spacing/64px', px:64,  var:'--space-64',  usage:'standard',
     classes:['.p-64','.py-64'], desc:'Padding vertical de secciones principales' },
   { group:'Grande', token:'spacing/80px', px:80,  var:'--space-80',  usage:'standard',
@@ -587,7 +588,7 @@ async function spDownloadCSS(){
    Fuente    : Figma · Compensar v2 – Sistema de diseño
    Generado  : ${d}
    Archivo   : spacing-tokens.css
-   Base      : 8px · compatible Bootstrap 5
+  Base      : 8px · transversal Web/App
   Core      : core/abstracts/_tokens-spacing.scss
           core/utils/_spacing.scss
 
@@ -659,12 +660,12 @@ async function spDownloadSCSS(){
 // Fuente    : Figma · Compensar v2 – Sistema de diseño
 // Generado  : ${d}
 // Archivo   : _spacing-tokens.scss
-// Base      : 8px · compatible Bootstrap 5
+// Base      : 8px · transversal Web/App
 //
 // CONTENIDO
 // ─────────
 // 1. Variables Sass   ($space-16: 16px)
-// 2. Override $spacers de Bootstrap 5
+// 2. Override $spacers (Web Bootstrap)
 // 3. CSS custom properties en :root
 // 4. Clases de utilidad (padding/margin/gap/stack)
 //
@@ -692,7 +693,7 @@ async function spDownloadSCSS(){
   });
   lines.push(`
 // ─────────────────────────────────────────────────────────────────────
-// 2. BOOTSTRAP 5 — OVERRIDE $spacers
+// 2. WEB BOOTSTRAP — OVERRIDE $spacers
 // Incluir ANTES de @import "bootstrap". Permite que Bootstrap genere
 // sus clases .p-1, .m-2, etc. con nuestros valores de 8pt.
 // ─────────────────────────────────────────────────────────────────────
@@ -756,7 +757,7 @@ async function spDownloadJSON(){
         'core/abstracts/_tokens-spacing.scss',
         'core/utils/_spacing.scss'
       ],
-      description: 'Sistema espacial de 8pt. Compatible con Bootstrap 5. Los tokens "restringido" requieren aprobación de diseño.',
+      description: 'Sistema espacial transversal de 8pt para Web y App. Los tokens "restringido" requieren aprobación de diseño.',
       usage: {
         css:    'padding: var(--space-16)',
         html:   '<div class="p-16 gap-24">',
@@ -793,9 +794,42 @@ async function spCopyVars(){
   });
 }
 
+function spDownloadMAUI(){
+  const d = new Date().toISOString().split('T')[0];
+  const lines = [
+    '<?xml version="1.0" encoding="utf-8" ?>',
+    '<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"',
+    '                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">',
+    '',
+    `  <!-- Spacing tokens for .NET MAUI · ${d} -->`,
+    '  <!-- Source: core/abstracts/_tokens-spacing.scss + docs/transversales/fundamentos/spacing.html -->',
+    '  <!-- Nota: Los valores están en Thickness para márgenes/paddings en MAUI -->',
+    ''
+  ];
+
+  // Add spacing tokens
+  SP_TOKENS.forEach(function(t) {
+    var key = 'MpSpace' + (t.px === 2 ? '2' : t.px === 4 ? '4' : t.px === 8 ? '8' : t.px === 12 ? '12' : t.px === 16 ? '16' : t.px === 24 ? '24' : t.px === 32 ? '32' : t.px === 48 ? '48' : t.px === 64 ? '64' : t.px === 80 ? '80' : t.px === 96 ? '96' : t.px === 128 ? '128' : t.px);
+    // Use Thickness (uniform value)
+    lines.push(`  <x:Double x:Key="${key}">${t.px}</x:Double>`);
+  });
+
+  lines.push('');
+  lines.push('</ResourceDictionary>');
+
+  var content = lines.join('\n');
+  var blob = new Blob([content], { type: 'application/xml' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Spacing.Maui.xaml';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
 window.spDownloadCSS  = spDownloadCSS;
 window.spDownloadSCSS = spDownloadSCSS;
 window.spDownloadJSON = spDownloadJSON;
+window.spDownloadMAUI = spDownloadMAUI;
 window.spCopyVars     = spCopyVars;
 
 /* ─── Init ────────────────────────────────────────────── */

@@ -207,6 +207,18 @@ Las clases Bootstrap o legacy como `.btn`, `.btn-primary`, `.btn-secondary`, `.b
 
 Todo nuevo componente debe evitar mezclar APIs productivas en ingles y espanol dentro del mismo componente. Si existe una nomenclatura en Figma en espanol, la clase productiva del sistema debe conservar esa convencion.
 
+## Regla obligatoria de uso del componente Boton
+
+Desde el 4 de mayo de 2026, todo boton usado en la documentacion web del sistema de diseno debe consumir el componente oficial recien definido:
+
+- Clase base obligatoria: `.mp-btn`.
+- Variante obligatoria segun jerarquia: `.mp-btn--primario`, `.mp-btn--secundario`, `.mp-btn--terciario` o `.mp-btn--especial`.
+- Anatomia obligatoria cuando aplique: `.mp-btn--icon-left`, `.mp-btn--icon-right`, `.mp-btn--icon-both` o `.mp-btn--icon-only`.
+
+Las clases documentales o funcionales del portal, por ejemplo clases para tabs, copiado, filtros o descargas, pueden mantenerse solo como hooks de layout, JS o estado visual; no deben reemplazar la API `.mp-btn`.
+
+Queda prohibido crear nuevos botones web con APIs legacy como `.btn`, `.btn-primary`, `.copy-btn`, `.ct-download-btn`, `.ic-pop-btn` o similares si no incluyen tambien `.mp-btn` y una variante oficial. Los snippets de codigo que muestren botones tambien deben usar `.mp-btn`.
+
 ## Regla de descargas por componente
 
 Cada pagina de componente debe incluir una descarga clara para desarrollo y QA cuando el componente tenga estilos productivos en `core`. La descarga debe ofrecer, como minimo:

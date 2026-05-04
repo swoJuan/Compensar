@@ -16,14 +16,32 @@
 }
 
 .ct-downloads-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  position: relative;
+  padding-right: var(--space-16);
   font-size: rem(11px);
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--ui-text-muted);
-  margin-right: var(--space-4);
+  margin-right: var(--space-8);
   flex-shrink: 0;
 }
+
+.ct-downloads-label::after {
+  content: '';
+  width: rem(1px);
+  height: rem(24px);
+  background: var(--ui-border);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+/* Legacy .ct-download-btn — mantener por compatibilidad con inline styles */
 
 .ct-download-btn {
   display: inline-flex;

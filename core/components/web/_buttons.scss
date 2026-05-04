@@ -16,6 +16,7 @@
   --mp-btn-bg-hover: var(--mp-btn-bg);
   --mp-btn-bg-active: var(--mp-btn-bg-hover);
   --mp-btn-color: var(--color-text-primary);
+  --mp-btn-color-hover: var(--mp-btn-color);
   --mp-btn-border-color: transparent;
   --mp-btn-border-width: 1.5px;
   --mp-btn-focus-color: var(--color-focus-ring);
@@ -24,9 +25,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-16);
+  gap: var(--space-8);
   min-height: var(--space-48);
-  padding: var(--space-16) var(--space-32);
+  padding: var(--space-10) var(--space-32);
   border: var(--mp-btn-border-width) solid var(--mp-btn-border-color);
   border-radius: var(--radius-md);
   background: var(--mp-btn-bg);
@@ -39,7 +40,8 @@
   white-space: nowrap;
   cursor: pointer;
   text-decoration: none;
-  transition: box-shadow .2s, background .2s, opacity .15s;
+  transition: background-color .2s, background .2s, color .2s, border-color .2s,
+              box-shadow .2s, opacity .15s;
   -webkit-font-smoothing: antialiased;
   vertical-align: middle;
 
@@ -52,7 +54,7 @@
   &:hover:not(:disabled),
   &.mp-btn--is-hover {
     background: var(--mp-btn-bg-hover);
-    color: var(--mp-btn-color);
+    color: var(--mp-btn-color-hover);
     border-color: var(--mp-btn-border-color);
     box-shadow: var(--mp-btn-hover-shadow);
   }
@@ -83,21 +85,21 @@
 }
 
 .mp-btn--icon-left {
-  padding: var(--space-12) var(--space-32) var(--space-12) var(--space-16);
+  padding: var(--space-10) var(--space-32) var(--space-10) var(--space-16);
 }
 
 .mp-btn--icon-right {
-  padding: var(--space-12) var(--space-16) var(--space-12) var(--space-32);
+  padding: var(--space-10) var(--space-16) var(--space-10) var(--space-32);
 }
 
 .mp-btn--icon-both {
-  padding: var(--space-12) var(--space-16);
+  padding: var(--space-10) var(--space-16);
 }
 
 .mp-btn--icon-only {
   width: var(--space-56);
   min-width: var(--space-56);
-  padding: var(--space-12) var(--space-16);
+  padding: var(--space-10) var(--space-16);
 }
 
 .mp-btn--loading {
@@ -117,6 +119,11 @@
   --mp-btn-bg-hover: linear-gradient(180deg, var(--use-primary-active) 0%, var(--use-primary-default) 100%);
   --mp-btn-bg-active: var(--use-primary-active);
   --mp-btn-color: var(--use-text-on-dark-primary);
+
+  &:hover:not(:disabled),
+  &.mp-btn--is-hover {
+    text-decoration: none;
+  }
 }
 
 .mp-btn--secundario {
@@ -125,6 +132,11 @@
   --mp-btn-bg-active: color-mix(in srgb, var(--use-primary-default) 14%, transparent);
   --mp-btn-color: var(--use-primary-default);
   --mp-btn-border-color: var(--use-primary-default);
+
+  &:hover:not(:disabled),
+  &.mp-btn--is-hover {
+    text-decoration: none;
+  }
 }
 
 .mp-btn--terciario {
@@ -133,16 +145,43 @@
   padding: var(--space-8) var(--space-24);
   border-radius: var(--radius-sm);
   --mp-btn-bg: transparent;
-  --mp-btn-bg-hover: color-mix(in srgb, var(--use-primary-default) 8%, transparent);
+  --mp-btn-bg-hover: transparent;
   --mp-btn-bg-active: color-mix(in srgb, var(--use-primary-default) 14%, transparent);
   --mp-btn-color: var(--use-primary-default);
+  --mp-btn-color-hover: var(--use-primary-hover);
+  --mp-btn-border-color: transparent;
   --mp-btn-border-width: 0;
+  --mp-btn-hover-shadow: none;
   font-size: var(--font-size-md);
 
   &:hover:not(:disabled),
   &.mp-btn--is-hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
+}
+
+.mp-btn--terciario.mp-btn--icon-left {
+  height: auto;
+  min-height: var(--space-48);
+  padding: var(--space-10) var(--space-32) var(--space-10) var(--space-16);
+}
+
+.mp-btn--terciario.mp-btn--icon-right {
+  height: auto;
+  min-height: var(--space-48);
+  padding: var(--space-10) var(--space-16) var(--space-10) var(--space-32);
+}
+
+.mp-btn--terciario.mp-btn--icon-both {
+  height: auto;
+  min-height: var(--space-48);
+  padding: var(--space-10) var(--space-16);
+}
+
+.mp-btn--terciario.mp-btn--icon-only {
+  height: auto;
+  min-height: var(--space-48);
+  padding: var(--space-10) var(--space-16);
 }
 
 .mp-btn--especial {
@@ -163,6 +202,13 @@
 
   .mp-btn--secundario,
   .mp-btn--terciario {
+    --mp-btn-color: var(--use-primary-default-dark, #ff9d5c);
+    --mp-btn-color-hover: var(--use-primary-hover);
+    --mp-btn-border-color: transparent;
+    --mp-btn-bg-hover: transparent;
+  }
+
+  .mp-btn--secundario {
     --mp-btn-bg-hover: color-mix(in srgb, var(--use-primary-default-dark, #ff9d5c) 16%, transparent);
     --mp-btn-bg-active: color-mix(in srgb, var(--use-primary-default-dark, #ff9d5c) 24%, transparent);
     --mp-btn-color: var(--use-primary-default-dark, #ff9d5c);

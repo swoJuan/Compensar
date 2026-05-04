@@ -14,10 +14,10 @@
 <!-- ── DESCARGA ─────────────────────────────────────────── -->
 <div class="ct-downloads ic-downloads">
   <span class="ct-downloads-label"><span class="material-symbols-rounded">download</span> Descargar</span>
-  <button class="ct-download-btn" onclick="icDownloadZIP()"><span class="material-symbols-rounded">folder_zip</span> ZIP completo</button>
-  <button class="ct-download-btn" onclick="icDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
-  <button class="ct-download-btn" onclick="icDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
-  <button class="ct-download-btn" onclick="icCopySnippet()"><span class="material-symbols-rounded">content_copy</span> Copiar snippet base</button>
+  <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="icDownloadZIP()"><span class="material-symbols-rounded">folder_zip</span> ZIP completo</button>
+  <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="icDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
+  <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="icDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
+  <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="icCopySnippet()"><span class="material-symbols-rounded">content_copy</span> Copiar snippet base</button>
 </div>
 
 
@@ -52,22 +52,22 @@
     <input type="text" id="ic-search" class="ic-search-input"
            placeholder="Buscar icono — nombre, unicode o sinónimo (ej: casa, salud, usuario)…"
            oninput="icSearch(this.value)" autocomplete="off" spellcheck="false">
-    <button class="ic-search-clear" id="ic-search-clear" onclick="icClearSearch()" hidden aria-label="Limpiar búsqueda">
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-only ic-search-clear" id="ic-search-clear" onclick="icClearSearch()" hidden aria-label="Limpiar búsqueda">
       <span class="material-symbols-rounded">close</span>
     </button>
   </div>
   <div class="ic-search-footer">
     <span id="ic-results-count" class="ic-results-count">955 resultados</span>
     <div class="ic-cat-pills" id="ic-cat-pills">
-      <button class="ic-cat-pill active" onclick="icFilterCat(this,'')">Todos</button>
-      <button class="ic-cat-pill" onclick="icFilterCat(this,'security')">Seguridad</button>
-      <button class="ic-cat-pill" onclick="icFilterCat(this,'health')">Salud</button>
-      <button class="ic-cat-pill" onclick="icFilterCat(this,'user')">Usuario</button>
-      <button class="ic-cat-pill" onclick="icFilterCat(this,'arrow')">Flechas</button>
-      <button class="ic-cat-pill" onclick="icFilterCat(this,'file')">Archivos</button>
-      <button class="ic-cat-pill" onclick="icFilterCat(this,'chart')">Gráficas</button>
-      <button class="ic-cat-pill" onclick="icFilterCat(this,'map')">Mapas</button>
-      <button class="ic-cat-pill" onclick="icFilterCat(this,'device')">Dispositivos</button>
+      <button class="mp-btn mp-btn--terciario ic-cat-pill active" onclick="icFilterCat(this,'')">Todos</button>
+      <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'security')">Seguridad</button>
+      <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'health')">Salud</button>
+      <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'user')">Usuario</button>
+      <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'arrow')">Flechas</button>
+      <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'file')">Archivos</button>
+      <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'chart')">Gráficas</button>
+      <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'map')">Mapas</button>
+      <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'device')">Dispositivos</button>
     </div>
   </div>
 </div>
@@ -80,44 +80,46 @@
   <span class="material-symbols-rounded">search_off</span>
   <div class="ic-empty-title">Sin resultados</div>
   <div class="ic-empty-sub">Intenta con otro término o revisa la ortografía</div>
-  <button class="ic-empty-reset" onclick="icClearSearch()">Ver todos los iconos</button>
+  <button class="mp-btn mp-btn--secundario ic-empty-reset" onclick="icClearSearch()">Ver todos los iconos</button>
 </div>
 
 <!-- Popover -->
 <div class="ic-popover" id="ic-popover" hidden>
   <div class="ic-pop-header">
-    <div class="ic-pop-preview-wrap">
-      <div class="ic-pop-preview" id="ic-pop-preview-box">
-        <i class="icon ic-pop-icon icon-40" id="ic-pop-icon"></i>
+    <div class="ic-pop-main">
+      <div class="ic-pop-preview-wrap">
+        <div class="ic-pop-preview" id="ic-pop-preview-box">
+          <i class="icon ic-pop-icon icon-40" id="ic-pop-icon"></i>
+        </div>
       </div>
-      <div class="ic-pop-size-strip">
-        <button class="ic-pop-sz active" data-sz="icon-20" onclick="icPopSize(this)">20</button>
-        <button class="ic-pop-sz" data-sz="icon-32" onclick="icPopSize(this)">32</button>
-        <button class="ic-pop-sz" data-sz="icon-40" onclick="icPopSize(this)">40</button>
-        <button class="ic-pop-sz" data-sz="icon-48" onclick="icPopSize(this)">48</button>
-        <button class="ic-pop-sz" data-sz="icon-64" onclick="icPopSize(this)">64</button>
-      </div>
-    </div>
-    <div class="ic-pop-meta">
-      <div class="ic-pop-name" id="ic-pop-name"></div>
-      <div class="ic-pop-tags">
-        <code class="ic-pop-tag ic-pop-tag--unicode" id="ic-pop-unicode"></code>
-        <code class="ic-pop-tag ic-pop-tag--cls" id="ic-pop-cls"></code>
+      <div class="ic-pop-meta">
+        <div class="ic-pop-name" id="ic-pop-name"></div>
+        <div class="ic-pop-tags">
+          <code class="ic-pop-tag ic-pop-tag--unicode" id="ic-pop-unicode"></code>
+          <code class="ic-pop-tag ic-pop-tag--cls" id="ic-pop-cls"></code>
+        </div>
       </div>
     </div>
-    <button class="ic-pop-close" onclick="icClosePopover()" aria-label="Cerrar">
+    <div class="ic-pop-size-strip">
+      <button class="mp-btn mp-btn--terciario ic-pop-sz active" data-sz="icon-20" onclick="icPopSize(this)">20</button>
+      <button class="mp-btn mp-btn--terciario ic-pop-sz" data-sz="icon-32" onclick="icPopSize(this)">32</button>
+      <button class="mp-btn mp-btn--terciario ic-pop-sz" data-sz="icon-40" onclick="icPopSize(this)">40</button>
+      <button class="mp-btn mp-btn--terciario ic-pop-sz" data-sz="icon-48" onclick="icPopSize(this)">48</button>
+      <button class="mp-btn mp-btn--terciario ic-pop-sz" data-sz="icon-64" onclick="icPopSize(this)">64</button>
+    </div>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-only ic-pop-close" onclick="icClosePopover()" aria-label="Cerrar">
       <span class="material-symbols-rounded">close</span>
     </button>
   </div>
   <div class="ic-pop-snippet" id="ic-pop-snippet"></div>
   <div class="ic-pop-actions">
-    <button class="ic-pop-btn ic-pop-btn--primary" onclick="icCopyPopHTML()">
+    <button class="mp-btn mp-btn--primario mp-btn--icon-left ic-pop-btn ic-pop-btn--primary" onclick="icCopyPopHTML()">
       <span class="material-symbols-rounded">content_copy</span> Copiar HTML
     </button>
-    <button class="ic-pop-btn" onclick="icCopyPopUnicode()">
+    <button class="mp-btn mp-btn--secundario mp-btn--icon-left ic-pop-btn" onclick="icCopyPopUnicode()">
       <span class="material-symbols-rounded">tag</span> Unicode
     </button>
-    <button class="ic-pop-btn" onclick="icCopyPopCls()">
+    <button class="mp-btn mp-btn--secundario mp-btn--icon-left ic-pop-btn" onclick="icCopyPopCls()">
       <span class="material-symbols-rounded">code</span> Clase
     </button>
   </div>

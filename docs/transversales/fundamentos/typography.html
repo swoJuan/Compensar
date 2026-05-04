@@ -16,10 +16,10 @@
   <!-- DESCARGAS -->
   <div class="ct-downloads ty-downloads">
     <span class="ct-downloads-label"><span class="material-symbols-rounded">download</span> Descargar tokens</span>
-    <button class="ct-download-btn ct-download-btn--primary" onclick="tyDownloadMAUI()"><span class="material-symbols-rounded">smartphone</span> MAUI XAML</button>
-    <button class="ct-download-btn" onclick="tyDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS vars</button>
-    <button class="ct-download-btn" onclick="tyDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
-    <button class="ct-download-btn" onclick="tyDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="tyDownloadMAUI()"><span class="material-symbols-rounded">smartphone</span> MAUI XAML</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="tyDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS vars</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="tyDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="tyDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
   </div>
   <p class="ct-download-note">Descarga generada en vivo desde <code>core/abstracts/_tokens-typography.scss</code>, <code>core/base/_typography.scss</code> y <code>core/utils/_typography.scss</code>.</p>
 
@@ -775,7 +775,7 @@ async function tyDownloadMAUI(){
     '                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"',
     '                    xmlns:sys="clr-namespace:System;assembly=netstandard">',
     `  <!-- Typography tokens for .NET MAUI · ${d} -->`,
-    '  <!-- Source: core/abstracts/_tokens-typography.scss + docs/app/fundamentos/typography.html -->',
+    '  <!-- Source: core/abstracts/_tokens-typography.scss + docs/transversales/fundamentos/typography.html -->',
     '  <x:String x:Key="MpFontFamilyBody">Roboto</x:String>',
     '  <x:String x:Key="MpFontFamilyHeading">Roboto</x:String>',
     ''

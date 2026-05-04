@@ -60,11 +60,11 @@
   <div class="ic-impl-card">
     <div class="ic-impl-card-head"><span class="material-symbols-rounded">install_desktop</span> Instalación en tu proyecto</div>
     <div class="ic-code-tabs-bar">
-      <button class="ic-code-tab active" onclick="icCodeTab(this,'ict-html')">HTML</button>
-      <button class="ic-code-tab" onclick="icCodeTab(this,'ict-css')">@font-face</button>
+      <button class="mp-btn mp-btn--terciario ic-code-tab active" onclick="icCodeTab(this,'ict-html')">HTML</button>
+      <button class="mp-btn mp-btn--terciario ic-code-tab" onclick="icCodeTab(this,'ict-css')">@font-face</button>
     </div>
     <div class="ic-code-block ic-code-block--tabbed">
-      <button class="ic-code-copy" onclick="icCopyCode('ict-html-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
+      <button class="mp-btn mp-btn--secundario mp-btn--icon-left ic-code-copy" onclick="icCopyCode('ict-html-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
 <pre class="ic-code-pre ic-code-active" id="ict-html-pre">&lt;!-- 1. Un solo archivo CSS --&gt;
 &lt;link rel="stylesheet" href="icons/icons.css"&gt;
 &lt;link rel="preload"
@@ -74,7 +74,7 @@
 
 &lt;!-- 2. Usar el icono --&gt;
 &lt;i class="icon icon-name icon-24" aria-hidden="true"&gt;&lt;/i&gt;</pre>
-      <button class="ic-code-copy" onclick="icCopyCode('ict-css-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
+      <button class="mp-btn mp-btn--secundario mp-btn--icon-left ic-code-copy" onclick="icCopyCode('ict-css-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
 <pre class="ic-code-pre" id="ict-css-pre">@font-face {
   font-family: "CompensarIcons";
   src: url("./icons/fonts/compensar-icons.woff2") format("woff2"),
@@ -115,12 +115,12 @@
   <div class="ic-impl-card">
     <div class="ic-impl-card-head"><span class="material-symbols-rounded">code</span> Uso en HTML</div>
     <div class="ic-code-tabs-bar">
-      <button class="ic-code-tab active" onclick="icCodeTab(this,'ict-use1')">Decorativo</button>
-      <button class="ic-code-tab" onclick="icCodeTab(this,'ict-use2')">Interactivo</button>
-      <button class="ic-code-tab" onclick="icCodeTab(this,'ict-use3')">Con texto</button>
+      <button class="mp-btn mp-btn--terciario ic-code-tab active" onclick="icCodeTab(this,'ict-use1')">Decorativo</button>
+      <button class="mp-btn mp-btn--terciario ic-code-tab" onclick="icCodeTab(this,'ict-use2')">Interactivo</button>
+      <button class="mp-btn mp-btn--terciario ic-code-tab" onclick="icCodeTab(this,'ict-use3')">Con texto</button>
     </div>
     <div class="ic-code-block ic-code-block--tabbed">
-      <button class="ic-code-copy" onclick="icCopyCode('ict-use1-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
+      <button class="mp-btn mp-btn--secundario mp-btn--icon-left ic-code-copy" onclick="icCopyCode('ict-use1-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
 <pre class="ic-code-pre ic-code-active" id="ict-use1-pre">&lt;!-- Clase nombre + clase tamaño --&gt;
 &lt;i class="icon icon-key icon-16" aria-hidden="true"&gt;&lt;/i&gt;
 &lt;i class="icon icon-key icon-20" aria-hidden="true"&gt;&lt;/i&gt;
@@ -128,37 +128,30 @@
 &lt;i class="icon icon-key icon-32" aria-hidden="true"&gt;&lt;/i&gt;
 &lt;i class="icon icon-key icon-40" aria-hidden="true"&gt;&lt;/i&gt;
 &lt;i class="icon icon-key icon-48" aria-hidden="true"&gt;&lt;/i&gt;</pre>
-      <button class="ic-code-copy" onclick="icCopyCode('ict-use2-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
+      <button class="mp-btn mp-btn--secundario mp-btn--icon-left ic-code-copy" onclick="icCopyCode('ict-use2-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
 <pre class="ic-code-pre" id="ict-use2-pre">&lt;!-- Icono interactivo: necesita aria-label --&gt;
-&lt;button aria-label="Buscar"&gt;
+&lt;button class="mp-btn mp-btn--secundario mp-btn--icon-only" aria-label="Buscar"&gt;
   &lt;i class="icon icon-magnifying-glass icon-24" aria-hidden="true"&gt;&lt;/i&gt;
 &lt;/button&gt;
 
 &lt;!-- Área táctil mínima 2.75rem × 2.75rem (44×44px) --&gt;
-&lt;button class="icon-action" aria-label="Abrir menú"&gt;
+&lt;button class="mp-btn mp-btn--secundario mp-btn--icon-only" aria-label="Abrir menú"&gt;
   &lt;i class="icon icon-list icon-24" aria-hidden="true"&gt;&lt;/i&gt;
 &lt;/button&gt;
-
-.icon-action {
-  min-width: 2.75rem;  /* 44px */
-  min-height: 2.75rem; /* 44px */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}</pre>
-      <button class="ic-code-copy" onclick="icCopyCode('ict-use3-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
+</pre>
+      <button class="mp-btn mp-btn--secundario mp-btn--icon-left ic-code-copy" onclick="icCopyCode('ict-use3-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
 <pre class="ic-code-pre" id="ict-use3-pre">&lt;!-- Icono + texto: el ícono es decorativo --&gt;
-&lt;button&gt;
+&lt;button class="mp-btn mp-btn--primario mp-btn--icon-left"&gt;
   &lt;i class="icon icon-key icon-20" aria-hidden="true"&gt;&lt;/i&gt;
   Iniciar sesión
 &lt;/button&gt;
 
 &lt;!-- No usar ícono sin texto cuando la acción no es obvia --&gt;
 &lt;!-- ❌ Evitar: --&gt;
-&lt;button&gt;&lt;i class="icon icon-user icon-24"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="mp-btn mp-btn--secundario mp-btn--icon-only"&gt;&lt;i class="icon icon-user icon-24"&gt;&lt;/i&gt;&lt;/button&gt;
 
 &lt;!-- ✅ Correcto: --&gt;
-&lt;button aria-label="Ver perfil de usuario"&gt;
+&lt;button class="mp-btn mp-btn--secundario mp-btn--icon-only" aria-label="Ver perfil de usuario"&gt;
   &lt;i class="icon icon-user icon-24" aria-hidden="true"&gt;&lt;/i&gt;
 &lt;/button&gt;</pre>
     </div>
@@ -213,14 +206,14 @@
         </tbody>
       </table>
       <div class="ic-code-block ic-code-block--standalone">
-        <button class="ic-code-copy" onclick="icCopyCode('ict-sizes-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left ic-code-copy" onclick="icCopyCode('ict-sizes-pre',this)"><span class="material-symbols-rounded">content_copy</span> Copiar</button>
 <pre class="ic-code-pre ic-code-active" id="ict-sizes-pre">&lt;!-- Clase base + clase de tamaño --&gt;
 &lt;i class="icon icon-lock icon-16" aria-hidden="true"&gt;&lt;/i&gt;
 &lt;i class="icon icon-lock icon-24" aria-hidden="true"&gt;&lt;/i&gt;
 &lt;i class="icon icon-lock icon-32" aria-hidden="true"&gt;&lt;/i&gt;
 
 &lt;!-- En un botón --&gt;
-&lt;button class="btn btn-primary"&gt;
+&lt;button class="mp-btn mp-btn--primario"&gt;
   &lt;i class="icon icon-lock icon-20" aria-hidden="true"&gt;&lt;/i&gt;
   Iniciar sesión
 &lt;/button&gt;</pre>

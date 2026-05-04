@@ -121,11 +121,13 @@ docs/
 ├── foundations/            # Shared foundations across Web and App
 │   ├── principles.html
 │   ├── colors.html
-├── fundamentos/            # Shared: tokens (typography, spacing, etc)
-│   ├── typography.html
-│   ├── spacing.html
-│   ├── layout.html
-│   ├── shadows.html
+├── transversales/          # Shared docs used by both Web and App
+│   └── fundamentos/
+│       ├── typography.html
+│       ├── spacing.html
+│       ├── border-radius.html
+│       ├── layout.html
+│       ├── shadows.html
 ├── web/
 │   └── components/         # Web component documentation
 │       ├── buttons.html
@@ -259,7 +261,7 @@ The typography documentation follows the same rule:
 - `core/abstracts/_tokens-typography.scss` is the official typography token source.
 - `core/base/_theme.scss` publishes the Figma CSS variables such as `--heading--h1`, `--body---l`, and `--comun---boton`.
 - `core/base/_typography.scss` defines the production `.mp-*` classes downloaded by the portal.
-- `docs/app/fundamentos/typography.html` fetches the core sources at runtime and generates CSS, SCSS, and JSON downloads from them.
+- `docs/transversales/fundamentos/typography.html` fetches the core sources at runtime and generates CSS, SCSS, and JSON downloads from them.
 
 Run this command only as a quick validation after updating color or typography tokens/utilities:
 

@@ -54,13 +54,13 @@ const router = (() => {
     },
     'app/fundamentos/tipografia': {
       label: 'Tipografía',
-      path: 'app/fundamentos/typography.html',
+      path: 'transversales/fundamentos/typography.html',
       icon: 'title',
       group: 'app-fundamentos'
     },
     'app/fundamentos/espaciado': {
       label: 'Espaciado',
-      path: 'app/fundamentos/spacing.html',
+      path: 'transversales/fundamentos/spacing.html',
       icon: 'space_bar',
       group: 'app-fundamentos'
     },
@@ -72,13 +72,13 @@ const router = (() => {
     },
     'app/fundamentos/sombras': {
       label: 'Sombras',
-      path: 'app/fundamentos/shadows.html',
+      path: 'transversales/fundamentos/shadows.html',
       icon: 'layers',
       group: 'app-fundamentos'
     },
     'app/fundamentos/radius': {
       label: 'Border radius',
-      path: 'app/fundamentos/border-radius.html',
+      path: 'transversales/fundamentos/border-radius.html',
       icon: 'rounded_corner',
       group: 'app-fundamentos'
     },

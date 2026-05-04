@@ -9,12 +9,13 @@
   <!-- ── Fila 1: Escala + Uso ──────────────────────────────── -->
 
   <!-- DESCARGAS -->
-  <div class="ct-downloads" style="margin-bottom:var(--space-32)">
+  <div class="ct-downloads">
     <span class="ct-downloads-label"><span class="material-symbols-rounded">download</span> Descargar tokens</span>
-    <button class="ct-download-btn" onclick="brDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
-    <button class="ct-download-btn" onclick="brDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
-    <button class="ct-download-btn" onclick="brDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
-    <button class="ct-download-btn" onclick="brCopyVars()"><span class="material-symbols-rounded">content_copy</span> Copiar variables</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="brDownloadCSS()"><span class="material-symbols-rounded">code</span> CSS</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="brDownloadSCSS()"><span class="material-symbols-rounded">code</span> SCSS</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="brDownloadJSON()"><span class="material-symbols-rounded">data_object</span> JSON</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="brCopyVars()"><span class="material-symbols-rounded">content_copy</span> Copiar variables</button>
+    <button class="mp-btn mp-btn--terciario mp-btn--icon-left" onclick="brDownloadMAUI()"><span class="material-symbols-rounded">smartphone</span> MAUI XAML</button>
   </div>
 
   <div class="br-two-col">
@@ -32,7 +33,7 @@
         <!-- radius-xs -->
         <div class="br-scale-row" onclick="brCopy('--radius-xs', this)">
           <div class="br-scale-cell-l">
-            <div class="br-preview" style="border-radius: var(--radius-xs, 0.5rem)"></div>
+            <div class="br-preview br-preview--xs"></div>
             <span class="br-token-name">radius-xs</span>
           </div>
           <div class="br-scale-cell-r">
@@ -46,7 +47,7 @@
         <!-- radius-sm -->
         <div class="br-scale-row" onclick="brCopy('--radius-sm', this)">
           <div class="br-scale-cell-l">
-            <div class="br-preview" style="border-radius: var(--radius-sm, 1rem)"></div>
+            <div class="br-preview br-preview--sm"></div>
             <span class="br-token-name">radius-sm</span>
           </div>
           <div class="br-scale-cell-r">
@@ -60,7 +61,7 @@
         <!-- radius-md -->
         <div class="br-scale-row" onclick="brCopy('--radius-md', this)">
           <div class="br-scale-cell-l">
-            <div class="br-preview" style="border-radius: var(--radius-md, 1.5rem)"></div>
+            <div class="br-preview br-preview--md"></div>
             <span class="br-token-name">radius-md</span>
           </div>
           <div class="br-scale-cell-r">
@@ -74,7 +75,7 @@
         <!-- radius-lg -->
         <div class="br-scale-row" onclick="brCopy('--radius-lg', this)">
           <div class="br-scale-cell-l">
-            <div class="br-preview" style="border-radius: var(--radius-lg, 2rem)"></div>
+            <div class="br-preview br-preview--lg"></div>
             <span class="br-token-name">radius-lg</span>
           </div>
           <div class="br-scale-cell-r">
@@ -244,8 +245,8 @@
   <!-- ── Código ─────────────────────────────────────────────── -->
   <div class="code-block">
     <div class="code-tabs">
-      <button class="code-tab active" onclick="switchTab(this,'br-css')">CSS / Drupal</button>
-      <button class="code-tab" onclick="switchTab(this,'br-scss')">Angular (SCSS)</button>
+      <button class="code-tab active" onclick="switchTab(this,'br-css')">CSS / Web</button>
+      <button class="code-tab" onclick="switchTab(this,'br-scss')">App (SCSS)</button>
     </div>
     <div class="code-content">
       <button class="copy-btn" onclick="copyCode(this)">
@@ -266,7 +267,7 @@
 <span class="sel">.card</span>        { <span class="prop">border-radius</span>: <span class="val">var(--radius-md)</span>; }  <span class="cmt">/* 1.5rem = 24px */</span>
 <span class="sel">.modal</span>       { <span class="prop">border-radius</span>: <span class="val">var(--radius-md)</span>; }  <span class="cmt">/* 1.5rem = 24px */</span>
 <span class="sel">.chip, .badge</span>{ <span class="prop">border-radius</span>: <span class="val">var(--radius-lg)</span>; }  <span class="cmt">/* 2rem = 32px */</span></pre>
-      <pre id="br-scss"><span class="cmt">// Border radius — Angular (SCSS)</span>
+      <pre id="br-scss"><span class="cmt">// Border radius — App (SCSS)</span>
 <span class="cmt">// Los tokens viven en :root como CSS custom props</span>
 
 <span class="sel">.cmp-button</span>  { <span class="prop">border-radius</span>: <span class="val">var(--radius-sm)</span>; }  <span class="cmt">// 1rem = 16px</span>
@@ -804,6 +805,37 @@
         setTimeout(function() { btn.innerHTML = orig; }, 1600);
       }
     });
+  };
+
+  window.brDownloadMAUI = function() {
+    var d = new Date().toISOString().split('T')[0];
+    var lines = [
+      '<?xml version="1.0" encoding="utf-8" ?>',
+      '<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"',
+      '                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">',
+      '',
+      `  <!-- Border Radius tokens for .NET MAUI · ${d} -->`,
+      '  <!-- Source: core/abstracts/_tokens-radius.scss + docs/transversales/fundamentos/border-radius.html -->',
+      ''
+    ];
+
+    // Add border radius tokens
+    BR_TOKENS.forEach(function(t) {
+      var key = 'MpRadius' + t.cls.charAt(0).toUpperCase() + t.cls.slice(1);
+      lines.push(`  <x:Double x:Key="${key}">${t.px}</x:Double>`);
+    });
+
+    lines.push('  <x:Double x:Key="MpRadiusFull">9999</x:Double>');
+    lines.push('');
+    lines.push('</ResourceDictionary>');
+
+    var content = lines.join('\n');
+    var blob = new Blob([content], { type: 'application/xml' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'BorderRadius.Maui.xaml';
+    a.click();
+    URL.revokeObjectURL(a.href);
   };
 
 })();
