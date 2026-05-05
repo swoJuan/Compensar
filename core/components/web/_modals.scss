@@ -150,7 +150,7 @@
 
 .mp-modal-backdrop,
 .modal-backdrop.mp-modal-backdrop {
-  background-color: var(--mp-modal-overlay);
+  background-color: var(--mp-modal-overlay, rgba(17, 17, 17, .30));
 }
 
 [data-theme='dark'] {
@@ -160,6 +160,11 @@
     --mp-modal-text: #f5f5f5;
     --mp-modal-muted: #f5f5f5;
     --mp-modal-overlay: rgba(0, 0, 0, .62);
+  }
+
+  .mp-modal-backdrop,
+  .modal-backdrop.mp-modal-backdrop {
+    background-color: rgba(0, 0, 0, .62);
   }
 
   .mp-modal--info {
@@ -195,6 +200,11 @@
     --mp-modal-muted: #ffffff;
     --mp-modal-shadow: none;
     --mp-modal-overlay: rgba(0, 0, 0, .82);
+  }
+
+  .mp-modal-backdrop,
+  .modal-backdrop.mp-modal-backdrop {
+    background-color: rgba(0, 0, 0, .82);
   }
 
   .mp-modal--info {

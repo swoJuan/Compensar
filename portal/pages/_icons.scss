@@ -707,11 +707,12 @@
 }
 
 .ic-impl-step-card code {
-  font-size: rem(14px);
+  display: inline;
+  font-size: rem(13px);
   color: var(--ui-accent);
-  background: var(--ui-surface);
-  border-radius: var(--radius-xs);
-  padding: rem(16px);
+  background: color-mix(in srgb, var(--ui-accent) 8%, transparent);
+  border-radius: rem(3px);
+  padding: rem(2px) rem(5px);
 }
 
 .ic-impl-grid {

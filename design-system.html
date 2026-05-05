@@ -329,14 +329,15 @@
 <div id="toast"></div>
 
 <!-- SCRIPTS -->
-<script src="js/router.js"></script>
+<script src="js/router.js?v=20260504-2"></script>
 <script src="js/theme.js"></script>
 <script src="js/code-copy.js"></script>
 <script src="js/component-docs.js?v=20260504-8"></script>
 <script src="js/selection-docs.js?v=20260504-1"></script>
-<script src="js/alert-docs.js?v=20260504-1"></script>
+<script src="js/alert-docs.js?v=20260504-11"></script>
 <script src="js/toast-docs.js?v=20260504-1"></script>
-<script src="js/modal-docs.js?v=20260504-1"></script>
+<script src="js/modal-docs.js?v=20260504-13"></script>
+<script src="js/dropdown-docs.js?v=20260504-5"></script>
 
 <script>
   /**
@@ -349,6 +350,31 @@
     // Render navigation
     const sidebar = document.getElementById('sidebar');
     const navMap = router.getNav();
+    const NAV_ICON_MAP = {
+      home: 'house',
+      stars: 'star',
+      palette: 'palette',
+      phone_iphone: 'device-mobile',
+      title: 'text-t',
+      space_bar: 'ruler',
+      view_quilt: 'squares-four',
+      layers: 'stack',
+      rounded_corner: 'corners-in',
+      smart_button: 'cursor',
+      input: 'article',
+      arrow_drop_down_circle: 'caret-circle-down',
+      check_box: 'check-square',
+      notification_important: 'warning-circle',
+      notifications: 'bell',
+      web_asset: 'browser',
+      award_star: 'medal',
+      interests: 'squares-four',
+      category: 'grid-four',
+      hub: 'share-network',
+      table_chart: 'table',
+      text_fields: 'ruler',
+      fact_check: 'check-square'
+    };
     
     const navGroups = [
       { id: 'inicio', label: 'Inicio' },
@@ -384,10 +410,9 @@
           router.navigate(id);
         };
 
-        const icon = document.createElement('span');
-        icon.className = 'icon material-symbols-rounded';
+        const icon = document.createElement('i');
+        icon.className = `icon icon-${NAV_ICON_MAP[def.icon] || 'question'} icon-20`;
         icon.setAttribute('aria-hidden', 'true');
-        icon.textContent = def.icon;
 
         const label = document.createElement('span');
         label.textContent = def.label;

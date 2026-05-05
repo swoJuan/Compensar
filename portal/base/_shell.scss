@@ -282,9 +282,10 @@ body {
   left: rem(-6px);
 }
 
-.sidebar-link .material-symbols-rounded {
+.sidebar-link .icon {
   width: rem(16px);
-  font-size: rem(17px);
+  flex: 0 0 rem(16px);
+  font-size: rem(16px);
 }
 
 .sidebar-sublink {

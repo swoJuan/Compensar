@@ -4962,7 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
-    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales');
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -5051,6 +5051,11 @@
         window.inputDocs.initInputDoc(document);
       });
     }
+    if (window.dropdownDocs) {
+      requestAnimationFrame(function() {
+        window.dropdownDocs.initDropdownDoc(document);
+      });
+    }
   }
 
   /* ══════════════════════════════════════════════════════════
@@ -5079,6 +5084,7 @@
     'iconos-libreria':    'docs/web/components/icons-library.html',
     'botones':            'docs/transversales/components/buttons.html',
     'inputs':             'docs/transversales/components/inputs.html',
+    'dropdown':           'docs/transversales/components/dropdown.html',
     'seleccion':          'docs/transversales/components/selection-controls.html',
     'alertas':            'docs/transversales/components/alerts.html',
     'toast':              'docs/transversales/components/toasts.html',

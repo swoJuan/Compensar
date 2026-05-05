@@ -2,7 +2,7 @@
   <div class="intro-hero">
     <div class="intro-hero-content">
       <div class="intro-version-badge">
-        <span class="material-symbols-rounded">new_releases</span>
+        <i class="icon icon-star icon-16" aria-hidden="true"></i>
         v1.0 — Liberado Abril 2026
       </div>
       <h1 class="intro-title">Sistema de Diseño<br>Compensar</h1>
@@ -12,15 +12,15 @@
       </p>
       <div class="intro-tech-badges">
         <span class="intro-tech">
-          <span class="material-symbols-rounded">language</span>
+          <i class="icon icon-globe icon-16" aria-hidden="true"></i>
           Portal Público · Drupal
         </span>
         <span class="intro-tech">
-          <span class="material-symbols-rounded">bolt</span>
+          <i class="icon icon-lightning icon-16" aria-hidden="true"></i>
           Zona Transaccional · Angular
         </span>
         <span class="intro-tech">
-          <span class="material-symbols-rounded">style</span>
+          <i class="icon icon-palette icon-16" aria-hidden="true"></i>
           CSS Custom Properties
         </span>
       </div>
@@ -29,14 +29,14 @@
       <div class="intro-visual-ring ring-1"></div>
       <div class="intro-visual-ring ring-2"></div>
       <div class="intro-visual-ring ring-3"></div>
-      <span class="material-symbols-rounded intro-visual-icon">design_services</span>
+      <i class="icon icon-grid-four icon-32 intro-visual-icon" aria-hidden="true"></i>
     </div>
   </div>
 
   <!-- Objetivo -->
   <div class="intro-objective">
     <div class="intro-objective-icon">
-      <span class="material-symbols-rounded">target</span>
+      <i class="icon icon-target icon-20" aria-hidden="true"></i>
     </div>
     <div>
       <h2 class="intro-objective-title">Objetivo del sistema</h2>
@@ -48,37 +48,37 @@
 
   <!-- ¿Qué vas a encontrar? -->
   <div class="intro-cards-title">
-    <span class="material-symbols-rounded">explore</span>
+    <i class="icon icon-compass icon-16" aria-hidden="true"></i>
     ¿Qué vas a encontrar aquí?
   </div>
   <div class="intro-cards">
     <div class="intro-card">
-      <span class="material-symbols-rounded intro-card-icon">palette</span>
+      <i class="icon icon-palette icon-24 intro-card-icon" aria-hidden="true"></i>
       <h3>Tokens de diseño</h3>
       <p>Colores, tipografía, espaciado y sombras definidos como CSS Custom Properties, sincronizados con Figma.</p>
     </div>
     <div class="intro-card">
-      <span class="material-symbols-rounded intro-card-icon">text_fields</span>
+      <i class="icon icon-ruler icon-24 intro-card-icon" aria-hidden="true"></i>
       <h3>Tipografía & Espaciado</h3>
       <p>Escala tipográfica con Montserrat y Roboto. Grilla de 8 puntos para márgenes, paddings y gaps.</p>
     </div>
     <div class="intro-card">
-      <span class="material-symbols-rounded intro-card-icon">widgets</span>
+      <i class="icon icon-squares-four icon-24 intro-card-icon" aria-hidden="true"></i>
       <h3>Componentes</h3>
       <p>Botones, inputs, badges y más. Cada componente incluye preview en vivo y sus estados documentados.</p>
     </div>
     <div class="intro-card">
-      <span class="material-symbols-rounded intro-card-icon">code</span>
+      <i class="icon icon-article icon-24 intro-card-icon" aria-hidden="true"></i>
       <h3>Código listo para usar</h3>
       <p>Snippets en CSS/Twig para Drupal y en SCSS/HTML/TS para Angular. Con botón de copia directo.</p>
     </div>
     <div class="intro-card">
-      <span class="material-symbols-rounded intro-card-icon">contrast</span>
+      <i class="icon icon-circle-half icon-24 intro-card-icon" aria-hidden="true"></i>
       <h3>Light · Dark · Alto contraste</h3>
       <p>Todos los componentes se pueden previsualizar en los tres modos desde el toggle en el header.</p>
     </div>
     <div class="intro-card">
-      <span class="material-symbols-rounded intro-card-icon">hub</span>
+      <i class="icon icon-target icon-24 intro-card-icon" aria-hidden="true"></i>
       <h3>Fuente única de verdad</h3>
       <p>Sincronizado con Figma. Cualquier actualización al sistema se refleja aquí primero.</p>
     </div>
@@ -87,7 +87,7 @@
   <!-- Cómo usar -->
   <div class="intro-how">
     <div class="intro-how-title">
-      <span class="material-symbols-rounded">help_outline</span>
+      <i class="icon icon-question icon-20" aria-hidden="true"></i>
       ¿Cómo usar este documento?
     </div>
     <div class="intro-how-steps">
@@ -145,7 +145,7 @@
   margin-bottom: var(--space-4);
 }
 
-.intro-version-badge .material-symbols-rounded { font-size: 16px; }
+.intro-version-badge .icon { color: var(--ui-accent); }
 
 .intro-title {
   font-family: var(--font-heading);
@@ -191,7 +191,7 @@
   border-radius: 8px;
 }
 
-.intro-tech .material-symbols-rounded { font-size: 16px; color: var(--ui-accent); }
+.intro-tech .icon { color: var(--ui-accent); }
 
 /* — Visual decoration */
 .intro-hero-visual {
@@ -244,7 +244,7 @@
   flex-shrink: 0;
 }
 
-.intro-objective-icon .material-symbols-rounded { font-size: 22px; color: var(--ui-accent); }
+.intro-objective-icon .icon { color: var(--ui-accent); }
 
 .intro-objective-title {
   font-family: var(--font-heading);
@@ -276,7 +276,7 @@
   margin-bottom: var(--space-4);
 }
 
-.intro-cards-title .material-symbols-rounded { font-size: 18px; color: var(--ui-accent); }
+.intro-cards-title .icon { color: var(--ui-accent); }
 
 .intro-cards {
   display: grid;
@@ -335,7 +335,7 @@
   margin-bottom: var(--space-24);
 }
 
-.intro-how-title .material-symbols-rounded { font-size: 20px; color: var(--ui-accent); }
+.intro-how-title .icon { color: var(--ui-accent); }
 
 .intro-how-steps {
   display: flex;

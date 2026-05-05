@@ -210,7 +210,7 @@ export function onSectionReady(sectionId) {
     const btn = document.createElement('button');
     btn.id = 'ct-download-maui';
     btn.className = 'mp-btn mp-btn--primario mp-btn--icon-left ct-download-btn ct-download-btn--primary';
-    btn.innerHTML = '<span class="material-symbols-rounded">smartphone</span> MAUI XAML';
+    btn.innerHTML = '<i class="icon icon-device-mobile icon-16" aria-hidden="true"></i> MAUI XAML';
     btn.addEventListener('click', () => {
       if (typeof window.ctDownloadMAUI === 'function') {
         window.ctDownloadMAUI();

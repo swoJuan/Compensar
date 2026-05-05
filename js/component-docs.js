@@ -1,4 +1,40 @@
 const componentDocs = (() => {
+  const ICON_MAP = {
+    download: 'download',
+    arrow_forward: 'arrow-right',
+    expand_more: 'caret-down',
+    progress_activity: 'spinner-gap',
+    check: 'check',
+    search: 'magnifying-glass',
+    mail: 'envelope',
+    error: 'warning-circle',
+    check_circle: 'check-circle',
+    visibility: 'eye',
+    person: 'user',
+    phone: 'phone',
+    lock: 'lock',
+    attach_money: 'currency-dollar',
+    badge: 'identification-badge',
+    close: 'x',
+    info: 'info',
+    calendar_today: 'calendar'
+  };
+
+  function mapIcon(name) {
+    return ICON_MAP[name] || 'question';
+  }
+
+  function iconMarkup(name, size = 24, extraClass = '') {
+    return `<i class="icon icon-${mapIcon(name)} icon-${size}${extraClass ? ` ${extraClass}` : ''}" aria-hidden="true"></i>`;
+  }
+
+  function iconNode(name, size = 24, extraClass = '') {
+    const icon = document.createElement('i');
+    icon.className = `icon icon-${mapIcon(name)} icon-${size}${extraClass ? ` ${extraClass}` : ''}`;
+    icon.setAttribute('aria-hidden', 'true');
+    return icon;
+  }
+
   const anatomy = {
     text: {
       label: 'Guardar',
@@ -32,7 +68,7 @@ const componentDocs = (() => {
         { type: 'pad-right', width: 32, label: 'PD 32 px' }
       ],
       padding: '12 px vertical · 16 px izquierda · 32 px derecha',
-      html: '<button class="mp-btn mp-btn--primario mp-btn--icon-left"><span class="material-symbols-rounded" aria-hidden="true">download</span>Guardar</button>'
+      html: `<button class="mp-btn mp-btn--primario mp-btn--icon-left">${iconMarkup('download')}Guardar</button>`
     },
     'icon-right': {
       label: 'Guardar',
@@ -50,7 +86,7 @@ const componentDocs = (() => {
         { type: 'pad-right', width: 16, label: 'PD 16 px' }
       ],
       padding: '12 px vertical · 32 px izquierda · 16 px derecha',
-      html: '<button class="mp-btn mp-btn--primario mp-btn--icon-right">Guardar<span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span></button>'
+      html: `<button class="mp-btn mp-btn--primario mp-btn--icon-right">Guardar${iconMarkup('arrow_forward')}</button>`
     },
     'icon-both': {
       label: 'Guardar',
@@ -70,7 +106,7 @@ const componentDocs = (() => {
         { type: 'pad-right', width: 16, label: 'PD 16 px' }
       ],
       padding: '12 px vertical · 16 px horizontal',
-      html: '<button class="mp-btn mp-btn--primario mp-btn--icon-both"><span class="material-symbols-rounded" aria-hidden="true">download</span>Guardar<span class="material-symbols-rounded" aria-hidden="true">expand_more</span></button>'
+      html: `<button class="mp-btn mp-btn--primario mp-btn--icon-both">${iconMarkup('download')}Guardar${iconMarkup('expand_more')}</button>`
     },
     'icon-only': {
       label: '',
@@ -86,7 +122,7 @@ const componentDocs = (() => {
         { type: 'pad-right', width: 16, label: 'PD 16 px' }
       ],
       padding: '12 px vertical · 16 px horizontal',
-      html: '<button class="mp-btn mp-btn--primario mp-btn--icon-only" aria-label="Descargar"><span class="material-symbols-rounded" aria-hidden="true">download</span></button>'
+      html: `<button class="mp-btn mp-btn--primario mp-btn--icon-only" aria-label="Descargar">${iconMarkup('download')}</button>`
     }
   };
 
@@ -102,7 +138,7 @@ const componentDocs = (() => {
   class="mp-btn mp-btn--primario mp-btn--icon-only"
   type="button"
   aria-label="Descargar certificado">
-  <span class="material-symbols-rounded" aria-hidden="true">download</span>
+  ${iconMarkup('download')}
 </button>`
   };
 
@@ -338,7 +374,7 @@ const componentDocs = (() => {
   transition: background .2s, box-shadow .2s, opacity .15s;
 }
 
-.mp-btn .material-symbols-rounded {
+.mp-btn .icon {
   flex: 0 0 auto;
   font-size: var(--mp-btn-icon-size);
   line-height: 1;
@@ -385,7 +421,7 @@ const componentDocs = (() => {
   padding: var(--mp-btn-padding-icon-both);
 }
 .mp-btn--loading { pointer-events: none; }
-.mp-btn--loading .material-symbols-rounded { animation: mp-btn-spin .9s linear infinite; }
+.mp-btn--loading .icon { animation: mp-btn-spin .9s linear infinite; }
 .w-100 { width: 100%; }
 
 @keyframes mp-btn-spin {
@@ -557,21 +593,17 @@ ${buttonExportCss.slice(buttonExportCss.indexOf('.mp-btn {'))}`;
 
     const text = state === 'loading' ? 'Guardando...' : label;
     if (kind === 'icon-left' || kind === 'icon-both' || kind === 'icon-only' || state === 'loading') {
-      button.appendChild(icon(state === 'loading' ? 'progress_activity' : 'download'));
+      button.appendChild(iconNode(state === 'loading' ? 'progress_activity' : 'download'));
     }
     if (kind !== 'icon-only') button.append(document.createTextNode(text || 'Guardar'));
     if (kind === 'icon-right' || kind === 'icon-both') {
-      button.appendChild(icon(kind === 'icon-both' ? 'expand_more' : 'arrow_forward'));
+      button.appendChild(iconNode(kind === 'icon-both' ? 'expand_more' : 'arrow_forward'));
     }
     return button;
   }
 
   function icon(name) {
-    const span = document.createElement('span');
-    span.className = 'material-symbols-rounded';
-    span.setAttribute('aria-hidden', 'true');
-    span.textContent = name;
-    return span;
+    return iconNode(name);
   }
 
   function buttonHtml({ variant, kind, label, state, fullWidth }) {
@@ -585,14 +617,14 @@ ${buttonExportCss.slice(buttonExportCss.indexOf('.mp-btn {'))}`;
     const start = `<button class="${classes.join(' ')}" type="button"${disabled}${busy}`;
     if (kind === 'icon-only') {
       return `${start} aria-label="${text}">
-  <span class="material-symbols-rounded" aria-hidden="true">${state === 'loading' ? 'progress_activity' : 'download'}</span>
+  ${iconMarkup(state === 'loading' ? 'progress_activity' : 'download')}
 </button>`;
     }
     const left = kind === 'icon-left' || kind === 'icon-both' || state === 'loading'
-      ? `\n  <span class="material-symbols-rounded" aria-hidden="true">${state === 'loading' ? 'progress_activity' : 'download'}</span>`
+      ? `\n  ${iconMarkup(state === 'loading' ? 'progress_activity' : 'download')}`
       : '';
     const right = kind === 'icon-right' || kind === 'icon-both'
-      ? `\n  <span class="material-symbols-rounded" aria-hidden="true">${kind === 'icon-both' ? 'expand_more' : 'arrow_forward'}</span>`
+      ? `\n  ${iconMarkup(kind === 'icon-both' ? 'expand_more' : 'arrow_forward')}`
       : '';
     return `${start}>${left}
   ${text}${right}
@@ -888,7 +920,7 @@ ${themeTokens}`;
 
     if (trigger) {
       const original = trigger.innerHTML;
-      trigger.innerHTML = '<span class="material-symbols-rounded" aria-hidden="true">check</span>Descargado';
+      trigger.innerHTML = `${iconMarkup('check', 16)}Descargado`;
       window.setTimeout(() => { trigger.innerHTML = original; }, 1400);
     }
   }
@@ -900,7 +932,7 @@ ${themeTokens}`;
 
     write.then(() => {
       const original = button.innerHTML;
-      button.innerHTML = '<span class="material-symbols-rounded" aria-hidden="true">check</span>Copiado';
+      button.innerHTML = `${iconMarkup('check', 16)}Copiado`;
       window.setTimeout(() => { button.innerHTML = original; }, 1400);
     }).catch(() => {
       const textarea = document.createElement('textarea');
@@ -1097,7 +1129,7 @@ const inputDocs = (() => {
 <div class="mp-input-group">
   <label class="mp-input-label" for="i2">Buscar</label>
   <div class="mp-input-wrapper">
-    <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">search</span>
+    ${iconMarkup('search', 24, 'mp-input-icon mp-input-icon--left')}
     <input class="mp-input-field has-icon-left" id="i2" type="search" placeholder="Buscar…">
   </div>
 </div>
@@ -1119,7 +1151,7 @@ const inputDocs = (() => {
       <option>Opción A</option>
       <option>Opción B</option>
     </select>
-    <span class="material-symbols-rounded mp-input-icon mp-input-icon--right" aria-hidden="true">expand_more</span>
+    ${iconMarkup('expand_more', 24, 'mp-input-icon mp-input-icon--right')}
   </div>
 </div>`,
     accessible: `<!-- Campo requerido con error accesible -->
@@ -1129,7 +1161,7 @@ const inputDocs = (() => {
     <span class="mp-input-required" aria-hidden="true">*</span>
   </label>
   <div class="mp-input-wrapper">
-    <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+    ${iconMarkup('mail', 24, 'mp-input-icon mp-input-icon--left')}
     <input
       class="mp-input-field has-icon-left error"
       id="email1"
@@ -1141,7 +1173,7 @@ const inputDocs = (() => {
       value="usuario@">
   </div>
   <span class="mp-input-helper error" id="email1-helper">
-    <span class="material-symbols-rounded" aria-hidden="true" style="font-size:16px">error</span>
+    ${iconMarkup('error', 16)}
     Formato inválido. Ej: usuario@compensar.com
   </span>
 </div>
@@ -1156,7 +1188,7 @@ const inputDocs = (() => {
             class="mp-input-icon mp-input-icon--right interactive"
             aria-label="Mostrar contraseña"
             onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
-      <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
+      ${iconMarkup('visibility')}
     </button>
   </div>
   <span class="mp-input-helper" id="pass1-helper">Mínimo 8 caracteres</span>
@@ -1457,10 +1489,7 @@ const inputDocs = (() => {
 
     // Ícono izquierdo
     if (iconLeft) {
-      const ic = document.createElement('span');
-      ic.className = 'material-symbols-rounded mp-input-icon mp-input-icon--left';
-      ic.setAttribute('aria-hidden', 'true');
-      ic.textContent = iconLeft;
+      const ic = iconNode(iconLeft, 24, 'mp-input-icon mp-input-icon--left');
       wrapper.appendChild(ic);
     }
 
@@ -1512,10 +1541,7 @@ const inputDocs = (() => {
 
     // Ícono derecho
     if (iconRight) {
-      const ic = document.createElement('span');
-      ic.className = 'material-symbols-rounded mp-input-icon mp-input-icon--right';
-      ic.setAttribute('aria-hidden', 'true');
-      ic.textContent = tipo === 'select' ? 'expand_more' : iconRight;
+      const ic = iconNode(tipo === 'select' ? 'expand_more' : iconRight, 24, 'mp-input-icon mp-input-icon--right');
       wrapper.appendChild(ic);
     }
 
@@ -1554,10 +1580,10 @@ const inputDocs = (() => {
     const disabledAttr   = state === 'disabled' ? '\n       disabled' : '';
 
     const iconLeftHtml = iconLeft
-      ? `\n    <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">${iconLeft}</span>`
+      ? `\n    ${iconMarkup(iconLeft, 24, 'mp-input-icon mp-input-icon--left')}`
       : '';
     const iconRightHtml = iconRight
-      ? `\n    <span class="material-symbols-rounded mp-input-icon mp-input-icon--right" aria-hidden="true">${iconRight}</span>`
+      ? `\n    ${iconMarkup(iconRight, 24, 'mp-input-icon mp-input-icon--right')}`
       : '';
 
     let fieldHtml = '';
@@ -1721,10 +1747,7 @@ theme: light
     wrapper.className = 'mp-input-wrapper';
 
     if (cfg.iconLeft) {
-      const ic = document.createElement('span');
-      ic.className = 'material-symbols-rounded mp-input-icon mp-input-icon--left';
-      ic.setAttribute('aria-hidden', 'true');
-      ic.textContent = cfg.iconLeft;
+      const ic = iconNode(cfg.iconLeft, 24, 'mp-input-icon mp-input-icon--left');
       wrapper.appendChild(ic);
     }
 
@@ -1753,10 +1776,7 @@ theme: light
     }
 
     if (cfg.iconRight) {
-      const ic = document.createElement('span');
-      ic.className = 'material-symbols-rounded mp-input-icon mp-input-icon--right';
-      ic.setAttribute('aria-hidden', 'true');
-      ic.textContent = cfg.iconRight;
+      const ic = iconNode(cfg.iconRight, 24, 'mp-input-icon mp-input-icon--right');
       wrapper.appendChild(ic);
     }
 
@@ -1806,7 +1826,7 @@ ${inputExportCss}`
 
     if (trigger) {
       const orig = trigger.innerHTML;
-      trigger.innerHTML = '<span class="material-symbols-rounded" aria-hidden="true">check</span>Descargado';
+      trigger.innerHTML = `${iconMarkup('check', 16)}Descargado`;
       setTimeout(() => { trigger.innerHTML = orig; }, 1400);
     }
   }
@@ -1829,7 +1849,7 @@ ${inputExportCss}`
   function flashCopied(btn) {
     if (!btn) return;
     const orig = btn.innerHTML;
-    btn.innerHTML = '<span class="material-symbols-rounded" aria-hidden="true">check</span>Copiado';
+    btn.innerHTML = `${iconMarkup('check', 16)}Copiado`;
     setTimeout(() => { btn.innerHTML = orig; }, 1400);
   }
 

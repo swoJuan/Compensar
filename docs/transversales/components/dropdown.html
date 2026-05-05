@@ -206,27 +206,43 @@
       <div class="drp-state-card">
         <div class="drp-state-card__label">Default</div>
         <div class="mp-dropdown-group" style="width:100%">
-          <label class="mp-dropdown-label">Ciudad</label>
+          <label class="mp-dropdown-label" for="drp-state-default">Ciudad</label>
           <div class="mp-dropdown" style="width:100%">
-            <button class="mp-dropdown__trigger" type="button" aria-expanded="false" aria-haspopup="listbox" disabled>
+            <button class="mp-dropdown__trigger" id="drp-state-default" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="drp-state-default-panel">
               <span class="mp-dropdown__value is-placeholder">Seleccionar</span>
               <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
             </button>
+            <div class="mp-dropdown__panel" id="drp-state-default-panel" role="listbox">
+              <div class="mp-dropdown__options">
+                <div class="mp-dropdown__option" role="option">Bogotá D.C.</div>
+                <div class="mp-dropdown__option" role="option">Medellín</div>
+                <div class="mp-dropdown__option" role="option">Cali</div>
+                <div class="mp-dropdown__option" role="option">Barranquilla</div>
+              </div>
+            </div>
           </div>
           <span class="mp-dropdown-helper">Texto de apoyo</span>
         </div>
       </div>
 
-      <!-- Hover (demo visual) -->
+      <!-- Hover -->
       <div class="drp-state-card">
         <div class="drp-state-card__label">Hover</div>
         <div class="mp-dropdown-group" style="width:100%">
-          <label class="mp-dropdown-label">Ciudad</label>
+          <label class="mp-dropdown-label" for="drp-state-hover">Ciudad</label>
           <div class="mp-dropdown" style="width:100%">
-            <button class="mp-dropdown__trigger is-hover-demo" type="button" aria-expanded="false" style="--mp-dd-border:var(--use-border-hover)" disabled>
+            <button class="mp-dropdown__trigger" id="drp-state-hover" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="drp-state-hover-panel" style="--mp-dd-border:var(--use-border-hover)">
               <span class="mp-dropdown__value is-placeholder">Seleccionar</span>
               <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
             </button>
+            <div class="mp-dropdown__panel" id="drp-state-hover-panel" role="listbox">
+              <div class="mp-dropdown__options">
+                <div class="mp-dropdown__option" role="option">Bogotá D.C.</div>
+                <div class="mp-dropdown__option" role="option">Medellín</div>
+                <div class="mp-dropdown__option" role="option">Cali</div>
+                <div class="mp-dropdown__option" role="option">Barranquilla</div>
+              </div>
+            </div>
           </div>
           <span class="mp-dropdown-helper">Texto de apoyo</span>
         </div>
@@ -236,13 +252,21 @@
       <div class="drp-state-card">
         <div class="drp-state-card__label">Focus</div>
         <div class="mp-dropdown-group" style="width:100%">
-          <label class="mp-dropdown-label">Ciudad</label>
+          <label class="mp-dropdown-label" for="drp-state-focus">Ciudad</label>
           <div class="mp-dropdown" style="width:100%">
-            <button class="mp-dropdown__trigger is-focus-demo" type="button" aria-expanded="false"
-              style="--mp-dd-border:var(--use-primary-default);border-color:var(--use-primary-default);box-shadow:0 0 0 3px color-mix(in srgb,var(--use-primary-default) 18%,transparent)" disabled>
+            <button class="mp-dropdown__trigger" id="drp-state-focus" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="drp-state-focus-panel"
+              style="--mp-dd-border:var(--use-primary-default);border-color:var(--use-primary-default);box-shadow:0 0 0 3px color-mix(in srgb,var(--use-primary-default) 18%,transparent)">
               <span class="mp-dropdown__value is-placeholder">Seleccionar</span>
               <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
             </button>
+            <div class="mp-dropdown__panel" id="drp-state-focus-panel" role="listbox">
+              <div class="mp-dropdown__options">
+                <div class="mp-dropdown__option" role="option">Bogotá D.C.</div>
+                <div class="mp-dropdown__option" role="option">Medellín</div>
+                <div class="mp-dropdown__option" role="option">Cali</div>
+                <div class="mp-dropdown__option" role="option">Barranquilla</div>
+              </div>
+            </div>
           </div>
           <span class="mp-dropdown-helper">Texto de apoyo</span>
         </div>
@@ -252,12 +276,20 @@
       <div class="drp-state-card">
         <div class="drp-state-card__label">Con valor</div>
         <div class="mp-dropdown-group" style="width:100%">
-          <label class="mp-dropdown-label">Ciudad</label>
+          <label class="mp-dropdown-label" for="drp-state-value">Ciudad</label>
           <div class="mp-dropdown" style="width:100%">
-            <button class="mp-dropdown__trigger" type="button" aria-expanded="false" disabled>
+            <button class="mp-dropdown__trigger" id="drp-state-value" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="drp-state-value-panel">
               <span class="mp-dropdown__value">Bogotá D.C.</span>
               <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
             </button>
+            <div class="mp-dropdown__panel" id="drp-state-value-panel" role="listbox">
+              <div class="mp-dropdown__options">
+                <div class="mp-dropdown__option mp-dropdown__option--selected" role="option" aria-selected="true">Bogotá D.C.</div>
+                <div class="mp-dropdown__option" role="option">Medellín</div>
+                <div class="mp-dropdown__option" role="option">Cali</div>
+                <div class="mp-dropdown__option" role="option">Barranquilla</div>
+              </div>
+            </div>
           </div>
           <span class="mp-dropdown-helper">Texto de apoyo</span>
         </div>
@@ -267,12 +299,20 @@
       <div class="drp-state-card">
         <div class="drp-state-card__label">Error</div>
         <div class="mp-dropdown-group" style="width:100%">
-          <label class="mp-dropdown-label">Ciudad <span class="mp-dropdown-required" aria-hidden="true">*</span></label>
+          <label class="mp-dropdown-label" for="drp-state-error">Ciudad <span class="mp-dropdown-required" aria-hidden="true">*</span></label>
           <div class="mp-dropdown" style="width:100%">
-            <button class="mp-dropdown__trigger error" type="button" aria-expanded="false" aria-invalid="true" aria-describedby="drp-err-helper" disabled>
+            <button class="mp-dropdown__trigger error" id="drp-state-error" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="drp-state-error-panel" aria-invalid="true" aria-describedby="drp-err-helper">
               <span class="mp-dropdown__value is-placeholder">Seleccionar</span>
               <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
             </button>
+            <div class="mp-dropdown__panel" id="drp-state-error-panel" role="listbox">
+              <div class="mp-dropdown__options">
+                <div class="mp-dropdown__option" role="option">Bogotá D.C.</div>
+                <div class="mp-dropdown__option" role="option">Medellín</div>
+                <div class="mp-dropdown__option" role="option">Cali</div>
+                <div class="mp-dropdown__option" role="option">Barranquilla</div>
+              </div>
+            </div>
           </div>
           <span class="mp-dropdown-helper error" id="drp-err-helper">
             <span class="material-symbols-rounded" aria-hidden="true" style="font-size:16px">error</span>

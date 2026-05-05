@@ -31,16 +31,16 @@
       <div class="col-12 col-lg-4">
         <h3>Características</h3>
         <ul class="component-list mb-3">
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Bloquea la interacción con el fondo.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Se muestra sobre overlay `#111` al 30%.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Requiere acción del usuario.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Tiene alta prioridad visual.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Bloquea la interacción con el fondo.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Se muestra sobre overlay `#111` al 30%.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Requiere acción del usuario.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Tiene alta prioridad visual.</li>
         </ul>
         <h3>Ubicación</h3>
         <ul class="component-list">
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Centrado en pantalla.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Sobre fondo oscuro overlay.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Nivel más alto de jerarquía visual.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Centrado en pantalla.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Sobre fondo oscuro overlay.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Nivel más alto de jerarquía visual.</li>
         </ul>
       </div>
       <div class="col-12 col-lg-8">
@@ -87,11 +87,11 @@
       <div class="col-12 col-lg-4">
         <h3>Cuándo usarlo</h3>
         <ul class="component-list">
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Confirmaciones importantes o irreversibles.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Información crítica que exige lectura.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Validaciones que detienen el flujo.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Flujos guiados de pocos pasos.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">close</span>No usar para mensajes simples, listas largas o feedback temporal.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Confirmaciones importantes o irreversibles.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Información crítica que exige lectura.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Validaciones que detienen el flujo.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Flujos guiados de pocos pasos.</li>
+          <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No usar para mensajes simples, listas largas o feedback temporal.</li>
         </ul>
       </div>
       <div class="col-12 col-lg-8">
@@ -109,7 +109,7 @@
             <p>No lo uses para confirmaciones rápidas. Para eso usa toast.</p>
             <div class="component-example-actions">
               <div class="mp-toast mp-toast--success" role="status">
-                <span class="mp-toast__icon material-symbols-rounded" aria-hidden="true">check_circle</span>
+                <i class="icon icon-check-circle icon-32 mp-toast__icon" aria-hidden="true"></i>
                 <div class="mp-toast__content">
                   <p class="mp-toast__title">Cambios guardados</p>
                   <p class="mp-toast__body">La acción se completó.</p>
@@ -129,7 +129,7 @@
         <p>La estructura usa clases Bootstrap y personalización `mp-modal`.</p>
       </div>
       <button type="button" class="mp-btn mp-btn--primario mp-btn--icon-left" data-modal-demo>
-        <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+        <i class="icon icon-arrow-square-out icon-16" aria-hidden="true"></i>
         Ver demo
       </button>
     </div>
@@ -239,8 +239,12 @@
             <input type="checkbox" data-modal-control="secondary">
             Acción secundaria
           </label>
+          <label class="button-doc-toggle">
+            <input type="checkbox" data-modal-control="dismissOverlay" checked>
+            Cerrar al hacer clic en overlay
+          </label>
           <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-modal-demo>
-            <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+            <i class="icon icon-arrow-square-out icon-16" aria-hidden="true"></i>
             Probar modal
           </button>
         </div>
@@ -252,7 +256,7 @@
         <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-modal-code-tab="css">Clases CSS</button>
         <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-modal-code-tab="tokens">Tokens</button>
         <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-copy-modal-code>
-          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          <i class="icon icon-share icon-16" aria-hidden="true"></i>
           Copiar código
         </button>
       </div>
@@ -319,28 +323,28 @@
     <div class="row g-3">
       <div class="col-12 col-md-6">
         <div class="component-info-card">
-          <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+          <i class="icon icon-arrow-square-out icon-20" aria-hidden="true"></i>
           <strong>Apertura</strong>
           <p>Se abre después de una acción y mueve el foco al modal.</p>
         </div>
       </div>
       <div class="col-12 col-md-6">
         <div class="component-info-card">
-          <span class="material-symbols-rounded" aria-hidden="true">block</span>
+          <i class="icon icon-prohibit icon-20" aria-hidden="true"></i>
           <strong>Bloqueo</strong>
           <p>El overlay bloquea el contenido de fondo mientras el modal está activo.</p>
         </div>
       </div>
       <div class="col-12 col-md-6">
         <div class="component-info-card">
-          <span class="material-symbols-rounded" aria-hidden="true">keyboard</span>
+          <i class="icon icon-keyboard icon-20" aria-hidden="true"></i>
           <strong>Teclado</strong>
           <p>ESC cierra el modal y Tab mantiene el foco dentro del contenedor.</p>
         </div>
       </div>
       <div class="col-12 col-md-6">
         <div class="component-info-card">
-          <span class="material-symbols-rounded" aria-hidden="true">close</span>
+          <i class="icon icon-x icon-20" aria-hidden="true"></i>
           <strong>Cierre</strong>
           <p>Permite cerrar con X, acción secundaria, botón principal cuando aplique o ESC.</p>
         </div>
@@ -356,17 +360,17 @@
       <div class="col-12 col-lg-6">
         <h3>Do</h3>
         <ul class="component-list">
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usa títulos directos que expliquen el problema o decisión.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Redacta mensajes breves y accionables.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usa una sola acción primaria.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa títulos directos que expliquen el problema o decisión.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Redacta mensajes breves y accionables.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa una sola acción primaria.</li>
         </ul>
       </div>
       <div class="col-12 col-lg-6">
         <h3>Don’t</h3>
         <ul class="component-list">
-          <li><span class="material-symbols-rounded" aria-hidden="true">close</span>No incluyas textos largos o listas extensas.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">close</span>No uses etiquetas ambiguas como “Aceptar” si la acción es irreversible.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">close</span>No combines varias decisiones en el mismo modal.</li>
+          <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No incluyas textos largos o listas extensas.</li>
+          <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No uses etiquetas ambiguas como “Aceptar” si la acción es irreversible.</li>
+          <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No combines varias decisiones en el mismo modal.</li>
         </ul>
       </div>
     </div>
@@ -379,18 +383,18 @@
     <div class="row g-4">
       <div class="col-12 col-lg-6">
         <ul class="component-list">
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Usar `role="dialog"` y `aria-modal="true"`.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Conectar título con `aria-labelledby`.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Conectar mensaje con `aria-describedby`.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Devolver el foco al botón que abrió el modal.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usar `role="dialog"` y `aria-modal="true"`.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Conectar título con `aria-labelledby`.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Conectar mensaje con `aria-describedby`.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Devolver el foco al botón que abrió el modal.</li>
         </ul>
       </div>
       <div class="col-12 col-lg-6">
         <ul class="component-list">
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Focus visible en cierre y acciones.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Contraste mínimo AA.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No depender solo del color para comunicar tipo.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No abrir múltiples modales simultáneamente.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Focus visible en cierre y acciones.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Contraste mínimo AA.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No depender solo del color para comunicar tipo.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No abrir múltiples modales simultáneamente.</li>
         </ul>
       </div>
     </div>
@@ -444,15 +448,15 @@
     </div>
     <div class="component-downloads mt-3" aria-label="Descargas del modal">
       <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-modal-download="css">
-        <span class="material-symbols-rounded" aria-hidden="true">download</span>
+        <i class="icon icon-download icon-16" aria-hidden="true"></i>
         Descargar CSS
       </button>
       <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-modal-download="scss">
-        <span class="material-symbols-rounded" aria-hidden="true">download</span>
+        <i class="icon icon-download icon-16" aria-hidden="true"></i>
         Descargar Sass
       </button>
       <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-modal-download="json">
-        <span class="material-symbols-rounded" aria-hidden="true">download</span>
+        <i class="icon icon-download icon-16" aria-hidden="true"></i>
         Descargar JSON
       </button>
     </div>
@@ -460,13 +464,23 @@
 
   <section class="component-section" aria-labelledby="modal-code-title">
     <div class="component-section__header">
-      <h2 id="modal-code-title">11. Código</h2>
-      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-copy-modal-static>
-        <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
-        Copiar
-      </button>
+      <div>
+        <h2 id="modal-code-title">11. Código</h2>
+        <p>Ejemplos con estructura Bootstrap y clases productivas `mp-modal` del core.</p>
+      </div>
     </div>
-    <pre id="modal-static-code"></pre>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Ejemplos de código de modal">
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="true" data-modal-static-tab="base">HTML base</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-modal-static-tab="variants">Variantes</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-modal-static-tab="accessible">Ejemplo accesible</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-copy-modal-static>
+          <i class="icon icon-share icon-16" aria-hidden="true"></i>
+          Copiar
+        </button>
+      </div>
+      <pre id="modal-static-code"></pre>
+    </div>
   </section>
 
   <section class="component-section" aria-labelledby="modal-qa-title">
@@ -485,15 +499,31 @@
     </div>
   </section>
 
-  <section class="component-support" aria-label="Soporte y actualización">
-    <div>
-      <strong>¿Necesitas ayuda?</strong>
-      <p>Usa el canal del sistema de diseño para validar casos especiales de modal.</p>
+  <section class="component-section" aria-labelledby="modal-support-title">
+    <div class="component-section__header">
+      <h2 id="modal-support-title">13. Issues / soporte / actualización</h2>
     </div>
-    <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left">
-      <span class="material-symbols-rounded" aria-hidden="true">bug_report</span>
-      Reportar issue
-    </button>
-    <span>Última actualización: 04 mayo 2026 · v1.0.0</span>
+    <div class="component-support">
+      <div class="component-support__item">
+        <i class="component-support__icon icon icon-question icon-20" aria-hidden="true"></i>
+        <div>
+          <h3>¿Necesitas ayuda?</h3>
+          <p>Usa el canal del sistema de diseño para validar casos especiales de modal.</p>
+        </div>
+      </div>
+      <span class="component-divider" aria-hidden="true"></span>
+      <div class="component-support__item">
+        <i class="component-support__icon icon icon-warning-octagon icon-20" aria-hidden="true"></i>
+        <div>
+          <h3>¿Encontraste un problema?</h3>
+          <p>Repórtalo para mejorar la documentación y el componente.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="component-support__footer">
+      <span>Última actualización: 04 mayo 2026</span>
+      <span>Versión del componente: v1.0.0</span>
+      <span>Fuente: Figma Compensar v2 · nodo 4595:28317</span>
+    </footer>
   </section>
 </article>

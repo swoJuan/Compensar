@@ -30,10 +30,10 @@
       <div>
         <h3>Cuándo usarlo</h3>
         <ul class="component-list">
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Para capturar texto libre: nombres, documentos, correos, contraseñas.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Para seleccionar una opción de una lista corta y fija con <code>mp-select</code>.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Para contenido de múltiples líneas con <code>mp-textarea</code>.</li>
-          <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Para campos de búsqueda con ícono decorativo.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para capturar texto libre: nombres, documentos, correos, contraseñas.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para seleccionar una opción de una lista corta y fija con <code>mp-select</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para contenido de múltiples líneas con <code>mp-textarea</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para campos de búsqueda con ícono decorativo.</li>
         </ul>
       </div>
       <div class="component-example-card component-example-card--split">
@@ -237,7 +237,7 @@
         <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-inp-code-tab="css">Clases CSS</button>
         <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-inp-code-tab="tokens">Tokens</button>
         <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left inp-copy-btn" data-inp-copy-playground>
-          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          <i class="icon icon-share icon-16" aria-hidden="true"></i>
           Copiar código
         </button>
       </div>
@@ -300,7 +300,7 @@
           <div class="mp-input-wrapper">
             <input class="mp-input-field error" type="text" value="Valor inválido" aria-invalid="true">
           </div>
-          <span class="mp-input-helper error"><span class="material-symbols-rounded" aria-hidden="true" style="font-size:16px">error</span> Mensaje de error</span>
+          <span class="mp-input-helper error"><i class="icon icon-warning-circle icon-16" aria-hidden="true"></i> Mensaje de error</span>
         </div>
       </div>
 
@@ -311,7 +311,7 @@
           <div class="mp-input-wrapper">
             <input class="mp-input-field filled" type="text" value="valor@compensar.com">
           </div>
-          <span class="mp-input-helper success"><span class="material-symbols-rounded" aria-hidden="true" style="font-size:16px">check_circle</span> Valor confirmado</span>
+          <span class="mp-input-helper success"><i class="icon icon-check-circle icon-16" aria-hidden="true"></i> Valor confirmado</span>
         </div>
       </div>
 
@@ -339,22 +339,22 @@
       </div>
       <div class="button-behavior-grid">
         <div class="button-behavior-item">
-          <span class="material-symbols-rounded" aria-hidden="true">ads_click</span>
+          <i class="icon icon-hand-pointing icon-20" aria-hidden="true"></i>
           <h3>Foco</h3>
           <p>Al hacer clic o navegar con Tab el campo recibe foco con borde naranja y ring de 3 px.</p>
         </div>
         <div class="button-behavior-item">
-          <span class="material-symbols-rounded" aria-hidden="true">error</span>
+          <i class="icon icon-warning-circle icon-20" aria-hidden="true"></i>
           <h3>Validación</h3>
           <p>El error se muestra en el helper text. No eliminar el label ni el campo al mostrar error.</p>
         </div>
         <div class="button-behavior-item">
-          <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
+          <i class="icon icon-eye icon-20" aria-hidden="true"></i>
           <h3>Contraseña</h3>
           <p>El ícono derecho interactivo alterna visibilidad. Renderizado como botón con aria-label.</p>
         </div>
         <div class="button-behavior-item">
-          <span class="material-symbols-rounded" aria-hidden="true">phone_iphone</span>
+          <i class="icon icon-device-mobile icon-20" aria-hidden="true"></i>
           <h3>Responsive</h3>
           <p>El campo ocupa el ancho disponible del contenedor. Altura fija 56 px en todas las pantallas.</p>
         </div>
@@ -400,13 +400,13 @@
         <h2 id="input-a11y">7. Accesibilidad</h2>
       </div>
       <ul class="component-list">
-        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Cada campo tiene <code>&lt;label for="…"&gt;</code> explícito. Nunca depender solo del placeholder.</li>
-        <li><span class="material-symbols-rounded" aria-hidden="true">check</span><code>aria-invalid="true"</code> + <code>aria-describedby</code> conectan el mensaje de error al campo para lectores de pantalla.</li>
-        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Campos requeridos: asterisco con <code>aria-hidden="true"</code> más <code>required</code> y <code>aria-required="true"</code>.</li>
-        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Íconos decorativos con <code>aria-hidden="true"</code>. Íconos accionables como <code>&lt;button&gt;</code> con <code>aria-label</code>.</li>
-        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Focus visible en todos los estados. Contraste mínimo AA 4.5:1.</li>
-        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Área táctil mínima 44 px. El campo tiene 56 px de altura.</li>
-        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>No depender solo del color para comunicar error o success.</li>
+        <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cada campo tiene <code>&lt;label for="…"&gt;</code> explícito. Nunca depender solo del placeholder.</li>
+        <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>aria-invalid="true"</code> + <code>aria-describedby</code> conectan el mensaje de error al campo para lectores de pantalla.</li>
+        <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Campos requeridos: asterisco con <code>aria-hidden="true"</code> más <code>required</code> y <code>aria-required="true"</code>.</li>
+        <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Íconos decorativos con <code>aria-hidden="true"</code>. Íconos accionables como <code>&lt;button&gt;</code> con <code>aria-label</code>.</li>
+        <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Focus visible en todos los estados. Contraste mínimo AA 4.5:1.</li>
+        <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Área táctil mínima 44 px. El campo tiene 56 px de altura.</li>
+        <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No depender solo del color para comunicar error o success.</li>
       </ul>
     </section>
 
@@ -446,7 +446,7 @@
         <div class="mp-input-group">
           <label class="mp-input-label">Correo <span class="mp-input-required" aria-hidden="true">*</span></label>
           <div class="mp-input-wrapper">
-            <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+            <i class="icon icon-envelope icon-24 mp-input-icon mp-input-icon--left" aria-hidden="true"></i>
             <input class="mp-input-field has-icon-left" type="email" placeholder="usuario@compensar.com">
           </div>
         </div>
@@ -464,7 +464,7 @@
         <div class="mp-input-group">
           <label class="mp-input-label">Correo <span class="mp-input-required" aria-hidden="true">*</span></label>
           <div class="mp-input-wrapper">
-            <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+            <i class="icon icon-envelope icon-24 mp-input-icon mp-input-icon--left" aria-hidden="true"></i>
             <input class="mp-input-field has-icon-left" type="email" placeholder="usuario@compensar.com">
           </div>
         </div>
@@ -482,7 +482,7 @@
         <div class="mp-input-group">
           <label class="mp-input-label">Correo <span class="mp-input-required" aria-hidden="true">*</span></label>
           <div class="mp-input-wrapper">
-            <span class="material-symbols-rounded mp-input-icon mp-input-icon--left" aria-hidden="true">mail</span>
+            <i class="icon icon-envelope icon-24 mp-input-icon mp-input-icon--left" aria-hidden="true"></i>
             <input class="mp-input-field has-icon-left" type="email" placeholder="usuario@compensar.com">
           </div>
         </div>
@@ -567,10 +567,10 @@
         <p>Descarga estilos planos del input, unidos al core y listos para validar en dummy con tokens Figma.</p>
       </div>
       <div class="ct-downloads" aria-label="Descargar estilos del input">
-        <span class="ct-downloads-label"><span class="material-symbols-rounded" aria-hidden="true">download</span> Descargar</span>
-        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-inp-download="css"><span class="material-symbols-rounded" aria-hidden="true">code</span> CSS</button>
-        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-inp-download="scss"><span class="material-symbols-rounded" aria-hidden="true">data_object</span> Sass</button>
-        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-inp-download="json"><span class="material-symbols-rounded" aria-hidden="true">data_object</span> JSON</button>
+        <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-inp-download="css"><i class="icon icon-article icon-16" aria-hidden="true"></i> CSS</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-inp-download="scss"><i class="icon icon-article icon-16" aria-hidden="true"></i> Sass</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-inp-download="json"><i class="icon icon-article icon-16" aria-hidden="true"></i> JSON</button>
       </div>
     </div>
     <div class="inp-code-panel">
@@ -579,7 +579,7 @@
         <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-inp-static-code-tab="variants">Variantes</button>
         <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-inp-static-code-tab="accessible">Ejemplo accesible</button>
         <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left inp-copy-btn" data-inp-copy-static>
-          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          <i class="icon icon-share icon-16" aria-hidden="true"></i>
           Copiar
         </button>
       </div>
@@ -629,7 +629,7 @@
     </div>
     <div class="component-support">
       <div class="component-support__item">
-        <span class="component-support__icon material-symbols-rounded" aria-hidden="true">help</span>
+        <i class="component-support__icon icon icon-question icon-20" aria-hidden="true"></i>
         <div>
           <h3>¿Necesitas ayuda?</h3>
           <p>Usa el canal #diseno-sistema o escribe al equipo responsable.</p>
@@ -637,7 +637,7 @@
       </div>
       <span class="component-divider" aria-hidden="true"></span>
       <div class="component-support__item">
-        <span class="component-support__icon material-symbols-rounded" aria-hidden="true">bug_report</span>
+        <i class="component-support__icon icon icon-warning-octagon icon-20" aria-hidden="true"></i>
         <div>
           <h3>¿Encontraste un problema?</h3>
           <p>Repórtalo para mejorar la documentación y el componente.</p>

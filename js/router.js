@@ -94,6 +94,12 @@ const router = (() => {
       icon: 'input',
       group: 'web-componentes'
     },
+    'web/componentes/dropdown': {
+      label: 'Dropdown / Select',
+      path: 'transversales/components/dropdown.html',
+      icon: 'arrow_drop_down_circle',
+      group: 'web-componentes'
+    },
     'web/componentes/seleccion': {
       label: 'Checkbox / Radio / Switch',
       path: 'transversales/components/selection-controls.html',
@@ -199,7 +205,7 @@ const router = (() => {
     if (state.currentSection === section) return true;
 
     const def = navigationMap[section];
-    const fragmentVersion = '20260504-10';
+    const fragmentVersion = '20260504-11';
     const fragmentPath = `${config.fragmentBase}/${def.path}?v=${fragmentVersion}`;
 
     try {
@@ -220,7 +226,8 @@ const router = (() => {
         section === 'web/componentes/alertas' ||
         section === 'web/componentes/toast' ||
         section === 'web/componentes/modales' ||
-        section === 'web/componentes/inputs'
+        section === 'web/componentes/inputs' ||
+        section === 'web/componentes/dropdown'
       );
 
       // Update active nav states
@@ -248,6 +255,9 @@ const router = (() => {
       }
       if (window.inputDocs) {
         window.requestAnimationFrame(() => window.inputDocs.initInputDoc(document));
+      }
+      if (window.dropdownDocs) {
+        window.requestAnimationFrame(() => window.dropdownDocs.initDropdownDoc(document));
       }
 
       return true;

@@ -65,6 +65,7 @@ const theme = (() => {
     
     emit('change', newTheme);
     updateUI(newTheme);
+    document.dispatchEvent(new CustomEvent('ds:theme-change', { detail: { theme: newTheme } }));
 
     return true;
   }

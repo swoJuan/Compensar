@@ -378,7 +378,7 @@ ${optionsHtml}
       ${multipleInner}
       <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
     </button>
-    ${isOpen ? panelHtml : ''}
+    ${panelHtml}
   </div>
   <span class="${helperClass}">${helperContent}</span>
 </div>`;
@@ -460,7 +460,7 @@ ${optionsHtml}
     simple: {
       height: '56 px', width: '320 px', panelH: 'max 256 px',
       description: 'Selección única · caret expand_more · padding 16 px',
-      showPanel: false,
+      showPanel: true,
     },
     search: {
       height: '56 px', width: '320 px', panelH: 'max 256 px',
@@ -532,9 +532,12 @@ ${optionsHtml}
           <input class="mp-dropdown__search-input" type="text" placeholder="Buscar ciudad…" readonly>
         </div>` : '';
 
+    // Anatomy usa <span> para el chip-remove (no <button>) porque el trigger
+    // es un <button> y los navegadores no permiten <button> anidados — el parser
+    // los mueve fuera del DOM rompiendo el layout.
     const triggerInner = variant === 'multiple'
       ? `<div class="mp-dropdown__chips">
-           <span class="mp-dropdown__chip">Medellín <button class="mp-dropdown__chip-remove" type="button" aria-label="Quitar Medellín"><span class="material-symbols-rounded">close</span></button></span>
+           <span class="mp-dropdown__chip">Medellín <span class="mp-dropdown__chip-remove" aria-hidden="true"><span class="material-symbols-rounded">close</span></span></span>
          </div>`
       : `<span class="mp-dropdown__value">Medellín</span>`;
 
@@ -544,7 +547,7 @@ ${optionsHtml}
       <div class="mp-dropdown-group">
         <label class="mp-dropdown-label">Ciudad</label>
         <div class="mp-dropdown"${showPanel ? ' aria-expanded="true"' : ''}>
-          <button class="mp-dropdown__trigger" type="button" aria-expanded="${showPanel}" disabled>
+          <button class="mp-dropdown__trigger" type="button" aria-expanded="${showPanel}" style="pointer-events:none">
             ${triggerInner}
             <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
           </button>
@@ -791,6 +794,80 @@ ${optionsHtml}
       }
 
       renderStaticCode(page, 'html');
+
+      // ── Panel toggle: delegación en page (funciona con innerHTML dinámico) ──
+      function openDropdown(trigger) {
+        const wrapper = trigger.closest('.mp-dropdown');
+        trigger.setAttribute('aria-expanded', 'true');
+        if (wrapper) wrapper.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeDropdown(trigger) {
+        const wrapper = trigger.closest('.mp-dropdown');
+        trigger.setAttribute('aria-expanded', 'false');
+        if (wrapper) wrapper.removeAttribute('aria-expanded');
+      }
+
+      function closeAllDropdowns() {
+        page.querySelectorAll('.mp-dropdown__trigger[aria-expanded="true"]').forEach(t => closeDropdown(t));
+      }
+
+      // Delegado en page → funciona incluso después de que renderPlayground
+      // reemplaza el innerHTML con nuevos triggers
+      page.addEventListener('click', (e) => {
+        // 1. Click en trigger
+        const trigger = e.target.closest('.mp-dropdown__trigger');
+        if (trigger && !trigger.disabled) {
+          e.stopPropagation();
+          const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+          closeAllDropdowns();
+          if (!isOpen) openDropdown(trigger);
+          return;
+        }
+
+        // 2. Click en opción
+        const option = e.target.closest('.mp-dropdown__option:not(.mp-dropdown__option--disabled)');
+        if (option) {
+          const panel   = option.closest('.mp-dropdown__panel');
+          if (!panel) return;
+          const wrapper = panel.closest('.mp-dropdown');
+          const trig    = wrapper && wrapper.querySelector('.mp-dropdown__trigger');
+          if (!trig || trig.disabled) return;
+
+          // Marca seleccionada
+          panel.querySelectorAll('.mp-dropdown__option').forEach(o => {
+            o.classList.remove('mp-dropdown__option--selected');
+            o.removeAttribute('aria-selected');
+          });
+          option.classList.add('mp-dropdown__option--selected');
+          option.setAttribute('aria-selected', 'true');
+
+          // Actualiza texto visible del trigger
+          const valueEl = trig.querySelector('.mp-dropdown__value');
+          if (valueEl) {
+            valueEl.textContent = option.textContent.trim();
+            valueEl.classList.remove('is-placeholder');
+          }
+          closeDropdown(trig);
+          return;
+        }
+
+        // 3. Click fuera → cierra todos
+        if (!e.target.closest('.mp-dropdown')) {
+          closeAllDropdowns();
+        }
+      });
+
+      // Cierra al hacer click fuera (document-level)
+      const closeOnOutside = (e) => {
+        if (!e.target.closest('[data-component-doc="dropdown"]')) closeAllDropdowns();
+      };
+      document.addEventListener('click', closeOnOutside);
+
+      // Limpieza al navegar a otra sección
+      if (typeof router !== 'undefined') {
+        router.on('navigate', () => document.removeEventListener('click', closeOnOutside));
+      }
 
       page.dataset.dropdownInitialized = 'true';
     } catch (e) {

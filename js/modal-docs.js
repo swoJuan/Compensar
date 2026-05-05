@@ -2,9 +2,13 @@ const modalDocs = (() => {
   const specs = {
     warning: { label: 'Warning', icon: 'warning', title: 'La cita no fue posible agendarla', message: 'Por favor intenta más tarde o puedes comunicarte con uno de nuestros asesores a través de Vita.' },
     info: { label: 'Info', icon: 'info', title: 'Información importante', message: 'Revisa esta información antes de continuar.' },
-    success: { label: 'Success', icon: 'check_circle', title: 'Solicitud completada', message: 'La operación se realizó correctamente.' },
-    error: { label: 'Error', icon: 'error', title: 'No fue posible continuar', message: 'Inténtalo nuevamente o comunícate con soporte.' }
+    success: { label: 'Success', icon: 'check-circle', title: 'Solicitud completada', message: 'La operación se realizó correctamente.' },
+    error: { label: 'Error', icon: 'warning-circle', title: 'No fue posible continuar', message: 'Inténtalo nuevamente o comunícate con soporte.' }
   };
+
+  function iconMarkup(name, size = 16, extraClass = '') {
+    return `<i class="icon icon-${name} icon-${size}${extraClass ? ` ${extraClass}` : ''}" aria-hidden="true"></i>`;
+  }
 
   const sizeMap = {
     sm: { label: 'Pequeño', dialogClass: 'modal-sm', width: '300px' },
@@ -19,6 +23,11 @@ const modalDocs = (() => {
     bootstrapBase: ['.modal', '.modal-dialog', '.modal-content', '.modal-sm', '.modal-lg'],
     classes: ['.mp-modal', '.mp-modal--info', '.mp-modal--success', '.mp-modal--warning', '.mp-modal--error'],
     sizes: { small: '300px', medium: '479px', large: '800px' },
+    modes: {
+      light: { surface: '#ffffff', text: '#111111', overlay: 'rgba(17,17,17,.30)' },
+      dark: { surface: '#292929', text: '#f5f5f5', overlay: 'rgba(0,0,0,.62)' },
+      highContrast: { surface: '#000000', text: '#ffffff', overlay: 'rgba(0,0,0,.82)' }
+    },
     tokens: {
       overlay: '#111111 at 30%',
       contentWidth: '479px',
@@ -43,7 +52,8 @@ const modalDocs = (() => {
       title: page.querySelector('[data-modal-control="title"]')?.value || specs.warning.title,
       message: page.querySelector('[data-modal-control="message"]')?.value || specs.warning.message,
       action: page.querySelector('[data-modal-control="action"]')?.value || 'Acción',
-      secondary: page.querySelector('[data-modal-control="secondary"]')?.checked ?? false
+      secondary: page.querySelector('[data-modal-control="secondary"]')?.checked ?? false,
+      dismissOverlay: page.querySelector('[data-modal-control="dismissOverlay"]')?.checked ?? false
     };
   }
 
@@ -57,10 +67,10 @@ const modalDocs = (() => {
       <div class="modal-dialog modal-dialog-centered mp-modal__dialog ${sizeSpec.dialogClass}">
         <div class="modal-content mp-modal__content" role="document">
           <button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-modal__close" aria-label="Cerrar modal" data-modal-close>
-            <span class="material-symbols-rounded" aria-hidden="true">close</span>
+            ${iconMarkup('x', 16)}
           </button>
           <span class="mp-modal__icon">
-            <span class="material-symbols-rounded" aria-hidden="true">${spec.icon}</span>
+            ${iconMarkup(spec.icon, 32)}
           </span>
           <h2 class="mp-modal__title">${escapeHtml(title || spec.title)}</h2>
           <p class="mp-modal__body">${escapeHtml(message || spec.message)}</p>
@@ -133,10 +143,10 @@ body: Roboto Regular 18px / 1.3`;
   <div class="modal-dialog modal-dialog-centered${sizeClass} mp-modal__dialog">
     <div class="modal-content mp-modal__content">
       <button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-modal__close" data-bs-dismiss="modal" aria-label="Cerrar modal">
-        <span class="material-symbols-rounded" aria-hidden="true">close</span>
+        ${iconMarkup('x', 16)}
       </button>
       <span class="mp-modal__icon">
-        <span class="material-symbols-rounded" aria-hidden="true">${spec.icon}</span>
+        ${iconMarkup(spec.icon, 32)}
       </span>
       <h2 class="mp-modal__title" id="modal-example-title">${escapeHtml(state.title)}</h2>
       <p class="mp-modal__body" id="modal-example-description">${escapeHtml(state.message)}</p>
@@ -148,16 +158,53 @@ body: Roboto Regular 18px / 1.3`;
 </div>`;
   }
 
-  function renderStaticCode(page) {
+  function renderStaticCode(page, key = 'base') {
     const output = page.querySelector('#modal-static-code');
     if (!output) return;
-    output.textContent = htmlForState({
-      kind: 'warning',
-      size: 'md',
-      title: specs.warning.title,
-      message: specs.warning.message,
-      action: 'Acción',
-      secondary: true
+    const examples = {
+      base: htmlForState({
+        kind: 'warning',
+        size: 'md',
+        title: specs.warning.title,
+        message: specs.warning.message,
+        action: 'Acción',
+        secondary: true
+      }),
+      variants: `<div class="modal mp-modal mp-modal--info fade" tabindex="-1">...</div>
+<div class="modal mp-modal mp-modal--success fade" tabindex="-1">...</div>
+<div class="modal mp-modal mp-modal--warning fade" tabindex="-1">...</div>
+<div class="modal mp-modal mp-modal--error fade" tabindex="-1">...</div>
+
+<!-- Tamaños basados en Bootstrap -->
+<div class="modal-dialog modal-dialog-centered modal-sm mp-modal__dialog">...</div>
+<div class="modal-dialog modal-dialog-centered mp-modal__dialog">...</div>
+<div class="modal-dialog modal-dialog-centered modal-lg mp-modal__dialog">...</div>`,
+      accessible: `<button type="button" class="mp-btn mp-btn--primario" aria-haspopup="dialog" aria-controls="modal-confirmacion">
+  Agendar cita
+</button>
+
+<div class="modal mp-modal mp-modal--warning fade" id="modal-confirmacion" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modal-confirmacion-title" aria-describedby="modal-confirmacion-description">
+  <div class="modal-dialog modal-dialog-centered mp-modal__dialog">
+    <div class="modal-content mp-modal__content">
+      <button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-modal__close" data-bs-dismiss="modal" aria-label="Cerrar modal">
+        ${iconMarkup('x', 16)}
+      </button>
+      <span class="mp-modal__icon">
+        ${iconMarkup('warning', 32)}
+      </span>
+      <h2 class="mp-modal__title" id="modal-confirmacion-title">La cita no fue posible agendarla</h2>
+      <p class="mp-modal__body" id="modal-confirmacion-description">Por favor intenta más tarde o comunícate con un asesor.</p>
+      <div class="mp-modal__actions">
+        <button type="button" class="mp-btn mp-btn--secundario" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="mp-btn mp-btn--primario" data-bs-dismiss="modal">Entendido</button>
+      </div>
+    </div>
+  </div>
+</div>`
+    };
+    output.textContent = examples[key] || examples.base;
+    page.querySelectorAll('[data-modal-static-tab]').forEach((tab) => {
+      tab.setAttribute('aria-selected', String(tab.dataset.modalStaticTab === key));
     });
   }
 
@@ -192,7 +239,11 @@ body: Roboto Regular 18px / 1.3`;
       if (event.key === 'Tab') trapFocus(event, modal);
     };
     layer.addEventListener('click', (event) => {
-      if (event.target.closest('[data-modal-close]')) close();
+      if (event.target.closest('[data-modal-close]')) { close(); return; }
+      // .mp-modal tiene inset:0 y cubre todo el layer, así que el click
+      // en el área gris aterriza sobre el propio .mp-modal (no en un hijo
+      // del diálogo). Comparar con el nodo modal directamente.
+      if (state.dismissOverlay && (event.target === modal || event.target === layer.querySelector('.mp-modal-backdrop'))) close();
     });
     document.addEventListener('keydown', onKeydown);
     window.requestAnimationFrame(() => {
@@ -247,10 +298,30 @@ body: Roboto Regular 18px / 1.3`;
 .mp-modal .modal-content { display: flex; align-items: center; gap: 24px; padding: 24px; border: 1px solid var(--mp-modal-border); border-radius: 12px; background: var(--mp-modal-bg); color: var(--mp-modal-text); box-shadow: 2px 5px 16px rgba(0,0,0,.15); text-align: center; }
 .mp-modal__close { position: absolute; top: 19px; right: 23px; width: 32px; height: 32px; }
 .mp-modal__icon { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; border: 5px solid #fff2d9; border-radius: 48px; background: #ffc154; }
-.mp-modal__icon .material-symbols-rounded { font-size: 32px; }
+.mp-modal__icon .icon { font-size: 32px; }
 .mp-modal .mp-modal__title { margin: 0; font-size: 28px; font-weight: 700; line-height: 1.2; }
 .mp-modal .mp-modal__body { margin: 0; font-size: 18px; line-height: 1.3; }
 .mp-modal__actions { display: flex; justify-content: center; gap: 24px; width: 100%; }
+.mp-modal-backdrop { background-color: rgba(17,17,17,.30); }
+
+.mp-modal--info { --mp-modal-icon-bg: #e6f1fb; --mp-modal-icon-border: #6c9fd0; --mp-modal-icon-color: #2d4a67; }
+.mp-modal--success { --mp-modal-icon-bg: #e6f7e8; --mp-modal-icon-border: #44bd75; --mp-modal-icon-color: #0d3d1f; }
+.mp-modal--warning { --mp-modal-icon-bg: #ffc154; --mp-modal-icon-border: #fff2d9; --mp-modal-icon-color: #111111; }
+.mp-modal--error { --mp-modal-icon-bg: #f7eeed; --mp-modal-icon-border: #db7165; --mp-modal-icon-color: #521a14; }
+
+[data-theme="dark"] .mp-modal { --mp-modal-bg: #292929; --mp-modal-border: #4d4746; --mp-modal-text: #f5f5f5; --mp-modal-overlay: rgba(0,0,0,.62); }
+[data-theme="dark"] .mp-modal--info { --mp-modal-icon-bg: #18428f; --mp-modal-icon-border: #296ff0; --mp-modal-icon-color: #f5f5f5; }
+[data-theme="dark"] .mp-modal--success { --mp-modal-icon-bg: #0b853d; --mp-modal-icon-border: #22a152; --mp-modal-icon-color: #f5f5f5; }
+[data-theme="dark"] .mp-modal--warning { --mp-modal-icon-bg: #967229; --mp-modal-icon-border: #fcbf44; --mp-modal-icon-color: #f5f5f5; }
+[data-theme="dark"] .mp-modal--error { --mp-modal-icon-bg: #7d291f; --mp-modal-icon-border: #d14434; --mp-modal-icon-color: #f5f5f5; }
+[data-theme="dark"] .mp-modal-backdrop { background-color: rgba(0,0,0,.62); }
+
+[data-theme="high-contrast"] .mp-modal { --mp-modal-bg: #000000; --mp-modal-border: #ffffff; --mp-modal-text: #ffffff; --mp-modal-overlay: rgba(0,0,0,.82); box-shadow: none; }
+[data-theme="high-contrast"] .mp-modal--info { --mp-modal-icon-bg: #102c5e; --mp-modal-icon-border: #296ff0; --mp-modal-icon-color: #ffffff; }
+[data-theme="high-contrast"] .mp-modal--success { --mp-modal-icon-bg: #0d3d1f; --mp-modal-icon-border: #22a152; --mp-modal-icon-color: #ffffff; }
+[data-theme="high-contrast"] .mp-modal--warning { --mp-modal-icon-bg: #634a1a; --mp-modal-icon-border: #fcbf44; --mp-modal-icon-color: #ffffff; }
+[data-theme="high-contrast"] .mp-modal--error { --mp-modal-icon-bg: #521a14; --mp-modal-icon-border: #d14434; --mp-modal-icon-color: #ffffff; }
+[data-theme="high-contrast"] .mp-modal-backdrop { background-color: rgba(0,0,0,.82); }
 `;
   }
 
@@ -268,6 +339,12 @@ $mp-modal-icon: 64px;
 $mp-modal-icon-inner: 32px;
 $mp-modal-close: 32px;
 $mp-modal-overlay: rgba(17, 17, 17, .30);
+
+$mp-modal-modes: (
+  light: (surface: #ffffff, text: #111111, overlay: rgba(17, 17, 17, .30)),
+  dark: (surface: #292929, text: #f5f5f5, overlay: rgba(0, 0, 0, .62)),
+  high-contrast: (surface: #000000, text: #ffffff, overlay: rgba(0, 0, 0, .82))
+);
 `;
   }
 
@@ -289,7 +366,7 @@ $mp-modal-overlay: rgba(17, 17, 17, .30);
   function flashButton(button, label) {
     if (!button) return;
     const original = button.innerHTML;
-    button.innerHTML = `<span class="material-symbols-rounded" aria-hidden="true">check</span>${label}`;
+    button.innerHTML = `${iconMarkup('check', 16)}${label}`;
     window.setTimeout(() => { button.innerHTML = original; }, 1400);
   }
 
@@ -320,6 +397,7 @@ $mp-modal-overlay: rgba(17, 17, 17, .30);
       const codeTab = event.target.closest('[data-modal-code-tab]');
       const copyCode = event.target.closest('[data-copy-modal-code]');
       const copyStatic = event.target.closest('[data-copy-modal-static]');
+      const staticTab = event.target.closest('[data-modal-static-tab]');
       const download = event.target.closest('[data-modal-download]');
       const demo = event.target.closest('[data-modal-demo]');
       if (anatomy) renderAnatomy(findPage(anatomy), anatomy.dataset.modalAnatomy);
@@ -330,6 +408,7 @@ $mp-modal-overlay: rgba(17, 17, 17, .30);
       }
       if (copyCode) copyText(findPage(copyCode).querySelector('#modal-code-output')?.textContent || '', copyCode);
       if (copyStatic) copyText(findPage(copyStatic).querySelector('#modal-static-code')?.textContent || '', copyStatic);
+      if (staticTab) renderStaticCode(findPage(staticTab), staticTab.dataset.modalStaticTab);
       if (download) downloadAsset(download.dataset.modalDownload, download);
       if (demo) showDemo(findPage(demo), demo);
     });

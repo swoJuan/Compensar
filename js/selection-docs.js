@@ -1,4 +1,8 @@
 const selectionDocs = (() => {
+  function iconMarkup(name, size = 16, extraClass = '') {
+    return `<i class="icon icon-${name} icon-${size}${extraClass ? ` ${extraClass}` : ''}" aria-hidden="true"></i>`;
+  }
+
   const specs = {
     checkbox: {
       label: 'Checkbox',
@@ -125,7 +129,7 @@ const selectionDocs = (() => {
         </span>
         <span class="mp-switch__text">
           <span class="mp-switch__label">${escapeHtml(label || 'Label')}</span>
-          <span class="mp-switch__helper"><span class="material-symbols-rounded" aria-hidden="true">error</span> Campo obligatorio</span>
+          <span class="mp-switch__helper">${iconMarkup('warning-circle', 16)} Campo obligatorio</span>
         </span>`;
       if (helper || error) root.querySelector('.mp-switch__helper').style.display = 'inline-flex';
       return root;
@@ -141,7 +145,7 @@ const selectionDocs = (() => {
       </span>
       <span class="mp-choice__text">
         <span class="mp-choice__label">${escapeHtml(label || 'Label')}</span>
-        <span class="mp-choice__helper"><span class="material-symbols-rounded" aria-hidden="true">error</span> Campo obligatorio</span>
+        <span class="mp-choice__helper">${iconMarkup('warning-circle', 16)} Campo obligatorio</span>
       </span>`;
     if (helper || error) root.querySelector('.mp-choice__helper').style.display = 'inline-flex';
     return root;
@@ -221,7 +225,7 @@ selected-color: ${state.theme === 'dark' ? 'var(--use-primary-default-dark, #ff9
     <span class="mp-switch__track" aria-hidden="true"></span>
   </span>
   <span class="mp-switch__text">
-    <span class="mp-switch__label">${escapeHtml(state.label)}</span>${state.helper || error ? '\n    <span class="mp-switch__helper"><span class="material-symbols-rounded" aria-hidden="true">error</span> Campo obligatorio</span>' : ''}
+    <span class="mp-switch__label">${escapeHtml(state.label)}</span>${state.helper || error ? `\n    <span class="mp-switch__helper">${iconMarkup('warning-circle', 16)} Campo obligatorio</span>` : ''}
   </span>
 </label>`;
     }
@@ -231,7 +235,7 @@ selected-color: ${state.theme === 'dark' ? 'var(--use-primary-default-dark, #ff9
     <span class="mp-choice__control" aria-hidden="true"></span>
   </span>
   <span class="mp-choice__text">
-    <span class="mp-choice__label">${escapeHtml(state.label)}</span>${state.helper || error ? '\n    <span class="mp-choice__helper"><span class="material-symbols-rounded" aria-hidden="true">error</span> Campo obligatorio</span>' : ''}
+    <span class="mp-choice__label">${escapeHtml(state.label)}</span>${state.helper || error ? `\n    <span class="mp-choice__helper">${iconMarkup('warning-circle', 16)} Campo obligatorio</span>` : ''}
   </span>
 </label>`;
   }
@@ -526,7 +530,7 @@ selected-color: ${state.theme === 'dark' ? 'var(--use-primary-default-dark, #ff9
   function flashButton(button, label) {
     if (!button) return;
     const original = button.innerHTML;
-    button.innerHTML = `<span class="material-symbols-rounded" aria-hidden="true">check</span>${label}`;
+    button.innerHTML = `${iconMarkup('check', 16)}${label}`;
     window.setTimeout(() => { button.innerHTML = original; }, 1400);
   }
 

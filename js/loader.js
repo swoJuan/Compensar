@@ -166,7 +166,7 @@ async function navigateTo(sectionId) {
   } catch (err) {
     content.innerHTML = `
       <div class="fragment-error">
-        <span class="material-symbols-rounded fragment-error-icon">error_outline</span>
+        <i class="icon icon-warning-circle icon-20 fragment-error-icon" aria-hidden="true"></i>
         <strong>No se pudo cargar la sección</strong>
         <code>${path}</code>
         <small>${err.message}</small>

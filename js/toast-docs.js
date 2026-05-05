@@ -1,10 +1,14 @@
 const toastDocs = (() => {
   const specs = {
-    success: { label: 'Success', icon: 'check_circle', title: 'Toast title', message: 'Toast message', role: 'status' },
+    success: { label: 'Success', icon: 'check-circle', title: 'Toast title', message: 'Toast message', role: 'status' },
     info: { label: 'Info', icon: 'info', title: 'Información importante', message: 'Revisa la información antes de continuar.', role: 'status' },
     warning: { label: 'Warning', icon: 'warning', title: 'Revisa antes de continuar', message: 'Hay información que puede afectar el proceso.', role: 'status' },
-    error: { label: 'Error', icon: 'error', title: 'No fue posible continuar', message: 'Inténtalo nuevamente.', role: 'alert' }
+    error: { label: 'Error', icon: 'warning-circle', title: 'No fue posible continuar', message: 'Inténtalo nuevamente.', role: 'alert' }
   };
+
+  function iconMarkup(name, size = 16, extraClass = '') {
+    return `<i class="icon icon-${name} icon-${size}${extraClass ? ` ${extraClass}` : ''}" aria-hidden="true"></i>`;
+  }
 
   const exportJson = {
     component: 'Toast',
@@ -42,12 +46,12 @@ const toastDocs = (() => {
     root.className = `mp-toast mp-toast--${kind}`;
     root.setAttribute('role', spec.role);
     root.innerHTML = `
-      <span class="mp-toast__icon material-symbols-rounded" aria-hidden="true">${spec.icon}</span>
+      ${iconMarkup(spec.icon, 32, 'mp-toast__icon')}
       <div class="mp-toast__content">
         <p class="mp-toast__title">${escapeHtml(title || spec.title)}</p>
         <p class="mp-toast__body">${escapeHtml(message || spec.message)}</p>
       </div>
-      ${close ? '<button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-toast__close" aria-label="Cerrar toast"><span class="material-symbols-rounded" aria-hidden="true">close</span></button>' : ''}`;
+      ${close ? `<button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-toast__close" aria-label="Cerrar toast">${iconMarkup('x', 16)}</button>` : ''}`;
     return root;
   }
 
@@ -102,11 +106,11 @@ theme: ${state.theme}`;
     const spec = specs[state.kind] || specs.success;
     return `<div class="mp-toast-region" aria-live="polite" aria-atomic="true">
   <div class="mp-toast mp-toast--${state.kind}" role="${spec.role}">
-    <span class="mp-toast__icon material-symbols-rounded" aria-hidden="true">${spec.icon}</span>
+    ${iconMarkup(spec.icon, 32, 'mp-toast__icon')}
     <div class="mp-toast__content">
       <p class="mp-toast__title">${escapeHtml(state.title)}</p>
       <p class="mp-toast__body">${escapeHtml(state.message)}</p>
-    </div>${state.close ? '\n    <button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-toast__close" aria-label="Cerrar toast">\n      <span class="material-symbols-rounded" aria-hidden="true">close</span>\n    </button>' : ''}
+    </div>${state.close ? `\n    <button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-toast__close" aria-label="Cerrar toast">\n      ${iconMarkup('x', 16)}\n    </button>` : ''}
   </div>
 </div>`;
   }
@@ -238,7 +242,7 @@ $mp-toast-close-size: 24px;
   function flashButton(button, label) {
     if (!button) return;
     const original = button.innerHTML;
-    button.innerHTML = `<span class="material-symbols-rounded" aria-hidden="true">check</span>${label}`;
+    button.innerHTML = `${iconMarkup('check', 16)}${label}`;
     window.setTimeout(() => { button.innerHTML = original; }, 1400);
   }
 

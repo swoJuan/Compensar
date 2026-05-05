@@ -11,7 +11,7 @@ const alertDocs = (() => {
     },
     success: {
       label: 'Success',
-      icon: 'check_circle',
+      icon: 'check-circle',
       title: 'Acción completada',
       message: 'La información se guardó correctamente.',
       role: 'status',
@@ -29,7 +29,7 @@ const alertDocs = (() => {
     },
     error: {
       label: 'Error',
-      icon: 'error',
+      icon: 'warning-circle',
       title: 'No fue posible continuar',
       message: 'Corrige los datos marcados e inténtalo nuevamente.',
       role: 'alert',
@@ -37,6 +37,10 @@ const alertDocs = (() => {
       tokens: 'background: use/state/error/bg #f7eeed\nborder: use/state/error/border #db7165\ntext: use/state/error/text #521a14\nicon: 32px\ngap: 8px'
     }
   };
+
+  function iconMarkup(name, size = 16, extraClass = '') {
+    return `<i class="icon icon-${name} icon-${size}${extraClass ? ` ${extraClass}` : ''}" aria-hidden="true"></i>`;
+  }
 
   const exportJson = {
     component: 'Alertas',
@@ -92,12 +96,12 @@ const alertDocs = (() => {
     root.className = `mp-alert mp-alert--${kind}${dismissible ? ' mp-alert--dismissible' : ''}${focus ? ' mp-alert--is-focus' : ''}`;
     root.setAttribute('role', spec.role);
     root.innerHTML = `
-      <span class="mp-alert__icon material-symbols-rounded" aria-hidden="true">${spec.icon}</span>
+      ${iconMarkup(spec.icon, 32, 'mp-alert__icon')}
       <div class="mp-alert__content">
         <p class="mp-alert__title">${escapeHtml(title || spec.title)}</p>
         <p class="mp-alert__body">${escapeHtml(message || spec.message)}</p>
       </div>
-      ${dismissible ? '<button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-alert__close" aria-label="Cerrar alerta"><span class="material-symbols-rounded" aria-hidden="true">close</span></button>' : ''}`;
+      ${dismissible ? `<button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-alert__close" aria-label="Cerrar alerta">${iconMarkup('x', 16)}</button>` : ''}`;
 
     // Apply theme colors locally to avoid leaking styles into surrounding sections.
     const modeKey = theme === 'high-contrast' ? 'highContrast' : theme;
@@ -183,11 +187,11 @@ content-gap: 4px`;
   function htmlForState(state) {
     const spec = specs[state.kind] || specs.info;
     return `<div class="mp-alert mp-alert--${state.kind}${state.dismissible ? ' mp-alert--dismissible' : ''}" role="${spec.role}">
-  <span class="mp-alert__icon material-symbols-rounded" aria-hidden="true">${spec.icon}</span>
+  ${iconMarkup(spec.icon, 32, 'mp-alert__icon')}
   <div class="mp-alert__content">
     <p class="mp-alert__title">${escapeHtml(state.title)}</p>
     <p class="mp-alert__body">${escapeHtml(state.message)}</p>
-  </div>${state.dismissible ? '\n  <button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-alert__close" aria-label="Cerrar alerta">\n    <span class="material-symbols-rounded" aria-hidden="true">close</span>\n  </button>' : ''}
+  </div>${state.dismissible ? `\n  <button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-alert__close" aria-label="Cerrar alerta">\n    ${iconMarkup('x', 16)}\n  </button>` : ''}
 </div>`;
   }
 
@@ -326,7 +330,7 @@ $mp-alert-content-gap: 4px;
   function flashButton(button, label) {
     if (!button) return;
     const original = button.innerHTML;
-    button.innerHTML = `<span class="material-symbols-rounded" aria-hidden="true">check</span>${label}`;
+    button.innerHTML = `${iconMarkup('check', 16)}${label}`;
     window.setTimeout(() => { button.innerHTML = original; }, 1400);
   }
 
@@ -405,7 +409,17 @@ $mp-alert-content-gap: 4px;
     });
   }
 
-  return { initAlertDoc, bindDelegatedEvents };
+  // Sincroniza el tema global con el playground y anatomía
+  function syncTheme(theme) {
+    const page = document.querySelector('[data-component-doc="alerts"]');
+    if (!page) return;
+    const themeControl = page.querySelector('[data-alert-control="theme"]');
+    if (themeControl) themeControl.value = theme;
+    renderPlayground(page);
+    renderAnatomy(page);
+  }
+
+  return { initAlertDoc, bindDelegatedEvents, syncTheme };
 })();
 
 window.alertDocs = alertDocs;
@@ -418,17 +432,8 @@ function bootAlertDocs() {
 if (document.documentElement.dataset.alertDocsThemeSync !== 'true') {
   document.documentElement.dataset.alertDocsThemeSync = 'true';
   document.addEventListener('ds:theme-change', (event) => {
-    const page = document.querySelector('[data-component-doc="alerts"]');
-    if (!page) return;
     const theme = event?.detail?.theme || document.documentElement.getAttribute('data-theme') || 'light';
-    const themeControl = page.querySelector('[data-alert-control="theme"]');
-    if (themeControl && [...themeControl.options].some((opt) => opt.value === theme)) {
-      themeControl.value = theme;
-      themeControl.dispatchEvent(new Event('input', { bubbles: true }));
-      return;
-    }
-
-    alertDocs.initAlertDoc(document);
+    alertDocs.syncTheme(theme);
   });
 }
 
