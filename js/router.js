@@ -124,10 +124,22 @@ const router = (() => {
       icon: 'web_asset',
       group: 'web-componentes'
     },
+    'web/componentes/cards': {
+      label: 'Cards',
+      path: 'transversales/components/cards.html',
+      icon: 'credit_card',
+      group: 'web-componentes'
+    },
     'web/componentes/badges': {
       label: 'Badges',
       path: 'web/components/badges.html',
       icon: 'award_star',
+      group: 'web-componentes'
+    },
+    'web/componentes/tabs': {
+      label: 'Tabs',
+      path: 'transversales/components/tabs.html',
+      icon: 'table_chart',
       group: 'web-componentes'
     },
     'web/componentes/iconos/intro': {
@@ -226,8 +238,11 @@ const router = (() => {
         section === 'web/componentes/alertas' ||
         section === 'web/componentes/toast' ||
         section === 'web/componentes/modales' ||
+        section === 'web/componentes/cards' ||
         section === 'web/componentes/inputs' ||
-        section === 'web/componentes/dropdown'
+        section === 'web/componentes/dropdown' ||
+        section === 'web/componentes/badges' ||
+        section === 'web/componentes/tabs'
       );
 
       // Update active nav states
@@ -258,6 +273,15 @@ const router = (() => {
       }
       if (window.dropdownDocs) {
         window.requestAnimationFrame(() => window.dropdownDocs.initDropdownDoc(document));
+      }
+      if (window.badgeDocs) {
+        window.requestAnimationFrame(() => window.badgeDocs.initBadgeDocs(document));
+      }
+      if (window.cardsDocs) {
+        window.requestAnimationFrame(() => window.cardsDocs.initCardsDoc(document));
+      }
+      if (window.tabsDocs) {
+        window.requestAnimationFrame(() => window.tabsDocs.initTabsDoc(document));
       }
 
       return true;

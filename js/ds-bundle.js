@@ -4962,7 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
-    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales');
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'badges' || sectionId === 'tabs');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -5056,6 +5056,16 @@
         window.dropdownDocs.initDropdownDoc(document);
       });
     }
+    if (window.badgeDocs) {
+      requestAnimationFrame(function() {
+        window.badgeDocs.initBadgeDocs(document);
+      });
+    }
+    if (window.tabsDocs) {
+      requestAnimationFrame(function() {
+        window.tabsDocs.initTabsDoc(document);
+      });
+    }
   }
 
   /* ══════════════════════════════════════════════════════════
@@ -5090,6 +5100,7 @@
     'toast':              'docs/transversales/components/toasts.html',
     'modales':            'docs/transversales/components/modals.html',
     'badges':             'docs/web/components/badges.html',
+    'tabs':               'docs/transversales/components/tabs.html',
     'tokens-texto':       'docs/tokens/tokens-text.html',
     'tokens-tablas':      'docs/tokens/tokens-tables.html',
   };
@@ -5273,8 +5284,114 @@
     window.showToast       = showToast;
   }
 
+  /* ══════════════════════════════════════════════════════════
+     SIDEBAR NAV — datos de navegación + generador dinámico
+     ══════════════════════════════════════════════════════════ */
+
+  var DRUPAL_NAV_SECTIONS = [
+    {
+      label: 'Inicio',
+      items: [
+        { id: 'introduccion', label: 'Introducción', icon: 'house' },
+        { id: 'principios',   label: 'Principios',   icon: 'star' }
+      ]
+    },
+    {
+      label: 'Fundamentos',
+      items: [
+        { id: 'fundamentos/colores', label: 'Colores',       icon: 'palette' },
+        { id: 'tipografia',          label: 'Tipografía',    icon: 'article' },
+        { id: 'espaciado',           label: 'Espaciado',     icon: 'ruler' },
+        { id: 'border-radius',       label: 'Border radius', icon: 'corners-out' },
+        { id: 'layout',              label: 'Layout System', icon: 'layout' },
+        { id: 'sombras',             label: 'Sombras',       icon: 'stack' },
+        {
+          type: 'accordion', id: '__iconos', label: 'Icon System', icon: 'circles-three',
+          items: [
+            { id: 'iconos-intro',    label: 'Introducción' },
+            { id: 'iconos-conectar', label: 'Implementación' },
+            { id: 'iconos-libreria', label: 'Librería' }
+          ]
+        }
+      ]
+    },
+    {
+      label: 'Componentes',
+      items: [
+        { id: 'botones',   label: 'Botones',                  icon: 'hand-pointing' },
+        { id: 'inputs',    label: 'Inputs',                   icon: 'placeholder' },
+        { id: 'dropdown',  label: 'Dropdown / Select',        icon: 'caret-circle-down' },
+        { id: 'seleccion', label: 'Checkbox / Radio / Switch',icon: 'check-square' },
+        { id: 'alertas',   label: 'Alertas',                  icon: 'warning' },
+        { id: 'toast',     label: 'Toast',                    icon: 'bell' },
+        { id: 'modales',   label: 'Modales',                  icon: 'browser' },
+        { id: 'badges',    label: 'Badges',                   icon: 'tag' },
+        { id: 'tabs',      label: 'Tabs',                     icon: 'browsers' }
+      ]
+    },
+    {
+      label: 'Tokens semánticos',
+      items: [
+        { id: 'tokens-texto',  label: 'Texto',  icon: 'article' },
+        { id: 'tokens-tablas', label: 'Tablas', icon: 'table'   }
+      ]
+    }
+  ];
+
+  function buildSidebar() {
+    var sidebar = document.getElementById('drupal-sidebar');
+    if (!sidebar) return;
+    sidebar.innerHTML = '';
+
+    DRUPAL_NAV_SECTIONS.forEach(function(section) {
+      var sectionEl = document.createElement('div');
+      sectionEl.className = 'sidebar-section';
+
+      var labelEl = document.createElement('div');
+      labelEl.className = 'sidebar-section-label';
+      labelEl.textContent = section.label;
+      sectionEl.appendChild(labelEl);
+
+      section.items.forEach(function(item) {
+        if (item.type === 'accordion') {
+          // Botón acordeón
+          var btn = document.createElement('button');
+          btn.className = 'sidebar-link sidebar-accordion';
+          btn.setAttribute('data-group', item.id);
+          btn.innerHTML =
+            '<i class="icon icon-' + item.icon + ' icon-16" aria-hidden="true"></i>' +
+            '<span class="sidebar-accordion-label">' + item.label + '</span>' +
+            '<i class="icon icon-caret-down icon-16 sidebar-accordion-arrow" aria-hidden="true"></i>';
+          sectionEl.appendChild(btn);
+
+          // Sub-nav
+          var subNav = document.createElement('div');
+          subNav.className = 'sidebar-subnav';
+          subNav.id = 'subnav-' + item.id;
+          item.items.forEach(function(sub) {
+            var a = document.createElement('a');
+            a.className = 'sidebar-link sidebar-sublink';
+            a.href = '#' + sub.id;
+            a.innerHTML = '<i class="icon icon-circle icon-12" aria-hidden="true"></i> ' + sub.label;
+            subNav.appendChild(a);
+          });
+          sectionEl.appendChild(subNav);
+        } else {
+          var a = document.createElement('a');
+          a.className = 'sidebar-link';
+          a.href = '#' + item.id;
+          a.innerHTML = '<i class="icon icon-' + item.icon + ' icon-16" aria-hidden="true"></i> ' + item.label;
+          sectionEl.appendChild(a);
+        }
+      });
+
+      sidebar.appendChild(sectionEl);
+    });
+  }
+
   /* ── Auto-arranque ───────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function() {
+    buildSidebar();
     init();
     initRouter();
   });

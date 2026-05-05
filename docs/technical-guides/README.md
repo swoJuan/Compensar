@@ -8,6 +8,8 @@ This folder centralizes technical Markdown guides used by the team.
    - docs/technical-guides/color-workflow.md
 2. Sass architecture and rules:
    - core/SASS-RULES.md
+3. Dynamic portal navigation:
+   - docs/technical-guides/navigation-workflow.md
 
 ## Notes
 

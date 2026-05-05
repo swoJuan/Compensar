@@ -162,12 +162,35 @@ design-system.html
     ↓ (loads on DOMContentLoaded)
 theme.js → Initializes theme from localStorage or system preference
     ↓
+design-system.html → Builds sidebar from router.getNav()
+    ↓
 router.js → Parses URL hash, loads fragment dynamically
     ↓
 docs/*.html → Rendered into #main-content
     ↓
 User interacts → code-copy.js handles tab switching and code copying
 ```
+
+### Dynamic Navigation
+
+The portal navigation is generated dynamically. `design-system.html` keeps `aside#sidebar` empty and builds the sidebar on `DOMContentLoaded` from `router.getNav()`.
+
+The single source of truth for route definitions is `navigationMap` in `js/router.js`. Each entry declares the sidebar label, fragment path, icon key, and group:
+
+```js
+'web/componentes/cards': {
+  label: 'Cards',
+  path: 'transversales/components/cards.html',
+  icon: 'credit_card',
+  group: 'web-componentes'
+}
+```
+
+This means new sections should be added to the router map, not hardcoded into the shell HTML. The group display order is controlled by `navGroups` in `design-system.html`; if a new group is needed, add it there and optionally add its icon key to `NAV_ICON_MAP`.
+
+Detailed maintenance guide:
+
+- `docs/technical-guides/navigation-workflow.md`
 
 ### Regla De Contenido Transversal
 
@@ -579,8 +602,10 @@ npm run build         # Alias: sass:build
 ### Adding a New Section
 
 1. Create fragment in appropriate folder: `docs/{web,app,fundamentos}/*.html`
-2. Add entry to `router.js`
-3. Update this README if needed
+2. Add entry to `navigationMap` in `js/router.js`
+3. Reuse an existing `group`, or add the group to `navGroups` in `design-system.html`
+4. Add a matching icon key to `NAV_ICON_MAP` if the route uses a new icon
+5. Update this README if needed
 
 ### Adding a New Component
 

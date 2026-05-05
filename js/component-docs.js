@@ -1039,6 +1039,17 @@ if (document.readyState === 'loading') {
 //  Paralelo a componentDocs para el componente mp-input.
 // ============================================================
 const inputDocs = (() => {
+  function iconMarkup(name, size = 24, extraClass = '') {
+    return `<i class="icon icon-${name} icon-${size}${extraClass ? ` ${extraClass}` : ''}" aria-hidden="true"></i>`;
+  }
+
+  function iconNode(name, size = 24, extraClass = '') {
+    const icon = document.createElement('i');
+    icon.className = `icon icon-${name} icon-${size}${extraClass ? ` ${extraClass}` : ''}`;
+    icon.setAttribute('aria-hidden', 'true');
+    return icon;
+  }
+
 
   // ──────────────────────────────────────────────────────────
   // Configuración de anatomía por variante
@@ -1466,8 +1477,7 @@ const inputDocs = (() => {
     label = 'Label', placeholder = 'Placeholder', helperText = 'Texto de apoyo', required = false } = {}) {
 
     const group = document.createElement('div');
-    group.className = 'mp-input-group';
-    group.style.cssText = 'width:100%;max-width:320px';
+    group.className = 'mp-input-group inp-demo-field';
 
     // Label
     const lbl = document.createElement('label');
@@ -1499,7 +1509,7 @@ const inputDocs = (() => {
     if (iconLeft)  fieldClasses.push('has-icon-left');
     if (iconRight) fieldClasses.push('has-icon-right');
 
-    if (state === 'hover')   { /* inline style */ }
+    if (state === 'hover')   fieldClasses.push('is-hover-demo');
     if (state === 'focus')   fieldClasses.push('is-focus-demo');
     if (state === 'error')   fieldClasses.push('error');
     if (state === 'success') fieldClasses.push('filled');
@@ -1529,7 +1539,6 @@ const inputDocs = (() => {
       field.type = tipo;
       field.placeholder = placeholder;
       field.id = 'pg-inp-field';
-      if (state === 'hover')   field.style.borderColor = 'var(--use-border-hover)';
       if (state === 'error')   { field.setAttribute('aria-invalid', 'true'); field.value = 'Valor inválido'; }
       if (state === 'success') field.value = 'valor@compensar.com';
       if (state === 'disabled') field.disabled = true;
@@ -1759,7 +1768,7 @@ theme: light
       wrapper.appendChild(ta);
     } else if (cfg.tipo === 'select') {
       const sel = document.createElement('select');
-      sel.className = 'mp-input-field mp-select';
+      sel.className = 'mp-input-field mp-select' + (cfg.iconRight ? ' has-icon-right' : '');
       const opt = document.createElement('option');
       opt.textContent = 'Selecciona una opción'; opt.disabled = true; opt.selected = true;
       sel.appendChild(opt);
@@ -1861,70 +1870,81 @@ ${inputExportCss}`
     if (!page || page.dataset.inputInitialized === 'true') return;
 
     try {
-      // Anatomía
-      page.querySelectorAll('[data-inp-anatomy-option]').forEach(btn => {
-        btn.addEventListener('click', () => renderAnatomy(page, btn.dataset.inpAnatomyOption));
-      });
-      page.querySelectorAll('[data-inp-anatomy-toggle]').forEach(ctrl => {
-        ctrl.addEventListener('change', () => renderAnatomy(page));
-      });
       renderAnatomy(page, 'simple');
-
-      // Playground controles
-      page.querySelectorAll('[data-inp-control]').forEach(ctrl => {
-        ctrl.addEventListener('input',  () => renderPlayground(page));
-        ctrl.addEventListener('change', () => renderPlayground(page));
-      });
-
-      // Playground tabs de código
-      page.querySelectorAll('[data-inp-code-tab]').forEach(tab => {
-        tab.addEventListener('click', () => {
-          page.querySelectorAll('[data-inp-code-tab]').forEach(t =>
-            t.setAttribute('aria-selected', String(t === tab))
-          );
-          renderPlayground(page);
-        });
-      });
-
-      // Copy playground
-      const copyPG = page.querySelector('[data-inp-copy-playground]');
-      if (copyPG) {
-        copyPG.addEventListener('click', () => {
-          copyText(page.querySelector('#inp-code-output')?.textContent || '', copyPG);
-        });
-      }
-
       renderPlayground(page);
-
-      // Código estático tabs
-      page.querySelectorAll('[data-inp-static-code-tab]').forEach(tab => {
-        tab.addEventListener('click', () => renderStaticCode(page, tab.dataset.inpStaticCodeTab));
-      });
-
-      // Copy estático
-      const copyStatic = page.querySelector('[data-inp-copy-static]');
-      if (copyStatic) {
-        copyStatic.addEventListener('click', () => {
-          copyText(page.querySelector('#inp-static-code')?.textContent || '', copyStatic);
-        });
-      }
-
       renderStaticCode(page, 'html');
-
       page.dataset.inputInitialized = 'true';
     } catch (e) {
       console.error('No se pudo inicializar la documentación del input.', e);
     }
   }
 
-  // Delegación global para downloads
+  // Delegación global — todos los eventos de input-doc (tabs, controles, copies, downloads)
   function bindInputDelegated() {
     if (document.documentElement.dataset.inputDocsDelegated === 'true') return;
     document.documentElement.dataset.inputDocsDelegated = 'true';
 
     document.addEventListener('click', e => {
+      // Downloads
       const dl = e.target.closest('[data-inp-download]');
-      if (dl) downloadInputAsset(dl.dataset.inpDownload, dl);
+      if (dl) { downloadInputAsset(dl.dataset.inpDownload, dl); return; }
+
+      // Anatomía segmented control
+      const anatomy = e.target.closest('[data-inp-anatomy-option]');
+      if (anatomy) {
+        renderAnatomy(anatomy.closest('[data-component-doc="input"]'), anatomy.dataset.inpAnatomyOption);
+        return;
+      }
+
+      // Playground: tabs de código
+      const codeTab = e.target.closest('[data-inp-code-tab]');
+      if (codeTab) {
+        const page = codeTab.closest('[data-component-doc="input"]');
+        if (!page) return;
+        page.querySelectorAll('[data-inp-code-tab]').forEach(t =>
+          t.setAttribute('aria-selected', String(t === codeTab))
+        );
+        renderPlayground(page);
+        return;
+      }
+
+      // Código estático: tabs
+      const staticTab = e.target.closest('[data-inp-static-code-tab]');
+      if (staticTab) {
+        renderStaticCode(staticTab.closest('[data-component-doc="input"]'), staticTab.dataset.inpStaticCodeTab);
+        return;
+      }
+
+      // Copy playground
+      const copyPg = e.target.closest('[data-inp-copy-playground]');
+      if (copyPg) {
+        const page = copyPg.closest('[data-component-doc="input"]');
+        copyText(page?.querySelector('#inp-code-output')?.textContent || '', copyPg);
+        return;
+      }
+
+      // Copy estático
+      const copyStatic = e.target.closest('[data-inp-copy-static]');
+      if (copyStatic) {
+        const page = copyStatic.closest('[data-component-doc="input"]');
+        copyText(page?.querySelector('#inp-static-code')?.textContent || '', copyStatic);
+      }
+    });
+
+    document.addEventListener('change', e => {
+      if (e.target.matches('[data-inp-control]')) {
+        renderPlayground(e.target.closest('[data-component-doc="input"]'));
+        return;
+      }
+      if (e.target.matches('[data-inp-anatomy-toggle]')) {
+        renderAnatomy(e.target.closest('[data-component-doc="input"]'));
+      }
+    });
+
+    document.addEventListener('input', e => {
+      if (e.target.matches('[data-inp-control]')) {
+        renderPlayground(e.target.closest('[data-component-doc="input"]'));
+      }
     });
   }
 

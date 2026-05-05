@@ -3,8 +3,8 @@ const alertDocs = (() => {
     info: {
       label: 'Info',
       icon: 'info',
-      title: 'Información importante',
-      message: 'Revisa la información antes de continuar.',
+      title: 'Información importante demo',
+      message: 'Revisa la información demo antes de continuar.',
       role: 'status',
       gap: 'Gap 8 px',
       tokens: 'background: use/state/info/bg #e6f1fb\nborder: use/state/info/border #6c9fd0\ntext: use/state/info/text #2d4a67\nicon: 32px\ngap: 8px'
@@ -112,8 +112,8 @@ const alertDocs = (() => {
     return {
       kind: page.querySelector('[data-alert-control="kind"]')?.value || 'info',
       theme: page.querySelector('[data-alert-control="theme"]')?.value || 'light',
-      title: page.querySelector('[data-alert-control="title"]')?.value || 'Información importante',
-      message: page.querySelector('[data-alert-control="message"]')?.value || 'Revisa la información antes de continuar.',
+      title: page.querySelector('[data-alert-control="title"]')?.value || 'Información importante demo',
+      message: page.querySelector('[data-alert-control="message"]')?.value || 'Revisa la información demo antes de continuar.',
       dismissible: page.querySelector('[data-alert-control="dismissible"]')?.checked || false,
       focus: page.querySelector('[data-alert-control="focus"]')?.checked || false
     };

@@ -1,0 +1,105 @@
+// ============================================================
+//  mp-tab / mp-tabs / mp-tab-panel
+//  Componente transversal de navegación por pestañas.
+//  Fuente Figma: 1zVGMpzqBgiBUqhmfFEAoT / 4610:37808
+// ============================================================
+
+@use '../../abstracts' as *;
+
+// ── Tab strip (contenedor) ────────────────────────────────────
+.mp-tabs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+// ── Tab individual ────────────────────────────────────────────
+.mp-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: rem(44px);
+  gap: var(--space-12);
+  padding: var(--space-12);
+  border-radius: var(--space-12);
+  border: none;
+  border-bottom: rem(2px) solid transparent;
+  background: transparent;
+  color: var(--use-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.352px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  padding-bottom: calc(var(--space-12) - #{rem(2px)});
+}
+
+// Foco visible
+.mp-tab:focus-visible,
+.mp-tab.mp-tab--is-focus {
+  outline: rem(2px) solid var(--use-focus-outline);
+  outline-offset: var(--space-4);
+  border-radius: var(--space-12);
+}
+
+// ── Estado Activo ─────────────────────────────────────────────
+.mp-tab[aria-selected='true'],
+.mp-tab.is-active {
+  background: var(--use-primary-default);
+  color: var(--use-text-on-dark-primary);
+  font-weight: 700;
+  border-radius: var(--space-12);
+  border-bottom-color: transparent;
+  padding-bottom: calc(var(--space-12) - #{rem(2px)});
+}
+
+// ── Estado Hover (no activo, no disabled) ─────────────────────
+.mp-tab:hover:not([aria-selected='true']):not(.is-active):not(:disabled):not(.is-disabled),
+.mp-tab.mp-tab--is-hover {
+  background: transparent;
+  color: var(--use-text-link);
+  border-bottom-color: var(--use-text-link);
+  border-radius: 0;
+}
+
+// ── Estado Disabled ───────────────────────────────────────────
+.mp-tab:disabled,
+.mp-tab.is-disabled {
+  background: var(--use-surface-theme-gray-5);
+  color: var(--use-text-tertiary);
+  border-bottom-color: var(--use-text-tertiary);
+  border-radius: var(--space-8) var(--space-8) 0 0;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+// ── Ícono dentro del tab ──────────────────────────────────────
+.mp-tab__icon {
+  font-size: var(--font-size-xl);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+// ── Panel de contenido ────────────────────────────────────────
+.mp-tab-panel {
+  width: 100%;
+}
+
+.mp-tab-panel[hidden] {
+  display: none;
+}
+
+// ── High Contrast ─────────────────────────────────────────────
+[data-theme='high-contrast'] {
+  .mp-tab[aria-selected='true'],
+  .mp-tab.is-active {
+    color: var(--base-neutral-100-negro);
+  }
+}

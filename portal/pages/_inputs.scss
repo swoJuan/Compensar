@@ -48,6 +48,11 @@
   max-width: 100%;
 }
 
+.inp-demo-field {
+  width: 100%;
+  max-width: rem(320px);
+}
+
 // Callouts: etiquetas flotantes que señalan partes
 .inp-doc-callout {
   position: absolute;

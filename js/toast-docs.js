@@ -119,7 +119,8 @@ theme: ${state.theme}`;
     page.querySelectorAll('[data-toast-state-demo]').forEach((slot) => {
       const kind = slot.dataset.toastStateDemo;
       const spec = specs[kind] || specs.success;
-      slot.replaceChildren(makeToast({ kind, title: spec.title, message: spec.message }));
+      const title = kind === 'success' ? `${spec.title} demo` : spec.title;
+      slot.replaceChildren(makeToast({ kind, title, message: spec.message }));
     });
   }
 

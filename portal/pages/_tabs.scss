@@ -1,0 +1,227 @@
+@use '../../core/abstracts' as *;
+
+// ============================================================
+//  Estilos de documentación — Tabs
+//  La grilla y distribución se resuelven con Bootstrap en el HTML.
+// ============================================================
+
+.tab-anatomy-stage,
+.tab-doc-preview,
+.tab-doc-sample,
+.tab-mode-box {
+  border: rem(1px) solid var(--doc-card-border);
+  background: var(--doc-muted-bg);
+}
+
+.tab-anatomy-stage {
+  position: relative;
+  min-height: rem(360px);
+  display: grid;
+  place-items: center;
+  margin-top: var(--space-12);
+  padding: var(--space-40) var(--space-24);
+  border-radius: rem(10px);
+  background:
+    linear-gradient(var(--doc-muted-bg) rem(1px), transparent rem(1px)),
+    linear-gradient(90deg, var(--doc-muted-bg) rem(1px), transparent rem(1px)),
+    var(--use-surface-white);
+  background-size: var(--space-16) var(--space-16);
+  overflow: hidden;
+}
+
+.tab-anatomy-preview {
+  position: relative;
+  z-index: 2;
+}
+
+.tab-anatomy-preview .mp-tabs {
+  justify-content: center;
+}
+
+.tab-doc-callout {
+  position: absolute;
+  z-index: 3;
+  max-width: rem(210px);
+  padding: var(--space-8) var(--space-12);
+  border: rem(1px) solid var(--doc-card-border);
+  border-radius: var(--space-8);
+  background: var(--use-surface-white);
+  box-shadow: var(--shadow-sm);
+  font-size: rem(12px);
+  line-height: 1.35;
+}
+
+.tab-doc-callout strong {
+  display: block;
+  color: var(--use-text-primary);
+}
+
+.tab-doc-callout span {
+  color: var(--use-text-tertiary);
+}
+
+.tab-doc-callout[hidden],
+.tab-anatomy-measure[hidden] {
+  display: none;
+}
+
+.tab-doc-callout--container {
+  left: 4%;
+  top: 24%;
+}
+
+.tab-doc-callout--text {
+  right: 5%;
+  top: 18%;
+}
+
+.tab-doc-callout--icon {
+  left: 7%;
+  bottom: 22%;
+}
+
+.tab-doc-callout--state {
+  right: 7%;
+  bottom: 20%;
+}
+
+.tab-doc-callout--panel {
+  left: 32%;
+  bottom: 8%;
+}
+
+.tab-anatomy-measure {
+  position: absolute;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  height: rem(20px);
+  padding: 0 var(--space-8);
+  border-radius: rem(4px);
+  background: var(--doc-accent);
+  color: var(--use-text-on-dark-primary);
+  font-size: rem(11px);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.tab-anatomy-measure--width {
+  left: 50%;
+  top: var(--space-32);
+  transform: translateX(-50%);
+}
+
+.tab-anatomy-measure--height {
+  left: calc(50% + #{rem(72px)});
+  top: calc(50% - #{rem(42px)});
+}
+
+.tab-anatomy-measure--padding {
+  left: calc(50% - #{rem(132px)});
+  top: calc(50% + #{rem(50px)});
+}
+
+.tab-anatomy-measure--gap {
+  left: calc(50% - #{rem(18px)});
+  top: calc(50% - #{rem(42px)});
+}
+
+.tab-doc-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  align-items: center;
+  margin-top: var(--space-16);
+}
+
+.tab-doc-preview,
+.tab-doc-sample {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-24);
+  border-radius: rem(10px);
+}
+
+.tab-doc-preview {
+  min-height: rem(144px);
+  justify-content: flex-start;
+  overflow-x: auto;
+}
+
+.tab-doc-panel {
+  min-height: rem(64px);
+  margin-top: var(--space-12);
+  padding: var(--space-16);
+  border: rem(1px) solid var(--doc-card-border);
+  border-radius: rem(8px);
+  background: var(--doc-card-bg);
+  color: var(--use-text-secondary);
+  font-size: rem(14px);
+  line-height: 1.5;
+}
+
+.tab-doc-sample {
+  min-height: rem(88px);
+  margin-bottom: var(--space-12);
+  overflow-x: auto;
+}
+
+.tab-doc-select-demo {
+  max-width: rem(320px);
+  margin: 0 auto;
+}
+
+.tab-mode-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-24);
+  border-radius: rem(12px);
+  color: var(--ui-text);
+}
+
+.tab-mode-box h3,
+.tab-mode-box p {
+  margin: 0;
+}
+
+.tab-mode-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  margin-top: var(--space-8);
+}
+
+.tab-doc .button-code-panel {
+  margin-top: var(--space-16);
+}
+
+@media (max-width: rem(900px)) {
+  .tab-doc-callout {
+    position: static;
+    max-width: none;
+  }
+
+  .tab-anatomy-stage {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    align-items: stretch;
+    min-height: auto;
+  }
+
+  .tab-anatomy-preview {
+    display: grid;
+    place-items: center;
+    order: -1;
+    min-height: rem(120px);
+  }
+
+  .tab-anatomy-measure {
+    position: static;
+    width: fit-content;
+    transform: none;
+  }
+}

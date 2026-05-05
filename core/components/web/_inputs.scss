@@ -248,7 +248,8 @@
   }
 
   // Hover: borde naranja brand (Figma: use/border/hover = use-primary-hover)
-  &:hover:not(:disabled):not(.error):not(:focus) {
+  &:hover:not(:disabled):not(.error):not(:focus),
+  &.is-hover-demo:not(:disabled):not(.error):not(:focus) {
     --mp-inp-border: var(--use-border-hover);
   }
 
