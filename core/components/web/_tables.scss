@@ -1,90 +1,224 @@
 // ============================================================
-//  _tables.scss
+//  mp-table
+//  Extiende Bootstrap table con tokens del sistema.
+//  Fuente Figma: 1zVGMpzqBgiBUqhmfFEAoT / 4610:39519
 // ============================================================
 
-@use '../../abstracts/mixins'         as *;
-@use '../../abstracts/tokens-spacing' as *;
-@use '../../abstracts/tokens-radius'  as *;
-@use '../../abstracts/tokens-typography' as *;
+@use '../../abstracts' as *;
 
+.mp-table-wrap,
 .table-wrap {
   width: 100%;
   overflow-x: auto;
-  border-radius: $radius-xs;
-  border: 1px solid var(--color-border);
+  border: rem(1px) solid var(--use-border-subtle);
+  border-radius: var(--space-12);
+  background: var(--use-surface-white);
   @include custom-scrollbar;
 }
 
-.table {
+.mp-table,
+.table.mp-table {
+  --mp-table-bg: var(--use-surface-white);
+  --mp-table-head-bg: var(--use-tables-head);
+  --mp-table-bg-alt: var(--use-tables-stripes);
+  --mp-table-bg-hover: var(--use-tables-filter);
+  --mp-table-bg-selected: var(--use-surface-orange);
+  --mp-table-border: var(--use-border-subtle);
+  --mp-table-text: var(--use-text-primary);
+  --mp-table-muted: var(--use-text-secondary);
+  --mp-table-accent: var(--use-primary-default);
+
   width: 100%;
-  border-collapse: collapse;
-  @include ty-body-m;
-  color: var(--color-text-primary);
+  min-width: rem(640px);
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--mp-table-text);
+  background: var(--mp-table-bg);
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  line-height: 1.3;
+  vertical-align: middle;
 
-  thead {
-    background: var(--color-table-head);
-    th {
-      @include ty-label;
-      padding: $space-12 $space-16;
-      text-align: left;
-      color: var(--color-text-secondary);
-      border-bottom: 2px solid var(--color-border);
-      white-space: nowrap;
-
-      .icon, .material-symbols-rounded {
-        font-size: 14px; vertical-align: middle; margin-left: $space-4;
-        cursor: pointer; opacity: 0.5;
-        &:hover { opacity: 1; }
-      }
-    }
+  > :not(caption) > * > * {
+    min-height: rem(48px);
+    padding: var(--space-16) var(--space-8);
+    border-bottom: rem(1px) dashed var(--mp-table-border);
+    color: var(--mp-table-text);
+    background: transparent;
+    box-shadow: none;
   }
 
-  tbody {
-    tr {
-      border-bottom: 1px solid var(--color-border-subtle);
-      transition: background 0.1s ease;
-
-      &:last-child { border-bottom: none; }
-      &:hover { background: var(--color-surface-alt); }
-    }
-
-    td {
-      padding: $space-12 $space-16;
-      vertical-align: middle;
-    }
+  thead th {
+    font-weight: 700;
+    white-space: nowrap;
+    background: var(--mp-table-head-bg);
   }
 
-  // Striped
-  &.table-striped tbody tr:nth-child(even) {
-    background: var(--color-table-stripe);
+  tbody tr {
+    transition: background-color 0.15s ease;
   }
 
-  // Bordered
-  &.table-bordered {
-    th, td { border: 1px solid var(--color-border); }
+  &.table-striped > tbody > tr:nth-of-type(odd) > *,
+  &.mp-table--striped > tbody > tr:nth-of-type(odd) > * {
+    background: var(--mp-table-bg-alt);
   }
 
-  // Compact
-  &.table-sm {
-    thead th, tbody td { padding: $space-8 $space-12; }
+  &.table-hover > tbody > tr:hover > *,
+  &.mp-table--hover > tbody > tr:hover > *,
+  tbody tr.mp-table-row--hover > *,
+  tbody tr.mp-table__row--hover > * {
+    background: var(--mp-table-bg-hover);
+  }
+
+  &.table-sm > :not(caption) > * > *,
+  &.mp-table--compact > :not(caption) > * > * {
+    min-height: rem(48px);
+    padding: var(--space-12) var(--space-8);
+  }
+
+  &.table-bordered > :not(caption) > * > *,
+  &.mp-table--bordered > :not(caption) > * > * {
+    border-right: rem(1px) solid var(--mp-table-border);
+  }
+
+  &.table-bordered > :not(caption) > * > *:last-child,
+  &.mp-table--bordered > :not(caption) > * > *:last-child {
+    border-right: 0;
+  }
+
+  tbody tr[aria-selected='true'] > *,
+  tbody tr.mp-table-row--selected > *,
+  tbody tr.mp-table__row--selected > * {
+    background: var(--mp-table-bg-selected);
   }
 }
 
-// ── Filter row ───────────────────────────────────────────
-.table-filter-row {
-  td { background: var(--color-table-filter); padding: $space-8 $space-12; }
-  .input { padding: $space-4 $space-8; font-size: $fs-body-s; }
+.mp-table__cell--number {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
-// ── Celda de estado ──────────────────────────────────────
-.table-badge {
-  display: inline-flex; align-items: center; gap: $space-4;
-  padding: 2px 10px; border-radius: $radius-full;
-  font-size: 11px; font-weight: 600; white-space: nowrap;
-
-  &.success { background: var(--color-success-bg); color: var(--color-success-text); }
-  &.error   { background: var(--color-error-bg);   color: var(--color-error-text); }
-  &.warning { background: var(--color-warning-bg); color: var(--color-warning-text); }
-  &.info    { background: var(--color-info-bg);    color: var(--color-info-text); }
+.mp-table__cell--center,
+.mp-table__actions {
+  text-align: center;
 }
 
+.mp-table__actions {
+  white-space: nowrap;
+}
+
+.mp-table__empty,
+.mp-table__loading {
+  min-height: rem(180px);
+  display: grid;
+  place-items: center;
+  gap: var(--space-12);
+  padding: var(--space-32);
+  border-radius: var(--space-12);
+  background: var(--use-surface-theme-gray-5);
+  color: var(--use-text-secondary);
+  text-align: center;
+}
+
+.mp-table__empty-title {
+  color: var(--use-text-primary);
+  font-weight: 700;
+}
+
+.mp-table__spinner {
+  width: rem(24px);
+  height: rem(24px);
+  border: rem(2px) solid var(--use-border-subtle);
+  border-top-color: var(--use-primary-default);
+  border-radius: 50%;
+  animation: mp-table-spin 0.8s linear infinite;
+}
+
+@keyframes mp-table-spin {
+  to { transform: rotate(360deg); }
+}
+
+.mp-pagination {
+  display: flex;
+  gap: var(--space-8);
+  justify-content: flex-end;
+  align-items: center;
+  padding: var(--space-16) 0 0;
+}
+
+.mp-pagination__item {
+  min-width: rem(44px);
+  min-height: rem(44px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--space-8);
+  background: transparent;
+  color: var(--use-primary-default);
+  font-weight: 700;
+}
+
+.mp-pagination__item[aria-current='page'],
+.mp-pagination__item.is-active {
+  background: var(--use-primary-default);
+  color: var(--use-text-on-dark-primary);
+}
+
+[data-theme='dark'] {
+  .mp-table-wrap,
+  .table-wrap {
+    background: var(--base-neutral-100-negro);
+    border-color: var(--base-neutral-70);
+  }
+
+  .mp-table,
+  .table.mp-table {
+    --mp-table-bg: var(--base-neutral-100-negro);
+    --mp-table-head-bg: var(--base-neutral-90);
+    --mp-table-bg-alt: var(--base-neutral-90);
+    --mp-table-bg-hover: var(--base-neutral-80);
+    --mp-table-bg-selected: var(--base-neutral-80);
+    --mp-table-border: var(--base-neutral-70);
+    --mp-table-text: var(--base-neutral-10);
+    --mp-table-muted: var(--base-neutral-30);
+    --mp-table-accent: var(--use-primary-default-dark);
+  }
+
+  .mp-pagination__item {
+    color: var(--use-primary-default-dark);
+  }
+
+  .mp-pagination__item[aria-current='page'],
+  .mp-pagination__item.is-active {
+    background: var(--use-primary-default-dark);
+    color: var(--base-neutral-100-negro);
+  }
+}
+
+[data-theme='high-contrast'] {
+  .mp-table-wrap,
+  .table-wrap {
+    background: var(--base-neutral-black);
+    border-color: var(--base-neutral-white);
+  }
+
+  .mp-table,
+  .table.mp-table {
+    --mp-table-bg: var(--base-neutral-black);
+    --mp-table-head-bg: var(--base-neutral-100-negro);
+    --mp-table-bg-alt: var(--base-neutral-black);
+    --mp-table-bg-hover: var(--base-neutral-100-negro);
+    --mp-table-bg-selected: var(--base-neutral-100-negro);
+    --mp-table-border: var(--base-neutral-white);
+    --mp-table-text: var(--base-neutral-white);
+    --mp-table-muted: var(--base-neutral-white);
+    --mp-table-accent: var(--use-primary-default);
+  }
+
+  .mp-pagination__item[aria-current='page'],
+  .mp-pagination__item.is-active {
+    color: var(--base-neutral-black);
+  }
+}

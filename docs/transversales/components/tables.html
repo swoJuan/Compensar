@@ -1,0 +1,250 @@
+<article class="component-doc-page table-doc" data-component-doc="tables">
+  <nav class="component-doc-breadcrumb" aria-label="Breadcrumb">
+    <span>Sistema de diseño</span>
+    <span>/</span>
+    <span>Componentes</span>
+    <span>/</span>
+    <strong>Tables</strong>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="tables-title">
+    <h1 id="tables-title">Tables</h1>
+    <p>Permiten mostrar información estructurada en filas y columnas, facilitando la lectura, comparación y gestión de datos.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Bootstrap compatible</span>
+      <span class="component-chip">Categoría: datos</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="tables-summary">
+    <div class="component-section__header">
+      <h2 id="tables-summary">1. Resumen</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <h3>Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para listados de información.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para historial de registros.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para resultados de búsqueda.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para gestión y comparación de datos.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card h-100">
+          <h3>Tipos</h3>
+          <ul class="component-list">
+            <li><i class="icon icon-table icon-16" aria-hidden="true"></i><strong>Tabla básica:</strong> muestra información sin interacción.</li>
+            <li><i class="icon icon-cursor-click icon-16" aria-hidden="true"></i><strong>Tabla con acciones:</strong> incluye acciones por fila.</li>
+            <li><i class="icon icon-check-square icon-16" aria-hidden="true"></i><strong>Tabla seleccionable:</strong> permite seleccionar una o varias filas.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="tables-anatomy">
+    <div class="component-section__header">
+      <div>
+        <h2 id="tables-anatomy">2. Anatomía interactiva</h2>
+        <p>La estructura reutiliza clases Bootstrap como <code>table</code>, <code>table-responsive</code>, <code>table-striped</code> y <code>table-hover</code>.</p>
+      </div>
+    </div>
+    <div class="segmented-control" role="group" aria-label="Variación anatómica de tabla">
+      <button type="button" class="mp-btn mp-btn--terciario" data-table-anatomy="basic" aria-pressed="true">Básica</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-table-anatomy="actions" aria-pressed="false">Con acciones</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-table-anatomy="selectable" aria-pressed="false">Seleccionable</button>
+    </div>
+    <div class="table-doc-stage">
+      <span class="table-doc-measure table-doc-measure--row">Fila 48-56 px</span>
+      <span class="table-doc-measure table-doc-measure--padding">Padding 12-16 px</span>
+      <div class="table-doc-callout table-doc-callout--header"><strong>Header</strong><span>Encabezados claros y persistentes.</span></div>
+      <div class="table-doc-callout table-doc-callout--row"><strong>Fila</strong><span>Hover y selección deben ser visibles.</span></div>
+      <div class="table-doc-callout table-doc-callout--cell"><strong>Celda</strong><span>Texto a la izquierda, números a la derecha.</span></div>
+      <div class="table-doc-callout table-doc-callout--pagination"><strong>Paginación</strong><span>Usa botones del sistema.</span></div>
+      <div class="table-doc-stage__preview" id="table-anatomy-preview"></div>
+    </div>
+    <div class="table-doc-controls">
+      <label class="button-doc-toggle"><input type="checkbox" data-table-toggle="labels" checked> Etiquetas</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-table-toggle="measures" checked> Medidas</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-table-toggle="pagination" checked> Paginación</label>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="tables-playground-title">
+    <div class="component-section__header">
+      <h2 id="tables-playground-title">3. Variantes / Playground</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-7">
+        <h3>Vista previa</h3>
+        <div class="table-doc-preview" id="table-playground-preview" role="region" aria-label="Vista previa de tabla"></div>
+      </div>
+      <div class="col-12 col-lg-5">
+        <h3>Controles</h3>
+        <div class="row g-3">
+          <div class="col-12 col-sm-6">
+            <label class="mp-input-label" for="table-variant">Variante</label>
+            <select class="mp-input-field mp-select" id="table-variant" data-table-control="variant">
+              <option value="basic">Básica</option>
+              <option value="striped">Striped</option>
+              <option value="hover">Hover</option>
+              <option value="bordered">Bordered</option>
+              <option value="compact">Compacta</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6">
+            <label class="mp-input-label" for="table-theme">Tema</label>
+            <select class="mp-input-field mp-select" id="table-theme" data-table-control="theme">
+              <option value="light">Light</option>
+              <option value="dark">Modo oscuro</option>
+              <option value="high-contrast">Alto contraste</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6">
+            <label class="mp-input-label" for="table-type">Tipo</label>
+            <select class="mp-input-field mp-select" id="table-type" data-table-control="type">
+              <option value="basic">Básica</option>
+              <option value="actions">Con acciones</option>
+              <option value="selectable">Seleccionable</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6">
+            <label class="mp-input-label" for="table-rows">Filas</label>
+            <select class="mp-input-field mp-select" id="table-rows" data-table-control="rows">
+              <option value="2">2</option>
+              <option value="3" selected>3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Código del playground">
+        <button type="button" class="mp-btn mp-btn--terciario active" role="tab" aria-selected="true" data-table-code-tab="html">HTML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-table-code-tab="classes">Clases</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-table-code-tab="tokens">Tokens</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-table-copy-playground>
+          <i class="icon icon-share icon-16" aria-hidden="true"></i>
+          Copiar código
+        </button>
+      </div>
+      <pre><code id="table-code-output"></code></pre>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="tables-states">
+    <div class="component-section__header"><h2 id="tables-states">4. Estados especiales</h2></div>
+    <div class="row g-3">
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card h-100">
+          <h3>Empty state</h3>
+          <p>Cuando no hay datos disponibles.</p>
+          <div class="mp-table__empty"><i class="icon icon-article icon-32" aria-hidden="true"></i><div class="mp-table__empty-title">No tienes registros generados</div><div>Cuando generes un certificado aparecerá aquí.</div></div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card h-100">
+          <h3>Loading</h3>
+          <p>Mientras se cargan los datos.</p>
+          <div class="mp-table__loading"><span class="mp-table__spinner" aria-hidden="true"></span><span>Estamos buscando opciones para filtrar.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="tables-variants">
+    <div class="component-section__header"><h2 id="tables-variants">5. Variantes</h2></div>
+    <div class="row g-3">
+      <div class="col-12 col-lg-6"><div class="component-example-card h-100"><h3>Básica</h3><div class="table-doc-sample" data-table-variant-demo="basic"></div></div></div>
+      <div class="col-12 col-lg-6"><div class="component-example-card h-100"><h3>Con acciones</h3><div class="table-doc-sample" data-table-variant-demo="actions"></div></div></div>
+      <div class="col-12 col-lg-6"><div class="component-example-card h-100"><h3>Seleccionable</h3><div class="table-doc-sample" data-table-variant-demo="selectable"></div></div></div>
+      <div class="col-12 col-lg-6"><div class="component-example-card h-100"><h3>Compacta</h3><div class="table-doc-sample" data-table-variant-demo="compact"></div></div></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="tables-responsive">
+    <div class="component-section__header"><h2 id="tables-responsive">6. Responsive</h2></div>
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-lg-5">
+        <p>Las tablas deben envolver la grilla con <code>table-responsive</code> para permitir scroll horizontal cuando el contenido excede el ancho disponible.</p>
+        <ul class="component-list mt-3">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Máximo recomendado de 6 a 8 columnas visibles.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Priorizar información relevante.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Evitar acciones innecesarias por fila.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-7"><div class="table-doc-sample" data-table-responsive-demo></div></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="tables-color-modes">
+    <div class="component-section__header"><h2 id="tables-color-modes">7. Modos de color</h2></div>
+    <div class="row g-3">
+      <div class="col-12 col-lg-4"><div class="table-mode-box h-100" data-theme="light"><h3>Light</h3><p>Modo principal del sistema.</p><div data-table-mode-demo="light"></div></div></div>
+      <div class="col-12 col-lg-4"><div class="table-mode-box h-100" data-theme="dark"><h3>Modo oscuro</h3><p>Modo alternativo para entornos de baja iluminación.</p><div data-table-mode-demo="dark"></div></div></div>
+      <div class="col-12 col-lg-4"><div class="table-mode-box h-100" data-theme="high-contrast"><h3>High Contrast</h3><p>Modo enfocado en accesibilidad.</p><div data-table-mode-demo="high-contrast"></div></div></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="tables-code">
+    <div class="component-section__header"><h2 id="tables-code">8. Código</h2></div>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Código base de tables">
+        <button type="button" class="mp-btn mp-btn--terciario active" role="tab" data-table-static-code-tab="html" aria-selected="true">HTML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-table-static-code-tab="angular" aria-selected="false">Angular</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-table-static-code-tab="drupal" aria-selected="false">Drupal</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-table-copy-static>
+          <i class="icon icon-share icon-16" aria-hidden="true"></i>
+          Copiar código
+        </button>
+      </div>
+      <pre id="table-code-html" class="active"><code>&lt;div class="table-responsive mp-table-wrap"&gt;
+  &lt;table class="table table-striped table-hover mp-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th&gt;Fecha solicitud&lt;/th&gt;&lt;th&gt;Estado&lt;/th&gt;&lt;th class="mp-table__cell--center"&gt;Descargar&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;25/08/2023&lt;/td&gt;&lt;td&gt;&lt;span class="mp-badge mp-badge--warning"&gt;En trámite&lt;/span&gt;&lt;/td&gt;&lt;td class="mp-table__actions"&gt;-&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+      <pre id="table-code-angular"><code>&lt;mp-table [rows]="requests" [selectable]="true" [actions]="rowActions"&gt;&lt;/mp-table&gt;</code></pre>
+      <pre id="table-code-drupal"><code>{# Variables: rows #}
+&lt;div class="table-responsive mp-table-wrap"&gt;
+  &lt;table class="table table-hover mp-table"&gt;
+    {% for row in rows %}
+      &lt;tr&gt;&lt;td&gt;{{ row.date }}&lt;/td&gt;&lt;td&gt;{{ row.status }}&lt;/td&gt;&lt;/tr&gt;
+    {% endfor %}
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="tables-api">
+    <div class="component-section__header"><h2 id="tables-api">9. API del componente</h2></div>
+    <table class="mp-api-table">
+      <thead><tr><th>Propiedad</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><code>variant</code></td><td><code>basic | striped | hover | bordered | compact</code></td><td><code>basic</code></td><td>Controla el estilo Bootstrap aplicado.</td></tr>
+        <tr><td><code>selectable</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Agrega columna de selección y estado seleccionado.</td></tr>
+        <tr><td><code>actions</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Muestra acciones por fila.</td></tr>
+        <tr><td><code>responsive</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Envuelve la tabla con scroll horizontal.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="component-section" aria-labelledby="tables-accessibility">
+    <div class="component-section__header"><h2 id="tables-accessibility">10. Accesibilidad</h2></div>
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-eye icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title">Contraste</div><div class="a11y-card__desc">Filas, selección y hover deben mantener contraste suficiente.</div></div></div>
+      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-table icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title">Encabezados</div><div class="a11y-card__desc">Usa <code>th</code> y <code>scope</code> cuando aplique.</div></div></div>
+      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-keyboard icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title">Teclado</div><div class="a11y-card__desc">Acciones y selección deben ser navegables por teclado.</div></div></div>
+      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-check-square icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title">No solo color</div><div class="a11y-card__desc">Estados como selección o error deben tener apoyo textual o estructural.</div></div></div>
+    </div>
+  </section>
+</article>

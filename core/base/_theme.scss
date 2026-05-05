@@ -327,6 +327,66 @@
 }
 
 // ============================================================
+//  Dark mode token overrides
+//  Solo redefine los tokens semánticos --use-* y --base-neutral-*.
+//  Los colores base permanecen igual; solo cambia el mapeo semántico.
+// ============================================================
+[data-theme='dark'] {
+  // Fondos
+  --use-background-page:   #{color-tokens.$base-neutral-90};
+  --use-surface-surface:   #{color-tokens.$base-neutral-80};
+  --use-surface-white:     #{color-tokens.$base-neutral-90};
+  --use-surface-subtle:    #{color-tokens.$product-gray-90};
+
+  // Texto
+  --use-text-primary:      #{color-tokens.$base-neutral-10};
+  --use-text-secondary:    #{color-tokens.$base-neutral-30};
+  --use-text-tertiary:     #{color-tokens.$base-neutral-40};
+  --use-text-inverse:      #{color-tokens.$base-neutral-100-negro};
+  --use-text-link:         #{color-tokens.$base-brand-60};
+  --use-text-on-dark-primary:   #{color-tokens.$base-neutral-white};
+  --use-text-on-dark-secondary: #{color-tokens.$base-neutral-10};
+
+  // Brand / primary — tono más claro para contraste sobre fondo oscuro
+  --use-primary-default:   #{color-tokens.$base-brand-60};
+  --use-primary-hover:     #{color-tokens.$base-brand-70};
+  --use-primary-active:    #{color-tokens.$base-brand-80};
+
+  // Bordes
+  --use-border-default:    #{color-tokens.$base-neutral-60};
+  --use-border-strong:     #{color-tokens.$base-neutral-40};
+  --use-border-subtle:     #{color-tokens.$base-neutral-70};
+
+  // Foco
+  --use-focus-outline:     #{color-tokens.$base-brand-60};
+  --use-focus-background:  #{color-tokens.$base-brand-90};
+
+  // Estado: éxito
+  --use-state-success-bg:     #{color-tokens.$base-green-1-90};
+  --use-state-success-text:   #{color-tokens.$base-green-1-40};
+  --use-state-success-border: #{color-tokens.$base-green-1-70};
+  --use-state-success-icon:   #{color-tokens.$base-green-1-50};
+
+  // Estado: error
+  --use-state-error-bg:              #{color-tokens.$base-red-90};
+  --use-state-error-text:            #{color-tokens.$base-red-30};
+  --use-state-error-text-error-field:#{color-tokens.$base-red-40};
+  --use-state-error-border:          #{color-tokens.$base-red-60};
+  --use-state-error-icon:            #{color-tokens.$base-red-50};
+
+  // Estado: advertencia
+  --use-state-warning-bg:     #{color-tokens.$base-yellow-90};
+  --use-state-warning-border: #{color-tokens.$base-yellow-70};
+  // warning text y icon-color apuntan a --use-text-primary → se actualiza solo
+
+  // Estado: información
+  --use-state-info-bg:     #{color-tokens.$base-blue-90};
+  --use-state-info-text:   #{color-tokens.$base-blue-30};
+  --use-state-info-border: #{color-tokens.$base-cyan-blue-50};
+  --use-state-info-icon:   #{color-tokens.$base-cyan-blue-40};
+}
+
+// ============================================================
 //  High-contrast token overrides
 //  Redefines base-brand-* so every use-* alias and component
 //  that references var(--base-brand-80) automatically gets the
@@ -337,10 +397,56 @@
   --base-brand-90:  #{color-tokens.$base-brand-hc-hover};
   --base-brand-100: #{color-tokens.$base-brand-hc-active};
 
-  // Explicitly override the key semantic tokens for HC clarity.
+  // Brand / primary
   --use-primary-default:  #{color-tokens.$base-brand-hc};
   --use-primary-hover:    #{color-tokens.$base-brand-hc-hover};
   --use-primary-active:   #{color-tokens.$base-brand-hc-active};
-  --use-text-link:        #{color-tokens.$base-brand-hc};
+
+  // Fondos — negro puro
+  --use-background-page:  #{color-tokens.$base-neutral-black};
+  --use-surface-surface:  #{color-tokens.$base-neutral-black};
+  --use-surface-white:    #{color-tokens.$base-neutral-black};
+  --use-surface-subtle:   #{color-tokens.$base-neutral-90};
+
+  // Texto — blanco puro para máximo contraste
+  --use-text-primary:      #{color-tokens.$base-neutral-white};
+  --use-text-secondary:    #{color-tokens.$base-neutral-10};
+  --use-text-tertiary:     #{color-tokens.$base-neutral-20};
+  --use-text-inverse:      #{color-tokens.$base-neutral-black};
+  --use-text-link:         #{color-tokens.$base-brand-hc};
+  --use-text-on-dark-primary:   #{color-tokens.$base-neutral-white};
+  --use-text-on-dark-secondary: #{color-tokens.$base-neutral-10};
+
+  // Bordes — visibles sobre negro
+  --use-border-default: #{color-tokens.$base-neutral-white};
+  --use-border-strong:  #{color-tokens.$base-neutral-white};
+  --use-border-subtle:  #{color-tokens.$base-neutral-40};
+
+  // Foco — amarillo HC
   --use-focus-outline:    #{color-tokens.$base-brand-hc};
+  --use-focus-background: #{color-tokens.$base-neutral-black};
+
+  // Estado: éxito — verde saturado
+  --use-state-success-bg:     #{color-tokens.$base-green-1-90};
+  --use-state-success-text:   #{color-tokens.$base-green-1-40};
+  --use-state-success-border: #{color-tokens.$base-green-1-60};
+  --use-state-success-icon:   #{color-tokens.$base-green-1-50};
+
+  // Estado: error — rojo saturado
+  --use-state-error-bg:               #{color-tokens.$base-red-90};
+  --use-state-error-text:             #{color-tokens.$base-red-30};
+  --use-state-error-text-error-field: #{color-tokens.$base-red-40};
+  --use-state-error-border:           #{color-tokens.$base-red-60};
+  --use-state-error-icon:             #{color-tokens.$base-red-50};
+
+  // Estado: advertencia — amarillo HC
+  --use-state-warning-bg:     #{color-tokens.$base-neutral-black};
+  --use-state-warning-border: #{color-tokens.$base-brand-hc};
+  // warning text hereda --use-text-primary → blanco
+
+  // Estado: información — azul saturado
+  --use-state-info-bg:     #{color-tokens.$base-blue-90};
+  --use-state-info-text:   #{color-tokens.$base-blue-30};
+  --use-state-info-border: #{color-tokens.$base-cyan-blue-50};
+  --use-state-info-icon:   #{color-tokens.$base-cyan-blue-40};
 }

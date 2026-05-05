@@ -130,6 +130,12 @@ const router = (() => {
       icon: 'credit_card',
       group: 'web-componentes'
     },
+    'web/componentes/tables': {
+      label: 'Tables',
+      path: 'transversales/components/tables.html',
+      icon: 'table_chart',
+      group: 'web-componentes'
+    },
     'web/componentes/badges': {
       label: 'Badges',
       path: 'web/components/badges.html',
@@ -239,6 +245,7 @@ const router = (() => {
         section === 'web/componentes/toast' ||
         section === 'web/componentes/modales' ||
         section === 'web/componentes/cards' ||
+        section === 'web/componentes/tables' ||
         section === 'web/componentes/inputs' ||
         section === 'web/componentes/dropdown' ||
         section === 'web/componentes/badges' ||
@@ -279,6 +286,9 @@ const router = (() => {
       }
       if (window.cardsDocs) {
         window.requestAnimationFrame(() => window.cardsDocs.initCardsDoc(document));
+      }
+      if (window.tablesDocs) {
+        window.requestAnimationFrame(() => window.tablesDocs.initTablesDoc(document));
       }
       if (window.tabsDocs) {
         window.requestAnimationFrame(() => window.tabsDocs.initTabsDoc(document));
