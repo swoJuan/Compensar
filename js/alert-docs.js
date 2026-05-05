@@ -90,7 +90,7 @@ const alertDocs = (() => {
     }
   };
 
-  function makeAlert({ kind = 'info', title, message, dismissible = false, focus = false, theme = 'light' } = {}) {
+  function makeAlert({ kind = 'info', title, message, dismissible = false, focus = false } = {}) {
     const spec = specs[kind] || specs.info;
     const root = document.createElement('div');
     root.className = `mp-alert mp-alert--${kind}${dismissible ? ' mp-alert--dismissible' : ''}${focus ? ' mp-alert--is-focus' : ''}`;
@@ -103,17 +103,8 @@ const alertDocs = (() => {
       </div>
       ${dismissible ? `<button type="button" class="mp-btn mp-btn--terciario mp-btn--icon-only mp-alert__close" aria-label="Cerrar alerta">${iconMarkup('x', 16)}</button>` : ''}`;
 
-    // Apply theme colors locally to avoid leaking styles into surrounding sections.
-    const modeKey = theme === 'high-contrast' ? 'highContrast' : theme;
-    const mode = exportJson.modes[modeKey]?.[kind] || exportJson.modes.light[kind] || exportJson.modes.light.info;
-    if (mode) {
-      root.style.setProperty('--mp-alert-bg', mode.bg);
-      root.style.setProperty('--mp-alert-border', mode.border);
-      root.style.setProperty('--mp-alert-title', mode.text);
-      root.style.setProperty('--mp-alert-body', mode.text);
-      root.style.setProperty('--mp-alert-icon', mode.text);
-    }
-
+    // Colors are handled entirely by the CSS cascade via [data-theme] on the
+    // parent container — no inline overrides here so tokens resolve correctly.
     return root;
   }
 
@@ -196,10 +187,13 @@ content-gap: 4px`;
   }
 
   function renderStates(page) {
+    const currentTheme = stateFromPage(page).theme;
     page.querySelectorAll('[data-alert-state-demo]').forEach((slot) => {
       const kind = slot.dataset.alertStateDemo;
       const spec = specs[kind] || specs.info;
-      slot.replaceChildren(makeAlert({ kind, title: spec.title, message: spec.message, theme: 'light' }));
+      // Propagate the active theme so [data-theme] CSS cascade applies to alerts inside.
+      slot.dataset.theme = currentTheme;
+      slot.replaceChildren(makeAlert({ kind, title: spec.title, message: spec.message }));
     });
   }
 
@@ -409,7 +403,7 @@ $mp-alert-content-gap: 4px;
     });
   }
 
-  // Sincroniza el tema global con el playground y anatomía
+  // Sincroniza el tema global con el playground, anatomía y tarjetas de estado
   function syncTheme(theme) {
     const page = document.querySelector('[data-component-doc="alerts"]');
     if (!page) return;
@@ -417,6 +411,7 @@ $mp-alert-content-gap: 4px;
     if (themeControl) themeControl.value = theme;
     renderPlayground(page);
     renderAnatomy(page);
+    renderStates(page);
   }
 
   return { initAlertDoc, bindDelegatedEvents, syncTheme };

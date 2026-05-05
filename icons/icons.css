@@ -487,7 +487,8 @@
 .icon-check-square-offset::before { content: "\f201"; }
 .icon-check-square::before { content: "\f202"; }
 .icon-checks::before { content: "\f203"; }
-.icon-check-circle::before { content: "\f204"; }
+.icon-check-circle::before,
+.icon-checkcircle::before { content: "\f3bb"; }
 .icon-check::before { content: "\f205"; }
 .icon-cell-signal-x::before { content: "\f206"; }
 .icon-cell-signal-slash::before { content: "\f207"; }

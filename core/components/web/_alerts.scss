@@ -137,33 +137,33 @@
 [data-theme='dark'] {
   .mp-alert,
   .alert {
-    --mp-alert-title: #f5f5f5;
-    --mp-alert-body: #f5f5f5;
-    --mp-alert-icon: #f5f5f5;
+    --mp-alert-title: var(--use-text-on-dark-primary);
+    --mp-alert-body: var(--use-text-on-dark-primary);
+    --mp-alert-icon: var(--use-text-on-dark-primary);
   }
 
   .mp-alert--info,
   .alert-info {
     --mp-alert-bg: #18428f;
     --mp-alert-border: #296ff0;
-    --mp-alert-title: #f5f5f5;
-    --mp-alert-body: #f5f5f5;
+    --mp-alert-title: var(--use-text-on-dark-primary);
+    --mp-alert-body: var(--use-text-on-dark-primary);
   }
 
   .mp-alert--success,
   .alert-success {
     --mp-alert-bg: #0b853d;
     --mp-alert-border: #22a152;
-    --mp-alert-title: #f5f5f5;
-    --mp-alert-body: #f5f5f5;
+    --mp-alert-title: var(--use-text-on-dark-primary);
+    --mp-alert-body: var(--use-text-on-dark-primary);
   }
 
   .mp-alert--warning,
   .alert-warning {
     --mp-alert-bg: #967229;
     --mp-alert-border: #fcbf44;
-    --mp-alert-title: #f5f5f5;
-    --mp-alert-body: #f5f5f5;
+    --mp-alert-title: var(--use-text-on-dark-primary);
+    --mp-alert-body: var(--use-text-on-dark-primary);
   }
 
   .mp-alert--error,
@@ -171,41 +171,41 @@
   .alert-danger {
     --mp-alert-bg: #7d291f;
     --mp-alert-border: #d14434;
-    --mp-alert-title: #f5f5f5;
-    --mp-alert-body: #f5f5f5;
+    --mp-alert-title: var(--use-text-on-dark-primary);
+    --mp-alert-body: var(--use-text-on-dark-primary);
   }
 }
 
 [data-theme='high-contrast'] {
   .mp-alert,
   .alert {
-    --mp-alert-title: #ffffff;
-    --mp-alert-body: #ffffff;
-    --mp-alert-icon: #ffffff;
+    --mp-alert-title: var(--use-text-on-dark-primary);
+    --mp-alert-body: var(--use-text-on-dark-primary);
+    --mp-alert-icon: var(--use-text-on-dark-primary);
   }
 
   .mp-alert--info,
   .alert-info {
     --mp-alert-bg: #102c5e;
     --mp-alert-border: #296ff0;
-    --mp-alert-title: #ffffff;
-    --mp-alert-body: #ffffff;
+    --mp-alert-title: var(--use-text-on-dark-primary);
+    --mp-alert-body: var(--use-text-on-dark-primary);
   }
 
   .mp-alert--success,
   .alert-success {
     --mp-alert-bg: #0d3d1f;
     --mp-alert-border: #22a152;
-    --mp-alert-title: #ffffff;
-    --mp-alert-body: #ffffff;
+    --mp-alert-title: var(--use-text-on-dark-primary);
+    --mp-alert-body: var(--use-text-on-dark-primary);
   }
 
   .mp-alert--warning,
   .alert-warning {
     --mp-alert-bg: #634a1a;
     --mp-alert-border: #fcbf44;
-    --mp-alert-title: #ffffff;
-    --mp-alert-body: #ffffff;
+    --mp-alert-title: var(--use-text-on-dark-primary);
+    --mp-alert-body: var(--use-text-on-dark-primary);
   }
 
   .mp-alert--error,
@@ -213,7 +213,7 @@
   .alert-danger {
     --mp-alert-bg: #521a14;
     --mp-alert-border: #d14434;
-    --mp-alert-title: #ffffff;
-    --mp-alert-body: #ffffff;
+    --mp-alert-title: var(--use-text-on-dark-primary);
+    --mp-alert-body: var(--use-text-on-dark-primary);
   }
 }

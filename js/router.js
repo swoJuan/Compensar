@@ -205,7 +205,7 @@ const router = (() => {
     if (state.currentSection === section) return true;
 
     const def = navigationMap[section];
-    const fragmentVersion = '20260504-11';
+    const fragmentVersion = '20260505-3';
     const fragmentPath = `${config.fragmentBase}/${def.path}?v=${fragmentVersion}`;
 
     try {
