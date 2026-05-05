@@ -8,8 +8,8 @@
   </nav>
 
   <section class="component-hero" aria-labelledby="toast-title">
-    <h1 id="toast-title">Toast</h1>
-    <p>Mensaje breve y flotante que aparece temporalmente para confirmar una acción o informar un estado del sistema.</p>
+    <h1 id="toast-title" class="text-primary">Toast</h1>
+    <p class="text-secondary">Mensaje breve y flotante que aparece temporalmente para confirmar una acción o informar un estado del sistema.</p>
     <div class="component-meta" aria-label="Metadatos del componente">
       <span class="component-chip component-chip--success">Estado: estable</span>
       <span class="component-chip">Versión 1.0</span>
@@ -24,19 +24,19 @@
     <div class="component-section__header">
       <div>
         <h2 id="toast-context-title">Toast (Temporal / Flotante)</h2>
-        <p>Los toast flotan sobre la interfaz, no hacen parte del layout y desaparecen automáticamente después de 5 segundos.</p>
+        <p class="text-secondary">Los toast flotan sobre la interfaz, no hacen parte del layout y desaparecen automáticamente después de 5 segundos.</p>
       </div>
     </div>
     <div class="row g-4 align-items-center">
       <div class="col-12 col-lg-4">
-        <h3>Características</h3>
+        <h3 class="text-primary">Características</h3>
         <ul class="component-list mb-3">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Flotan sobre la interfaz.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No bloquean la interacción.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Tienen alta visibilidad y baja intrusión.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Se cierran automáticamente en 5 segundos.</li>
         </ul>
-        <h3>Ubicación</h3>
+        <h3 class="text-primary">Ubicación</h3>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No ocupa espacio dentro del layout.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Posición recomendada: esquina superior derecha.</li>
@@ -79,7 +79,7 @@
     </div>
     <div class="row g-4">
       <div class="col-12 col-lg-4">
-        <h3>Cuándo usarlo</h3>
+        <h3 class="text-primary">Cuándo usarlo</h3>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Confirmar acciones breves y no críticas.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Informar estados del sistema sin interrumpir el flujo.</li>
@@ -90,8 +90,8 @@
       <div class="col-12 col-lg-8">
         <div class="component-example-card component-example-card--split">
           <div>
-            <h3>Do</h3>
-            <p>Usa mensajes breves y claros.</p>
+            <h3 class="text-primary">Do</h3>
+            <p class="text-secondary">Usa mensajes breves y claros.</p>
             <div class="component-example-actions">
               <div class="mp-toast mp-toast--success" role="status">
                 <i class="icon icon-check-circle icon-32 mp-toast__icon" aria-hidden="true"></i>
@@ -107,8 +107,8 @@
           </div>
           <span class="component-divider" aria-hidden="true"></span>
           <div>
-            <h3>Don’t</h3>
-            <p>No uses toast para errores críticos, decisiones o información extensa.</p>
+            <h3 class="text-primary">Don’t</h3>
+            <p class="text-secondary">No uses toast para errores críticos, decisiones o información extensa.</p>
             <div class="component-example-actions">
               <div class="mp-toast mp-toast--warning" role="status">
                 <i class="icon icon-warning icon-32 mp-toast__icon" aria-hidden="true"></i>
@@ -131,7 +131,7 @@
     <div class="component-section__header">
       <div>
         <h2 id="toast-anatomy">2. Anatomía interactiva</h2>
-        <p>El demo se muestra en la esquina superior derecha y se cierra automáticamente en 5 segundos.</p>
+        <p class="text-secondary">El demo se muestra en la esquina superior derecha y se cierra automáticamente en 5 segundos.</p>
       </div>
       <button type="button" class="mp-btn mp-btn--primario mp-btn--icon-left" data-toast-demo>
         <i class="icon icon-play icon-16" aria-hidden="true"></i>
@@ -190,7 +190,7 @@
     </div>
     <div class="row g-4">
       <div class="col-12 col-lg-5 toast-playground__preview">
-        <h3>Vista previa</h3>
+        <h3 class="text-primary">Vista previa</h3>
         <div class="toast-preview-card" id="toast-playground-preview"></div>
       </div>
       <div class="col-12 col-lg-7">
@@ -306,9 +306,9 @@
           <h2 id="toast-responsive">8. Responsive</h2>
         </div>
         <div class="row g-3">
-          <div class="col-12 col-md-4"><h3>Desktop</h3><p>Esquina superior derecha, ancho máximo 350 px.</p></div>
-          <div class="col-12 col-md-4"><h3>Tablet</h3><p>Mantiene posición flotante y ancho máximo.</p></div>
-          <div class="col-12 col-md-4"><h3>Mobile</h3><p>Ocupa el ancho disponible con margen lateral 16 px.</p></div>
+          <div class="col-12 col-md-4"><h3 class="text-primary">Desktop</h3><p class="text-secondary">Esquina superior derecha, ancho máximo 350 px.</p></div>
+          <div class="col-12 col-md-4"><h3 class="text-primary">Tablet</h3><p class="text-secondary">Mantiene posición flotante y ancho máximo.</p></div>
+          <div class="col-12 col-md-4"><h3 class="text-primary">Mobile</h3><p class="text-secondary">Ocupa el ancho disponible con margen lateral 16 px.</p></div>
         </div>
       </section>
     </div>
@@ -334,7 +334,7 @@
     <div class="component-section__header">
       <div>
         <h2 id="toast-code">10. Código</h2>
-        <p>Descarga estilos planos del componente transversal, unidos al core y organizados por modo.</p>
+        <p class="text-secondary">Descarga estilos planos del componente transversal, unidos al core y organizados por modo.</p>
       </div>
       <div class="ct-downloads button-downloads" aria-label="Descargar estilos de toast">
         <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
@@ -384,16 +384,16 @@
       <div class="component-support__item">
         <i class="component-support__icon icon icon-question icon-20" aria-hidden="true"></i>
         <div>
-          <h3>¿Necesitas ayuda?</h3>
-          <p>Usa el canal #diseno-sistema o escribe al equipo responsable.</p>
+          <h3 class="text-primary">¿Necesitas ayuda?</h3>
+          <p class="text-secondary">Usa el canal #diseno-sistema o escribe al equipo responsable.</p>
         </div>
       </div>
       <span class="component-divider" aria-hidden="true"></span>
       <div class="component-support__item">
         <i class="component-support__icon icon icon-warning-octagon icon-20" aria-hidden="true"></i>
         <div>
-          <h3>¿Encontraste un problema?</h3>
-          <p>Repórtalo para mejorar la documentación y el componente.</p>
+          <h3 class="text-primary">¿Encontraste un problema?</h3>
+          <p class="text-secondary">Repórtalo para mejorar la documentación y el componente.</p>
         </div>
       </div>
     </div>

@@ -8,8 +8,8 @@
   </nav>
 
   <section class="component-hero" aria-labelledby="dropdown-title">
-    <h1 id="dropdown-title">Dropdown / Select</h1>
-    <p>Permite seleccionar una o varias opciones dentro de una lista. Se usa cuando las opciones están predefinidas y se quiere evitar errores de entrada. Soporta selección simple, múltiple, búsqueda y grupos de opciones.</p>
+    <h1 id="dropdown-title" class="text-primary">Dropdown / Select</h1>
+    <p class="text-secondary">Permite seleccionar una o varias opciones dentro de una lista. Se usa cuando las opciones están predefinidas y se quiere evitar errores de entrada. Soporta selección simple, múltiple, búsqueda y grupos de opciones.</p>
     <div class="component-meta" aria-label="Metadatos del componente">
       <span class="component-chip component-chip--success">Estado: estable</span>
       <span class="component-chip">Versión 1.0</span>
@@ -28,20 +28,20 @@
     </div>
     <div class="component-grid-2">
       <div>
-        <h3>¿Cuándo usar este componente?</h3>
-        <p>Usa el dropdown cuando el usuario debe elegir una opción de una lista predefinida (más de 4 opciones). Para 2–4 opciones considera radio buttons o chips. Usa el modo búsqueda cuando la lista supera 8–10 ítems.</p>
-        <h3>¿Cuándo NO usarlo?</h3>
-        <p>Evítalo para acciones destructivas o flujos que requieran confirmación; usa un diálogo modal en su lugar. Para pocas opciones (2–3) prefiere radio buttons visibles.</p>
+        <h3 class="text-primary">¿Cuándo usar este componente?</h3>
+        <p class="text-secondary">Usa el dropdown cuando el usuario debe elegir una opción de una lista predefinida (más de 4 opciones). Para 2–4 opciones considera radio buttons o chips. Usa el modo búsqueda cuando la lista supera 8–10 ítems.</p>
+        <h3 class="text-primary">¿Cuándo NO usarlo?</h3>
+        <p class="text-secondary">Evítalo para acciones destructivas o flujos que requieran confirmación; usa un diálogo modal en su lugar. Para pocas opciones (2–3) prefiere radio buttons visibles.</p>
       </div>
       <div>
-        <h3>Variantes disponibles</h3>
+        <h3 class="text-primary">Variantes disponibles</h3>
         <ul>
           <li><strong>Simple</strong> — selección de un único ítem</li>
           <li><strong>Con búsqueda</strong> — filtro de texto dentro del panel</li>
           <li><strong>Múltiple</strong> — selección de varios ítems con chips</li>
           <li><strong>Con grupos</strong> — opciones organizadas en categorías</li>
         </ul>
-        <h3>Clases base</h3>
+        <h3 class="text-primary">Clases base</h3>
         <code>.mp-dropdown-group · .mp-dropdown · .mp-dropdown__trigger · .mp-dropdown__panel · .mp-dropdown__option</code>
       </div>
     </div>
@@ -348,20 +348,20 @@
     </div>
     <div class="component-grid-2">
       <div>
-        <h3>Apertura y cierre</h3>
-        <p>El panel se abre al hacer clic en el trigger o al presionar Enter/Space. Se cierra al seleccionar una opción, al presionar Escape o al hacer clic fuera del componente. El trigger cambia <code>aria-expanded</code> a <code>true</code> y el caret rota 180°.</p>
-        <h3>Navegación por teclado</h3>
-        <p>↑↓ navega entre opciones. Enter/Space selecciona. Escape cierra sin cambio. Home/End van al primer/último ítem. Escritura de caracteres filtra en modo búsqueda.</p>
-        <h3>Posición del panel</h3>
-        <p>El panel se posiciona debajo del trigger por defecto. Si no hay espacio visible se puede invertir a la posición superior (flip). El ancho del panel iguala al del trigger.</p>
+        <h3 class="text-primary">Apertura y cierre</h3>
+        <p class="text-secondary">El panel se abre al hacer clic en el trigger o al presionar Enter/Space. Se cierra al seleccionar una opción, al presionar Escape o al hacer clic fuera del componente. El trigger cambia <code>aria-expanded</code> a <code>true</code> y el caret rota 180°.</p>
+        <h3 class="text-primary">Navegación por teclado</h3>
+        <p class="text-secondary">↑↓ navega entre opciones. Enter/Space selecciona. Escape cierra sin cambio. Home/End van al primer/último ítem. Escritura de caracteres filtra en modo búsqueda.</p>
+        <h3 class="text-primary">Posición del panel</h3>
+        <p class="text-secondary">El panel se posiciona debajo del trigger por defecto. Si no hay espacio visible se puede invertir a la posición superior (flip). El ancho del panel iguala al del trigger.</p>
       </div>
       <div>
-        <h3>Selección múltiple</h3>
-        <p>Cada opción seleccionada se muestra como chip dentro del trigger. El panel permanece abierto hasta que el usuario lo cierra. Los chips muestran un botón de remoción individual.</p>
-        <h3>Búsqueda integrada</h3>
-        <p>En modo búsqueda, el campo de texto se ubica en la parte superior del panel con borde inferior separador. El filtro actúa sobre el texto de cada opción y muestra el estado vacío si no hay coincidencias.</p>
-        <h3>Grupos de opciones</h3>
-        <p>Los encabezados de grupo no son seleccionables, se muestran en mayúsculas 11 px y no reciben foco. Los grupos se separan con un divider de 1 px.</p>
+        <h3 class="text-primary">Selección múltiple</h3>
+        <p class="text-secondary">Cada opción seleccionada se muestra como chip dentro del trigger. El panel permanece abierto hasta que el usuario lo cierra. Los chips muestran un botón de remoción individual.</p>
+        <h3 class="text-primary">Búsqueda integrada</h3>
+        <p class="text-secondary">En modo búsqueda, el campo de texto se ubica en la parte superior del panel con borde inferior separador. El filtro actúa sobre el texto de cada opción y muestra el estado vacío si no hay coincidencias.</p>
+        <h3 class="text-primary">Grupos de opciones</h3>
+        <p class="text-secondary">Los encabezados de grupo no son seleccionables, se muestran en mayúsculas 11 px y no reciben foco. Los grupos se separan con un divider de 1 px.</p>
       </div>
     </div>
   </section>
@@ -375,20 +375,20 @@
     </div>
     <div class="component-grid-2">
       <div>
-        <h3>Label</h3>
-        <p>Siempre presente. Primera letra en mayúscula, resto en minúscula. Evitar verbos; usar sustantivos descriptivos. Ejemplo: «Ciudad de residencia», no «Selecciona tu ciudad».</p>
-        <h3>Placeholder</h3>
-        <p>«Seleccionar» por defecto cuando el campo está vacío. No uses el placeholder como sustituto del label. El placeholder desaparece al seleccionar una opción.</p>
-        <h3>Opciones</h3>
-        <p>Ordenar alfabéticamente salvo razón semántica (ej. frecuencia de uso). Máximo 40–50 caracteres por opción. Primera letra en mayúscula.</p>
+        <h3 class="text-primary">Label</h3>
+        <p class="text-secondary">Siempre presente. Primera letra en mayúscula, resto en minúscula. Evitar verbos; usar sustantivos descriptivos. Ejemplo: «Ciudad de residencia», no «Selecciona tu ciudad».</p>
+        <h3 class="text-primary">Placeholder</h3>
+        <p class="text-secondary">«Seleccionar» por defecto cuando el campo está vacío. No uses el placeholder como sustituto del label. El placeholder desaparece al seleccionar una opción.</p>
+        <h3 class="text-primary">Opciones</h3>
+        <p class="text-secondary">Ordenar alfabéticamente salvo razón semántica (ej. frecuencia de uso). Máximo 40–50 caracteres por opción. Primera letra en mayúscula.</p>
       </div>
       <div>
-        <h3>Texto de apoyo</h3>
-        <p>Opcional. Explica qué tipo de información se espera o añade restricciones relevantes. En estado error, reemplaza el helper con el mensaje de error específico.</p>
-        <h3>Mensaje de error</h3>
-        <p>Concreto y accionable. Ejemplo: «Debes seleccionar al menos una ciudad» en lugar de «Campo requerido».</p>
-        <h3>Grupos</h3>
-        <p>Los encabezados de grupo deben ser cortos (1–2 palabras). En mayúsculas sostenidas. No deben repetir la información del label del componente.</p>
+        <h3 class="text-primary">Texto de apoyo</h3>
+        <p class="text-secondary">Opcional. Explica qué tipo de información se espera o añade restricciones relevantes. En estado error, reemplaza el helper con el mensaje de error específico.</p>
+        <h3 class="text-primary">Mensaje de error</h3>
+        <p class="text-secondary">Concreto y accionable. Ejemplo: «Debes seleccionar al menos una ciudad» en lugar de «Campo requerido».</p>
+        <h3 class="text-primary">Grupos</h3>
+        <p class="text-secondary">Los encabezados de grupo deben ser cortos (1–2 palabras). En mayúsculas sostenidas. No deben repetir la información del label del componente.</p>
       </div>
     </div>
   </section>
@@ -402,7 +402,7 @@
     </div>
     <div class="component-grid-2">
       <div>
-        <h3>Roles ARIA obligatorios</h3>
+        <h3 class="text-primary">Roles ARIA obligatorios</h3>
         <ul>
           <li>Wrapper: <code>role="combobox"</code>, <code>aria-expanded</code>, <code>aria-haspopup="listbox"</code>, <code>aria-controls="[panel-id]"</code></li>
           <li>Panel: <code>role="listbox"</code> (simple) o <code>role="listbox" aria-multiselectable="true"</code> (múltiple)</li>
@@ -413,7 +413,7 @@
         </ul>
       </div>
       <div>
-        <h3>Interacción por teclado</h3>
+        <h3 class="text-primary">Interacción por teclado</h3>
         <ul>
           <li><kbd>Tab</kbd> — mueve el foco al trigger</li>
           <li><kbd>Enter</kbd> / <kbd>Space</kbd> — abre el panel o selecciona la opción activa</li>
@@ -421,8 +421,8 @@
           <li><kbd>Escape</kbd> — cierra el panel, devuelve el foco al trigger</li>
           <li><kbd>Home</kbd> / <kbd>End</kbd> — primera / última opción</li>
         </ul>
-        <h3>Contraste mínimo</h3>
-        <p>4.5:1 para texto de opción y label. El estado focus debe ser perceptible sin depender solo del color.</p>
+        <h3 class="text-primary">Contraste mínimo</h3>
+        <p class="text-secondary">4.5:1 para texto de opción y label. El estado focus debe ser perceptible sin depender solo del color.</p>
       </div>
     </div>
   </section>
@@ -434,7 +434,7 @@
     <div class="component-section__header">
       <h2 id="drp-responsive">8. Responsive</h2>
     </div>
-    <p>El trigger ocupa el 100% del ancho de su contenedor. El panel iguala ese ancho. En viewport ≤ 480 px el panel puede expandirse a pantalla completa con un overlay para mejorar la usabilidad en touch. Las opciones mantienen el mínimo de 48 px de altura táctil.</p>
+    <p class="text-secondary">El trigger ocupa el 100% del ancho de su contenedor. El panel iguala ese ancho. En viewport ≤ 480 px el panel puede expandirse a pantalla completa con un overlay para mejorar la usabilidad en touch. Las opciones mantienen el mínimo de 48 px de altura táctil.</p>
   </section>
 
   <!-- ══════════════════════════════════════════════════════
@@ -670,7 +670,7 @@
     </div>
     <div class="component-grid-2">
       <div>
-        <h3>Pendiente por validar con diseño</h3>
+        <h3 class="text-primary">Pendiente por validar con diseño</h3>
         <ul>
           <li>Medidas exactas del panel (border-radius, shadow, max-height) — actualmente inferidas del sistema</li>
           <li>Altura y padding de ítems de opción</li>
@@ -679,11 +679,11 @@
         </ul>
       </div>
       <div>
-        <h3>Historial</h3>
+        <h3 class="text-primary">Historial</h3>
         <ul>
           <li><strong>v1.0 — 2026-05-04</strong>: Primera versión. Trigger verificado en Figma nodo 4530:13900. Panel inferido del sistema.</li>
         </ul>
-        <h3>Recursos</h3>
+        <h3 class="text-primary">Recursos</h3>
         <ul>
           <li><a href="https://www.figma.com/proto/1zVGMpzqBgiBUqhmfFEAoT/?node-id=4530-13900" target="_blank" rel="noopener">Figma — nodo 4530:13900</a></li>
           <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/" target="_blank" rel="noopener">ARIA APG — Combobox pattern</a></li>

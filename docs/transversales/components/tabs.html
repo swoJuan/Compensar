@@ -8,8 +8,8 @@
   </nav>
 
   <section class="component-hero" aria-labelledby="tabs-title">
-    <h1 id="tabs-title">Tabs</h1>
-    <p>Organizan contenido relacionado en secciones de una misma vista. Permiten alternar entre paneles sin recargar la página y mantienen el contexto de la tarea.</p>
+    <h1 id="tabs-title" class="text-primary">Tabs</h1>
+    <p class="text-secondary">Organizan contenido relacionado en secciones de una misma vista. Permiten alternar entre paneles sin recargar la página y mantienen el contexto de la tarea.</p>
     <div class="component-meta" aria-label="Metadatos del componente">
       <span class="component-chip component-chip--success">Estado: estable</span>
       <span class="component-chip">Versión 1.0</span>
@@ -25,7 +25,7 @@
     </div>
     <div class="row g-4 align-items-stretch">
       <div class="col-12 col-lg-6">
-        <h3>Cuándo usarlo</h3>
+        <h3 class="text-primary">Cuándo usarlo</h3>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para agrupar contenido relacionado dentro de una misma vista.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para alternar entre paneles sin cambiar de página.</li>
@@ -36,8 +36,8 @@
       <div class="col-12 col-lg-6">
         <div class="component-example-card component-example-card--split h-100">
           <div>
-            <h3>Do</h3>
-            <p>Usa labels cortos y un máximo recomendado de 4 a 5 tabs.</p>
+            <h3 class="text-primary">Do</h3>
+            <p class="text-secondary">Usa labels cortos y un máximo recomendado de 4 a 5 tabs.</p>
             <div class="component-example-actions">
               <div class="mp-tabs" role="tablist" aria-label="Ejemplo correcto">
                 <button class="mp-tab is-active" role="tab" aria-selected="true">Servicios</button>
@@ -47,8 +47,8 @@
           </div>
           <span class="component-divider" aria-hidden="true"></span>
           <div>
-            <h3>Don't</h3>
-            <p>No lo uses como navegación global ni con etiquetas largas.</p>
+            <h3 class="text-primary">Don't</h3>
+            <p class="text-secondary">No lo uses como navegación global ni con etiquetas largas.</p>
             <div class="component-example-actions">
               <div class="mp-tabs" role="tablist" aria-label="Ejemplo incorrecto">
                 <button class="mp-tab is-active" role="tab" aria-selected="true">Información general del afiliado</button>
@@ -64,7 +64,7 @@
     <div class="component-section__header">
       <div>
         <h2 id="tabs-anatomy">2. Anatomía interactiva</h2>
-        <p>La estructura usa el componente productivo <code>mp-tab</code> y tokens semánticos del sistema.</p>
+        <p class="text-secondary">La estructura usa el componente productivo <code>mp-tab</code> y tokens semánticos del sistema.</p>
       </div>
     </div>
 
@@ -121,7 +121,7 @@
     <div class="row g-3 mt-3">
       <div class="col-12 col-md-6">
         <div class="component-example-card h-100">
-          <h3>Texto</h3>
+          <h3 class="text-primary">Texto</h3>
           <ul class="component-list">
             <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Roboto SemiBold.</li>
             <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Tamaño 16 px.</li>
@@ -132,7 +132,7 @@
       </div>
       <div class="col-12 col-md-6">
         <div class="component-example-card h-100">
-          <h3>Contenedor</h3>
+          <h3 class="text-primary">Contenedor</h3>
           <ul class="component-list">
             <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Ancho hug content.</li>
             <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Alto hug content con mínimo táctil de 44 px.</li>
@@ -150,14 +150,14 @@
     </div>
     <div class="row g-4">
       <div class="col-12 col-lg-7">
-        <h3>Vista previa</h3>
+        <h3 class="text-primary">Vista previa</h3>
         <div class="tab-doc-preview" id="tab-preview-area" role="region" aria-label="Vista previa de tabs"></div>
         <div class="tab-doc-panel" id="tab-preview-panel" aria-live="polite">
           Selecciona una pestaña para ver su contenido.
         </div>
       </div>
       <div class="col-12 col-lg-5">
-        <h3>Controles</h3>
+        <h3 class="text-primary">Controles</h3>
         <div class="row g-3">
           <div class="col-12 col-sm-6">
             <label class="mp-input-label" for="tab-ctrl-count">Número de tabs</label>
@@ -203,30 +203,30 @@
     <div class="row g-3">
       <div class="col-12 col-sm-6 col-xl-3">
         <div class="component-example-card h-100">
-          <h3>Default</h3>
+          <h3 class="text-primary">Default</h3>
           <div class="tab-doc-sample"><button class="mp-tab" role="tab" aria-selected="false">Title tab</button></div>
-          <p>Opción disponible no seleccionada.</p>
+          <p class="text-secondary">Opción disponible no seleccionada.</p>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-xl-3">
         <div class="component-example-card h-100">
-          <h3>Active</h3>
+          <h3 class="text-primary">Active</h3>
           <div class="tab-doc-sample"><button class="mp-tab is-active" role="tab" aria-selected="true">Title tab</button></div>
-          <p>Muestra el contenido activo de la sección.</p>
+          <p class="text-secondary">Muestra el contenido activo de la sección.</p>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-xl-3">
         <div class="component-example-card h-100">
-          <h3>Hover</h3>
+          <h3 class="text-primary">Hover</h3>
           <div class="tab-doc-sample"><button class="mp-tab mp-tab--is-hover" role="tab" aria-selected="false">Title tab</button></div>
-          <p>Indica que el tab es interactivo.</p>
+          <p class="text-secondary">Indica que el tab es interactivo.</p>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-xl-3">
         <div class="component-example-card h-100">
-          <h3>Disabled</h3>
+          <h3 class="text-primary">Disabled</h3>
           <div class="tab-doc-sample"><button class="mp-tab" role="tab" disabled>Title tab</button></div>
-          <p>Tab no disponible para interacción.</p>
+          <p class="text-secondary">Tab no disponible para interacción.</p>
         </div>
       </div>
     </div>
@@ -239,7 +239,7 @@
     <div class="row g-3">
       <div class="col-12 col-lg-6">
         <div class="component-example-card h-100">
-          <h3>Solo texto</h3>
+          <h3 class="text-primary">Solo texto</h3>
           <div class="tab-doc-sample">
             <div class="mp-tabs" role="tablist" aria-label="Tabs solo texto">
               <button class="mp-tab is-active" role="tab" aria-selected="true">Servicios</button>
@@ -247,12 +247,12 @@
               <button class="mp-tab" role="tab" aria-selected="false" tabindex="-1">Historial</button>
             </div>
           </div>
-          <p>Uso principal cuando las categorías son claras por texto.</p>
+          <p class="text-secondary">Uso principal cuando las categorías son claras por texto.</p>
         </div>
       </div>
       <div class="col-12 col-lg-6">
         <div class="component-example-card h-100">
-          <h3>Con ícono</h3>
+          <h3 class="text-primary">Con ícono</h3>
           <div class="tab-doc-sample">
             <div class="mp-tabs" role="tablist" aria-label="Tabs con ícono">
               <button class="mp-tab is-active" role="tab" aria-selected="true"><span class="material-symbols-rounded mp-tab__icon" aria-hidden="true">favorite</span>Salud</button>
@@ -260,7 +260,7 @@
               <button class="mp-tab" role="tab" aria-selected="false" tabindex="-1"><span class="material-symbols-rounded mp-tab__icon" aria-hidden="true">sports_soccer</span>Recreación</button>
             </div>
           </div>
-          <p>Úsalo solo cuando el ícono aporte claridad real al escaneo.</p>
+          <p class="text-secondary">Úsalo solo cuando el ícono aporte claridad real al escaneo.</p>
         </div>
       </div>
     </div>
@@ -272,7 +272,7 @@
     </div>
     <div class="row g-4 align-items-center">
       <div class="col-12 col-lg-6">
-        <p>En dispositivos pequeños, los tabs deben adaptarse para mantener la usabilidad.</p>
+        <p class="text-secondary">En dispositivos pequeños, los tabs deben adaptarse para mantener la usabilidad.</p>
         <ul class="component-list mt-3">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Transformarse en menú desplegable.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mantener la selección visible.</li>
@@ -303,8 +303,8 @@
     <div class="row g-3">
       <div class="col-12 col-lg-4">
         <div class="tab-mode-box h-100" data-theme="light">
-          <h3>Light</h3>
-          <p>Modo principal del sistema.</p>
+          <h3 class="text-primary">Light</h3>
+          <p class="text-secondary">Modo principal del sistema.</p>
           <div class="tab-mode-stack">
             <button class="mp-tab" role="tab" aria-selected="false">Title tab</button>
             <button class="mp-tab is-active" role="tab" aria-selected="true">Title tab</button>
@@ -315,8 +315,8 @@
       </div>
       <div class="col-12 col-lg-4">
         <div class="tab-mode-box h-100" data-theme="dark">
-          <h3>Modo oscuro</h3>
-          <p>Modo alternativo para entornos de baja iluminación.</p>
+          <h3 class="text-primary">Modo oscuro</h3>
+          <p class="text-secondary">Modo alternativo para entornos de baja iluminación.</p>
           <div class="tab-mode-stack">
             <button class="mp-tab" role="tab" aria-selected="false">Title tab</button>
             <button class="mp-tab is-active" role="tab" aria-selected="true">Title tab</button>
@@ -327,8 +327,8 @@
       </div>
       <div class="col-12 col-lg-4">
         <div class="tab-mode-box h-100" data-theme="high-contrast">
-          <h3>High Contrast</h3>
-          <p>Modo enfocado en accesibilidad.</p>
+          <h3 class="text-primary">High Contrast</h3>
+          <p class="text-secondary">Modo enfocado en accesibilidad.</p>
           <div class="tab-mode-stack">
             <button class="mp-tab" role="tab" aria-selected="false">Title tab</button>
             <button class="mp-tab is-active" role="tab" aria-selected="true">Title tab</button>
@@ -455,29 +455,29 @@
       <div class="col-12 col-md-6 col-xl-3">
         <div class="a11y-card h-100">
           <i class="icon icon-keyboard icon-24 a11y-card__icon" aria-hidden="true"></i>
-          <div class="a11y-card__title">Foco visible</div>
-          <div class="a11y-card__desc">El foco debe ser visible en cada tab interactivo y no debe ocultarse con <code>outline: none</code>.</div>
+          <div class="a11y-card__title text-primary">Foco visible</div>
+          <div class="a11y-card__desc text-secondary">El foco debe ser visible en cada tab interactivo y no debe ocultarse con <code>outline: none</code>.</div>
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <div class="a11y-card h-100">
           <i class="icon icon-cursor icon-24 a11y-card__icon" aria-hidden="true"></i>
-          <div class="a11y-card__title">Teclado</div>
-          <div class="a11y-card__desc">Flechas laterales cambian el foco entre tabs; <code>Tab</code> avanza al panel activo.</div>
+          <div class="a11y-card__title text-primary">Teclado</div>
+          <div class="a11y-card__desc text-secondary">Flechas laterales cambian el foco entre tabs; <code>Tab</code> avanza al panel activo.</div>
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <div class="a11y-card h-100">
           <i class="icon icon-check-square icon-24 a11y-card__icon" aria-hidden="true"></i>
-          <div class="a11y-card__title">ARIA</div>
-          <div class="a11y-card__desc">Usa <code>tablist</code>, <code>tab</code>, <code>tabpanel</code>, <code>aria-controls</code> y <code>aria-labelledby</code>.</div>
+          <div class="a11y-card__title text-primary">ARIA</div>
+          <div class="a11y-card__desc text-secondary">Usa <code>tablist</code>, <code>tab</code>, <code>tabpanel</code>, <code>aria-controls</code> y <code>aria-labelledby</code>.</div>
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <div class="a11y-card h-100">
           <i class="icon icon-eye icon-24 a11y-card__icon" aria-hidden="true"></i>
-          <div class="a11y-card__title">No solo color</div>
-          <div class="a11y-card__desc">El activo debe diferenciarse por color, forma y peso visual; no dependas solo del color.</div>
+          <div class="a11y-card__title text-primary">No solo color</div>
+          <div class="a11y-card__desc text-secondary">El activo debe diferenciarse por color, forma y peso visual; no dependas solo del color.</div>
         </div>
       </div>
     </div>

@@ -8,8 +8,8 @@
   </nav>
 
   <section class="component-hero" aria-labelledby="cards-title">
-    <h1 id="cards-title">Cards</h1>
-    <p>Contenedores que agrupan información relacionada dentro de una interfaz. Organizan contenido, facilitan la lectura y permiten acciones dentro de un mismo bloque.</p>
+    <h1 id="cards-title" class="text-primary">Cards</h1>
+    <p class="text-secondary">Contenedores que agrupan información relacionada dentro de una interfaz. Organizan contenido, facilitan la lectura y permiten acciones dentro de un mismo bloque.</p>
     <div class="component-meta" aria-label="Metadatos del componente">
       <span class="component-chip component-chip--success">Estado: estable</span>
       <span class="component-chip">Versión 1.0</span>
@@ -25,7 +25,7 @@
     </div>
     <div class="row g-4 align-items-stretch">
       <div class="col-12 col-lg-6">
-        <h3>Cuándo usarlo</h3>
+        <h3 class="text-primary">Cuándo usarlo</h3>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para mostrar información agrupada y fácil de escanear.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para resultados de búsqueda, servicios, beneficios o contenido resumido.</li>
@@ -36,8 +36,8 @@
       <div class="col-12 col-lg-6">
         <div class="component-example-card component-example-card--split h-100">
           <div>
-            <h3>Do</h3>
-            <p>Usa una jerarquía simple: imagen opcional, título, texto breve y acción principal.</p>
+            <h3 class="text-primary">Do</h3>
+            <p class="text-secondary">Usa una jerarquía simple: imagen opcional, título, texto breve y acción principal.</p>
             <div class="component-example-actions">
               <article class="mp-card mp-card--raised cards-doc-mini-card">
                 <img class="mp-card__media" src="https://picsum.photos/id/1011/800/450" alt="Persona caminando al aire libre">
@@ -53,8 +53,8 @@
           </div>
           <span class="component-divider" aria-hidden="true"></span>
           <div>
-            <h3>Don't</h3>
-            <p>No mezcles múltiples prioridades ni conviertas la card en una página completa.</p>
+            <h3 class="text-primary">Don't</h3>
+            <p class="text-secondary">No mezcles múltiples prioridades ni conviertas la card en una página completa.</p>
             <div class="component-example-actions">
               <article class="mp-card cards-doc-mini-card">
                 <div class="mp-card__content">
@@ -73,7 +73,7 @@
     <div class="component-section__header">
       <div>
         <h2 id="cards-anatomy">2. Anatomía interactiva</h2>
-        <p>La estructura usa el componente productivo <code>mp-card</code>, clases Bootstrap para layout y tokens semánticos del sistema.</p>
+        <p class="text-secondary">La estructura usa el componente productivo <code>mp-card</code>, clases Bootstrap para layout y tokens semánticos del sistema.</p>
       </div>
     </div>
 
@@ -135,7 +135,7 @@
     <div class="row g-3 mt-3">
       <div class="col-12 col-md-6">
         <div class="component-example-card h-100">
-          <h3>Contenedor</h3>
+          <h3 class="text-primary">Contenedor</h3>
           <ul class="component-list">
             <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Ancho base 398 px.</li>
             <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Padding 24 px en card vertical.</li>
@@ -146,7 +146,7 @@
       </div>
       <div class="col-12 col-md-6">
         <div class="component-example-card h-100">
-          <h3>Contenido</h3>
+          <h3 class="text-primary">Contenido</h3>
           <ul class="component-list">
             <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Título, subtítulo, cuerpo y footer son opcionales según el caso.</li>
             <li><i class="icon icon-check icon-16" aria-hidden="true"></i>La imagen mantiene su apariencia en todos los temas.</li>
@@ -163,11 +163,11 @@
     </div>
     <div class="row g-4">
       <div class="col-12 col-lg-7">
-        <h3>Vista previa</h3>
+        <h3 class="text-primary">Vista previa</h3>
         <div class="cards-preview-card" id="cards-playground-preview" role="region" aria-label="Vista previa de cards"></div>
       </div>
       <div class="col-12 col-lg-5">
-        <h3>Controles</h3>
+        <h3 class="text-primary">Controles</h3>
         <div class="row g-3">
           <div class="col-12 col-sm-6">
             <label class="mp-input-label" for="cards-variant">Variante</label>
@@ -256,30 +256,30 @@
     <div class="row g-3">
       <div class="col-12 col-sm-6 col-xl-3">
         <div class="component-example-card h-100">
-          <h3>Default</h3>
+          <h3 class="text-primary">Default</h3>
           <div class="cards-doc-sample" data-card-state-demo="default"></div>
-          <p>Card disponible sin énfasis de interacción.</p>
+          <p class="text-secondary">Card disponible sin énfasis de interacción.</p>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-xl-3">
         <div class="component-example-card h-100">
-          <h3>Hover</h3>
+          <h3 class="text-primary">Hover</h3>
           <div class="cards-doc-sample" data-card-state-demo="hover"></div>
-          <p>Indica que la card o su acción puede ejecutarse.</p>
+          <p class="text-secondary">Indica que la card o su acción puede ejecutarse.</p>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-xl-3">
         <div class="component-example-card h-100">
-          <h3>Focus</h3>
+          <h3 class="text-primary">Focus</h3>
           <div class="cards-doc-sample" data-card-state-demo="focus"></div>
-          <p>El foco debe ser visible cuando la card es interactiva.</p>
+          <p class="text-secondary">El foco debe ser visible cuando la card es interactiva.</p>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-xl-3">
         <div class="component-example-card h-100">
-          <h3>Disabled</h3>
+          <h3 class="text-primary">Disabled</h3>
           <div class="cards-doc-sample" data-card-state-demo="disabled"></div>
-          <p>Reduce énfasis y bloquea interacción.</p>
+          <p class="text-secondary">Reduce énfasis y bloquea interacción.</p>
         </div>
       </div>
     </div>
@@ -292,30 +292,30 @@
     <div class="row g-3">
       <div class="col-12 col-lg-6">
         <div class="component-example-card h-100">
-          <h3>Vertical</h3>
+          <h3 class="text-primary">Vertical</h3>
           <div class="cards-doc-sample" data-card-variant-demo="vertical"></div>
-          <p>Uso principal para contenido resumido con media opcional.</p>
+          <p class="text-secondary">Uso principal para contenido resumido con media opcional.</p>
         </div>
       </div>
       <div class="col-12 col-lg-6">
         <div class="component-example-card h-100">
-          <h3>Horizontal</h3>
+          <h3 class="text-primary">Horizontal</h3>
           <div class="cards-doc-sample" data-card-variant-demo="horizontal"></div>
-          <p>Útil cuando la imagen acompaña una pieza de contenido más breve.</p>
+          <p class="text-secondary">Útil cuando la imagen acompaña una pieza de contenido más breve.</p>
         </div>
       </div>
       <div class="col-12 col-lg-6">
         <div class="component-example-card h-100">
-          <h3>Compacta</h3>
+          <h3 class="text-primary">Compacta</h3>
           <div class="cards-doc-sample" data-card-variant-demo="compact"></div>
-          <p>Para listados densos o agrupaciones con menos contenido.</p>
+          <p class="text-secondary">Para listados densos o agrupaciones con menos contenido.</p>
         </div>
       </div>
       <div class="col-12 col-lg-6">
         <div class="component-example-card h-100">
-          <h3>Interactiva</h3>
+          <h3 class="text-primary">Interactiva</h3>
           <div class="cards-doc-sample" data-card-variant-demo="interactive"></div>
-          <p>Debe tener foco visible y una acción claramente definida.</p>
+          <p class="text-secondary">Debe tener foco visible y una acción claramente definida.</p>
         </div>
       </div>
     </div>
@@ -327,7 +327,7 @@
     </div>
     <div class="row g-4 align-items-center">
       <div class="col-12 col-lg-5">
-        <p>En pantallas pequeñas, la card se ajusta al ancho disponible y la variante horizontal se apila para conservar legibilidad.</p>
+        <p class="text-secondary">En pantallas pequeñas, la card se ajusta al ancho disponible y la variante horizontal se apila para conservar legibilidad.</p>
         <ul class="component-list mt-3">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa grillas Bootstrap para distribuir cards.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Evita alturas fijas cuando el contenido sea variable.</li>
@@ -358,22 +358,22 @@
     <div class="row g-3">
       <div class="col-12 col-lg-4">
         <div class="cards-mode-box h-100" data-theme="light">
-          <h3>Light</h3>
-          <p>Modo principal del sistema.</p>
+          <h3 class="text-primary">Light</h3>
+          <p class="text-secondary">Modo principal del sistema.</p>
           <div data-card-mode-demo="light"></div>
         </div>
       </div>
       <div class="col-12 col-lg-4">
         <div class="cards-mode-box h-100" data-theme="dark">
-          <h3>Modo oscuro</h3>
-          <p>Modo alternativo para entornos de baja iluminación.</p>
+          <h3 class="text-primary">Modo oscuro</h3>
+          <p class="text-secondary">Modo alternativo para entornos de baja iluminación.</p>
           <div data-card-mode-demo="dark"></div>
         </div>
       </div>
       <div class="col-12 col-lg-4">
         <div class="cards-mode-box h-100" data-theme="high-contrast">
-          <h3>High Contrast</h3>
-          <p>Modo enfocado en accesibilidad.</p>
+          <h3 class="text-primary">High Contrast</h3>
+          <p class="text-secondary">Modo enfocado en accesibilidad.</p>
           <div data-card-mode-demo="high-contrast"></div>
         </div>
       </div>
@@ -490,29 +490,29 @@
       <div class="col-12 col-md-6 col-xl-3">
         <div class="a11y-card h-100">
           <i class="icon icon-eye icon-24 a11y-card__icon" aria-hidden="true"></i>
-          <div class="a11y-card__title">Contraste</div>
-          <div class="a11y-card__desc">Texto, borde y acciones deben mantener contraste AA; en alto contraste el contenedor usa borde blanco sólido.</div>
+          <div class="a11y-card__title text-primary">Contraste</div>
+          <div class="a11y-card__desc text-secondary">Texto, borde y acciones deben mantener contraste AA; en alto contraste el contenedor usa borde blanco sólido.</div>
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <div class="a11y-card h-100">
           <i class="icon icon-keyboard icon-24 a11y-card__icon" aria-hidden="true"></i>
-          <div class="a11y-card__title">Foco visible</div>
-          <div class="a11y-card__desc">Si la card es interactiva, debe poder enfocarse y mostrar un indicador visible.</div>
+          <div class="a11y-card__title text-primary">Foco visible</div>
+          <div class="a11y-card__desc text-secondary">Si la card es interactiva, debe poder enfocarse y mostrar un indicador visible.</div>
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <div class="a11y-card h-100">
           <i class="icon icon-image icon-24 a11y-card__icon" aria-hidden="true"></i>
-          <div class="a11y-card__title">Texto alternativo</div>
-          <div class="a11y-card__desc">Las imágenes informativas requieren <code>alt</code>; las decorativas deben usar alt vacío.</div>
+          <div class="a11y-card__title text-primary">Texto alternativo</div>
+          <div class="a11y-card__desc text-secondary">Las imágenes informativas requieren <code>alt</code>; las decorativas deben usar alt vacío.</div>
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <div class="a11y-card h-100">
           <i class="icon icon-check-square icon-24 a11y-card__icon" aria-hidden="true"></i>
-          <div class="a11y-card__title">Acción clara</div>
-          <div class="a11y-card__desc">Evita múltiples acciones principales y no dependas solo del hover para revelar interacción.</div>
+          <div class="a11y-card__title text-primary">Acción clara</div>
+          <div class="a11y-card__desc text-secondary">Evita múltiples acciones principales y no dependas solo del hover para revelar interacción.</div>
         </div>
       </div>
     </div>

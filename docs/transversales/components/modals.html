@@ -8,8 +8,8 @@
   </nav>
 
   <section class="component-hero" aria-labelledby="modal-title">
-    <h1 id="modal-title">Modal</h1>
-    <p>Componente que interrumpe el flujo para presentar información importante o solicitar una decisión del usuario.</p>
+    <h1 id="modal-title" class="text-primary">Modal</h1>
+    <p class="text-secondary">Componente que interrumpe el flujo para presentar información importante o solicitar una decisión del usuario.</p>
     <div class="component-meta" aria-label="Metadatos del componente">
       <span class="component-chip component-chip--success">Estado: estable</span>
       <span class="component-chip">Versión 1.0</span>
@@ -24,19 +24,19 @@
     <div class="component-section__header">
       <div>
         <h2 id="modal-context-title">Modal (Crítico)</h2>
-        <p>Este tipo bloquea la interacción con el fondo y requiere una acción explícita antes de volver al flujo.</p>
+        <p class="text-secondary">Este tipo bloquea la interacción con el fondo y requiere una acción explícita antes de volver al flujo.</p>
       </div>
     </div>
     <div class="row g-4 align-items-center">
       <div class="col-12 col-lg-4">
-        <h3>Características</h3>
+        <h3 class="text-primary">Características</h3>
         <ul class="component-list mb-3">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Bloquea la interacción con el fondo.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Se muestra sobre overlay `#111` al 30%.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Requiere acción del usuario.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Tiene alta prioridad visual.</li>
         </ul>
-        <h3>Ubicación</h3>
+        <h3 class="text-primary">Ubicación</h3>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Centrado en pantalla.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Sobre fondo oscuro overlay.</li>
@@ -85,7 +85,7 @@
     </div>
     <div class="row g-4">
       <div class="col-12 col-lg-4">
-        <h3>Cuándo usarlo</h3>
+        <h3 class="text-primary">Cuándo usarlo</h3>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Confirmaciones importantes o irreversibles.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Información crítica que exige lectura.</li>
@@ -97,16 +97,16 @@
       <div class="col-12 col-lg-8">
         <div class="component-example-card component-example-card--split">
           <div>
-            <h3>Do</h3>
-            <p>Usa el modal cuando la decisión es necesaria para continuar.</p>
+            <h3 class="text-primary">Do</h3>
+            <p class="text-secondary">Usa el modal cuando la decisión es necesaria para continuar.</p>
             <div class="component-example-actions">
               <button type="button" class="mp-btn mp-btn--primario" data-modal-demo>Ver demo</button>
             </div>
           </div>
           <span class="component-divider" aria-hidden="true"></span>
           <div>
-            <h3>Don’t</h3>
-            <p>No lo uses para confirmaciones rápidas. Para eso usa toast.</p>
+            <h3 class="text-primary">Don’t</h3>
+            <p class="text-secondary">No lo uses para confirmaciones rápidas. Para eso usa toast.</p>
             <div class="component-example-actions">
               <div class="mp-toast mp-toast--success" role="status">
                 <i class="icon icon-check-circle icon-32 mp-toast__icon" aria-hidden="true"></i>
@@ -126,7 +126,7 @@
     <div class="component-section__header">
       <div>
         <h2 id="modal-anatomy">2. Anatomía interactiva</h2>
-        <p>La estructura usa clases Bootstrap y personalización `mp-modal`.</p>
+        <p class="text-secondary">La estructura usa clases Bootstrap y personalización `mp-modal`.</p>
       </div>
       <button type="button" class="mp-btn mp-btn--primario mp-btn--icon-left" data-modal-demo>
         <i class="icon icon-arrow-square-out icon-16" aria-hidden="true"></i>
@@ -193,7 +193,7 @@
     </div>
     <div class="row g-4">
       <div class="col-12 col-lg-5 modal-playground__preview">
-        <h3>Vista previa</h3>
+        <h3 class="text-primary">Vista previa</h3>
         <div class="modal-preview-card" id="modal-playground-preview"></div>
       </div>
       <div class="col-12 col-lg-7">
@@ -271,15 +271,15 @@
     <div class="modal-size-grid">
       <div class="modal-size-card">
         <strong>Pequeño · `.modal-sm`</strong>
-        <p>300 px. Para confirmaciones cortas y mensajes de una sola acción.</p>
+        <p class="text-secondary">300 px. Para confirmaciones cortas y mensajes de una sola acción.</p>
       </div>
       <div class="modal-size-card">
         <strong>Mediano · default</strong>
-        <p>479 px. Tamaño oficial observado en Figma y recomendado por defecto.</p>
+        <p class="text-secondary">479 px. Tamaño oficial observado en Figma y recomendado por defecto.</p>
       </div>
       <div class="modal-size-card">
         <strong>Grande · `.modal-lg`</strong>
-        <p>800 px. Para contenido guiado, tablas pequeñas o formularios breves.</p>
+        <p class="text-secondary">800 px. Para contenido guiado, tablas pequeñas o formularios breves.</p>
       </div>
     </div>
   </section>
@@ -292,25 +292,25 @@
       <div class="col-12 col-md-6 col-xl-3">
         <div class="modal-size-card">
           <strong>Info</strong>
-          <p>Información relevante que detiene el flujo para confirmar lectura.</p>
+          <p class="text-secondary">Información relevante que detiene el flujo para confirmar lectura.</p>
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <div class="modal-size-card">
           <strong>Success</strong>
-          <p>Confirmación importante después de una acción de alto impacto.</p>
+          <p class="text-secondary">Confirmación importante después de una acción de alto impacto.</p>
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <div class="modal-size-card">
           <strong>Warning</strong>
-          <p>Advertencia previa a una decisión sensible o irreversible.</p>
+          <p class="text-secondary">Advertencia previa a una decisión sensible o irreversible.</p>
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">
         <div class="modal-size-card">
           <strong>Error</strong>
-          <p>Bloqueo del flujo por error que requiere corrección o salida.</p>
+          <p class="text-secondary">Bloqueo del flujo por error que requiere corrección o salida.</p>
         </div>
       </div>
     </div>
@@ -325,28 +325,28 @@
         <div class="component-info-card">
           <i class="icon icon-arrow-square-out icon-20" aria-hidden="true"></i>
           <strong>Apertura</strong>
-          <p>Se abre después de una acción y mueve el foco al modal.</p>
+          <p class="text-secondary">Se abre después de una acción y mueve el foco al modal.</p>
         </div>
       </div>
       <div class="col-12 col-md-6">
         <div class="component-info-card">
           <i class="icon icon-prohibit icon-20" aria-hidden="true"></i>
           <strong>Bloqueo</strong>
-          <p>El overlay bloquea el contenido de fondo mientras el modal está activo.</p>
+          <p class="text-secondary">El overlay bloquea el contenido de fondo mientras el modal está activo.</p>
         </div>
       </div>
       <div class="col-12 col-md-6">
         <div class="component-info-card">
           <i class="icon icon-keyboard icon-20" aria-hidden="true"></i>
           <strong>Teclado</strong>
-          <p>ESC cierra el modal y Tab mantiene el foco dentro del contenedor.</p>
+          <p class="text-secondary">ESC cierra el modal y Tab mantiene el foco dentro del contenedor.</p>
         </div>
       </div>
       <div class="col-12 col-md-6">
         <div class="component-info-card">
           <i class="icon icon-x icon-20" aria-hidden="true"></i>
           <strong>Cierre</strong>
-          <p>Permite cerrar con X, acción secundaria, botón principal cuando aplique o ESC.</p>
+          <p class="text-secondary">Permite cerrar con X, acción secundaria, botón principal cuando aplique o ESC.</p>
         </div>
       </div>
     </div>
@@ -358,7 +358,7 @@
     </div>
     <div class="row g-4">
       <div class="col-12 col-lg-6">
-        <h3>Do</h3>
+        <h3 class="text-primary">Do</h3>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa títulos directos que expliquen el problema o decisión.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Redacta mensajes breves y accionables.</li>
@@ -366,7 +366,7 @@
         </ul>
       </div>
       <div class="col-12 col-lg-6">
-        <h3>Don’t</h3>
+        <h3 class="text-primary">Don’t</h3>
         <ul class="component-list">
           <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No incluyas textos largos o listas extensas.</li>
           <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No uses etiquetas ambiguas como “Aceptar” si la acción es irreversible.</li>
@@ -408,19 +408,19 @@
       <div class="col-12 col-md-4">
         <div class="modal-size-card">
           <strong>Desktop</strong>
-          <p>Centrado, con ancho máximo según tamaño y overlay completo.</p>
+          <p class="text-secondary">Centrado, con ancho máximo según tamaño y overlay completo.</p>
         </div>
       </div>
       <div class="col-12 col-md-4">
         <div class="modal-size-card">
           <strong>Tablet</strong>
-          <p>Mantiene el ancho máximo disponible y conserva margen lateral.</p>
+          <p class="text-secondary">Mantiene el ancho máximo disponible y conserva margen lateral.</p>
         </div>
       </div>
       <div class="col-12 col-md-4">
         <div class="modal-size-card">
           <strong>Mobile</strong>
-          <p>Ocupa el ancho disponible con 16 px de margen lateral mínimo.</p>
+          <p class="text-secondary">Ocupa el ancho disponible con 16 px de margen lateral mínimo.</p>
         </div>
       </div>
     </div>
@@ -466,7 +466,7 @@
     <div class="component-section__header">
       <div>
         <h2 id="modal-code-title">11. Código</h2>
-        <p>Ejemplos con estructura Bootstrap y clases productivas `mp-modal` del core.</p>
+        <p class="text-secondary">Ejemplos con estructura Bootstrap y clases productivas `mp-modal` del core.</p>
       </div>
     </div>
     <div class="button-code-panel">
@@ -507,16 +507,16 @@
       <div class="component-support__item">
         <i class="component-support__icon icon icon-question icon-20" aria-hidden="true"></i>
         <div>
-          <h3>¿Necesitas ayuda?</h3>
-          <p>Usa el canal del sistema de diseño para validar casos especiales de modal.</p>
+          <h3 class="text-primary">¿Necesitas ayuda?</h3>
+          <p class="text-secondary">Usa el canal del sistema de diseño para validar casos especiales de modal.</p>
         </div>
       </div>
       <span class="component-divider" aria-hidden="true"></span>
       <div class="component-support__item">
         <i class="component-support__icon icon icon-warning-octagon icon-20" aria-hidden="true"></i>
         <div>
-          <h3>¿Encontraste un problema?</h3>
-          <p>Repórtalo para mejorar la documentación y el componente.</p>
+          <h3 class="text-primary">¿Encontraste un problema?</h3>
+          <p class="text-secondary">Repórtalo para mejorar la documentación y el componente.</p>
         </div>
       </div>
     </div>

@@ -8,8 +8,8 @@
   </nav>
 
   <section class="component-hero" aria-labelledby="button-title">
-    <h1 id="button-title">Botón</h1>
-    <p>Permite ejecutar acciones principales, secundarias o de apoyo dentro de la interfaz. Guía la interacción, la toma de decisiones y la jerarquía visual de cada pantalla.</p>
+    <h1 id="button-title" class="text-primary">Botón</h1>
+    <p class="text-secondary">Permite ejecutar acciones principales, secundarias o de apoyo dentro de la interfaz. Guía la interacción, la toma de decisiones y la jerarquía visual de cada pantalla.</p>
     <div class="component-meta" aria-label="Metadatos del componente">
       <span class="component-chip component-chip--success">Estado: estable</span>
       <span class="component-chip">Versión 1.0</span>
@@ -25,7 +25,7 @@
     </div>
     <div class="component-grid-2">
       <div>
-        <h3>Cuándo usarlo</h3>
+        <h3 class="text-primary">Cuándo usarlo</h3>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para ejecutar acciones principales del flujo.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para confirmar, guardar o continuar una tarea.</li>
@@ -35,8 +35,8 @@
       </div>
       <div class="component-example-card component-example-card--split">
         <div>
-          <h3>Do</h3>
-          <p>Usa jerarquía clara y etiquetas accionables.</p>
+          <h3 class="text-primary">Do</h3>
+          <p class="text-secondary">Usa jerarquía clara y etiquetas accionables.</p>
           <div class="component-example-actions">
             <button class="mp-btn mp-btn--secundario">Ejemplo</button>
             <button class="mp-btn mp-btn--primario">Ver guía</button>
@@ -44,8 +44,8 @@
         </div>
         <span class="component-divider" aria-hidden="true"></span>
         <div>
-          <h3>Don't</h3>
-          <p>No uses textos ambiguos ni jerarquías confusas.</p>
+          <h3 class="text-primary">Don't</h3>
+          <p class="text-secondary">No uses textos ambiguos ni jerarquías confusas.</p>
           <div class="component-example-actions">
             <button class="mp-btn mp-btn--secundario">Ejemplo</button>
             <button class="mp-btn mp-btn--primario">Ver guía</button>
@@ -118,7 +118,7 @@
     </div>
     <div class="button-playground">
       <div class="button-playground__preview">
-        <h3>Vista previa</h3>
+        <h3 class="text-primary">Vista previa</h3>
         <div class="button-preview-card" id="button-playground-preview">
           <button class="mp-btn mp-btn--primario">Guardar</button>
         </div>
@@ -202,13 +202,13 @@
     </div>
     <div class="button-text-link-zone">
       <div class="component-section__header button-text-link-zone__header">
-        <h3>Texto con enlace</h3>
-        <p>Si no hay acción, usa texto plano. Si navega a otra vista o URL, usa un enlace <code>&lt;a&gt;</code> con los tokens existentes del sistema.</p>
+        <h3 class="text-primary">Texto con enlace</h3>
+        <p class="text-secondary">Si no hay acción, usa texto plano. Si navega a otra vista o URL, usa un enlace <code>&lt;a&gt;</code> con los tokens existentes del sistema.</p>
       </div>
       <div class="button-text-link-grid">
         <article class="button-text-link-card p-4">
           <h4>Enlace con tag a</h4>
-          <p>Usa el color de enlace existente: <code>--use-text-link</code>, expuesto como <code>--color-text-link</code> y utilidad <code>.mp-text-link</code>.</p>
+          <p class="text-secondary">Usa el color de enlace existente: <code>--use-text-link</code>, expuesto como <code>--color-text-link</code> y utilidad <code>.mp-text-link</code>.</p>
           <div class="button-text-link-samples">
             <div class="button-text-link-sample">
               <span class="button-text-link-label">Color</span>
@@ -234,10 +234,10 @@
         <h2 id="button-behavior">5. Comportamiento</h2>
       </div>
       <div class="button-behavior-grid">
-        <div class="button-behavior-item"><i class="icon icon-hand-pointing icon-20" aria-hidden="true"></i><h3>Click</h3><p>Ejecuta la acción asociada al hacer clic, Enter o Space.</p></div>
-        <div class="button-behavior-item"><i class="icon icon-spinner-gap icon-20" aria-hidden="true"></i><h3>Loading</h3><p>Muestra progreso y debe evitar doble activación.</p></div>
-        <div class="button-behavior-item"><i class="icon icon-warning-circle icon-20" aria-hidden="true"></i><h3>Error</h3><p>El feedback se comunica fuera del botón con mensaje contextual.</p></div>
-        <div class="button-behavior-item"><i class="icon icon-device-mobile icon-20" aria-hidden="true"></i><h3>Responsive</h3><p>Puede ocupar el ancho disponible cuando el flujo lo requiera.</p></div>
+        <div class="button-behavior-item"><i class="icon icon-hand-pointing icon-20" aria-hidden="true"></i><h3 class="text-primary">Click</h3><p class="text-secondary">Ejecuta la acción asociada al hacer clic, Enter o Space.</p></div>
+        <div class="button-behavior-item"><i class="icon icon-spinner-gap icon-20" aria-hidden="true"></i><h3 class="text-primary">Loading</h3><p class="text-secondary">Muestra progreso y debe evitar doble activación.</p></div>
+        <div class="button-behavior-item"><i class="icon icon-warning-circle icon-20" aria-hidden="true"></i><h3 class="text-primary">Error</h3><p class="text-secondary">El feedback se comunica fuera del botón con mensaje contextual.</p></div>
+        <div class="button-behavior-item"><i class="icon icon-device-mobile icon-20" aria-hidden="true"></i><h3 class="text-primary">Responsive</h3><p class="text-secondary">Puede ocupar el ancho disponible cuando el flujo lo requiera.</p></div>
       </div>
     </section>
 
@@ -247,8 +247,8 @@
       </div>
       <div class="component-grid-2">
         <div>
-          <h3>Textos correctos</h3>
-          <p>Usa verbos claros y directos.</p>
+          <h3 class="text-primary">Textos correctos</h3>
+          <p class="text-secondary">Usa verbos claros y directos.</p>
           <div class="component-example-actions">
             <span class="component-chip">Guardar</span>
             <span class="component-chip">Enviar</span>
@@ -256,8 +256,8 @@
           </div>
         </div>
         <div>
-          <h3>Textos incorrectos</h3>
-          <p>Evita palabras genéricas o confusas.</p>
+          <h3 class="text-primary">Textos incorrectos</h3>
+          <p class="text-secondary">Evita palabras genéricas o confusas.</p>
           <div class="component-example-actions">
             <span class="component-chip">Hacer</span>
             <span class="component-chip">Click aquí</span>
@@ -287,9 +287,9 @@
         <h2 id="button-responsive">8. Responsive</h2>
       </div>
       <div class="component-grid-3">
-        <div><h3>Desktop</h3><p>Usa ancho hug content salvo acciones principales en layouts amplios.</p></div>
-        <div><h3>Tablet</h3><p>Mantiene altura y padding; puede agruparse en filas flexibles.</p></div>
-        <div><h3>Mobile</h3><p>Puede usar full width para acciones críticas y conserva área táctil mínima.</p></div>
+        <div><h3 class="text-primary">Desktop</h3><p class="text-secondary">Usa ancho hug content salvo acciones principales en layouts amplios.</p></div>
+        <div><h3 class="text-primary">Tablet</h3><p class="text-secondary">Mantiene altura y padding; puede agruparse en filas flexibles.</p></div>
+        <div><h3 class="text-primary">Mobile</h3><p class="text-secondary">Puede usar full width para acciones críticas y conserva área táctil mínima.</p></div>
       </div>
     </section>
   </div>
@@ -314,7 +314,7 @@
     <div class="component-section__header">
       <div>
         <h2 id="button-code">10. Código</h2>
-        <p>Descarga estilos planos del botón, unidos al core y listos para validar en dummy con tokens Figma.</p>
+        <p class="text-secondary">Descarga estilos planos del botón, unidos al core y listos para validar en dummy con tokens Figma.</p>
       </div>
       <div class="ct-downloads button-downloads" aria-label="Descargar estilos del botón">
         <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
@@ -367,16 +367,16 @@
       <div class="component-support__item">
         <i class="component-support__icon icon icon-question icon-20" aria-hidden="true"></i>
         <div>
-          <h3>¿Necesitas ayuda?</h3>
-          <p>Usa el canal #diseno-sistema o escribe al equipo responsable.</p>
+          <h3 class="text-primary">¿Necesitas ayuda?</h3>
+          <p class="text-secondary">Usa el canal #diseno-sistema o escribe al equipo responsable.</p>
         </div>
       </div>
       <span class="component-divider" aria-hidden="true"></span>
       <div class="component-support__item">
         <i class="component-support__icon icon icon-warning-octagon icon-20" aria-hidden="true"></i>
         <div>
-          <h3>¿Encontraste un problema?</h3>
-          <p>Repórtalo para mejorar la documentación y el componente.</p>
+          <h3 class="text-primary">¿Encontraste un problema?</h3>
+          <p class="text-secondary">Repórtalo para mejorar la documentación y el componente.</p>
         </div>
       </div>
     </div>

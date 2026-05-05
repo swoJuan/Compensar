@@ -8,8 +8,8 @@
   </nav>
 
   <section class="component-hero" aria-labelledby="tables-title">
-    <h1 id="tables-title">Tables</h1>
-    <p>Permiten mostrar información estructurada en filas y columnas, facilitando la lectura, comparación y gestión de datos.</p>
+    <h1 id="tables-title" class="text-primary">Tables</h1>
+    <p class="text-secondary">Permiten mostrar información estructurada en filas y columnas, facilitando la lectura, comparación y gestión de datos.</p>
     <div class="component-meta" aria-label="Metadatos del componente">
       <span class="component-chip component-chip--success">Estado: estable</span>
       <span class="component-chip">Versión 1.0</span>
@@ -25,7 +25,7 @@
     </div>
     <div class="row g-4">
       <div class="col-12 col-lg-6">
-        <h3>Cuándo usarlo</h3>
+        <h3 class="text-primary">Cuándo usarlo</h3>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para listados de información.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para historial de registros.</li>
@@ -35,7 +35,7 @@
       </div>
       <div class="col-12 col-lg-6">
         <div class="component-example-card h-100">
-          <h3>Tipos</h3>
+          <h3 class="text-primary">Tipos</h3>
           <ul class="component-list">
             <li><i class="icon icon-table icon-16" aria-hidden="true"></i><strong>Tabla básica:</strong> muestra información sin interacción.</li>
             <li><i class="icon icon-cursor-click icon-16" aria-hidden="true"></i><strong>Tabla con acciones:</strong> incluye acciones por fila.</li>
@@ -50,7 +50,7 @@
     <div class="component-section__header">
       <div>
         <h2 id="tables-anatomy">2. Anatomía interactiva</h2>
-        <p>La estructura reutiliza clases Bootstrap como <code>table</code>, <code>table-responsive</code>, <code>table-striped</code> y <code>table-hover</code>.</p>
+        <p class="text-secondary">La estructura reutiliza clases Bootstrap como <code>table</code>, <code>table-responsive</code>, <code>table-striped</code> y <code>table-hover</code>.</p>
       </div>
     </div>
     <div class="segmented-control" role="group" aria-label="Variación anatómica de tabla">
@@ -142,15 +142,15 @@
     <div class="row g-3">
       <div class="col-12 col-lg-6">
         <div class="component-example-card h-100">
-          <h3>Empty state</h3>
-          <p>Cuando no hay datos disponibles.</p>
+          <h3 class="text-primary">Empty state</h3>
+          <p class="text-secondary">Cuando no hay datos disponibles.</p>
           <div class="mp-table__empty"><i class="icon icon-article icon-32" aria-hidden="true"></i><div class="mp-table__empty-title">No tienes registros generados</div><div>Cuando generes un certificado aparecerá aquí.</div></div>
         </div>
       </div>
       <div class="col-12 col-lg-6">
         <div class="component-example-card h-100">
-          <h3>Loading</h3>
-          <p>Mientras se cargan los datos.</p>
+          <h3 class="text-primary">Loading</h3>
+          <p class="text-secondary">Mientras se cargan los datos.</p>
           <div class="mp-table__loading"><span class="mp-table__spinner" aria-hidden="true"></span><span>Estamos buscando opciones para filtrar.</span></div>
         </div>
       </div>
@@ -171,7 +171,7 @@
     <div class="component-section__header"><h2 id="tables-responsive">6. Responsive</h2></div>
     <div class="row g-4 align-items-center">
       <div class="col-12 col-lg-5">
-        <p>Las tablas deben envolver la grilla con <code>table-responsive</code> para permitir scroll horizontal cuando el contenido excede el ancho disponible.</p>
+        <p class="text-secondary">Las tablas deben envolver la grilla con <code>table-responsive</code> para permitir scroll horizontal cuando el contenido excede el ancho disponible.</p>
         <ul class="component-list mt-3">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Máximo recomendado de 6 a 8 columnas visibles.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Priorizar información relevante.</li>
@@ -185,9 +185,9 @@
   <section class="component-section" aria-labelledby="tables-color-modes">
     <div class="component-section__header"><h2 id="tables-color-modes">7. Modos de color</h2></div>
     <div class="row g-3">
-      <div class="col-12 col-lg-4"><div class="table-mode-box h-100" data-theme="light"><h3>Light</h3><p>Modo principal del sistema.</p><div data-table-mode-demo="light"></div></div></div>
-      <div class="col-12 col-lg-4"><div class="table-mode-box h-100" data-theme="dark"><h3>Modo oscuro</h3><p>Modo alternativo para entornos de baja iluminación.</p><div data-table-mode-demo="dark"></div></div></div>
-      <div class="col-12 col-lg-4"><div class="table-mode-box h-100" data-theme="high-contrast"><h3>High Contrast</h3><p>Modo enfocado en accesibilidad.</p><div data-table-mode-demo="high-contrast"></div></div></div>
+      <div class="col-12 col-lg-4"><div class="table-mode-box h-100" data-theme="light"><h3 class="text-primary">Light</h3><p class="text-secondary">Modo principal del sistema.</p><div data-table-mode-demo="light"></div></div></div>
+      <div class="col-12 col-lg-4"><div class="table-mode-box h-100" data-theme="dark"><h3 class="text-primary">Modo oscuro</h3><p class="text-secondary">Modo alternativo para entornos de baja iluminación.</p><div data-table-mode-demo="dark"></div></div></div>
+      <div class="col-12 col-lg-4"><div class="table-mode-box h-100" data-theme="high-contrast"><h3 class="text-primary">High Contrast</h3><p class="text-secondary">Modo enfocado en accesibilidad.</p><div data-table-mode-demo="high-contrast"></div></div></div>
     </div>
   </section>
 
@@ -241,10 +241,10 @@
   <section class="component-section" aria-labelledby="tables-accessibility">
     <div class="component-section__header"><h2 id="tables-accessibility">10. Accesibilidad</h2></div>
     <div class="row g-3">
-      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-eye icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title">Contraste</div><div class="a11y-card__desc">Filas, selección y hover deben mantener contraste suficiente.</div></div></div>
-      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-table icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title">Encabezados</div><div class="a11y-card__desc">Usa <code>th</code> y <code>scope</code> cuando aplique.</div></div></div>
-      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-keyboard icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title">Teclado</div><div class="a11y-card__desc">Acciones y selección deben ser navegables por teclado.</div></div></div>
-      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-check-square icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title">No solo color</div><div class="a11y-card__desc">Estados como selección o error deben tener apoyo textual o estructural.</div></div></div>
+      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-eye icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title text-primary">Contraste</div><div class="a11y-card__desc text-secondary">Filas, selección y hover deben mantener contraste suficiente.</div></div></div>
+      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-table icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title text-primary">Encabezados</div><div class="a11y-card__desc text-secondary">Usa <code>th</code> y <code>scope</code> cuando aplique.</div></div></div>
+      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-keyboard icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title text-primary">Teclado</div><div class="a11y-card__desc text-secondary">Acciones y selección deben ser navegables por teclado.</div></div></div>
+      <div class="col-12 col-md-6 col-xl-3"><div class="a11y-card h-100"><i class="icon icon-check-square icon-24 a11y-card__icon" aria-hidden="true"></i><div class="a11y-card__title text-primary">No solo color</div><div class="a11y-card__desc text-secondary">Estados como selección o error deben tener apoyo textual o estructural.</div></div></div>
     </div>
   </section>
 </article>
