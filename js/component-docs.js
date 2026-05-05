@@ -157,7 +157,7 @@ const componentDocs = (() => {
     tokens: {
       size: {
         height: '48px',
-        tertiaryHeight: '32px',
+        tertiaryHeight: '48px',
         iconOnlyWidth: '56px',
         minTouchArea: '44px'
       },
@@ -171,7 +171,7 @@ const componentDocs = (() => {
       },
       radius: {
         button: '24px',
-        tertiary: '8px'
+        tertiary: '24px'
       },
       typography: {
         family: 'Roboto, Arial, sans-serif',
@@ -276,7 +276,7 @@ const componentDocs = (() => {
     variants: {
       primario: 'Accion principal. Fondo con token use-primary.',
       secundario: 'Accion secundaria. Fondo transparente, borde y texto con token use-primary.',
-      terciario: 'Accion de baja jerarquia. Altura 32px y texto subrayado en hover.',
+      terciario: 'Accion de baja jerarquia. Mantiene altura y padding base de 48px.',
       especial: 'Accion destacada especial. Usa tokens violetas de producto.'
     },
     states: ['default', 'hover', 'focus', 'active', 'disabled', 'loading']
@@ -291,7 +291,7 @@ const componentDocs = (() => {
 :root,
 [data-theme="light"] {
   --mp-btn-height: 48px;
-  --mp-btn-tertiary-height: 32px;
+  --mp-btn-tertiary-height: 48px;
   --mp-btn-icon-only-width: 56px;
   --mp-btn-min-touch-area: 44px;
   --mp-btn-gap: 16px;
@@ -300,7 +300,7 @@ const componentDocs = (() => {
   --mp-btn-padding-icon-right: 12px 16px 12px 32px;
   --mp-btn-padding-icon-both: 12px 16px;
   --mp-btn-radius: 24px;
-  --mp-btn-radius-tertiary: 8px;
+  --mp-btn-radius-tertiary: 24px;
   --mp-btn-font-family: Roboto, Arial, sans-serif;
   --mp-btn-font-size: 16px;
   --mp-btn-font-weight: 700;
@@ -450,8 +450,7 @@ const componentDocs = (() => {
   --mp-btn-color: var(--use-primary-default);
   --mp-btn-border-width: 0;
   min-height: var(--mp-btn-tertiary-height);
-  height: var(--mp-btn-tertiary-height);
-  padding: 8px 24px;
+  padding: var(--mp-btn-padding-text);
   border-radius: var(--mp-btn-radius-tertiary);
 }
 
@@ -497,12 +496,12 @@ const componentDocs = (() => {
 // ==========================================================================
 
 $mp-btn-height: 48px;
-$mp-btn-tertiary-height: 32px;
+$mp-btn-tertiary-height: 48px;
 $mp-btn-icon-only-width: 56px;
 $mp-btn-min-touch-area: 44px;
 $mp-btn-gap: 16px;
 $mp-btn-radius: 24px;
-$mp-btn-radius-tertiary: 8px;
+$mp-btn-radius-tertiary: 24px;
 $mp-btn-icon-size: 24px;
 $mp-btn-border-width: 1.5px;
 $mp-btn-focus-width: 3px;

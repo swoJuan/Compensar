@@ -4962,7 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
-    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'badges' || sectionId === 'tabs');
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'badges' || sectionId === 'tabs');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -5061,6 +5061,11 @@
         window.badgeDocs.initBadgeDocs(document);
       });
     }
+    if (window.cardsDocs) {
+      requestAnimationFrame(function() {
+        window.cardsDocs.initCardsDoc(document);
+      });
+    }
     if (window.tabsDocs) {
       requestAnimationFrame(function() {
         window.tabsDocs.initTabsDoc(document);
@@ -5099,6 +5104,7 @@
     'alertas':            'docs/transversales/components/alerts.html',
     'toast':              'docs/transversales/components/toasts.html',
     'modales':            'docs/transversales/components/modals.html',
+    'cards':              'docs/transversales/components/cards.html',
     'badges':             'docs/web/components/badges.html',
     'tabs':               'docs/transversales/components/tabs.html',
     'tokens-texto':       'docs/tokens/tokens-text.html',
@@ -5325,6 +5331,7 @@
         { id: 'alertas',   label: 'Alertas',                  icon: 'warning' },
         { id: 'toast',     label: 'Toast',                    icon: 'bell' },
         { id: 'modales',   label: 'Modales',                  icon: 'browser' },
+        { id: 'cards',     label: 'Cards',                    icon: 'credit-card' },
         { id: 'badges',    label: 'Badges',                   icon: 'tag' },
         { id: 'tabs',      label: 'Tabs',                     icon: 'browsers' }
       ]

@@ -1,54 +1,39 @@
 const cardsDocs = (() => {
   const variants = {
-    flat: { label: 'Flat', className: 'mp-card--flat' },
-    raised: { label: 'Raised', className: 'mp-card--raised' },
-    interactive: { label: 'Interactive', className: 'mp-card--interactive' },
+    vertical: { label: 'Vertical', className: '' },
+    raised: { label: 'Elevada', className: 'mp-card--raised' },
+    compact: { label: 'Compacta', className: 'mp-card--compact' },
+    interactive: { label: 'Interactiva', className: 'mp-card--interactive' },
     horizontal: { label: 'Horizontal', className: 'mp-card--horizontal mp-card--interactive' }
   };
 
-  const defaultState = {
-    variant: 'flat',
-    state: 'default',
-    withImage: true,
-    title: 'Título de la card',
-    subtitle: 'Subtítulo opcional',
-    body: 'Descripción breve que explica el contenido principal de la tarjeta.',
-    actionA: 'Cancelar',
-    actionB: 'Continuar',
-    theme: 'light'
+  const images = {
+    wellness: {
+      src: 'https://picsum.photos/id/1011/800/450',
+      alt: 'Persona caminando al aire libre'
+    },
+    family: {
+      src: 'https://picsum.photos/id/1027/800/450',
+      alt: 'Persona sonriendo en un entorno natural'
+    },
+    service: {
+      src: 'https://picsum.photos/id/1035/800/450',
+      alt: 'Paisaje urbano con servicio en contexto'
+    }
   };
 
-  const exportJson = {
-    component: 'Cards',
-    source: 'core/components/web/_cards.scss',
-    figma: {
-      fileKey: '1zVGMpzqBgiBUqhmfFEAoT',
-      nodeId: '4606:31924'
-    },
-    classes: [
-      '.mp-card',
-      '.mp-card--flat',
-      '.mp-card--raised',
-      '.mp-card--interactive',
-      '.mp-card--horizontal',
-      '.mp-card--disabled',
-      '.mp-card__media',
-      '.mp-card__header',
-      '.mp-card__title',
-      '.mp-card__subtitle',
-      '.mp-card__body',
-      '.mp-card__footer',
-      '.mp-card__actions'
-    ],
-    tokens: {
-      radius: '16px',
-      padding: '16px',
-      gap: '16px',
-      minHeight: '220px',
-      mediaRatio: '16 / 9',
-      title: 'Heading 5',
-      body: 'Body M'
-    }
+  const defaultState = {
+    variant: 'vertical',
+    state: 'default',
+    withImage: true,
+    withActions: true,
+    imageChoice: 'wellness',
+    title: 'Programa bienestar',
+    subtitle: 'Beneficio destacado',
+    body: 'Encuentra servicios, orientación y acompañamiento para cuidar tu bienestar y el de tu familia.',
+    actionA: 'Guardar',
+    actionB: 'Conocer más',
+    theme: 'light'
   };
 
   function escapeHtml(value) {
@@ -57,12 +42,16 @@ const cardsDocs = (() => {
       '<': '&lt;',
       '>': '&gt;',
       '"': '&quot;',
-      "'": '&#039;'
+      "'": '&apos;'
     }[char]));
   }
 
-  function iconMarkup(name, size = 16) {
-    return `<i class="icon icon-${name} icon-${size}" aria-hidden="true"></i>`;
+  function iconMarkup(name, size = 20, extraClass = '') {
+    return `<i class="icon icon-${name} icon-${size}${extraClass ? ` ${extraClass}` : ''}" aria-hidden="true"></i>`;
+  }
+
+  function selectedImage(state) {
+    return images[state.imageChoice] || images.wellness;
   }
 
   function stateFromPage(page) {
@@ -70,6 +59,8 @@ const cardsDocs = (() => {
       variant: page.querySelector('[data-card-control="variant"]')?.value || defaultState.variant,
       state: page.querySelector('[data-card-control="state"]')?.value || defaultState.state,
       withImage: page.querySelector('[data-card-control="image"]')?.checked ?? defaultState.withImage,
+      withActions: defaultState.withActions,
+      imageChoice: page.querySelector('[data-card-control="imageChoice"]')?.value || defaultState.imageChoice,
       title: page.querySelector('[data-card-control="title"]')?.value || defaultState.title,
       subtitle: page.querySelector('[data-card-control="subtitle"]')?.value || defaultState.subtitle,
       body: page.querySelector('[data-card-control="body"]')?.value || defaultState.body,
@@ -79,35 +70,43 @@ const cardsDocs = (() => {
     };
   }
 
-  function mediaMarkup() {
-    return `<img class="mp-card__media" src="https://picsum.photos/800/450?grayscale" alt="Imagen de referencia para la card">`;
+  function mediaMarkup(state) {
+    const image = selectedImage(state);
+    return `<img class="mp-card__media" src="${image.src}" alt="${escapeHtml(image.alt)}">`;
   }
 
   function cardHtml(state) {
-    const variant = variants[state.variant] || variants.flat;
-    const classNames = ['mp-card', variant.className];
+    const variant = variants[state.variant] || variants.vertical;
+    const classNames = ['mp-card'];
+    if (variant.className) classNames.push(variant.className);
     if (state.state === 'hover') classNames.push('mp-card--is-hover');
     if (state.state === 'focus') classNames.push('mp-card--is-focus');
     if (state.state === 'active') classNames.push('mp-card--is-active');
     if (state.state === 'disabled') classNames.push('mp-card--disabled');
 
-    return `<article class="${classNames.join(' ')}"${state.state === 'disabled' ? ' aria-disabled="true"' : ''}>
-  ${state.withImage ? mediaMarkup() : ''}
+    const interactive = classNames.some((name) => name.includes('interactive'));
+    const disabled = state.state === 'disabled';
+    const attrs = [];
+    if (disabled) attrs.push('aria-disabled="true"');
+    if (interactive && !disabled) attrs.push('tabindex="0"');
+
+    return `<article class="${classNames.join(' ')}"${attrs.length ? ` ${attrs.join(' ')}` : ''}>
+  ${state.withImage ? mediaMarkup(state) : ''}
   <div class="mp-card__content">
     <header class="mp-card__header">
       <div>
         <h3 class="mp-card__title">${escapeHtml(state.title)}</h3>
         <p class="mp-card__subtitle">${escapeHtml(state.subtitle)}</p>
       </div>
-      ${iconMarkup('arrow-right', 20)}
+      ${interactive ? iconMarkup('arrow-right', 20, 'mp-card__icon') : ''}
     </header>
     <p class="mp-card__body">${escapeHtml(state.body)}</p>
-    <footer class="mp-card__footer">
+    ${state.withActions ? `<footer class="mp-card__footer">
       <div class="mp-card__actions">
         <button type="button" class="mp-btn mp-btn--terciario">${escapeHtml(state.actionA)}</button>
         <button type="button" class="mp-btn mp-btn--primario">${escapeHtml(state.actionB)}</button>
       </div>
-    </footer>
+    </footer>` : ''}
   </div>
 </article>`;
   }
@@ -118,32 +117,77 @@ const cardsDocs = (() => {
     return template.content.firstElementChild;
   }
 
-  function renderAnatomy(page, variant = 'flat') {
+  function anatomyState(page, variant) {
+    return {
+      ...defaultState,
+      variant,
+      withImage: page.querySelector('[data-card-toggle="image"]')?.checked ?? true,
+      withActions: page.querySelector('[data-card-toggle="actions"]')?.checked ?? true
+    };
+  }
+
+  function updateAnatomyMeasures(page, variant) {
+    const width = page.querySelector('[data-card-anatomy-width]');
+    const height = page.querySelector('[data-card-anatomy-height]');
+    const padding = page.querySelector('[data-card-anatomy-padding]');
+
+    if (variant === 'horizontal') {
+      if (width) width.textContent = '640 px';
+      if (height) height.textContent = '220 px';
+      if (padding) padding.textContent = 'Padding 24 px';
+      return;
+    }
+
+    if (variant === 'compact') {
+      if (width) width.textContent = '353 px';
+      if (height) height.textContent = '150 px';
+      if (padding) padding.textContent = 'Padding 12 px';
+      return;
+    }
+
+    if (width) width.textContent = '398 px';
+    if (height) height.textContent = '536 px';
+    if (padding) padding.textContent = 'Padding 24 px';
+  }
+
+  function renderAnatomy(page, variant = 'vertical') {
     if (!page) return;
     const preview = page.querySelector('#cards-anatomy-preview');
     const showLabels = page.querySelector('[data-card-toggle="labels"]')?.checked ?? true;
     const showMeasures = page.querySelector('[data-card-toggle="measures"]')?.checked ?? true;
+    const state = anatomyState(page, variant);
 
     page.querySelectorAll('[data-card-anatomy]').forEach((button) => {
       button.setAttribute('aria-pressed', String(button.dataset.cardAnatomy === variant));
     });
     page.querySelectorAll('.cards-doc-callout').forEach((item) => { item.hidden = !showLabels; });
-    page.querySelectorAll('.cards-doc-measure').forEach((item) => { item.hidden = !showMeasures; });
+    page.querySelectorAll('.cards-anatomy-measure').forEach((item) => { item.hidden = !showMeasures; });
+    updateAnatomyMeasures(page, variant);
 
-    const state = { ...defaultState, variant };
-    preview.replaceChildren(cardNode(state));
+    preview?.replaceChildren(cardNode(state));
   }
 
   function codeForTab(tab, state) {
-    if (tab === 'css') {
-      const classes = ['.mp-card', variants[state.variant]?.className || '.mp-card--flat'];
+    if (tab === 'classes') {
+      const classes = ['.mp-card'];
+      const variant = variants[state.variant]?.className;
+      if (variant) classes.push(...variant.split(' '));
       if (state.state !== 'default') classes.push(`.mp-card--is-${state.state}`);
-      if (!state.withImage) classes.push('// sin .mp-card__media');
+      if (!state.withImage) classes.push('sin .mp-card__media');
       return classes.join('\n');
     }
+
     if (tab === 'tokens') {
-      return `radius: 16px\npadding: 16px\ngap: 16px\nmin-height: 220px\nmedia-ratio: 16/9\ntheme: ${state.theme}`;
+      return `container: use/surface/white
+border: use/border/subtle
+text: use/text/primary, use/text/secondary
+radius: radius/md
+padding: spacing/24px
+gap: spacing/16px
+high-contrast-border: base/neutral/white
+theme: ${state.theme}`;
     }
+
     return cardHtml(state);
   }
 
@@ -154,51 +198,90 @@ const cardsDocs = (() => {
     const tab = page.querySelector('[data-card-code-tab][aria-selected="true"]')?.dataset.cardCodeTab || 'html';
     const state = stateFromPage(page);
 
-    preview.dataset.theme = state.theme;
-    preview.replaceChildren(cardNode(state));
-    output.textContent = codeForTab(tab, state);
+    if (preview) {
+      preview.dataset.theme = state.theme;
+      preview.replaceChildren(cardNode(state));
+    }
+    if (output) output.textContent = codeForTab(tab, state);
   }
 
   function renderStates(page) {
     if (!page) return;
     page.querySelectorAll('[data-card-state-demo]').forEach((slot) => {
-      const variant = slot.dataset.cardStateDemo || 'flat';
+      const stateName = slot.dataset.cardStateDemo || 'default';
       const state = {
         ...defaultState,
-        variant,
-        state: variant === 'interactive' ? 'hover' : 'default'
+        variant: 'interactive',
+        state: stateName,
+        withImage: false,
+        title: stateName === 'disabled' ? 'No disponible' : 'Card interactiva',
+        body: 'Estado visual aplicado con clases del componente.'
       };
       slot.replaceChildren(cardNode(state));
     });
   }
 
-  function downloadAsset(type, trigger) {
-    const assets = {
-      css: ['mp-card-core.css', 'text/css', buildCssExport()],
-      scss: ['_mp-card-core.scss', 'text/x-scss', buildScssExport()],
-      json: ['mp-card.tokens.json', 'application/json', `${JSON.stringify(exportJson, null, 2)}\n`]
-    };
-
-    const asset = assets[type];
-    if (!asset) return;
-    const blob = new Blob([asset[2]], { type: `${asset[1]};charset=utf-8` });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = asset[0];
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-    flashButton(trigger, 'Descargado');
+  function renderVariants(page) {
+    if (!page) return;
+    page.querySelectorAll('[data-card-variant-demo]').forEach((slot) => {
+      const variant = slot.dataset.cardVariantDemo || 'vertical';
+      const state = {
+        ...defaultState,
+        variant,
+        withActions: variant !== 'compact',
+        withImage: variant !== 'compact',
+        title: variants[variant]?.label || defaultState.title,
+        body: variant === 'compact'
+          ? 'Contenido breve para listados densos.'
+          : defaultState.body
+      };
+      slot.replaceChildren(cardNode(state));
+    });
   }
 
-  function buildCssExport() {
-    return `/* Cards - Compensar Design System\n   Fuente: core/components/web/_cards.scss */\n\n.mp-card {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  width: min(100%, 420px);\n  min-height: 220px;\n  padding: 16px;\n  border: 1px solid var(--color-border);\n  border-radius: 16px;\n  background: var(--color-surface);\n  box-shadow: var(--shadow-1);\n}\n\n.mp-card--raised { box-shadow: var(--shadow-2); }\n.mp-card--flat { box-shadow: none; }\n.mp-card--interactive:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); }\n.mp-card__media { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; }\n.mp-card__header { display: flex; justify-content: space-between; gap: 12px; }\n.mp-card__footer { margin-top: auto; }\n`;
+  function renderResponsive(page) {
+    if (!page) return;
+    page.querySelectorAll('[data-card-responsive-demo]').forEach((slot) => {
+      const compact = slot.dataset.cardResponsiveDemo === 'mobile';
+      const state = {
+        ...defaultState,
+        variant: compact ? 'vertical' : 'horizontal',
+        withActions: false,
+        title: compact ? 'Vista móvil' : 'Vista escritorio',
+        body: compact
+          ? 'La card ocupa el ancho disponible.'
+          : 'La variante horizontal conserva imagen, contenido y jerarquía.'
+      };
+      slot.replaceChildren(cardNode(state));
+    });
   }
 
-  function buildScssExport() {
-    return `// Cards - variables planas para dummy/demo\n$mp-card-radius: 16px;\n$mp-card-padding: 16px;\n$mp-card-gap: 16px;\n$mp-card-min-height: 220px;\n$mp-card-max-width: 420px;\n`;
+  function renderModes(page) {
+    if (!page) return;
+    page.querySelectorAll('[data-card-mode-demo]').forEach((slot) => {
+      const theme = slot.dataset.cardModeDemo || 'light';
+      const state = {
+        ...defaultState,
+        variant: 'raised',
+        theme,
+        imageChoice: theme === 'high-contrast' ? 'service' : 'wellness',
+        title: theme === 'high-contrast' ? 'Alto contraste' : theme === 'dark' ? 'Modo oscuro' : 'Light',
+        body: 'La imagen se conserva sin filtros; cambian superficie, texto y borde por tokens.'
+      };
+      slot.replaceChildren(cardNode(state));
+    });
+  }
+
+  function renderStaticCode(page, selectedTab = 'html') {
+    if (!page) return;
+    page.querySelectorAll('[data-card-static-code-tab]').forEach((button) => {
+      const active = button.dataset.cardStaticCodeTab === selectedTab;
+      button.setAttribute('aria-selected', String(active));
+      button.classList.toggle('active', active);
+    });
+    page.querySelectorAll('#cards-code-html, #cards-code-angular, #cards-code-drupal').forEach((panel) => {
+      panel.classList.toggle('active', panel.id === `cards-code-${selectedTab}`);
+    });
   }
 
   function copyText(text, button) {
@@ -231,9 +314,13 @@ const cardsDocs = (() => {
     const page = root.querySelector('[data-component-doc="cards"]');
     if (!page || page.dataset.cardsInitialized === 'true') return;
 
-    renderAnatomy(page, 'flat');
+    renderAnatomy(page, 'vertical');
     renderPlayground(page);
     renderStates(page);
+    renderVariants(page);
+    renderResponsive(page);
+    renderModes(page);
+    renderStaticCode(page);
     page.dataset.cardsInitialized = 'true';
   }
 
@@ -253,9 +340,17 @@ const cardsDocs = (() => {
         const page = findPage(codeTab);
         if (!page) return;
         page.querySelectorAll('[data-card-code-tab]').forEach((tab) => {
-          tab.setAttribute('aria-selected', String(tab === codeTab));
+          const active = tab === codeTab;
+          tab.setAttribute('aria-selected', String(active));
+          tab.classList.toggle('active', active);
         });
         renderPlayground(page);
+        return;
+      }
+
+      const staticTab = event.target.closest('[data-card-static-code-tab]');
+      if (staticTab) {
+        renderStaticCode(findPage(staticTab), staticTab.dataset.cardStaticCodeTab);
         return;
       }
 
@@ -266,9 +361,12 @@ const cardsDocs = (() => {
         return;
       }
 
-      const download = event.target.closest('[data-cards-download]');
-      if (download) {
-        downloadAsset(download.dataset.cardsDownload, download);
+      const copyStatic = event.target.closest('[data-copy-cards-static-code]');
+      if (copyStatic) {
+        const page = findPage(copyStatic);
+        const active = page?.querySelector('#cards-code-html.active, #cards-code-angular.active, #cards-code-drupal.active');
+        const code = active?.querySelector('code')?.textContent || active?.textContent || '';
+        copyText(code, copyStatic);
       }
     });
 
@@ -278,7 +376,7 @@ const cardsDocs = (() => {
       }
       if (event.target.matches('[data-card-toggle]')) {
         const page = findPage(event.target);
-        const active = page?.querySelector('[data-card-anatomy][aria-pressed="true"]')?.dataset.cardAnatomy || 'flat';
+        const active = page?.querySelector('[data-card-anatomy][aria-pressed="true"]')?.dataset.cardAnatomy || 'vertical';
         renderAnatomy(page, active);
       }
     });
@@ -290,14 +388,34 @@ const cardsDocs = (() => {
     });
   }
 
-  bindDelegatedEvents();
-
   return {
     initCardsDoc,
+    bindDelegatedEvents,
     renderAnatomy,
     renderPlayground,
-    renderStates
+    renderStates,
+    renderVariants,
+    renderResponsive,
+    renderModes
   };
 })();
 
 window.cardsDocs = cardsDocs;
+
+(function bootCardsDocs() {
+  cardsDocs.bindDelegatedEvents();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => cardsDocs.initCardsDoc(document));
+  } else {
+    cardsDocs.initCardsDoc(document);
+  }
+  if (typeof router !== 'undefined') {
+    router.on('navigate', () => {
+      window.requestAnimationFrame(() => cardsDocs.initCardsDoc(document));
+    });
+  }
+})();
+
+document.addEventListener('component-docs:init', () => {
+  window.requestAnimationFrame(() => cardsDocs.initCardsDoc(document));
+});

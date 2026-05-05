@@ -94,12 +94,11 @@
 }
 
 .mp-btn--terciario {
-  height: 32px;
-  padding: 0 0.75rem;
-  border-radius: var(--radius-sm);
+  min-height: var(--space-48);
+  padding: var(--space-10) var(--space-32);
+  border-radius: var(--radius-md);
   background: transparent;
   color: var(--base-brand-80);
-  font-size: var(--font-size-md);
 
   &:hover:not(:disabled) {
     background: color-mix(in srgb, var(--base-brand-80) 8%, transparent);

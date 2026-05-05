@@ -140,10 +140,9 @@
 }
 
 .mp-btn--terciario {
-  height: var(--space-32);
-  min-height: var(--space-32);
-  padding: var(--space-8) var(--space-24);
-  border-radius: var(--radius-sm);
+  min-height: var(--space-48);
+  padding: var(--space-10) var(--space-32);
+  border-radius: var(--radius-md);
   --mp-btn-bg: transparent;
   --mp-btn-bg-hover: transparent;
   --mp-btn-bg-active: color-mix(in srgb, var(--use-primary-default) 14%, transparent);
@@ -152,7 +151,6 @@
   --mp-btn-border-color: transparent;
   --mp-btn-border-width: 0;
   --mp-btn-hover-shadow: none;
-  font-size: var(--font-size-md);
 
   &:hover:not(:disabled),
   &.mp-btn--is-hover {
