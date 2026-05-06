@@ -4962,7 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
-    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'tabs' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion');
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'tabs' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion' || sectionId === 'demo/core');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -5108,6 +5108,7 @@
   /* Rutas base (Drupal / ZT) */
   var ROUTES = {
     'introduccion':       'docs/intro.html',
+    'demo/core':          'docs/demo/core.html',
     'principios':         'docs/foundations/principles.html',
     'fundamentos/colores': 'docs/foundations/colors.html',
     'colores-base':       'docs/foundations/colors.html',
@@ -5331,6 +5332,7 @@
       label: 'Inicio',
       items: [
         { id: 'introduccion', label: 'Introducción', icon: 'house' },
+        { id: 'demo/core',    label: 'Demo core',    icon: 'grid-four' },
         { id: 'principios',   label: 'Principios',   icon: 'star' }
       ]
     },

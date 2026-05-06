@@ -17,8 +17,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 
   <!-- Design System CSS -->
-  <link rel="stylesheet" href="css/core.css?v=20260506-21">
-  <link rel="stylesheet" href="css/portal.css?v=20260506-21">
+  <link rel="stylesheet" href="css/core.css?v=20260506-22">
+  <link rel="stylesheet" href="css/portal.css?v=20260506-22">
   <link rel="stylesheet" href="icons/icons.css">
 
   <!-- Shell-specific styles -->
@@ -339,7 +339,7 @@
 <div id="toast"></div>
 
 <!-- SCRIPTS -->
-<script src="js/router.js?v=20260506-10"></script>
+<script src="js/router.js?v=20260506-11"></script>
 <script src="js/theme.js"></script>
 <script src="js/code-copy.js"></script>
 <script src="js/component-docs.js?v=20260505-2"></script>
@@ -373,6 +373,12 @@
     // Estas entradas se inyectan siempre, independiente de la
     // versión cacheada de router.js en el navegador.
     const GUARANTEED_ROUTES = {
+      'demo/core': {
+        label: 'Demo core',
+        path: 'demo/core.html',
+        icon: 'category',
+        group: 'inicio'
+      },
       'web/componentes/accordion': {
         label: 'Accordion',
         path: 'web/components/accordion.html',

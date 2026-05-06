@@ -34,6 +34,12 @@ const router = (() => {
       icon: 'home',
       group: 'inicio'
     },
+    'demo/core': {
+      label: 'Demo core',
+      path: 'demo/core.html',
+      icon: 'category',
+      group: 'inicio'
+    },
     'fundamentos/principios': {
       label: 'Principios',
       path: 'foundations/principles.html',
@@ -291,7 +297,8 @@ const router = (() => {
         section === 'web/componentes/loading' ||
         section === 'web/componentes/breadcrumb' ||
         section === 'web/componentes/accordion' ||
-        section === 'guidelines/high-contrast'
+        section === 'guidelines/high-contrast' ||
+        section === 'demo/core'
       );
 
       // Update active nav states

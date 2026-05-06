@@ -7,6 +7,7 @@ import { onSectionReady } from './app.js';
 // ── Mapa de rutas: id-sección → ruta del fragmento ──────────
 const ROUTES = {
   'introduccion':     'docs/intro.html',
+  'demo/core':        'docs/demo/core.html',
   'principios':       'docs/foundations/principles.html',
 
   // Colores: todas las sub-secciones apuntan al mismo fragmento unificado

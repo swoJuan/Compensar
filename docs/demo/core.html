@@ -1,0 +1,257 @@
+<article class="component-doc-page demo-core" data-demo-page="core">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Demo</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Core web</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero demo-core__hero" aria-labelledby="demo-core-title">
+    <h1 id="demo-core-title" class="mp-h1">Demo core web</h1>
+    <p class="mp-body-l">Vista integrada con todos los componentes generados en el core, usando tokens y clases productivas del sistema.</p>
+    <div class="component-meta" aria-label="Metadatos de demo">
+      <span class="component-chip component-chip--success">Core conectado</span>
+      <span class="component-chip">Web / ZT Drupal</span>
+      <span class="component-chip">Light · Dark · Alto contraste</span>
+      <span class="component-chip">Demo funcional</span>
+    </div>
+  </section>
+
+  <section class="demo-core__toolbar" aria-label="Resumen de estado">
+    <div>
+      <span class="mp-badge mp-badge--success"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Sistema estable</span></span>
+      <span class="mp-tag mp-tag--violet"><span class="mp-tag__label">Afiliado</span></span>
+      <span class="mp-badge mp-badge--count" aria-label="3 notificaciones">3</span>
+    </div>
+    <div class="demo-core__toolbar-actions">
+      <button class="mp-btn mp-btn--secundario mp-btn--icon-left" type="button"><i class="icon icon-download icon-20" aria-hidden="true"></i>Exportar</button>
+      <button class="mp-btn mp-btn--primario mp-btn--icon-left" type="button"><i class="icon icon-plus icon-20" aria-hidden="true"></i>Nuevo trámite</button>
+    </div>
+  </section>
+
+  <section class="demo-core__grid demo-core__grid--main" aria-label="Componentes principales">
+    <article class="mp-card mp-card--raised demo-core__card">
+      <img class="mp-card__media" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80" alt="Profesional de salud revisando información médica">
+      <div class="mp-card__content">
+        <div class="mp-card__header">
+          <div>
+            <h2 class="mp-card__title">Programa bienestar</h2>
+            <p class="mp-card__subtitle">Beneficio destacado</p>
+          </div>
+          <i class="icon icon-heart icon-24 mp-card__icon" aria-hidden="true"></i>
+        </div>
+        <p class="mp-card__body">Encuentra servicios, orientación y acompañamiento para cuidar tu bienestar y el de tu familia.</p>
+        <div class="mp-card__footer">
+          <button class="mp-btn mp-btn--secundario" type="button">Guardar</button>
+          <button class="mp-btn mp-btn--primario" type="button">Conocer más</button>
+        </div>
+      </div>
+    </article>
+
+    <section class="demo-core__panel" aria-labelledby="demo-form-title">
+      <div class="demo-core__panel-header">
+        <h2 id="demo-form-title" class="mp-h2">Formulario de atención</h2>
+        <span class="mp-badge mp-badge--warning"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Pendiente</span></span>
+      </div>
+
+      <div class="demo-core__form-grid">
+        <div class="mp-input-group">
+          <label class="mp-input-label" for="demo-name">Nombre completo</label>
+          <input class="mp-input-field" id="demo-name" type="text" value="Ana Torres">
+          <span class="mp-input-helper">Como aparece en tu documento</span>
+        </div>
+        <div class="mp-input-group">
+          <label class="mp-input-label" for="demo-email">Correo electrónico</label>
+          <input class="mp-input-field error" id="demo-email" type="email" value="correo@invalido" aria-invalid="true" aria-describedby="demo-email-error">
+          <span class="mp-input-helper error" id="demo-email-error"><i class="icon icon-warning-circle icon-16" aria-hidden="true"></i> Formato incorrecto</span>
+        </div>
+
+        <div class="mp-dropdown-group">
+          <label class="mp-dropdown-label" id="demo-service-label">Servicio</label>
+          <div class="mp-dropdown" aria-expanded="true">
+            <button class="mp-dropdown__trigger" type="button" aria-expanded="true" aria-labelledby="demo-service-label">
+              <span class="mp-dropdown__value">Medicina general</span>
+              <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
+            </button>
+            <div class="mp-dropdown__panel">
+              <div class="mp-dropdown__options" role="listbox">
+                <div class="mp-dropdown__option mp-dropdown__option--selected" role="option" aria-selected="true">Medicina general</div>
+                <div class="mp-dropdown__option" role="option">Odontología</div>
+                <div class="mp-dropdown__option" role="option">Laboratorio clínico</div>
+              </div>
+            </div>
+          </div>
+          <span class="mp-input-helper">Selecciona una opción</span>
+        </div>
+
+        <div class="demo-core__choices">
+          <label class="mp-choice mp-checkbox">
+            <span class="mp-choice__field"><input class="mp-choice__input" type="checkbox" checked><span class="mp-choice__control" aria-hidden="true"></span></span>
+            <span class="mp-choice__text"><span class="mp-choice__label">Acepto términos</span></span>
+          </label>
+          <label class="mp-choice mp-radio">
+            <span class="mp-choice__field"><input class="mp-choice__input" type="radio" name="demo-contact" checked><span class="mp-choice__control" aria-hidden="true"></span></span>
+            <span class="mp-choice__text"><span class="mp-choice__label">Contacto por email</span></span>
+          </label>
+          <label class="mp-switch">
+            <span class="mp-switch__field"><input class="mp-switch__input" type="checkbox" checked><span class="mp-switch__track" aria-hidden="true"></span></span>
+            <span class="mp-switch__text"><span class="mp-switch__label">Notificaciones activas</span></span>
+          </label>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section class="demo-core__grid demo-core__grid--content" aria-label="Mensajes y navegación">
+    <div class="demo-core__panel demo-core__stack">
+      <h2 class="mp-h2">Mensajes</h2>
+      <div class="mp-alert mp-alert--info" role="status">
+        <i class="icon icon-info icon-32 mp-alert__icon" aria-hidden="true"></i>
+        <div class="mp-alert__content">
+          <p class="mp-alert__title">Información importante</p>
+          <p class="mp-alert__body">Revisa los datos antes de continuar con el trámite.</p>
+        </div>
+      </div>
+      <div class="mp-toast mp-toast--success" role="status">
+        <i class="icon icon-check-circle icon-32 mp-toast__icon" aria-hidden="true"></i>
+        <div class="mp-toast__content">
+          <p class="mp-toast__title">Cambios guardados</p>
+          <p class="mp-toast__body">La información se actualizó correctamente.</p>
+        </div>
+        <button class="mp-btn mp-btn--terciario mp-btn--icon-only mp-toast__close" type="button" aria-label="Cerrar"><span class="material-symbols-rounded" aria-hidden="true">close</span></button>
+      </div>
+    </div>
+
+    <div class="demo-core__panel demo-core__stack">
+      <h2 class="mp-h2">Navegación</h2>
+      <nav class="mp-breadcrumb" aria-label="Breadcrumb demo">
+        <ol class="mp-breadcrumb__list">
+          <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+          <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#">Servicios</a></li>
+          <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Citas</span></li>
+        </ol>
+      </nav>
+      <div class="mp-tabs" role="tablist" aria-label="Demo tabs">
+        <button class="mp-tab is-active" type="button" role="tab" aria-selected="true">Resumen</button>
+        <button class="mp-tab" type="button" role="tab" aria-selected="false">Documentos</button>
+        <button class="mp-tab" type="button" role="tab" aria-selected="false">Historial</button>
+      </div>
+      <nav class="mp-pagination mp-pagination--compact mp-pagination--start" aria-label="Paginación demo">
+        <ul class="mp-pagination__list">
+          <li class="mp-pagination__item"><a class="mp-pagination__link" href="#" aria-label="Anterior"><i class="icon icon-caret-left mp-pagination__icon" aria-hidden="true"></i></a></li>
+          <li class="mp-pagination__item"><a class="mp-pagination__link is-active" href="#" aria-current="page">1</a></li>
+          <li class="mp-pagination__item"><a class="mp-pagination__link" href="#">2</a></li>
+          <li class="mp-pagination__item"><a class="mp-pagination__link" href="#">3</a></li>
+          <li class="mp-pagination__item"><a class="mp-pagination__link" href="#" aria-label="Siguiente"><i class="icon icon-caret-right mp-pagination__icon" aria-hidden="true"></i></a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <section class="demo-core__panel" aria-labelledby="demo-table-title">
+    <div class="demo-core__panel-header">
+      <h2 id="demo-table-title" class="mp-h2">Listado de solicitudes</h2>
+      <div class="demo-core__pill-row">
+        <button class="mp-chip mp-chip--info is-selected" type="button" aria-pressed="true"><span class="mp-chip__label">Todas</span></button>
+        <button class="mp-chip mp-chip--info" type="button" aria-pressed="false"><span class="mp-chip__label">Activas</span></button>
+        <span class="mp-tag mp-tag--outline"><span class="mp-tag__label">Mayo 2026</span></span>
+      </div>
+    </div>
+    <div class="mp-table-wrap">
+      <table class="mp-table mp-table--striped mp-table--hover">
+        <thead>
+          <tr>
+            <th>Solicitud</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th class="mp-table__cell--number">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Consulta medicina general</td>
+            <td>06/05/2026</td>
+            <td><span class="mp-badge mp-badge--success"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Activo</span></span></td>
+            <td class="mp-table__cell--number">$0</td>
+          </tr>
+          <tr class="mp-table-row--hover">
+            <td>Autorización laboratorio</td>
+            <td>05/05/2026</td>
+            <td><span class="mp-badge mp-badge--warning"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Pendiente</span></span></td>
+            <td class="mp-table__cell--number">$18.000</td>
+          </tr>
+          <tr>
+            <td>Solicitud certificado</td>
+            <td>04/05/2026</td>
+            <td><span class="mp-badge mp-badge--info"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">En revisión</span></span></td>
+            <td class="mp-table__cell--number">$0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="demo-core__grid demo-core__grid--content" aria-label="Patrones complementarios">
+    <div class="demo-core__panel demo-core__stack">
+      <h2 class="mp-h2">Accordion</h2>
+      <div class="mp-accordion">
+        <div class="mp-accordion__item is-open">
+          <button class="mp-accordion__trigger" type="button" id="demo-acc-trigger-1" aria-expanded="true" aria-controls="demo-acc-panel-1">
+            <span class="mp-accordion__title">Cobertura médica internacional</span>
+            <i class="mp-accordion__icon icon icon-caret-down icon-24" aria-hidden="true"></i>
+          </button>
+          <div class="mp-accordion__panel" id="demo-acc-panel-1" role="region" aria-labelledby="demo-acc-trigger-1">
+            <div class="mp-accordion__content"><p class="mp-body-m">Asistencia médica de urgencias durante viajes internacionales.</p></div>
+          </div>
+        </div>
+        <div class="mp-accordion__item">
+          <button class="mp-accordion__trigger" type="button" id="demo-acc-trigger-2" aria-expanded="false" aria-controls="demo-acc-panel-2">
+            <span class="mp-accordion__title">Pérdida de equipaje</span>
+            <i class="mp-accordion__icon icon icon-caret-down icon-24" aria-hidden="true"></i>
+          </button>
+          <div class="mp-accordion__panel" id="demo-acc-panel-2" role="region" aria-labelledby="demo-acc-trigger-2">
+            <div class="mp-accordion__content"><p class="mp-body-m">Indemnización según la cobertura contratada.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-core__panel demo-core__stack">
+      <h2 class="mp-h2">Estados especiales</h2>
+      <div class="mp-loading mp-loading--inline">
+        <span class="mp-loading__spinner" aria-hidden="true">
+          <span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span>
+          <span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span>
+        </span>
+        <p class="mp-loading__text">Validando disponibilidad...</p>
+      </div>
+      <div class="mp-empty-state mp-empty-state--bordered mp-empty-state--compact">
+        <div class="mp-empty-state__icon"><i class="icon icon-package" aria-hidden="true"></i></div>
+        <h3 class="mp-h5 mp-empty-state__title">Sin documentos</h3>
+        <p class="mp-body-l mp-empty-state__desc">Cuando no haya resultados, muestra una acción clara.</p>
+        <div class="mp-empty-state__action">
+          <button class="mp-btn mp-btn--primario" type="button">Crear nuevo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo-core__modal-zone" aria-label="Modal demo">
+    <div class="mp-modal mp-modal--warning demo-core__modal">
+      <div class="mp-modal__dialog">
+        <div class="mp-modal__content">
+          <button class="mp-btn mp-btn--terciario mp-btn--icon-only mp-modal__close" type="button" aria-label="Cerrar"><span class="material-symbols-rounded" aria-hidden="true">close</span></button>
+          <span class="mp-modal__icon material-symbols-rounded" aria-hidden="true">priority_high</span>
+          <h2 class="mp-modal__title">Confirmar solicitud</h2>
+          <p class="mp-modal__body">Antes de continuar, valida que la información registrada sea correcta.</p>
+          <div class="mp-modal__actions">
+            <button class="mp-btn mp-btn--secundario" type="button">Cancelar</button>
+            <button class="mp-btn mp-btn--primario" type="button">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>
