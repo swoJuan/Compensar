@@ -1,533 +1,297 @@
-<section class="section" id="badges" data-component-doc="badges">
+<article class="component-doc-page bdg-doc" data-component-doc="badges">
+  <nav class="component-doc-breadcrumb" aria-label="Breadcrumb">
+    <span>Sistema de diseño</span>
+    <span>/</span>
+    <span>Componentes</span>
+    <span>/</span>
+    <strong>Chips / Tags / Badges</strong>
+  </nav>
 
-<!-- ── Encabezado ─────────────────────────────────────────── -->
-<div class="section-header">
-  <div class="section-eyebrow">Web · Componentes</div>
-  <h1 class="section-title">Badge</h1>
-  <p class="section-desc">Indicadores compactos de estado, categoría o conteo. Se usan inline con texto o como etiquetas flotantes sobre elementos de UI.</p>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════
-     1 · PREVIEW RÁPIDO
-     ══════════════════════════════════════════════════════════ -->
-<div class="component-preview">
-  <div class="preview-bar"><span class="preview-label">Estados semánticos</span></div>
-  <div class="preview-canvas" style="display:flex;flex-wrap:wrap;gap:16px;padding:32px 24px;align-items:center;">
-    <span class="mp-badge mp-badge--success"><span class="mp-badge-dot"></span>Activo</span>
-    <span class="mp-badge mp-badge--warning"><span class="mp-badge-dot"></span>Pendiente</span>
-    <span class="mp-badge mp-badge--error"><span class="mp-badge-dot"></span>Error</span>
-    <span class="mp-badge mp-badge--info"><span class="mp-badge-dot"></span>Información</span>
-    <span class="mp-badge mp-badge--neutral"><span class="mp-badge-dot"></span>Inactivo</span>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════
-     2 · PLAYGROUND
-     ══════════════════════════════════════════════════════════ -->
-<div class="section-subtitle-row" style="margin-top:var(--space-48);margin-bottom:var(--space-16);">
-  <h2 class="section-sub">Playground</h2>
-</div>
-
-<div class="bdg-playground-grid">
-
-  <!-- Preview -->
-  <div>
-    <div class="bdg-playground__preview" id="bdg-preview-area">
-      <!-- Badge rendered by JS -->
+  <section class="component-hero" aria-labelledby="badges-title">
+    <h1 id="badges-title" class="mp-h1">Chips / Tags / Badges</h1>
+    <p class="mp-body-l">Familia de pastillas compactas para filtrar, categorizar o comunicar estados. Comparten estructura visual, pero cada una tiene una intención distinta.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Categoría: indicadores</span>
+      <span class="component-chip">Figma: 4610:73562</span>
     </div>
+  </section>
 
-    <!-- Código generado -->
-    <div class="code-block" style="margin-top:var(--space-12);">
-      <div class="code-content" style="position:relative;">
-        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" data-bdg-copy-playground>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copiar
-        </button>
-        <pre id="bdg-playground-code" class="active"></pre>
+  <section class="component-section" aria-labelledby="bdg-summary-title">
+    <div class="component-section__header">
+      <h2 id="bdg-summary-title" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Chips: cuando el usuario filtra, selecciona o ejecuta una acción rápida.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Tags: cuando necesitas clasificar contenido sin interacción.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Badges: cuando debes comunicar estado, prioridad o conteo.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando el texto corto ayuda a escanear información en tablas, cards o filtros.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Usa cada variante según su intención de interacción o lectura.</p>
+            <div class="component-example-actions">
+              <button class="mp-chip mp-chip--info is-selected" type="button" aria-pressed="true">
+                <span class="mp-chip__label">Medicina</span>
+              </button>
+              <span class="mp-tag mp-tag--violet"><span class="mp-tag__label">Afiliado</span></span>
+              <span class="mp-badge mp-badge--success" role="img" aria-label="Estado: Activo">
+                <span class="mp-badge-dot" aria-hidden="true"></span>
+                <span class="mp-badge__label">Activo</span>
+              </span>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No uses un badge como botón ni un chip para comunicar estados estáticos.</p>
+            <div class="component-example-actions">
+              <span class="mp-badge mp-badge--warning">Eliminar filtro</span>
+              <button class="mp-chip mp-chip--error" type="button">Vencido</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Controles -->
-  <div class="bdg-controls">
-
-    <div class="bdg-field">
-      <label for="bdg-ctrl-kind">Semántica</label>
-      <select class="mp-input-field" id="bdg-ctrl-kind" data-bdg-control="kind">
-        <option value="success">success</option>
-        <option value="warning">warning</option>
-        <option value="error">error</option>
-        <option value="info">info</option>
-        <option value="neutral">neutral</option>
-      </select>
+  <section class="component-section" aria-labelledby="bdg-anatomy-title">
+    <div class="component-section__header">
+      <h2 id="bdg-anatomy-title" class="mp-h2">2. Anatomía interactiva</h2>
     </div>
 
-    <div class="bdg-field">
-      <label for="bdg-ctrl-leading">Indicador</label>
-      <select class="mp-input-field" id="bdg-ctrl-leading" data-bdg-control="leading">
-        <option value="dot">Punto de estado</option>
-        <option value="icon">Ícono</option>
-        <option value="none">Sin indicador</option>
-      </select>
+    <div class="segmented-control" role="group" aria-label="Tipo de pastilla">
+      <button type="button" class="mp-btn mp-btn--terciario" data-bdg-anatomy="badge" aria-pressed="true">Badge</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-bdg-anatomy="chip" aria-pressed="false">Chip</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-bdg-anatomy="tag" aria-pressed="false">Tag</button>
     </div>
 
-    <div class="bdg-field">
-      <label for="bdg-ctrl-size">Tamaño</label>
-      <select class="mp-input-field" id="bdg-ctrl-size" data-bdg-control="size">
-        <option value="">Default</option>
-        <option value="sm">Small</option>
-        <option value="lg">Large</option>
-      </select>
+    <div class="bdg-anatomy-stage">
+      <span class="bdg-measure bdg-measure--width" data-bdg-measure="width">74 px</span>
+      <span class="bdg-measure bdg-measure--height" data-bdg-measure="height">29 px</span>
+      <span class="bdg-measure bdg-measure--gap" data-bdg-measure="gap">Gap 8 px</span>
+      <span class="bdg-hitbox" data-bdg-hitbox aria-hidden="true"></span>
+
+      <div class="bdg-doc-callout bdg-doc-callout--container">
+        <strong>Contenedor</strong>
+        <span data-bdg-callout="container">Padding 4 x 12 px · radio 16 px</span>
+      </div>
+      <div class="bdg-doc-callout bdg-doc-callout--label">
+        <strong>Label</strong>
+        <span data-bdg-callout="label">Roboto Regular 14 px</span>
+      </div>
+      <div class="bdg-doc-callout bdg-doc-callout--icon">
+        <strong>Ícono</strong>
+        <span data-bdg-callout="icon">Opcional · 14 px mínimo</span>
+      </div>
+      <div class="bdg-doc-callout bdg-doc-callout--state">
+        <strong>Uso / estado</strong>
+        <span data-bdg-callout="state">Estado no interactivo</span>
+      </div>
+
+      <div class="bdg-anatomy-preview" id="bdg-anatomy-preview"></div>
     </div>
 
-    <div class="bdg-field">
-      <label for="bdg-ctrl-variant">Variante</label>
-      <select class="mp-input-field" id="bdg-ctrl-variant" data-bdg-control="variant">
-        <option value="">Sólido</option>
-        <option value="outline">Outline</option>
-        <option value="count">Contador</option>
-      </select>
+    <div class="component-controls">
+      <label class="button-doc-toggle"><input type="checkbox" data-bdg-anatomy-toggle="measures" checked> Medidas</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-bdg-anatomy-toggle="hit" checked> Área clicable</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-bdg-anatomy-toggle="icon" checked> Ícono</label>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="bdg-playground-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="bdg-playground-title" class="mp-h2">3. Playground</h2>
+        <p class="mp-body-m">Configura tipo, intención, color, tamaño, íconos y estado. El código se actualiza con el fragmento real del componente.</p>
+      </div>
     </div>
 
-    <div class="bdg-field bdg-field--full">
-      <label for="bdg-ctrl-label">Etiqueta</label>
-      <input class="mp-input-field" type="text" id="bdg-ctrl-label" data-bdg-control="label" value="Activo" maxlength="32">
+    <div class="row g-4">
+      <div class="col-12 col-xl-5">
+        <div class="component-control-panel">
+          <div class="row g-3">
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="bdg-ctrl-kind">Componente</label>
+              <select class="mp-input-field mp-select" id="bdg-ctrl-kind" data-bdg-control="kind">
+                <option value="badge">Badge</option>
+                <option value="chip">Chip</option>
+                <option value="tag">Tag</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="bdg-ctrl-tone">Color</label>
+              <select class="mp-input-field mp-select" id="bdg-ctrl-tone" data-bdg-control="tone">
+                <option value="info">Info</option>
+                <option value="warning">Warning</option>
+                <option value="orange">Orange</option>
+                <option value="success">Green 1</option>
+                <option value="green">Green 3</option>
+                <option value="error">Error</option>
+                <option value="violet">Violet</option>
+                <option value="neutral">Blanco</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="bdg-ctrl-size">Tamaño</label>
+              <select class="mp-input-field mp-select" id="bdg-ctrl-size" data-bdg-control="size">
+                <option value="">Default</option>
+                <option value="sm">Small</option>
+                <option value="lg">Large</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="bdg-ctrl-state">Estado</label>
+              <select class="mp-input-field mp-select" id="bdg-ctrl-state" data-bdg-control="state">
+                <option value="default">Default</option>
+                <option value="hover">Hover</option>
+                <option value="focus">Focus</option>
+                <option value="selected">Seleccionado</option>
+                <option value="disabled">Disabled</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="bdg-ctrl-leading">Ícono izquierdo</label>
+              <select class="mp-input-field mp-select" id="bdg-ctrl-leading" data-bdg-control="leading">
+                <option value="none">Sin ícono</option>
+                <option value="dot">Dot</option>
+                <option value="icon">Ícono</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="bdg-ctrl-trailing">Ícono derecho</label>
+              <select class="mp-input-field mp-select" id="bdg-ctrl-trailing" data-bdg-control="trailing">
+                <option value="none">Sin ícono</option>
+                <option value="close">Cerrar</option>
+                <option value="chevron">Flecha</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="mp-label" for="bdg-ctrl-label">Texto</label>
+              <input class="mp-input-field" type="text" id="bdg-ctrl-label" data-bdg-control="label" value="Activo" maxlength="32">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-7">
+        <div class="component-preview-panel" id="bdg-preview-area"></div>
+        <div class="code-block bdg-playground-code">
+          <div class="code-content">
+            <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-bdg-copy-playground>
+              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+              Copiar
+            </button>
+            <pre id="bdg-playground-code" class="active"></pre>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════
-     3 · ESTADOS SEMÁNTICOS
-     ══════════════════════════════════════════════════════════ -->
-<div class="section-subtitle-row" style="margin-top:var(--space-48);margin-bottom:var(--space-16);">
-  <h2 class="section-sub">Estados semánticos</h2>
-</div>
-
-<div class="bdg-state-grid">
-  <div class="bdg-state-card">
-    <span class="mp-badge mp-badge--success"><span class="mp-badge-dot"></span>Activo</span>
-    <span class="bdg-state-card__label">success</span>
-  </div>
-  <div class="bdg-state-card">
-    <span class="mp-badge mp-badge--warning"><span class="mp-badge-dot"></span>Pendiente</span>
-    <span class="bdg-state-card__label">warning</span>
-  </div>
-  <div class="bdg-state-card">
-    <span class="mp-badge mp-badge--error"><span class="mp-badge-dot"></span>Error</span>
-    <span class="bdg-state-card__label">error</span>
-  </div>
-  <div class="bdg-state-card">
-    <span class="mp-badge mp-badge--info"><span class="mp-badge-dot"></span>Información</span>
-    <span class="bdg-state-card__label">info</span>
-  </div>
-  <div class="bdg-state-card">
-    <span class="mp-badge mp-badge--neutral"><span class="mp-badge-dot"></span>Inactivo</span>
-    <span class="bdg-state-card__label">neutral</span>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════
-     4 · VARIANTES
-     ══════════════════════════════════════════════════════════ -->
-<div class="section-subtitle-row" style="margin-top:var(--space-48);margin-bottom:var(--space-16);">
-  <h2 class="section-sub">Variantes</h2>
-</div>
-
-<div class="bdg-variantes-grid">
-
-  <!-- Con punto -->
-  <div class="bdg-var-card">
-    <div class="bdg-var-card__demo">
-      <span class="mp-badge mp-badge--success"><span class="mp-badge-dot"></span>Activo</span>
-      <span class="mp-badge mp-badge--error"><span class="mp-badge-dot"></span>Error</span>
+  <section class="component-section" aria-labelledby="bdg-variants-title">
+    <div class="component-section__header">
+      <h2 id="bdg-variants-title" class="mp-h2">4. Variantes de color</h2>
     </div>
-    <div class="bdg-var-card__name">Con punto de estado</div>
-    <div class="bdg-var-card__desc">Dot de 6 px coloreado antes del texto. Para estados que cambian dinámicamente.</div>
-  </div>
+    <div class="bdg-token-grid" id="bdg-token-grid"></div>
+  </section>
 
-  <!-- Con ícono -->
-  <div class="bdg-var-card">
-    <div class="bdg-var-card__demo">
-      <span class="mp-badge mp-badge--success">
-        <span class="material-symbols-rounded mp-badge-icon" aria-hidden="true">check_circle</span>Completado
-      </span>
-      <span class="mp-badge mp-badge--warning">
-        <span class="material-symbols-rounded mp-badge-icon" aria-hidden="true">schedule</span>En proceso
-      </span>
+  <section class="component-section" aria-labelledby="bdg-states-title">
+    <div class="component-section__header">
+      <h2 id="bdg-states-title" class="mp-h2">5. Estados interactivos</h2>
     </div>
-    <div class="bdg-var-card__name">Con ícono</div>
-    <div class="bdg-var-card__desc">Ícono Material Symbols de 14 px. Refuerzo visual más expresivo que el dot.</div>
-  </div>
-
-  <!-- Solo texto -->
-  <div class="bdg-var-card">
-    <div class="bdg-var-card__demo">
-      <span class="mp-badge mp-badge--info">Nuevo</span>
-      <span class="mp-badge mp-badge--neutral">Archivado</span>
+    <div class="bdg-state-grid">
+      <article class="bdg-state-card"><h3 class="mp-h3">Default</h3><p class="mp-body-s">Estado base disponible.</p><button class="mp-chip mp-chip--info" type="button">Medicina</button></article>
+      <article class="bdg-state-card"><h3 class="mp-h3">Hover</h3><p class="mp-body-s">Se evidencia solo en chips interactivos.</p><button class="mp-chip mp-chip--info mp-chip--is-hover" type="button">Medicina</button></article>
+      <article class="bdg-state-card"><h3 class="mp-h3">Focus</h3><p class="mp-body-s">Anillo visible para navegación con teclado.</p><button class="mp-chip mp-chip--info mp-chip--is-focus" type="button">Medicina</button></article>
+      <article class="bdg-state-card"><h3 class="mp-h3">Seleccionado</h3><p class="mp-body-s">Comunica filtros o selecciones activas.</p><button class="mp-chip mp-chip--info is-selected" type="button" aria-pressed="true">Medicina</button></article>
+      <article class="bdg-state-card"><h3 class="mp-h3">Disabled</h3><p class="mp-body-s">No permite interacción.</p><button class="mp-chip mp-chip--info is-disabled" type="button" disabled>Medicina</button></article>
     </div>
-    <div class="bdg-var-card__name">Solo texto</div>
-    <div class="bdg-var-card__desc">Etiqueta de categoría o tipo, sin indicador de estado.</div>
-  </div>
+  </section>
 
-  <!-- Outline -->
-  <div class="bdg-var-card">
-    <div class="bdg-var-card__demo">
-      <span class="mp-badge mp-badge--success mp-badge--outline">Activo</span>
-      <span class="mp-badge mp-badge--error mp-badge--outline">Bloqueado</span>
-      <span class="mp-badge mp-badge--info mp-badge--outline">Beta</span>
+  <section class="component-section" aria-labelledby="bdg-modes-title">
+    <div class="component-section__header">
+      <h2 id="bdg-modes-title" class="mp-h2">6. Modos de color</h2>
     </div>
-    <div class="bdg-var-card__name">Outline</div>
-    <div class="bdg-var-card__desc">Sin fondo sólido — borde del color semántico. Menor peso visual, ideal sobre fondos con color.</div>
-  </div>
-
-  <!-- Tamaños -->
-  <div class="bdg-var-card">
-    <div class="bdg-var-card__demo" style="flex-direction:column;align-items:flex-start;">
-      <span class="mp-badge mp-badge--info mp-badge--sm"><span class="mp-badge-dot"></span>Small — 12 px</span>
-      <span class="mp-badge mp-badge--info"><span class="mp-badge-dot"></span>Default — 14 px</span>
-      <span class="mp-badge mp-badge--info mp-badge--lg"><span class="mp-badge-dot"></span>Large — 16 px</span>
+    <div class="bdg-modos-grid">
+      <div class="bdg-modo-box" data-theme="light"><span class="bdg-modo-label mp-label">Light</span><div class="bdg-modo-row" data-bdg-mode-row></div></div>
+      <div class="bdg-modo-box" data-theme="dark"><span class="bdg-modo-label mp-label">Dark</span><div class="bdg-modo-row" data-bdg-mode-row></div></div>
+      <div class="bdg-modo-box" data-theme="high-contrast"><span class="bdg-modo-label mp-label">High Contrast</span><div class="bdg-modo-row" data-bdg-mode-row></div></div>
     </div>
-    <div class="bdg-var-card__name">Tamaños</div>
-    <div class="bdg-var-card__desc">Tres tallas: <code>mp-badge--sm</code>, default y <code>mp-badge--lg</code>. Usar según densidad de la UI.</div>
-  </div>
+  </section>
 
-  <!-- Numérico -->
-  <div class="bdg-var-card">
-    <div class="bdg-var-card__demo" style="gap:16px;">
-      <span class="mp-badge mp-badge--error mp-badge--count" role="status" aria-label="3 notificaciones">3</span>
-      <span class="mp-badge mp-badge--error mp-badge--count" role="status" aria-label="12 notificaciones">12</span>
-      <span class="mp-badge mp-badge--info mp-badge--count-lg" role="status" aria-label="más de 99 notificaciones">99+</span>
+  <div class="row g-4">
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="bdg-rules-title">
+        <div class="component-section__header"><h2 id="bdg-rules-title" class="mp-h2">7. Comportamiento y reglas</h2></div>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa chips solo cuando hay interacción.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa tags para clasificación no interactiva.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa badges para estados y evita depender solo del color.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mantén textos cortos para lectura rápida.</li>
+        </ul>
+      </section>
     </div>
-    <div class="bdg-var-card__name">Contador numérico</div>
-    <div class="bdg-var-card__desc">Pastilla compacta para conteos de notificaciones, mensajes o ítems pendientes.</div>
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════════════════════════════
-     5 · USO EN CONTEXTO
-     ══════════════════════════════════════════════════════════ -->
-<div class="section-subtitle-row" style="margin-top:var(--space-48);margin-bottom:var(--space-16);">
-  <h2 class="section-sub">Uso en contexto</h2>
-</div>
-
-<div class="bdg-context-cards">
-
-  <div class="bdg-context-card">
-    <div>
-      <div class="bdg-context-card__text">Seguro de Vida Colectivo</div>
-      <div class="bdg-context-card__sub">Renovación: 15 jun 2026</div>
-    </div>
-    <span class="mp-badge mp-badge--success" role="img" aria-label="Estado: Vigente"><span class="mp-badge-dot"></span>Vigente</span>
-  </div>
-
-  <div class="bdg-context-card">
-    <div>
-      <div class="bdg-context-card__text">Solicitud de turno médico</div>
-      <div class="bdg-context-card__sub">Radicado #2026-4471</div>
-    </div>
-    <span class="mp-badge mp-badge--warning" role="img" aria-label="Estado: En revisión"><span class="mp-badge-dot"></span>En revisión</span>
-  </div>
-
-  <div class="bdg-context-card">
-    <div>
-      <div class="bdg-context-card__text">Pago de cuota mensual</div>
-      <div class="bdg-context-card__sub">Vencimiento: 30 abr 2026</div>
-    </div>
-    <span class="mp-badge mp-badge--error" role="img" aria-label="Estado: Vencido"><span class="mp-badge-dot"></span>Vencido</span>
-  </div>
-
-  <div class="bdg-context-card">
-    <div>
-      <div class="bdg-context-card__text">Inscripción a actividad recreativa</div>
-      <div class="bdg-context-card__sub">Piscina — martes y jueves</div>
-    </div>
-    <span class="mp-badge mp-badge--neutral" role="img" aria-label="Estado: Inactivo"><span class="mp-badge-dot"></span>Inactivo</span>
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════════════════════════════
-     6 · MODOS DE COLOR
-     ══════════════════════════════════════════════════════════ -->
-<div class="section-subtitle-row" style="margin-top:var(--space-48);margin-bottom:var(--space-16);">
-  <h2 class="section-sub">Modos de color</h2>
-</div>
-
-<div class="bdg-modos-grid">
-
-  <div class="bdg-modo-box" data-theme="light">
-    <div class="bdg-modo-label">Light</div>
-    <div class="bdg-modo-row">
-      <span class="mp-badge mp-badge--success"><span class="mp-badge-dot"></span>Activo</span>
-      <span class="mp-badge mp-badge--warning"><span class="mp-badge-dot"></span>Pendiente</span>
-      <span class="mp-badge mp-badge--error"><span class="mp-badge-dot"></span>Error</span>
-      <span class="mp-badge mp-badge--info"><span class="mp-badge-dot"></span>Info</span>
-      <span class="mp-badge mp-badge--neutral"><span class="mp-badge-dot"></span>Inactivo</span>
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="bdg-a11y-title">
+        <div class="component-section__header"><h2 id="bdg-a11y-title" class="mp-h2">8. Accesibilidad</h2></div>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los chips deben exponer estado con <code>aria-pressed</code> cuando sean seleccionables.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los badges de estado deben tener texto claro o <code>aria-label</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No comuniques estados únicamente con color.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El área clicable mínima para chips es 44 px.</li>
+        </ul>
+      </section>
     </div>
   </div>
 
-  <div class="bdg-modo-box" data-theme="dark">
-    <div class="bdg-modo-label" style="color:#aaa;">Dark</div>
-    <div class="bdg-modo-row">
-      <span class="mp-badge mp-badge--success"><span class="mp-badge-dot"></span>Activo</span>
-      <span class="mp-badge mp-badge--warning"><span class="mp-badge-dot"></span>Pendiente</span>
-      <span class="mp-badge mp-badge--error"><span class="mp-badge-dot"></span>Error</span>
-      <span class="mp-badge mp-badge--info"><span class="mp-badge-dot"></span>Info</span>
-      <span class="mp-badge mp-badge--neutral"><span class="mp-badge-dot"></span>Inactivo</span>
+  <section class="component-section" aria-labelledby="bdg-code-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="bdg-code-title" class="mp-h2">9. Visualizador</h2>
+        <p class="mp-body-m">HTML del fragmento y estilos completos del componente. No incluye estilos propios del portal.</p>
+      </div>
     </div>
-  </div>
-
-  <div class="bdg-modo-box" data-theme="high-contrast">
-    <div class="bdg-modo-label" style="color:#aaa;">High Contrast</div>
-    <div class="bdg-modo-row">
-      <span class="mp-badge mp-badge--success"><span class="mp-badge-dot"></span>Activo</span>
-      <span class="mp-badge mp-badge--warning"><span class="mp-badge-dot"></span>Pendiente</span>
-      <span class="mp-badge mp-badge--error"><span class="mp-badge-dot"></span>Error</span>
-      <span class="mp-badge mp-badge--info"><span class="mp-badge-dot"></span>Info</span>
-      <span class="mp-badge mp-badge--neutral"><span class="mp-badge-dot"></span>Inactivo</span>
+    <div class="ct-downloads button-downloads" aria-label="Descargar estilos de badges">
+      <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-bdg-download="html"><i class="icon icon-article icon-16" aria-hidden="true"></i> HTML</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-bdg-download="css"><i class="icon icon-article icon-16" aria-hidden="true"></i> CSS</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-bdg-download="sass"><i class="icon icon-article icon-16" aria-hidden="true"></i> Sass</button>
     </div>
-  </div>
+    <div class="code-block">
+      <div class="code-tabs" role="tablist" aria-label="Código del componente">
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-bdg-code-tab="html" aria-selected="true">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-bdg-code-tab="css" aria-selected="false">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-bdg-code-tab="sass" aria-selected="false">Sass</button>
+      </div>
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-bdg-copy-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="bdg-code-html" class="active"></pre>
+        <pre id="bdg-code-css"></pre>
+        <pre id="bdg-code-sass"></pre>
+      </div>
+    </div>
+  </section>
 
-</div>
-
-<!-- ══════════════════════════════════════════════════════════
-     7 · CÓDIGO
-     ══════════════════════════════════════════════════════════ -->
-<div class="code-block" style="margin-top:var(--space-48);">
-  <div class="code-tabs">
-    <button class="mp-btn mp-btn--terciario code-tab active" data-bdg-code-tab="ng-uso" aria-selected="true">Angular · Uso</button>
-    <button class="mp-btn mp-btn--terciario code-tab" data-bdg-code-tab="ng-comp" aria-selected="false">Angular · Componente</button>
-    <button class="mp-btn mp-btn--terciario code-tab" data-bdg-code-tab="drupal" aria-selected="false">Drupal · Twig</button>
-    <button class="mp-btn mp-btn--terciario code-tab" data-bdg-code-tab="html" aria-selected="false">HTML + CSS</button>
-  </div>
-  <div class="code-content">
-    <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" data-bdg-copy-code>
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-      Copiar
-    </button>
-
-    <pre id="bdg-code-ng-uso" class="active"><span class="cmt">&lt;!-- Estado con punto --&gt;</span>
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"success"</span> <span class="prop">dot</span>&gt;Activo&lt;/<span class="kw">mp-badge</span>&gt;
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"warning"</span> <span class="prop">dot</span>&gt;Pendiente&lt;/<span class="kw">mp-badge</span>&gt;
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"error"</span>   <span class="prop">dot</span>&gt;Error&lt;/<span class="kw">mp-badge</span>&gt;
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"info"</span>    <span class="prop">dot</span>&gt;Información&lt;/<span class="kw">mp-badge</span>&gt;
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"neutral"</span> <span class="prop">dot</span>&gt;Inactivo&lt;/<span class="kw">mp-badge</span>&gt;
-
-<span class="cmt">&lt;!-- Con ícono --&gt;</span>
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"success"</span> <span class="prop">icon</span>=<span class="str">"check_circle"</span>&gt;Completado&lt;/<span class="kw">mp-badge</span>&gt;
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"warning"</span> <span class="prop">icon</span>=<span class="str">"schedule"</span>&gt;En proceso&lt;/<span class="kw">mp-badge</span>&gt;
-
-<span class="cmt">&lt;!-- Outline --&gt;</span>
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"info"</span> <span class="prop">outline</span>&gt;Beta&lt;/<span class="kw">mp-badge</span>&gt;
-
-<span class="cmt">&lt;!-- Tamaños --&gt;</span>
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"success"</span> <span class="prop">size</span>=<span class="str">"sm"</span>&gt;Pequeño&lt;/<span class="kw">mp-badge</span>&gt;
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"success"</span>&gt;Default&lt;/<span class="kw">mp-badge</span>&gt;
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"success"</span> <span class="prop">size</span>=<span class="str">"lg"</span>&gt;Grande&lt;/<span class="kw">mp-badge</span>&gt;
-
-<span class="cmt">&lt;!-- Contador --&gt;</span>
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"error"</span> <span class="prop">count</span>&gt;3&lt;/<span class="kw">mp-badge</span>&gt;
-&lt;<span class="kw">mp-badge</span> <span class="prop">tipo</span>=<span class="str">"info"</span>  <span class="prop">count</span> [<span class="prop">size</span>]=<span class="str">"'lg'"</span>&gt;{{ notifications }}&lt;/<span class="kw">mp-badge</span>&gt;</pre>
-
-    <pre id="bdg-code-ng-comp"><span class="cmt">// mp-badge.component.ts</span>
-<span class="kw">import</span> { Component, Input } <span class="kw">from</span> <span class="str">'@angular/core'</span>;
-<span class="kw">import</span> { CommonModule } <span class="kw">from</span> <span class="str">'@angular/common'</span>;
-
-<span class="prop">@Component</span>({
-  <span class="prop">selector</span>: <span class="str">'mp-badge'</span>,
-  <span class="prop">standalone</span>: <span class="val">true</span>,
-  <span class="prop">imports</span>: [CommonModule],
-  <span class="prop">template</span>: <span class="str">`
-&lt;span
-  class="mp-badge"
-  [class]="badgeClasses"
-  [attr.aria-label]="ariaLabel || null"
-  [attr.role]="role"
-&gt;
-  &lt;span *ngIf="dot" class="mp-badge-dot" aria-hidden="true"&gt;&lt;/span&gt;
-  &lt;span *ngIf="icon" class="material-symbols-rounded mp-badge-icon" aria-hidden="true"&gt;
-    {{ icon }}
-  &lt;/span&gt;
-  &lt;ng-content&gt;&lt;/ng-content&gt;
-&lt;/span&gt;
-  `</span>
-})
-<span class="kw">export class</span> MpBadgeComponent {
-  <span class="prop">@Input()</span> tipo: <span class="str">'success'</span> | <span class="str">'warning'</span> | <span class="str">'error'</span> | <span class="str">'info'</span> | <span class="str">'neutral'</span> = <span class="str">'neutral'</span>;
-  <span class="prop">@Input()</span> size: <span class="str">'sm'</span> | <span class="str">'default'</span> | <span class="str">'lg'</span> = <span class="str">'default'</span>;
-  <span class="prop">@Input()</span> dot = <span class="val">false</span>;
-  <span class="prop">@Input()</span> outline = <span class="val">false</span>;
-  <span class="prop">@Input()</span> count = <span class="val">false</span>;
-  <span class="prop">@Input()</span> icon?: <span class="kw">string</span>;
-  <span class="prop">@Input()</span> ariaLabel?: <span class="kw">string</span>;
-
-  <span class="kw">get</span> badgeClasses(): <span class="kw">string</span> {
-    <span class="kw">const</span> classes = [<span class="str">`mp-badge--`</span> + <span class="kw">this</span>.tipo];
-    <span class="kw">if</span> (<span class="kw">this</span>.outline) classes.push(<span class="str">'mp-badge--outline'</span>);
-    <span class="kw">if</span> (<span class="kw">this</span>.count)   classes.push(<span class="str">'mp-badge--count'</span>);
-    <span class="kw">if</span> (<span class="kw">this</span>.size === <span class="str">'sm'</span>) classes.push(<span class="str">'mp-badge--sm'</span>);
-    <span class="kw">if</span> (<span class="kw">this</span>.size === <span class="str">'lg'</span>) classes.push(<span class="kw">this</span>.count ? <span class="str">'mp-badge--count-lg'</span> : <span class="str">'mp-badge--lg'</span>);
-    <span class="kw">return</span> classes.join(<span class="str">' '</span>);
-  }
-
-  <span class="kw">get</span> role(): <span class="kw">string</span> {
-    <span class="kw">return</span> <span class="kw">this</span>.count ? <span class="str">'status'</span> : <span class="str">'img'</span>;
-  }
-}</pre>
-
-    <pre id="bdg-code-drupal"><span class="cmt">{# templates/components/mp-badge.html.twig #}</span>
-<span class="cmt">{# Variables: tipo, label, dot, icon, outline, size, count, aria_label #}</span>
-
-{%- <span class="kw">set</span> tipo = tipo|default('neutral') -%}
-
-{%- <span class="kw">set</span> badge_classes = [
-  'mp-badge',
-  'mp-badge--' ~ tipo,
-  outline ? 'mp-badge--outline',
-  count   ? 'mp-badge--count',
-  size == 'sm' ? 'mp-badge--sm',
-  size == 'lg' and count     ? 'mp-badge--count-lg',
-  size == 'lg' and not count ? 'mp-badge--lg'
-] | filter(v => v) -%}
-
-&lt;<span class="kw">span</span>
-  {{ attributes.addClass(badge_classes) }}
-  <span class="prop">role</span>=<span class="str">"{{ count ? 'status' : 'img' }}"</span>
-  {% <span class="kw">if</span> aria_label %}<span class="prop">aria-label</span>=<span class="str">"{{ aria_label }}"</span>{% <span class="kw">endif</span> %}
-&gt;
-  {%- <span class="kw">if</span> dot %}
-  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-badge-dot"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;&lt;/<span class="kw">span</span>&gt;
-  {%- <span class="kw">endif</span> %}
-  {%- <span class="kw">if</span> icon %}
-  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded mp-badge-icon"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;{{ icon }}&lt;/<span class="kw">span</span>&gt;
-  {%- <span class="kw">endif</span> %}
-  {{- label -}}
-&lt;/<span class="kw">span</span>&gt;
-
-<span class="cmt">{# Uso en plantillas:
-  {{ include('mp-badge', { tipo: 'success', dot: true, label: 'Activo' }) }}
-  {{ include('mp-badge', { tipo: 'warning', icon: 'schedule', label: 'Pendiente' }) }}
-  {{ include('mp-badge', { tipo: 'error', count: true, label: node.pending_count }) }}
-#}</span></pre>
-
-    <pre id="bdg-code-html"><span class="cmt">&lt;!-- Con punto de estado --&gt;</span>
-&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-badge mp-badge--success"</span>
-      <span class="prop">role</span>=<span class="str">"img"</span> <span class="prop">aria-label</span>=<span class="str">"Estado: Activo"</span>&gt;
-  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-badge-dot"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;&lt;/<span class="kw">span</span>&gt;
-  Activo
-&lt;/<span class="kw">span</span>&gt;
-
-<span class="cmt">&lt;!-- Con ícono --&gt;</span>
-&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-badge mp-badge--warning"</span>&gt;
-  &lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"material-symbols-rounded mp-badge-icon"</span> <span class="prop">aria-hidden</span>=<span class="str">"true"</span>&gt;schedule&lt;/<span class="kw">span</span>&gt;
-  En proceso
-&lt;/<span class="kw">span</span>&gt;
-
-<span class="cmt">&lt;!-- Outline --&gt;</span>
-&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-badge mp-badge--info mp-badge--outline"</span>&gt;Beta&lt;/<span class="kw">span</span>&gt;
-
-<span class="cmt">&lt;!-- Small / Large --&gt;</span>
-&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-badge mp-badge--success mp-badge--sm"</span>&gt;Activo&lt;/<span class="kw">span</span>&gt;
-&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-badge mp-badge--success mp-badge--lg"</span>&gt;Activo&lt;/<span class="kw">span</span>&gt;
-
-<span class="cmt">&lt;!-- Contador --&gt;</span>
-&lt;<span class="kw">span</span> <span class="prop">class</span>=<span class="str">"mp-badge mp-badge--error mp-badge--count"</span>
-      <span class="prop">role</span>=<span class="str">"status"</span> <span class="prop">aria-label</span>=<span class="str">"3 notificaciones"</span>&gt;3&lt;/<span class="kw">span</span>&gt;</pre>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════
-     8 · API
-     ══════════════════════════════════════════════════════════ -->
-<div class="section-subtitle-row" style="margin-top:var(--space-48);margin-bottom:var(--space-16);">
-  <h2 class="section-sub">API del componente</h2>
-</div>
-
-<table class="mp-api-table">
-  <thead>
-    <tr>
-      <th>Propiedad</th>
-      <th>Tipo</th>
-      <th>Default</th>
-      <th>Descripción</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>tipo</code></td>
-      <td><code>'success' | 'warning' | 'error' | 'info' | 'neutral'</code></td>
-      <td><code>'neutral'</code></td>
-      <td>Semántica de color. Define el esquema de fondo y texto del badge.</td>
-    </tr>
-    <tr>
-      <td><code>size</code></td>
-      <td><code>'sm' | 'default' | 'lg'</code></td>
-      <td><code>'default'</code></td>
-      <td>Tamaño del badge. Afecta <code>font-size</code> y <code>padding</code>.</td>
-    </tr>
-    <tr>
-      <td><code>dot</code></td>
-      <td><code>boolean</code></td>
-      <td><code>false</code></td>
-      <td>Muestra un punto de estado de 6 px a la izquierda del texto, coloreado según el <code>tipo</code>.</td>
-    </tr>
-    <tr>
-      <td><code>icon</code></td>
-      <td><code>string</code></td>
-      <td>—</td>
-      <td>Nombre del ícono Material Symbols. Se renderiza con <code>aria-hidden="true"</code> ya que el texto es suficiente.</td>
-    </tr>
-    <tr>
-      <td><code>outline</code></td>
-      <td><code>boolean</code></td>
-      <td><code>false</code></td>
-      <td>Reemplaza el fondo sólido por un borde del color semántico. Ideal sobre superficies con fondo colorido.</td>
-    </tr>
-    <tr>
-      <td><code>count</code></td>
-      <td><code>boolean</code></td>
-      <td><code>false</code></td>
-      <td>Aplica forma de pastilla numérica (20 × 20 px). El contenido debe ser un número o "99+".</td>
-    </tr>
-    <tr>
-      <td><code>ariaLabel</code></td>
-      <td><code>string</code></td>
-      <td>—</td>
-      <td>Etiqueta accesible para AT. Recomendado para contadores y badges sin contexto textual claro.</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- ══════════════════════════════════════════════════════════
-     9 · ACCESIBILIDAD
-     ══════════════════════════════════════════════════════════ -->
-<div class="section-subtitle-row" style="margin-top:var(--space-48);margin-bottom:var(--space-16);">
-  <h2 class="section-sub">Accesibilidad</h2>
-</div>
-
-<div class="a11y-grid">
-  <div class="a11y-card">
-    <div class="a11y-card__icon">🎭</div>
-    <div class="a11y-card__title">Role semántico</div>
-    <div class="a11y-card__desc">Usa <code>role="img"</code> + <code>aria-label</code> para badges de estado. Para contadores dinámicos usa <code>role="status"</code> para que los lectores de pantalla anuncien cambios.</div>
-  </div>
-  <div class="a11y-card">
-    <div class="a11y-card__icon">🎨</div>
-    <div class="a11y-card__title">No solo color</div>
-    <div class="a11y-card__desc">El color nunca es el único indicador de estado. El texto ("Activo", "Error") o el dot combinado con texto garantizan legibilidad sin visión de color.</div>
-  </div>
-  <div class="a11y-card">
-    <div class="a11y-card__icon">🔢</div>
-    <div class="a11y-card__title">Contadores expresivos</div>
-    <div class="a11y-card__desc"><code>aria-label="3 notificaciones pendientes"</code> comunica más que solo el número "3". Dar siempre contexto completo para lectores de pantalla.</div>
-  </div>
-  <div class="a11y-card">
-    <div class="a11y-card__icon">📐</div>
-    <div class="a11y-card__title">Contraste mínimo</div>
-    <div class="a11y-card__desc">Todos los pares fondo/texto cumplen WCAG AA (4.5:1). En High Contrast se elimina el fondo pastel y se usa fondo negro con texto saturado para AAA.</div>
-  </div>
-</div>
-
-</section>
+  <section class="component-section" aria-labelledby="bdg-qa-title">
+    <div class="component-section__header">
+      <h2 id="bdg-qa-title" class="mp-h2">10. Checklist QA</h2>
+    </div>
+    <ul class="component-list">
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Verificar Light, Dark y High Contrast.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Confirmar que chips muestran hover, focus, selected y disabled.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Validar textos cortos sin desbordes.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Probar que HTML, CSS y Sass del visualizador se copian completos.</li>
+    </ul>
+  </section>
+</article>

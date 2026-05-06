@@ -33,6 +33,7 @@ const ROUTES = {
   'modales':       'docs/transversales/components/modals.html',
   'paginacion':    'docs/transversales/components/pagination.html',
   'badges':        'docs/web/components/badges.html',
+  'empty-state':   'docs/web/components/empty-state.html',
 
   'tokens-texto':  'docs/tokens/tokens-text.html',
   'tokens-tablas': 'docs/tokens/tokens-tables.html',

@@ -154,6 +154,12 @@ const router = (() => {
       icon: 'table_chart',
       group: 'web-componentes'
     },
+    'web/componentes/empty-state': {
+      label: 'Empty State',
+      path: 'web/components/empty-state.html',
+      icon: 'inbox',
+      group: 'web-componentes'
+    },
     'web/componentes/iconos/intro': {
       label: 'Iconos',
       path: 'web/components/icons-intro.html',
@@ -256,7 +262,8 @@ const router = (() => {
         section === 'web/componentes/inputs' ||
         section === 'web/componentes/dropdown' ||
         section === 'web/componentes/badges' ||
-        section === 'web/componentes/tabs'
+        section === 'web/componentes/tabs' ||
+        section === 'web/componentes/empty-state'
       );
 
       // Update active nav states

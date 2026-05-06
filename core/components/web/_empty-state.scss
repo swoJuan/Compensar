@@ -1,0 +1,115 @@
+// ============================================================
+//  mp-empty-state
+//  Pantalla vacía — Web · Transversal
+//  Fuente Figma: 1zVGMpzqBgiBUqhmfFEAoT / 4610-73030
+// ============================================================
+
+@use '../../abstracts' as *;
+
+// ── Base ──────────────────────────────────────────────────────
+.mp-empty-state {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-16);
+  padding:         var(--space-24);
+  text-align:      center;
+  width:           100%;
+}
+
+// ── Ícono / ilustración ───────────────────────────────────────
+.mp-empty-state__icon {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:           rem(56px);
+  height:          rem(56px);
+  border-radius:   var(--radius-md);
+  background:      var(--use-surface-subtle);
+  color:           var(--color-text-secondary);
+  flex-shrink:     0;
+
+  .icon {
+    font-size:   rem(32px);
+    line-height: 1;
+  }
+}
+
+// ── Título ────────────────────────────────────────────────────
+// Se usa con clase mp-h5 en el HTML
+.mp-empty-state__title {
+  color:  var(--color-text-primary);
+  margin: 0;
+}
+
+// ── Descripción ───────────────────────────────────────────────
+// Se usa con clase mp-body-l en el HTML
+.mp-empty-state__desc {
+  color:     var(--color-text-secondary);
+  max-width: rem(480px);
+  margin:    0;
+}
+
+// ── Acción (botón opcional) ───────────────────────────────────
+.mp-empty-state__action {
+  display:     flex;
+  gap:         var(--space-12);
+  align-items: center;
+  flex-wrap:   wrap;
+  justify-content: center;
+  margin-top:  var(--space-8);
+}
+
+// ── Modificador: con borde y superficie ───────────────────────
+// Úsalo cuando el empty state vive dentro de un contenedor
+// sin fondo propio y necesita delimitarse visualmente.
+.mp-empty-state--bordered {
+  border:        1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background:    var(--color-surface-default);
+}
+
+// ── Modificador: compacto ─────────────────────────────────────
+.mp-empty-state--compact {
+  padding: var(--space-16);
+  gap:     var(--space-12);
+
+  .mp-empty-state__icon {
+    width:  rem(40px);
+    height: rem(40px);
+
+    .icon {
+      font-size: rem(22px);
+    }
+  }
+}
+
+// ── Modificador: sin ícono visible (solo texto) ───────────────
+.mp-empty-state--text-only {
+  .mp-empty-state__icon {
+    display: none;
+  }
+}
+
+// ── Dark mode ─────────────────────────────────────────────────
+[data-theme='dark'] {
+  .mp-empty-state--bordered {
+    border-color: var(--use-border-default);
+    background:   var(--use-surface-white);
+  }
+}
+
+// ── High Contrast ─────────────────────────────────────────────
+[data-theme='high-contrast'] {
+  .mp-empty-state__icon {
+    background:   transparent;
+    border:       2px solid var(--use-border-default);
+    color:        var(--use-text-primary);
+  }
+
+  .mp-empty-state--bordered {
+    border:       2px solid var(--use-border-default);
+    background:   var(--use-background-page);
+  }
+}

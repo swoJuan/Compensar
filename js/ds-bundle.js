@@ -5119,6 +5119,7 @@
     'tables':             'docs/transversales/components/tables.html',
     'badges':             'docs/web/components/badges.html',
     'tabs':               'docs/transversales/components/tabs.html',
+    'empty-state':        'docs/web/components/empty-state.html',
     'tokens-texto':       'docs/tokens/tokens-text.html',
     'tokens-tablas':      'docs/tokens/tokens-tables.html',
   };
@@ -5347,7 +5348,8 @@
         { id: 'paginacion',label: 'Paginación',               icon: 'number-circle-one' },
         { id: 'tables',    label: 'Tables',                   icon: 'table' },
         { id: 'badges',    label: 'Badges',                   icon: 'tag' },
-        { id: 'tabs',      label: 'Tabs',                     icon: 'browsers' }
+        { id: 'tabs',      label: 'Tabs',                     icon: 'browsers' },
+        { id: 'empty-state', label: 'Empty State',            icon: 'package' }
       ]
     },
     {

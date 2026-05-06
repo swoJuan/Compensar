@@ -1,0 +1,692 @@
+<article class="component-doc-page" data-component-doc="empty-state">
+  <nav class="component-doc-breadcrumb" aria-label="Breadcrumb">
+    <span>Sistema de diseño</span>
+    <span>/</span>
+    <span>Componentes Web</span>
+    <span>/</span>
+    <strong>Empty State</strong>
+  </nav>
+
+  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <section class="component-hero" aria-labelledby="est-title">
+    <h1 id="est-title" class="text-primary">Empty State</h1>
+    <p class="text-secondary">Comunica a los usuarios que no hay contenido disponible en una sección. Orienta sobre qué ocurrió y, cuando es posible, ofrece una acción para resolverlo.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Categoría: feedback</span>
+    </div>
+  </section>
+
+  <!-- ── 1. Resumen ─────────────────────────────────────────── -->
+  <section class="component-section" aria-labelledby="est-summary">
+    <div class="component-section__header">
+      <h2 id="est-summary">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="text-primary">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando una lista, tabla o sección no tiene contenido que mostrar.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Después de una búsqueda sin resultados.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>En estados iniciales donde el usuario aún no ha creado contenido.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando un filtro activo excluye todos los resultados.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="text-primary">Do</h3>
+            <p class="text-secondary">Usa un ícono claro, un título breve y una acción concreta cuando aplique.</p>
+            <div class="component-example-actions" style="justify-content:center">
+              <div class="mp-empty-state" style="padding:var(--space-16);gap:var(--space-8)">
+                <div class="mp-empty-state__icon">
+                  <i class="icon icon-magnifying-glass" aria-hidden="true"></i>
+                </div>
+                <p class="mp-h5 mp-empty-state__title">Sin resultados</p>
+                <p class="mp-body-m mp-empty-state__desc">Intenta con otros términos de búsqueda.</p>
+              </div>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="text-primary">Don't</h3>
+            <p class="text-secondary">No uses textos vagos como "Nada aquí" sin contexto ni orientación.</p>
+            <div class="component-example-actions" style="justify-content:center">
+              <div class="mp-empty-state" style="padding:var(--space-16);gap:var(--space-8)">
+                <p class="mp-body-m mp-empty-state__desc">Nada aquí.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2. Playground ──────────────────────────────────────── -->
+  <section class="component-section" aria-labelledby="est-playground">
+    <div class="component-section__header">
+      <div>
+        <h2 id="est-playground">2. Playground</h2>
+        <p class="text-secondary">Configura el empty state y copia el HTML resultante.</p>
+      </div>
+    </div>
+
+    <div class="est-playground-grid">
+      <!-- Controles -->
+      <div class="est-controls">
+        <div class="est-field">
+          <label for="est-ctrl-icon">Ícono</label>
+          <select class="mp-input-field mp-select" id="est-ctrl-icon">
+            <option value="icon-package">package</option>
+            <option value="icon-magnifying-glass" selected>magnifying-glass</option>
+            <option value="icon-cloud-slash">cloud-slash</option>
+            <option value="icon-smiley-sad">smiley-sad</option>
+            <option value="icon-warning-circle">warning-circle</option>
+            <option value="icon-sliders">sliders</option>
+          </select>
+        </div>
+
+        <div class="est-field">
+          <label for="est-ctrl-variant">Variante</label>
+          <select class="mp-input-field mp-select" id="est-ctrl-variant">
+            <option value="">Default</option>
+            <option value="mp-empty-state--bordered">Con borde</option>
+            <option value="mp-empty-state--compact">Compacto</option>
+            <option value="mp-empty-state--text-only">Solo texto</option>
+          </select>
+        </div>
+
+        <div class="est-field est-field--full">
+          <label for="est-ctrl-title">Título</label>
+          <input class="mp-input-field" id="est-ctrl-title" type="text" value="Sin resultados">
+        </div>
+
+        <div class="est-field est-field--full">
+          <label for="est-ctrl-desc">Descripción</label>
+          <input class="mp-input-field" id="est-ctrl-desc" type="text" value="Intenta con otros términos de búsqueda.">
+        </div>
+
+        <div class="est-field">
+          <label for="est-ctrl-action">Acción</label>
+          <select class="mp-input-field mp-select" id="est-ctrl-action">
+            <option value="none">Sin acción</option>
+            <option value="primary">Botón primario</option>
+            <option value="secondary">Botón secundario</option>
+            <option value="both">Ambos botones</option>
+          </select>
+        </div>
+
+        <div class="est-field est-field--full" style="margin-top:auto;padding-top:var(--space-8)">
+          <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" id="est-copy-btn">
+            <i class="icon icon-share icon-16" aria-hidden="true"></i>
+            Copiar código
+          </button>
+        </div>
+      </div>
+
+      <!-- Preview -->
+      <div>
+        <div class="est-playground__preview" id="est-preview-area">
+          <div class="mp-empty-state" id="est-live">
+            <div class="mp-empty-state__icon">
+              <i class="icon icon-magnifying-glass" aria-hidden="true"></i>
+            </div>
+            <p class="mp-h5 mp-empty-state__title">Sin resultados</p>
+            <p class="mp-body-m mp-empty-state__desc">Intenta con otros términos de búsqueda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. Variantes ───────────────────────────────────────── -->
+  <section class="component-section" aria-labelledby="est-variantes">
+    <div class="component-section__header">
+      <h2 id="est-variantes">3. Variantes</h2>
+    </div>
+
+    <div class="est-variantes-grid">
+
+      <!-- Default -->
+      <div class="est-var-card">
+        <div class="est-var-card__demo">
+          <div class="mp-empty-state">
+            <div class="mp-empty-state__icon">
+              <i class="icon icon-package" aria-hidden="true"></i>
+            </div>
+            <p class="mp-h5 mp-empty-state__title">Sin elementos</p>
+            <p class="mp-body-m mp-empty-state__desc">No hay elementos disponibles en este momento.</p>
+          </div>
+        </div>
+        <p class="est-var-card__label">Default</p>
+        <p class="est-var-card__desc">Variante base sin borde. Úsala cuando el contenedor padre ya define el fondo y límites visuales.</p>
+      </div>
+
+      <!-- Con borde -->
+      <div class="est-var-card">
+        <div class="est-var-card__demo">
+          <div class="mp-empty-state mp-empty-state--bordered" style="width:100%">
+            <div class="mp-empty-state__icon">
+              <i class="icon icon-package" aria-hidden="true"></i>
+            </div>
+            <p class="mp-h5 mp-empty-state__title">Carpeta vacía</p>
+            <p class="mp-body-m mp-empty-state__desc">Aún no has agregado ningún archivo.</p>
+          </div>
+        </div>
+        <p class="est-var-card__label">Con borde <code>--bordered</code></p>
+        <p class="est-var-card__desc">Agrega borde, radio y fondo. Úsala cuando el empty state necesita delimitarse visualmente dentro de un área sin fondo propio.</p>
+      </div>
+
+      <!-- Compacto -->
+      <div class="est-var-card">
+        <div class="est-var-card__demo">
+          <div class="mp-empty-state mp-empty-state--compact mp-empty-state--bordered" style="width:100%">
+            <div class="mp-empty-state__icon">
+              <i class="icon icon-magnifying-glass" aria-hidden="true"></i>
+            </div>
+            <p class="mp-h5 mp-empty-state__title">Sin resultados</p>
+            <p class="mp-body-m mp-empty-state__desc">Prueba otros filtros.</p>
+          </div>
+        </div>
+        <p class="est-var-card__label">Compacto <code>--compact</code></p>
+        <p class="est-var-card__desc">Reduce padding, gap e ícono. Ideal para paneles laterales, widgets o áreas con espacio limitado.</p>
+      </div>
+
+      <!-- Solo texto -->
+      <div class="est-var-card">
+        <div class="est-var-card__demo">
+          <div class="mp-empty-state mp-empty-state--text-only" style="width:100%">
+            <p class="mp-h5 mp-empty-state__title">No hay notificaciones</p>
+            <p class="mp-body-m mp-empty-state__desc">Estás al día. Las nuevas notificaciones aparecerán aquí.</p>
+            <div class="mp-empty-state__action">
+              <button type="button" class="mp-btn mp-btn--primario mp-btn--sm">Explorar servicios</button>
+            </div>
+          </div>
+        </div>
+        <p class="est-var-card__label">Solo texto <code>--text-only</code></p>
+        <p class="est-var-card__desc">Oculta el contenedor del ícono. Úsalo cuando la ilustración es prescindible y se prioriza claridad textual.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 4. Con acción ──────────────────────────────────────── -->
+  <section class="component-section" aria-labelledby="est-actions">
+    <div class="component-section__header">
+      <h2 id="est-actions">4. Con acción</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-6">
+        <div class="est-var-card">
+          <div class="est-var-card__demo" style="flex-direction:column">
+            <div class="mp-empty-state">
+              <div class="mp-empty-state__icon">
+                <i class="icon icon-cloud-arrow-up" aria-hidden="true"></i>
+              </div>
+              <p class="mp-h5 mp-empty-state__title">Sube tu primer documento</p>
+              <p class="mp-body-m mp-empty-state__desc">Aún no tienes documentos guardados. Comienza subiendo uno.</p>
+              <div class="mp-empty-state__action">
+                <button type="button" class="mp-btn mp-btn--primario">
+                  <i class="icon icon-upload icon-16" aria-hidden="true"></i>
+                  Subir documento
+                </button>
+              </div>
+            </div>
+          </div>
+          <p class="est-var-card__label">Un botón primario</p>
+          <p class="est-var-card__desc">Cuando hay una acción principal clara que resuelve el estado vacío.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="est-var-card">
+          <div class="est-var-card__demo" style="flex-direction:column">
+            <div class="mp-empty-state">
+              <div class="mp-empty-state__icon">
+                <i class="icon icon-sliders" aria-hidden="true"></i>
+              </div>
+              <p class="mp-h5 mp-empty-state__title">Sin resultados para este filtro</p>
+              <p class="mp-body-m mp-empty-state__desc">Ningún elemento coincide con los filtros seleccionados.</p>
+              <div class="mp-empty-state__action">
+                <button type="button" class="mp-btn mp-btn--primario">Limpiar filtros</button>
+                <button type="button" class="mp-btn mp-btn--secundario">Ver todo</button>
+              </div>
+            </div>
+          </div>
+          <p class="est-var-card__label">Dos acciones</p>
+          <p class="est-var-card__desc">Cuando existen dos caminos: resolver el problema directamente o explorar sin restricciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 5. Modos de color ───────────────────────────────────── -->
+  <section class="component-section" aria-labelledby="est-color-modes">
+    <div class="component-section__header">
+      <h2 id="est-color-modes">5. Modos de color</h2>
+    </div>
+    <div class="est-modos-grid">
+
+      <div class="est-modo-box" data-theme="light">
+        <p class="est-modo-label">Light</p>
+        <div class="mp-empty-state mp-empty-state--bordered">
+          <div class="mp-empty-state__icon">
+            <i class="icon icon-package" aria-hidden="true"></i>
+          </div>
+          <p class="mp-h5 mp-empty-state__title">Sin elementos</p>
+          <p class="mp-body-m mp-empty-state__desc">No hay elementos disponibles.</p>
+          <div class="mp-empty-state__action">
+            <button type="button" class="mp-btn mp-btn--primario mp-btn--sm">Crear nuevo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="est-modo-box" data-theme="dark">
+        <p class="est-modo-label">Dark</p>
+        <div class="mp-empty-state mp-empty-state--bordered">
+          <div class="mp-empty-state__icon">
+            <i class="icon icon-package" aria-hidden="true"></i>
+          </div>
+          <p class="mp-h5 mp-empty-state__title">Sin elementos</p>
+          <p class="mp-body-m mp-empty-state__desc">No hay elementos disponibles.</p>
+          <div class="mp-empty-state__action">
+            <button type="button" class="mp-btn mp-btn--primario mp-btn--sm">Crear nuevo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="est-modo-box" data-theme="high-contrast">
+        <p class="est-modo-label">High Contrast</p>
+        <div class="mp-empty-state mp-empty-state--bordered">
+          <div class="mp-empty-state__icon">
+            <i class="icon icon-package" aria-hidden="true"></i>
+          </div>
+          <p class="mp-h5 mp-empty-state__title">Sin elementos</p>
+          <p class="mp-body-m mp-empty-state__desc">No hay elementos disponibles.</p>
+          <div class="mp-empty-state__action">
+            <button type="button" class="mp-btn mp-btn--primario mp-btn--sm">Crear nuevo</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 6. Código ──────────────────────────────────────────── -->
+  <section class="component-section" aria-labelledby="est-code">
+    <div class="component-section__header">
+      <h2 id="est-code">6. Código</h2>
+    </div>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Código de empty state">
+        <button type="button" class="mp-btn mp-btn--terciario active" role="tab" data-est-code-tab="html" aria-selected="true">HTML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-est-code-tab="scss" aria-selected="false">SCSS</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-est-code-tab="angular" aria-selected="false">Angular</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-est-copy-code>
+          <i class="icon icon-share icon-16" aria-hidden="true"></i>
+          Copiar código
+        </button>
+      </div>
+
+      <pre id="est-code-html" class="active"><code>&lt;!-- Default --&gt;
+&lt;div class="mp-empty-state"&gt;
+  &lt;div class="mp-empty-state__icon" aria-hidden="true"&gt;
+    &lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;p class="mp-h5 mp-empty-state__title"&gt;Sin elementos&lt;/p&gt;
+  &lt;p class="mp-body-m mp-empty-state__desc"&gt;
+    No hay elementos disponibles en este momento.
+  &lt;/p&gt;
+  &lt;div class="mp-empty-state__action"&gt;
+    &lt;button type="button" class="mp-btn mp-btn--primario"&gt;Crear nuevo&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Con borde --&gt;
+&lt;div class="mp-empty-state mp-empty-state--bordered"&gt;
+  &lt;!-- mismo contenido interior --&gt;
+&lt;/div&gt;
+
+&lt;!-- Compacto --&gt;
+&lt;div class="mp-empty-state mp-empty-state--compact"&gt;
+  &lt;!-- mismo contenido interior --&gt;
+&lt;/div&gt;
+
+&lt;!-- Solo texto (sin ícono) --&gt;
+&lt;div class="mp-empty-state mp-empty-state--text-only"&gt;
+  &lt;p class="mp-h5 mp-empty-state__title"&gt;No hay notificaciones&lt;/p&gt;
+  &lt;p class="mp-body-m mp-empty-state__desc"&gt;Estás al día.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+      <pre id="est-code-scss"><code>// ── Base ──────────────────────────────────────────────────────
+.mp-empty-state {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-16);
+  padding:         var(--space-24);
+  text-align:      center;
+  width:           100%;
+}
+
+// ── Ícono / ilustración ───────────────────────────────────────
+.mp-empty-state__icon {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:           rem(56px);
+  height:          rem(56px);
+  border-radius:   var(--radius-md);
+  background:      var(--use-surface-subtle);
+  color:           var(--color-text-secondary);
+  flex-shrink:     0;
+
+  .icon {
+    font-size:   rem(32px);
+    line-height: 1;
+  }
+}
+
+// ── Título — usar clase mp-h5 en el HTML ─────────────────────
+.mp-empty-state__title {
+  color:  var(--color-text-primary);
+  margin: 0;
+}
+
+// ── Descripción — usar clase mp-body-m en el HTML ────────────
+.mp-empty-state__desc {
+  color:     var(--color-text-secondary);
+  max-width: rem(480px);
+  margin:    0;
+}
+
+// ── Acción ───────────────────────────────────────────────────
+.mp-empty-state__action {
+  display:         flex;
+  gap:             var(--space-12);
+  align-items:     center;
+  flex-wrap:       wrap;
+  justify-content: center;
+  margin-top:      var(--space-8);
+}
+
+// ── Modificadores ─────────────────────────────────────────────
+.mp-empty-state--bordered {
+  border:        1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background:    var(--color-surface-default);
+}
+
+.mp-empty-state--compact {
+  padding: var(--space-16);
+  gap:     var(--space-12);
+
+  .mp-empty-state__icon {
+    width:  rem(40px);
+    height: rem(40px);
+
+    .icon { font-size: rem(22px); }
+  }
+}
+
+.mp-empty-state--text-only {
+  .mp-empty-state__icon { display: none; }
+}
+
+// ── Dark mode ─────────────────────────────────────────────────
+[data-theme='dark'] {
+  .mp-empty-state--bordered {
+    border-color: var(--use-border-default);
+    background:   var(--use-surface-white);
+  }
+}
+
+// ── High Contrast ─────────────────────────────────────────────
+[data-theme='high-contrast'] {
+  .mp-empty-state__icon {
+    background: transparent;
+    border:     2px solid var(--use-border-default);
+    color:      var(--use-text-primary);
+  }
+
+  .mp-empty-state--bordered {
+    border:     2px solid var(--use-border-default);
+    background: var(--use-background-page);
+  }
+}</code></pre>
+
+      <pre id="est-code-angular"><code>&lt;mp-empty-state
+  icon="package"
+  title="Sin elementos"
+  description="No hay elementos disponibles en este momento."
+  variant="bordered"&gt;
+  &lt;ng-template mpEmptyStateAction&gt;
+    &lt;button type="button" class="mp-btn mp-btn--primario"
+            (click)="onCreate()"&gt;
+      Crear nuevo
+    &lt;/button&gt;
+  &lt;/ng-template&gt;
+&lt;/mp-empty-state&gt;</code></pre>
+
+    </div>
+  </section>
+
+  <!-- ── 7. API ──────────────────────────────────────────────── -->
+  <section class="component-section" aria-labelledby="est-api">
+    <div class="component-section__header">
+      <h2 id="est-api">7. API del componente</h2>
+    </div>
+    <table class="mp-api-table">
+      <thead>
+        <tr>
+          <th>Clase / Propiedad</th>
+          <th>Tipo</th>
+          <th>Default</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>.mp-empty-state</code></td>
+          <td>clase base</td>
+          <td>—</td>
+          <td>Contenedor principal. Siempre requerido.</td>
+        </tr>
+        <tr>
+          <td><code>.mp-empty-state__icon</code></td>
+          <td>elemento</td>
+          <td>—</td>
+          <td>Contenedor del ícono (56×56 px). Usa <code>aria-hidden="true"</code> en el ícono decorativo.</td>
+        </tr>
+        <tr>
+          <td><code>.mp-empty-state__title</code></td>
+          <td>elemento</td>
+          <td>—</td>
+          <td>Título del estado. Combinar con clase <code>.mp-h5</code> para la tipografía correcta.</td>
+        </tr>
+        <tr>
+          <td><code>.mp-empty-state__desc</code></td>
+          <td>elemento</td>
+          <td>—</td>
+          <td>Descripción de apoyo. Combinar con <code>.mp-body-m</code>. Ancho máximo 480 px.</td>
+        </tr>
+        <tr>
+          <td><code>.mp-empty-state__action</code></td>
+          <td>elemento</td>
+          <td>—</td>
+          <td>Contenedor opcional para uno o dos botones de acción.</td>
+        </tr>
+        <tr>
+          <td><code>--bordered</code></td>
+          <td>modificador</td>
+          <td>—</td>
+          <td>Agrega borde, radio y fondo de superficie al contenedor.</td>
+        </tr>
+        <tr>
+          <td><code>--compact</code></td>
+          <td>modificador</td>
+          <td>—</td>
+          <td>Reduce padding (16 px), gap (12 px) e ícono (40×40 px). Para espacios reducidos.</td>
+        </tr>
+        <tr>
+          <td><code>--text-only</code></td>
+          <td>modificador</td>
+          <td>—</td>
+          <td>Oculta el contenedor del ícono. Úsalo cuando el ícono no aporta valor semántico.</td>
+        </tr>
+        <tr>
+          <td><code>icon</code> (Angular)</td>
+          <td><code>string</code></td>
+          <td>—</td>
+          <td>Nombre del ícono Material Symbols.</td>
+        </tr>
+        <tr>
+          <td><code>title</code> (Angular)</td>
+          <td><code>string</code></td>
+          <td>—</td>
+          <td>Texto del título principal.</td>
+        </tr>
+        <tr>
+          <td><code>description</code> (Angular)</td>
+          <td><code>string</code></td>
+          <td>—</td>
+          <td>Texto de descripción secundaria.</td>
+        </tr>
+        <tr>
+          <td><code>variant</code> (Angular)</td>
+          <td><code>'default' | 'bordered' | 'compact' | 'text-only'</code></td>
+          <td><code>'default'</code></td>
+          <td>Variante visual del componente.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── 8. Accesibilidad ───────────────────────────────────── -->
+  <section class="component-section" aria-labelledby="est-accessibility">
+    <div class="component-section__header">
+      <h2 id="est-accessibility">8. Accesibilidad</h2>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="a11y-card h-100">
+          <i class="icon icon-eye icon-24 a11y-card__icon" aria-hidden="true"></i>
+          <div class="a11y-card__title text-primary">Ícono decorativo</div>
+          <div class="a11y-card__desc text-secondary">El ícono del contenedor debe marcarse con <code>aria-hidden="true"</code>. El significado se transmite por el título y la descripción.</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="a11y-card h-100">
+          <i class="icon icon-check-square icon-24 a11y-card__icon" aria-hidden="true"></i>
+          <div class="a11y-card__title text-primary">Jerarquía semántica</div>
+          <div class="a11y-card__desc text-secondary">El título debe usar el nivel de encabezado correcto en el contexto (<code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, etc.) o <code>&lt;p&gt;</code> con clase <code>.mp-h5</code> cuando no corresponde a un encabezado real.</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="a11y-card h-100">
+          <i class="icon icon-keyboard icon-24 a11y-card__icon" aria-hidden="true"></i>
+          <div class="a11y-card__title text-primary">Acción accesible</div>
+          <div class="a11y-card__desc text-secondary">Los botones de acción deben tener texto descriptivo. Evita etiquetas genéricas como "Aquí" o "Click". Prefiere "Crear nuevo documento" sobre "Crear".</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="a11y-card h-100">
+          <i class="icon icon-contrast icon-24 a11y-card__icon" aria-hidden="true"></i>
+          <div class="a11y-card__title text-primary">Contraste</div>
+          <div class="a11y-card__desc text-secondary">El título y descripción usan tokens de texto primario y secundario respectivamente, garantizando contraste 4.5:1 en todos los modos del sistema.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</article>
+
+<script>
+(function () {
+  // ── Playground ─────────────────────────────────────────────
+  const live      = document.getElementById('est-live');
+  const iconSel   = document.getElementById('est-ctrl-icon');
+  const varSel    = document.getElementById('est-ctrl-variant');
+  const titleInp  = document.getElementById('est-ctrl-title');
+  const descInp   = document.getElementById('est-ctrl-desc');
+  const actionSel = document.getElementById('est-ctrl-action');
+  const copyBtn   = document.getElementById('est-copy-btn');
+
+  function renderLive() {
+    if (!live) return;
+    const icon    = iconSel   ? iconSel.value   : 'icon-package';
+    const variant = varSel    ? varSel.value     : '';
+    const title   = titleInp  ? titleInp.value   : '';
+    const desc    = descInp   ? descInp.value    : '';
+    const action  = actionSel ? actionSel.value  : 'none';
+
+    const actionHTML = {
+      none:      '',
+      primary:   '<div class="mp-empty-state__action"><button type="button" class="mp-btn mp-btn--primario">Crear nuevo</button></div>',
+      secondary: '<div class="mp-empty-state__action"><button type="button" class="mp-btn mp-btn--secundario">Ver todo</button></div>',
+      both:      '<div class="mp-empty-state__action"><button type="button" class="mp-btn mp-btn--primario">Crear nuevo</button><button type="button" class="mp-btn mp-btn--secundario">Ver todo</button></div>'
+    }[action] || '';
+
+    const isTextOnly = variant === 'mp-empty-state--text-only';
+  const iconHTML   = isTextOnly ? '' : `<div class="mp-empty-state__icon"><i class="icon ${icon}" aria-hidden="true"></i></div>`;
+
+    live.className = 'mp-empty-state' + (variant ? ' ' + variant : '');
+    live.innerHTML = `
+      ${iconHTML}
+      <p class="mp-h5 mp-empty-state__title">${title}</p>
+      <p class="mp-body-m mp-empty-state__desc">${desc}</p>
+      ${actionHTML}
+    `;
+  }
+
+  [iconSel, varSel, titleInp, descInp, actionSel].forEach(el => {
+    if (el) el.addEventListener('input', renderLive);
+  });
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      const html = live ? live.outerHTML : '';
+      navigator.clipboard.writeText(html).then(function () {
+        const orig = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="icon icon-check icon-16" aria-hidden="true"></i> Copiado';
+        setTimeout(function () { copyBtn.innerHTML = orig; }, 2000);
+      });
+    });
+  }
+
+  // ── Code tabs ──────────────────────────────────────────────
+  const codeTabs = document.querySelectorAll('[data-est-code-tab]');
+  codeTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      codeTabs.forEach(function (t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+
+      document.querySelectorAll('[id^="est-code-"]').forEach(function (panel) {
+        panel.classList.remove('active');
+      });
+      const target = document.getElementById('est-code-' + tab.dataset.estCodeTab);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // ── Copy code ──────────────────────────────────────────────
+  const copyCode = document.querySelector('[data-est-copy-code]');
+  if (copyCode) {
+    copyCode.addEventListener('click', function () {
+      const activePanel = document.querySelector('[id^="est-code-"].active code');
+      if (!activePanel) return;
+      navigator.clipboard.writeText(activePanel.textContent).then(function () {
+        const orig = copyCode.innerHTML;
+        copyCode.innerHTML = '<i class="icon icon-check icon-16" aria-hidden="true"></i> Copiado';
+        setTimeout(function () { copyCode.innerHTML = orig; }, 2000);
+      });
+    });
+  }
+})();
+</script>
