@@ -326,6 +326,20 @@ Alias legados como `.mp-paragraph-xl`, `.mp-paragraph-l`, `.mp-button` y `.mp-di
 
 El portal no debe definir variables `.mp-*` propias en `portal.css`. Esas variables viven en `core.css`; el Sass del portal solo debe contener estilos de presentacion de la pagina de documentacion.
 
+### Visualizadores de codigo de componentes
+
+En los playgrounds y visualizadores interactivos de componentes, las pestanas deben mostrar `HTML`, `CSS` y `Sass`:
+
+- `HTML` muestra el fragmento semantico del componente, no la pagina completa.
+- `CSS` muestra la personalizacion completa del componente desde `core`, incluyendo clases, estados, variantes y modos.
+- `Sass` muestra el equivalente Sass/plano del componente para dummy/demo.
+
+No reemplazar el CSS/Sass por listas de clases ni por tokens. Los tokens pueden vivir en su seccion documental, pero el visualizador debe permitir entender e implementar el componente sin descargar archivos.
+
+### Clases productivas de texto
+
+Para nuevas paginas, componentes documentales y HTML descargables, usar las clases productivas de texto de `core/base/_typography.scss` (`.mp-display-*`, `.mp-h1` a `.mp-h6`, `.mp-parrafo-*`, `.mp-body-*`, `.mp-label`, `.mp-hint`, `.mp-placeholder`, `.mp-btn`). Evitar estilos de texto aislados en `portal` cuando el texto debe responder correctamente a Light, Dark y High Contrast.
+
 ## Paginas compartidas y transversales
 
 Se decidio que algunas paginas son transversales porque aplican tanto a Drupal/ZT como a App:

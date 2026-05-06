@@ -111,27 +111,10 @@ const modalDocs = (() => {
 
   function codeForTab(tab, state) {
     if (tab === 'css') {
-      const classes = ['.modal', '.modal-dialog', '.modal-content', '.mp-modal', `.mp-modal--${state.kind}`];
-      if (state.size === 'sm') classes.push('.modal-sm');
-      if (state.size === 'lg') classes.push('.modal-lg');
-      if (state.theme !== 'light') classes.push(`[data-theme="${state.theme}"]`);
-      return classes.join('\n');
+      return buildCssExport();
     }
-    if (tab === 'tokens') {
-      return `overlay: #111111 / 30%
-width-sm: 300px
-width-md: 479px
-width-lg: 800px
-padding: 24px
-gap: 24px
-border-radius: 12px
-border: 1px #cccccc
-shadow: 2px 5px 16px rgba(0,0,0,.15)
-icon-container: 64px
-icon-inner: 32px
-close: 32px
-title: Roboto Bold 28px / 1.2
-body: Roboto Regular 18px / 1.3`;
+    if (tab === 'scss') {
+      return buildScssExport();
     }
     return htmlForState(state);
   }
@@ -345,6 +328,8 @@ $mp-modal-modes: (
   dark: (surface: #292929, text: #f5f5f5, overlay: rgba(0, 0, 0, .62)),
   high-contrast: (surface: #000000, text: #ffffff, overlay: rgba(0, 0, 0, .82))
 );
+
+${buildCssExport()}
 `;
   }
 

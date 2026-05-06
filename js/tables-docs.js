@@ -71,11 +71,23 @@ const tablesDocs = (() => {
 
   function paginationHtml() {
     return `<nav class="mp-pagination" aria-label="Paginacion de tabla">
-      <button type="button" class="mp-pagination__item" aria-label="Pagina anterior">${iconMarkup('arrow-left')}</button>
-      <button type="button" class="mp-pagination__item active" aria-current="page">1</button>
-      <button type="button" class="mp-pagination__item">2</button>
-      <button type="button" class="mp-pagination__item">3</button>
-      <button type="button" class="mp-pagination__item" aria-label="Pagina siguiente">${iconMarkup('arrow-right')}</button>
+  <ul class="mp-pagination__list">
+    <li class="mp-pagination__item">
+      <button type="button" class="mp-pagination__link" aria-label="Pagina anterior">${iconMarkup('arrow-left', 16)}</button>
+    </li>
+    <li class="mp-pagination__item">
+      <button type="button" class="mp-pagination__link" aria-current="page">1</button>
+    </li>
+    <li class="mp-pagination__item">
+      <button type="button" class="mp-pagination__link">2</button>
+    </li>
+    <li class="mp-pagination__item">
+      <button type="button" class="mp-pagination__link">3</button>
+    </li>
+    <li class="mp-pagination__item">
+      <button type="button" class="mp-pagination__link" aria-label="Pagina siguiente">${iconMarkup('arrow-right', 16)}</button>
+    </li>
+  </ul>
     </nav>`;
   }
 
@@ -131,26 +143,57 @@ const tablesDocs = (() => {
   }
 
   function codeForTab(tab, state) {
-    if (tab === 'classes') {
-      const classes = ['.table', '.mp-table'];
-      const variant = variants[state.variant]?.className;
-      if (variant) classes.push(...variant.split(' ').map((item) => `.${item}`));
-      if (state.type === 'selectable') classes.push('.mp-table__row--selected');
-      return classes.join('\n');
+    if (tab === 'css') {
+      return tableCssExport();
     }
 
-    if (tab === 'tokens') {
-      return `surface: use/surface/white
-head: use/tables/head
-surface-alt: use/tables/stripes
-surface-hover: use/tables/filter
-border: use/border/subtle
-text: use/text/primary, use/text/secondary
-accent: use/action/primary/default
-theme: ${state.theme}`;
+    if (tab === 'scss') {
+      return tableScssExport();
     }
 
     return tableHtml(state);
+  }
+
+  function tableCssExport() {
+    return `/* mp-table - Compensar Design System
+   Fuente: core/components/web/_tables.scss
+   Personalizacion completa del componente para dummy/demo. */
+
+.mp-table-wrap, .table-wrap { width:100%; overflow-x:auto; border:1px solid var(--use-border-subtle); border-radius:12px; background:var(--use-surface-white); }
+.mp-table, .table.mp-table { --mp-table-bg:var(--use-surface-white); --mp-table-head-bg:var(--use-tables-head); --mp-table-bg-alt:var(--use-tables-stripes); --mp-table-bg-hover:var(--use-tables-filter); --mp-table-bg-selected:var(--use-surface-orange); --mp-table-border:var(--use-border-subtle); --mp-table-text:var(--use-text-primary); --mp-table-muted:var(--use-text-secondary); --mp-table-accent:var(--use-primary-default); width:100%; min-width:40rem; margin:0; border-collapse:separate; border-spacing:0; color:var(--mp-table-text); background:var(--mp-table-bg); font-family:var(--font-body); font-size:var(--font-size-md); line-height:1.3; vertical-align:middle; }
+.mp-table > :not(caption) > * > *, .table.mp-table > :not(caption) > * > * { min-height:3rem; padding:var(--space-16) var(--space-8); border-bottom:1px dashed var(--mp-table-border); color:var(--mp-table-text); background:transparent; box-shadow:none; }
+.mp-table thead th, .table.mp-table thead th { font-weight:700; white-space:nowrap; background:var(--mp-table-head-bg); }
+.mp-table tbody tr, .table.mp-table tbody tr { transition:background-color .15s ease; }
+.mp-table.table-striped > tbody > tr:nth-of-type(odd) > *, .mp-table.mp-table--striped > tbody > tr:nth-of-type(odd) > * { background:var(--mp-table-bg-alt); }
+.mp-table.table-hover > tbody > tr:hover > *, .mp-table.mp-table--hover > tbody > tr:hover > *, .mp-table tbody tr.mp-table__row--hover > * { background:var(--mp-table-bg-hover); }
+.mp-table.table-sm > :not(caption) > * > *, .mp-table.mp-table--compact > :not(caption) > * > * { min-height:3rem; padding:var(--space-12) var(--space-8); }
+.mp-table.table-bordered > :not(caption) > * > *, .mp-table.mp-table--bordered > :not(caption) > * > * { border-right:1px solid var(--mp-table-border); }
+.mp-table tbody tr[aria-selected="true"] > *, .mp-table tbody tr.mp-table__row--selected > * { background:var(--mp-table-bg-selected); }
+.mp-table__cell--number { text-align:right; font-variant-numeric:tabular-nums; }
+.mp-table__cell--center, .mp-table__actions { text-align:center; }
+.mp-table__actions { white-space:nowrap; }
+.mp-table__empty, .mp-table__loading { min-height:11.25rem; display:grid; place-items:center; gap:var(--space-12); padding:var(--space-32); border-radius:var(--space-12); background:var(--use-surface-theme-gray-5); color:var(--use-text-secondary); text-align:center; }
+.mp-table__spinner { width:1.5rem; height:1.5rem; border:2px solid var(--use-border-subtle); border-top-color:var(--use-primary-default); border-radius:50%; animation:mp-table-spin .8s linear infinite; }
+@keyframes mp-table-spin { to { transform:rotate(360deg); } }
+.mp-pagination { display:flex; gap:var(--space-24); justify-content:flex-end; align-items:center; padding:var(--space-16) 0 0; }
+.mp-pagination__list { display:flex; flex-wrap:wrap; gap:var(--space-24); align-items:center; justify-content:center; margin:0; padding:0; list-style:none; }
+.mp-pagination__item { min-width:2.75rem; min-height:3rem; display:inline-flex; align-items:center; justify-content:center; }
+.mp-pagination__link { min-width:2.75rem; min-height:3rem; display:inline-flex; align-items:center; justify-content:center; padding:var(--space-16); border:2px solid transparent; border-radius:var(--space-8); background:transparent; color:var(--use-primary-default); font-weight:700; line-height:1; letter-spacing:.022em; }
+.mp-pagination__link[aria-current="page"], .mp-pagination__link:hover { background:var(--use-primary-default); color:var(--use-text-on-dark-primary); }
+[data-theme="dark"] .mp-table-wrap { background:var(--base-neutral-100-negro); border-color:var(--base-neutral-70); }
+[data-theme="dark"] .mp-table { --mp-table-bg:var(--base-neutral-100-negro); --mp-table-head-bg:var(--base-neutral-90); --mp-table-bg-alt:var(--base-neutral-90); --mp-table-bg-hover:var(--base-neutral-80); --mp-table-bg-selected:var(--base-neutral-80); --mp-table-border:var(--base-neutral-70); --mp-table-text:var(--base-neutral-10); --mp-table-muted:var(--base-neutral-30); --mp-table-accent:var(--use-primary-default-dark); }
+[data-theme="high-contrast"] .mp-table-wrap { background:var(--base-neutral-black); border-color:var(--base-neutral-white); }
+[data-theme="high-contrast"] .mp-table { --mp-table-bg:var(--base-neutral-black); --mp-table-head-bg:var(--base-neutral-100-negro); --mp-table-bg-alt:var(--base-neutral-black); --mp-table-bg-hover:var(--base-neutral-100-negro); --mp-table-bg-selected:var(--base-neutral-100-negro); --mp-table-border:var(--base-neutral-white); --mp-table-text:var(--base-neutral-white); --mp-table-muted:var(--base-neutral-white); --mp-table-accent:var(--use-primary-default); }`;
+  }
+
+  function tableScssExport() {
+    return `// mp-table - Compensar Design System
+// Fuente productiva: core/components/web/_tables.scss
+// Sass plano para dummy/demo.
+
+@use '../../abstracts' as *;
+
+${tableCssExport()}`;
   }
 
   function renderPlayground(page) {

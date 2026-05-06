@@ -390,31 +390,64 @@ ${optionsHtml}
 
   function buildCodeOutput(s, tab) {
     if (tab === 'css') {
-      const cls = ['mp-dropdown-group', 'mp-dropdown', 'mp-dropdown__trigger'];
-      if (s.state === 'error')   cls.push('mp-dropdown__trigger.error');
-      if (s.state === 'open')    cls.push('[aria-expanded="true"]');
-      if (s.state === 'disabled') cls.push(':disabled');
-      if (s.tipo === 'multiple') cls.push('mp-dropdown__chips', 'mp-dropdown__chip', 'mp-dropdown__chip-remove', 'mp-dropdown__option-check');
-      if (s.tipo === 'search')   cls.push('mp-dropdown__search', 'mp-dropdown__search-input');
-      if (s.tipo === 'grouped')  cls.push('mp-dropdown__group-header', 'mp-dropdown__divider');
-      return cls.map(c => `.${c}`).join('\n');
+      return dropdownCssExport();
     }
 
-    if (tab === 'tokens') {
-      return `/* Tokens aplicados al estado: ${s.state} · variante: ${s.tipo} */
---use-border-subtle:          #e0e0e0   /* borde default */
---use-border-hover:           #E63F0C   /* borde hover (naranja brand) */
---use-border-strong:          #666666   /* borde active */
---use-primary-default:        #FF6600   /* borde focus / open */
---use-surface-white:          #FFFFFF   /* fondo trigger y panel */
---use-text-primary:           #111111   /* valor seleccionado */
---use-text-tertiary:          #666666   /* placeholder y caret */
---use-surface-theme-gray-5:   #F5F5F5   /* hover opción */
---use-state-error-icon:                 /* borde error */
---use-state-error-mandatory:  #bb4945   /* asterisco requerido */`;
+    if (tab === 'scss') {
+      return dropdownScssExport();
     }
 
     return buildDropdownHtml(s);
+  }
+
+  function dropdownCssExport() {
+    return `/* mp-dropdown - Compensar Design System v2
+   Fuente: core/components/web/_dropdown.scss
+   Personalizacion completa del componente para dummy/demo. */
+
+.mp-dropdown-group { display:flex; flex-direction:column; gap:.5rem; width:100%; }
+.mp-dropdown-label { display:flex; align-items:center; gap:.25rem; color:var(--use-text-primary); font-size:1rem; font-weight:400; }
+.mp-dropdown-required { color:var(--use-state-error-mandatory,#bb4945); }
+.mp-dropdown { position:relative; width:100%; }
+.mp-dropdown__trigger { --mp-dd-border:var(--use-border-subtle); display:flex; align-items:center; gap:.625rem; width:100%; min-height:3.5rem; padding:.875rem 1rem; border:.0625rem solid var(--mp-dd-border); border-radius:1rem; background:var(--use-surface-white); color:var(--use-text-primary); font-size:1rem; cursor:pointer; transition:border-color .18s, box-shadow .18s; }
+.mp-dropdown__trigger:hover:not(:disabled):not(.error):not([aria-expanded="true"]) { --mp-dd-border:var(--use-border-hover); }
+.mp-dropdown__trigger[aria-expanded="true"], .mp-dropdown__trigger:focus-visible:not(:disabled) { --mp-dd-border:var(--use-primary-default); border-color:var(--mp-dd-border); box-shadow:0 0 0 .1875rem color-mix(in srgb,var(--use-primary-default) 18%,transparent); }
+.mp-dropdown__trigger[aria-expanded="true"] { border-bottom-right-radius:0; border-bottom-left-radius:0; }
+.mp-dropdown__trigger.error { --mp-dd-border:var(--use-state-error-icon); border-color:var(--mp-dd-border); box-shadow:0 0 0 .1875rem color-mix(in srgb,var(--use-state-error-icon) 15%,transparent); }
+.mp-dropdown__trigger:disabled { background:var(--use-surface-subtle); opacity:.65; cursor:not-allowed; }
+.mp-dropdown__value { flex:1 0 0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.mp-dropdown__value.is-placeholder { color:var(--use-text-tertiary); }
+.mp-dropdown__caret { flex-shrink:0; color:var(--use-text-tertiary); font-size:1.5rem; transition:transform .2s; }
+.mp-dropdown__trigger[aria-expanded="true"] .mp-dropdown__caret { transform:rotate(180deg); }
+.mp-dropdown__panel { position:absolute; top:100%; right:0; left:0; z-index:100; display:none; max-height:16rem; overflow-y:auto; border:.0625rem solid var(--use-primary-default); border-top:0; border-radius:0 0 1rem 1rem; background:var(--use-surface-white); box-shadow:0 .5rem 2rem rgba(17,17,17,.14); }
+.mp-dropdown[aria-expanded="true"] > .mp-dropdown__panel { display:block; }
+.mp-dropdown__options { display:grid; }
+.mp-dropdown__option { display:flex; align-items:center; gap:.625rem; min-height:3rem; padding:.625rem 1rem; color:var(--use-text-primary); font-size:1rem; cursor:pointer; transition:background .12s; }
+.mp-dropdown__option:hover:not(.mp-dropdown__option--disabled) { background:var(--use-surface-theme-gray-5,#f5f5f5); }
+.mp-dropdown__option--selected { background:color-mix(in srgb,var(--use-primary-default) 8%,transparent); color:var(--use-primary-default); font-weight:500; }
+.mp-dropdown__option--disabled { opacity:.6; cursor:not-allowed; }
+.mp-dropdown__search { padding:.75rem 1rem; border-bottom:.0625rem solid var(--use-border-subtle); }
+.mp-dropdown__search-input { width:100%; min-height:2.5rem; padding:.5rem .75rem; border:.0625rem solid var(--use-border-subtle); border-radius:.75rem; color:var(--use-text-primary); background:var(--use-surface-white); }
+.mp-dropdown__chips { display:flex; flex:1 1 auto; flex-wrap:wrap; gap:.5rem; }
+.mp-dropdown__chip { display:inline-flex; align-items:center; gap:.25rem; padding:.25rem .5rem; border-radius:999px; background:color-mix(in srgb,var(--use-primary-default) 10%,transparent); color:var(--use-primary-default); font-size:.875rem; }
+.mp-dropdown__chip-remove { border:0; background:transparent; color:inherit; cursor:pointer; }
+.mp-dropdown__group-header { padding:.75rem 1rem .25rem; color:var(--use-text-tertiary); font-size:.875rem; font-weight:700; }
+.mp-dropdown__divider { height:.0625rem; margin:.25rem 0; background:var(--use-border-subtle); }
+.mp-dropdown-helper { display:flex; align-items:flex-start; gap:.25rem; color:var(--use-text-tertiary); font-size:.875rem; }
+.mp-dropdown-helper.error { color:var(--use-state-error-text); font-weight:500; }
+[data-theme="dark"] .mp-dropdown__panel, [data-theme="dark"] .mp-dropdown__trigger { background:var(--use-surface-white,#292929); color:var(--use-text-primary,#f5f5f5); }
+[data-theme="high-contrast"] .mp-dropdown__trigger, [data-theme="high-contrast"] .mp-dropdown__panel { border-color:var(--base-neutral-white,#fff); background:#000; color:#fff; }`;
+  }
+
+  function dropdownScssExport() {
+    return `// mp-dropdown - Compensar Design System v2
+// Fuente productiva: core/components/web/_dropdown.scss
+// Usa tokens semanticos del core; los estilos de la pagina viven en portal.
+
+@use '../../abstracts/functions' as *;
+@use '../../abstracts/tokens-spacing' as *;
+
+${dropdownCssExport()}`;
   }
 
   // ──────────────────────────────────────────────────────────

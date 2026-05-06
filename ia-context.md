@@ -481,6 +481,20 @@ Los archivos descargables deben estar unidos a la definicion del `core`, usar to
 
 La descarga debe ser facil de leer para dummy/demo: sin mixins, sin abstracciones complejas y sin clases inventadas fuera de la API oficial. Si algun valor no existe en Figma o core, debe quedar marcado como pendiente por validar antes de publicarlo como token oficial.
 
+## Regla de visualizadores de codigo
+
+Los visualizadores interactivos de codigo en paginas de componente deben mostrar:
+
+- HTML: solo el fragmento semantico del componente, sin shell, header ni estilos del portal.
+- CSS: la personalizacion completa del componente desde `core`, con clases publicas, variables necesarias, estados, variantes y modos. No debe ser solo una lista de clases ni solo tokens.
+- Sass: la personalizacion Sass/plana del componente equivalente al CSS mostrado, lista para dummy/demo cuando aplique.
+
+Cuando el CSS o Sass ya se muestra completo en el visualizador, no es obligatorio forzar la descarga para entender el componente; la descarga queda como conveniencia para desarrollo y QA. Los tokens pueden seguir documentados en su seccion propia, pero no reemplazan el CSS/Sass dentro del visualizador.
+
+## Regla de clases de texto
+
+En nuevas paginas, componentes documentales y HTML descargables se deben usar las clases productivas de texto ya configuradas en `core/base/_typography.scss`: `.mp-display-*`, `.mp-h1` a `.mp-h6`, `.mp-parrafo-*`, `.mp-body-*`, `.mp-label`, `.mp-hint`, `.mp-placeholder` y `.mp-btn` segun corresponda. Esto asegura que Light, Dark y High Contrast resuelvan tipografia y color desde el core y no desde estilos aislados del portal.
+
 ## Reglas para QA
 
 Cada componente debe incluir checklist especifico para validar:

@@ -5066,6 +5066,11 @@
         window.cardsDocs.initCardsDoc(document);
       });
     }
+    if (window.paginationDocs) {
+      requestAnimationFrame(function() {
+        window.paginationDocs.initPaginationDoc(document);
+      });
+    }
     if (window.tablesDocs) {
       requestAnimationFrame(function() {
         window.tablesDocs.initTablesDoc(document);
@@ -5110,6 +5115,7 @@
     'toast':              'docs/transversales/components/toasts.html',
     'modales':            'docs/transversales/components/modals.html',
     'cards':              'docs/transversales/components/cards.html',
+    'paginacion':         'docs/transversales/components/pagination.html',
     'tables':             'docs/transversales/components/tables.html',
     'badges':             'docs/web/components/badges.html',
     'tabs':               'docs/transversales/components/tabs.html',
@@ -5338,6 +5344,7 @@
         { id: 'toast',     label: 'Toast',                    icon: 'bell' },
         { id: 'modales',   label: 'Modales',                  icon: 'browser' },
         { id: 'cards',     label: 'Cards',                    icon: 'credit-card' },
+        { id: 'paginacion',label: 'Paginación',               icon: 'number-circle-one' },
         { id: 'tables',    label: 'Tables',                   icon: 'table' },
         { id: 'badges',    label: 'Badges',                   icon: 'tag' },
         { id: 'tabs',      label: 'Tabs',                     icon: 'browsers' }

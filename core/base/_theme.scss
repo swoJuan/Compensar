@@ -61,14 +61,15 @@
   --color-secondary-subtle: var(--product-accent-30);
 
   // Text aliases.
-  --color-text-primary: var(--use-text-primary);
+  --color-text-primary:   var(--use-text-primary);
   --color-text-secondary: var(--use-text-secondary);
-  --color-text-tertiary: var(--use-text-tertiary);
-  --color-text-muted: var(--use-text-tertiary);
-  --color-text-disabled: var(--base-neutral-50);
-  --color-text-inverse: var(--use-text-inverse);
-  --color-text-link: var(--use-text-link);
-  --color-text-on-dark: var(--use-text-on-dark-primary);
+  --color-text-tertiary:  var(--use-text-tertiary);
+  --color-text-muted:     var(--use-text-tertiary);
+  // disabled: no existe en Figma; se sobreescribe en HC para cumplir WCAG.
+  --color-text-disabled:  var(--base-neutral-50);
+  --color-text-inverse:   var(--use-text-inverse);
+  --color-text-link:      var(--use-text-link);
+  --color-text-on-dark:   var(--use-text-on-dark-primary);
 
   // Surface aliases.
   --color-surface-page: var(--use-background-page);
@@ -328,125 +329,154 @@
 
 // ============================================================
 //  Dark mode token overrides
-//  Solo redefine los tokens semánticos --use-* y --base-neutral-*.
-//  Los colores base permanecen igual; solo cambia el mapeo semántico.
+//  Alineado con Figma Dark.tokens.json.
+//  Se sobreescriben --base-brand-80 y --base-brand-90 con los
+//  valores dark de Figma. Todos los alias que los referencian
+//  (use-primary-default, use-text-link, use-focus-outline, etc.)
+//  se actualizan automáticamente sin necesidad de redefinirlos.
 // ============================================================
 [data-theme='dark'] {
-  // Fondos
+  // ── Base brand — valores dark de Figma ──────────────────
+  // base/brand/80 dark = #FF9D5C · base/brand/90 dark = #E65C00
+  --base-brand-80: #{color-tokens.$use-primary-default-dark}; // #ff9d5c
+  --base-brand-90: #e65c00;
+  // use-primary-default, use-primary-hover, use-text-link
+  // y use-focus-outline se actualizan solos via var(--base-brand-*)
+
+  // ── Fondos ───────────────────────────────────────────────
   --use-background-page:   #{color-tokens.$base-neutral-90};
   --use-surface-surface:   #{color-tokens.$base-neutral-80};
   --use-surface-white:     #{color-tokens.$base-neutral-90};
   --use-surface-subtle:    #{color-tokens.$product-gray-90};
 
-  // Texto
-  --use-text-primary:      #{color-tokens.$base-neutral-10};
-  --use-text-secondary:    #{color-tokens.$base-neutral-30};
-  --use-text-tertiary:     #{color-tokens.$base-neutral-40};
-  --use-text-inverse:      #{color-tokens.$base-neutral-100-negro};
-  --use-text-link:         #{color-tokens.$base-brand-60};
+  // ── Texto ────────────────────────────────────────────────
+  --use-text-primary:           #{color-tokens.$base-neutral-10};
+  --use-text-secondary:         #{color-tokens.$base-neutral-20};   // Figma: base.neutral.20
+  --use-text-tertiary:          #{color-tokens.$base-neutral-50};   // Figma: base.neutral.50
+  --use-text-inverse:           #{color-tokens.$base-neutral-100-negro};
+  // use-text-link hereda var(--base-brand-80) → auto #ff9d5c
   --use-text-on-dark-primary:   #{color-tokens.$base-neutral-white};
-  --use-text-on-dark-secondary: #{color-tokens.$base-neutral-10};
+  --use-text-on-dark-secondary: #{color-tokens.$base-neutral-20};   // Figma: base.neutral.20
 
-  // Brand / primary — tono más claro para contraste sobre fondo oscuro
-  --use-primary-default:   #{color-tokens.$base-brand-60};
-  --use-primary-hover:     #{color-tokens.$base-brand-70};
-  --use-primary-active:    #{color-tokens.$base-brand-80};
+  // ── Texto temático — tonos claros para fondo oscuro ─────
+  --use-text-theme-blue:    #{color-tokens.$base-blue-30};          // Figma: base.blue.30
+  --use-text-theme-green-1: #{color-tokens.$base-green-1-30};       // Figma: base.green-1.30
+  --use-text-theme-green-2: #{color-tokens.$base-green-2-10};       // Figma: base.green-2.10
+  --use-text-theme-orange:  #{color-tokens.$base-orange-10};        // Figma: base.orange.10
+  --use-text-theme-red:     #{color-tokens.$base-red-30};           // Figma: base.red.30
+  --use-text-theme-violet:  #{color-tokens.$product-violet-30};     // Figma: product.violet.30
+  --use-text-theme-yellow:  #{color-tokens.$base-yellow-30};        // Figma: base.yellow.30
 
-  // Bordes
+  // ── Bordes ───────────────────────────────────────────────
   --use-border-default:    #{color-tokens.$base-neutral-60};
   --use-border-strong:     #{color-tokens.$base-neutral-40};
   --use-border-subtle:     #{color-tokens.$base-neutral-70};
 
-  // Foco
-  --use-focus-outline:     #{color-tokens.$base-brand-60};
-  --use-focus-background:  #{color-tokens.$base-brand-90};
+  // ── Foco ─────────────────────────────────────────────────
+  // use-focus-outline hereda var(--base-brand-80) → auto #ff9d5c
+  --use-focus-background:  #{color-tokens.$base-brand-40};          // Figma: base.brand.40
 
-  // Estado: éxito
-  --use-state-success-bg:     #{color-tokens.$base-green-1-90};
-  --use-state-success-text:   #{color-tokens.$base-green-1-40};
-  --use-state-success-border: #{color-tokens.$base-green-1-70};
-  --use-state-success-icon:   #{color-tokens.$base-green-1-50};
+  // ── Estado: éxito ────────────────────────────────────────
+  --use-state-success-bg:     #{color-tokens.$base-green-1-80};     // Figma: base.green-1.80
+  --use-state-success-text:   #{color-tokens.$base-neutral-10};     // Figma: base.neutral.10
+  --use-state-success-border: #{color-tokens.$base-green-1-70};     // Figma: base.green-1.70
+  --use-state-success-icon:   #{color-tokens.$base-green-1-40};     // Figma: base.green-1.40
 
-  // Estado: error
-  --use-state-error-bg:              #{color-tokens.$base-red-90};
-  --use-state-error-text:            #{color-tokens.$base-red-30};
-  --use-state-error-text-error-field:#{color-tokens.$base-red-40};
-  --use-state-error-border:          #{color-tokens.$base-red-60};
-  --use-state-error-icon:            #{color-tokens.$base-red-50};
+  // ── Estado: error ────────────────────────────────────────
+  --use-state-error-bg:               #{color-tokens.$base-red-90};
+  --use-state-error-text:             #{color-tokens.$base-neutral-10};  // Figma: base.neutral.10
+  --use-state-error-text-error-field: #{color-tokens.$base-neutral-10};  // Figma: base.neutral.10
+  --use-state-error-border:           #{color-tokens.$base-red-70};      // Figma: base.red.70
+  --use-state-error-icon:             #{color-tokens.$base-neutral-10};  // Figma: base.neutral.10
+  --use-state-error-mandatory:        #{color-tokens.$base-red-70};      // Figma: base.red.70
 
-  // Estado: advertencia
+  // ── Estado: advertencia ──────────────────────────────────
   --use-state-warning-bg:     #{color-tokens.$base-yellow-90};
   --use-state-warning-border: #{color-tokens.$base-yellow-70};
-  // warning text y icon-color apuntan a --use-text-primary → se actualiza solo
+  // warning text e icon-color apuntan a --use-text-primary → se actualiza solo
 
-  // Estado: información
+  // ── Estado: información ──────────────────────────────────
   --use-state-info-bg:     #{color-tokens.$base-blue-90};
-  --use-state-info-text:   #{color-tokens.$base-blue-30};
-  --use-state-info-border: #{color-tokens.$base-cyan-blue-50};
-  --use-state-info-icon:   #{color-tokens.$base-cyan-blue-40};
+  --use-state-info-text:   #{color-tokens.$base-neutral-10};        // Figma: base.neutral.10
+  --use-state-info-border: #{color-tokens.$base-blue-70};           // Figma: base.blue.70
+  --use-state-info-icon:   #{color-tokens.$base-blue-70};           // Figma: base.blue.70
 }
 
 // ============================================================
 //  High-contrast token overrides
-//  Redefines base-brand-* so every use-* alias and component
-//  that references var(--base-brand-80) automatically gets the
-//  correct HC yellow without any hardcoded #ffff00 values.
+//  Alineado con Figma "High Contrast.tokens.json".
+//  Se sobreescriben --base-brand-80/90/100 con los valores HC.
+//  Todos los alias que los referencian (use-primary-default,
+//  use-text-link, use-focus-outline) se actualizan solos.
 // ============================================================
 [data-theme='high-contrast'] {
-  --base-brand-80:  #{color-tokens.$base-brand-hc};
-  --base-brand-90:  #{color-tokens.$base-brand-hc-hover};
-  --base-brand-100: #{color-tokens.$base-brand-hc-active};
+  // ── Base brand — valores HC de Figma (#FFFF00) ──────────
+  // base/brand/80 HC = #FFFF00 → propaga a use-primary-default,
+  // use-text-link y use-focus-outline automáticamente.
+  --base-brand-80:  #{color-tokens.$base-brand-hc};        // #ffff00
+  --base-brand-90:  #{color-tokens.$base-brand-hc-hover};  // #e6e600
+  --base-brand-100: #{color-tokens.$base-brand-hc-active}; // #cccc00
 
-  // Brand / primary
-  --use-primary-default:  #{color-tokens.$base-brand-hc};
-  --use-primary-hover:    #{color-tokens.$base-brand-hc-hover};
-  --use-primary-active:   #{color-tokens.$base-brand-hc-active};
-
-  // Fondos — negro puro
+  // ── Fondos — negro puro ──────────────────────────────────
   --use-background-page:  #{color-tokens.$base-neutral-black};
   --use-surface-surface:  #{color-tokens.$base-neutral-black};
   --use-surface-white:    #{color-tokens.$base-neutral-black};
   --use-surface-subtle:   #{color-tokens.$base-neutral-90};
 
-  // Texto — blanco puro para máximo contraste
-  --use-text-primary:      #{color-tokens.$base-neutral-white};
-  --use-text-secondary:    #{color-tokens.$base-neutral-10};
-  --use-text-tertiary:     #{color-tokens.$base-neutral-20};
-  --use-text-inverse:      #{color-tokens.$base-neutral-black};
-  --use-text-link:         #{color-tokens.$base-brand-hc};
+  // ── Texto — blanco puro para máximo contraste ────────────
+  --use-text-primary:           #{color-tokens.$base-neutral-white};
+  --use-text-secondary:         #{color-tokens.$base-neutral-10};
+  --use-text-tertiary:          #{color-tokens.$base-neutral-20};
+  --use-text-inverse:           #{color-tokens.$base-neutral-black};
+  // use-text-link hereda var(--base-brand-80) → auto #ffff00
   --use-text-on-dark-primary:   #{color-tokens.$base-neutral-white};
   --use-text-on-dark-secondary: #{color-tokens.$base-neutral-10};
 
-  // Bordes — visibles sobre negro
+  // ── Texto temático — blanco puro en HC ──────────────────
+  // Figma HC: todos use/text/theme/* = base.neutral.white
+  --use-text-theme-blue:    #{color-tokens.$base-neutral-white};
+  --use-text-theme-green-1: #{color-tokens.$base-neutral-white};
+  --use-text-theme-green-2: #{color-tokens.$base-neutral-white};
+  --use-text-theme-orange:  #{color-tokens.$base-neutral-white};
+  --use-text-theme-red:     #{color-tokens.$base-neutral-white};
+  --use-text-theme-violet:  #{color-tokens.$base-neutral-white};
+  --use-text-theme-yellow:  #{color-tokens.$base-neutral-white};
+
+  // ── Texto disabled — mayor contraste en HC ───────────────
+  // No existe en Figma; se aumenta para cumplir WCAG sobre negro.
+  --color-text-disabled: #{color-tokens.$base-neutral-40};  // #b8b8b8 — 6:1 sobre negro
+
+  // ── Bordes — visibles sobre negro ───────────────────────
   --use-border-default: #{color-tokens.$base-neutral-white};
   --use-border-strong:  #{color-tokens.$base-neutral-white};
   --use-border-subtle:  #{color-tokens.$base-neutral-40};
 
-  // Foco — amarillo HC
-  --use-focus-outline:    #{color-tokens.$base-brand-hc};
+  // ── Foco ─────────────────────────────────────────────────
+  // use-focus-outline hereda var(--base-brand-80) → auto #ffff00
   --use-focus-background: #{color-tokens.$base-neutral-black};
 
-  // Estado: éxito — verde saturado
-  --use-state-success-bg:     #{color-tokens.$base-green-1-90};
-  --use-state-success-text:   #{color-tokens.$base-green-1-40};
-  --use-state-success-border: #{color-tokens.$base-green-1-60};
-  --use-state-success-icon:   #{color-tokens.$base-green-1-50};
+  // ── Estado: éxito ────────────────────────────────────────
+  --use-state-success-bg:     #{color-tokens.$base-green-1-100};    // Figma: base.green-1.100
+  --use-state-success-text:   #{color-tokens.$base-neutral-white};  // Figma: base.neutral.white
+  --use-state-success-border: #{color-tokens.$base-green-1-70};     // Figma: base.green-1.70
+  --use-state-success-icon:   #{color-tokens.$base-green-1-40};     // Figma: base.green-1.40
 
-  // Estado: error — rojo saturado
-  --use-state-error-bg:               #{color-tokens.$base-red-90};
-  --use-state-error-text:             #{color-tokens.$base-red-30};
-  --use-state-error-text-error-field: #{color-tokens.$base-red-40};
-  --use-state-error-border:           #{color-tokens.$base-red-60};
-  --use-state-error-icon:             #{color-tokens.$base-red-50};
+  // ── Estado: error ────────────────────────────────────────
+  --use-state-error-bg:               #{color-tokens.$base-red-100};           // Figma: base.red.100
+  --use-state-error-text:             #{color-tokens.$base-neutral-white};      // Figma: base.neutral.white
+  --use-state-error-text-error-field: #{color-tokens.$base-neutral-white};      // Figma: base.neutral.white
+  --use-state-error-border:           #{color-tokens.$base-red-70};             // Figma: base.red.70
+  --use-state-error-icon:             #{color-tokens.$base-neutral-white};      // Figma: base.neutral.white
+  --use-state-error-mandatory:        #{color-tokens.$base-red-70};             // Figma: base.red.70
 
-  // Estado: advertencia — amarillo HC
+  // ── Estado: advertencia ──────────────────────────────────
   --use-state-warning-bg:     #{color-tokens.$base-neutral-black};
-  --use-state-warning-border: #{color-tokens.$base-brand-hc};
+  --use-state-warning-border: #{color-tokens.$base-brand-hc};       // amarillo HC
   // warning text hereda --use-text-primary → blanco
 
-  // Estado: información — azul saturado
-  --use-state-info-bg:     #{color-tokens.$base-blue-90};
-  --use-state-info-text:   #{color-tokens.$base-blue-30};
-  --use-state-info-border: #{color-tokens.$base-cyan-blue-50};
-  --use-state-info-icon:   #{color-tokens.$base-cyan-blue-40};
+  // ── Estado: información ──────────────────────────────────
+  --use-state-info-bg:     #{color-tokens.$base-blue-100};           // Figma: base.blue.100
+  --use-state-info-text:   #{color-tokens.$base-neutral-white};      // Figma: base.neutral.white
+  --use-state-info-border: #{color-tokens.$base-blue-70};            // Figma: base.blue.70
+  --use-state-info-icon:   #{color-tokens.$base-blue-70};            // Figma: base.blue.70
 }

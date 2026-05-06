@@ -199,17 +199,10 @@ const selectionDocs = (() => {
 
   function codeForTab(tab, state) {
     if (tab === 'css') {
-      const base = state.kind === 'switch' ? ['.mp-switch'] : ['.mp-choice', `.mp-${state.kind}`];
-      if (state.state === 'error') base.push(state.kind === 'switch' ? '.mp-switch--error' : '.mp-choice--error');
-      if (state.theme !== 'light') base.push(`[data-theme="${state.theme}"]`);
-      return base.join('\n');
+      return buildCssExport();
     }
-    if (tab === 'tokens') {
-      const spec = specs[state.kind] || specs.checkbox;
-      return `${spec.tokens}
-state: ${state.state}
-theme: ${state.theme}
-selected-color: ${state.theme === 'dark' ? 'var(--use-primary-default-dark, #ff9d5c)' : state.theme === 'high-contrast' ? 'var(--use-primary-default, #ffff00)' : 'var(--use-primary-default)'}`;
+    if (tab === 'scss') {
+      return buildScssExport();
     }
     return htmlForState(state);
   }
@@ -509,7 +502,7 @@ selected-color: ${state.theme === 'dark' ? 'var(--use-primary-default-dark, #ff9
   }
 
   function buildScssExport() {
-    return `// Checkbox / Radio / Switch - estilos planos para dummy/demo\n// Fuente productiva: core/components/web/_selection-controls.scss\n\n$mp-choice-control-size: 24px;\n$mp-choice-visual-size: 18px;\n$mp-choice-hit-size: 44px;\n$mp-choice-gap: 8px;\n$mp-switch-width: 52px;\n$mp-switch-height: 40px;\n$mp-switch-track-height: 32px;\n$mp-switch-knob: 28px;\n\n// Copiar las clases productivas desde core/components/web/_selection-controls.scss.\n`;
+    return `// Checkbox / Radio / Switch - estilos planos para dummy/demo\n// Fuente productiva: core/components/web/_selection-controls.scss\n\n$mp-choice-control-size: 24px;\n$mp-choice-visual-size: 18px;\n$mp-choice-hit-size: 44px;\n$mp-choice-gap: 8px;\n$mp-switch-width: 52px;\n$mp-switch-height: 40px;\n$mp-switch-track-height: 32px;\n$mp-switch-knob: 28px;\n\n${buildCssExport()}`;
   }
 
   function copyText(text, button) {

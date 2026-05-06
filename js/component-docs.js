@@ -632,39 +632,10 @@ ${buttonExportCss.slice(buttonExportCss.indexOf('.mp-btn {'))}`;
 
   function codeForTab(tab, state) {
     if (tab === 'css') {
-      const cfg = anatomy[state.kind] || anatomy.text;
-      return [
-        '.mp-btn',
-        `.mp-btn--${state.variant}`,
-        cfg.className ? `.${cfg.className}` : null,
-        state.fullWidth ? '.w-100' : null,
-        state.theme !== 'light' ? `[data-theme="${state.theme}"]` : null
-      ].filter(Boolean).join('\n');
+      return buttonExportCss;
     }
-    if (tab === 'tokens') {
-      const cfg = anatomy[state.kind] || anatomy.text;
-      const themeTokens = state.theme === 'dark'
-        ? `theme: dark
-primary: var(--use-primary-default-dark, #ff9d5c)
-surface-preview: var(--use-surface-white, #292929)
-text-on-dark: #f5f5f5`
-        : state.theme === 'high-contrast'
-          ? `theme: high-contrast
-surface-preview: var(--use-surface-white, #000000)
-primary: var(--use-primary-default, #ffff00)
-text-primary: var(--use-text-primary, #ffffff)
-text-inverse: var(--use-text-inverse, #000000)
-link/border: var(--use-text-link, #ffff00)`
-          : `theme: light
-primary: var(--use-primary-default)
-surface-preview: var(--use-surface-white)`;
-      return `height: 48px
-padding: ${cfg.padding}
-gap: 16px
-icon-size: 24px
-radius: var(--radius-md) /* 24px */
-font: var(--font-size-btn) / var(--font-weight-bold)
-${themeTokens}`;
+    if (tab === 'scss') {
+      return buttonExportScss;
     }
     return buttonHtml(state);
   }
@@ -1693,8 +1664,11 @@ theme: light
 
     preview.replaceChildren(makeInputGroup(s));
 
-    if (activeTab === 'css')    output.textContent = cssClassesFor(s);
-    else if (activeTab === 'tokens') output.textContent = tokensFor(s);
+    if (activeTab === 'css') output.textContent = inputExportCss;
+    else if (activeTab === 'scss') output.textContent = `// Input - Compensar Design System
+// Figma: nodo 4517:7746
+// Uso: plano para dummy/demo.
+${inputExportCss}`;
     else output.textContent = inputHtml(s);
   }
 

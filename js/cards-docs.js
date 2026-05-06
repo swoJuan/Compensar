@@ -168,27 +168,54 @@ const cardsDocs = (() => {
   }
 
   function codeForTab(tab, state) {
-    if (tab === 'classes') {
-      const classes = ['.mp-card'];
-      const variant = variants[state.variant]?.className;
-      if (variant) classes.push(...variant.split(' '));
-      if (state.state !== 'default') classes.push(`.mp-card--is-${state.state}`);
-      if (!state.withImage) classes.push('sin .mp-card__media');
-      return classes.join('\n');
+    if (tab === 'css') {
+      return cardCssExport();
     }
 
-    if (tab === 'tokens') {
-      return `container: use/surface/white
-border: use/border/subtle
-text: use/text/primary, use/text/secondary
-radius: radius/md
-padding: spacing/24px
-gap: spacing/16px
-high-contrast-border: base/neutral/white
-theme: ${state.theme}`;
+    if (tab === 'scss') {
+      return cardScssExport();
     }
 
     return cardHtml(state);
+  }
+
+  function cardCssExport() {
+    return `/* mp-card - Compensar Design System
+   Fuente: core/components/web/_cards.scss
+   Personalizacion completa del componente para dummy/demo. */
+
+.mp-card { --mp-card-bg:var(--use-surface-white); --mp-card-border:var(--use-border-subtle); --mp-card-title:var(--use-text-primary); --mp-card-subtitle:var(--use-text-tertiary); --mp-card-body:var(--use-text-secondary); --mp-card-icon:var(--use-text-tertiary); --mp-card-media-bg:var(--use-surface-theme-gray-5); --mp-card-shadow:var(--shadow-1); --mp-card-hover-border:var(--use-border-hover); --mp-card-focus:var(--use-focus-outline); display:flex; flex-direction:column; gap:var(--space-16); width:min(100%,24.875rem); min-height:33.5rem; padding:var(--space-24); overflow:hidden; border:1px solid var(--mp-card-border); border-radius:24px; background:var(--mp-card-bg); box-shadow:var(--mp-card-shadow); color:var(--mp-card-body); transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.mp-card__media { display:block; width:100%; aspect-ratio:16 / 9; border-radius:16px; object-fit:cover; background:var(--mp-card-media-bg); }
+.mp-card__content { min-width:0; display:flex; flex:1 1 auto; flex-direction:column; gap:var(--space-16); }
+.mp-card__header { display:flex; align-items:flex-start; justify-content:space-between; gap:var(--space-12); }
+.mp-card__title { margin:0; color:var(--mp-card-title); font-family:var(--font-body); font-size:var(--font-size-h5); font-weight:700; line-height:1.2; }
+.mp-card__subtitle { margin:var(--space-4) 0 0; color:var(--mp-card-subtitle); font-family:var(--font-body); font-size:var(--font-size-sm); line-height:1.4; }
+.mp-card__body { margin:0; color:var(--mp-card-body); font-family:var(--font-body); font-size:var(--font-size-md); line-height:1.5; }
+.mp-card__icon { flex:0 0 auto; color:var(--mp-card-icon); }
+.mp-card__footer, .mp-card__actions { display:flex; flex-wrap:wrap; gap:var(--space-8); align-items:center; justify-content:center; width:100%; margin-top:auto; }
+.mp-card--flat { --mp-card-shadow:none; }
+.mp-card--raised { --mp-card-shadow:var(--shadow-2); }
+.mp-card--compact { width:min(100%,22.0625rem); min-height:9.375rem; padding:var(--space-12); }
+.mp-card--interactive { cursor:pointer; }
+.mp-card--interactive:hover, .mp-card--interactive.mp-card--is-hover { --mp-card-border:var(--mp-card-hover-border); --mp-card-shadow:var(--shadow-2); transform:translateY(calc(var(--space-4) * -1)); }
+.mp-card--interactive:focus-visible, .mp-card--interactive.mp-card--is-focus { outline:2px solid var(--mp-card-focus); outline-offset:var(--space-4); }
+.mp-card--interactive:active, .mp-card--interactive.mp-card--is-active { --mp-card-shadow:var(--shadow-1); transform:translateY(0); }
+.mp-card--horizontal { width:min(100%,40rem); min-height:13.75rem; flex-direction:row; align-items:stretch; }
+.mp-card--horizontal .mp-card__media { width:13.75rem; min-width:13.75rem; height:auto; aspect-ratio:auto; }
+.mp-card[aria-disabled="true"], .mp-card--disabled { opacity:.64; pointer-events:none; }
+[data-theme="dark"] .mp-card { --mp-card-bg:var(--base-neutral-90); --mp-card-border:var(--base-neutral-70); --mp-card-title:var(--base-neutral-10); --mp-card-subtitle:var(--base-neutral-30); --mp-card-body:var(--base-neutral-20); --mp-card-icon:var(--base-neutral-30); --mp-card-media-bg:var(--base-neutral-80); --mp-card-hover-border:var(--use-primary-default-dark); }
+[data-theme="high-contrast"] .mp-card { --mp-card-bg:var(--base-neutral-black); --mp-card-border:var(--base-neutral-white); --mp-card-title:var(--base-neutral-white); --mp-card-subtitle:var(--base-neutral-white); --mp-card-body:var(--base-neutral-white); --mp-card-icon:var(--base-neutral-white); --mp-card-media-bg:var(--base-neutral-black); --mp-card-hover-border:var(--use-primary-default); border-width:1px; box-shadow:none; }
+@media (max-width: 767.98px) { .mp-card { width:100%; min-height:auto; } .mp-card--horizontal { flex-direction:column; } .mp-card--horizontal .mp-card__media { width:100%; min-width:0; aspect-ratio:16 / 9; } }`;
+  }
+
+  function cardScssExport() {
+    return `// mp-card - Compensar Design System
+// Fuente productiva: core/components/web/_cards.scss
+// Sass plano para dummy/demo.
+
+@use '../../abstracts' as *;
+
+${cardCssExport()}`;
   }
 
   function renderPlayground(page) {

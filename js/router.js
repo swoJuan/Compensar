@@ -130,6 +130,12 @@ const router = (() => {
       icon: 'credit_card',
       group: 'web-componentes'
     },
+    'web/componentes/paginacion': {
+      label: 'Paginación',
+      path: 'transversales/components/pagination.html',
+      icon: 'list_numbers',
+      group: 'web-componentes'
+    },
     'web/componentes/tables': {
       label: 'Tables',
       path: 'transversales/components/tables.html',
@@ -245,6 +251,7 @@ const router = (() => {
         section === 'web/componentes/toast' ||
         section === 'web/componentes/modales' ||
         section === 'web/componentes/cards' ||
+        section === 'web/componentes/paginacion' ||
         section === 'web/componentes/tables' ||
         section === 'web/componentes/inputs' ||
         section === 'web/componentes/dropdown' ||

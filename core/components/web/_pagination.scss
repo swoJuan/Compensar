@@ -1,0 +1,162 @@
+// ============================================================
+//  mp-pagination
+//  Navegacion entre paginas de listados y resultados.
+//  Fuente Figma: 1zVGMpzqBgiBUqhmfFEAoT / 4610:71122
+// ============================================================
+
+@use '../../abstracts' as *;
+
+.mp-pagination {
+  --mp-pagination-gap: var(--space-24);
+  --mp-pagination-item-min: #{rem(44px)};
+  --mp-pagination-item-height: #{rem(48px)};
+  --mp-pagination-padding: var(--space-16);
+  --mp-pagination-radius: var(--space-8);
+  --mp-pagination-text: var(--use-primary-default);
+  --mp-pagination-active-bg: var(--use-primary-default);
+  --mp-pagination-active-text: var(--use-text-on-dark-primary);
+  --mp-pagination-disabled-bg: var(--use-surface-theme-gray-5);
+  --mp-pagination-disabled-text: var(--use-text-tertiary);
+  --mp-pagination-focus: var(--use-text-primary);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mp-pagination-gap);
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  padding: var(--space-16) 0 0;
+  color: var(--mp-pagination-text);
+}
+
+.mp-pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mp-pagination-gap);
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mp-pagination__item {
+  min-width: var(--mp-pagination-item-min);
+  min-height: var(--mp-pagination-item-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mp-pagination__link,
+.mp-pagination__ellipsis {
+  min-width: var(--mp-pagination-item-min);
+  min-height: var(--mp-pagination-item-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--mp-pagination-padding);
+  border: rem(2px) solid transparent;
+  border-radius: var(--mp-pagination-radius);
+  background: transparent;
+  color: var(--mp-pagination-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.022em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.mp-pagination__link {
+  cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+
+  &:hover,
+  &.mp-pagination__link--is-hover {
+    background: var(--mp-pagination-active-bg);
+    color: var(--mp-pagination-active-text);
+  }
+
+  &:focus-visible,
+  &.mp-pagination__link--is-focus {
+    background: var(--mp-pagination-active-bg);
+    border-color: var(--mp-pagination-focus);
+    color: var(--mp-pagination-active-text);
+    outline: none;
+  }
+
+  &[aria-current='page'],
+  &.is-active {
+    background: var(--mp-pagination-active-bg);
+    color: var(--mp-pagination-active-text);
+  }
+
+  &[aria-disabled='true'],
+  &:disabled,
+  &.is-disabled {
+    background: var(--mp-pagination-disabled-bg);
+    color: var(--mp-pagination-disabled-text);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.mp-pagination__ellipsis {
+  color: var(--use-text-tertiary);
+}
+
+.mp-pagination__icon {
+  font-size: rem(16px);
+  line-height: 1;
+}
+
+.mp-pagination--compact {
+  --mp-pagination-gap: var(--space-8);
+}
+
+.mp-pagination--center {
+  justify-content: center;
+}
+
+.mp-pagination--start {
+  justify-content: flex-start;
+}
+
+[data-theme='dark'] .mp-pagination {
+  --mp-pagination-text: var(--use-primary-default-dark);
+  --mp-pagination-active-bg: var(--use-primary-default-dark);
+  --mp-pagination-active-text: var(--base-neutral-100-negro);
+  --mp-pagination-disabled-bg: var(--base-neutral-80);
+  --mp-pagination-disabled-text: var(--base-neutral-40);
+  --mp-pagination-focus: var(--base-neutral-10);
+}
+
+[data-theme='high-contrast'] .mp-pagination {
+  --mp-pagination-text: var(--use-primary-default);
+  --mp-pagination-active-bg: var(--use-primary-default);
+  --mp-pagination-active-text: var(--use-text-inverse);
+  --mp-pagination-disabled-bg: var(--base-neutral-black);
+  --mp-pagination-disabled-text: var(--base-neutral-white);
+  --mp-pagination-focus: var(--base-neutral-white);
+
+  .mp-pagination__link[aria-disabled='true'],
+  .mp-pagination__link:disabled,
+  .mp-pagination__link.is-disabled {
+    border-color: var(--base-neutral-white);
+  }
+}
+
+@include sm-down {
+  .mp-pagination {
+    --mp-pagination-gap: var(--space-8);
+    justify-content: center;
+  }
+
+  .mp-pagination__link,
+  .mp-pagination__ellipsis {
+    padding-inline: var(--space-12);
+  }
+}

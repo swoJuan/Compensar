@@ -83,21 +83,10 @@ const toastDocs = (() => {
 
   function codeForTab(tab, state) {
     if (tab === 'css') {
-      const classes = ['.mp-toast', `.mp-toast--${state.kind}`, '.mp-toast-region'];
-      if (state.theme !== 'light') classes.push(`[data-theme="${state.theme}"]`);
-      return classes.join('\n');
+      return buildCssExport();
     }
-    if (tab === 'tokens') {
-      return `max-width: 350px
-auto-close: 5s
-padding: 16px
-gap: 16px
-border-radius: 12px
-icon-size: 32px
-close-size: 24px
-title: Roboto SemiBold 16px / 1.3
-body: Roboto Regular 14px / 1.5
-theme: ${state.theme}`;
+    if (tab === 'scss') {
+      return buildScssExport();
     }
     return htmlForState(state);
   }
@@ -222,6 +211,8 @@ $mp-toast-gap: 16px;
 $mp-toast-radius: 12px;
 $mp-toast-icon-size: 32px;
 $mp-toast-close-size: 24px;
+
+${buildCssExport()}
 `;
   }
 

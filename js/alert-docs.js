@@ -153,24 +153,10 @@ const alertDocs = (() => {
 
   function codeForTab(tab, state) {
     if (tab === 'css') {
-      const classes = ['.mp-alert', `.mp-alert--${state.kind}`];
-      if (state.dismissible) classes.push('.mp-alert--dismissible');
-      if (state.focus) classes.push('.mp-alert--is-focus');
-      if (state.theme !== 'light') classes.push(`[data-theme="${state.theme}"]`);
-      return classes.join('\n');
+      return buildCssExport();
     }
-    if (tab === 'tokens') {
-      const spec = specs[state.kind] || specs.info;
-      const modeKey = state.theme === 'high-contrast' ? 'highContrast' : state.theme;
-      const mode = exportJson.modes[modeKey]?.[state.kind] || exportJson.modes.light[state.kind];
-      return `${spec.tokens}
-theme: ${state.theme}
-mode-background: ${mode.bg}
-mode-border: ${mode.border}
-mode-text: ${mode.text}
-padding: 16px
-border-radius: 12px
-content-gap: 4px`;
+    if (tab === 'scss') {
+      return buildScssExport();
     }
     return htmlForState(state);
   }
@@ -302,7 +288,7 @@ $mp-alert-radius: 12px;
 $mp-alert-icon-size: 32px;
 $mp-alert-content-gap: 4px;
 
-// Copiar las clases productivas desde core/components/web/_alerts.scss.
+${buildCssExport()}
 `;
   }
 
