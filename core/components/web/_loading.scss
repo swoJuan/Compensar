@@ -1,0 +1,138 @@
+// ============================================================
+//  mp-loading
+//  Indicador de carga web
+// ============================================================
+
+@use '../../abstracts' as *;
+
+.mp-loading {
+  --mp-loading-size: #{rem(48px)};
+  --mp-loading-bar-width: #{rem(4px)};
+  --mp-loading-bar-height: #{rem(12px)};
+  --mp-loading-gap: var(--space-16);
+  --mp-loading-color: var(--use-primary-default, #ff6600);
+  --mp-loading-text: var(--use-text-secondary, #333333);
+  --mp-loading-bg: transparent;
+  --mp-loading-overlay-bg: color-mix(in srgb, var(--use-surface-white, #ffffff) 88%, transparent);
+
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--mp-loading-gap);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--mp-loading-bg);
+  color: var(--mp-loading-text);
+  text-align: center;
+}
+
+.mp-loading__spinner {
+  position: relative;
+  width: var(--mp-loading-size);
+  height: var(--mp-loading-size);
+  flex: 0 0 var(--mp-loading-size);
+  color: var(--mp-loading-color);
+  animation: mp-loading-rotate 0.9s linear infinite;
+}
+
+.mp-loading__bar {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--mp-loading-bar-width);
+  height: var(--mp-loading-bar-height);
+  border-radius: var(--radius-full, 9999px);
+  background: currentColor;
+  opacity: 0.28;
+  transform-origin: 50% calc(var(--mp-loading-size) / 2);
+  animation: mp-loading-fade 0.9s linear infinite;
+}
+
+.mp-loading__bar:nth-child(1) { transform: translateX(-50%) rotate(0deg); animation-delay: -0.7875s; }
+.mp-loading__bar:nth-child(2) { transform: translateX(-50%) rotate(45deg); animation-delay: -0.675s; }
+.mp-loading__bar:nth-child(3) { transform: translateX(-50%) rotate(90deg); animation-delay: -0.5625s; }
+.mp-loading__bar:nth-child(4) { transform: translateX(-50%) rotate(135deg); animation-delay: -0.45s; }
+.mp-loading__bar:nth-child(5) { transform: translateX(-50%) rotate(180deg); animation-delay: -0.3375s; }
+.mp-loading__bar:nth-child(6) { transform: translateX(-50%) rotate(225deg); animation-delay: -0.225s; }
+.mp-loading__bar:nth-child(7) { transform: translateX(-50%) rotate(270deg); animation-delay: -0.1125s; }
+.mp-loading__bar:nth-child(8) { transform: translateX(-50%) rotate(315deg); animation-delay: 0s; }
+
+.mp-loading__text {
+  max-width: rem(320px);
+  margin: 0;
+  color: var(--mp-loading-text);
+  font-family: Roboto, Arial, sans-serif;
+  font-size: rem(16px);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.mp-loading--sm {
+  --mp-loading-size: #{rem(32px)};
+  --mp-loading-bar-width: #{rem(3px)};
+  --mp-loading-bar-height: #{rem(8px)};
+  --mp-loading-gap: var(--space-8);
+}
+
+.mp-loading--lg {
+  --mp-loading-size: #{rem(64px)};
+  --mp-loading-bar-width: #{rem(5px)};
+  --mp-loading-bar-height: #{rem(16px)};
+  --mp-loading-gap: var(--space-24);
+}
+
+.mp-loading--inline {
+  flex-direction: row;
+  text-align: left;
+}
+
+.mp-loading--overlay {
+  width: 100%;
+  min-height: rem(240px);
+  padding: var(--space-40);
+  border-radius: var(--space-16);
+  background: var(--mp-loading-overlay-bg);
+}
+
+.mp-loading--inverse {
+  --mp-loading-color: var(--use-text-on-dark-primary, #ffffff);
+  --mp-loading-text: var(--use-text-on-dark-primary, #ffffff);
+  --mp-loading-overlay-bg: color-mix(in srgb, var(--base-neutral-black, #000000) 72%, transparent);
+}
+
+.mp-loading.is-paused .mp-loading__spinner,
+.mp-loading.is-paused .mp-loading__bar {
+  animation-play-state: paused;
+}
+
+[data-theme='dark'] .mp-loading {
+  --mp-loading-color: var(--use-primary-default, #ff9d5c);
+  --mp-loading-text: var(--base-neutral-10, #f5f5f5);
+  --mp-loading-overlay-bg: color-mix(in srgb, var(--base-neutral-90, #211b1a) 92%, transparent);
+}
+
+[data-theme='high-contrast'] .mp-loading {
+  --mp-loading-color: var(--base-neutral-white, #ffffff);
+  --mp-loading-text: var(--base-neutral-white, #ffffff);
+  --mp-loading-overlay-bg: var(--base-neutral-black, #000000);
+}
+
+[data-theme='high-contrast'] .mp-loading--overlay {
+  border: rem(1px) solid var(--base-neutral-white, #ffffff);
+}
+
+@keyframes mp-loading-rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes mp-loading-fade {
+  0%, 100% { opacity: 1; }
+  45% { opacity: 0.28; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-loading__spinner,
+  .mp-loading__bar {
+    animation-duration: 2.4s;
+  }
+}

@@ -1,0 +1,313 @@
+<article class="ghc-doc component-doc-page" data-guideline-doc="high-contrast">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Guidelines</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">High Contrast</span></li>
+    </ol>
+  </nav>
+
+  <header class="component-hero ghc-head">
+    <h1 class="mp-h1">High Contrast — Reglas de uso</h1>
+    <p class="mp-body-l">Modo enfocado en maximizar la legibilidad y facilitar la interacción para todos los usuarios, especialmente en condiciones de baja visión.</p>
+    <div class="component-meta" aria-label="Metadatos de guideline">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Web / ZT Drupal</span>
+      <span class="component-chip">Accesibilidad</span>
+      <span class="component-chip">Figma: 4727:4458</span>
+    </div>
+  </header>
+
+  <section class="ghc-bloque">
+    <div class="ghc-rule">
+      <h2 class="ghc-rule__title">Principios generales</h2>
+      <ul class="ghc-rule__list">
+        <li>El fondo principal debe ser negro o muy oscuro.</li>
+        <li>El texto principal debe mantener contraste máximo.</li>
+        <li>La estructura debe seguir siendo clara sin depender solo del color.</li>
+        <li>Los estados interactivos deben tener borde, icono o texto adicional.</li>
+      </ul>
+    </div>
+
+    <div class="ghc-demo" data-theme="light">
+      <div class="ghc-demo__label">Light</div>
+      <div class="ghc-demo__body">
+        <article class="mp-card mp-card--compact ghc-real-card">
+          <div class="mp-card__content">
+            <h3 class="mp-card__title">Cita confirmada</h3>
+            <p class="mp-card__body">Tu atención fue agendada correctamente.</p>
+            <span class="mp-badge mp-badge--success"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Activo</span></span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="ghc-demo" data-theme="high-contrast">
+      <div class="ghc-demo__label">High Contrast</div>
+      <div class="ghc-demo__body">
+        <article class="mp-card mp-card--compact ghc-real-card">
+          <div class="mp-card__content">
+            <h3 class="mp-card__title">Cita confirmada</h3>
+            <p class="mp-card__body">Tu atención fue agendada correctamente.</p>
+            <span class="mp-badge mp-badge--success"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Activo</span></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ghc-bloque">
+    <div class="ghc-rule">
+      <h2 class="ghc-rule__title">Reglas de color</h2>
+      <ul class="ghc-rule__list">
+        <li>Usar tokens semánticos del sistema, no colores hardcodeados.</li>
+        <li>Las variantes deben conservar significado y contraste.</li>
+        <li>Evitar grises suaves cercanos al fondo.</li>
+        <li>No usar color como único indicador de estado.</li>
+      </ul>
+    </div>
+
+    <div class="ghc-demo" data-theme="light">
+      <div class="ghc-demo__label">Light</div>
+      <div class="ghc-demo__body ghc-demo__body--wrap">
+        <button class="mp-chip mp-chip--info is-selected" type="button" aria-pressed="true"><span class="mp-chip__label">Medicina</span></button>
+        <span class="mp-tag mp-tag--violet"><span class="mp-tag__label">Afiliado</span></span>
+        <span class="mp-badge mp-badge--warning"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Pendiente</span></span>
+      </div>
+    </div>
+
+    <div class="ghc-demo" data-theme="high-contrast">
+      <div class="ghc-demo__label">High Contrast</div>
+      <div class="ghc-demo__body ghc-demo__body--wrap">
+        <button class="mp-chip mp-chip--info is-selected" type="button" aria-pressed="true"><span class="mp-chip__label">Medicina</span></button>
+        <span class="mp-tag mp-tag--violet"><span class="mp-tag__label">Afiliado</span></span>
+        <span class="mp-badge mp-badge--warning"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Pendiente</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="ghc-bloque">
+    <div class="ghc-rule">
+      <h2 class="ghc-rule__title">Contenedores y superficies</h2>
+      <ul class="ghc-rule__list">
+        <li>Los contenedores deben tener borde visible.</li>
+        <li>No depender de sombras para separar elementos.</li>
+        <li>Las cards deben conservar jerarquía en ambos modos.</li>
+        <li>El contenido debe seguir siendo escaneable.</li>
+      </ul>
+    </div>
+
+    <div class="ghc-demo" data-theme="light">
+      <div class="ghc-demo__label">Light</div>
+      <div class="ghc-demo__body">
+        <article class="mp-card mp-card--compact ghc-real-card">
+          <img class="mp-card__media" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=640&q=80" alt="Profesional de salud revisando información médica">
+          <div class="mp-card__content">
+            <h3 class="mp-card__title">Programa bienestar</h3>
+            <p class="mp-card__body">Acompañamiento y servicios para cuidar tu salud.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="ghc-demo" data-theme="high-contrast">
+      <div class="ghc-demo__label">High Contrast</div>
+      <div class="ghc-demo__body">
+        <article class="mp-card mp-card--compact ghc-real-card">
+          <img class="mp-card__media" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=640&q=80" alt="Profesional de salud revisando información médica">
+          <div class="mp-card__content">
+            <h3 class="mp-card__title">Programa bienestar</h3>
+            <p class="mp-card__body">Acompañamiento y servicios para cuidar tu salud.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ghc-bloque">
+    <div class="ghc-rule">
+      <h2 class="ghc-rule__title">Imágenes reales</h2>
+      <ul class="ghc-rule__list">
+        <li>Las imágenes deben mantenerse sin filtros automáticos.</li>
+        <li>No alterar brillo, contraste ni color de forma artificial.</li>
+        <li>Validar que la imagen sea visible en superficies oscuras.</li>
+        <li>No usar la imagen como único medio de comunicación.</li>
+      </ul>
+    </div>
+
+    <div class="ghc-demo" data-theme="light">
+      <div class="ghc-demo__label">Light</div>
+      <div class="ghc-demo__body">
+        <figure class="ghc-photo">
+          <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=640&q=80" alt="Doctora conversando con paciente durante una consulta">
+          <figcaption class="mp-body-s">Imagen original, sin filtros.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="ghc-demo" data-theme="high-contrast">
+      <div class="ghc-demo__label">High Contrast</div>
+      <div class="ghc-demo__body">
+        <figure class="ghc-photo">
+          <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=640&q=80" alt="Doctora conversando con paciente durante una consulta">
+          <figcaption class="mp-body-s">Misma imagen, sin filtros.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="ghc-bloque">
+    <div class="ghc-rule">
+      <h2 class="ghc-rule__title">Estados e interacción</h2>
+      <ul class="ghc-rule__list">
+        <li>Hover, focus y selected deben diferenciarse claramente.</li>
+        <li>El focus debe ser visible con teclado.</li>
+        <li>Los estados deben combinar color, borde, texto o icono.</li>
+        <li>Los alertas deben conservar rol semántico.</li>
+      </ul>
+    </div>
+
+    <div class="ghc-demo" data-theme="light">
+      <div class="ghc-demo__label">Light</div>
+      <div class="ghc-demo__body ghc-demo__body--stack">
+        <button class="mp-btn mp-btn--primario mp-btn--is-focus" type="button">Continuar</button>
+        <div class="mp-alert mp-alert--info" role="status">
+          <i class="icon icon-info icon-32 mp-alert__icon" aria-hidden="true"></i>
+          <div class="mp-alert__content">
+            <p class="mp-alert__title">Información importante</p>
+            <p class="mp-alert__body">Revisa los datos antes de continuar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ghc-demo" data-theme="high-contrast">
+      <div class="ghc-demo__label">High Contrast</div>
+      <div class="ghc-demo__body ghc-demo__body--stack">
+        <button class="mp-btn mp-btn--primario mp-btn--is-focus" type="button">Continuar</button>
+        <div class="mp-alert mp-alert--info" role="status">
+          <i class="icon icon-info icon-32 mp-alert__icon" aria-hidden="true"></i>
+          <div class="mp-alert__content">
+            <p class="mp-alert__title">Información importante</p>
+            <p class="mp-alert__body">Revisa los datos antes de continuar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ghc-bloque">
+    <div class="ghc-rule">
+      <h2 class="ghc-rule__title">Inputs y formularios</h2>
+      <ul class="ghc-rule__list">
+        <li>Los labels deben permanecer visibles.</li>
+        <li>El borde del campo debe ser claro en default, focus y error.</li>
+        <li>El error debe comunicarse con texto e icono, no solo color.</li>
+        <li>El placeholder no debe competir con el contenido.</li>
+      </ul>
+    </div>
+
+    <div class="ghc-demo" data-theme="light">
+      <div class="ghc-demo__label">Light</div>
+      <div class="ghc-demo__body ghc-demo__body--stack">
+        <label class="mp-label" for="ghc-light-name">Nombre completo</label>
+        <input class="mp-input-field" id="ghc-light-name" type="text" placeholder="Ej. María García">
+        <label class="mp-label" for="ghc-light-email">Email</label>
+        <input class="mp-input-field error" id="ghc-light-email" type="email" value="correo@invalido" aria-invalid="true" aria-describedby="ghc-light-email-error">
+        <span class="mp-input-helper error" id="ghc-light-email-error"><i class="icon icon-warning-circle icon-16" aria-hidden="true"></i> Formato de correo inválido</span>
+      </div>
+    </div>
+
+    <div class="ghc-demo" data-theme="high-contrast">
+      <div class="ghc-demo__label">High Contrast</div>
+      <div class="ghc-demo__body ghc-demo__body--stack">
+        <label class="mp-label" for="ghc-hc-name">Nombre completo</label>
+        <input class="mp-input-field" id="ghc-hc-name" type="text" placeholder="Ej. María García">
+        <label class="mp-label" for="ghc-hc-email">Email</label>
+        <input class="mp-input-field error" id="ghc-hc-email" type="email" value="correo@invalido" aria-invalid="true" aria-describedby="ghc-hc-email-error">
+        <span class="mp-input-helper error" id="ghc-hc-email-error"><i class="icon icon-warning-circle icon-16" aria-hidden="true"></i> Formato de correo inválido</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="ghc-bloque">
+    <div class="ghc-rule">
+      <h2 class="ghc-rule__title">Navegación y botones</h2>
+      <ul class="ghc-rule__list">
+        <li>Los enlaces de navegación deben conservar foco visible.</li>
+        <li>Los botones deben mantener contraste en todos sus estados.</li>
+        <li>Usar componentes del sistema para evitar variaciones manuales.</li>
+        <li>No mezclar estilos inline con componentes productivos.</li>
+      </ul>
+    </div>
+
+    <div class="ghc-demo" data-theme="light">
+      <div class="ghc-demo__label">Light</div>
+      <div class="ghc-demo__body ghc-demo__body--stack">
+        <nav class="mp-breadcrumb" aria-label="Breadcrumb demo light">
+          <ol class="mp-breadcrumb__list">
+            <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+            <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#">Servicios</a></li>
+            <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Consulta</span></li>
+          </ol>
+        </nav>
+        <div class="ghc-actions">
+          <button class="mp-btn mp-btn--primario" type="button">Agendar</button>
+          <button class="mp-btn mp-btn--secundario" type="button">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ghc-demo" data-theme="high-contrast">
+      <div class="ghc-demo__label">High Contrast</div>
+      <div class="ghc-demo__body ghc-demo__body--stack">
+        <nav class="mp-breadcrumb" aria-label="Breadcrumb demo high contrast">
+          <ol class="mp-breadcrumb__list">
+            <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+            <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#">Servicios</a></li>
+            <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Consulta</span></li>
+          </ol>
+        </nav>
+        <div class="ghc-actions">
+          <button class="mp-btn mp-btn--primario" type="button">Agendar</button>
+          <button class="mp-btn mp-btn--secundario" type="button">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ghc-two-col">
+    <section class="ghc-two-col__card">
+      <h2 class="ghc-two-col__title">Consideraciones para HTML</h2>
+      <ul class="ghc-rule__list">
+        <li>Usar siempre tokens o variables semánticas.</li>
+        <li>Evitar estilos inline en implementación productiva.</li>
+        <li>Validar estados hover, focus, active y disabled.</li>
+        <li>Evitar sombras como único separador.</li>
+      </ul>
+    </section>
+    <section class="ghc-two-col__card">
+      <h2 class="ghc-two-col__title">Buenas prácticas</h2>
+      <ul class="ghc-rule__list">
+        <li>Priorizar legibilidad sobre estética.</li>
+        <li>Simplificar la interfaz cuando sea necesario.</li>
+        <li>Usar componentes reales del sistema.</li>
+        <li>Probar los flujos completos en alto contraste.</li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="ghc-a11y">
+    <div class="ghc-a11y__header">
+      <i class="icon icon-eye icon-24" aria-hidden="true"></i>
+      <h2 class="ghc-a11y__title">Accesibilidad</h2>
+    </div>
+    <ul class="ghc-a11y__list">
+      <li>Mantener contraste mínimo 4.5:1 o superior.</li>
+      <li>No depender solo del color para comunicar información.</li>
+      <li>Asegurar navegación por teclado.</li>
+      <li>Mantener focus visible en todos los elementos interactivos.</li>
+    </ul>
+  </section>
+</article>

@@ -1,0 +1,259 @@
+<article class="component-doc-page breadcrumb-doc" data-component-doc="breadcrumb">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Componentes</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Breadcrumb</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="breadcrumb-title">
+    <h1 id="breadcrumb-title" class="mp-h1">Breadcrumb</h1>
+    <p class="mp-body-l">Muestra la ubicación del usuario dentro de la estructura del sitio y permite navegar fácilmente entre niveles jerárquicos.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Categoría: navegación</span>
+      <span class="component-chip">Figma: 4629:87274</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="breadcrumb-summary-title">
+    <div class="component-section__header">
+      <h2 id="breadcrumb-summary-title" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para navegación jerárquica.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para mostrar contexto de ubicación dentro del sitio.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para facilitar el regreso a niveles anteriores.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando la arquitectura tiene más de dos niveles.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Usa niveles cortos y deja el último como página actual no interactiva.</p>
+            <div class="component-example-actions">
+              <nav class="mp-breadcrumb" aria-label="Breadcrumb">
+                <ol class="mp-breadcrumb__list">
+                  <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+                  <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#">Inicio</a></li>
+                  <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Pagos</span></li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No lo uses como menú principal ni con rutas largas difíciles de escanear.</p>
+            <div class="component-example-actions">
+              <span class="mp-badge mp-badge--warning">Inicio / Usuarios / Cuenta / Contratos / Pagos / Detalle</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="breadcrumb-anatomy-title">
+    <div class="component-section__header">
+      <h2 id="breadcrumb-anatomy-title" class="mp-h2">2. Anatomía interactiva</h2>
+    </div>
+
+    <div class="segmented-control" role="group" aria-label="Estado de breadcrumb">
+      <button type="button" class="mp-btn mp-btn--terciario" data-breadcrumb-anatomy="default" aria-pressed="true">Default</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-breadcrumb-anatomy="previous" aria-pressed="false">Página anterior</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-breadcrumb-anatomy="focus" aria-pressed="false">Focus</button>
+    </div>
+
+    <div class="breadcrumb-anatomy-stage">
+      <span class="breadcrumb-measure breadcrumb-measure--gap" data-breadcrumb-measure="gap">Gap 16 px</span>
+      <span class="breadcrumb-measure breadcrumb-measure--icon" data-breadcrumb-measure="icon">Home 20 px</span>
+      <span class="breadcrumb-measure breadcrumb-measure--item" data-breadcrumb-measure="item">Texto 16 px</span>
+      <span class="breadcrumb-measure breadcrumb-measure--padding" data-breadcrumb-measure="padding">Padding Y 12 px</span>
+
+      <div class="breadcrumb-doc-callout breadcrumb-doc-callout--home">
+        <strong>Inicio</strong>
+        <span>Icono de home 20 px como primer nivel.</span>
+      </div>
+      <div class="breadcrumb-doc-callout breadcrumb-doc-callout--separator">
+        <strong>Separador</strong>
+        <span>Chevron 16 px entre niveles.</span>
+      </div>
+      <div class="breadcrumb-doc-callout breadcrumb-doc-callout--current">
+        <strong>Página actual</strong>
+        <span>Roboto Bold 16 px, color violeta.</span>
+      </div>
+      <div class="breadcrumb-doc-callout breadcrumb-doc-callout--state">
+        <strong>Estado</strong>
+        <span>Los niveles anteriores son enlaces; el último no es clicable.</span>
+      </div>
+
+      <div class="breadcrumb-anatomy-preview" id="breadcrumb-anatomy-preview"></div>
+    </div>
+
+    <div class="component-controls">
+      <label class="button-doc-toggle"><input type="checkbox" data-breadcrumb-anatomy-toggle="measures" checked> Medidas</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-breadcrumb-anatomy-toggle="labels" checked> Etiquetas</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-breadcrumb-anatomy-toggle="block"> Padding 24 px</label>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="breadcrumb-playground-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="breadcrumb-playground-title" class="mp-h2">3. Playground</h2>
+        <p class="mp-body-m">Configura niveles, modo, home visible y versión compacta. El código se actualiza con el fragmento real.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-xl-5">
+        <div class="component-control-panel">
+          <div class="row g-3">
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="breadcrumb-ctrl-levels">Niveles</label>
+              <select class="mp-input-field mp-select" id="breadcrumb-ctrl-levels" data-breadcrumb-control="levels">
+                <option value="2">2 niveles</option>
+                <option value="3" selected>3 niveles</option>
+                <option value="4">4 niveles</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="breadcrumb-ctrl-theme">Modo</label>
+              <select class="mp-input-field mp-select" id="breadcrumb-ctrl-theme" data-breadcrumb-control="theme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="high-contrast">High Contrast</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="breadcrumb-ctrl-current">Página actual</label>
+              <input class="mp-input-field" type="text" id="breadcrumb-ctrl-current" data-breadcrumb-control="current" value="Pagos" maxlength="28">
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="breadcrumb-ctrl-parent">Nivel anterior</label>
+              <input class="mp-input-field" type="text" id="breadcrumb-ctrl-parent" data-breadcrumb-control="parent" value="Trámites" maxlength="28">
+            </div>
+            <div class="col-12">
+              <label class="button-doc-toggle"><input type="checkbox" data-breadcrumb-control="home" checked> Mostrar home</label>
+              <label class="button-doc-toggle"><input type="checkbox" data-breadcrumb-control="compact"> Compacto</label>
+              <label class="button-doc-toggle"><input type="checkbox" data-breadcrumb-control="block"> Padding 24 px</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-7">
+        <div class="component-preview-panel" id="breadcrumb-preview-area" data-theme="light"></div>
+        <div class="code-block breadcrumb-playground-code">
+          <div class="code-content">
+            <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-breadcrumb-copy-playground>
+              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+              Copiar
+            </button>
+            <pre id="breadcrumb-playground-code" class="active"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="breadcrumb-states-title">
+    <div class="component-section__header">
+      <h2 id="breadcrumb-states-title" class="mp-h2">4. Estados</h2>
+    </div>
+    <div class="breadcrumb-state-grid">
+      <article class="breadcrumb-state-card"><h3 class="mp-h3">Default</h3><p class="mp-body-s">Estado base.</p><div class="breadcrumb-state-sample" data-breadcrumb-state-demo="default"></div></article>
+      <article class="breadcrumb-state-card"><h3 class="mp-h3">Active</h3><p class="mp-body-s">Página actual.</p><div class="breadcrumb-state-sample" data-breadcrumb-state-demo="active"></div></article>
+      <article class="breadcrumb-state-card"><h3 class="mp-h3">Página anterior</h3><p class="mp-body-s">Enlace hacia otras páginas.</p><div class="breadcrumb-state-sample" data-breadcrumb-state-demo="previous"></div></article>
+      <article class="breadcrumb-state-card"><h3 class="mp-h3">Focus</h3><p class="mp-body-s">Navegación con teclado.</p><div class="breadcrumb-state-sample" data-breadcrumb-state-demo="focus"></div></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="breadcrumb-modes-title">
+    <div class="component-section__header">
+      <h2 id="breadcrumb-modes-title" class="mp-h2">5. Modos de color</h2>
+    </div>
+    <div class="breadcrumb-mode-grid">
+      <article class="breadcrumb-mode-card"><h3 class="mp-h3">Light</h3><div class="breadcrumb-mode-demo" data-theme="light" data-breadcrumb-mode-demo="light"></div></article>
+      <article class="breadcrumb-mode-card"><h3 class="mp-h3">Dark</h3><div class="breadcrumb-mode-demo" data-theme="dark" data-breadcrumb-mode-demo="dark"></div></article>
+      <article class="breadcrumb-mode-card"><h3 class="mp-h3">High Contrast</h3><div class="breadcrumb-mode-demo" data-theme="high-contrast" data-breadcrumb-mode-demo="high-contrast"></div></article>
+    </div>
+  </section>
+
+  <div class="row g-4">
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="breadcrumb-rules-title">
+        <div class="component-section__header"><h2 id="breadcrumb-rules-title" class="mp-h2">6. Comportamiento y reglas</h2></div>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los niveles anteriores son clickeables.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El último nivel no es interactivo y usa <code>aria-current="page"</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mantén máximo 3 a 4 niveles visibles.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa labels claros y cortos; no trunques el nivel actual.</li>
+        </ul>
+      </section>
+    </div>
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="breadcrumb-a11y-title">
+        <div class="component-section__header"><h2 id="breadcrumb-a11y-title" class="mp-h2">7. Accesibilidad</h2></div>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa <code>nav</code> con <code>aria-label="Breadcrumb"</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los enlaces deben ser identificables y navegables con teclado.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los separadores son decorativos y llevan <code>aria-hidden="true"</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Debe mantener contraste en Light, Dark y High Contrast.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="component-section" aria-labelledby="breadcrumb-code-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="breadcrumb-code-title" class="mp-h2">8. Visualizador</h2>
+        <p class="mp-body-m">HTML del fragmento y estilos completos del componente. No incluye estilos propios del portal.</p>
+      </div>
+    </div>
+    <div class="ct-downloads button-downloads" aria-label="Descargar estilos de breadcrumb">
+      <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-breadcrumb-download="html"><i class="icon icon-article icon-16" aria-hidden="true"></i> HTML</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-breadcrumb-download="css"><i class="icon icon-article icon-16" aria-hidden="true"></i> CSS</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-breadcrumb-download="sass"><i class="icon icon-article icon-16" aria-hidden="true"></i> Sass</button>
+    </div>
+    <div class="code-block">
+      <div class="code-tabs" role="tablist" aria-label="Código del componente">
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-breadcrumb-code-tab="html" aria-selected="true">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-breadcrumb-code-tab="css" aria-selected="false">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-breadcrumb-code-tab="sass" aria-selected="false">Sass</button>
+      </div>
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-breadcrumb-copy-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="breadcrumb-code-html" class="active"></pre>
+        <pre id="breadcrumb-code-css"></pre>
+        <pre id="breadcrumb-code-sass"></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="breadcrumb-qa-title">
+    <div class="component-section__header">
+      <h2 id="breadcrumb-qa-title" class="mp-h2">9. Checklist QA</h2>
+    </div>
+    <ul class="component-list">
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Home mide 20 px y separadores 16 px.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Texto de breadcrumb usa 16 px y el nivel actual va en bold.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Focus visible en enlaces anteriores.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El último nivel no es enlace y declara <code>aria-current="page"</code>.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Light, Dark y High Contrast mantienen contraste correcto.</li>
+    </ul>
+  </section>
+</article>

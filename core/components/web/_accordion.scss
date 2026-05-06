@@ -1,0 +1,168 @@
+// ============================================================
+//  mp-accordion
+//  Acordeón — Web · Transversal
+//  Fuente Figma: 1zVGMpzqBgiBUqhmfFEAoT / 4622-76590
+// ============================================================
+
+@use '../../abstracts' as *;
+
+// ── Variables internas ────────────────────────────────────────
+.mp-accordion {
+  --mp-accordion-border:   var(--use-border-default);
+  --mp-accordion-bg:       var(--use-surface-white);
+  --mp-accordion-text:     var(--use-text-primary);
+  --mp-accordion-radius:   #{$radius-md};    // 24px
+  --mp-accordion-padding:  var(--space-16);
+}
+
+// ── Grupo de ítems ────────────────────────────────────────────
+.mp-accordion {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-8);
+  width:          100%;
+}
+
+// ── Ítem ─────────────────────────────────────────────────────
+.mp-accordion__item {
+  border:        rem(1px) solid var(--mp-accordion-border);
+  border-radius: var(--mp-accordion-radius);
+  overflow:      hidden;
+  background:    var(--mp-accordion-bg);
+}
+
+// ── Trigger (cabecera del acordeón) ──────────────────────────
+.mp-accordion__trigger {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-16);
+  padding:     var(--mp-accordion-padding);
+  width:       100%;
+  background:  transparent;
+  border:      none;
+  cursor:      pointer;
+  text-align:  left;
+
+  font-family: Roboto, Arial, sans-serif;
+  font-size:   rem(16px);
+  font-weight: 700;
+  line-height: 1.3;
+  color:       var(--mp-accordion-text);
+
+  transition:  background 0.15s ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--mp-accordion-border) 35%, transparent);
+  }
+
+  &:focus-visible {
+    outline:        rem(2px) solid var(--use-primary-default);
+    outline-offset: rem(-2px);
+    border-radius:  var(--mp-accordion-radius);
+  }
+}
+
+// ── Título del trigger ────────────────────────────────────────
+.mp-accordion__title {
+  flex:      1 0 0;
+  min-width: 0;
+}
+
+// ── Ícono chevron ─────────────────────────────────────────────
+.mp-accordion__icon {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+  color:           var(--mp-accordion-text);
+  transition:      transform 0.25s ease;
+}
+
+.mp-accordion__item.is-open .mp-accordion__icon {
+  transform: rotate(180deg);
+}
+
+// ── Panel de contenido ────────────────────────────────────────
+.mp-accordion__panel {
+  overflow:   hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+.mp-accordion__item.is-open .mp-accordion__panel {
+  max-height: rem(2000px);
+}
+
+// ── Contenido interno ─────────────────────────────────────────
+// Separador visual entre trigger y contenido
+.mp-accordion__content {
+  padding:    var(--mp-accordion-padding);
+  border-top: rem(1px) solid var(--mp-accordion-border);
+  color:      var(--mp-accordion-text);
+}
+
+// ── Modificador: sin gap entre ítems (bordado compartido) ─────
+.mp-accordion--flush {
+  gap: 0;
+
+  .mp-accordion__item {
+    border-radius: 0;
+
+    &:first-child {
+      border-radius: var(--mp-accordion-radius) var(--mp-accordion-radius) 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 var(--mp-accordion-radius) var(--mp-accordion-radius);
+    }
+
+    // Evitar borde doble entre ítems adyacentes
+    & + .mp-accordion__item {
+      border-top: none;
+    }
+  }
+}
+
+// ── Modificador: solo un ítem puede estar abierto ─────────────
+// (controlado por JS; no requiere CSS adicional)
+
+// ── Dark mode ─────────────────────────────────────────────────
+[data-theme='dark'] {
+  .mp-accordion {
+    --mp-accordion-border: var(--use-border-default);
+    --mp-accordion-bg:     var(--use-surface-white);
+    --mp-accordion-text:   var(--use-text-primary);
+  }
+}
+
+// ── High Contrast ─────────────────────────────────────────────
+[data-theme='high-contrast'] {
+  .mp-accordion {
+    --mp-accordion-border: var(--use-border-default);
+    --mp-accordion-bg:     var(--use-background-page);
+    --mp-accordion-text:   var(--use-text-primary);
+  }
+
+  .mp-accordion__item {
+    border-width: rem(2px);
+  }
+
+  .mp-accordion__content {
+    border-top-width: rem(2px);
+  }
+
+  .mp-accordion__trigger:focus-visible {
+    outline-width: rem(3px);
+  }
+}
+
+// ── Movimiento reducido ───────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  .mp-accordion__panel {
+    transition: none;
+  }
+
+  .mp-accordion__icon {
+    transition: none;
+  }
+}

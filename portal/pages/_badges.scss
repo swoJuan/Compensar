@@ -11,7 +11,12 @@
   --doc-accent: var(--use-primary-default, #ff6600);
 
   display: grid;
-  gap: var(--space-48);
+  gap: var(--space-24);
+}
+
+.bdg-doc .component-hero,
+.bdg-doc .component-section {
+  margin-bottom: 0;
 }
 
 .bdg-section {
@@ -89,7 +94,7 @@
 
 .bdg-family-card__demo,
 .bdg-token-card__demo,
-.bdg-state-card > :last-child {
+.bdg-state-card__demo {
   min-height: rem(64px);
   display: flex;
   flex-wrap: wrap;
@@ -351,5 +356,75 @@
 
   .bdg-anatomy-preview {
     order: -1;
+  }
+}
+
+// ── "¿Cuál usar?" — tarjetas comparativas ────────────────────
+.bdg-which-card {
+  border:        rem(1px) solid var(--doc-card-border);
+  border-radius: rem(14px);
+  overflow:      hidden;
+  height:        100%;
+  display:       flex;
+  flex-direction: column;
+}
+
+.bdg-which-card__demo {
+  display:         flex;
+  flex-wrap:       wrap;
+  gap:             var(--space-8);
+  align-items:     center;
+  justify-content: center;
+  min-height:      rem(72px);
+  background:      var(--use-surface-theme-gray-5);
+  border-bottom:   rem(1px) solid var(--doc-card-border);
+}
+
+.bdg-which-card__body {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-10);
+  padding:        var(--space-24);;
+  flex:           1;
+}
+
+.bdg-which-card__name {
+  margin: 0;
+  color:  var(--use-text-primary);
+}
+
+.bdg-which-card__role {
+  color:  var(--use-text-secondary);
+  margin: 0;
+}
+
+.bdg-which-card__element {
+  margin-top: auto;
+  padding-top: var(--space-8);
+  font-size:   rem(12px);
+  color:       var(--use-text-tertiary);
+  border-top:  rem(1px) solid var(--doc-card-border);
+}
+
+.bdg-which-list {
+  list-style: none;
+  padding:    0;
+  margin:     0;
+  display:    flex;
+  flex-direction: column;
+  gap:        var(--space-6);
+
+  li {
+    display:     flex;
+    gap:         var(--space-8);
+    align-items: flex-start;
+    font-size:   rem(13px);
+    color:       var(--use-text-secondary);
+
+    .icon {
+      color:      var(--use-primary-default);
+      flex-shrink: 0;
+      margin-top:  rem(2px);
+    }
   }
 }

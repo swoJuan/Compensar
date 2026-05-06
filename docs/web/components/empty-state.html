@@ -1,10 +1,11 @@
 <article class="component-doc-page" data-component-doc="empty-state">
-  <nav class="component-doc-breadcrumb" aria-label="Breadcrumb">
-    <span>Sistema de diseño</span>
-    <span>/</span>
-    <span>Componentes Web</span>
-    <span>/</span>
-    <strong>Empty State</strong>
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Componentes Web</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Empty State</span></li>
+    </ol>
   </nav>
 
   <!-- ── Hero ──────────────────────────────────────────────── -->
@@ -44,8 +45,8 @@
                 <div class="mp-empty-state__icon">
                   <i class="icon icon-magnifying-glass" aria-hidden="true"></i>
                 </div>
-                <p class="mp-h5 mp-empty-state__title">Sin resultados</p>
-                <p class="mp-body-m mp-empty-state__desc">Intenta con otros términos de búsqueda.</p>
+                <h5 class="mp-h5 mp-empty-state__title"><strong>Sin resultados</strong></h5>
+                <p class="mp-body-l mp-empty-state__desc">Intenta con otros términos de búsqueda.</p>
               </div>
             </div>
           </div>
@@ -55,7 +56,7 @@
             <p class="text-secondary">No uses textos vagos como "Nada aquí" sin contexto ni orientación.</p>
             <div class="component-example-actions" style="justify-content:center">
               <div class="mp-empty-state" style="padding:var(--space-16);gap:var(--space-8)">
-                <p class="mp-body-m mp-empty-state__desc">Nada aquí.</p>
+                <p class="mp-body-l mp-empty-state__desc">Nada aquí.</p>
               </div>
             </div>
           </div>
@@ -133,8 +134,8 @@
             <div class="mp-empty-state__icon">
               <i class="icon icon-magnifying-glass" aria-hidden="true"></i>
             </div>
-            <p class="mp-h5 mp-empty-state__title">Sin resultados</p>
-            <p class="mp-body-m mp-empty-state__desc">Intenta con otros términos de búsqueda.</p>
+            <h5 class="mp-h5 mp-empty-state__title"><strong>Sin resultados</strong></h5>
+            <p class="mp-body-l mp-empty-state__desc">Intenta con otros términos de búsqueda.</p>
           </div>
         </div>
       </div>
@@ -156,8 +157,8 @@
             <div class="mp-empty-state__icon">
               <i class="icon icon-package" aria-hidden="true"></i>
             </div>
-            <p class="mp-h5 mp-empty-state__title">Sin elementos</p>
-            <p class="mp-body-m mp-empty-state__desc">No hay elementos disponibles en este momento.</p>
+            <h5 class="mp-h5 mp-empty-state__title"><strong>Sin elementos</strong></h5>
+            <p class="mp-body-l mp-empty-state__desc">No hay elementos disponibles en este momento.</p>
           </div>
         </div>
         <p class="est-var-card__label">Default</p>
@@ -171,8 +172,8 @@
             <div class="mp-empty-state__icon">
               <i class="icon icon-package" aria-hidden="true"></i>
             </div>
-            <p class="mp-h5 mp-empty-state__title">Carpeta vacía</p>
-            <p class="mp-body-m mp-empty-state__desc">Aún no has agregado ningún archivo.</p>
+            <h5 class="mp-h5 mp-empty-state__title"><strong>Carpeta vacía</strong></h5>
+            <p class="mp-body-l mp-empty-state__desc">Aún no has agregado ningún archivo.</p>
           </div>
         </div>
         <p class="est-var-card__label">Con borde <code>--bordered</code></p>
@@ -186,8 +187,8 @@
             <div class="mp-empty-state__icon">
               <i class="icon icon-magnifying-glass" aria-hidden="true"></i>
             </div>
-            <p class="mp-h5 mp-empty-state__title">Sin resultados</p>
-            <p class="mp-body-m mp-empty-state__desc">Prueba otros filtros.</p>
+            <h5 class="mp-h5 mp-empty-state__title"><strong>Sin resultados</strong></h5>
+            <p class="mp-body-l mp-empty-state__desc">Prueba otros filtros.</p>
           </div>
         </div>
         <p class="est-var-card__label">Compacto <code>--compact</code></p>
@@ -198,8 +199,8 @@
       <div class="est-var-card">
         <div class="est-var-card__demo">
           <div class="mp-empty-state mp-empty-state--text-only" style="width:100%">
-            <p class="mp-h5 mp-empty-state__title">No hay notificaciones</p>
-            <p class="mp-body-m mp-empty-state__desc">Estás al día. Las nuevas notificaciones aparecerán aquí.</p>
+            <h5 class="mp-h5 mp-empty-state__title"><strong>No hay notificaciones</strong></h5>
+            <p class="mp-body-l mp-empty-state__desc">Estás al día. Las nuevas notificaciones aparecerán aquí.</p>
             <div class="mp-empty-state__action">
               <button type="button" class="mp-btn mp-btn--primario mp-btn--sm">Explorar servicios</button>
             </div>
@@ -225,8 +226,8 @@
               <div class="mp-empty-state__icon">
                 <i class="icon icon-cloud-arrow-up" aria-hidden="true"></i>
               </div>
-              <p class="mp-h5 mp-empty-state__title">Sube tu primer documento</p>
-              <p class="mp-body-m mp-empty-state__desc">Aún no tienes documentos guardados. Comienza subiendo uno.</p>
+              <h5 class="mp-h5 mp-empty-state__title"><strong>Sube tu primer documento</strong></h5>
+              <p class="mp-body-l mp-empty-state__desc">Aún no tienes documentos guardados. Comienza subiendo uno.</p>
               <div class="mp-empty-state__action">
                 <button type="button" class="mp-btn mp-btn--primario">
                   <i class="icon icon-upload icon-16" aria-hidden="true"></i>
@@ -246,8 +247,8 @@
               <div class="mp-empty-state__icon">
                 <i class="icon icon-sliders" aria-hidden="true"></i>
               </div>
-              <p class="mp-h5 mp-empty-state__title">Sin resultados para este filtro</p>
-              <p class="mp-body-m mp-empty-state__desc">Ningún elemento coincide con los filtros seleccionados.</p>
+              <h5 class="mp-h5 mp-empty-state__title"><strong>Sin resultados para este filtro</strong></h5>
+              <p class="mp-body-l mp-empty-state__desc">Ningún elemento coincide con los filtros seleccionados.</p>
               <div class="mp-empty-state__action">
                 <button type="button" class="mp-btn mp-btn--primario">Limpiar filtros</button>
                 <button type="button" class="mp-btn mp-btn--secundario">Ver todo</button>
@@ -274,8 +275,8 @@
           <div class="mp-empty-state__icon">
             <i class="icon icon-package" aria-hidden="true"></i>
           </div>
-          <p class="mp-h5 mp-empty-state__title">Sin elementos</p>
-          <p class="mp-body-m mp-empty-state__desc">No hay elementos disponibles.</p>
+          <h5 class="mp-h5 mp-empty-state__title"><strong>Sin elementos</strong></h5>
+          <p class="mp-body-l mp-empty-state__desc">No hay elementos disponibles.</p>
           <div class="mp-empty-state__action">
             <button type="button" class="mp-btn mp-btn--primario mp-btn--sm">Crear nuevo</button>
           </div>
@@ -288,8 +289,8 @@
           <div class="mp-empty-state__icon">
             <i class="icon icon-package" aria-hidden="true"></i>
           </div>
-          <p class="mp-h5 mp-empty-state__title">Sin elementos</p>
-          <p class="mp-body-m mp-empty-state__desc">No hay elementos disponibles.</p>
+          <h5 class="mp-h5 mp-empty-state__title"><strong>Sin elementos</strong></h5>
+          <p class="mp-body-l mp-empty-state__desc">No hay elementos disponibles.</p>
           <div class="mp-empty-state__action">
             <button type="button" class="mp-btn mp-btn--primario mp-btn--sm">Crear nuevo</button>
           </div>
@@ -302,8 +303,8 @@
           <div class="mp-empty-state__icon">
             <i class="icon icon-package" aria-hidden="true"></i>
           </div>
-          <p class="mp-h5 mp-empty-state__title">Sin elementos</p>
-          <p class="mp-body-m mp-empty-state__desc">No hay elementos disponibles.</p>
+          <h5 class="mp-h5 mp-empty-state__title"><strong>Sin elementos</strong></h5>
+          <p class="mp-body-l mp-empty-state__desc">No hay elementos disponibles.</p>
           <div class="mp-empty-state__action">
             <button type="button" class="mp-btn mp-btn--primario mp-btn--sm">Crear nuevo</button>
           </div>
@@ -334,8 +335,8 @@
   &lt;div class="mp-empty-state__icon" aria-hidden="true"&gt;
     &lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;
   &lt;/div&gt;
-  &lt;p class="mp-h5 mp-empty-state__title"&gt;Sin elementos&lt;/p&gt;
-  &lt;p class="mp-body-m mp-empty-state__desc"&gt;
+  &lt;h4 class="mp-h4 mp-empty-state__title"&gt;Sin elementos&lt;/h4&gt;
+  &lt;p class="mp-body-l mp-empty-state__desc"&gt;
     No hay elementos disponibles en este momento.
   &lt;/p&gt;
   &lt;div class="mp-empty-state__action"&gt;
@@ -355,8 +356,8 @@
 
 &lt;!-- Solo texto (sin ícono) --&gt;
 &lt;div class="mp-empty-state mp-empty-state--text-only"&gt;
-  &lt;p class="mp-h5 mp-empty-state__title"&gt;No hay notificaciones&lt;/p&gt;
-  &lt;p class="mp-body-m mp-empty-state__desc"&gt;Estás al día.&lt;/p&gt;
+  &lt;h4 class="mp-h4 mp-empty-state__title"&gt;No hay notificaciones&lt;/h4&gt;
+  &lt;p class="mp-body-l mp-empty-state__desc"&gt;Estás al día.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
 
       <pre id="est-code-scss"><code>// ── Base ──────────────────────────────────────────────────────
@@ -389,7 +390,7 @@
   }
 }
 
-// ── Título — usar clase mp-h5 en el HTML ─────────────────────
+// ── Título — usar &lt;h4 class="mp-h4"&gt; en el HTML ─────────────
 .mp-empty-state__title {
   color:  var(--color-text-primary);
   margin: 0;
@@ -504,7 +505,7 @@
           <td><code>.mp-empty-state__title</code></td>
           <td>elemento</td>
           <td>—</td>
-          <td>Título del estado. Combinar con clase <code>.mp-h5</code> para la tipografía correcta.</td>
+          <td>Título del estado. Usar elemento <code>&lt;h4&gt;</code> con clase <code>.mp-h4</code>. Ajusta el nivel semántico según el contexto de la página.</td>
         </tr>
         <tr>
           <td><code>.mp-empty-state__desc</code></td>
@@ -581,7 +582,7 @@
         <div class="a11y-card h-100">
           <i class="icon icon-check-square icon-24 a11y-card__icon" aria-hidden="true"></i>
           <div class="a11y-card__title text-primary">Jerarquía semántica</div>
-          <div class="a11y-card__desc text-secondary">El título debe usar el nivel de encabezado correcto en el contexto (<code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, etc.) o <code>&lt;p&gt;</code> con clase <code>.mp-h5</code> cuando no corresponde a un encabezado real.</div>
+          <div class="a11y-card__desc text-secondary">Usa <code>&lt;h4 class="mp-h4"&gt;</code> como elemento del título. Ajusta el nivel (<code>h2</code>, <code>h3</code>…) si el contexto lo requiere para mantener la jerarquía correcta de la página.</div>
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">
@@ -635,8 +636,8 @@
     live.className = 'mp-empty-state' + (variant ? ' ' + variant : '');
     live.innerHTML = `
       ${iconHTML}
-      <p class="mp-h5 mp-empty-state__title">${title}</p>
-      <p class="mp-body-m mp-empty-state__desc">${desc}</p>
+      <h5 class="mp-h5 mp-empty-state__title"><strong>${title}</strong></h5>
+      <p class="mp-body-l mp-empty-state__desc">${desc}</p>
       ${actionHTML}
     `;
   }

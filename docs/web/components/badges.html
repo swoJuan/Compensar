@@ -1,10 +1,11 @@
 <article class="component-doc-page bdg-doc" data-component-doc="badges">
-  <nav class="component-doc-breadcrumb" aria-label="Breadcrumb">
-    <span>Sistema de diseño</span>
-    <span>/</span>
-    <span>Componentes</span>
-    <span>/</span>
-    <strong>Chips / Tags / Badges</strong>
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Componentes</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Chips / Tags / Badges</span></li>
+    </ol>
   </nav>
 
   <section class="component-hero" aria-labelledby="badges-title">
@@ -63,9 +64,137 @@
     </div>
   </section>
 
+  <!-- ── 2. Cuándo usar cada uno ────────────────────────────── -->
+  <section class="component-section" aria-labelledby="bdg-which-title">
+    <div class="component-section__header">
+      <h2 id="bdg-which-title" class="mp-h2">2. ¿Cuál usar?</h2>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Chip -->
+      <div class="col-12 col-md-4">
+        <div class="bdg-which-card">
+          <div class="bdg-which-card__demo">
+            <button class="mp-chip mp-chip--info is-selected" type="button" aria-pressed="true">
+              <span class="mp-chip__label">Medicina</span>
+            </button>
+            <button class="mp-chip mp-chip--info" type="button" aria-pressed="false">
+              <span class="mp-chip__label">Odontología</span>
+            </button>
+          </div>
+          <div class="bdg-which-card__body">
+            <h5 class="mp-h5 bdg-which-card__name">Chip</h5>
+            <span class="mp-badge mp-badge--info"><span class="mp-badge__label">Interactivo</span></span>
+            <p class="mp-body-m bdg-which-card__role">El usuario lo presiona, selecciona o descarta. Cambia de estado.</p>
+            <ul class="bdg-which-list">
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Filtros activos o toggleables</li>
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Selección múltiple</li>
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Acciones rápidas con ícono de cierre</li>
+            </ul>
+            <p class="bdg-which-card__element"><code>&lt;button&gt;</code> · <code>aria-pressed</code></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tag -->
+      <div class="col-12 col-md-4">
+        <div class="bdg-which-card">
+          <div class="bdg-which-card__demo">
+            <span class="mp-tag mp-tag--violet"><span class="mp-tag__label">Afiliado</span></span>
+            <span class="mp-tag mp-tag--info"><span class="mp-tag__label">Dependiente</span></span>
+          </div>
+          <div class="bdg-which-card__body">
+            <h5 class="mp-h5 bdg-which-card__name">Tag</h5>
+            <span class="mp-badge mp-badge--neutral"><span class="mp-badge__label">No interactivo</span></span>
+            <p class="mp-body-m bdg-which-card__role">Solo clasifica o etiqueta. Nunca responde a clics ni comunica estados de proceso.</p>
+            <ul class="bdg-which-list">
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Categorías de contenido</li>
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Etiquetas en tablas o cards</li>
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Tipo de usuario o plan</li>
+            </ul>
+            <p class="bdg-which-card__element"><code>&lt;span&gt;</code> · solo lectura</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge -->
+      <div class="col-12 col-md-4">
+        <div class="bdg-which-card">
+          <div class="bdg-which-card__demo">
+            <span class="mp-badge mp-badge--success" role="img" aria-label="Estado: Activo">
+              <span class="mp-badge-dot" aria-hidden="true"></span>
+              <span class="mp-badge__label">Activo</span>
+            </span>
+            <span class="mp-badge mp-badge--error" role="img" aria-label="Estado: Vencido">
+              <span class="mp-badge-dot" aria-hidden="true"></span>
+              <span class="mp-badge__label">Vencido</span>
+            </span>
+          </div>
+          <div class="bdg-which-card__body">
+            <h5 class="mp-h5 bdg-which-card__name">Badge</h5>
+            <span class="mp-badge mp-badge--neutral"><span class="mp-badge__label">Estado / conteo</span></span>
+            <p class="mp-body-m bdg-which-card__role">Comunica estado, prioridad o conteo numérico. Nunca es clicable por sí solo.</p>
+            <ul class="bdg-which-list">
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Estado de un registro (Activo, Vencido)</li>
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Prioridad o nivel de alerta</li>
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Contadores sobre íconos o avatares</li>
+            </ul>
+            <p class="bdg-which-card__element"><code>&lt;span&gt;</code> · <code>role="img"</code> + <code>aria-label</code></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tabla comparativa rápida -->
+    <table class="mp-api-table" style="margin-top:var(--space-24)">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Chip</th>
+          <th>Tag</th>
+          <th>Badge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Interactivo</strong></td>
+          <td>✅ Sí</td>
+          <td>❌ No</td>
+          <td>❌ No</td>
+        </tr>
+        <tr>
+          <td><strong>Elemento HTML</strong></td>
+          <td><code>&lt;button&gt;</code></td>
+          <td><code>&lt;span&gt;</code></td>
+          <td><code>&lt;span&gt;</code></td>
+        </tr>
+        <tr>
+          <td><strong>Comunica estado</strong></td>
+          <td>Seleccionado / activo</td>
+          <td>Categoría / tipo</td>
+          <td>Estado / prioridad / conteo</td>
+        </tr>
+        <tr>
+          <td><strong>Clase base</strong></td>
+          <td><code>.mp-chip</code></td>
+          <td><code>.mp-tag</code></td>
+          <td><code>.mp-badge</code></td>
+        </tr>
+        <tr>
+          <td><strong>ARIA requerido</strong></td>
+          <td><code>aria-pressed</code></td>
+          <td>Ninguno adicional</td>
+          <td><code>role="img"</code> + <code>aria-label</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
   <section class="component-section" aria-labelledby="bdg-anatomy-title">
     <div class="component-section__header">
-      <h2 id="bdg-anatomy-title" class="mp-h2">2. Anatomía interactiva</h2>
+      <h2 id="bdg-anatomy-title" class="mp-h2">3. Anatomía interactiva</h2>
     </div>
 
     <div class="segmented-control" role="group" aria-label="Tipo de pastilla">
@@ -110,7 +239,7 @@
   <section class="component-section" aria-labelledby="bdg-playground-title">
     <div class="component-section__header">
       <div>
-        <h2 id="bdg-playground-title" class="mp-h2">3. Playground</h2>
+        <h2 id="bdg-playground-title" class="mp-h2">4. Playground</h2>
         <p class="mp-body-m">Configura tipo, intención, color, tamaño, íconos y estado. El código se actualiza con el fragmento real del componente.</p>
       </div>
     </div>
@@ -198,27 +327,27 @@
 
   <section class="component-section" aria-labelledby="bdg-variants-title">
     <div class="component-section__header">
-      <h2 id="bdg-variants-title" class="mp-h2">4. Variantes de color</h2>
+      <h2 id="bdg-variants-title" class="mp-h2">5. Variantes de color</h2>
     </div>
     <div class="bdg-token-grid" id="bdg-token-grid"></div>
   </section>
 
   <section class="component-section" aria-labelledby="bdg-states-title">
     <div class="component-section__header">
-      <h2 id="bdg-states-title" class="mp-h2">5. Estados interactivos</h2>
+      <h2 id="bdg-states-title" class="mp-h2">6. Estados interactivos</h2>
     </div>
     <div class="bdg-state-grid">
-      <article class="bdg-state-card"><h3 class="mp-h3">Default</h3><p class="mp-body-s">Estado base disponible.</p><button class="mp-chip mp-chip--info" type="button">Medicina</button></article>
-      <article class="bdg-state-card"><h3 class="mp-h3">Hover</h3><p class="mp-body-s">Se evidencia solo en chips interactivos.</p><button class="mp-chip mp-chip--info mp-chip--is-hover" type="button">Medicina</button></article>
-      <article class="bdg-state-card"><h3 class="mp-h3">Focus</h3><p class="mp-body-s">Anillo visible para navegación con teclado.</p><button class="mp-chip mp-chip--info mp-chip--is-focus" type="button">Medicina</button></article>
-      <article class="bdg-state-card"><h3 class="mp-h3">Seleccionado</h3><p class="mp-body-s">Comunica filtros o selecciones activas.</p><button class="mp-chip mp-chip--info is-selected" type="button" aria-pressed="true">Medicina</button></article>
-      <article class="bdg-state-card"><h3 class="mp-h3">Disabled</h3><p class="mp-body-s">No permite interacción.</p><button class="mp-chip mp-chip--info is-disabled" type="button" disabled>Medicina</button></article>
+      <article class="bdg-state-card"><h3 class="mp-h3">Default</h3><p class="mp-body-s">Estado base disponible.</p><div class="bdg-state-card__demo"><button class="mp-chip mp-chip--info" type="button">Medicina</button></div></article>
+      <article class="bdg-state-card"><h3 class="mp-h3">Hover</h3><p class="mp-body-s">Se evidencia solo en chips interactivos.</p><div class="bdg-state-card__demo"><button class="mp-chip mp-chip--info mp-chip--is-hover" type="button">Medicina</button></div></article>
+      <article class="bdg-state-card"><h3 class="mp-h3">Focus</h3><p class="mp-body-s">Anillo visible para navegación con teclado.</p><div class="bdg-state-card__demo"><button class="mp-chip mp-chip--info mp-chip--is-focus" type="button">Medicina</button></div></article>
+      <article class="bdg-state-card"><h3 class="mp-h3">Seleccionado</h3><p class="mp-body-s">Comunica filtros o selecciones activas.</p><div class="bdg-state-card__demo"><button class="mp-chip mp-chip--info is-selected" type="button" aria-pressed="true">Medicina</button></div></article>
+      <article class="bdg-state-card"><h3 class="mp-h3">Disabled</h3><p class="mp-body-s">No permite interacción.</p><div class="bdg-state-card__demo"><button class="mp-chip mp-chip--info is-disabled" type="button" disabled>Medicina</button></div></article>
     </div>
   </section>
 
   <section class="component-section" aria-labelledby="bdg-modes-title">
     <div class="component-section__header">
-      <h2 id="bdg-modes-title" class="mp-h2">6. Modos de color</h2>
+      <h2 id="bdg-modes-title" class="mp-h2">7. Modos de color</h2>
     </div>
     <div class="bdg-modos-grid">
       <div class="bdg-modo-box" data-theme="light"><span class="bdg-modo-label mp-label">Light</span><div class="bdg-modo-row" data-bdg-mode-row></div></div>
@@ -230,7 +359,7 @@
   <div class="row g-4">
     <div class="col-12 col-lg-6">
       <section class="component-section h-100" aria-labelledby="bdg-rules-title">
-        <div class="component-section__header"><h2 id="bdg-rules-title" class="mp-h2">7. Comportamiento y reglas</h2></div>
+        <div class="component-section__header"><h2 id="bdg-rules-title" class="mp-h2">8. Comportamiento y reglas</h2></div>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa chips solo cuando hay interacción.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa tags para clasificación no interactiva.</li>
@@ -241,7 +370,7 @@
     </div>
     <div class="col-12 col-lg-6">
       <section class="component-section h-100" aria-labelledby="bdg-a11y-title">
-        <div class="component-section__header"><h2 id="bdg-a11y-title" class="mp-h2">8. Accesibilidad</h2></div>
+        <div class="component-section__header"><h2 id="bdg-a11y-title" class="mp-h2">9. Accesibilidad</h2></div>
         <ul class="component-list">
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los chips deben exponer estado con <code>aria-pressed</code> cuando sean seleccionables.</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los badges de estado deben tener texto claro o <code>aria-label</code>.</li>
@@ -255,7 +384,7 @@
   <section class="component-section" aria-labelledby="bdg-code-title">
     <div class="component-section__header">
       <div>
-        <h2 id="bdg-code-title" class="mp-h2">9. Visualizador</h2>
+        <h2 id="bdg-code-title" class="mp-h2">10. Visualizador</h2>
         <p class="mp-body-m">HTML del fragmento y estilos completos del componente. No incluye estilos propios del portal.</p>
       </div>
     </div>
@@ -285,7 +414,7 @@
 
   <section class="component-section" aria-labelledby="bdg-qa-title">
     <div class="component-section__header">
-      <h2 id="bdg-qa-title" class="mp-h2">10. Checklist QA</h2>
+      <h2 id="bdg-qa-title" class="mp-h2">11. Checklist QA</h2>
     </div>
     <ul class="component-list">
       <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Verificar Light, Dark y High Contrast.</li>

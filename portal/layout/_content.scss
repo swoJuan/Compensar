@@ -41,8 +41,6 @@
 }
 
 .section-eyebrow {
-  font-size: rem(11px);
-  font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--ui-accent);
@@ -50,9 +48,6 @@
 }
 
 .section-title {
-  font-family: var(--font-heading);
-  font-size: rem(30px);
-  font-weight: 700;
   color: var(--ui-text);
   letter-spacing: -.02em;
   line-height: 1.2;
@@ -61,8 +56,6 @@
 .section-desc {
   margin-top: var(--space-8);
   color: var(--ui-text-muted);
-  font-size: rem(14px);
-  line-height: 1.7;
   max-width: rem(620px);
 }
 
@@ -70,9 +63,6 @@
 .subsection { margin-bottom: var(--space-64); }
 
 .subsection-title {
-  font-family: var(--font-heading);
-  font-size: rem(11px);
-  font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--ui-text-muted);

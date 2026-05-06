@@ -1,0 +1,265 @@
+<article class="component-doc-page loading-doc" data-component-doc="loading">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Componentes</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Loading</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="loading-title">
+    <h1 id="loading-title" class="mp-h1">Loading</h1>
+    <p class="mp-body-l">Representa el estado en el que la información aún no ha cargado. Ayuda a reducir la incertidumbre del usuario y mejora la percepción de rendimiento del sistema.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Categoría: feedback</span>
+      <span class="component-chip">Figma: 4610:73484</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="loading-summary-title">
+    <div class="component-section__header">
+      <h2 id="loading-summary-title" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando los datos están en proceso de carga.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando hay transición entre vistas o actualización de resultados.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando se espera una respuesta breve del sistema.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para cargas cortas con mensaje visible de estado.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Muestra el estado con animación y texto claro.</p>
+            <div class="component-example-actions">
+              <div class="mp-loading mp-loading--sm" role="status" aria-live="polite" aria-busy="true">
+                <span class="mp-loading__spinner" aria-hidden="true">
+                  <span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span>
+                  <span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span>
+                </span>
+                <span class="mp-loading__text">Estamos buscando opciones para ti...</span>
+              </div>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No dejes una pantalla bloqueada sin mensaje ni salida esperada.</p>
+            <div class="component-example-actions">
+              <span class="mp-badge mp-badge--warning">Cargando sin contexto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="loading-anatomy-title">
+    <div class="component-section__header">
+      <h2 id="loading-anatomy-title" class="mp-h2">2. Anatomía interactiva</h2>
+    </div>
+
+    <div class="segmented-control" role="group" aria-label="Tipo de loading">
+      <button type="button" class="mp-btn mp-btn--terciario" data-loading-anatomy="default" aria-pressed="true">Default</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-loading-anatomy="inline" aria-pressed="false">Inline</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-loading-anatomy="overlay" aria-pressed="false">Overlay</button>
+    </div>
+
+    <div class="loading-anatomy-stage">
+      <span class="loading-measure loading-measure--spinner" data-loading-measure="spinner">48 px</span>
+      <span class="loading-measure loading-measure--bar" data-loading-measure="bar">4 x 12 px</span>
+      <span class="loading-measure loading-measure--gap" data-loading-measure="gap">Gap 16 px</span>
+
+      <div class="loading-doc-callout loading-doc-callout--spinner">
+        <strong>Spinner</strong>
+        <span>8 barras con radio completo y animación CSS.</span>
+      </div>
+      <div class="loading-doc-callout loading-doc-callout--text">
+        <strong>Título / descripción</strong>
+        <span>Roboto Regular 16 px, line-height 1.3.</span>
+      </div>
+      <div class="loading-doc-callout loading-doc-callout--state">
+        <strong>Estado</strong>
+        <span><code>role="status"</code>, <code>aria-live</code> y texto visible.</span>
+      </div>
+
+      <div class="loading-anatomy-preview" id="loading-anatomy-preview"></div>
+    </div>
+
+    <div class="component-controls">
+      <label class="button-doc-toggle"><input type="checkbox" data-loading-anatomy-toggle="measures" checked> Medidas</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-loading-anatomy-toggle="labels" checked> Etiquetas</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-loading-anatomy-toggle="paused"> Pausar animación</label>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="loading-playground-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="loading-playground-title" class="mp-h2">3. Playground</h2>
+        <p class="mp-body-m">Configura tamaño, presentación y texto. El visualizador entrega el fragmento real del componente y sus estilos completos.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-xl-5">
+        <div class="component-control-panel">
+          <div class="row g-3">
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="loading-ctrl-size">Tamaño</label>
+              <select class="mp-input-field mp-select" id="loading-ctrl-size" data-loading-control="size">
+                <option value="">Default 48 px</option>
+                <option value="sm">Small 32 px</option>
+                <option value="lg">Large 64 px</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="loading-ctrl-layout">Presentación</label>
+              <select class="mp-input-field mp-select" id="loading-ctrl-layout" data-loading-control="layout">
+                <option value="default">Default</option>
+                <option value="inline">Inline</option>
+                <option value="overlay">Overlay</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="loading-ctrl-theme">Modo</label>
+              <select class="mp-input-field mp-select" id="loading-ctrl-theme" data-loading-control="theme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="high-contrast">High Contrast</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="loading-ctrl-state">Estado</label>
+              <select class="mp-input-field mp-select" id="loading-ctrl-state" data-loading-control="state">
+                <option value="running">En progreso</option>
+                <option value="paused">Pausado</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="mp-label" for="loading-ctrl-text">Texto</label>
+              <input class="mp-input-field" type="text" id="loading-ctrl-text" data-loading-control="text" value="Estamos buscando opciones para ti..." maxlength="80">
+            </div>
+            <div class="col-12">
+              <label class="button-doc-toggle"><input type="checkbox" data-loading-control="showText" checked> Mostrar texto visible</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-7">
+        <div class="component-preview-panel" id="loading-preview-area" data-theme="light"></div>
+        <div class="code-block loading-playground-code">
+          <div class="code-content">
+            <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-loading-copy-playground>
+              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+              Copiar
+            </button>
+            <pre id="loading-playground-code" class="active"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="loading-states-title">
+    <div class="component-section__header">
+      <h2 id="loading-states-title" class="mp-h2">4. Estados y variantes</h2>
+    </div>
+    <div class="loading-state-grid">
+      <article class="loading-state-card"><h3 class="mp-h3">Default</h3><p class="mp-body-s">Spinner centrado con texto visible.</p><div class="loading-state-sample" data-loading-state-demo="default"></div></article>
+      <article class="loading-state-card"><h3 class="mp-h3">Inline</h3><p class="mp-body-s">Acompaña acciones o mensajes compactos.</p><div class="loading-state-sample" data-loading-state-demo="inline"></div></article>
+      <article class="loading-state-card"><h3 class="mp-h3">Overlay</h3><p class="mp-body-s">Cubre un bloque mientras actualiza contenido.</p><div class="loading-state-sample" data-loading-state-demo="overlay"></div></article>
+      <article class="loading-state-card"><h3 class="mp-h3">Reducido</h3><p class="mp-body-s">Debe conservar el texto y bajar intensidad.</p><div class="loading-state-sample" data-loading-state-demo="paused"></div></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="loading-modes-title">
+    <div class="component-section__header">
+      <h2 id="loading-modes-title" class="mp-h2">5. Modos de color</h2>
+    </div>
+    <div class="loading-mode-grid">
+      <article class="loading-mode-card"><h3 class="mp-h3">Light</h3><div class="loading-mode-demo" data-theme="light" data-loading-mode-demo="light"></div></article>
+      <article class="loading-mode-card"><h3 class="mp-h3">Dark</h3><div class="loading-mode-demo" data-theme="dark" data-loading-mode-demo="dark"></div></article>
+      <article class="loading-mode-card"><h3 class="mp-h3">High Contrast</h3><div class="loading-mode-demo" data-theme="high-contrast" data-loading-mode-demo="high-contrast"></div></article>
+    </div>
+  </section>
+
+  <div class="row g-4">
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="loading-rules-title">
+        <div class="component-section__header"><h2 id="loading-rules-title" class="mp-h2">6. Comportamiento y reglas</h2></div>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Se muestra mientras carga la información y desaparece automáticamente al terminar.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No debe bloquear más tiempo del necesario.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Evita tiempos largos sin feedback adicional.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mantén consistencia de tamaño y texto en toda la interfaz.</li>
+        </ul>
+      </section>
+    </div>
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="loading-a11y-title">
+        <div class="component-section__header"><h2 id="loading-a11y-title" class="mp-h2">7. Accesibilidad</h2></div>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No dependas solo de la animación: conserva un texto visible.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa <code>role="status"</code>, <code>aria-live="polite"</code> y <code>aria-busy="true"</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mantén contraste adecuado en Light, Dark y High Contrast.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Respeta usuarios con reducción de movimiento.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="component-section" aria-labelledby="loading-code-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="loading-code-title" class="mp-h2">8. Visualizador</h2>
+        <p class="mp-body-m">HTML del fragmento y estilos completos del componente. También puedes descargar solo la animación en CSS o Sass.</p>
+      </div>
+    </div>
+    <div class="ct-downloads button-downloads" aria-label="Descargar estilos de loading">
+      <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-loading-download="html"><i class="icon icon-article icon-16" aria-hidden="true"></i> HTML</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-loading-download="css"><i class="icon icon-article icon-16" aria-hidden="true"></i> CSS</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-loading-download="sass"><i class="icon icon-article icon-16" aria-hidden="true"></i> Sass</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-loading-download="animation-css"><i class="icon icon-spinner icon-16" aria-hidden="true"></i> Animación CSS</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-loading-download="animation-sass"><i class="icon icon-spinner icon-16" aria-hidden="true"></i> Animación Sass</button>
+    </div>
+    <div class="code-block">
+      <div class="code-tabs" role="tablist" aria-label="Código del componente">
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-loading-code-tab="html" aria-selected="true">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-loading-code-tab="css" aria-selected="false">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-loading-code-tab="sass" aria-selected="false">Sass</button>
+      </div>
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-loading-copy-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="loading-code-html" class="active"></pre>
+        <pre id="loading-code-css"></pre>
+        <pre id="loading-code-sass"></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="loading-qa-title">
+    <div class="component-section__header">
+      <h2 id="loading-qa-title" class="mp-h2">9. Checklist QA</h2>
+    </div>
+    <ul class="component-list">
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Spinner mide 48 px por defecto y conserva proporciones en small/large.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Texto visible usa 16 px y no se oculta en mobile.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Light, Dark y High Contrast mantienen contraste correcto.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El HTML expone <code>role="status"</code>, <code>aria-live</code> y <code>aria-busy</code>.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Las descargas de CSS/Sass incluyen componente completo y animación separada.</li>
+    </ul>
+  </section>
+</article>

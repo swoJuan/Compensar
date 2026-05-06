@@ -25,6 +25,15 @@
   color: var(--use-text-primary);
 }
 
+.component-doc-nav {
+  margin-bottom: var(--space-16);
+}
+
+.component-doc-nav .mp-breadcrumb__link,
+.component-doc-nav .mp-breadcrumb__current {
+  font-size: rem(14px);
+}
+
 .component-hero {
   margin-bottom: var(--space-32);
 }
@@ -110,7 +119,7 @@
 
 .component-section p,
 .component-section li {
-  font-size: rem(14px);
+  /*font-size: rem(14px);*/
   line-height: 1.6;
 }
 

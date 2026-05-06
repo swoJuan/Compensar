@@ -26,29 +26,31 @@
   width:           rem(56px);
   height:          rem(56px);
   border-radius:   var(--radius-md);
-  background:      var(--use-surface-subtle);
-  color:           var(--color-text-secondary);
+  background:      var(--use-surface-orange);   // #fff2e3 — naranja 10
+  color:           var(--use-primary-default);  // #ff6600 — brand orange
   flex-shrink:     0;
 
   .icon {
-    font-size:   rem(32px);
+    font-size:   rem(28px);
     line-height: 1;
   }
 }
 
 // ── Título ────────────────────────────────────────────────────
-// Se usa con clase mp-h5 en el HTML
+// Elemento: <h5 class="mp-h5 mp-empty-state__title"><strong>…</strong></h5>
+// Ajusta el nivel semántico (h2–h5) según la jerarquía de la página.
 .mp-empty-state__title {
-  color:  var(--color-text-primary);
-  margin: 0;
+  color:       var(--color-text-primary);
+  margin:      0;
+  font-weight: 700; // refuerza el bold vía <strong>
 }
 
-// ── Descripción ───────────────────────────────────────────────
-// Se usa con clase mp-body-l en el HTML
+// ── Descripción — 16px · usar <p class="mp-body-l"> en el HTML ─
 .mp-empty-state__desc {
-  color:     var(--color-text-secondary);
-  max-width: rem(480px);
-  margin:    0;
+  color:      var(--color-text-secondary);
+  max-width:  rem(480px);
+  margin:     0;
+  margin-top: calc(-1 * var(--space-8)); // reduce gap título→desc a ~8px
 }
 
 // ── Acción (botón opcional) ───────────────────────────────────
@@ -94,6 +96,12 @@
 
 // ── Dark mode ─────────────────────────────────────────────────
 [data-theme='dark'] {
+  .mp-empty-state__icon {
+    // En dark, --use-primary-default ya es #ff9d5c (más claro)
+    // El fondo naranja-10 se ve muy claro; usamos un tono más oscuro
+    background: color-mix(in srgb, var(--use-primary-default) 15%, transparent);
+  }
+
   .mp-empty-state--bordered {
     border-color: var(--use-border-default);
     background:   var(--use-surface-white);
@@ -103,13 +111,13 @@
 // ── High Contrast ─────────────────────────────────────────────
 [data-theme='high-contrast'] {
   .mp-empty-state__icon {
-    background:   transparent;
-    border:       2px solid var(--use-border-default);
-    color:        var(--use-text-primary);
+    background: transparent;
+    border:     2px solid var(--use-primary-default); // #ffff00
+    color:      var(--use-primary-default);
   }
 
   .mp-empty-state--bordered {
-    border:       2px solid var(--use-border-default);
-    background:   var(--use-background-page);
+    border:     2px solid var(--use-border-default);
+    background: var(--use-background-page);
   }
 }

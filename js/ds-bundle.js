@@ -4962,7 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
-    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'tabs');
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'tabs' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -5081,6 +5081,21 @@
         window.tabsDocs.initTabsDoc(document);
       });
     }
+    if (window.loadingDocs) {
+      requestAnimationFrame(function() {
+        window.loadingDocs.initLoadingDocs(document);
+      });
+    }
+    if (window.breadcrumbDocs) {
+      requestAnimationFrame(function() {
+        window.breadcrumbDocs.initBreadcrumbDocs(document);
+      });
+    }
+    if (window.accordionDocs) {
+      requestAnimationFrame(function() {
+        window.accordionDocs.initAccordionDocs(document);
+      });
+    }
   }
 
   /* ══════════════════════════════════════════════════════════
@@ -5107,6 +5122,7 @@
     'iconos-intro':       'docs/web/components/icons-intro.html',
     'iconos-conectar':    'docs/web/components/icons-connect.html',
     'iconos-libreria':    'docs/web/components/icons-library.html',
+    'accordion':          'docs/web/components/accordion.html',
     'botones':            'docs/transversales/components/buttons.html',
     'inputs':             'docs/transversales/components/inputs.html',
     'dropdown':           'docs/transversales/components/dropdown.html',
@@ -5120,8 +5136,11 @@
     'badges':             'docs/web/components/badges.html',
     'tabs':               'docs/transversales/components/tabs.html',
     'empty-state':        'docs/web/components/empty-state.html',
+    'loading':            'docs/web/components/loading.html',
+    'breadcrumb':         'docs/web/components/breadcrumb.html',
     'tokens-texto':       'docs/tokens/tokens-text.html',
     'tokens-tablas':      'docs/tokens/tokens-tables.html',
+    'guidelines/high-contrast': 'docs/guidelines/high-contrast.html',
   };
 
   /* Rutas específicas de App (.NET MAUI) — sobreescriben ROUTES cuando PLATFORM='app' */
@@ -5337,19 +5356,22 @@
     {
       label: 'Componentes',
       items: [
-        { id: 'botones',   label: 'Botones',                  icon: 'hand-pointing' },
-        { id: 'inputs',    label: 'Inputs',                   icon: 'placeholder' },
-        { id: 'dropdown',  label: 'Dropdown / Select',        icon: 'caret-circle-down' },
-        { id: 'seleccion', label: 'Checkbox / Radio / Switch',icon: 'check-square' },
+        { id: 'accordion', label: 'Accordion',                icon: 'rows' },
         { id: 'alertas',   label: 'Alertas',                  icon: 'warning' },
-        { id: 'toast',     label: 'Toast',                    icon: 'bell' },
-        { id: 'modales',   label: 'Modales',                  icon: 'browser' },
+        { id: 'badges',    label: 'Badge / Chip / Tag',       icon: 'tag' },
+        { id: 'botones',   label: 'Botones',                  icon: 'hand-pointing' },
+        { id: 'breadcrumb', label: 'Breadcrumb',              icon: 'caret-right' },
         { id: 'cards',     label: 'Cards',                    icon: 'credit-card' },
+        { id: 'seleccion', label: 'Checkbox / Radio / Switch',icon: 'check-square' },
+        { id: 'dropdown',  label: 'Dropdown / Select',        icon: 'caret-circle-down' },
+        { id: 'empty-state', label: 'Empty State',            icon: 'package' },
+        { id: 'inputs',    label: 'Inputs',                   icon: 'placeholder' },
+        { id: 'loading',   label: 'Loading',                  icon: 'spinner' },
+        { id: 'modales',   label: 'Modales',                  icon: 'browser' },
         { id: 'paginacion',label: 'Paginación',               icon: 'number-circle-one' },
         { id: 'tables',    label: 'Tables',                   icon: 'table' },
-        { id: 'badges',    label: 'Badges',                   icon: 'tag' },
         { id: 'tabs',      label: 'Tabs',                     icon: 'browsers' },
-        { id: 'empty-state', label: 'Empty State',            icon: 'package' }
+        { id: 'toast',     label: 'Toast',                    icon: 'bell' }
       ]
     },
     {
@@ -5357,6 +5379,12 @@
       items: [
         { id: 'tokens-texto',  label: 'Texto',  icon: 'article' },
         { id: 'tokens-tablas', label: 'Tablas', icon: 'table'   }
+      ]
+    },
+    {
+      label: 'Guidelines',
+      items: [
+        { id: 'guidelines/high-contrast', label: 'High Contrast', icon: 'eye' }
       ]
     }
   ];

@@ -82,28 +82,10 @@ const router = (() => {
       icon: 'rounded_corner',
       group: 'app-fundamentos'
     },
-    'web/componentes/botones': {
-      label: 'Botones',
-      path: 'transversales/components/buttons.html',
-      icon: 'smart_button',
-      group: 'web-componentes'
-    },
-    'web/componentes/inputs': {
-      label: 'Inputs',
-      path: 'transversales/components/inputs.html',
-      icon: 'input',
-      group: 'web-componentes'
-    },
-    'web/componentes/dropdown': {
-      label: 'Dropdown / Select',
-      path: 'transversales/components/dropdown.html',
-      icon: 'arrow_drop_down_circle',
-      group: 'web-componentes'
-    },
-    'web/componentes/seleccion': {
-      label: 'Checkbox / Radio / Switch',
-      path: 'transversales/components/selection-controls.html',
-      icon: 'check_box',
+    'web/componentes/accordion': {
+      label: 'Accordion',
+      path: 'web/components/accordion.html',
+      icon: 'list_alt',
       group: 'web-componentes'
     },
     'web/componentes/alertas': {
@@ -112,22 +94,64 @@ const router = (() => {
       icon: 'notification_important',
       group: 'web-componentes'
     },
-    'web/componentes/toast': {
-      label: 'Toast',
-      path: 'transversales/components/toasts.html',
-      icon: 'notifications',
+    'web/componentes/badges': {
+      label: 'Badge / Chip / Tag',
+      path: 'web/components/badges.html',
+      icon: 'award_star',
       group: 'web-componentes'
     },
-    'web/componentes/modales': {
-      label: 'Modales',
-      path: 'transversales/components/modals.html',
-      icon: 'web_asset',
+    'web/componentes/botones': {
+      label: 'Botones',
+      path: 'transversales/components/buttons.html',
+      icon: 'smart_button',
+      group: 'web-componentes'
+    },
+    'web/componentes/breadcrumb': {
+      label: 'Breadcrumb',
+      path: 'web/components/breadcrumb.html',
+      icon: 'route',
       group: 'web-componentes'
     },
     'web/componentes/cards': {
       label: 'Cards',
       path: 'transversales/components/cards.html',
       icon: 'credit_card',
+      group: 'web-componentes'
+    },
+    'web/componentes/seleccion': {
+      label: 'Checkbox / Radio / Switch',
+      path: 'transversales/components/selection-controls.html',
+      icon: 'check_box',
+      group: 'web-componentes'
+    },
+    'web/componentes/dropdown': {
+      label: 'Dropdown / Select',
+      path: 'transversales/components/dropdown.html',
+      icon: 'arrow_drop_down_circle',
+      group: 'web-componentes'
+    },
+    'web/componentes/empty-state': {
+      label: 'Empty State',
+      path: 'web/components/empty-state.html',
+      icon: 'inbox',
+      group: 'web-componentes'
+    },
+    'web/componentes/inputs': {
+      label: 'Inputs',
+      path: 'transversales/components/inputs.html',
+      icon: 'input',
+      group: 'web-componentes'
+    },
+    'web/componentes/loading': {
+      label: 'Loading',
+      path: 'web/components/loading.html',
+      icon: 'progress_activity',
+      group: 'web-componentes'
+    },
+    'web/componentes/modales': {
+      label: 'Modales',
+      path: 'transversales/components/modals.html',
+      icon: 'web_asset',
       group: 'web-componentes'
     },
     'web/componentes/paginacion': {
@@ -142,22 +166,16 @@ const router = (() => {
       icon: 'table_chart',
       group: 'web-componentes'
     },
-    'web/componentes/badges': {
-      label: 'Badges',
-      path: 'web/components/badges.html',
-      icon: 'award_star',
-      group: 'web-componentes'
-    },
     'web/componentes/tabs': {
       label: 'Tabs',
       path: 'transversales/components/tabs.html',
       icon: 'table_chart',
       group: 'web-componentes'
     },
-    'web/componentes/empty-state': {
-      label: 'Empty State',
-      path: 'web/components/empty-state.html',
-      icon: 'inbox',
+    'web/componentes/toast': {
+      label: 'Toast',
+      path: 'transversales/components/toasts.html',
+      icon: 'notifications',
       group: 'web-componentes'
     },
     'web/componentes/iconos/intro': {
@@ -189,6 +207,12 @@ const router = (() => {
       path: 'tokens/tokens-text.html',
       icon: 'text_fields',
       group: 'tokens'
+    },
+    'guidelines/high-contrast': {
+      label: 'High Contrast',
+      path: 'guidelines/high-contrast.html',
+      icon: 'eye',
+      group: 'guidelines'
     },
     'qa/checklist': {
       label: 'Checklist QA',
@@ -235,7 +259,7 @@ const router = (() => {
     if (state.currentSection === section) return true;
 
     const def = navigationMap[section];
-    const fragmentVersion = '20260505-3';
+    const fragmentVersion = '20260506-1';
     const fragmentPath = `${config.fragmentBase}/${def.path}?v=${fragmentVersion}`;
 
     try {
@@ -263,7 +287,11 @@ const router = (() => {
         section === 'web/componentes/dropdown' ||
         section === 'web/componentes/badges' ||
         section === 'web/componentes/tabs' ||
-        section === 'web/componentes/empty-state'
+        section === 'web/componentes/empty-state' ||
+        section === 'web/componentes/loading' ||
+        section === 'web/componentes/breadcrumb' ||
+        section === 'web/componentes/accordion' ||
+        section === 'guidelines/high-contrast'
       );
 
       // Update active nav states
@@ -306,6 +334,15 @@ const router = (() => {
       }
       if (window.tabsDocs) {
         window.requestAnimationFrame(() => window.tabsDocs.initTabsDoc(document));
+      }
+      if (window.loadingDocs) {
+        window.requestAnimationFrame(() => window.loadingDocs.initLoadingDocs(document));
+      }
+      if (window.breadcrumbDocs) {
+        window.requestAnimationFrame(() => window.breadcrumbDocs.initBreadcrumbDocs(document));
+      }
+      if (window.accordionDocs) {
+        window.requestAnimationFrame(() => window.accordionDocs.initAccordionDocs(document));
       }
 
       return true;

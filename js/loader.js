@@ -26,6 +26,7 @@ const ROUTES = {
   'iconos-conectar': 'docs/web/components/icons-connect.html',
   'iconos-libreria': 'docs/web/components/icons-library.html',
 
+  'accordion':    'docs/web/components/accordion.html',
   'botones':       'docs/transversales/components/buttons.html',
   'inputs':        'docs/transversales/components/inputs.html',
   'alertas':       'docs/transversales/components/alerts.html',
@@ -34,6 +35,8 @@ const ROUTES = {
   'paginacion':    'docs/transversales/components/pagination.html',
   'badges':        'docs/web/components/badges.html',
   'empty-state':   'docs/web/components/empty-state.html',
+  'loading':       'docs/web/components/loading.html',
+  'breadcrumb':    'docs/web/components/breadcrumb.html',
 
   'tokens-texto':  'docs/tokens/tokens-text.html',
   'tokens-tablas': 'docs/tokens/tokens-tables.html',

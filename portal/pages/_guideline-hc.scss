@@ -1,0 +1,291 @@
+@use '../../core/abstracts' as *;
+
+// ============================================================
+//  Estilos de documentación — Guideline High Contrast
+//  Solo portal/docs.
+// ============================================================
+
+.ghc-doc {
+  --ghc-border:   var(--use-border-subtle, #d9d9d9);
+  --ghc-surface:  var(--use-surface-white, #ffffff);
+  --ghc-muted:    var(--use-surface-theme-gray-5, #f8f7f7);
+  --ghc-accent:   var(--use-primary-default, #ff6600);
+}
+
+.ghc-head {
+  margin-bottom: var(--space-32);
+}
+
+// ── Bloque de regla (3 columnas: texto | demo light | demo HC) ─
+.ghc-bloque {
+  display: grid;
+  grid-template-columns: rem(260px) 1fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+  padding: var(--space-24) 0;
+  border-bottom: rem(1px) solid var(--ghc-border);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+// ── Texto de la regla ─────────────────────────────────────────
+.ghc-rule__title {
+  font-size: rem(14px);
+  font-weight: 700;
+  color: var(--use-text-primary);
+  margin: 0 0 var(--space-8);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ghc-rule__list {
+  margin: 0;
+  padding: 0 0 0 var(--space-16);
+  color: var(--use-text-secondary);
+  font-size: rem(13px);
+  line-height: 1.6;
+
+  li {
+    margin-bottom: var(--space-4);
+  }
+}
+
+// ── Demo card ─────────────────────────────────────────────────
+.ghc-demo {
+  border-radius: rem(8px);
+  overflow: hidden;
+  border: rem(1px) solid var(--ghc-border);
+  background: var(--ghc-surface);
+}
+
+.ghc-demo__label {
+  padding: var(--space-8) var(--space-12);
+  font-size: rem(12px);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: var(--use-surface-theme-gray-5, #f8f7f7);
+  color: var(--use-text-secondary);
+  border-bottom: rem(1px) solid var(--ghc-border);
+}
+
+.ghc-demo__body {
+  padding: var(--space-16);
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  min-height: rem(180px);
+}
+
+.ghc-demo__body--stack {
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.ghc-demo__body--wrap {
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  align-content: flex-start;
+}
+
+.ghc-demo[data-theme='high-contrast'] {
+  background: var(--base-neutral-black);
+  border-color: var(--base-neutral-white);
+  border-width: rem(2px);
+
+  .ghc-demo__label {
+    background: var(--base-neutral-black);
+    color: var(--base-neutral-white);
+    border-bottom-color: var(--base-neutral-white);
+  }
+
+  .ghc-demo__body {
+    background: var(--base-neutral-black);
+    color: var(--base-neutral-white);
+  }
+}
+
+.ghc-real-card {
+  width: 100%;
+  min-height: auto;
+  gap: var(--space-12);
+  padding: var(--space-32);
+}
+
+.ghc-real-card.mp-card--compact {
+  width: 100%;
+  min-height: auto;
+  padding: var(--space-32);
+}
+
+.ghc-real-card .mp-card__media {
+  max-height: rem(136px);
+}
+
+.ghc-photo {
+  display: grid;
+  gap: var(--space-8);
+  width: 100%;
+  margin: 0;
+}
+
+.ghc-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: rem(8px);
+  border: rem(1px) solid var(--ghc-border);
+}
+
+.ghc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+}
+
+.ghc-demo .mp-alert {
+  width: 100%;
+}
+
+.ghc-demo .mp-input-field {
+  width: 100%;
+}
+
+// ── Sección 2 columnas ────────────────────────────────────────
+.ghc-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-24);
+  margin-top: var(--space-32);
+}
+
+.ghc-two-col__card {
+  padding: var(--space-24);
+  border: rem(1px) solid var(--ghc-border);
+  border-radius: rem(8px);
+  background: var(--ghc-muted);
+}
+
+.ghc-two-col__title {
+  font-size: rem(14px);
+  font-weight: 700;
+  color: var(--use-text-primary);
+  margin: 0 0 var(--space-12);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ghc-two-col__list {
+  margin: 0;
+  padding: 0 0 0 var(--space-16);
+  color: var(--use-text-secondary);
+  font-size: rem(13px);
+  line-height: 1.6;
+
+  li {
+    margin-bottom: var(--space-4);
+  }
+}
+
+// ── Sección accesibilidad (full width) ────────────────────────
+.ghc-a11y {
+  margin-top: var(--space-24);
+  padding: var(--space-24);
+  border: rem(1px) solid var(--ghc-border);
+  border-radius: rem(8px);
+  background: var(--ghc-muted);
+}
+
+.ghc-a11y__title {
+  font-size: rem(16px);
+  font-weight: 700;
+  color: var(--use-text-primary);
+  margin: 0;
+}
+
+.ghc-a11y__header {
+  display: inline-flex;
+  gap: var(--space-12);
+  align-items: center;
+  margin-bottom: var(--space-16);
+}
+
+.ghc-a11y__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-16);
+}
+
+.ghc-a11y__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.ghc-a11y__label {
+  font-size: rem(13px);
+  font-weight: 700;
+  color: var(--use-text-primary);
+}
+
+.ghc-a11y__desc {
+  font-size: rem(13px);
+  color: var(--use-text-secondary);
+  line-height: 1.5;
+}
+
+// ── Dark / HC overrides ───────────────────────────────────────
+[data-theme='dark'] {
+  .ghc-two-col__card,
+  .ghc-a11y {
+    background: var(--use-surface-white);
+  }
+}
+
+[data-theme='high-contrast'] {
+  .ghc-doc {
+    --ghc-border: var(--base-neutral-white);
+    --ghc-surface: var(--base-neutral-black);
+    --ghc-muted: var(--base-neutral-black);
+  }
+
+  .ghc-bloque {
+    border-bottom-color: var(--base-neutral-white);
+  }
+
+  .ghc-demo {
+    border-color: var(--base-neutral-white);
+    border-width: rem(2px);
+  }
+}
+
+// ── Responsive ────────────────────────────────────────────────
+@include lg-down {
+  .ghc-bloque {
+    grid-template-columns: 1fr 1fr;
+
+    .ghc-rule {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .ghc-a11y__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@include md-down {
+  .ghc-bloque {
+    grid-template-columns: 1fr;
+  }
+
+  .ghc-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .ghc-a11y__grid {
+    grid-template-columns: 1fr;
+  }
+}
