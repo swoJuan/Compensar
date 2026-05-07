@@ -39,6 +39,10 @@ const ROUTES = {
   'loading':       'docs/transversales/components/loading.html',
   'breadcrumb':    'docs/web/components/breadcrumb.html',
 
+  'guidelines/high-contrast': 'docs/guidelines/high-contrast.html',
+  'guidelines/dark-mode':     'docs/guidelines/dark-mode.html',
+  'guidelines/form-patterns': 'docs/guidelines/form-patterns.html',
+
   'tokens-texto':  'docs/tokens/tokens-text.html',
   'tokens-tablas': 'docs/tokens/tokens-tables.html',
 };
