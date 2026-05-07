@@ -1,0 +1,197 @@
+<article class="component-doc-page motion-doc" data-guideline-doc="motion-animation">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Guidelines</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Motion / Animación</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="motion-title">
+    <h1 id="motion-title" class="mp-h1">Motion / Animación</h1>
+    <p class="mp-body-l">Guía transversal para definir duraciones, curvas de easing y criterios de uso de animación en Web, ZT Drupal y App. La animación debe orientar, confirmar y reducir fricción, no decorar sin propósito.</p>
+    <div class="component-meta" aria-label="Metadatos">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Web / App</span>
+      <span class="component-chip">Accesibilidad</span>
+      <span class="component-chip">Reduced motion</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="motion-summary">
+    <div class="component-section__header">
+      <h2 id="motion-summary" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Principios</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usar motion para comunicar cambio de estado, jerarquía o navegación.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Animar propiedades baratas: <code>opacity</code>, <code>transform</code>, <code>box-shadow</code> y color.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Evitar animar layout: width, height, margin, top, left o contenido de texto.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Respetar <code>prefers-reduced-motion</code> en animaciones no esenciales.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>En App, mantener transiciones cortas y vinculadas a gestos táctiles.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Usa transiciones breves para feedback de interacción.</p>
+            <button class="mp-btn mp-btn--primario motion-demo-button" type="button">Continuar</button>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No animes elementos críticos de forma lenta, ornamental o repetitiva.</p>
+            <div class="motion-bad-demo" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="motion-durations">
+    <div class="component-section__header">
+      <h2 id="motion-durations" class="mp-h2">2. Durations</h2>
+      <p class="mp-body-m">Las duraciones deben sentirse inmediatas. Usa rangos cortos para microinteracciones y reserva duraciones mayores para superficies completas.</p>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover motion-table">
+        <thead>
+          <tr>
+            <th>Duración</th>
+            <th>Uso</th>
+            <th>Ejemplos</th>
+            <th>Regla</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>100-120 ms</code></td><td>Respuesta inmediata</td><td>Pressed, tap, icon feedback</td><td>No usar para entrada/salida de superficies.</td></tr>
+          <tr><td><code>150-180 ms</code></td><td>Microinteracciones</td><td>Hover, focus, color, border, shadow</td><td>Duración por defecto en controles.</td></tr>
+          <tr><td><code>200-250 ms</code></td><td>Cambio de estado visible</td><td>Acordeón, switch, tabs, stepper</td><td>Debe sentirse fluido sin bloquear.</td></tr>
+          <tr><td><code>280-320 ms</code></td><td>Superficies móviles</td><td>Sidebar, drawer, bottom sheet, modal</td><td>Usar con easing expresivo, no lineal.</td></tr>
+          <tr><td><code>600-900 ms</code></td><td>Animación continua</td><td>Loading spinner</td><td>Solo para estados de espera.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="motion-easing">
+    <div class="component-section__header">
+      <h2 id="motion-easing" class="mp-h2">3. Easings</h2>
+      <p class="mp-body-m">La curva debe acompañar el tipo de movimiento. Evita curvas dramáticas que hagan sentir pesada una interfaz transaccional.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-4">
+        <article class="component-example-card h-100">
+          <h3 class="mp-h3">Standard</h3>
+          <p class="mp-body-m"><code>ease</code> o <code>ease-in-out</code> para color, borde y sombra.</p>
+          <div class="motion-track motion-track--standard"><span></span></div>
+        </article>
+      </div>
+      <div class="col-12 col-lg-4">
+        <article class="component-example-card h-100">
+          <h3 class="mp-h3">Emphasized</h3>
+          <p class="mp-body-m"><code>cubic-bezier(.4,0,.2,1)</code> para drawers, sidebars y sheets.</p>
+          <div class="motion-track motion-track--emphasized"><span></span></div>
+        </article>
+      </div>
+      <div class="col-12 col-lg-4">
+        <article class="component-example-card h-100">
+          <h3 class="mp-h3">Linear</h3>
+          <p class="mp-body-m"><code>linear</code> solo para loops mecánicos como loading.</p>
+          <div class="mp-loading motion-loading" role="status" aria-label="Cargando">
+            <span class="mp-loading__spinner" aria-hidden="true">
+              <span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span>
+              <span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span><span class="mp-loading__bar"></span>
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="motion-what">
+    <div class="component-section__header">
+      <h2 id="motion-what" class="mp-h2">4. Qué animar y qué no</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card h-100">
+          <h3 class="mp-h3">Animar</h3>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>opacity</code> para aparición y salida simple.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>transform</code> para desplazamientos de paneles.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>box-shadow</code> para elevación o hover.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>background-color</code>, <code>border-color</code> y <code>color</code> para estados.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card h-100">
+          <h3 class="mp-h3">Evitar</h3>
+          <ul class="component-list">
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>Animar alto/ancho de contenedores grandes si causa saltos.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>Usar rebotes o overshoot en flujos médicos o transaccionales.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>Animar texto de lectura, totales, precios o mensajes de error.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>Loops decorativos permanentes fuera de loading.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="motion-app">
+    <div class="component-section__header">
+      <h2 id="motion-app" class="mp-h2">5. App</h2>
+      <p class="mp-body-m">En App, la animación debe reforzar el gesto. El movimiento debe estar anclado al borde, dirección o elemento que activó la acción.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-5">
+        <article class="component-example-card h-100">
+          <h3 class="mp-h3">Reglas App</h3>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Bottom sheet: entra desde abajo en 280-320 ms.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Overlay: fade corto de 150-200 ms.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Tap feedback: 100-150 ms.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Evitar animaciones simultáneas que compitan con el gesto.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="col-12 col-lg-7">
+        <div class="motion-phone-stage">
+          <div class="motion-phone">
+            <span class="motion-phone__bar"></span>
+            <div class="motion-phone__content"></div>
+            <div class="motion-sheet">
+              <span></span>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="motion-accessibility">
+    <div class="component-section__header">
+      <h2 id="motion-accessibility" class="mp-h2">6. Accesibilidad</h2>
+    </div>
+    <div class="component-example-card">
+      <p class="mp-body-m">Todo componente con animación debe funcionar con <code>prefers-reduced-motion: reduce</code>. En ese modo se eliminan desplazamientos y loops no esenciales, pero se conserva feedback claro mediante color, borde, texto o estado.</p>
+      <pre class="motion-code">@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}</pre>
+    </div>
+  </section>
+</article>

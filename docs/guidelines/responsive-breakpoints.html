@@ -1,0 +1,175 @@
+<article class="component-doc-page responsive-doc" data-guideline-doc="responsive-breakpoints">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Guidelines</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Responsive / Breakpoints</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="responsive-title">
+    <h1 id="responsive-title" class="mp-h1">Responsive / Breakpoints</h1>
+    <p class="mp-body-l">Guía transversal para definir breakpoints, uso de grilla y adaptación de componentes en Web, ZT Drupal y App. El objetivo es mantener layouts consistentes sin crear reglas aisladas por página.</p>
+    <div class="component-meta" aria-label="Metadatos">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Web / App</span>
+      <span class="component-chip">Bootstrap compatible</span>
+      <span class="component-chip">Grid 12 columnas</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="responsive-summary">
+    <div class="component-section__header">
+      <h2 id="responsive-summary" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-4">
+        <h3 class="mp-h3">Principios</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Diseñar mobile first: una columna por defecto y escalar progresivamente.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usar grilla de 12 columnas en Web y ZT Drupal.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Evitar breakpoints personalizados salvo que un componente lo justifique.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>En App priorizar ancho del dispositivo, área segura y controles táctiles.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los tokens de espaciado deben mantenerse entre modos Light, Dark y Alto contraste.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-8">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Define el comportamiento por columnas y deja que la grilla resuelva el ancho.</p>
+            <pre class="responsive-code">&lt;div class="row g-4"&gt;
+  &lt;div class="col-12 col-md-6 col-xl-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No fijes anchos rígidos que rompan en móvil o tablet.</p>
+            <pre class="responsive-code">.card {
+  width: 390px;
+  margin-left: 80px;
+}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="responsive-breakpoints">
+    <div class="component-section__header">
+      <h2 id="responsive-breakpoints" class="mp-h2">2. Breakpoints Web</h2>
+      <p class="mp-body-m">Usa la escala Bootstrap como referencia transversal para layouts Web y portal ZT Drupal.</p>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover responsive-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Rango</th>
+            <th>Uso principal</th>
+            <th>Grilla recomendada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>xs</code></td><td>&lt; 576 px</td><td>Móvil pequeño</td><td><code>col-12</code>, una columna</td></tr>
+          <tr><td><code>sm</code></td><td>≥ 576 px</td><td>Móvil amplio</td><td><code>col-sm-*</code> solo cuando el contenido respira</td></tr>
+          <tr><td><code>md</code></td><td>≥ 768 px</td><td>Tablet vertical</td><td>2 columnas livianas, navegación simplificada</td></tr>
+          <tr><td><code>lg</code></td><td>≥ 992 px</td><td>Tablet horizontal / laptop</td><td>2 a 3 columnas, paneles laterales posibles</td></tr>
+          <tr><td><code>xl</code></td><td>≥ 1200 px</td><td>Desktop</td><td>3 a 4 columnas según densidad</td></tr>
+          <tr><td><code>xxl</code></td><td>≥ 1400 px</td><td>Desktop amplio</td><td>Contenedor máximo; no estirar texto indefinidamente</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="responsive-grid">
+    <div class="component-section__header">
+      <h2 id="responsive-grid" class="mp-h2">3. Grid usage</h2>
+      <p class="mp-body-m">La grilla organiza contenido, pero la jerarquía la define el flujo. En móvil, todo debe poder leerse en una sola columna.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-4">
+        <article class="component-example-card h-100">
+          <h3 class="mp-h3">Contenido editorial</h3>
+          <p class="mp-body-m">Usa <code>col-12 col-lg-8</code> para texto principal y limita el ancho de lectura.</p>
+          <div class="responsive-grid-demo responsive-grid-demo--content">
+            <span>8 cols</span>
+            <span>4 cols</span>
+          </div>
+        </article>
+      </div>
+      <div class="col-12 col-lg-4">
+        <article class="component-example-card h-100">
+          <h3 class="mp-h3">Cards repetidas</h3>
+          <p class="mp-body-m">Usa <code>col-12 col-md-6 col-xl-4</code> para listas escaneables.</p>
+          <div class="responsive-grid-demo responsive-grid-demo--cards">
+            <span></span><span></span><span></span>
+          </div>
+        </article>
+      </div>
+      <div class="col-12 col-lg-4">
+        <article class="component-example-card h-100">
+          <h3 class="mp-h3">Formularios</h3>
+          <p class="mp-body-m">Agrupa campos relacionados. En móvil, conserva una columna y labels visibles.</p>
+          <div class="responsive-grid-demo responsive-grid-demo--form">
+            <span></span><span></span><span></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="responsive-app">
+    <div class="component-section__header">
+      <h2 id="responsive-app" class="mp-h2">4. App</h2>
+      <p class="mp-body-m">En App no usamos la grilla desktop como base visual. La adaptación parte del ancho disponible, orientación, área segura y tamaño mínimo táctil.</p>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-5">
+        <div class="component-example-card h-100">
+          <h3 class="mp-h3">Reglas App</h3>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usar una columna para flujos transaccionales y formularios.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Respetar área segura superior e inferior del dispositivo.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Controles táctiles mínimos de 44 px; ideal 48 px.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Bottom sheets ocupan el ancho del dispositivo y se anclan abajo.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>En tablet se permite layout de dos paneles solo si mejora comparación o edición.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-7">
+        <div class="responsive-device-row">
+          <article class="responsive-device responsive-device--phone" aria-label="Layout móvil">
+            <span class="responsive-device__bar"></span>
+            <div class="responsive-device__block responsive-device__block--hero"></div>
+            <div class="responsive-device__block"></div>
+            <div class="responsive-device__block"></div>
+            <div class="responsive-device__action"></div>
+          </article>
+          <article class="responsive-device responsive-device--tablet" aria-label="Layout tablet">
+            <span class="responsive-device__bar"></span>
+            <div class="responsive-device__split">
+              <div></div>
+              <div></div>
+            </div>
+            <div class="responsive-device__block"></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="responsive-rules">
+    <div class="component-section__header">
+      <h2 id="responsive-rules" class="mp-h2">5. Reglas prácticas</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-xl-3"><article class="component-example-card h-100"><h3 class="mp-h3">Espaciado</h3><p class="mp-body-m">Usa <code>var(--space-*)</code>. Reduce de forma controlada en móvil, pero no elimines separación entre acciones.</p></article></div>
+      <div class="col-12 col-md-6 col-xl-3"><article class="component-example-card h-100"><h3 class="mp-h3">Texto</h3><p class="mp-body-m">No escales fuentes con viewport. Usa clases de texto configuradas para los modos.</p></article></div>
+      <div class="col-12 col-md-6 col-xl-3"><article class="component-example-card h-100"><h3 class="mp-h3">Imágenes</h3><p class="mp-body-m">Define <code>aspect-ratio</code> o contenedor estable para evitar saltos de layout.</p></article></div>
+      <div class="col-12 col-md-6 col-xl-3"><article class="component-example-card h-100"><h3 class="mp-h3">Navegación</h3><p class="mp-body-m">En móvil prioriza navegación compacta, drawers o tabs cuando el flujo lo requiera.</p></article></div>
+    </div>
+  </section>
+</article>

@@ -6,10 +6,13 @@
 // ============================================================
 
 .breadcrumb-doc {
+  --doc-max-width: #{rem(1200px)};
   --breadcrumb-doc-border: var(--use-border-subtle, #d9d9d9);
   --breadcrumb-doc-muted: var(--use-surface-theme-gray-5, #f8f7f7);
   --breadcrumb-doc-accent: var(--use-primary-default, #ff6600);
 
+  max-width: var(--doc-max-width);
+  margin: 0 auto;
   display: grid;
   gap: var(--space-48);
 }

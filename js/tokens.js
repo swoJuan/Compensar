@@ -4776,3 +4776,33 @@ export const BORDER_RADIUS = [
     32
   ]
 ];
+
+export const SEMANTIC_COLOR_TOKENS = COLOR_TOKENS
+  .filter(([name]) => name.startsWith('use/'))
+  .map(([name, cssVar, value]) => [name, cssVar, value, 'Color semántico de uso.']);
+
+export const SPACING_TOKENS = SPACING.map(([token, value, px]) => [
+  `space/${px}`,
+  token.replace('--spacing-', '--space-').replace('px', ''),
+  value,
+  px === 2 || px === 4 || px === 12 ? 'Uso restringido o de ajuste fino.' : 'Espaciado estándar del sistema.'
+]);
+
+export const BORDER_RADIUS_TOKENS = [
+  ['border-radius/xs', '--radius-xs', '8px', 'Elementos pequeños, inputs compactos y badges.'],
+  ['border-radius/sm', '--radius-sm', '16px', 'Botones, inputs y controles de formulario.'],
+  ['border-radius/md', '--radius-md', '24px', 'Cards, modales y contenedores principales.'],
+  ['border-radius/lg', '--radius-lg', '32px', 'Superficies grandes, chips y badges prominentes.'],
+  ['border-radius/full', '--radius-full', '9999px', 'Pills y elementos completamente redondeados.']
+];
+
+export const SHADOW_TOKENS = [
+  ['shadow/1', '--shadow-1', '0.125rem 0.3125rem 1rem rgba(0, 0, 0, 0.15)', 'Cards y contenedores base.'],
+  ['shadow/2', '--shadow-2', '0 0.5rem 1.5rem rgba(0, 0, 0, 0.15)', 'Dropdowns, popovers y superficies flotantes.'],
+  ['shadow/3', '--shadow-3', '0 1rem 2.5rem rgba(0, 0, 0, 0.20)', 'Modales y paneles elevados.'],
+  ['shadow/4', '--shadow-4', '0 1.25rem 3.125rem rgba(0, 0, 0, 0.20)', 'Drawers, overlays y elevación máxima.'],
+  ['shadow/header', '--shadow-header', '0 0.25rem 0.25rem rgba(0, 0, 0, 0.25)', 'Header fijo o barra superior.'],
+  ['shadow/button/hover', '--shadow-button-hover', '0.125rem 0.125rem 0.1875rem rgba(255, 157, 92, 1)', 'Hover de botón primario.'],
+  ['shadow/button/special-hover', '--shadow-button-special-hover', '0.125rem 0.125rem 0.1875rem rgba(162, 141, 218, 1)', 'Hover de botón especial.'],
+  ['shadow/button/pressed', '--shadow-button-pressed', 'inset 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25)', 'Estado presionado o activo.']
+];

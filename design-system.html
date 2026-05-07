@@ -17,8 +17,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 
   <!-- Design System CSS -->
-  <link rel="stylesheet" href="css/core.css?v=20260507-8">
-  <link rel="stylesheet" href="css/portal.css?v=20260507-8">
+  <link rel="stylesheet" href="css/core.css?v=20260507-13">
+  <link rel="stylesheet" href="css/portal.css?v=20260507-13">
   <link rel="stylesheet" href="icons/icons.css">
 
   <!-- Shell-specific styles -->
@@ -339,7 +339,7 @@
 <div id="toast"></div>
 
 <!-- SCRIPTS -->
-<script src="js/router.js?v=20260507-5"></script>
+<script src="js/router.js?v=20260507-10"></script>
 <script src="js/theme.js"></script>
 <script src="js/code-copy.js"></script>
 <script src="js/component-docs.js?v=20260505-2"></script>
@@ -349,6 +349,8 @@
 <script src="js/modal-docs.js?v=20260507-3"></script>
 <script src="js/dropdown-docs.js?v=20260504-5"></script>
 <script src="js/badges-docs.js?v=20260506-8"></script>
+<script src="js/avatar-docs.js?v=20260507-1"></script>
+<script src="js/web-header-docs.js?v=20260507-1"></script>
 <script src="js/cards-docs.js?v=20260505-2"></script>
 <script src="js/pagination-docs.js?v=20260506-2"></script>
 <script src="js/tables-docs.js?v=20260506-1"></script>
@@ -360,6 +362,7 @@
 <script src="js/app-tabs-docs.js?v=20260506-1"></script>
 <script src="js/app-header-docs.js?v=20260507-1"></script>
 <script src="js/app-bottom-sheet-docs.js?v=20260507-1"></script>
+<script type="module" src="js/tokens-docs.js?v=20260507-2"></script>
 
 <script>
   /**
@@ -401,10 +404,28 @@
         icon: 'award_star',
         group: 'web-componentes'
       },
+      'web/componentes/avatar': {
+        label: 'Avatar / User chip',
+        path: 'transversales/components/avatar.html',
+        icon: 'account_circle',
+        group: 'web-componentes'
+      },
+      'web/componentes/header': {
+        label: 'Header',
+        path: 'web/components/header.html',
+        icon: 'web_asset',
+        group: 'hidden'
+      },
       'app/componentes/badges': {
         label: 'Chips / Tags / Badges',
         path: 'transversales/components/badges.html',
         icon: 'award_star',
+        group: 'app'
+      },
+      'app/componentes/avatar': {
+        label: 'Avatar / User chip',
+        path: 'transversales/components/avatar.html',
+        icon: 'account_circle',
         group: 'app'
       },
       'app/componentes/bottom-sheet': {
@@ -431,10 +452,46 @@
         icon: 'progress_activity',
         group: 'app'
       },
+      'tokens/border-radius': {
+        label: 'Border radius',
+        path: 'tokens/tokens-radius.html',
+        icon: 'rounded_corner',
+        group: 'tokens'
+      },
+      'tokens/colores': {
+        label: 'Colores',
+        path: 'tokens/tokens-colors.html',
+        icon: 'palette',
+        group: 'tokens'
+      },
+      'tokens/espaciado': {
+        label: 'Espaciado',
+        path: 'tokens/tokens-spacing.html',
+        icon: 'space_bar',
+        group: 'tokens'
+      },
+      'tokens/sombras': {
+        label: 'Sombras',
+        path: 'tokens/tokens-shadows.html',
+        icon: 'layers',
+        group: 'tokens'
+      },
       'guidelines/high-contrast': {
         label: 'High Contrast',
         path: 'guidelines/high-contrast.html',
         icon: 'eye',
+        group: 'guidelines'
+      },
+      'guidelines/responsive-breakpoints': {
+        label: 'Responsive / Breakpoints',
+        path: 'guidelines/responsive-breakpoints.html',
+        icon: 'view_quilt',
+        group: 'guidelines'
+      },
+      'guidelines/motion-animation': {
+        label: 'Motion / Animación',
+        path: 'guidelines/motion-animation.html',
+        icon: 'progress_activity',
         group: 'guidelines'
       }
     };
@@ -458,6 +515,12 @@
           document.querySelectorAll('[data-nav-item]').forEach(el =>
             el.classList.toggle('active', el.getAttribute('data-nav-item') === id)
           );
+          if (window.semanticTokenDocs) {
+            requestAnimationFrame(() => window.semanticTokenDocs.init(document, id));
+          }
+          if (window.webHeaderDocs) {
+            requestAnimationFrame(() => window.webHeaderDocs.initWebHeaderDocs(document));
+          }
         })
         .catch(err => console.warn('Navigate fallback error:', err));
     }
@@ -482,6 +545,7 @@
       credit_card: 'credit-card',
       list_numbers: 'number-circle-one',
       award_star: 'medal',
+      account_circle: 'user',
       interests: 'squares-four',
       category: 'grid-four',
       hub: 'share-network',

@@ -28,6 +28,7 @@ const ROUTES = {
   'iconos-libreria': 'docs/web/components/icons-library.html',
 
   'accordion':    'docs/transversales/components/accordion.html',
+  'avatar':       'docs/transversales/components/avatar.html',
   'botones':       'docs/transversales/components/buttons.html',
   'inputs':        'docs/transversales/components/inputs.html',
   'alertas':       'docs/transversales/components/alerts.html',
@@ -36,15 +37,22 @@ const ROUTES = {
   'paginacion':    'docs/transversales/components/pagination.html',
   'badges':        'docs/transversales/components/badges.html',
   'empty-state':   'docs/web/components/empty-state.html',
+  'header':        'docs/web/components/header.html',
   'loading':       'docs/transversales/components/loading.html',
   'breadcrumb':    'docs/web/components/breadcrumb.html',
 
   'guidelines/high-contrast': 'docs/guidelines/high-contrast.html',
   'guidelines/dark-mode':     'docs/guidelines/dark-mode.html',
   'guidelines/form-patterns': 'docs/guidelines/form-patterns.html',
+  'guidelines/motion-animation': 'docs/guidelines/motion-animation.html',
+  'guidelines/responsive-breakpoints': 'docs/guidelines/responsive-breakpoints.html',
 
   'tokens-texto':  'docs/tokens/tokens-text.html',
   'tokens-tablas': 'docs/tokens/tokens-tables.html',
+  'tokens-colores': 'docs/tokens/tokens-colors.html',
+  'tokens-espaciado': 'docs/tokens/tokens-spacing.html',
+  'tokens-border-radius': 'docs/tokens/tokens-radius.html',
+  'tokens-sombras': 'docs/tokens/tokens-shadows.html',
 };
 
 // ── Targets de scroll dentro de docs compartidos ────────

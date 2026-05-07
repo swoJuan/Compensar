@@ -1,0 +1,200 @@
+@use '../../core/abstracts' as *;
+
+.web-header-doc {
+  display: grid;
+  gap: var(--space-24);
+
+  .component-hero,
+  .component-section {
+    margin-bottom: 0;
+  }
+}
+
+.web-header-summary {
+  align-items: stretch;
+}
+
+.web-header-anatomy-stage,
+.web-header-preview-panel {
+  display: grid;
+  place-items: center;
+  min-height: rem(360px);
+  padding: var(--space-32);
+  border: 1px solid var(--use-border-subtle);
+  border-radius: var(--radius-xs);
+  background: var(--use-surface-theme-gray-5);
+  overflow: hidden;
+}
+
+.web-header-anatomy-stage {
+  position: relative;
+  margin-top: var(--space-8);
+  background:
+    linear-gradient(var(--use-border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--use-border-subtle) 1px, transparent 1px),
+    var(--use-surface-white);
+  background-size: rem(16px) rem(16px);
+}
+
+.web-header-anatomy-preview {
+  width: min(100%, rem(920px));
+  position: relative;
+  z-index: 2;
+}
+
+.web-header-anatomy-preview .mp-web-header {
+  box-shadow: var(--shadow-1);
+}
+
+.web-header-measure,
+.web-header-callout {
+  position: absolute;
+  z-index: 3;
+}
+
+.web-header-measure {
+  display: inline-flex;
+  align-items: center;
+  min-height: rem(22px);
+  padding: 0 var(--space-8);
+  border-radius: rem(4px);
+  background: var(--use-primary-default);
+  color: var(--use-text-on-dark-primary);
+  font-size: rem(11px);
+  font-weight: 800;
+}
+
+.web-header-measure--height {
+  top: calc(50% - #{rem(118px)});
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.web-header-measure--gap {
+  top: calc(50% + #{rem(20px)});
+  left: calc(50% + #{rem(140px)});
+}
+
+.web-header-callout {
+  width: rem(220px);
+  display: grid;
+  gap: rem(4px);
+  padding: var(--space-12);
+  border: 1px solid var(--use-border-subtle);
+  border-radius: var(--radius-xs);
+  background: var(--use-surface-white);
+  box-shadow: var(--shadow-1);
+
+  strong {
+    font-size: 14px;
+    line-height: 1.25;
+  }
+}
+
+.web-header-callout--brand {
+  top: var(--space-24);
+  left: var(--space-24);
+}
+
+.web-header-callout--search {
+  top: var(--space-24);
+  right: var(--space-24);
+}
+
+.web-header-callout--nav {
+  bottom: var(--space-24);
+  left: var(--space-24);
+}
+
+.web-header-callout--cta {
+  right: var(--space-24);
+  bottom: var(--space-24);
+}
+
+.web-header-preview-panel {
+  place-items: stretch;
+  min-height: rem(420px);
+}
+
+.web-header-preview-panel .mp-web-header {
+  align-self: start;
+}
+
+.web-header-control-panel {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.web-header-variant-grid,
+.web-header-state-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-16);
+}
+
+.web-header-variant-card,
+.web-header-state-card {
+  display: grid;
+  gap: var(--space-12);
+  min-height: rem(220px);
+  padding: var(--space-16);
+  border: 1px solid var(--use-border-subtle);
+  border-radius: var(--radius-xs);
+  background: var(--use-surface-white);
+}
+
+.web-header-variant-card .mp-web-header,
+.web-header-state-card .mp-web-header {
+  transform-origin: top left;
+}
+
+.web-header-state-card .mp-web-header {
+  font-size: 14px;
+}
+
+.web-header-state-card .mp-web-header__main {
+  grid-template-columns: auto 1fr auto;
+}
+
+.web-header-state-card .mp-web-header__search,
+.web-header-state-card .mp-web-header__utility {
+  display: none;
+}
+
+.web-header-guideline-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-16);
+}
+
+.web-header-guideline-item {
+  display: grid;
+  gap: var(--space-8);
+  padding: var(--space-16);
+  border: 1px solid var(--use-border-subtle);
+  border-radius: var(--radius-xs);
+  background: var(--use-surface-white);
+}
+
+@media (max-width: 1100px) {
+  .web-header-variant-grid,
+  .web-header-state-grid,
+  .web-header-guideline-list {
+    grid-template-columns: 1fr;
+  }
+
+  .web-header-callout {
+    position: static;
+    width: auto;
+  }
+
+  .web-header-anatomy-stage {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+
+  .web-header-measure {
+    display: none;
+  }
+}

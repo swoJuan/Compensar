@@ -100,6 +100,12 @@ const router = (() => {
       icon: 'award_star',
       group: 'app'
     },
+    'app/componentes/avatar': {
+      label: 'Avatar / User chip',
+      path: 'transversales/components/avatar.html',
+      icon: 'account_circle',
+      group: 'app'
+    },
     'app/componentes/bottom-sheet': {
       label: 'Bottom Sheet',
       path: 'app/components/bottom-sheet.html',
@@ -148,6 +154,12 @@ const router = (() => {
       icon: 'award_star',
       group: 'web-componentes'
     },
+    'web/componentes/avatar': {
+      label: 'Avatar / User chip',
+      path: 'transversales/components/avatar.html',
+      icon: 'account_circle',
+      group: 'web-componentes'
+    },
     'web/componentes/botones': {
       label: 'Botones',
       path: 'transversales/components/buttons.html',
@@ -183,6 +195,12 @@ const router = (() => {
       path: 'web/components/empty-state.html',
       icon: 'inbox',
       group: 'web-componentes'
+    },
+    'web/componentes/header': {
+      label: 'Header',
+      path: 'web/components/header.html',
+      icon: 'web_asset',
+      group: 'hidden'
     },
     'web/componentes/inputs': {
       label: 'Inputs',
@@ -250,6 +268,30 @@ const router = (() => {
       icon: 'table_chart',
       group: 'tokens'
     },
+    'tokens/border-radius': {
+      label: 'Border radius',
+      path: 'tokens/tokens-radius.html',
+      icon: 'rounded_corner',
+      group: 'tokens'
+    },
+    'tokens/colores': {
+      label: 'Colores',
+      path: 'tokens/tokens-colors.html',
+      icon: 'palette',
+      group: 'tokens'
+    },
+    'tokens/espaciado': {
+      label: 'Espaciado',
+      path: 'tokens/tokens-spacing.html',
+      icon: 'space_bar',
+      group: 'tokens'
+    },
+    'tokens/sombras': {
+      label: 'Sombras',
+      path: 'tokens/tokens-shadows.html',
+      icon: 'layers',
+      group: 'tokens'
+    },
     'tokens/texto': {
       label: 'Tokens de texto',
       path: 'tokens/tokens-text.html',
@@ -272,6 +314,18 @@ const router = (() => {
       label: 'Form Patterns',
       path: 'guidelines/form-patterns.html',
       icon: 'list_alt',
+      group: 'guidelines'
+    },
+    'guidelines/motion-animation': {
+      label: 'Motion / Animación',
+      path: 'guidelines/motion-animation.html',
+      icon: 'progress_activity',
+      group: 'guidelines'
+    },
+    'guidelines/responsive-breakpoints': {
+      label: 'Responsive / Breakpoints',
+      path: 'guidelines/responsive-breakpoints.html',
+      icon: 'view_quilt',
       group: 'guidelines'
     },
     'qa/checklist': {
@@ -346,6 +400,9 @@ const router = (() => {
         section === 'web/componentes/inputs' ||
         section === 'web/componentes/dropdown' ||
         section === 'web/componentes/badges' ||
+        section === 'web/componentes/avatar' ||
+        section === 'web/componentes/header' ||
+        section === 'app/componentes/avatar' ||
         section === 'app/componentes/badges' ||
         section === 'app/componentes/bottom-sheet' ||
         section === 'app/componentes/dropdown' ||
@@ -361,6 +418,8 @@ const router = (() => {
         section === 'guidelines/high-contrast' ||
         section === 'guidelines/dark-mode' ||
         section === 'guidelines/form-patterns' ||
+        section === 'guidelines/motion-animation' ||
+        section === 'guidelines/responsive-breakpoints' ||
         section === 'demo/core'
       );
 
@@ -396,6 +455,12 @@ const router = (() => {
       if (window.badgeDocs) {
         window.requestAnimationFrame(() => window.badgeDocs.initBadgeDocs(document));
       }
+      if (window.avatarDocs) {
+        window.requestAnimationFrame(() => window.avatarDocs.initAvatarDocs(document));
+      }
+      if (window.webHeaderDocs) {
+        window.requestAnimationFrame(() => window.webHeaderDocs.initWebHeaderDocs(document));
+      }
       if (window.cardsDocs) {
         window.requestAnimationFrame(() => window.cardsDocs.initCardsDoc(document));
       }
@@ -425,6 +490,9 @@ const router = (() => {
       }
       if (window.appBottomSheetDocs) {
         window.requestAnimationFrame(() => window.appBottomSheetDocs.initAppBottomSheetDoc(document));
+      }
+      if (window.semanticTokenDocs) {
+        window.requestAnimationFrame(() => window.semanticTokenDocs.init(document, section));
       }
 
       return true;

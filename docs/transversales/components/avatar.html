@@ -1,0 +1,193 @@
+<article class="component-doc-page avatar-doc" data-component-doc="avatar">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Componentes transversales</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Avatar / User chip</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="avatar-title">
+    <h1 id="avatar-title" class="mp-h1">Avatar / User chip</h1>
+    <p class="mp-body-l">Representa una persona mediante foto, iniciales o icono, y puede combinarse con nombre y metadata en headers, cards, listas y menús de usuario.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Web / App</span>
+      <span class="component-chip">Categoría: identidad</span>
+      <span class="component-chip">Header / cards / listas</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="avatar-summary">
+    <div class="component-section__header">
+      <h2 id="avatar-summary" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para identificar al usuario actual en headers o menús de sesión.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para mostrar profesionales, asesores o pacientes en cards y listados.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para agrupar participantes en un contexto de equipo o atención.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando la foto no existe, usa iniciales; si no hay nombre, usa icono.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Usa foto o iniciales con texto visible cuando el usuario necesita reconocer a la persona.</p>
+            <div class="component-example-actions">
+              <button class="mp-user-chip" type="button">
+                <span class="mp-avatar"><img class="mp-avatar__image" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=160&q=80" alt=""></span>
+                <span class="mp-user-chip__body"><span class="mp-user-chip__name">Dra. Ana Ruiz</span><span class="mp-user-chip__meta">Medicina general</span></span>
+                <i class="icon icon-caret-down mp-user-chip__chevron" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No uses una imagen sin alternativa visible si la identidad es crítica.</p>
+            <div class="component-example-actions">
+              <span class="mp-avatar"><img class="mp-avatar__image" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=160&q=80" alt=""></span>
+              <span class="mp-body-s">Sin nombre ni contexto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="avatar-anatomy">
+    <div class="component-section__header">
+      <h2 id="avatar-anatomy" class="mp-h2">2. Anatomía interactiva</h2>
+    </div>
+    <div class="segmented-control" role="group" aria-label="Tipo de avatar">
+      <button type="button" class="mp-btn mp-btn--terciario" data-avatar-anatomy="chip" aria-pressed="true">User chip</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-avatar-anatomy="avatar" aria-pressed="false">Avatar</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-avatar-anatomy="group" aria-pressed="false">Grupo</button>
+    </div>
+    <div class="avatar-anatomy-stage">
+      <span class="avatar-measure avatar-measure--size">40 px</span>
+      <span class="avatar-measure avatar-measure--height">48 px</span>
+      <span class="avatar-measure avatar-measure--gap">Gap 8 px</span>
+      <div class="avatar-callout avatar-callout--media"><strong>Avatar</strong><span class="mp-body-s">Foto, iniciales o icono.</span></div>
+      <div class="avatar-callout avatar-callout--text"><strong>Texto</strong><span class="mp-body-s">Nombre y metadata visible.</span></div>
+      <div class="avatar-callout avatar-callout--action"><strong>Acción</strong><span class="mp-body-s">Chevron solo si abre menú o detalle.</span></div>
+      <div id="avatar-anatomy-preview" class="avatar-anatomy-preview"></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="avatar-playground">
+    <div class="component-section__header">
+      <div>
+        <h2 id="avatar-playground" class="mp-h2">3. Playground</h2>
+        <p class="mp-body-m">Configura variante, tamaño, contenido y estado. El visualizador usa el fragmento real del componente.</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-xl-5">
+        <div class="component-control-panel avatar-controls">
+          <div>
+            <label class="mp-label" for="avatar-kind">Variante</label>
+            <select class="mp-input-field mp-select" id="avatar-kind" data-avatar-control="kind">
+              <option value="chip">User chip</option>
+              <option value="avatar">Avatar solo</option>
+              <option value="group">Grupo</option>
+            </select>
+          </div>
+          <div>
+            <label class="mp-label" for="avatar-content">Contenido</label>
+            <select class="mp-input-field mp-select" id="avatar-content" data-avatar-control="content">
+              <option value="photo">Foto</option>
+              <option value="initials">Iniciales</option>
+              <option value="icon">Icono</option>
+            </select>
+          </div>
+          <div>
+            <label class="mp-label" for="avatar-size">Tamaño</label>
+            <select class="mp-input-field mp-select" id="avatar-size" data-avatar-control="size">
+              <option value="md">Mediano · 40 px</option>
+              <option value="sm">Pequeño · 32 px</option>
+              <option value="lg">Grande · 56 px</option>
+              <option value="xl">Extra · 72 px</option>
+            </select>
+          </div>
+          <div>
+            <label class="mp-label" for="avatar-state">Estado</label>
+            <select class="mp-input-field mp-select" id="avatar-state" data-avatar-control="state">
+              <option value="default">Default</option>
+              <option value="hover">Hover</option>
+              <option value="focus">Focus</option>
+            </select>
+          </div>
+          <div>
+            <label class="mp-label" for="avatar-name">Nombre</label>
+            <input class="mp-input-field" id="avatar-name" data-avatar-control="name" value="Dra. Ana Ruiz">
+          </div>
+          <div>
+            <label class="mp-label" for="avatar-meta">Meta</label>
+            <input class="mp-input-field" id="avatar-meta" data-avatar-control="meta" value="Medicina general">
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-7">
+        <div class="avatar-preview-panel" id="avatar-playground-preview"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="avatar-variants">
+    <div class="component-section__header">
+      <h2 id="avatar-variants" class="mp-h2">4. Variantes</h2>
+    </div>
+    <div class="avatar-variant-grid">
+      <article class="component-example-card"><h3 class="mp-h3">Foto</h3><span class="mp-avatar mp-avatar--lg"><img class="mp-avatar__image" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=160&q=80" alt=""></span></article>
+      <article class="component-example-card"><h3 class="mp-h3">Iniciales</h3><span class="mp-avatar mp-avatar--lg mp-avatar--teal"><span class="mp-avatar__initials">AR</span></span></article>
+      <article class="component-example-card"><h3 class="mp-h3">Icono</h3><span class="mp-avatar mp-avatar--lg"><i class="icon icon-user mp-avatar__icon" aria-hidden="true"></i></span></article>
+      <article class="component-example-card"><h3 class="mp-h3">User chip</h3><button class="mp-user-chip" type="button"><span class="mp-avatar"><span class="mp-avatar__initials">AR</span></span><span class="mp-user-chip__body"><span class="mp-user-chip__name">Ana Ruiz</span><span class="mp-user-chip__meta">Afiliada</span></span><i class="icon icon-caret-down mp-user-chip__chevron" aria-hidden="true"></i></button></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="avatar-states">
+    <div class="component-section__header">
+      <h2 id="avatar-states" class="mp-h2">5. Estados</h2>
+    </div>
+    <div class="avatar-state-grid">
+      <article class="component-example-card"><h3 class="mp-h3">Default</h3><div data-avatar-state-demo="default"></div></article>
+      <article class="component-example-card"><h3 class="mp-h3">Hover</h3><div data-avatar-state-demo="hover"></div></article>
+      <article class="component-example-card"><h3 class="mp-h3">Focus</h3><div data-avatar-state-demo="focus"></div></article>
+      <article class="component-example-card"><h3 class="mp-h3">Compact</h3><button class="mp-user-chip mp-user-chip--compact" type="button"><span class="mp-avatar"><span class="mp-avatar__initials">AR</span></span><span class="mp-user-chip__body"><span class="mp-user-chip__name">Ana Ruiz</span></span></button></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="avatar-code">
+    <div class="component-section__header">
+      <div>
+        <h2 id="avatar-code" class="mp-h2">6. Visualizador</h2>
+        <p class="mp-body-m">HTML del fragmento y estilos completos del componente. El CSS pertenece al core; los estilos de esta página son solo documentación.</p>
+      </div>
+    </div>
+    <div class="ct-downloads button-downloads" aria-label="Descargar Avatar">
+      <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-avatar-download="html"><i class="icon icon-article icon-16" aria-hidden="true"></i> HTML</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-avatar-download="css"><i class="icon icon-article icon-16" aria-hidden="true"></i> CSS</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-avatar-download="sass"><i class="icon icon-article icon-16" aria-hidden="true"></i> Sass</button>
+    </div>
+    <div class="code-block">
+      <div class="code-tabs" role="tablist" aria-label="Código Avatar">
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-avatar-code-tab="html" aria-selected="true">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-avatar-code-tab="css" aria-selected="false">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-avatar-code-tab="sass" aria-selected="false">Sass</button>
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-avatar-copy-code><i class="icon icon-share icon-16" aria-hidden="true"></i> Copiar</button>
+      </div>
+      <div class="code-content">
+        <pre id="avatar-code-html" class="active"></pre>
+        <pre id="avatar-code-css"></pre>
+        <pre id="avatar-code-sass"></pre>
+      </div>
+    </div>
+  </section>
+</article>

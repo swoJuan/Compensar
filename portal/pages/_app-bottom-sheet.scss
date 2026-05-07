@@ -5,6 +5,7 @@
   --app-bs-doc-grid: color-mix(in srgb, var(--use-border-subtle) 36%, transparent);
 
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-48);
 }
 
@@ -34,6 +35,12 @@
   border-radius: rem(28px);
   background: var(--use-surface-theme-gray-5, #f8f7f7);
   box-shadow: var(--shadow-1);
+}
+
+.component-example-card .app-bottom-sheet-device {
+  min-height: rem(300px);
+  margin-top: var(--space-16);
+  box-shadow: none;
 }
 
 .app-bottom-sheet-device .mp-bottom-sheet {
@@ -135,6 +142,15 @@
 
 .app-bottom-sheet-card .mp-bottom-sheet {
   max-height: rem(320px);
+}
+
+/* Variantes: el sheet de filtros necesita más espacio que el genérico */
+.app-bottom-sheet-variant-grid .app-bottom-sheet-card .app-bottom-sheet-device {
+  min-height: rem(540px);
+}
+
+.app-bottom-sheet-variant-grid .app-bottom-sheet-card .mp-bottom-sheet {
+  max-height: rem(500px);
 }
 
 .app-bottom-sheet-state-grid .app-bottom-sheet-card .app-bottom-sheet-device {

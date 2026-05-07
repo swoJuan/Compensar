@@ -2,7 +2,17 @@
    APP.JS — Funcionalidad compartida del Design System
    ============================================================ */
 
-import { TOKENS, TOKEN_GROUPS, TEXT_TOKENS, TABLE_TOKENS, SPACING } from './tokens.js';
+import {
+  TOKENS,
+  TOKEN_GROUPS,
+  TEXT_TOKENS,
+  TABLE_TOKENS,
+  SEMANTIC_COLOR_TOKENS,
+  SPACING_TOKENS,
+  BORDER_RADIUS_TOKENS,
+  SHADOW_TOKENS,
+  SPACING
+} from './tokens.js';
 
 /* ——— THEME ——————————————————————————————————————————— */
 export function setTheme(theme) {
@@ -238,6 +248,18 @@ export function onSectionReady(sectionId) {
       break;
     case 'tokens-tablas':
       renderTokenTable('table-table-tokens', TABLE_TOKENS);
+      break;
+    case 'tokens-colores':
+      renderTokenTable('table-color-tokens', SEMANTIC_COLOR_TOKENS);
+      break;
+    case 'tokens-espaciado':
+      renderTokenTable('table-spacing-tokens', SPACING_TOKENS);
+      break;
+    case 'tokens-border-radius':
+      renderTokenTable('table-radius-tokens', BORDER_RADIUS_TOKENS);
+      break;
+    case 'tokens-sombras':
+      renderTokenTable('table-shadow-tokens', SHADOW_TOKENS);
       break;
   }
 

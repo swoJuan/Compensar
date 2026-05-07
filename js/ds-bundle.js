@@ -4962,7 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
-    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'bottom-sheet' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'tabs' || sectionId === 'header' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion' || sectionId === 'demo/core' || sectionId === 'guidelines/high-contrast' || sectionId === 'guidelines/dark-mode' || sectionId === 'guidelines/form-patterns' || sectionId === 'sidebar' || sectionId === 'stepper');
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'bottom-sheet' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'avatar' || sectionId === 'tabs' || sectionId === 'header' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion' || sectionId === 'demo/core' || sectionId === 'guidelines/high-contrast' || sectionId === 'guidelines/dark-mode' || sectionId === 'guidelines/form-patterns' || sectionId === 'guidelines/motion-animation' || sectionId === 'guidelines/responsive-breakpoints' || sectionId === 'sidebar' || sectionId === 'stepper');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -5059,6 +5059,16 @@
     if (window.badgeDocs) {
       requestAnimationFrame(function() {
         window.badgeDocs.initBadgeDocs(document);
+      });
+    }
+    if (window.avatarDocs) {
+      requestAnimationFrame(function() {
+        window.avatarDocs.initAvatarDocs(document);
+      });
+    }
+    if (window.webHeaderDocs) {
+      requestAnimationFrame(function() {
+        window.webHeaderDocs.initWebHeaderDocs(document);
       });
     }
     if (window.cardsDocs) {
@@ -5165,17 +5175,25 @@
     'paginacion':         'docs/transversales/components/pagination.html',
     'tables':             'docs/transversales/components/tables.html',
     'badges':             'docs/transversales/components/badges.html',
+    'avatar':             'docs/transversales/components/avatar.html',
     'tabs':               'docs/transversales/components/tabs.html',
     'empty-state':        'docs/web/components/empty-state.html',
+    'header':             'docs/web/components/header.html',
     'loading':            'docs/transversales/components/loading.html',
     'breadcrumb':         'docs/web/components/breadcrumb.html',
     'sidebar':            'docs/web/components/sidebar.html',
     'stepper':           'docs/web/components/stepper.html',
     'tokens-texto':       'docs/tokens/tokens-text.html',
     'tokens-tablas':      'docs/tokens/tokens-tables.html',
+    'tokens-border-radius': 'docs/tokens/tokens-radius.html',
+    'tokens-colores':     'docs/tokens/tokens-colors.html',
+    'tokens-espaciado':   'docs/tokens/tokens-spacing.html',
+    'tokens-sombras':     'docs/tokens/tokens-shadows.html',
     'guidelines/high-contrast':  'docs/guidelines/high-contrast.html',
     'guidelines/dark-mode':      'docs/guidelines/dark-mode.html',
     'guidelines/form-patterns':  'docs/guidelines/form-patterns.html',
+    'guidelines/motion-animation': 'docs/guidelines/motion-animation.html',
+    'guidelines/responsive-breakpoints': 'docs/guidelines/responsive-breakpoints.html',
   };
 
   /* Rutas específicas de App (.NET MAUI) — sobreescriben ROUTES cuando PLATFORM='app' */
@@ -5190,6 +5208,7 @@
     'dropdown':           'docs/app/components/dropdown.html',
     'accordion':          'docs/transversales/components/accordion.html',
     'badges':             'docs/transversales/components/badges.html',
+    'avatar':             'docs/transversales/components/avatar.html',
     'loading':            'docs/transversales/components/loading.html',
   };
 
@@ -5401,6 +5420,7 @@
       items: [
         { id: 'accordion', label: 'Accordion',                icon: 'rows' },
         { id: 'alertas',   label: 'Alertas',                  icon: 'warning' },
+        { id: 'avatar',    label: 'Avatar / User chip',       icon: 'user' },
         { id: 'botones',   label: 'Botones',                  icon: 'hand-pointing' },
         { id: 'breadcrumb', label: 'Breadcrumb',              icon: 'caret-right' },
         { id: 'cards',     label: 'Cards',                    icon: 'credit-card' },
@@ -5422,8 +5442,12 @@
     {
       label: 'Tokens semánticos',
       items: [
-        { id: 'tokens-texto',  label: 'Texto',  icon: 'article' },
-        { id: 'tokens-tablas', label: 'Tablas', icon: 'table'   }
+        { id: 'tokens-border-radius', label: 'Border radius', icon: 'corners-out' },
+        { id: 'tokens-colores',       label: 'Colores',       icon: 'palette' },
+        { id: 'tokens-espaciado',     label: 'Espaciado',     icon: 'ruler' },
+        { id: 'tokens-sombras',       label: 'Sombras',       icon: 'stack' },
+        { id: 'tokens-tablas',        label: 'Tablas',        icon: 'table' },
+        { id: 'tokens-texto',         label: 'Texto',         icon: 'article' }
       ]
     },
     {
@@ -5431,7 +5455,9 @@
       items: [
         { id: 'guidelines/high-contrast',  label: 'High Contrast',  icon: 'eye' },
         { id: 'guidelines/dark-mode',      label: 'Dark Mode',      icon: 'dark_mode' },
-        { id: 'guidelines/form-patterns',  label: 'Form Patterns',  icon: 'checks' }
+        { id: 'guidelines/form-patterns',  label: 'Form Patterns',  icon: 'checks' },
+        { id: 'guidelines/motion-animation', label: 'Motion / Animación', icon: 'spinner' },
+        { id: 'guidelines/responsive-breakpoints', label: 'Responsive / Breakpoints', icon: 'layout' }
       ]
     }
   ];

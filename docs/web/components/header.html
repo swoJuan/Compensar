@@ -1,0 +1,192 @@
+<article class="component-doc-page web-header-doc" data-component-doc="web-header">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Componentes</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Header</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="web-header-title">
+    <h1 id="web-header-title" class="mp-h1">Header Web / Drupal</h1>
+    <p class="mp-body-l">Organiza la navegación principal del portal público y la zona transaccional: marca, búsqueda, acciones clave, menú horizontal y adaptación responsive.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web / Drupal</span>
+      <span class="component-chip">Categoría: navegación</span>
+      <span class="component-chip">Figma: 4705:5362</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="web-header-summary-title">
+    <div class="component-section__header">
+      <h2 id="web-header-summary-title" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 web-header-summary">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Como navegación global del portal público Drupal.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando el usuario debe explorar categorías, servicios y accesos de negocio.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para zona transaccional con menú de módulos y acceso rápido al dashboard.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando el responsive debe pasar a drawer o menú lateral sin perder acciones clave.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Prioriza categorías cortas, buscador visible y una acción principal clara.</p>
+            <div class="component-example-actions">
+              <span class="mp-badge mp-badge--success">Afíliate</span>
+              <span class="mp-badge mp-badge--info">Buscar servicios</span>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No satures el primer nivel con enlaces largos o acciones duplicadas.</p>
+            <div class="component-example-actions">
+              <span class="mp-badge mp-badge--warning">Menú sobrecargado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="web-header-anatomy-title">
+    <div class="component-section__header">
+      <h2 id="web-header-anatomy-title" class="mp-h2">2. Anatomía interactiva</h2>
+    </div>
+
+    <div class="segmented-control" role="group" aria-label="Variante de header">
+      <button type="button" class="mp-btn mp-btn--terciario" data-web-header-anatomy="public" aria-pressed="true">Portal público</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-web-header-anatomy="dropdown" aria-pressed="false">Submenú</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-web-header-anatomy="mobile" aria-pressed="false">Responsive</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-web-header-anatomy="zt" aria-pressed="false">ZT</button>
+    </div>
+
+    <div class="web-header-anatomy-stage">
+      <span class="web-header-measure web-header-measure--height">Header 120-160 px</span>
+      <span class="web-header-measure web-header-measure--gap">Gap 16 px</span>
+      <div class="web-header-callout web-header-callout--brand"><strong>Marca</strong><span>Logo, servicio y acceso a home.</span></div>
+      <div class="web-header-callout web-header-callout--search"><strong>Búsqueda</strong><span>Disponible en desktop; se integra al drawer móvil.</span></div>
+      <div class="web-header-callout web-header-callout--nav"><strong>Navegación</strong><span>Primer nivel claro, subniveles agrupados.</span></div>
+      <div class="web-header-callout web-header-callout--cta"><strong>Acción clave</strong><span>Afiliación, oficina virtual o acceso transaccional.</span></div>
+      <div class="web-header-anatomy-preview" id="web-header-anatomy-preview"></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="web-header-playground-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="web-header-playground-title" class="mp-h2">3. Playground</h2>
+        <p class="mp-body-m">Configura variante, buscador, CTA, submenú y drawer. El código muestra el fragmento real del componente.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-xl-4">
+        <div class="component-control-panel web-header-control-panel">
+          <div>
+            <label class="mp-label" for="web-header-variant">Variante</label>
+            <select class="mp-input-field mp-select" id="web-header-variant" data-web-header-control="variant">
+              <option value="public" selected>Portal público</option>
+              <option value="dropdown">Portal con submenú</option>
+              <option value="mobile">Responsive drawer</option>
+              <option value="zt">Zona transaccional</option>
+            </select>
+          </div>
+          <div>
+            <label class="mp-label" for="web-header-cta">Acción principal</label>
+            <input class="mp-input-field" id="web-header-cta" data-web-header-control="cta" value="Afíliate" maxlength="24">
+          </div>
+          <label class="button-doc-toggle"><input type="checkbox" data-web-header-control="search" checked> Mostrar buscador</label>
+          <label class="button-doc-toggle"><input type="checkbox" data-web-header-control="dropdown"> Mostrar submenú</label>
+          <label class="button-doc-toggle"><input type="checkbox" data-web-header-control="open"> Drawer abierto</label>
+        </div>
+      </div>
+      <div class="col-12 col-xl-8">
+        <div class="web-header-preview-panel" id="web-header-playground-preview"></div>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-web-header-copy-playground>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="web-header-playground-code" class="active"></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="web-header-variants-title">
+    <div class="component-section__header">
+      <h2 id="web-header-variants-title" class="mp-h2">4. Variantes</h2>
+    </div>
+    <div class="web-header-variant-grid">
+      <article class="web-header-variant-card"><h3 class="mp-h3">Portal público</h3><p class="mp-body-s">Logo, búsqueda, CTA y navegación horizontal.</p><div data-web-header-variant-demo="public"></div></article>
+      <article class="web-header-variant-card"><h3 class="mp-h3">Responsive drawer</h3><p class="mp-body-s">Menú móvil con búsqueda y accesos priorizados.</p><div data-web-header-variant-demo="mobile"></div></article>
+      <article class="web-header-variant-card"><h3 class="mp-h3">Zona transaccional</h3><p class="mp-body-s">Header superior más navegación lateral de módulos.</p><div data-web-header-variant-demo="zt"></div></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="web-header-states-title">
+    <div class="component-section__header">
+      <h2 id="web-header-states-title" class="mp-h2">5. Estados</h2>
+    </div>
+    <div class="web-header-state-grid">
+      <article class="web-header-state-card"><h3 class="mp-h3">Default</h3><p class="mp-body-s">Navegación disponible.</p><div data-web-header-state-demo="default"></div></article>
+      <article class="web-header-state-card"><h3 class="mp-h3">Hover</h3><p class="mp-body-s">El item comunica interacción.</p><div data-web-header-state-demo="hover"></div></article>
+      <article class="web-header-state-card"><h3 class="mp-h3">Focus</h3><p class="mp-body-s">Visible al navegar con teclado.</p><div data-web-header-state-demo="focus"></div></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="web-header-responsive-title">
+    <div class="component-section__header">
+      <h2 id="web-header-responsive-title" class="mp-h2">6. Responsive y comportamiento</h2>
+    </div>
+    <div class="web-header-guideline-list">
+      <div class="web-header-guideline-item"><h3 class="mp-h3">Desktop</h3><p class="mp-body-m">Mantiene navegación horizontal, buscador visible, CTA principal y submenús agrupados por categoría.</p></div>
+      <div class="web-header-guideline-item"><h3 class="mp-h3">Mobile</h3><p class="mp-body-m">Pasa a drawer o menú lateral, conserva acciones de negocio y permite cerrar con X, overlay o tecla Escape.</p></div>
+      <div class="web-header-guideline-item"><h3 class="mp-h3">ZT</h3><p class="mp-body-m">El menú lateral agrupa módulos transaccionales; el header superior conserva identidad, búsqueda y sesión.</p></div>
+      <div class="web-header-guideline-item"><h3 class="mp-h3">Accesibilidad</h3><p class="mp-body-m">Usa <code>nav</code>, labels claros, foco visible y estados <code>aria-expanded</code> cuando haya submenús o drawer.</p></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="web-header-code-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="web-header-code-title" class="mp-h2">7. Visualizador</h2>
+        <p class="mp-body-m">HTML del fragmento y estilos completos del componente. No incluye estilos propios del portal.</p>
+      </div>
+    </div>
+    <div class="ct-downloads button-downloads" aria-label="Descargar estilos de header web">
+      <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-web-header-download="html"><i class="icon icon-article icon-16" aria-hidden="true"></i> HTML</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-web-header-download="css"><i class="icon icon-article icon-16" aria-hidden="true"></i> CSS</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-web-header-download="sass"><i class="icon icon-article icon-16" aria-hidden="true"></i> Sass</button>
+    </div>
+    <div class="code-block">
+      <div class="code-tabs" role="tablist" aria-label="Código del componente">
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-web-header-code-tab="html" aria-selected="true">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-web-header-code-tab="css" aria-selected="false">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-web-header-code-tab="sass" aria-selected="false">Sass</button>
+      </div>
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-web-header-copy-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="web-header-code-html" class="active"></pre>
+        <pre id="web-header-code-css"></pre>
+        <pre id="web-header-code-sass"></pre>
+      </div>
+    </div>
+  </section>
+</article>

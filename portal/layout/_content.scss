@@ -5,10 +5,12 @@
    ══════════════════════════════════════════════════════════ */
 .main {
   width: calc(100% - var(--ui-sidebar-w));
+  min-width: 0;
   flex: 1;
   max-width: none;
   margin-left: var(--ui-sidebar-w);
   padding: rem(48px) rem(48px) rem(80px);
+  overflow-x: hidden;
   background-color: var(--ui-bg);
 }
 

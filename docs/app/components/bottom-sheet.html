@@ -10,7 +10,7 @@
 
   <section class="component-hero" aria-labelledby="app-bottom-sheet-title">
     <h1 id="app-bottom-sheet-title" class="mp-h1">Bottom Sheet</h1>
-    <p class="mp-body-l">Panel inferior móvil para listas, filtros y selecciones contextuales. Se ancla al borde inferior, mantiene el foco en la tarea y evita navegar a otra pantalla cuando la decisión es breve.</p>
+    <p class="mp-body-l">Panel inferior móvil para listas, filtros y selecciones contextuales. Se ancla al borde inferior de la pantalla, mantiene el foco en la tarea y evita navegar a otra pantalla cuando la decisión es breve.</p>
     <div class="component-meta" aria-label="Metadatos del componente">
       <span class="component-chip component-chip--success">Estado: estable</span>
       <span class="component-chip">App · .NET MAUI</span>
@@ -19,6 +19,7 @@
     </div>
   </section>
 
+  <!-- 1. RESUMEN -->
   <section class="component-section" aria-labelledby="app-bottom-sheet-summary">
     <div class="component-section__header">
       <h2 id="app-bottom-sheet-summary" class="mp-h2">1. Resumen</h2>
@@ -27,26 +28,27 @@
       <div class="col-12 col-lg-6">
         <h3 class="mp-h3">Cuándo usarlo</h3>
         <ul class="component-list">
-          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para seleccionar una opción desde una lista extensa.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para seleccionar una opción desde una lista extensa (especialidades, sedes, ciudades).</li>
           <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para filtros de citas, servicios o resultados en móvil.</li>
-          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando la tarea debe permanecer en el contexto actual.</li>
-          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando se necesita búsqueda, scroll interno o acciones de aplicar/limpiar.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando la tarea debe permanecer en el contexto actual sin cambiar de pantalla.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando se necesita búsqueda, scroll interno o acciones aplicar / limpiar.</li>
         </ul>
       </div>
       <div class="col-12 col-lg-6">
         <div class="component-example-card component-example-card--split h-100">
           <div>
             <h3 class="mp-h3">Do</h3>
-            <p class="mp-body-m">Usa un sheet con handle, contenido claro y opciones táctiles de 56 px.</p>
+            <p class="mp-body-m">Handle visible, campo de búsqueda accesible y opciones táctiles de mínimo 56 px.</p>
             <div class="app-bottom-sheet-device">
               <div class="mp-bottom-sheet mp-bottom-sheet--list" role="dialog" aria-modal="true" aria-label="Seleccionar especialidad">
-                <button class="mp-bottom-sheet__header" type="button" aria-label="Arrastrar"><span class="mp-bottom-sheet__handle"></span></button>
+                <button class="mp-bottom-sheet__header" type="button" aria-label="Arrastrar o cerrar"><span class="mp-bottom-sheet__handle" aria-hidden="true"></span></button>
                 <div class="mp-bottom-sheet__content">
-                  <label class="mp-bottom-sheet__search"><input aria-label="Buscar especialidad" placeholder="Buscar"><i class="icon icon-magnifying-glass" aria-hidden="true"></i></label>
+                  <label class="mp-bottom-sheet__search"><input type="search" placeholder="Buscar" aria-label="Buscar especialidad"><i class="icon icon-magnifying-glass" aria-hidden="true"></i></label>
                   <div class="mp-bottom-sheet__list">
                     <button class="mp-bottom-sheet__option" type="button">Dermatología</button>
                     <button class="mp-bottom-sheet__option" type="button">Endocrinología</button>
                     <button class="mp-bottom-sheet__option" type="button">Gastroenterología</button>
+                    <span class="mp-bottom-sheet__scroll" aria-hidden="true"></span>
                   </div>
                 </div>
               </div>
@@ -55,10 +57,10 @@
           <span class="component-divider" aria-hidden="true"></span>
           <div>
             <h3 class="mp-h3">Don't</h3>
-            <p class="mp-body-m">No lo uses para flujos largos ni para ocultar acciones críticas sin jerarquía.</p>
+            <p class="mp-body-m">No uses el bottom sheet para flujos de varios pasos ni para acciones destructivas de alto impacto.</p>
             <div class="component-support component-support--warning">
               <i class="component-support__icon icon icon-warning icon-20" aria-hidden="true"></i>
-              <p class="mp-body-s">Si hay más de tres pasos consecutivos, usa una pantalla dedicada.</p>
+              <p class="mp-body-s">Si la tarea tiene más de un paso consecutivo o requiere confirmar datos críticos, usa una pantalla dedicada o un modal.</p>
             </div>
           </div>
         </div>
@@ -66,30 +68,42 @@
     </div>
   </section>
 
+  <!-- 2. ANATOMÍA INTERACTIVA -->
   <section class="component-section" aria-labelledby="app-bottom-sheet-anatomy">
     <div class="component-section__header">
       <h2 id="app-bottom-sheet-anatomy" class="mp-h2">2. Anatomía interactiva</h2>
+      <p class="mp-body-m">Selecciona la variante para explorar las partes y medidas del componente.</p>
     </div>
-    <div class="segmented-control" role="group" aria-label="Anatomía Bottom Sheet">
-      <button type="button" class="mp-btn mp-btn--terciario" data-app-bottom-sheet-anatomy="list" aria-pressed="true">Lista</button>
+    <div class="segmented-control" role="group" aria-label="Variante de anatomía">
+      <button type="button" class="mp-btn mp-btn--terciario is-active" data-app-bottom-sheet-anatomy="list" aria-pressed="true">Lista</button>
       <button type="button" class="mp-btn mp-btn--terciario" data-app-bottom-sheet-anatomy="filters" aria-pressed="false">Filtros</button>
     </div>
     <div class="app-bottom-sheet-stage">
       <span class="app-bottom-sheet-measure app-bottom-sheet-measure--radius">Radio 16 px</span>
       <span class="app-bottom-sheet-measure app-bottom-sheet-measure--item">Item 56 px</span>
-      <span class="app-bottom-sheet-measure app-bottom-sheet-measure--padding">Padding 12-16 px</span>
-      <div class="app-bottom-sheet-callout app-bottom-sheet-callout--handle"><strong>Handle</strong><span class="mp-body-s">Indica que el panel se puede arrastrar o cerrar.</span></div>
-      <div class="app-bottom-sheet-callout app-bottom-sheet-callout--content"><strong>Contenido</strong><span class="mp-body-s">Lista, búsqueda, chips o grupos de filtros.</span></div>
-      <div class="app-bottom-sheet-callout app-bottom-sheet-callout--actions"><strong>Acciones</strong><span class="mp-body-s">Aplicar y limpiar solo cuando el sheet recopila filtros.</span></div>
+      <span class="app-bottom-sheet-measure app-bottom-sheet-measure--padding">Padding 12–16 px</span>
+      <div class="app-bottom-sheet-callout app-bottom-sheet-callout--handle">
+        <strong>Handle</strong>
+        <span class="mp-body-s">Barra de arrastre de 32 × 4 px. Indica que el panel puede cerrarse o arrastrarse.</span>
+      </div>
+      <div class="app-bottom-sheet-callout app-bottom-sheet-callout--content">
+        <strong>Contenido</strong>
+        <span class="mp-body-s">Lista scrollable, campo de búsqueda, chips de filtro o grupos de opciones.</span>
+      </div>
+      <div class="app-bottom-sheet-callout app-bottom-sheet-callout--actions">
+        <strong>Acciones</strong>
+        <span class="mp-body-s">Botones Aplicar y Limpiar solo en la variante de filtros.</span>
+      </div>
       <div class="app-bottom-sheet-device" id="app-bottom-sheet-anatomy-preview"></div>
     </div>
   </section>
 
+  <!-- 3. PLAYGROUND -->
   <section class="component-section" aria-labelledby="app-bottom-sheet-playground">
     <div class="component-section__header">
       <div>
         <h2 id="app-bottom-sheet-playground" class="mp-h2">3. Playground</h2>
-        <p class="mp-body-m">Configura la variante y el contenido para validar listas o filtros dentro del panel inferior.</p>
+        <p class="mp-body-m">Configura variante, contenido y modo para validar el panel antes de integrarlo.</p>
       </div>
     </div>
     <div class="row g-4">
@@ -128,49 +142,167 @@
     </div>
   </section>
 
+  <!-- 4. VARIANTES -->
   <section class="component-section" aria-labelledby="app-bottom-sheet-variants">
     <div class="component-section__header">
       <h2 id="app-bottom-sheet-variants" class="mp-h2">4. Variantes</h2>
     </div>
     <div class="app-bottom-sheet-variant-grid">
       <article class="app-bottom-sheet-card">
-        <h3 class="mp-h3">Lista</h3>
+        <h3 class="mp-h3">Lista con búsqueda</h3>
+        <p class="mp-body-s">Campo de búsqueda + lista de opciones con scroll. Ideal para selección de especialidad, centro o ciudad.</p>
         <div class="app-bottom-sheet-device" data-app-bottom-sheet-demo="list"></div>
       </article>
       <article class="app-bottom-sheet-card">
         <h3 class="mp-h3">Filtros</h3>
+        <p class="mp-body-s">Grupos de chips de selección múltiple con acciones Aplicar / Limpiar en la zona inferior.</p>
         <div class="app-bottom-sheet-device" data-app-bottom-sheet-demo="filters"></div>
       </article>
     </div>
   </section>
 
+  <!-- 5. ESTADOS -->
   <section class="component-section" aria-labelledby="app-bottom-sheet-states">
     <div class="component-section__header">
-      <h2 id="app-bottom-sheet-states" class="mp-h2">5. Estados</h2>
+      <h2 id="app-bottom-sheet-states" class="mp-h2">5. Estados del ítem</h2>
     </div>
     <div class="app-bottom-sheet-state-grid">
-      <article class="app-bottom-sheet-card"><h3 class="mp-h3">Default</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-state="default"></div></article>
-      <article class="app-bottom-sheet-card"><h3 class="mp-h3">Hover</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-state="hover"></div></article>
-      <article class="app-bottom-sheet-card"><h3 class="mp-h3">Focus</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-state="focus"></div></article>
-      <article class="app-bottom-sheet-card"><h3 class="mp-h3">Seleccionado</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-state="selected"></div></article>
+      <article class="app-bottom-sheet-card">
+        <h3 class="mp-h3">Default</h3>
+        <div class="app-bottom-sheet-device" data-app-bottom-sheet-state="default"></div>
+      </article>
+      <article class="app-bottom-sheet-card">
+        <h3 class="mp-h3">Hover</h3>
+        <div class="app-bottom-sheet-device" data-app-bottom-sheet-state="hover"></div>
+      </article>
+      <article class="app-bottom-sheet-card">
+        <h3 class="mp-h3">Focus</h3>
+        <div class="app-bottom-sheet-device" data-app-bottom-sheet-state="focus"></div>
+      </article>
+      <article class="app-bottom-sheet-card">
+        <h3 class="mp-h3">Seleccionado</h3>
+        <div class="app-bottom-sheet-device" data-app-bottom-sheet-state="selected"></div>
+      </article>
     </div>
   </section>
 
+  <!-- 6. MODOS -->
   <section class="component-section" aria-labelledby="app-bottom-sheet-modes">
     <div class="component-section__header">
       <h2 id="app-bottom-sheet-modes" class="mp-h2">6. Modos</h2>
     </div>
     <div class="app-bottom-sheet-mode-grid">
-      <article class="app-bottom-sheet-card" data-theme="light"><h3 class="mp-h3">Light</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-mode="light"></div></article>
-      <article class="app-bottom-sheet-card" data-theme="dark"><h3 class="mp-h3">Dark</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-mode="dark"></div></article>
-      <article class="app-bottom-sheet-card" data-theme="high-contrast"><h3 class="mp-h3">Alto contraste</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-mode="high-contrast"></div></article>
+      <article class="app-bottom-sheet-card" data-theme="light">
+        <h3 class="mp-h3">Light</h3>
+        <div class="app-bottom-sheet-device" data-app-bottom-sheet-mode="light"></div>
+      </article>
+      <article class="app-bottom-sheet-card" data-theme="dark">
+        <h3 class="mp-h3">Dark</h3>
+        <div class="app-bottom-sheet-device" data-app-bottom-sheet-mode="dark"></div>
+      </article>
+      <article class="app-bottom-sheet-card" data-theme="high-contrast">
+        <h3 class="mp-h3">Alto contraste</h3>
+        <div class="app-bottom-sheet-device" data-app-bottom-sheet-mode="high-contrast"></div>
+      </article>
     </div>
   </section>
 
+  <!-- 7. PROPIEDADES CSS -->
+  <section class="component-section" aria-labelledby="app-bottom-sheet-props">
+    <div class="component-section__header">
+      <h2 id="app-bottom-sheet-props" class="mp-h2">7. Propiedades CSS</h2>
+      <p class="mp-body-m">Variables personalizables del componente. Todas se declaran en el selector raíz <code>.mp-bottom-sheet</code> y pueden sobreescribirse en contexto.</p>
+    </div>
+    <div class="component-spec-table" role="table" aria-label="Custom properties Bottom Sheet">
+      <div class="component-spec-table__head" role="row">
+        <span role="columnheader">Propiedad</span>
+        <span role="columnheader">Valor por defecto</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-width</code>
+        <span role="cell">390px</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-bg</code>
+        <span role="cell">var(--use-surface-white, #fff)</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-text</code>
+        <span role="cell">var(--use-text-primary, #111)</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-muted</code>
+        <span role="cell">var(--use-text-tertiary, #666)</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-border</code>
+        <span role="cell">var(--use-border-subtle, #e0e0e0)</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-handle</code>
+        <span role="cell">#79747e (M3 outline)</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-shadow</code>
+        <span role="cell">2px 5px 16px rgba(0,0,0,.15)</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-chip-bg</code>
+        <span role="cell">#f3f0fa (violet-50)</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-chip-text</code>
+        <span role="cell">#5d4992 (violet-700)</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-chip-active-bg</code>
+        <span role="cell">#775ebb (violet-600)</span>
+      </div>
+      <div class="component-spec-table__row" role="row">
+        <code role="cell">--mp-bs-chip-active-text</code>
+        <span role="cell">var(--base-neutral-white, #fff)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. ACCESIBILIDAD + CHECKLIST QA -->
+  <section class="component-section" aria-labelledby="app-bottom-sheet-a11y">
+    <div class="component-section__header">
+      <h2 id="app-bottom-sheet-a11y" class="mp-h2">8. Accesibilidad</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Roles y atributos ARIA</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El panel raíz lleva <code>role="dialog"</code>, <code>aria-modal="true"</code> y <code>aria-label</code> o <code>aria-labelledby</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El botón handle tiene <code>aria-label="Arrastrar o cerrar"</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El campo de búsqueda usa <code>&lt;label&gt;</code> o <code>aria-label</code> explícito.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cada chip de filtro usa <code>aria-pressed</code> para reflejar el estado seleccionado.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los grupos de filtros usan <code>&lt;section&gt;</code> con <code>aria-labelledby</code> apuntando al título del grupo.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Checklist QA</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Handle visible en todos los modos (Light, Dark, Alto contraste).</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Panel se cierra al tocar/pulsar el handle o al presionar <kbd>Esc</kbd>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Foco queda atrapado dentro del sheet mientras está abierto.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Ítems de lista con min-height 56 px (área táctil mínima).</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Chips de filtro responden correctamente a tap/clic y actualizan <code>aria-pressed</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Botón "Aplicar" aplica los filtros seleccionados y cierra el panel.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Botón "Limpiar" deselecciona todos los chips del panel.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Contraste de texto ≥ 4.5:1 en todos los modos.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Chips de filtro activos (#775ebb/#fff): contraste verificado ≥ 4.5:1.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. VISUALIZADOR DE CÓDIGO -->
   <section class="component-section" aria-labelledby="app-bottom-sheet-code">
     <div class="component-section__header">
       <div>
-        <h2 id="app-bottom-sheet-code" class="mp-h2">7. Visualizador</h2>
+        <h2 id="app-bottom-sheet-code" class="mp-h2">9. Visualizador</h2>
         <p class="mp-body-m">Fragmento HTML y estilos completos del componente. El CSS pertenece al core; los estilos de esta página son solo documentación.</p>
       </div>
     </div>
