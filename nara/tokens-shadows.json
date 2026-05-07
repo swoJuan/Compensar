@@ -1,0 +1,65 @@
+{
+  "source": "Compensar/core/abstracts/_tokens-shadows.scss",
+  "tokens": [
+    {
+      "name": "shadow-1",
+      "value": "0.125rem 0.3125rem 1rem rgba(0, 0, 0, 0.15)",
+      "comment": "2px 5px 16px · cards estaticas"
+    },
+    {
+      "name": "shadow-2",
+      "value": "0 0.5rem 1.5rem rgba(0, 0, 0, 0.15)",
+      "comment": "0px 8px 24px · dropdowns, popovers"
+    },
+    {
+      "name": "shadow-3",
+      "value": "0 1rem 2.5rem rgba(0, 0, 0, 0.20)",
+      "comment": "0px 16px 40px · modales"
+    },
+    {
+      "name": "shadow-4",
+      "value": "0 1.25rem 3.125rem rgba(0, 0, 0, 0.20)",
+      "comment": "0px 20px 50px · drawers"
+    },
+    {
+      "name": "shadow-header",
+      "value": "0 0.25rem 0.25rem rgba(0, 0, 0, 0.25)",
+      "comment": "0px 4px 4px"
+    },
+    {
+      "name": "shadow-btn-hover",
+      "value": "0.125rem 0.125rem 0.1875rem rgba(255, 157, 92, 1)",
+      "comment": "2px 2px 3px"
+    },
+    {
+      "name": "shadow-btn-especial-hover",
+      "value": "0.125rem 0.125rem 0.1875rem rgba(162, 141, 218, 1)",
+      "comment": "2px 2px 3px"
+    },
+    {
+      "name": "shadow-btn-pressed",
+      "value": "inset 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25)",
+      "comment": "0px 4px 4px"
+    },
+    {
+      "name": "shadow-card",
+      "value": "$shadow-1",
+      "comment": ""
+    },
+    {
+      "name": "shadow-dropdown",
+      "value": "$shadow-2",
+      "comment": ""
+    },
+    {
+      "name": "shadow-modal",
+      "value": "$shadow-3",
+      "comment": ""
+    },
+    {
+      "name": "shadow-drawer",
+      "value": "$shadow-4",
+      "comment": ""
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "source": "Compensar/core/abstracts/_tokens-radius.scss",
+  "tokens": [
+    {
+      "name": "border-radius-xs",
+      "value": "0.5rem",
+      "comment": "8px"
+    },
+    {
+      "name": "border-radius-sm",
+      "value": "1rem",
+      "comment": "16px"
+    },
+    {
+      "name": "border-radius-md",
+      "value": "1.5rem",
+      "comment": "24px"
+    },
+    {
+      "name": "border-radius-lg",
+      "value": "2rem",
+      "comment": "32px"
+    },
+    {
+      "name": "radius-none",
+      "value": "0",
+      "comment": ""
+    },
+    {
+      "name": "radius-xs",
+      "value": "$border-radius-xs",
+      "comment": ""
+    },
+    {
+      "name": "radius-sm",
+      "value": "$border-radius-sm",
+      "comment": ""
+    },
+    {
+      "name": "radius-md",
+      "value": "$border-radius-md",
+      "comment": ""
+    },
+    {
+      "name": "radius-lg",
+      "value": "$border-radius-lg",
+      "comment": ""
+    },
+    {
+      "name": "radius-full",
+      "value": "$border-radius-lg",
+      "comment": ""
+    }
+  ]
+}

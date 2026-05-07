@@ -1,0 +1,90 @@
+{
+  "source": "Compensar/core/abstracts/_tokens-spacing.scss",
+  "tokens": [
+    {
+      "name": "space-0",
+      "value": "0",
+      "comment": ""
+    },
+    {
+      "name": "space-2",
+      "value": "0.125rem",
+      "comment": "2px"
+    },
+    {
+      "name": "space-4",
+      "value": "0.25rem",
+      "comment": "4px"
+    },
+    {
+      "name": "space-8",
+      "value": "0.5rem",
+      "comment": "8px"
+    },
+    {
+      "name": "space-10",
+      "value": "0.625rem",
+      "comment": "10px"
+    },
+    {
+      "name": "space-12",
+      "value": "0.75rem",
+      "comment": "12px"
+    },
+    {
+      "name": "space-16",
+      "value": "1rem",
+      "comment": "16px"
+    },
+    {
+      "name": "space-24",
+      "value": "1.5rem",
+      "comment": "24px"
+    },
+    {
+      "name": "space-32",
+      "value": "2rem",
+      "comment": "32px"
+    },
+    {
+      "name": "space-40",
+      "value": "2.5rem",
+      "comment": "40px"
+    },
+    {
+      "name": "space-48",
+      "value": "3rem",
+      "comment": "48px"
+    },
+    {
+      "name": "space-56",
+      "value": "3.5rem",
+      "comment": "56px"
+    },
+    {
+      "name": "space-64",
+      "value": "4rem",
+      "comment": "64px"
+    },
+    {
+      "name": "space-72",
+      "value": "4.5rem",
+      "comment": "72px"
+    },
+    {
+      "name": "space-80",
+      "value": "5rem",
+      "comment": "80px"
+    },
+    {
+      "name": "space-96",
+      "value": "6rem",
+      "comment": "96px"
+    },
+    {
+      "name": "space-128",
+      "value": "8rem",
+      "comment": "128px"
+    }
+  ]
+}
