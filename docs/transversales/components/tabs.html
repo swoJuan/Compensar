@@ -347,9 +347,9 @@
     </div>
     <div class="button-code-panel">
       <div class="button-code-tabs" role="tablist" aria-label="Código de tabs">
-        <button type="button" class="mp-btn mp-btn--terciario active" role="tab" data-tab-code-tab="html" aria-selected="true">HTML</button>
-        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-tab-code-tab="angular" aria-selected="false">Angular</button>
-        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-tab-code-tab="drupal" aria-selected="false">Drupal</button>
+        <button type="button" class="mp-btn mp-btn--terciario active" role="tab" data-tab-code-tab="html" aria-selected="true" onclick="event.stopPropagation(); window.tabsDocs?.switchCodeTabFromButton(this)">HTML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-tab-code-tab="angular" aria-selected="false" onclick="event.stopPropagation(); window.tabsDocs?.switchCodeTabFromButton(this)">Angular</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-tab-code-tab="drupal" aria-selected="false" onclick="event.stopPropagation(); window.tabsDocs?.switchCodeTabFromButton(this)">Drupal</button>
         <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-tab-copy-code>
           <i class="icon icon-share icon-16" aria-hidden="true"></i>
           Copiar código

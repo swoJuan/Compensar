@@ -1,0 +1,758 @@
+<article class="component-doc-page dropdown-doc app-dropdown-doc" data-component-doc="dropdown">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">App</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Dropdown / Select App</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="dropdown-title">
+    <h1 id="dropdown-title" class="mp-h1">Dropdown / Select App</h1>
+    <p class="mp-body-l">Permite seleccionar una o varias opciones dentro de una lista. En App conserva el dropdown base y suma una variante móvil tipo bottom sheet para listas largas o con búsqueda.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">App · .NET MAUI</span>
+      <span class="component-chip">Bottom sheet compatible</span>
+      <span class="component-chip">Categoría: formulario</span>
+      <span class="component-chip">Figma: 4489:16322</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       1. RESUMEN
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-summary">
+    <div class="component-section__header">
+      <h2 id="drp-summary">1. Resumen</h2>
+    </div>
+    <div class="component-grid-2">
+      <div>
+        <h3 class="text-primary">¿Cuándo usar este componente?</h3>
+        <p class="text-secondary">Usa el dropdown cuando el usuario debe elegir una opción de una lista predefinida (más de 4 opciones). En móvil, usa bottom sheet cuando la lista supera 8–10 ítems o necesita búsqueda.</p>
+        <h3 class="text-primary">¿Cuándo NO usarlo?</h3>
+        <p class="text-secondary">Evítalo para acciones destructivas o flujos que requieran confirmación; usa un diálogo modal en su lugar. Para pocas opciones (2–3) prefiere radio buttons visibles.</p>
+      </div>
+      <div>
+        <h3 class="text-primary">Variantes disponibles</h3>
+        <ul>
+          <li><strong>Simple</strong> — selección de un único ítem</li>
+          <li><strong>Con búsqueda</strong> — filtro de texto dentro del panel</li>
+          <li><strong>Múltiple</strong> — selección de varios ítems con chips</li>
+          <li><strong>Con grupos</strong> — opciones organizadas en categorías</li>
+          <li><strong>Bottom sheet</strong> — lista móvil persistente desde la parte inferior</li>
+        </ul>
+        <h3 class="text-primary">Clases base</h3>
+        <code>.mp-dropdown-group · .mp-dropdown · .mp-dropdown__trigger · .mp-dropdown__panel · .mp-dropdown__option</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       2. ANATOMÍA INTERACTIVA
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-anatomy">
+    <div class="component-section__header">
+      <h2 id="drp-anatomy">2. Anatomía interactiva</h2>
+    </div>
+
+    <!-- Tabs de variante -->
+    <div class="component-tab-bar" role="tablist" aria-label="Variante de anatomía">
+      <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-drp-anatomy-option="simple"    aria-selected="true"  aria-controls="drp-anatomy-stage">Simple</button>
+      <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-drp-anatomy-option="search"    aria-selected="false" aria-controls="drp-anatomy-stage">Con búsqueda</button>
+      <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-drp-anatomy-option="multiple"  aria-selected="false" aria-controls="drp-anatomy-stage">Múltiple</button>
+      <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-drp-anatomy-option="grouped"   aria-selected="false" aria-controls="drp-anatomy-stage">Con grupos</button>
+    </div>
+
+    <div class="drp-doc-stage" id="drp-anatomy-stage" aria-live="polite">
+      <!-- Badges de medida -->
+      <span class="drp-doc-measure drp-doc-measure--height"  data-drp-anatomy-height>56 px</span>
+      <span class="drp-doc-measure drp-doc-measure--width"   data-drp-anatomy-width>320 px</span>
+      <span class="drp-doc-measure drp-doc-measure--panel-h" data-drp-anatomy-panel-h>max 256 px</span>
+
+      <!-- Callouts -->
+      <div class="drp-doc-callout drp-doc-callout--label"   data-drp-callout="label">
+        <strong>Label</strong><span>Roboto 16px Regular · use/text/primary</span>
+      </div>
+      <div class="drp-doc-callout drp-doc-callout--trigger" data-drp-callout="trigger">
+        <strong>Trigger</strong><span>h 56 px · r 16 px · padding 16 px</span>
+      </div>
+      <div class="drp-doc-callout drp-doc-callout--caret"   data-drp-callout="caret">
+        <strong>Caret</strong><span>expand_more · 24 px · gira 180° al abrir</span>
+      </div>
+      <div class="drp-doc-callout drp-doc-callout--panel"   data-drp-callout="panel">
+        <strong>Panel</strong><span>r 0 0 16 16 · shadow md · max-h 256 px</span>
+      </div>
+      <div class="drp-doc-callout drp-doc-callout--option"  data-drp-callout="option">
+        <strong>Opción</strong><span>h 48 px · padding 0 16 px</span>
+      </div>
+      <div class="drp-doc-callout drp-doc-callout--helper"  data-drp-callout="helper">
+        <strong>Helper</strong><span>Roboto 14 px · use/text/tertiary</span>
+      </div>
+
+      <!-- Preview vivo -->
+      <div class="drp-doc-stage__field-wrap" id="drp-anatomy-preview" data-drp-anatomy-render>
+        <!-- JS renderiza aquí -->
+      </div>
+    </div>
+
+    <!-- Controles de visibilidad -->
+    <div class="drp-doc-controls">
+      <label class="component-toggle-label">
+        <input type="checkbox" data-drp-anatomy-toggle="labels" checked>
+        Mostrar etiquetas
+      </label>
+      <label class="component-toggle-label">
+        <input type="checkbox" data-drp-anatomy-toggle="measures" checked>
+        Mostrar medidas
+      </label>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       3. VARIANTE APP: BOTTOM SHEET
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-app-bottom-sheet">
+    <div class="component-section__header">
+      <div>
+        <h2 id="drp-app-bottom-sheet" class="mp-h2">3. Variante App: bottom sheet</h2>
+        <p class="mp-body-m">Para listas largas en móvil, el select abre un panel inferior con búsqueda, scroll interno y opciones táctiles de 48 px mínimo.</p>
+      </div>
+    </div>
+
+    <div class="app-dropdown-sheet-layout">
+      <div class="app-dropdown-sheet-stage" aria-label="Ejemplo de bottom sheet para Dropdown App">
+        <div class="app-dropdown-device">
+          <button class="app-dropdown-field" type="button" aria-haspopup="dialog" aria-expanded="true">
+            <span>Especialidad</span>
+            <strong>Seleccionar</strong>
+            <i class="icon icon-caret-down" aria-hidden="true"></i>
+          </button>
+          <div class="app-dropdown-scrim" aria-hidden="true"></div>
+          <section class="app-dropdown-sheet" role="dialog" aria-modal="true" aria-labelledby="app-dropdown-sheet-title">
+            <button class="app-dropdown-sheet__header" type="button" aria-label="Cerrar selector de especialidad">
+              <span class="app-dropdown-sheet__handle" aria-hidden="true"></span>
+            </button>
+            <h3 id="app-dropdown-sheet-title" class="visually-hidden">Seleccionar especialidad</h3>
+            <div class="app-dropdown-sheet__content">
+              <label class="app-dropdown-search">
+                <span class="visually-hidden">Buscar especialidad</span>
+                <input type="text" value="" placeholder="Buscar" aria-label="Buscar especialidad">
+                <i class="icon icon-magnifying-glass" aria-hidden="true"></i>
+              </label>
+              <div class="app-dropdown-sheet__list" role="listbox" aria-label="Especialidades">
+                <button type="button" role="option">Dermatología</button>
+                <button type="button" role="option">Endocrinología</button>
+                <button type="button" role="option">Gastroenterología</button>
+                <button type="button" role="option">Neurología</button>
+                <button type="button" role="option">Oftalmología</button>
+                <button type="button" role="option">Oncología</button>
+                <button type="button" role="option">Pediatra</button>
+                <button type="button" role="option">Psiquiatra</button>
+                <button type="button" role="option">Traumatólogo</button>
+              </div>
+              <span class="app-dropdown-sheet__scroll" aria-hidden="true"></span>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="app-dropdown-sheet-notes">
+        <h3 class="mp-h3">Reglas App</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa bottom sheet para más de 8 opciones o listas con búsqueda.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El panel ocupa el ancho del dispositivo y se ancla al borde inferior.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El drag handle mantiene 32 × 4 px y radio completo.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Las opciones usan texto mínimo de 16 px y padding horizontal de 16 px.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       4. PLAYGROUND
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-playground-title">
+    <div class="component-section__header">
+      <h2 id="drp-playground-title">4. Playground</h2>
+    </div>
+
+    <div class="drp-playground">
+      <!-- Preview -->
+      <div class="drp-playground__preview">
+        <div class="drp-preview-card" id="drp-preview-light" data-theme="light">
+          <div id="drp-live-preview" style="width:100%;max-width:320px">
+            <!-- JS renderiza aquí -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles -->
+      <div class="drp-playground__controls">
+        <div class="drp-field">
+          <label for="drp-ctrl-tipo">Variante</label>
+          <select class="mp-input-field mp-select" id="drp-ctrl-tipo" data-drp-control="tipo">
+            <option value="simple">Simple</option>
+            <option value="search">Con búsqueda</option>
+            <option value="multiple">Múltiple</option>
+            <option value="grouped">Con grupos</option>
+          </select>
+        </div>
+
+        <div class="drp-field">
+          <label for="drp-ctrl-state">Estado</label>
+          <select class="mp-input-field mp-select" id="drp-ctrl-state" data-drp-control="state">
+            <option value="default">Default</option>
+            <option value="open">Abierto</option>
+            <option value="error">Error</option>
+            <option value="disabled">Deshabilitado</option>
+          </select>
+        </div>
+
+        <div class="drp-field">
+          <label for="drp-ctrl-theme">Tema</label>
+          <select class="mp-input-field mp-select" id="drp-ctrl-theme" data-drp-control="theme">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="high-contrast">High Contrast</option>
+          </select>
+        </div>
+
+        <div class="drp-field">
+          <label for="drp-ctrl-label">Label</label>
+          <input class="mp-input-field" id="drp-ctrl-label" type="text" value="Seleccionar ciudad" data-drp-control="label">
+        </div>
+
+        <div class="drp-field">
+          <label for="drp-ctrl-placeholder">Placeholder</label>
+          <input class="mp-input-field" id="drp-ctrl-placeholder" type="text" value="Seleccionar" data-drp-control="placeholder">
+        </div>
+
+        <div class="drp-field">
+          <label for="drp-ctrl-helper">Texto de apoyo</label>
+          <input class="mp-input-field" id="drp-ctrl-helper" type="text" value="Elige una opción" data-drp-control="helperText">
+        </div>
+
+        <div class="drp-field" style="align-items:center;flex-direction:row;gap:8px;padding-top:20px">
+          <input type="checkbox" id="drp-ctrl-required" data-drp-control="required">
+          <label for="drp-ctrl-required" style="margin:0">Requerido</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel de código generado -->
+    <div class="drp-code-panel">
+      <div class="drp-code-tabs" role="tablist">
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="true"  data-drp-code-tab="html">HTML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-drp-code-tab="css">CSS</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-drp-code-tab="scss">Sass</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left drp-copy-btn" data-drp-copy-playground>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span> Copiar
+        </button>
+      </div>
+      <pre id="drp-code-output" tabindex="0" aria-label="Código generado"></pre>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       5. ESTADOS
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-states">
+    <div class="component-section__header">
+      <h2 id="drp-states">5. Estados</h2>
+    </div>
+    <div class="drp-state-grid">
+
+      <!-- Default -->
+      <div class="drp-state-card">
+        <div class="drp-state-card__label">Default</div>
+        <div class="mp-dropdown-group" style="width:100%">
+          <label class="mp-dropdown-label" for="drp-state-default">Ciudad</label>
+          <div class="mp-dropdown" style="width:100%">
+            <button class="mp-dropdown__trigger" id="drp-state-default" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="drp-state-default-panel">
+              <span class="mp-dropdown__value is-placeholder">Seleccionar</span>
+              <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
+            </button>
+            <div class="mp-dropdown__panel" id="drp-state-default-panel" role="listbox">
+              <div class="mp-dropdown__options">
+                <div class="mp-dropdown__option" role="option">Bogotá D.C.</div>
+                <div class="mp-dropdown__option" role="option">Medellín</div>
+                <div class="mp-dropdown__option" role="option">Cali</div>
+                <div class="mp-dropdown__option" role="option">Barranquilla</div>
+              </div>
+            </div>
+          </div>
+          <span class="mp-dropdown-helper">Texto de apoyo</span>
+        </div>
+      </div>
+
+      <!-- Hover -->
+      <div class="drp-state-card">
+        <div class="drp-state-card__label">Hover</div>
+        <div class="mp-dropdown-group" style="width:100%">
+          <label class="mp-dropdown-label" for="drp-state-hover">Ciudad</label>
+          <div class="mp-dropdown" style="width:100%">
+            <button class="mp-dropdown__trigger" id="drp-state-hover" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="drp-state-hover-panel" style="--mp-dd-border:var(--use-border-hover)">
+              <span class="mp-dropdown__value is-placeholder">Seleccionar</span>
+              <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
+            </button>
+            <div class="mp-dropdown__panel" id="drp-state-hover-panel" role="listbox">
+              <div class="mp-dropdown__options">
+                <div class="mp-dropdown__option" role="option">Bogotá D.C.</div>
+                <div class="mp-dropdown__option" role="option">Medellín</div>
+                <div class="mp-dropdown__option" role="option">Cali</div>
+                <div class="mp-dropdown__option" role="option">Barranquilla</div>
+              </div>
+            </div>
+          </div>
+          <span class="mp-dropdown-helper">Texto de apoyo</span>
+        </div>
+      </div>
+
+      <!-- Focus -->
+      <div class="drp-state-card">
+        <div class="drp-state-card__label">Focus</div>
+        <div class="mp-dropdown-group" style="width:100%">
+          <label class="mp-dropdown-label" for="drp-state-focus">Ciudad</label>
+          <div class="mp-dropdown" style="width:100%">
+            <button class="mp-dropdown__trigger" id="drp-state-focus" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="drp-state-focus-panel"
+              style="--mp-dd-border:var(--use-primary-default);border-color:var(--use-primary-default);box-shadow:0 0 0 3px color-mix(in srgb,var(--use-primary-default) 18%,transparent)">
+              <span class="mp-dropdown__value is-placeholder">Seleccionar</span>
+              <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
+            </button>
+            <div class="mp-dropdown__panel" id="drp-state-focus-panel" role="listbox">
+              <div class="mp-dropdown__options">
+                <div class="mp-dropdown__option" role="option">Bogotá D.C.</div>
+                <div class="mp-dropdown__option" role="option">Medellín</div>
+                <div class="mp-dropdown__option" role="option">Cali</div>
+                <div class="mp-dropdown__option" role="option">Barranquilla</div>
+              </div>
+            </div>
+          </div>
+          <span class="mp-dropdown-helper">Texto de apoyo</span>
+        </div>
+      </div>
+
+      <!-- Con valor seleccionado -->
+      <div class="drp-state-card">
+        <div class="drp-state-card__label">Con valor</div>
+        <div class="mp-dropdown-group" style="width:100%">
+          <label class="mp-dropdown-label" for="drp-state-value">Ciudad</label>
+          <div class="mp-dropdown" style="width:100%">
+            <button class="mp-dropdown__trigger" id="drp-state-value" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="drp-state-value-panel">
+              <span class="mp-dropdown__value">Bogotá D.C.</span>
+              <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
+            </button>
+            <div class="mp-dropdown__panel" id="drp-state-value-panel" role="listbox">
+              <div class="mp-dropdown__options">
+                <div class="mp-dropdown__option mp-dropdown__option--selected" role="option" aria-selected="true">Bogotá D.C.</div>
+                <div class="mp-dropdown__option" role="option">Medellín</div>
+                <div class="mp-dropdown__option" role="option">Cali</div>
+                <div class="mp-dropdown__option" role="option">Barranquilla</div>
+              </div>
+            </div>
+          </div>
+          <span class="mp-dropdown-helper">Texto de apoyo</span>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="drp-state-card">
+        <div class="drp-state-card__label">Error</div>
+        <div class="mp-dropdown-group" style="width:100%">
+          <label class="mp-dropdown-label" for="drp-state-error">Ciudad <span class="mp-dropdown-required" aria-hidden="true">*</span></label>
+          <div class="mp-dropdown" style="width:100%">
+            <button class="mp-dropdown__trigger error" id="drp-state-error" type="button" aria-expanded="false" aria-haspopup="listbox" aria-controls="drp-state-error-panel" aria-invalid="true" aria-describedby="drp-err-helper">
+              <span class="mp-dropdown__value is-placeholder">Seleccionar</span>
+              <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
+            </button>
+            <div class="mp-dropdown__panel" id="drp-state-error-panel" role="listbox">
+              <div class="mp-dropdown__options">
+                <div class="mp-dropdown__option" role="option">Bogotá D.C.</div>
+                <div class="mp-dropdown__option" role="option">Medellín</div>
+                <div class="mp-dropdown__option" role="option">Cali</div>
+                <div class="mp-dropdown__option" role="option">Barranquilla</div>
+              </div>
+            </div>
+          </div>
+          <span class="mp-dropdown-helper error" id="drp-err-helper">
+            <span class="material-symbols-rounded" aria-hidden="true" style="font-size:16px">error</span>
+            Este campo es requerido
+          </span>
+        </div>
+      </div>
+
+      <!-- Disabled -->
+      <div class="drp-state-card">
+        <div class="drp-state-card__label">Disabled</div>
+        <div class="mp-dropdown-group" style="width:100%">
+          <label class="mp-dropdown-label">Ciudad</label>
+          <div class="mp-dropdown" style="width:100%">
+            <button class="mp-dropdown__trigger" type="button" aria-expanded="false" disabled>
+              <span class="mp-dropdown__value is-placeholder">No disponible</span>
+              <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
+            </button>
+          </div>
+          <span class="mp-dropdown-helper">Campo deshabilitado</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       6. COMPORTAMIENTO
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-behavior">
+    <div class="component-section__header">
+      <h2 id="drp-behavior">6. Comportamiento</h2>
+    </div>
+    <div class="component-grid-2">
+      <div>
+        <h3 class="text-primary">Apertura y cierre</h3>
+        <p class="text-secondary">El panel se abre al hacer clic en el trigger o al presionar Enter/Space. Se cierra al seleccionar una opción, al presionar Escape o al hacer clic fuera del componente. El trigger cambia <code>aria-expanded</code> a <code>true</code> y el caret rota 180°.</p>
+        <h3 class="text-primary">Navegación por teclado</h3>
+        <p class="text-secondary">↑↓ navega entre opciones. Enter/Space selecciona. Escape cierra sin cambio. Home/End van al primer/último ítem. Escritura de caracteres filtra en modo búsqueda.</p>
+        <h3 class="text-primary">Posición del panel</h3>
+        <p class="text-secondary">El panel se posiciona debajo del trigger por defecto. Si no hay espacio visible se puede invertir a la posición superior (flip). El ancho del panel iguala al del trigger.</p>
+      </div>
+      <div>
+        <h3 class="text-primary">Selección múltiple</h3>
+        <p class="text-secondary">Cada opción seleccionada se muestra como chip dentro del trigger. El panel permanece abierto hasta que el usuario lo cierra. Los chips muestran un botón de remoción individual.</p>
+        <h3 class="text-primary">Búsqueda integrada</h3>
+        <p class="text-secondary">En modo búsqueda, el campo de texto se ubica en la parte superior del panel con borde inferior separador. El filtro actúa sobre el texto de cada opción y muestra el estado vacío si no hay coincidencias.</p>
+        <h3 class="text-primary">Grupos de opciones</h3>
+        <p class="text-secondary">Los encabezados de grupo no son seleccionables, se muestran en mayúsculas 11 px y no reciben foco. Los grupos se separan con un divider de 1 px.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       7. GUÍAS DE CONTENIDO
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-content">
+    <div class="component-section__header">
+      <h2 id="drp-content">7. Guías de contenido</h2>
+    </div>
+    <div class="component-grid-2">
+      <div>
+        <h3 class="text-primary">Label</h3>
+        <p class="text-secondary">Siempre presente. Primera letra en mayúscula, resto en minúscula. Evitar verbos; usar sustantivos descriptivos. Ejemplo: «Ciudad de residencia», no «Selecciona tu ciudad».</p>
+        <h3 class="text-primary">Placeholder</h3>
+        <p class="text-secondary">«Seleccionar» por defecto cuando el campo está vacío. No uses el placeholder como sustituto del label. El placeholder desaparece al seleccionar una opción.</p>
+        <h3 class="text-primary">Opciones</h3>
+        <p class="text-secondary">Ordenar alfabéticamente salvo razón semántica (ej. frecuencia de uso). Máximo 40–50 caracteres por opción. Primera letra en mayúscula.</p>
+      </div>
+      <div>
+        <h3 class="text-primary">Texto de apoyo</h3>
+        <p class="text-secondary">Opcional. Explica qué tipo de información se espera o añade restricciones relevantes. En estado error, reemplaza el helper con el mensaje de error específico.</p>
+        <h3 class="text-primary">Mensaje de error</h3>
+        <p class="text-secondary">Concreto y accionable. Ejemplo: «Debes seleccionar al menos una ciudad» en lugar de «Campo requerido».</p>
+        <h3 class="text-primary">Grupos</h3>
+        <p class="text-secondary">Los encabezados de grupo deben ser cortos (1–2 palabras). En mayúsculas sostenidas. No deben repetir la información del label del componente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       8. ACCESIBILIDAD
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-a11y">
+    <div class="component-section__header">
+      <h2 id="drp-a11y">8. Accesibilidad</h2>
+    </div>
+    <div class="component-grid-2">
+      <div>
+        <h3 class="text-primary">Roles ARIA obligatorios</h3>
+        <ul>
+          <li>Wrapper: <code>role="combobox"</code>, <code>aria-expanded</code>, <code>aria-haspopup="listbox"</code>, <code>aria-controls="[panel-id]"</code></li>
+          <li>Panel: <code>role="listbox"</code> (simple) o <code>role="listbox" aria-multiselectable="true"</code> (múltiple)</li>
+          <li>Opción: <code>role="option"</code>, <code>aria-selected</code></li>
+          <li>Opción deshabilitada: <code>aria-disabled="true"</code></li>
+          <li>Campo requerido: <code>aria-required="true"</code></li>
+          <li>Estado de error: <code>aria-invalid="true"</code>, <code>aria-describedby</code></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-primary">Interacción por teclado</h3>
+        <ul>
+          <li><kbd>Tab</kbd> — mueve el foco al trigger</li>
+          <li><kbd>Enter</kbd> / <kbd>Space</kbd> — abre el panel o selecciona la opción activa</li>
+          <li><kbd>↑</kbd> / <kbd>↓</kbd> — navega entre opciones (mueve <code>aria-activedescendant</code>)</li>
+          <li><kbd>Escape</kbd> — cierra el panel, devuelve el foco al trigger</li>
+          <li><kbd>Home</kbd> / <kbd>End</kbd> — primera / última opción</li>
+        </ul>
+        <h3 class="text-primary">Contraste mínimo</h3>
+        <p class="text-secondary">4.5:1 para texto de opción y label. El estado focus debe ser perceptible sin depender solo del color.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       9. RESPONSIVE
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-responsive">
+    <div class="component-section__header">
+      <h2 id="drp-responsive">9. Responsive</h2>
+    </div>
+    <p class="text-secondary">El trigger ocupa el 100% del ancho de su contenedor. El panel iguala ese ancho. En viewport ≤ 480 px el panel puede expandirse a pantalla completa con un overlay para mejorar la usabilidad en touch. Las opciones mantienen el mínimo de 48 px de altura táctil.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       10. MODOS DE COLOR
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-modes">
+    <div class="component-section__header">
+      <h2 id="drp-modes">10. Modos de color</h2>
+    </div>
+    <div class="drp-modo-grid">
+
+      <!-- Light -->
+      <div class="drp-modo-box" data-theme="light">
+        <div class="drp-modo-label">Light</div>
+        <div class="mp-dropdown-group">
+          <label class="mp-dropdown-label">Ciudad</label>
+          <div class="mp-dropdown">
+            <button class="mp-dropdown__trigger" type="button" aria-expanded="false" disabled>
+              <span class="mp-dropdown__value is-placeholder">Seleccionar</span>
+              <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dark -->
+      <div class="drp-modo-box" data-theme="dark">
+        <div class="drp-modo-label drp-modo-label--on-dark">Dark</div>
+        <div class="mp-dropdown-group">
+          <label class="mp-dropdown-label" style="color:var(--use-text-primary)">Ciudad</label>
+          <div class="mp-dropdown">
+            <button class="mp-dropdown__trigger" type="button" aria-expanded="false" disabled>
+              <span class="mp-dropdown__value is-placeholder">Seleccionar</span>
+              <span class="material-symbols-rounded mp-dropdown__caret" aria-hidden="true">expand_more</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- High Contrast -->
+      <div class="drp-modo-box" data-theme="high-contrast">
+        <div class="drp-modo-label drp-modo-label--on-dark">Alto contraste</div>
+        <div class="mp-dropdown-group">
+          <label class="mp-dropdown-label" style="color:#fff">Ciudad</label>
+          <div class="mp-dropdown">
+            <button class="mp-dropdown__trigger" type="button" aria-expanded="false" disabled
+              style="border-width:2px;border-color:#fff;background:#000;color:#fff">
+              <span class="mp-dropdown__value is-placeholder" style="color:rgba(255,255,255,0.55)">Seleccionar</span>
+              <span class="material-symbols-rounded mp-dropdown__caret" style="color:#fff" aria-hidden="true">expand_more</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       11. TOKENS USADOS
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-tokens">
+    <div class="component-section__header">
+      <h2 id="drp-tokens">11. Tokens usados</h2>
+    </div>
+    <div class="drp-token-grid">
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#e0e0e0"></span>
+          <code>--use-border-subtle</code>
+        </div>
+        <span>Borde default del trigger</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#E63F0C"></span>
+          <code>--use-border-hover</code>
+        </div>
+        <span>Borde en hover (naranja brand)</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#666"></span>
+          <code>--use-border-strong</code>
+        </div>
+        <span>Borde en active / mousedown</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#ff6600"></span>
+          <code>--use-primary-default</code>
+        </div>
+        <span>Borde focus y estado open</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#fff;border:1px solid #e0e0e0"></span>
+          <code>--use-surface-white</code>
+        </div>
+        <span>Fondo del trigger y panel</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#111"></span>
+          <code>--use-text-primary</code>
+        </div>
+        <span>Texto del valor seleccionado</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#666"></span>
+          <code>--use-text-tertiary</code>
+        </div>
+        <span>Placeholder y caret</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#f5f5f5"></span>
+          <code>--use-surface-theme-gray-5</code>
+        </div>
+        <span>Fondo de opción en hover</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#bb4945"></span>
+          <code>--use-state-error-mandatory</code>
+        </div>
+        <span>Asterisco requerido</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#db7165"></span>
+          <code>--use-state-error-icon</code>
+        </div>
+        <span>Borde en estado error</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#f5f5f5"></span>
+          <code>--use-surface-subtle</code>
+        </div>
+        <span>Fondo del trigger disabled</span>
+      </div>
+
+      <div class="drp-token-item">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="drp-token-swatch" style="background:#ff6600;opacity:.12;border:1px solid #e0e0e0"></span>
+          <code>--use-primary-default (12%)</code>
+        </div>
+        <span>Fondo de chip multi-select</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       12. CÓDIGO
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-code-section">
+    <div class="component-section__header">
+      <h2 id="drp-code-section">12. Código</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-drp-download="css">
+          <span class="material-symbols-rounded" aria-hidden="true">code</span> CSS
+        </button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-drp-download="scss">
+          <span class="material-symbols-rounded" aria-hidden="true">data_object</span> Sass
+        </button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left" data-drp-download="json">
+          <span class="material-symbols-rounded" aria-hidden="true">data_object</span> JSON
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabs de código estático -->
+    <div class="drp-code-panel">
+      <div class="drp-code-tabs" role="tablist">
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="true"  data-drp-static-code-tab="html">HTML base</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-drp-static-code-tab="multiple">Multi-select</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-drp-static-code-tab="search">Con búsqueda</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" aria-selected="false" data-drp-static-code-tab="accessible">Ejemplo accesible</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left drp-copy-btn" data-drp-copy-static>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span> Copiar
+        </button>
+      </div>
+      <pre id="drp-static-code" tabindex="0" aria-label="Código estático"></pre>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       13. CHECKLIST QA
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-qa">
+    <div class="component-section__header">
+      <h2 id="drp-qa">13. Checklist QA</h2>
+    </div>
+    <div class="drp-qa-grid">
+      <label class="drp-qa-item"><input type="checkbox"> El trigger muestra borde naranja en hover</label>
+      <label class="drp-qa-item"><input type="checkbox"> El trigger tiene ring naranja en focus y estado open</label>
+      <label class="drp-qa-item"><input type="checkbox"> El caret rota 180° al abrir el panel</label>
+      <label class="drp-qa-item"><input type="checkbox"> El panel se cierra con Escape y devuelve foco al trigger</label>
+      <label class="drp-qa-item"><input type="checkbox"> ↑↓ navega entre opciones del panel</label>
+      <label class="drp-qa-item"><input type="checkbox"> Enter/Space selecciona la opción activa</label>
+      <label class="drp-qa-item"><input type="checkbox"> La opción seleccionada muestra checkmark y color primario</label>
+      <label class="drp-qa-item"><input type="checkbox"> Opción disabled no recibe foco ni clic</label>
+      <label class="drp-qa-item"><input type="checkbox"> aria-expanded cambia a true/false al abrir/cerrar</label>
+      <label class="drp-qa-item"><input type="checkbox"> El panel tiene role="listbox" y opciones role="option"</label>
+      <label class="drp-qa-item"><input type="checkbox"> Estado error muestra borde rojo + mensaje accesible</label>
+      <label class="drp-qa-item"><input type="checkbox"> Trigger disabled no abre el panel</label>
+      <label class="drp-qa-item"><input type="checkbox"> Multi-select: chips visibles con botón de remoción</label>
+      <label class="drp-qa-item"><input type="checkbox"> Búsqueda: campo filtra opciones en tiempo real</label>
+      <label class="drp-qa-item"><input type="checkbox"> Contraste AA 4.5:1 en Light, Dark y High Contrast</label>
+      <label class="drp-qa-item"><input type="checkbox"> Área táctil mínima 48 px por opción en móvil</label>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       14. SOPORTE
+       ══════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="drp-support">
+    <div class="component-section__header">
+      <h2 id="drp-support">14. Soporte / Actualizaciones</h2>
+    </div>
+    <div class="component-grid-2">
+      <div>
+        <h3 class="text-primary">Pendiente por validar con diseño</h3>
+        <ul>
+          <li>Medidas exactas del panel (border-radius, shadow, max-height) — actualmente inferidas del sistema</li>
+          <li>Altura y padding de ítems de opción</li>
+          <li>Comportamiento flip (panel arriba) cuando no hay espacio inferior</li>
+          <li>Variante nativa (<code>mp-input-field.mp-select</code>) vs. dropdown custom</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-primary">Historial</h3>
+        <ul>
+          <li><strong>v1.0 — 2026-05-04</strong>: Primera versión. Trigger verificado en Figma nodo 4530:13900. Panel inferido del sistema.</li>
+        </ul>
+        <h3 class="text-primary">Recursos</h3>
+        <ul>
+          <li><a href="https://www.figma.com/proto/1zVGMpzqBgiBUqhmfFEAoT/?node-id=4530-13900" target="_blank" rel="noopener">Figma — nodo 4530:13900</a></li>
+          <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/" target="_blank" rel="noopener">ARIA APG — Combobox pattern</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</article>

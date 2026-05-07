@@ -1,0 +1,304 @@
+@use '../../abstracts' as *;
+
+// ============================================================
+//  mp-sidebar — Panel lateral / Overlay (web)
+//  Figma: 1zVGMpzqBgiBUqhmfFEAoT / 4715:5763
+// ============================================================
+
+.mp-sidebar {
+  --mp-sidebar-width:        480px;
+  --mp-sidebar-bg:           var(--use-surface-white, #ffffff);
+  --mp-sidebar-border:       var(--use-border-default, #cccccc);
+  --mp-sidebar-header-h:     64px;
+  --mp-sidebar-footer-h:     80px;
+  --mp-sidebar-backdrop-bg:  rgba(0, 0, 0, .48);
+  --mp-sidebar-radius:       var(--radius-sm, 16px);
+  --mp-sidebar-z:            400;
+  --mp-sidebar-transition:   .28s cubic-bezier(.4, 0, .2, 1);
+
+  position: fixed;
+  inset: 0;
+  z-index: var(--mp-sidebar-z);
+  display: flex;
+  align-items: stretch;
+  pointer-events: none;
+  visibility: hidden;
+
+  &.is-open {
+    pointer-events: all;
+    visibility: visible;
+
+    .mp-sidebar__backdrop { opacity: 1; }
+    .mp-sidebar__panel    { transform: translateX(0); }
+  }
+}
+
+// ── Backdrop ──────────────────────────────────────────────
+.mp-sidebar__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--mp-sidebar-backdrop-bg);
+  opacity: 0;
+  transition: opacity var(--mp-sidebar-transition);
+  cursor: pointer;
+}
+
+// ── Panel ─────────────────────────────────────────────────
+.mp-sidebar__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(var(--mp-sidebar-width), 100vw);
+  background: var(--mp-sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform var(--mp-sidebar-transition);
+  border-radius: var(--mp-sidebar-radius) 0 0 var(--mp-sidebar-radius);
+  box-shadow: var(--shadow-3, -4px 0 24px rgba(0,0,0,.15));
+  overflow: hidden;
+}
+
+// ── Header ────────────────────────────────────────────────
+.mp-sidebar__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  min-height: var(--mp-sidebar-header-h);
+  padding: var(--space-16) var(--space-24);
+  border-bottom: 1px solid var(--mp-sidebar-border);
+  flex-shrink: 0;
+  background: var(--mp-sidebar-bg);
+}
+
+.mp-sidebar__title {
+  flex: 1;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--use-text-primary);
+  margin: 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mp-sidebar__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--use-surface-theme-gray-5, #f8f7f7);
+  border: none;
+  cursor: pointer;
+  color: var(--use-text-primary);
+  flex-shrink: 0;
+  transition: background .15s;
+
+  &:hover   { background: var(--use-surface-theme-gray-10, #eeecec); }
+  &:focus-visible {
+    outline: 2px solid var(--use-primary-default);
+    outline-offset: 2px;
+  }
+
+  .icon { font-size: 20px; }
+}
+
+// ── Optional image ─────────────────────────────────────────
+.mp-sidebar__image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.mp-sidebar__image-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.9);
+  border: none;
+  cursor: pointer;
+  color: var(--use-text-primary);
+  transition: background .15s;
+
+  &:hover { background: #fff; }
+  &--prev { left: var(--space-12); }
+  &--next { right: var(--space-12); }
+  .icon { font-size: 20px; }
+}
+
+// ── Body ──────────────────────────────────────────────────
+.mp-sidebar__body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  padding: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-thumb {
+    background: var(--use-border-default);
+    border-radius: 2px;
+  }
+}
+
+// ── Sections inside body ──────────────────────────────────
+.mp-sidebar__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+
+  &:not(:last-child) {
+    padding-bottom: var(--space-24);
+    border-bottom: 1px solid var(--mp-sidebar-border);
+  }
+}
+
+.mp-sidebar__section-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--use-text-secondary);
+  margin: 0;
+}
+
+.mp-sidebar__row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  font-size: 16px;
+  color: var(--use-text-primary);
+  line-height: 1.3;
+}
+
+.mp-sidebar__row-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--use-surface-theme-blue-30, #e6f1fb);
+  flex-shrink: 0;
+  font-size: 16px;
+  color: var(--use-text-primary);
+}
+
+.mp-sidebar__row-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.mp-sidebar__row-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--use-text-tertiary);
+  margin: 0;
+}
+
+.mp-sidebar__row-value {
+  margin: 0;
+  font-size: 16px;
+  color: var(--use-text-primary);
+  line-height: 1.3;
+}
+
+// ── Horario table ─────────────────────────────────────────
+.mp-sidebar__schedule {
+  background: var(--use-surface-theme-gray-5, #f8f7f7);
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.mp-sidebar__schedule-row {
+  display: flex;
+  gap: var(--space-8);
+  padding: var(--space-10) var(--space-12);
+  border-bottom: 1px solid var(--mp-sidebar-border);
+  color: var(--use-text-primary);
+
+  &:last-child { border-bottom: none; }
+
+  span:first-child { flex: 1; }
+  span:last-child  { font-weight: 700; text-align: right; }
+
+  &--closed span:last-child {
+    font-weight: 400;
+    font-style: italic;
+    color: var(--use-text-tertiary);
+  }
+}
+
+// ── Footer ────────────────────────────────────────────────
+.mp-sidebar__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-12);
+  min-height: var(--mp-sidebar-footer-h);
+  padding: var(--space-16) var(--space-24);
+  border-top: 1px solid var(--mp-sidebar-border);
+  flex-shrink: 0;
+  background: var(--mp-sidebar-bg);
+}
+
+.mp-sidebar__footer--space-between { justify-content: space-between; }
+
+// ── Bottom sheet (responsive) ─────────────────────────────
+@include md-down {
+  .mp-sidebar__panel {
+    top: auto;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 90dvh;
+    border-radius: var(--mp-sidebar-radius) var(--mp-sidebar-radius) 0 0;
+    transform: translateY(100%);
+  }
+
+  .mp-sidebar.is-open .mp-sidebar__panel { transform: translateY(0); }
+}
+
+// ── Dark mode ─────────────────────────────────────────────
+[data-theme='dark'] {
+  .mp-sidebar__close {
+    background: var(--use-surface-theme-gray-5);
+    &:hover { background: var(--use-surface-theme-gray-10); }
+  }
+}
+
+// ── High contrast ─────────────────────────────────────────
+[data-theme='high-contrast'] {
+  .mp-sidebar {
+    --mp-sidebar-border: var(--base-neutral-white, #ffffff);
+    --mp-sidebar-backdrop-bg: rgba(0, 0, 0, .75);
+  }
+  .mp-sidebar__panel { border: 2px solid var(--base-neutral-white); }
+}

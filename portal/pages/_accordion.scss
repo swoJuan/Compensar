@@ -17,6 +17,11 @@
   align-items: stretch;
 }
 
+.accordion-doc .mp-label {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 .accordion-anatomy-stage {
   position: relative;
   min-height: rem(360px);

@@ -1,0 +1,481 @@
+<article class="gdm-doc component-doc-page" data-guideline-doc="dark-mode">
+
+  <!-- Breadcrumb -->
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Guidelines</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Dark Mode</span></li>
+    </ol>
+  </nav>
+
+  <!-- Hero -->
+  <header class="component-hero gdm-head">
+    <h1 class="mp-h1">Dark Mode — Reglas de uso</h1>
+    <p class="mp-body-l">El modo oscuro reduce la fatiga visual, respeta la preferencia del sistema del usuario y mantiene la identidad de marca. Su implementación correcta depende exclusivamente de tokens semánticos <code>--use-*</code> — nunca de colores hardcodeados.</p>
+    <div class="component-meta" aria-label="Metadatos">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Web · ZT Drupal</span>
+      <span class="component-chip">Tokens semánticos</span>
+      <span class="component-chip">WCAG AA</span>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. Principios generales
+  ══════════════════════════════════════════════════════════ -->
+  <section class="gdm-bloque">
+    <div class="gdm-rule">
+      <h2 class="gdm-rule__title">Principios generales</h2>
+      <p class="gdm-rule__desc">El sistema conmuta entre temas únicamente cambiando <code>data-theme</code> en el elemento raíz. Ningún componente debe tener lógica de color propia.</p>
+      <ul class="gdm-rule__list">
+        <li>Usa solo tokens <code>--use-*</code>; nunca valores raw.</li>
+        <li>Las superficies se apilan por elevación, no por brillo arbitrario.</li>
+        <li>El contraste texto / fondo ≥ 4.5:1 en todo momento (WCAG AA).</li>
+        <li>El naranja de marca se aclara en dark para conservar legibilidad.</li>
+      </ul>
+    </div>
+    <div class="gdm-demo" data-theme="light">
+      <div class="gdm-demo__label">Light</div>
+      <div class="gdm-demo__body">
+        <article class="mp-card mp-card--compact gdm-real-card">
+          <div class="mp-card__content">
+            <h3 class="mp-card__title">Cita confirmada</h3>
+            <p class="mp-card__body">Tu atención fue agendada correctamente para el jueves 8 de mayo.</p>
+            <div class="gdm-inline-row">
+              <span class="mp-badge mp-badge--success"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Activo</span></span>
+              <span class="mp-badge mp-badge--info"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Medicina</span></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="gdm-demo" data-theme="dark">
+      <div class="gdm-demo__label">Dark</div>
+      <div class="gdm-demo__body">
+        <article class="mp-card mp-card--compact gdm-real-card">
+          <div class="mp-card__content">
+            <h3 class="mp-card__title">Cita confirmada</h3>
+            <p class="mp-card__body">Tu atención fue agendada correctamente para el jueves 8 de mayo.</p>
+            <div class="gdm-inline-row">
+              <span class="mp-badge mp-badge--success"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Activo</span></span>
+              <span class="mp-badge mp-badge--info"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Medicina</span></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. Superficies y elevación
+  ══════════════════════════════════════════════════════════ -->
+  <section class="gdm-bloque">
+    <div class="gdm-rule">
+      <h2 class="gdm-rule__title">Superficies y elevación</h2>
+      <p class="gdm-rule__desc">Las superficies definen profundidad mediante tokens, no colores arbitrarios. En dark, cada nivel es ligeramente más claro que el anterior.</p>
+      <ul class="gdm-rule__list">
+        <li>Nivel 0 — fondo de página: <code>--use-surface-bg</code></li>
+        <li>Nivel 1 — cards y paneles: <code>--use-surface-white</code></li>
+        <li>Nivel 2 — modales y popovers: <code>--use-surface-theme-gray-5</code></li>
+        <li>No mezclar niveles sin borde o separador visual.</li>
+      </ul>
+    </div>
+    <div class="gdm-demo" data-theme="light">
+      <div class="gdm-demo__label">Light</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <div class="gdm-surface gdm-surface--0"><span class="gdm-surface__name">Nivel 0 — Página</span><code>--use-surface-bg</code></div>
+        <div class="gdm-surface gdm-surface--1"><span class="gdm-surface__name">Nivel 1 — Card / Panel</span><code>--use-surface-white</code></div>
+        <div class="gdm-surface gdm-surface--2"><span class="gdm-surface__name">Nivel 2 — Modal / Popover</span><code>--use-surface-theme-gray-5</code></div>
+      </div>
+    </div>
+    <div class="gdm-demo" data-theme="dark">
+      <div class="gdm-demo__label">Dark</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <div class="gdm-surface gdm-surface--0"><span class="gdm-surface__name">Nivel 0 — Página</span><code>--use-surface-bg</code></div>
+        <div class="gdm-surface gdm-surface--1"><span class="gdm-surface__name">Nivel 1 — Card / Panel</span><code>--use-surface-white</code></div>
+        <div class="gdm-surface gdm-surface--2"><span class="gdm-surface__name">Nivel 2 — Modal / Popover</span><code>--use-surface-theme-gray-5</code></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. Color y tokens
+  ══════════════════════════════════════════════════════════ -->
+  <section class="gdm-bloque">
+    <div class="gdm-rule">
+      <h2 class="gdm-rule__title">Color y tokens semánticos</h2>
+      <p class="gdm-rule__desc">Los tokens de estado mantienen su semántica en dark — solo cambia el tono para garantizar contraste.</p>
+      <ul class="gdm-rule__list">
+        <li>El primario naranja aclara a <code>#FF9D5C</code> (base/brand/80 dark).</li>
+        <li>Badges, chips y tags adaptan su tono automáticamente.</li>
+        <li>Los botones secundario y terciario usan bordes más visibles.</li>
+        <li>No redefinas colores en componentes individuales.</li>
+      </ul>
+    </div>
+    <div class="gdm-demo" data-theme="light">
+      <div class="gdm-demo__label">Light</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <div class="gdm-inline-row">
+          <button class="mp-btn mp-btn--primario mp-btn--sm" type="button">Primario</button>
+          <button class="mp-btn mp-btn--secundario mp-btn--sm" type="button">Secundario</button>
+          <button class="mp-btn mp-btn--terciario mp-btn--sm" type="button">Terciario</button>
+        </div>
+        <div class="gdm-inline-row">
+          <span class="mp-badge mp-badge--info"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Info</span></span>
+          <span class="mp-badge mp-badge--success"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Éxito</span></span>
+          <span class="mp-badge mp-badge--warning"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Pendiente</span></span>
+          <span class="mp-badge mp-badge--error"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Error</span></span>
+        </div>
+        <div class="gdm-inline-row">
+          <button class="mp-chip mp-chip--info is-selected" type="button" aria-pressed="true"><span class="mp-chip__label">Medicina</span></button>
+          <span class="mp-tag mp-tag--violet"><span class="mp-tag__label">Afiliado</span></span>
+          <span class="mp-tag mp-tag--green"><span class="mp-tag__label">Activo</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="gdm-demo" data-theme="dark">
+      <div class="gdm-demo__label">Dark</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <div class="gdm-inline-row">
+          <button class="mp-btn mp-btn--primario mp-btn--sm" type="button">Primario</button>
+          <button class="mp-btn mp-btn--secundario mp-btn--sm" type="button">Secundario</button>
+          <button class="mp-btn mp-btn--terciario mp-btn--sm" type="button">Terciario</button>
+        </div>
+        <div class="gdm-inline-row">
+          <span class="mp-badge mp-badge--info"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Info</span></span>
+          <span class="mp-badge mp-badge--success"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Éxito</span></span>
+          <span class="mp-badge mp-badge--warning"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Pendiente</span></span>
+          <span class="mp-badge mp-badge--error"><span class="mp-badge-dot" aria-hidden="true"></span><span class="mp-badge__label">Error</span></span>
+        </div>
+        <div class="gdm-inline-row">
+          <button class="mp-chip mp-chip--info is-selected" type="button" aria-pressed="true"><span class="mp-chip__label">Medicina</span></button>
+          <span class="mp-tag mp-tag--violet"><span class="mp-tag__label">Afiliado</span></span>
+          <span class="mp-tag mp-tag--green"><span class="mp-tag__label">Activo</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. Alertas y feedback
+  ══════════════════════════════════════════════════════════ -->
+  <section class="gdm-bloque">
+    <div class="gdm-rule">
+      <h2 class="gdm-rule__title">Alertas y feedback</h2>
+      <p class="gdm-rule__desc">Los componentes de feedback mantienen su semántica en dark — el color cambia de tono pero nunca de significado.</p>
+      <ul class="gdm-rule__list">
+        <li>No depender solo del color para comunicar el estado.</li>
+        <li>El icono refuerza el mensaje en todos los temas.</li>
+        <li>El texto siempre debe ser legible sobre el fondo del alert.</li>
+        <li>Los toasts heredan los tokens de superficie nivel 2.</li>
+      </ul>
+    </div>
+    <div class="gdm-demo" data-theme="light">
+      <div class="gdm-demo__label">Light</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <div class="mp-alert mp-alert--info" role="status">
+          <i class="icon icon-info icon-32 mp-alert__icon" aria-hidden="true"></i>
+          <div class="mp-alert__content">
+            <p class="mp-alert__title">Información disponible</p>
+            <p class="mp-alert__body">Revisa los datos antes de continuar.</p>
+          </div>
+        </div>
+        <div class="mp-alert mp-alert--success" role="status">
+          <i class="icon icon-check-circle icon-32 mp-alert__icon" aria-hidden="true"></i>
+          <div class="mp-alert__content">
+            <p class="mp-alert__title">Solicitud enviada</p>
+            <p class="mp-alert__body">Tu formulario fue procesado correctamente.</p>
+          </div>
+        </div>
+        <div class="mp-alert mp-alert--warning" role="alert">
+          <i class="icon icon-warning icon-32 mp-alert__icon" aria-hidden="true"></i>
+          <div class="mp-alert__content">
+            <p class="mp-alert__title">Atención requerida</p>
+            <p class="mp-alert__body">Hay campos pendientes por completar.</p>
+          </div>
+        </div>
+        <div class="mp-alert mp-alert--error" role="alert">
+          <i class="icon icon-warning-circle icon-32 mp-alert__icon" aria-hidden="true"></i>
+          <div class="mp-alert__content">
+            <p class="mp-alert__title">Error en el envío</p>
+            <p class="mp-alert__body">Verifica la información e intenta de nuevo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gdm-demo" data-theme="dark">
+      <div class="gdm-demo__label">Dark</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <div class="mp-alert mp-alert--info" role="status">
+          <i class="icon icon-info icon-32 mp-alert__icon" aria-hidden="true"></i>
+          <div class="mp-alert__content">
+            <p class="mp-alert__title">Información disponible</p>
+            <p class="mp-alert__body">Revisa los datos antes de continuar.</p>
+          </div>
+        </div>
+        <div class="mp-alert mp-alert--success" role="status">
+          <i class="icon icon-check-circle icon-32 mp-alert__icon" aria-hidden="true"></i>
+          <div class="mp-alert__content">
+            <p class="mp-alert__title">Solicitud enviada</p>
+            <p class="mp-alert__body">Tu formulario fue procesado correctamente.</p>
+          </div>
+        </div>
+        <div class="mp-alert mp-alert--warning" role="alert">
+          <i class="icon icon-warning icon-32 mp-alert__icon" aria-hidden="true"></i>
+          <div class="mp-alert__content">
+            <p class="mp-alert__title">Atención requerida</p>
+            <p class="mp-alert__body">Hay campos pendientes por completar.</p>
+          </div>
+        </div>
+        <div class="mp-alert mp-alert--error" role="alert">
+          <i class="icon icon-warning-circle icon-32 mp-alert__icon" aria-hidden="true"></i>
+          <div class="mp-alert__content">
+            <p class="mp-alert__title">Error en el envío</p>
+            <p class="mp-alert__body">Verifica la información e intenta de nuevo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. Formularios
+  ══════════════════════════════════════════════════════════ -->
+  <section class="gdm-bloque">
+    <div class="gdm-rule">
+      <h2 class="gdm-rule__title">Inputs y formularios</h2>
+      <p class="gdm-rule__desc">Los campos de formulario adaptan fondo, borde y texto automáticamente. El error siempre combina icono + texto.</p>
+      <ul class="gdm-rule__list">
+        <li>El borde del campo es visible en default, focus y error.</li>
+        <li>El placeholder usa <code>--use-text-placeholder</code> (contraste suficiente).</li>
+        <li>Labels siempre visibles — nunca desaparecen al enfocar.</li>
+        <li>El estado de error no depende solo del color rojo.</li>
+      </ul>
+    </div>
+    <div class="gdm-demo" data-theme="light">
+      <div class="gdm-demo__label">Light</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <div class="gdm-field">
+          <label class="mp-label" for="gdm-l-nombre">Nombre completo</label>
+          <input class="mp-input-field" id="gdm-l-nombre" type="text" placeholder="Ej. María García">
+        </div>
+        <div class="gdm-field">
+          <label class="mp-label" for="gdm-l-email">Correo electrónico</label>
+          <input class="mp-input-field error" id="gdm-l-email" type="email" value="correo@invalido" aria-invalid="true" aria-describedby="gdm-l-err">
+          <span class="mp-input-helper error" id="gdm-l-err"><i class="icon icon-warning-circle icon-16" aria-hidden="true"></i> Formato de correo inválido</span>
+        </div>
+        <div class="gdm-field">
+          <label class="mp-label" for="gdm-l-ok">Teléfono</label>
+          <input class="mp-input-field success" id="gdm-l-ok" type="tel" value="+57 310 000 0000">
+          <span class="mp-input-helper success"><i class="icon icon-check-circle icon-16" aria-hidden="true"></i> Número verificado</span>
+        </div>
+        <div class="gdm-field">
+          <label class="mp-label" for="gdm-l-sel">Tipo de servicio</label>
+          <select class="mp-input-field mp-select" id="gdm-l-sel">
+            <option value="">Selecciona una opción</option>
+            <option value="medico" selected>Atención médica</option>
+            <option value="odonto">Odontología</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="gdm-demo" data-theme="dark">
+      <div class="gdm-demo__label">Dark</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <div class="gdm-field">
+          <label class="mp-label" for="gdm-d-nombre">Nombre completo</label>
+          <input class="mp-input-field" id="gdm-d-nombre" type="text" placeholder="Ej. María García">
+        </div>
+        <div class="gdm-field">
+          <label class="mp-label" for="gdm-d-email">Correo electrónico</label>
+          <input class="mp-input-field error" id="gdm-d-email" type="email" value="correo@invalido" aria-invalid="true" aria-describedby="gdm-d-err">
+          <span class="mp-input-helper error" id="gdm-d-err"><i class="icon icon-warning-circle icon-16" aria-hidden="true"></i> Formato de correo inválido</span>
+        </div>
+        <div class="gdm-field">
+          <label class="mp-label" for="gdm-d-ok">Teléfono</label>
+          <input class="mp-input-field success" id="gdm-d-ok" type="tel" value="+57 310 000 0000">
+          <span class="mp-input-helper success"><i class="icon icon-check-circle icon-16" aria-hidden="true"></i> Número verificado</span>
+        </div>
+        <div class="gdm-field">
+          <label class="mp-label" for="gdm-d-sel">Tipo de servicio</label>
+          <select class="mp-input-field mp-select" id="gdm-d-sel">
+            <option value="">Selecciona una opción</option>
+            <option value="medico" selected>Atención médica</option>
+            <option value="odonto">Odontología</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       6. Navegación y estados interactivos
+  ══════════════════════════════════════════════════════════ -->
+  <section class="gdm-bloque">
+    <div class="gdm-rule">
+      <h2 class="gdm-rule__title">Navegación y estados interactivos</h2>
+      <p class="gdm-rule__desc">Todos los estados (hover, focus, active, disabled) deben ser perceptibles en dark sin ajustes manuales.</p>
+      <ul class="gdm-rule__list">
+        <li>El focus ring usa <code>--use-focus-ring</code> que cambia en dark automáticamente.</li>
+        <li>Los botones disabled bajan opacidad sin perder legibilidad.</li>
+        <li>El breadcrumb y tabs usan tokens de texto y borde.</li>
+        <li>El ítem activo combina color + borde para no depender solo del tono.</li>
+      </ul>
+    </div>
+    <div class="gdm-demo" data-theme="light">
+      <div class="gdm-demo__label">Light</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <nav class="mp-breadcrumb" aria-label="Breadcrumb light">
+          <ol class="mp-breadcrumb__list">
+            <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+            <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#">Servicios</a></li>
+            <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Consulta médica</span></li>
+          </ol>
+        </nav>
+        <div class="gdm-inline-row">
+          <button class="mp-btn mp-btn--primario mp-btn--sm" type="button">Agendar</button>
+          <button class="mp-btn mp-btn--secundario mp-btn--sm" type="button">Cancelar</button>
+          <button class="mp-btn mp-btn--primario mp-btn--sm" type="button" disabled>Disabled</button>
+        </div>
+        <div class="mp-tabs" role="tablist" aria-label="Servicios">
+          <button class="mp-tab is-active" role="tab" aria-selected="true">Medicina</button>
+          <button class="mp-tab" role="tab" aria-selected="false">Odontología</button>
+          <button class="mp-tab" role="tab" aria-selected="false">Laboratorio</button>
+        </div>
+      </div>
+    </div>
+    <div class="gdm-demo" data-theme="dark">
+      <div class="gdm-demo__label">Dark</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <nav class="mp-breadcrumb" aria-label="Breadcrumb dark">
+          <ol class="mp-breadcrumb__list">
+            <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+            <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#">Servicios</a></li>
+            <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Consulta médica</span></li>
+          </ol>
+        </nav>
+        <div class="gdm-inline-row">
+          <button class="mp-btn mp-btn--primario mp-btn--sm" type="button">Agendar</button>
+          <button class="mp-btn mp-btn--secundario mp-btn--sm" type="button">Cancelar</button>
+          <button class="mp-btn mp-btn--primario mp-btn--sm" type="button" disabled>Disabled</button>
+        </div>
+        <div class="mp-tabs" role="tablist" aria-label="Servicios">
+          <button class="mp-tab is-active" role="tab" aria-selected="true">Medicina</button>
+          <button class="mp-tab" role="tab" aria-selected="false">Odontología</button>
+          <button class="mp-tab" role="tab" aria-selected="false">Laboratorio</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       7. Cards y contenedores
+  ══════════════════════════════════════════════════════════ -->
+  <section class="gdm-bloque">
+    <div class="gdm-rule">
+      <h2 class="gdm-rule__title">Cards y contenedores</h2>
+      <p class="gdm-rule__desc">Las cards no necesitan ajuste manual — sus tokens de superficie y borde se adaptan en dark.</p>
+      <ul class="gdm-rule__list">
+        <li>Las sombras se reducen en dark — el borde suple su función.</li>
+        <li>Imágenes fotográficas nunca se filtran ni invierten.</li>
+        <li>La jerarquía de contenido se mantiene sin cambios de HTML.</li>
+        <li>Los dividers usan <code>--use-border-subtle</code> siempre.</li>
+      </ul>
+    </div>
+    <div class="gdm-demo" data-theme="light">
+      <div class="gdm-demo__label">Light</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <article class="mp-card mp-card--compact gdm-real-card">
+          <img class="mp-card__media" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=640&q=80" alt="Profesional de salud">
+          <div class="mp-card__content">
+            <h3 class="mp-card__title">Programa de bienestar</h3>
+            <p class="mp-card__body">Servicios de acompañamiento para ti y tu familia.</p>
+            <button class="mp-btn mp-btn--terciario mp-btn--sm mp-btn--icon-right" type="button">Ver más<i class="icon icon-arrow-right icon-16" aria-hidden="true"></i></button>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="gdm-demo" data-theme="dark">
+      <div class="gdm-demo__label">Dark</div>
+      <div class="gdm-demo__body gdm-demo__body--stack">
+        <article class="mp-card mp-card--compact gdm-real-card">
+          <img class="mp-card__media" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=640&q=80" alt="Profesional de salud">
+          <div class="mp-card__content">
+            <h3 class="mp-card__title">Programa de bienestar</h3>
+            <p class="mp-card__body">Servicios de acompañamiento para ti y tu familia.</p>
+            <button class="mp-btn mp-btn--terciario mp-btn--sm mp-btn--icon-right" type="button">Ver más<i class="icon icon-arrow-right icon-16" aria-hidden="true"></i></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       Do / Don't
+  ══════════════════════════════════════════════════════════ -->
+  <div class="gdm-two-col">
+    <section class="gdm-two-col__card gdm-two-col__card--do">
+      <div class="gdm-two-col__header">
+        <i class="icon icon-check-circle icon-20" aria-hidden="true"></i>
+        <h2 class="gdm-two-col__title">Sí hacer</h2>
+      </div>
+      <ul class="gdm-rule__list gdm-rule__list--do">
+        <li>Usar siempre tokens <code>--use-*</code> para colores.</li>
+        <li>Probar el flujo completo en dark antes de entregar.</li>
+        <li>Validar contraste ≥ 4.5:1 con herramienta automática.</li>
+        <li>Mantener la jerarquía tipográfica visible en todos los temas.</li>
+        <li>Conservar bordes en contenedores cuando no hay sombra.</li>
+      </ul>
+    </section>
+    <section class="gdm-two-col__card gdm-two-col__card--dont">
+      <div class="gdm-two-col__header">
+        <i class="icon icon-x-circle icon-20" aria-hidden="true"></i>
+        <h2 class="gdm-two-col__title">No hacer</h2>
+      </div>
+      <ul class="gdm-rule__list gdm-rule__list--dont">
+        <li>Usar colores hexadecimales o RGB hardcodeados.</li>
+        <li>Invertir imágenes fotográficas o ilustraciones con <code>filter: invert()</code>.</li>
+        <li>Depender solo del color para comunicar un estado.</li>
+        <li>Mezclar superficies de distinto nivel sin separación visual.</li>
+        <li>Aplicar <code>filter: brightness()</code> a iconos SVG del sistema.</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       Accesibilidad
+  ══════════════════════════════════════════════════════════ -->
+  <section class="gdm-a11y">
+    <div class="gdm-a11y__header">
+      <i class="icon icon-eye icon-24" aria-hidden="true"></i>
+      <h2 class="gdm-a11y__title">Accesibilidad en dark mode</h2>
+    </div>
+    <div class="gdm-a11y__grid">
+      <div class="gdm-a11y__item">
+        <span class="gdm-a11y__ratio">4.5:1</span>
+        <p class="gdm-a11y__desc">Contraste mínimo para texto normal (WCAG AA)</p>
+      </div>
+      <div class="gdm-a11y__item">
+        <span class="gdm-a11y__ratio">3:1</span>
+        <p class="gdm-a11y__desc">Contraste mínimo para texto grande (≥ 18px bold o ≥ 24px)</p>
+      </div>
+      <div class="gdm-a11y__item">
+        <span class="gdm-a11y__ratio">3:1</span>
+        <p class="gdm-a11y__desc">Contraste mínimo para componentes UI e íconos informativos</p>
+      </div>
+      <div class="gdm-a11y__item">
+        <span class="gdm-a11y__ratio">70%</span>
+        <p class="gdm-a11y__desc">Opacidad mínima de texto en estados secundarios</p>
+      </div>
+    </div>
+    <ul class="gdm-a11y__list">
+      <li>El focus ring cambia automáticamente con <code>--use-focus-ring</code> en dark.</li>
+      <li>Validar con usuarios reales que usan el modo oscuro del sistema operativo.</li>
+      <li>Los iconos decorativos tienen <code>aria-hidden="true"</code> en todos los temas.</li>
+      <li>Los mensajes de error incluyen texto descriptivo, no solo color.</li>
+    </ul>
+  </section>
+
+</article>

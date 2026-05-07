@@ -1,0 +1,93 @@
+@use '../../core/abstracts' as *;
+
+// ============================================================
+//  Estilos de documentación — Sidebar / Overlay
+//  Solo portal/docs. Clases .sidebar-doc-*
+// ============================================================
+
+// ── Anatomy stage ─────────────────────────────────────────
+.sidebar-anatomy-stage {
+  position: relative;
+  min-height: rem(400px);
+  display: grid;
+  place-items: center;
+  padding: var(--space-48) var(--space-32);
+  border: rem(1px) solid var(--use-border-subtle);
+  border-radius: rem(10px);
+  overflow: hidden;
+  background:
+    linear-gradient(color-mix(in srgb, var(--use-border-subtle) 50%, transparent) rem(1px), transparent rem(1px)),
+    linear-gradient(90deg, color-mix(in srgb, var(--use-border-subtle) 50%, transparent) rem(1px), transparent rem(1px)),
+    var(--use-surface-white);
+  background-size: rem(16px) rem(16px);
+}
+
+.sidebar-anatomy-preview {
+  position: relative;
+  z-index: 2;
+  width: min(100%, rem(360px));
+
+  // Frozen demo panel inside anatomy
+  .mp-sidebar {
+    position: relative;
+    inset: auto;
+    visibility: visible;
+    pointer-events: none;
+  }
+  .mp-sidebar__panel {
+    position: relative;
+    transform: none;
+    width: 100%;
+    box-shadow: var(--shadow-2);
+    border-radius: rem(12px);
+  }
+  .mp-sidebar__backdrop { display: none; }
+}
+
+.sidebar-doc-callout {
+  position: absolute;
+  z-index: 3;
+  width: min(rem(180px), calc(50% - var(--space-16)));
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-10) var(--space-12);
+  border: rem(1px) solid var(--use-border-subtle);
+  border-radius: rem(8px);
+  background: var(--use-surface-white);
+  box-shadow: var(--shadow-1);
+  color: var(--use-text-primary);
+
+  strong {
+    font-size: rem(12px);
+    font-weight: 700;
+    color: var(--use-text-primary);
+    line-height: 1.25;
+  }
+
+  span {
+    font-size: rem(11px);
+    color: var(--use-text-secondary);
+    line-height: 1.4;
+  }
+}
+
+.sidebar-doc-callout--header { top:    var(--space-16); left:  var(--space-16); }
+.sidebar-doc-callout--body   { top:    50%;             left:  var(--space-16); transform: translateY(-50%); }
+.sidebar-doc-callout--footer { bottom: var(--space-16); left:  var(--space-16); }
+.sidebar-doc-callout--close  { top:    var(--space-16); right: var(--space-16); }
+
+.sidebar-doc--hide-labels .sidebar-doc-callout { display: none; }
+
+// ── Demo interactivo ──────────────────────────────────────
+.sidebar-demo-wrapper {
+  background: var(--use-surface-theme-gray-5, #f8f7f7);
+  border: 1px solid var(--use-border-subtle);
+  border-radius: var(--radius-xs);
+  padding: var(--space-32);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  min-height: 200px;
+  justify-content: center;
+}

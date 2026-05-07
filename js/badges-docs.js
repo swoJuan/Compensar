@@ -494,6 +494,7 @@ ${exportCss}`;
   }
 
   function switchCodeTab(page, tabId) {
+    if (!page || !tabId) return;
     page.querySelectorAll('[data-bdg-code-tab]').forEach((btn) => {
       const active = btn.dataset.bdgCodeTab === tabId;
       btn.classList.toggle('active', active);
@@ -502,6 +503,10 @@ ${exportCss}`;
     page.querySelectorAll('#bdg-code-html, #bdg-code-css, #bdg-code-sass').forEach((pre) => {
       pre.classList.toggle('active', pre.id === `bdg-code-${tabId}`);
     });
+  }
+
+  function switchCodeTabFromButton(button) {
+    switchCodeTab(findPage(button), button?.dataset.bdgCodeTab);
   }
 
   function copyText(text, btn) {
@@ -555,13 +560,20 @@ ${exportHtml.split('\n').map((line) => `    ${line}`).join('\n')}
     return target?.closest('[data-component-doc="badges"]') || document.querySelector('[data-component-doc="badges"]');
   }
 
+  function downloadFromButton(button) {
+    const type = button?.dataset.bdgDownload;
+    if (type === 'html') downloadFile('mp-badges.html', downloadableHtml(), 'text/html');
+    if (type === 'css') downloadFile('mp-badges.css', exportCss, 'text/css');
+    if (type === 'sass') downloadFile('mp-badges.scss', exportScss, 'text/x-scss');
+  }
+
   function bindBadgeDelegated() {
     if (document.documentElement.dataset.badgeDocsDelegated === 'true') return;
     document.documentElement.dataset.badgeDocsDelegated = 'true';
 
     document.addEventListener('click', (event) => {
       const codeTab = event.target.closest('[data-bdg-code-tab]');
-      if (codeTab) return switchCodeTab(findPage(codeTab), codeTab.dataset.bdgCodeTab);
+      if (codeTab) return switchCodeTabFromButton(codeTab);
 
       const anatomy = event.target.closest('[data-bdg-anatomy]');
       if (anatomy) {
@@ -584,12 +596,7 @@ ${exportHtml.split('\n').map((line) => `    ${line}`).join('\n')}
       }
 
       const download = event.target.closest('[data-bdg-download]');
-      if (download) {
-        const type = download.dataset.bdgDownload;
-        if (type === 'html') downloadFile('mp-badges.html', downloadableHtml(), 'text/html');
-        if (type === 'css') downloadFile('mp-badges.css', exportCss, 'text/css');
-        if (type === 'sass') downloadFile('mp-badges.scss', exportScss, 'text/x-scss');
-      }
+      if (download) downloadFromButton(download);
     });
 
     document.addEventListener('change', (event) => {
@@ -622,12 +629,19 @@ ${exportHtml.split('\n').map((line) => `    ${line}`).join('\n')}
     renderModeRows(page);
     renderAnatomy(page, 'badge');
     renderPlayground(page);
+    switchCodeTab(page, 'html');
     page.dataset.badgeInitialized = 'true';
   }
 
   function syncTheme() {}
 
-  return { initBadgeDocs, bindBadgeDelegated, syncTheme };
+  return {
+    initBadgeDocs,
+    bindBadgeDelegated,
+    syncTheme,
+    switchCodeTabFromButton,
+    downloadFromButton
+  };
 })();
 
 window.badgeDocs = badgeDocs;

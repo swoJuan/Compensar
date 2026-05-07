@@ -34,11 +34,6 @@
 /* ── Tamaños de icono ──────────────────────────────────── */
 /* Base 16px: 1rem = 16px                                  */
 /* Uso: <span class="icon icon-16">&#xf3b2;</span>         */
-.icon-12 {
-  font-size: rem(12px);
-}
-
-// 0.75rem = 12px
 .icon-16 {
   font-size: rem(16px);
 }
@@ -357,41 +352,7 @@
   line-height: 2
 }
 
-/* ── Alert blocks ──────────────────────────────────────── */
-.ic-alert {
-  display: flex;
-  gap: var(--space-8);
-  border-radius: rem(10px);
-  padding: rem(16px) rem(24px);
-  font-size: rem(14px);
-  line-height: 1.6
-}
-
-.ic-alert--amber {
-  background: var(--use-state-warning-bg);
-  border: rem(1px) solid var(--use-state-warning-border);
-  color: var(--use-state-warning-text)
-}
-
-.ic-alert--amber .material-symbols-rounded {
-  color: var(--use-state-warning-icon);
-  flex-shrink: 0;
-  font-size: rem(18px);
-  margin-top: 0
-}
-
-.ic-alert--blue {
-  background: var(--use-state-info-bg);
-  border: rem(1px) solid var(--use-state-info-border);
-  color: var(--use-state-info-text)
-}
-
-.ic-alert--blue .material-symbols-rounded {
-  color: var(--use-state-info-icon);
-  flex-shrink: 0;
-  font-size: rem(18px);
-  margin-top: 0
-}
+/* ── Alert content helpers (uses mp-alert component) ─────── */
 
 .ic-alert-list {
   margin: var(--space-8) 0 0;

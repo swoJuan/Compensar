@@ -51,11 +51,13 @@
 
   transition:  background 0.15s ease;
 
-  &:hover {
+  &:hover,
+  &.mp-accordion__trigger--is-hover {
     background: color-mix(in srgb, var(--mp-accordion-border) 35%, transparent);
   }
 
-  &:focus-visible {
+  &:focus-visible,
+  &.mp-accordion__trigger--is-focus {
     outline:        rem(2px) solid var(--use-primary-default);
     outline-offset: rem(-2px);
     border-radius:  var(--mp-accordion-radius);
@@ -151,8 +153,20 @@
     border-top-width: rem(2px);
   }
 
-  .mp-accordion__trigger:focus-visible {
+  .mp-accordion__trigger:hover,
+  .mp-accordion__trigger.mp-accordion__trigger--is-hover {
+    background: var(--use-primary-default, #ffff00);
+    color: var(--base-neutral-black);
+
+    .mp-accordion__icon {
+      color: var(--base-neutral-black);
+    }
+  }
+
+  .mp-accordion__trigger:focus-visible,
+  .mp-accordion__trigger.mp-accordion__trigger--is-focus {
     outline-width: rem(3px);
+    outline-color: var(--use-primary-default, #ffff00);
   }
 }
 

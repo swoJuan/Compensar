@@ -219,6 +219,11 @@ const tabsDocs = (() => {
     });
   }
 
+  function switchCodeTabFromButton(button) {
+    if (!button) return;
+    switchCodeTab(findPage(button), button.dataset.tabCodeTab);
+  }
+
   // ──────────────────────────────────────────────────────────────
   // Utilidades de copia
   // ──────────────────────────────────────────────────────────────
@@ -352,6 +357,7 @@ const tabsDocs = (() => {
 
     renderAnatomy(page);
     renderPlayground(page, 0);
+    switchCodeTab(page, 'html');
     initPreviewTabs(page);
     page.dataset.tabInitialized = 'true';
   }
@@ -361,7 +367,7 @@ const tabsDocs = (() => {
   // ──────────────────────────────────────────────────────────────
   function syncTheme() {}
 
-  return { initTabsDoc, bindTabsDelegated, renderAnatomy, syncTheme };
+  return { initTabsDoc, bindTabsDelegated, renderAnatomy, syncTheme, switchCodeTabFromButton };
 })();
 
 window.tabsDocs = tabsDocs;

@@ -272,6 +272,14 @@
   margin-top: var(--space-16);
 }
 
+.tab-doc .button-code-panel pre {
+  display: none;
+}
+
+.tab-doc .button-code-panel pre.active {
+  display: block;
+}
+
 @media (max-width: rem(900px)) {
   .tab-doc-callout {
     position: static;

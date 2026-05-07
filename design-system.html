@@ -17,8 +17,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 
   <!-- Design System CSS -->
-  <link rel="stylesheet" href="css/core.css?v=20260506-22">
-  <link rel="stylesheet" href="css/portal.css?v=20260506-22">
+  <link rel="stylesheet" href="css/core.css?v=20260507-6">
+  <link rel="stylesheet" href="css/portal.css?v=20260507-4">
   <link rel="stylesheet" href="icons/icons.css">
 
   <!-- Shell-specific styles -->
@@ -339,23 +339,26 @@
 <div id="toast"></div>
 
 <!-- SCRIPTS -->
-<script src="js/router.js?v=20260506-11"></script>
+<script src="js/router.js?v=20260507-4"></script>
 <script src="js/theme.js"></script>
 <script src="js/code-copy.js"></script>
 <script src="js/component-docs.js?v=20260505-2"></script>
 <script src="js/selection-docs.js?v=20260504-1"></script>
 <script src="js/alert-docs.js?v=20260505-3"></script>
 <script src="js/toast-docs.js?v=20260504-1"></script>
-<script src="js/modal-docs.js?v=20260504-13"></script>
+<script src="js/modal-docs.js?v=20260507-3"></script>
 <script src="js/dropdown-docs.js?v=20260504-5"></script>
-<script src="js/badges-docs.js?v=20260506-7"></script>
+<script src="js/badges-docs.js?v=20260506-8"></script>
 <script src="js/cards-docs.js?v=20260505-2"></script>
 <script src="js/pagination-docs.js?v=20260506-2"></script>
 <script src="js/tables-docs.js?v=20260506-1"></script>
-<script src="js/tabs-docs.js?v=20260505-1"></script>
-<script src="js/loading-docs.js?v=20260506-1"></script>
-<script src="js/breadcrumb-docs.js?v=20260506-1"></script>
-<script src="js/accordion-docs.js?v=20260506-2"></script>
+<script src="js/tabs-docs.js?v=20260506-1"></script>
+<script src="js/empty-state-docs.js?v=20260506-1"></script>
+<script src="js/loading-docs.js?v=20260506-2"></script>
+<script src="js/breadcrumb-docs.js?v=20260506-3"></script>
+<script src="js/accordion-docs.js?v=20260507-1"></script>
+<script src="js/app-tabs-docs.js?v=20260506-1"></script>
+<script src="js/app-header-docs.js?v=20260507-1"></script>
 
 <script>
   /**
@@ -381,9 +384,45 @@
       },
       'web/componentes/accordion': {
         label: 'Accordion',
-        path: 'web/components/accordion.html',
+        path: 'transversales/components/accordion.html',
         icon: 'list_alt',
         group: 'web-componentes'
+      },
+      'app/componentes/accordion': {
+        label: 'Accordion',
+        path: 'transversales/components/accordion.html',
+        icon: 'list_alt',
+        group: 'app'
+      },
+      'web/componentes/badges': {
+        label: 'Chips / Tags / Badges',
+        path: 'transversales/components/badges.html',
+        icon: 'award_star',
+        group: 'web-componentes'
+      },
+      'app/componentes/badges': {
+        label: 'Chips / Tags / Badges',
+        path: 'transversales/components/badges.html',
+        icon: 'award_star',
+        group: 'app'
+      },
+      'app/componentes/dropdown': {
+        label: 'Dropdown / Select App',
+        path: 'app/components/dropdown.html',
+        icon: 'arrow_drop_down_circle',
+        group: 'app'
+      },
+      'app/componentes/header': {
+        label: 'Header App',
+        path: 'app/components/header.html',
+        icon: 'web_asset',
+        group: 'app'
+      },
+      'app/componentes/loading': {
+        label: 'Loading',
+        path: 'transversales/components/loading.html',
+        icon: 'progress_activity',
+        group: 'app'
       },
       'guidelines/high-contrast': {
         label: 'High Contrast',
@@ -464,7 +503,15 @@
 
     console.log('[Nav] navMap keys:', Object.keys(navMap).join(', '));
     navGroups.forEach((group) => {
-      const entries = Object.entries(navMap).filter(([, def]) => def.group === group.id);
+      const entries = Object.entries(navMap)
+        .filter(([, def]) => def.group === group.id)
+        .sort(([idA, defA], [idB, defB]) => {
+          if (group.id === 'app') {
+            if (idA === 'app/intro') return -1;
+            if (idB === 'app/intro') return 1;
+          }
+          return defA.label.localeCompare(defB.label, 'es', { sensitivity: 'base' });
+        });
       console.log('[Nav] group:', group.id, '→', entries.length, 'entries');
       if (!entries.length) return;
 

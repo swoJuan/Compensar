@@ -84,6 +84,98 @@
     </div>
   </div>
 
+  <!-- ── Descargas ──────────────────────────────────────────── -->
+  <div class="intro-dl-title mp-h6">
+    <i class="icon icon-download icon-16" aria-hidden="true"></i>
+    Descargas
+  </div>
+
+  <div class="intro-dl-grid">
+
+    <!-- Card 1: themes.css -->
+    <div class="intro-dl-card">
+      <div class="intro-dl-card__top">
+        <div class="intro-dl-card__icon-wrap intro-dl-card__icon-wrap--tokens">
+          <i class="icon icon-palette icon-24" aria-hidden="true"></i>
+        </div>
+        <div class="intro-dl-card__meta">
+          <h3 class="intro-dl-card__name mp-h6">tokens.css</h3>
+          <span class="intro-dl-card__size">~19 KB</span>
+        </div>
+      </div>
+      <p class="intro-dl-card__desc mp-body-s">
+        Solo las variables CSS (custom properties). Incluye los tres temas: <strong>Light</strong>, <strong>Dark</strong> y <strong>Alto contraste</strong>. Ideal para integrar el sistema de tokens en un proyecto que ya tiene sus propios componentes.
+      </p>
+      <div class="intro-dl-card__tags">
+        <span class="intro-dl-tag intro-dl-tag--light">☀ Light</span>
+        <span class="intro-dl-tag intro-dl-tag--dark">🌙 Dark</span>
+        <span class="intro-dl-tag intro-dl-tag--hc">◑ High contrast</span>
+      </div>
+      <div class="intro-dl-card__footer">
+        <a class="mp-btn mp-btn--primario mp-btn--icon-left btn-block" href="css/themes.css" download="compensar-tokens.css">
+          <i class="icon icon-download icon-20" aria-hidden="true"></i>
+          Descargar tokens.css
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2: core.css -->
+    <div class="intro-dl-card">
+      <div class="intro-dl-card__top">
+        <div class="intro-dl-card__icon-wrap intro-dl-card__icon-wrap--core">
+          <i class="icon icon-stack icon-24" aria-hidden="true"></i>
+        </div>
+        <div class="intro-dl-card__meta">
+          <h3 class="intro-dl-card__name mp-h6">core.css</h3>
+          <span class="intro-dl-card__size">~372 KB</span>
+        </div>
+      </div>
+      <p class="intro-dl-card__desc mp-body-s">
+        El sistema completo: tokens, componentes (.mp-accordion, .mp-button…), utilidades y Bootstrap overrides. Incluye todos los temas. Requiere solo este archivo para una integración completa.
+      </p>
+      <div class="intro-dl-card__tags">
+        <span class="intro-dl-tag">Tokens</span>
+        <span class="intro-dl-tag">Componentes</span>
+        <span class="intro-dl-tag">Bootstrap</span>
+        <span class="intro-dl-tag">Utilidades</span>
+      </div>
+      <div class="intro-dl-card__footer">
+        <a class="mp-btn mp-btn--primario mp-btn--icon-left btn-block" href="css/core.css" download="compensar-core.css">
+          <i class="icon icon-download icon-20" aria-hidden="true"></i>
+          Descargar core.css
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3: Uso CDN / link -->
+    <div class="intro-dl-card intro-dl-card--code">
+      <div class="intro-dl-card__top">
+        <div class="intro-dl-card__icon-wrap intro-dl-card__icon-wrap--code">
+          <i class="icon icon-code icon-24" aria-hidden="true"></i>
+        </div>
+        <div class="intro-dl-card__meta">
+          <h3 class="intro-dl-card__name mp-h6">Integración</h3>
+          <span class="intro-dl-card__size">Guía rápida</span>
+        </div>
+      </div>
+      <p class="intro-dl-card__desc mp-body-s">Agrega el archivo descargado a tu proyecto e inicializa el tema con el atributo <code>data-theme</code>:</p>
+      <pre class="intro-dl-code"><code>&lt;!-- En tu &lt;head&gt; --&gt;
+&lt;link rel="stylesheet" href="compensar-core.css"&gt;
+
+&lt;!-- En &lt;html&gt; o cualquier contenedor --&gt;
+&lt;html data-theme="light"&gt;
+&lt;!-- "dark" | "high-contrast" --&gt;</code></pre>
+      <div class="intro-dl-card__footer">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left btn-block" onclick="introCopySnippet(this)">
+          <i class="icon icon-copy icon-20" aria-hidden="true"></i>
+          Copiar snippet
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <!-- /Descargas -->
+
   <!-- Cómo usar -->
   <div class="intro-how">
     <div class="intro-how-title mp-h6">
@@ -494,4 +586,189 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ——— DESCARGAS ————————————————————————————————————————————— */
+.intro-dl-title {
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted);
+  margin-bottom: var(--space-16);
+}
+
+.intro-dl-title .icon { color: var(--ui-accent); }
+
+.intro-dl-grid {
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-16);
+  margin-bottom: var(--space-64);
+}
+
+.intro-dl-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  background: var(--use-surface-theme-gray-5);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--radius-xs);
+  padding: var(--space-24);
+}
+
+.intro-dl-card__top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.intro-dl-card__icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.intro-dl-card__icon-wrap--tokens {
+  background: color-mix(in srgb, var(--use-primary-default) 12%, transparent);
+  color: var(--use-primary-default);
+}
+
+.intro-dl-card__icon-wrap--core {
+  background: color-mix(in srgb, var(--base-brand-80) 15%, transparent);
+  color: var(--base-brand-80);
+}
+
+.intro-dl-card__icon-wrap--code {
+  background: color-mix(in srgb, var(--ui-text) 8%, transparent);
+  color: var(--ui-text-muted);
+}
+
+.intro-dl-card__icon-wrap .icon { color: inherit; }
+
+.intro-dl-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.intro-dl-card__name {
+  color: var(--ui-text);
+  margin: 0;
+  font-family: var(--font-code, 'Roboto Mono', monospace);
+  font-size: 15px;
+}
+
+.intro-dl-card__size {
+  font-size: 12px;
+  color: var(--ui-text-muted);
+  font-weight: 500;
+}
+
+.intro-dl-card__desc {
+  color: var(--ui-text-muted);
+  flex: 1;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.intro-dl-card__desc strong { color: var(--ui-text); }
+
+.intro-dl-card__desc code {
+  font-family: var(--font-code, 'Roboto Mono', monospace);
+  font-size: 12px;
+  background: var(--ui-surface-alt);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--ui-accent);
+}
+
+.intro-dl-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.intro-dl-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--ui-border);
+  background: var(--ui-surface-alt);
+  color: var(--ui-text-muted);
+}
+
+.intro-dl-tag--light {
+  background: #fffbf5;
+  border-color: #ffd6a0;
+  color: #b85c00;
+}
+
+.intro-dl-tag--dark {
+  background: #1f1f2e;
+  border-color: #44447a;
+  color: #aaaaee;
+}
+
+.intro-dl-tag--hc {
+  background: #000;
+  border-color: #fff;
+  color: #fff;
+}
+
+.intro-dl-card__footer {
+  margin-top: auto;
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--ui-border);
+}
+
+.intro-dl-code {
+  background: var(--ui-text);
+  color: var(--ui-bg);
+  border-radius: var(--radius-xs);
+  padding: var(--space-16);
+  font-size: 12px;
+  font-family: var(--font-code, 'Roboto Mono', monospace);
+  line-height: 1.7;
+  margin: 0;
+  overflow-x: auto;
+  white-space: pre;
+  flex: 1;
+}
+
+@media (max-width: 1180px) {
+  .intro-dl-grid, .intro-dl-title { max-width: none; }
+  .intro-dl-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .intro-dl-grid { grid-template-columns: 1fr; }
+}
 </style>
+
+<script>
+function introCopySnippet(btn) {
+  var snippet = '<link rel="stylesheet" href="compensar-core.css">\n\n<html data-theme="light">\n<!-- "dark" | "high-contrast" -->';
+  navigator.clipboard.writeText(snippet).then(function() {
+    var orig = btn.innerHTML;
+    btn.innerHTML = '<i class="icon icon-check icon-20" aria-hidden="true"></i> ¡Copiado!';
+    btn.classList.remove('mp-btn--secundario');
+    btn.classList.add('mp-btn--primario');
+    setTimeout(function() {
+      btn.innerHTML = orig;
+      btn.classList.remove('mp-btn--primario');
+      btn.classList.add('mp-btn--secundario');
+    }, 2000);
+  });
+}
+</script>

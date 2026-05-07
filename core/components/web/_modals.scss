@@ -14,7 +14,7 @@
   --mp-modal-shadow: 2px 5px 16px rgba(0, 0, 0, .15);
   --mp-modal-overlay: rgba(17, 17, 17, .30);
   --mp-modal-icon-bg: var(--use-state-warning-icon-bg, #ffc154);
-  --mp-modal-icon-border: var(--use-state-warning-bg, #fff2d9);
+  --mp-modal-icon-border: var(--base-yellow-40, #fff2d9);
   --mp-modal-icon-color: var(--use-text-primary, #111111);
 
   color: var(--mp-modal-text);
@@ -93,6 +93,12 @@
 }
 
 .mp-modal__icon .material-symbols-rounded,
+.mp-modal__icon.material-symbols-rounded,
+.mp-modal__icon .icon {
+  color: currentColor !important;
+}
+
+.mp-modal__icon .material-symbols-rounded,
 .mp-modal__icon.material-symbols-rounded {
   font-size: 32px;
   line-height: 1;
@@ -125,27 +131,27 @@
 }
 
 .mp-modal--info {
-  --mp-modal-icon-bg: var(--use-state-info-bg, #e6f1fb);
-  --mp-modal-icon-border: var(--use-state-info-border, #6c9fd0);
-  --mp-modal-icon-color: var(--use-state-info-text, #2d4a67);
+  --mp-modal-icon-bg: var(--use-state-info-icon, #5286bc);
+  --mp-modal-icon-border: var(--use-state-info-bg, #e6f1fb);
+  --mp-modal-icon-color: var(--use-text-on-dark-primary, #ffffff);
 }
 
 .mp-modal--success {
-  --mp-modal-icon-bg: var(--use-state-success-bg, #e6f7e8);
-  --mp-modal-icon-border: var(--use-state-success-border, #44bd75);
-  --mp-modal-icon-color: var(--use-state-success-text, #0d3d1f);
+  --mp-modal-icon-bg: var(--use-state-success-icon, #0b853d);
+  --mp-modal-icon-border: var(--use-state-success-bg, #e6f7e8);
+  --mp-modal-icon-color: var(--use-text-on-dark-primary, #ffffff);
 }
 
 .mp-modal--warning {
   --mp-modal-icon-bg: var(--use-state-warning-icon-bg, #ffc154);
-  --mp-modal-icon-border: var(--use-state-warning-bg, #fff2d9);
+  --mp-modal-icon-border: var(--base-yellow-40, #fff2d9);
   --mp-modal-icon-color: var(--use-text-primary, #111111);
 }
 
 .mp-modal--error {
-  --mp-modal-icon-bg: var(--use-state-error-bg, #f7eeed);
-  --mp-modal-icon-border: var(--use-state-error-border, #db7165);
-  --mp-modal-icon-color: var(--use-state-error-text, #521a14);
+  --mp-modal-icon-bg: var(--use-state-error-icon, #d14434);
+  --mp-modal-icon-border: var(--use-state-error-bg, #f7eeed);
+  --mp-modal-icon-color: var(--use-text-on-dark-primary, #ffffff);
 }
 
 .mp-modal-backdrop,

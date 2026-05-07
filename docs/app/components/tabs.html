@@ -1,0 +1,214 @@
+<article class="component-doc-page app-tabs-doc" data-component-doc="app-tabs">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">App</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Tabs App</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="app-tabs-title">
+    <h1 id="app-tabs-title" class="mp-h1">Tabs App</h1>
+    <p class="mp-body-l">Navegación móvil para alternar entre vistas del mismo nivel. Basado en el componente App de Figma y orientado a implementación .NET MAUI.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">App · .NET MAUI</span>
+      <span class="component-chip">Figma: 4010:11030</span>
+      <span class="component-chip">Altura: 48 / 64 px</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-tabs-summary">
+    <div class="component-section__header">
+      <h2 id="app-tabs-summary" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para cambiar entre vistas hermanas en una pantalla móvil.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando las opciones son entre 2 y 4 en tabs fijos.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando hay más opciones, usa versión scrollable con ancho de tab estable.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Evita usarlos como navegación global principal; para eso usa Shell o bottom navigation.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Labels cortos, jerarquía clara y un indicador visible para la pestaña activa.</p>
+            <div class="app-tabs-phone">
+              <div class="app-tabs app-tabs--primary app-tabs--fixed" role="tablist" aria-label="Contenido multimedia">
+                <button class="app-tab is-active" type="button" role="tab" aria-selected="true">Video</button>
+                <button class="app-tab" type="button" role="tab" aria-selected="false">Photos</button>
+                <button class="app-tab" type="button" role="tab" aria-selected="false">Audio</button>
+              </div>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No uses labels extensos ni demasiadas opciones en tabs fijos.</p>
+            <div class="app-tabs-bad-example">
+              <span>Consulta médica general</span>
+              <span>Medicamentos pendientes</span>
+              <span>Autorizaciones por revisar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-tabs-anatomy">
+    <div class="component-section__header">
+      <h2 id="app-tabs-anatomy" class="mp-h2">2. Anatomía interactiva</h2>
+    </div>
+    <div class="segmented-control" role="group" aria-label="Anatomía de tabs App">
+      <button type="button" class="mp-btn mp-btn--terciario" data-app-tabs-anatomy="label" aria-pressed="true">Label only</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-app-tabs-anatomy="icon-label" aria-pressed="false">Label & icon</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-app-tabs-anatomy="icon" aria-pressed="false">Icon only</button>
+    </div>
+    <div class="app-tabs-anatomy-stage">
+      <span class="app-tabs-measure app-tabs-measure--height">48 px</span>
+      <span class="app-tabs-measure app-tabs-measure--padding">Padding 16 px</span>
+      <span class="app-tabs-measure app-tabs-measure--indicator">Indicador 3 px</span>
+      <div class="app-tabs-callout app-tabs-callout--label"><strong>Label</strong><span class="mp-body-s">Roboto 14 px, medium, centrado.</span></div>
+      <div class="app-tabs-callout app-tabs-callout--indicator"><strong>Indicador</strong><span class="mp-body-s">Color primario, radio superior completo.</span></div>
+      <div class="app-tabs-callout app-tabs-callout--touch"><strong>Área táctil</strong><span class="mp-body-s">Altura mínima 48 px para interacción móvil.</span></div>
+      <div class="app-tabs-phone app-tabs-phone--wide" id="app-tabs-anatomy-preview"></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-tabs-playground">
+    <div class="component-section__header">
+      <div>
+        <h2 id="app-tabs-playground" class="mp-h2">3. Playground</h2>
+        <p class="mp-body-m">Configura estilo, tipo y contenido. El preview mantiene las dimensiones del componente móvil.</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-xl-5">
+        <div class="component-control-panel app-tabs-controls">
+          <div>
+            <label class="mp-label" for="app-tabs-style">Estilo</label>
+            <select class="mp-input-field mp-select" id="app-tabs-style" data-app-tabs-control="style">
+              <option value="primary">Primary</option>
+              <option value="secondary">Secondary</option>
+            </select>
+          </div>
+          <div>
+            <label class="mp-label" for="app-tabs-type">Tipo</label>
+            <select class="mp-input-field mp-select" id="app-tabs-type" data-app-tabs-control="type">
+              <option value="fixed">Fixed</option>
+              <option value="scrollable">Scrollable</option>
+            </select>
+          </div>
+          <div>
+            <label class="mp-label" for="app-tabs-config">Configuración</label>
+            <select class="mp-input-field mp-select" id="app-tabs-config" data-app-tabs-control="config">
+              <option value="label">Label only</option>
+              <option value="icon-label">Label & icon</option>
+              <option value="icon">Icon only</option>
+            </select>
+          </div>
+          <div>
+            <label class="mp-label" for="app-tabs-count">Tabs</label>
+            <select class="mp-input-field mp-select" id="app-tabs-count" data-app-tabs-control="count">
+              <option value="3">3 tabs</option>
+              <option value="4">4 tabs</option>
+              <option value="5">5 tabs</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-7">
+        <div class="app-tabs-preview-shell">
+          <div class="app-tabs-phone" id="app-tabs-preview" role="region" aria-label="Vista previa de Tabs App"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-tabs-variants">
+    <div class="component-section__header">
+      <h2 id="app-tabs-variants" class="mp-h2">4. Variantes</h2>
+    </div>
+    <div class="app-tabs-variant-grid">
+      <article class="app-tabs-variant-card">
+        <h3 class="mp-h3">Primary · label only</h3>
+        <div class="app-tabs-phone"><div class="app-tabs app-tabs--primary app-tabs--fixed" role="tablist" aria-label="Primary label"><button class="app-tab is-active" type="button">Video</button><button class="app-tab" type="button">Photos</button><button class="app-tab" type="button">Audio</button></div></div>
+      </article>
+      <article class="app-tabs-variant-card">
+        <h3 class="mp-h3">Primary · label & icon</h3>
+        <div class="app-tabs-phone"><div class="app-tabs app-tabs--primary app-tabs--with-icons app-tabs--fixed" role="tablist" aria-label="Primary icon label"><button class="app-tab is-active" type="button"><i class="icon icon-video-camera"></i><span>Video</span></button><button class="app-tab" type="button"><i class="icon icon-image"></i><span>Photos</span></button><button class="app-tab" type="button"><i class="icon icon-music-note"></i><span>Audio</span></button></div></div>
+      </article>
+      <article class="app-tabs-variant-card">
+        <h3 class="mp-h3">Secondary</h3>
+        <div class="app-tabs-phone"><div class="app-tabs app-tabs--secondary app-tabs--fixed" role="tablist" aria-label="Secondary"><button class="app-tab is-active" type="button">Video</button><button class="app-tab" type="button">Photos</button><button class="app-tab" type="button">Audio</button></div></div>
+      </article>
+      <article class="app-tabs-variant-card">
+        <h3 class="mp-h3">Scrollable</h3>
+        <div class="app-tabs-phone"><div class="app-tabs app-tabs--primary app-tabs--scrollable" role="tablist" aria-label="Scrollable"><button class="app-tab is-active" type="button">Video</button><button class="app-tab" type="button">Photos</button><button class="app-tab" type="button">Audio</button><button class="app-tab" type="button">Docs</button><button class="app-tab" type="button">More</button></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-tabs-states">
+    <div class="component-section__header">
+      <h2 id="app-tabs-states" class="mp-h2">5. Estados</h2>
+    </div>
+    <div class="app-tabs-state-grid">
+      <article><h3 class="mp-h3">Default</h3><button class="app-tab app-tab--sample" type="button">Tab</button></article>
+      <article><h3 class="mp-h3">Active</h3><button class="app-tab app-tab--sample is-active" type="button">Tab</button></article>
+      <article><h3 class="mp-h3">Disabled</h3><button class="app-tab app-tab--sample" type="button" disabled>Tab</button></article>
+      <article><h3 class="mp-h3">Focus</h3><button class="app-tab app-tab--sample app-tab--is-focus" type="button">Tab</button></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-tabs-code">
+    <div class="component-section__header">
+      <div>
+        <h2 id="app-tabs-code" class="mp-h2">6. Visualizador</h2>
+        <p class="mp-body-m">Fragmentos para implementación nativa App. La estructura XAML usa estilos y recursos del sistema.</p>
+      </div>
+    </div>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Código de Tabs App">
+        <button type="button" class="mp-btn mp-btn--terciario active" role="tab" data-app-tabs-code-tab="xaml" aria-selected="true" onclick="event.stopPropagation(); window.appTabsDocs?.switchCodeTabFromButton(this)">XAML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-app-tabs-code-tab="csharp" aria-selected="false" onclick="event.stopPropagation(); window.appTabsDocs?.switchCodeTabFromButton(this)">C#</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-app-tabs-code-tab="tokens" aria-selected="false" onclick="event.stopPropagation(); window.appTabsDocs?.switchCodeTabFromButton(this)">Tokens</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-app-tabs-copy-code><i class="icon icon-share icon-16" aria-hidden="true"></i>Copiar código</button>
+      </div>
+      <pre id="app-tabs-code-xaml" class="active"><code>&lt;Grid Style="{StaticResource MpTabsPrimaryFixed}" ColumnDefinitions="*,*,*"&gt;
+  &lt;Button Grid.Column="0"
+          Text="Video"
+          Style="{StaticResource MpTabPrimaryActive}" /&gt;
+  &lt;Button Grid.Column="1"
+          Text="Photos"
+          Style="{StaticResource MpTabPrimaryDefault}" /&gt;
+  &lt;Button Grid.Column="2"
+          Text="Audio"
+          Style="{StaticResource MpTabPrimaryDefault}" /&gt;
+&lt;/Grid&gt;</code></pre>
+      <pre id="app-tabs-code-csharp"><code>public partial class MediaTabsView : ContentView
+{
+    public static readonly BindableProperty SelectedIndexProperty =
+        BindableProperty.Create(nameof(SelectedIndex), typeof(int), typeof(MediaTabsView), 0);
+
+    public int SelectedIndex
+    {
+        get =&gt; (int)GetValue(SelectedIndexProperty);
+        set =&gt; SetValue(SelectedIndexProperty, value);
+    }
+}</code></pre>
+      <pre id="app-tabs-code-tokens"><code>&lt;Color x:Key="MpTabsIndicatorColor"&gt;#FF6600&lt;/Color&gt;
+&lt;x:Double x:Key="MpTabsHeight"&gt;48&lt;/x:Double&gt;
+&lt;x:Double x:Key="MpTabsIconLabelHeight"&gt;64&lt;/x:Double&gt;
+&lt;x:Double x:Key="MpTabsHorizontalPadding"&gt;16&lt;/x:Double&gt;
+&lt;x:Double x:Key="MpTabsIndicatorHeight"&gt;3&lt;/x:Double&gt;
+&lt;x:Double x:Key="MpTabsScrollableItemWidth"&gt;90&lt;/x:Double&gt;</code></pre>
+    </div>
+  </section>
+</article>

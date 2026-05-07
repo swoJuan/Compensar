@@ -152,15 +152,15 @@
       </div>
       <div class="col-12 col-xl-7">
         <div class="component-preview-panel" id="breadcrumb-preview-area" data-theme="light"></div>
-        <div class="code-block breadcrumb-playground-code">
-          <div class="code-content">
-            <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-breadcrumb-copy-playground>
-              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
-              Copiar
-            </button>
-            <pre id="breadcrumb-playground-code" class="active"></pre>
-          </div>
-        </div>
+      </div>
+    </div>
+    <div class="code-block breadcrumb-playground-code">
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-breadcrumb-copy-playground>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="breadcrumb-playground-code" class="active"></pre>
       </div>
     </div>
   </section>
@@ -222,15 +222,15 @@
     </div>
     <div class="ct-downloads button-downloads" aria-label="Descargar estilos de breadcrumb">
       <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
-      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-breadcrumb-download="html"><i class="icon icon-article icon-16" aria-hidden="true"></i> HTML</button>
-      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-breadcrumb-download="css"><i class="icon icon-article icon-16" aria-hidden="true"></i> CSS</button>
-      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-breadcrumb-download="sass"><i class="icon icon-article icon-16" aria-hidden="true"></i> Sass</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-breadcrumb-download="html" onclick="event.stopPropagation(); window.breadcrumbDocs?.downloadFromButton(this)"><i class="icon icon-article icon-16" aria-hidden="true"></i> HTML</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-breadcrumb-download="css" onclick="event.stopPropagation(); window.breadcrumbDocs?.downloadFromButton(this)"><i class="icon icon-article icon-16" aria-hidden="true"></i> CSS</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-breadcrumb-download="sass" onclick="event.stopPropagation(); window.breadcrumbDocs?.downloadFromButton(this)"><i class="icon icon-article icon-16" aria-hidden="true"></i> Sass</button>
     </div>
     <div class="code-block">
       <div class="code-tabs" role="tablist" aria-label="Código del componente">
-        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-breadcrumb-code-tab="html" aria-selected="true">HTML</button>
-        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-breadcrumb-code-tab="css" aria-selected="false">CSS</button>
-        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-breadcrumb-code-tab="sass" aria-selected="false">Sass</button>
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-breadcrumb-code-tab="html" aria-selected="true" onclick="event.stopPropagation(); window.breadcrumbDocs?.setCodeTabFromButton(this)">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-breadcrumb-code-tab="css" aria-selected="false" onclick="event.stopPropagation(); window.breadcrumbDocs?.setCodeTabFromButton(this)">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-breadcrumb-code-tab="sass" aria-selected="false" onclick="event.stopPropagation(); window.breadcrumbDocs?.setCodeTabFromButton(this)">Sass</button>
       </div>
       <div class="code-content">
         <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-breadcrumb-copy-code>

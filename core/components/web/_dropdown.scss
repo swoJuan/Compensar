@@ -514,7 +514,8 @@
     color: var(--base-neutral-white);
 
     &:hover:not(.mp-dropdown__option--disabled) {
-      background: rgba(255, 255, 255, 0.12);
+      background: var(--use-primary-default, #ffff00);
+      color: var(--base-neutral-black);
     }
 
     &--selected {

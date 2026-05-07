@@ -88,9 +88,45 @@ const router = (() => {
       icon: 'rounded_corner',
       group: 'app-fundamentos'
     },
+    'app/componentes/accordion': {
+      label: 'Accordion',
+      path: 'transversales/components/accordion.html',
+      icon: 'list_alt',
+      group: 'app'
+    },
+    'app/componentes/badges': {
+      label: 'Chips / Tags / Badges',
+      path: 'transversales/components/badges.html',
+      icon: 'award_star',
+      group: 'app'
+    },
+    'app/componentes/dropdown': {
+      label: 'Dropdown / Select App',
+      path: 'app/components/dropdown.html',
+      icon: 'arrow_drop_down_circle',
+      group: 'app'
+    },
+    'app/componentes/header': {
+      label: 'Header App',
+      path: 'app/components/header.html',
+      icon: 'web_asset',
+      group: 'app'
+    },
+    'app/componentes/loading': {
+      label: 'Loading',
+      path: 'transversales/components/loading.html',
+      icon: 'progress_activity',
+      group: 'app'
+    },
+    'app/componentes/tabs': {
+      label: 'Tabs App',
+      path: 'app/components/tabs.html',
+      icon: 'table_chart',
+      group: 'app'
+    },
     'web/componentes/accordion': {
       label: 'Accordion',
-      path: 'web/components/accordion.html',
+      path: 'transversales/components/accordion.html',
       icon: 'list_alt',
       group: 'web-componentes'
     },
@@ -102,7 +138,7 @@ const router = (() => {
     },
     'web/componentes/badges': {
       label: 'Badge / Chip / Tag',
-      path: 'web/components/badges.html',
+      path: 'transversales/components/badges.html',
       icon: 'award_star',
       group: 'web-componentes'
     },
@@ -150,7 +186,7 @@ const router = (() => {
     },
     'web/componentes/loading': {
       label: 'Loading',
-      path: 'web/components/loading.html',
+      path: 'transversales/components/loading.html',
       icon: 'progress_activity',
       group: 'web-componentes'
     },
@@ -218,6 +254,18 @@ const router = (() => {
       label: 'High Contrast',
       path: 'guidelines/high-contrast.html',
       icon: 'eye',
+      group: 'guidelines'
+    },
+    'guidelines/dark-mode': {
+      label: 'Dark Mode',
+      path: 'guidelines/dark-mode.html',
+      icon: 'dark_mode',
+      group: 'guidelines'
+    },
+    'guidelines/form-patterns': {
+      label: 'Form Patterns',
+      path: 'guidelines/form-patterns.html',
+      icon: 'list_alt',
       group: 'guidelines'
     },
     'qa/checklist': {
@@ -292,12 +340,20 @@ const router = (() => {
         section === 'web/componentes/inputs' ||
         section === 'web/componentes/dropdown' ||
         section === 'web/componentes/badges' ||
+        section === 'app/componentes/badges' ||
+        section === 'app/componentes/dropdown' ||
         section === 'web/componentes/tabs' ||
+        section === 'app/componentes/tabs' ||
+        section === 'app/componentes/header' ||
+        section === 'app/componentes/accordion' ||
+        section === 'app/componentes/loading' ||
         section === 'web/componentes/empty-state' ||
         section === 'web/componentes/loading' ||
         section === 'web/componentes/breadcrumb' ||
         section === 'web/componentes/accordion' ||
         section === 'guidelines/high-contrast' ||
+        section === 'guidelines/dark-mode' ||
+        section === 'guidelines/form-patterns' ||
         section === 'demo/core'
       );
 
@@ -342,6 +398,9 @@ const router = (() => {
       if (window.tabsDocs) {
         window.requestAnimationFrame(() => window.tabsDocs.initTabsDoc(document));
       }
+      if (window.emptyStateDocs) {
+        window.requestAnimationFrame(() => window.emptyStateDocs.initEmptyStateDoc(document));
+      }
       if (window.loadingDocs) {
         window.requestAnimationFrame(() => window.loadingDocs.initLoadingDocs(document));
       }
@@ -350,6 +409,12 @@ const router = (() => {
       }
       if (window.accordionDocs) {
         window.requestAnimationFrame(() => window.accordionDocs.initAccordionDocs(document));
+      }
+      if (window.appTabsDocs) {
+        window.requestAnimationFrame(() => window.appTabsDocs.initAppTabsDoc(document));
+      }
+      if (window.appHeaderDocs) {
+        window.requestAnimationFrame(() => window.appHeaderDocs.initAppHeaderDoc(document));
       }
 
       return true;

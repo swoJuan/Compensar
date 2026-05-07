@@ -76,18 +76,20 @@
       <li>Coherencia visual con interfaces modernas</li>
     </ul>
     <p class="ic-body">Todos los iconos del sistema <strong>deben respetar el mismo estilo visual</strong> para evitar inconsistencias dentro de la interfaz.</p>
-    <div class="ic-alert ic-alert--amber">
-      <span class="material-symbols-rounded">warning</span>
-      <div>
-        <strong>Reglas:</strong>
-        <ul class="ic-alert-list">
-          <li>No usar valores arbitrarios.</li>
-          <li>No usar decimales.</li>
-          <li>Todo tamaño debe respetar la escala rem del sistema, equivalente a múltiplos de 8px.</li>
-          <li>Evitar usar margin para alinear elementos internos de un componente.</li>
-          <li>No ajustar espaciado visualmente para compensar errores de layout.</li>
-          <li>Priorizar siempre la consistencia del sistema.</li>
-        </ul>
+    <div class="mp-alert mp-alert--warning" role="status">
+      <i class="icon icon-warning icon-32 mp-alert__icon" aria-hidden="true"></i>
+      <div class="mp-alert__content">
+        <p class="mp-alert__title">Reglas</p>
+        <div class="mp-alert__body">
+          <ul class="ic-alert-list">
+            <li>No usar valores arbitrarios.</li>
+            <li>No usar decimales.</li>
+            <li>Todo tamaño debe respetar la escala rem del sistema, equivalente a múltiplos de 8px.</li>
+            <li>Evitar usar margin para alinear elementos internos de un componente.</li>
+            <li>No ajustar espaciado visualmente para compensar errores de layout.</li>
+            <li>Priorizar siempre la consistencia del sistema.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -157,17 +159,19 @@
       <li>Mejor rendimiento que múltiples SVG independientes</li>
     </ul>
   </div>
-  <div class="ic-alert ic-alert--amber ic-alert--self-start">
-    <span class="material-symbols-rounded">warning</span>
-    <div>
-      <strong>Reglas:</strong>
-      <ul class="ic-alert-list">
-        <li>Utilizar siempre iconos de la librería principal cuando existan.</li>
-        <li>Evitar mezclar estilos diferentes dentro de una misma interfaz.</li>
-        <li>No modificar manualmente el grosor de los iconos.</li>
-        <li>Mantener proporciones y alineación dentro del grid del icono.</li>
-        <li>Usar iconos solo cuando aporten valor a la comprensión de la acción.</li>
-      </ul>
+  <div class="mp-alert mp-alert--warning ic-alert--self-start" role="status">
+    <i class="icon icon-warning icon-32 mp-alert__icon" aria-hidden="true"></i>
+    <div class="mp-alert__content">
+      <p class="mp-alert__title">Reglas</p>
+      <div class="mp-alert__body">
+        <ul class="ic-alert-list">
+          <li>Utilizar siempre iconos de la librería principal cuando existan.</li>
+          <li>Evitar mezclar estilos diferentes dentro de una misma interfaz.</li>
+          <li>No modificar manualmente el grosor de los iconos.</li>
+          <li>Mantener proporciones y alineación dentro del grid del icono.</li>
+          <li>Usar iconos solo cuando aporten valor a la comprensión de la acción.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -193,14 +197,16 @@
       </tbody>
     </table>
     <p class="ic-body ic-body--small">Evitar tamaños intermedios que rompan la consistencia visual.</p>
-    <div class="ic-alert ic-alert--amber ic-alert--mt-4">
-      <span class="material-symbols-rounded">warning</span>
-      <div class="ic-alert-text-small">
-        <strong>Reglas:</strong><br>
-        El tamaño visual del icono puede ser 1rem (16px), 1.25rem (20px) o 1.5rem (24px).<br>
-        Cuando el icono sea interactivo, el área clicable mínima debe ser 2.75rem × 2.75rem (44px × 44px).<br>
-        El icono debe centrarse dentro del contenedor interactivo.<br>
-        No usar iconos clicables sin área táctil suficiente.
+    <div class="mp-alert mp-alert--warning ic-alert--mt-4" role="status">
+      <i class="icon icon-warning icon-32 mp-alert__icon" aria-hidden="true"></i>
+      <div class="mp-alert__content">
+        <p class="mp-alert__title">Reglas</p>
+        <p class="mp-alert__body ic-alert-text-small">
+          El tamaño visual del icono puede ser 1rem (16px), 1.25rem (20px) o 1.5rem (24px).<br>
+          Cuando el icono sea interactivo, el área clicable mínima debe ser 2.75rem × 2.75rem (44px × 44px).<br>
+          El icono debe centrarse dentro del contenedor interactivo.<br>
+          No usar iconos clicables sin área táctil suficiente.
+        </p>
       </div>
     </div>
   </div>

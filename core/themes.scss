@@ -1,0 +1,16 @@
+// =============================================================================
+// core/themes.scss — CSS custom properties only (no components, no Bootstrap)
+// Compensar Medicina Prepagada · Design System · Theme tokens layer
+//
+// Compiles to css/themes.css — a lightweight file containing only the
+// CSS custom properties for light, dark and high-contrast modes.
+//
+// Use this when you want to integrate Compensar's design tokens into an
+// existing project without pulling in the full component library.
+//
+// Usage:
+//   <link rel="stylesheet" href="themes.css">
+//   <html data-theme="dark"> ... </html>
+// =============================================================================
+
+@use 'base/theme';

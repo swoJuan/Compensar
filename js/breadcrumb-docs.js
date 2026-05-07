@@ -278,6 +278,18 @@ ${exportCss}`;
     });
   }
 
+  function setCodeTab(page, tabName = 'html') {
+    if (!page) return;
+    page.querySelectorAll('[data-breadcrumb-code-tab]').forEach((item) => {
+      const active = item.dataset.breadcrumbCodeTab === tabName;
+      item.classList.toggle('active', active);
+      item.setAttribute('aria-selected', String(active));
+    });
+    page.querySelectorAll('#breadcrumb-code-html, #breadcrumb-code-css, #breadcrumb-code-sass').forEach((pre) => {
+      pre.classList.toggle('active', pre.id === `breadcrumb-code-${tabName}`);
+    });
+  }
+
   function renderStaticDemos(page) {
     if (!page) return;
     const stateDemos = {
@@ -318,6 +330,20 @@ ${exportCss}`;
     URL.revokeObjectURL(url);
   }
 
+  function downloadFromButton(button) {
+    if (!button) return;
+    const type = button.dataset.breadcrumbDownload;
+    if (type === 'html') downloadFile('mp-breadcrumb.html', downloadableHtml(), 'text/html');
+    if (type === 'css') downloadFile('mp-breadcrumb.css', exportCss, 'text/css');
+    if (type === 'sass') downloadFile('mp-breadcrumb.scss', exportSass, 'text/x-scss');
+    flashButton(button, 'Descargado');
+  }
+
+  function setCodeTabFromButton(button) {
+    if (!button) return;
+    setCodeTab(findPage(button), button.dataset.breadcrumbCodeTab);
+  }
+
   function downloadableHtml() {
     return `<!doctype html>
 <html lang="es">
@@ -348,15 +374,7 @@ ${buildBreadcrumbHtml({ levels: 3, parent: 'Trámites', current: 'Pagos' })}
 
       const tab = event.target.closest('[data-breadcrumb-code-tab]');
       if (tab) {
-        const page = findPage(tab);
-        page.querySelectorAll('[data-breadcrumb-code-tab]').forEach((item) => {
-          const active = item === tab;
-          item.classList.toggle('active', active);
-          item.setAttribute('aria-selected', String(active));
-        });
-        page.querySelectorAll('#breadcrumb-code-html, #breadcrumb-code-css, #breadcrumb-code-sass').forEach((pre) => {
-          pre.classList.toggle('active', pre.id === `breadcrumb-code-${tab.dataset.breadcrumbCodeTab}`);
-        });
+        setCodeTab(findPage(tab), tab.dataset.breadcrumbCodeTab);
         return;
       }
 
@@ -374,11 +392,7 @@ ${buildBreadcrumbHtml({ levels: 3, parent: 'Trámites', current: 'Pagos' })}
 
       const download = event.target.closest('[data-breadcrumb-download]');
       if (download) {
-        const type = download.dataset.breadcrumbDownload;
-        if (type === 'html') downloadFile('mp-breadcrumb.html', downloadableHtml(), 'text/html');
-        if (type === 'css') downloadFile('mp-breadcrumb.css', exportCss, 'text/css');
-        if (type === 'sass') downloadFile('mp-breadcrumb.scss', exportSass, 'text/x-scss');
-        flashButton(download, 'Descargado');
+        downloadFromButton(download);
       }
     });
 
@@ -397,6 +411,7 @@ ${buildBreadcrumbHtml({ levels: 3, parent: 'Trámites', current: 'Pagos' })}
     const page = root.querySelector('[data-component-doc="breadcrumb"]');
     if (!page || page.dataset.breadcrumbInitialized === 'true') return;
     renderStaticCode(page);
+    setCodeTab(page, 'html');
     renderStaticDemos(page);
     renderAnatomy(page, 'default');
     renderPlayground(page);
@@ -411,7 +426,7 @@ ${buildBreadcrumbHtml({ levels: 3, parent: 'Trámites', current: 'Pagos' })}
     renderPlayground(page);
   }
 
-  return { initBreadcrumbDocs, bindBreadcrumbDelegated, syncTheme };
+  return { initBreadcrumbDocs, bindBreadcrumbDelegated, syncTheme, setCodeTabFromButton, downloadFromButton };
 })();
 
 window.breadcrumbDocs = breadcrumbDocs;

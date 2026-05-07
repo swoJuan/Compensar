@@ -1,0 +1,331 @@
+@use '../../core/abstracts' as *;
+
+// ============================================================
+//  Estilos de documentación — Guideline Dark Mode
+//  Solo portal/docs. Clases .gdm-* (guideline dark mode)
+// ============================================================
+
+.gdm-doc {
+  --gdm-border:  var(--use-border-subtle);
+  --gdm-surface: var(--use-surface-white);
+  --gdm-accent:  var(--use-primary-default);
+  --gdm-do:      var(--use-state-success-text, #0d6e3a);
+  --gdm-dont:    var(--use-state-error-text, #b91c1c);
+}
+
+.gdm-head {
+  margin-bottom: var(--space-32);
+}
+
+// ── Bloque (3 col: regla | light demo | dark demo) ────────────
+.gdm-bloque {
+  display: grid;
+  grid-template-columns: 280px 1fr 1fr;
+  gap: var(--space-24);
+  margin-bottom: var(--space-48);
+  padding-bottom: var(--space-48);
+  border-bottom: 1px solid var(--gdm-border);
+
+  &:last-of-type { border-bottom: none; }
+}
+
+// ── Regla ─────────────────────────────────────────────────────
+.gdm-rule {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.gdm-rule__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--use-text-primary);
+  margin: 0;
+}
+
+.gdm-rule__desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--use-text-secondary);
+  margin: 0;
+}
+
+.gdm-rule__list {
+  margin: 0;
+  padding-left: var(--space-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+
+  li {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--use-text-secondary);
+  }
+
+  code {
+    font-size: 11px;
+    font-family: var(--font-code, 'Roboto Mono', monospace);
+    color: var(--gdm-accent);
+    background: color-mix(in srgb, var(--gdm-accent) 10%, transparent);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  &--do   li::marker { color: var(--gdm-do); }
+  &--dont li::marker { color: var(--gdm-dont); }
+}
+
+// ── Demo box ─────────────────────────────────────────────────
+.gdm-demo {
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--gdm-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.gdm-demo__label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 5px var(--space-12);
+  background: var(--use-surface-theme-gray-5);
+  color: var(--use-text-secondary);
+  border-bottom: 1px solid var(--gdm-border);
+  flex-shrink: 0;
+}
+
+.gdm-demo__body {
+  padding: var(--space-24);
+  background: var(--use-surface-bg);
+  flex: 1;
+
+  &--stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+}
+
+// El demo data-theme="dark" aplica el tema oscuro real
+// usando la misma lógica que [data-theme='dark'] en _theme.scss
+.gdm-demo[data-theme='dark'] {
+  border-color: rgba(255, 255, 255, .12);
+
+  .gdm-demo__label {
+    border-bottom-color: rgba(255, 255, 255, .12);
+  }
+}
+
+// ── Utilitarios inline dentro de demos ───────────────────────
+.gdm-inline-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+// ── Card real ─────────────────────────────────────────────────
+.gdm-real-card {
+  width: 100%;
+  min-height: auto;
+}
+
+.gdm-real-card .mp-card__media {
+  max-height: rem(120px);
+}
+
+// ── Superficies de elevación ──────────────────────────────────
+.gdm-surface {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  padding: var(--space-14) var(--space-20);
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--use-border-subtle);
+
+  &--0 { background: var(--use-surface-bg); }
+  &--1 { background: var(--use-surface-white); }
+  &--2 { background: var(--use-surface-theme-gray-5); }
+}
+
+.gdm-surface__name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--use-text-primary);
+}
+
+.gdm-surface code {
+  font-size: 10px;
+  font-family: var(--font-code, 'Roboto Mono', monospace);
+  color: var(--gdm-accent);
+  white-space: nowrap;
+}
+
+// ── Campo de formulario ───────────────────────────────────────
+.gdm-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+// ── Do / Don't ───────────────────────────────────────────────
+.gdm-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-24);
+  margin-bottom: var(--space-48);
+}
+
+.gdm-two-col__card {
+  background: var(--gdm-surface);
+  border: 1px solid var(--gdm-border);
+  border-radius: var(--radius-xs);
+  padding: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+
+  &--do   { border-top: 3px solid var(--gdm-do); }
+  &--dont { border-top: 3px solid var(--gdm-dont); }
+}
+
+.gdm-two-col__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+
+  .icon { font-size: 20px; }
+}
+
+.gdm-two-col__card--do   .gdm-two-col__header .icon { color: var(--gdm-do); }
+.gdm-two-col__card--dont .gdm-two-col__header .icon { color: var(--gdm-dont); }
+
+.gdm-two-col__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--use-text-primary);
+  margin: 0;
+}
+
+// ── Accesibilidad ─────────────────────────────────────────────
+.gdm-a11y {
+  background: color-mix(in srgb, var(--gdm-accent) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gdm-accent) 20%, transparent);
+  border-radius: var(--radius-xs);
+  padding: var(--space-24);
+  margin-bottom: var(--space-48);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.gdm-a11y__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+
+  .icon { color: var(--gdm-accent); font-size: 24px; }
+}
+
+.gdm-a11y__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--use-text-primary);
+  margin: 0;
+}
+
+.gdm-a11y__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-16);
+}
+
+.gdm-a11y__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: var(--use-surface-white);
+  border: 1px solid var(--gdm-border);
+  border-radius: var(--radius-xs);
+  padding: var(--space-16);
+}
+
+.gdm-a11y__ratio {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--gdm-accent);
+  line-height: 1;
+}
+
+.gdm-a11y__desc {
+  font-size: 12px;
+  color: var(--use-text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.gdm-a11y__list {
+  margin: 0;
+  padding-left: var(--space-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+
+  li {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--use-text-secondary);
+  }
+
+  code {
+    font-size: 11px;
+    font-family: var(--font-code, 'Roboto Mono', monospace);
+    color: var(--gdm-accent);
+    background: color-mix(in srgb, var(--gdm-accent) 10%, transparent);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+}
+
+// ── Dark / HC overrides del portal ────────────────────────────
+[data-theme='dark'] {
+  .gdm-two-col__card,
+  .gdm-a11y__item {
+    background: var(--use-surface-white);
+  }
+}
+
+[data-theme='high-contrast'] {
+  .gdm-doc {
+    --gdm-border: var(--base-neutral-white);
+    --gdm-surface: var(--base-neutral-black);
+  }
+
+  .gdm-bloque { border-bottom-color: var(--base-neutral-white); }
+
+  .gdm-demo {
+    border-color: var(--base-neutral-white);
+    border-width: rem(2px);
+  }
+}
+
+// ── Responsive ────────────────────────────────────────────────
+@include lg-down {
+  .gdm-bloque {
+    grid-template-columns: 1fr 1fr;
+
+    .gdm-rule { grid-column: 1 / -1; }
+  }
+
+  .gdm-a11y__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@include md-down {
+  .gdm-bloque { grid-template-columns: 1fr; }
+  .gdm-two-col { grid-template-columns: 1fr; }
+  .gdm-a11y__grid { grid-template-columns: repeat(2, 1fr); }
+}

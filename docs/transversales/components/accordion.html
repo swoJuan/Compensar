@@ -1,0 +1,263 @@
+<article class="component-doc-page accordion-doc" data-component-doc="accordion">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Componentes transversales</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Accordion</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="accordion-title">
+    <h1 id="accordion-title" class="mp-h1">Accordion</h1>
+    <p class="mp-body-l">Organiza contenido en paneles colapsables para reducir carga visual y permitir que el usuario consulte detalles solo cuando los necesita.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web / App</span>
+      <span class="component-chip">Categoría: contenido</span>
+      <span class="component-chip">Figma: 4622:76590</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="accordion-summary-title">
+    <div class="component-section__header">
+      <h2 id="accordion-summary-title" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para preguntas frecuentes o contenido de soporte.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para detalles secundarios que no deben ocupar toda la página.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para agrupar secciones independientes de información.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando el usuario puede decidir qué bloque consultar.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Usa títulos claros y contenido breve dentro de cada panel.</p>
+            <div class="component-example-actions component-example-actions--stack">
+              <div class="mp-accordion">
+                <div class="mp-accordion__item is-open">
+                  <button class="mp-accordion__trigger" type="button" id="summary-accordion-trigger-1" aria-expanded="true" aria-controls="summary-accordion-panel-1">
+                    <span class="mp-accordion__title">Cobertura médica</span>
+                    <i class="mp-accordion__icon icon icon-caret-down icon-24" aria-hidden="true"></i>
+                  </button>
+                  <div class="mp-accordion__panel" id="summary-accordion-panel-1" role="region" aria-labelledby="summary-accordion-trigger-1">
+                    <div class="mp-accordion__content"><p class="mp-body-m">Incluye atención de urgencias según el plan contratado.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No escondas pasos obligatorios ni información crítica que el usuario deba ver completa.</p>
+            <div class="component-example-actions">
+              <span class="mp-badge mp-badge--warning">Formulario completo oculto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="accordion-anatomy-title">
+    <div class="component-section__header">
+      <h2 id="accordion-anatomy-title" class="mp-h2">2. Anatomía interactiva</h2>
+    </div>
+
+    <div class="segmented-control" role="group" aria-label="Estado de accordion">
+      <button type="button" class="mp-btn mp-btn--terciario is-active" data-accordion-anatomy="default" aria-pressed="true">Abierto</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-accordion-anatomy="closed" aria-pressed="false">Cerrado</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-accordion-anatomy="hover" aria-pressed="false">Hover</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-accordion-anatomy="focus" aria-pressed="false">Focus</button>
+    </div>
+
+    <div class="accordion-anatomy-stage">
+      <span class="accordion-measure accordion-measure--padding" data-accordion-measure="padding">Padding 16 px</span>
+      <span class="accordion-measure accordion-measure--icon" data-accordion-measure="icon">Ícono 24 px</span>
+      <span class="accordion-measure accordion-measure--gap" data-accordion-measure="gap">Gap 16 px</span>
+
+      <div class="accordion-doc-callout accordion-doc-callout--trigger">
+        <strong>Trigger</strong>
+        <span>Botón con título, estado y control de apertura.</span>
+      </div>
+      <div class="accordion-doc-callout accordion-doc-callout--icon">
+        <strong>Chevron</strong>
+        <span>Rota 180 grados cuando el panel está abierto.</span>
+      </div>
+      <div class="accordion-doc-callout accordion-doc-callout--panel">
+        <strong>Panel</strong>
+        <span>Región colapsable asociada al trigger.</span>
+      </div>
+      <div class="accordion-doc-callout accordion-doc-callout--content">
+        <strong>Contenido</strong>
+        <span>Texto o componentes relacionados con el título.</span>
+      </div>
+
+      <div class="accordion-anatomy-preview" id="accordion-anatomy-preview"></div>
+    </div>
+
+    <div class="component-controls">
+      <label class="button-doc-toggle"><input type="checkbox" data-accordion-anatomy-toggle="measures" checked> Medidas</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-accordion-anatomy-toggle="labels" checked> Etiquetas</label>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="accordion-playground-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="accordion-playground-title" class="mp-h2">3. Playground</h2>
+        <p class="mp-body-m">Configura variante, modo, cantidad de ítems y comportamiento exclusivo. El código se actualiza con el fragmento real.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-xl-5">
+        <div class="component-control-panel">
+          <div class="row g-3">
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="accordion-ctrl-variant">Variante</label>
+              <select class="mp-input-field mp-select" id="accordion-ctrl-variant" data-accordion-control="variant">
+                <option value="default">Default</option>
+                <option value="flush">Flush</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="accordion-ctrl-theme">Modo</label>
+              <select class="mp-input-field mp-select" id="accordion-ctrl-theme" data-accordion-control="theme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="high-contrast">High Contrast</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="mp-label" for="accordion-ctrl-count">Ítems</label>
+              <select class="mp-input-field mp-select" id="accordion-ctrl-count" data-accordion-control="count">
+                <option value="1">1 ítem</option>
+                <option value="2">2 ítems</option>
+                <option value="3" selected>3 ítems</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="button-doc-toggle"><input type="checkbox" data-accordion-control="open" checked> Primer ítem abierto</label>
+            </div>
+            <div class="col-12">
+              <label class="button-doc-toggle"><input type="checkbox" data-accordion-control="exclusive"> Modo exclusivo</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-7">
+        <div class="component-preview-panel accordion-preview-panel" id="accordion-preview-area" data-theme="light"></div>
+      </div>
+    </div>
+    <div class="code-block accordion-playground-code">
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-accordion-copy-playground>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="accordion-playground-code" class="active"></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="accordion-states-title">
+    <div class="component-section__header">
+      <h2 id="accordion-states-title" class="mp-h2">4. Estados</h2>
+    </div>
+    <div class="accordion-state-grid">
+      <article class="accordion-state-card"><h3 class="mp-h3">Default</h3><p class="mp-body-s">Ítem disponible.</p><div class="accordion-state-sample" data-accordion-state-demo="default"></div></article>
+      <article class="accordion-state-card"><h3 class="mp-h3">Abierto</h3><p class="mp-body-s">Panel expandido.</p><div class="accordion-state-sample" data-accordion-state-demo="open"></div></article>
+      <article class="accordion-state-card"><h3 class="mp-h3">Cerrado</h3><p class="mp-body-s">Panel colapsado.</p><div class="accordion-state-sample" data-accordion-state-demo="closed"></div></article>
+      <article class="accordion-state-card"><h3 class="mp-h3">Hover</h3><p class="mp-body-s">Indica interacción.</p><div class="accordion-state-sample" data-accordion-state-demo="hover"></div></article>
+      <article class="accordion-state-card"><h3 class="mp-h3">Focus</h3><p class="mp-body-s">Visible con teclado.</p><div class="accordion-state-sample" data-accordion-state-demo="focus"></div></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="accordion-modes-title">
+    <div class="component-section__header">
+      <h2 id="accordion-modes-title" class="mp-h2">5. Modos de color</h2>
+    </div>
+    <div class="accordion-mode-grid">
+      <article class="accordion-mode-card"><h3 class="mp-h3">Light</h3><div class="accordion-mode-demo" data-theme="light" data-accordion-mode-demo="light"></div></article>
+      <article class="accordion-mode-card"><h3 class="mp-h3">Dark</h3><div class="accordion-mode-demo" data-theme="dark" data-accordion-mode-demo="dark"></div></article>
+      <article class="accordion-mode-card"><h3 class="mp-h3">High Contrast</h3><div class="accordion-mode-demo" data-theme="high-contrast" data-accordion-mode-demo="high-contrast"></div></article>
+    </div>
+  </section>
+
+  <div class="row g-4">
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="accordion-rules-title">
+        <div class="component-section__header"><h2 id="accordion-rules-title" class="mp-h2">6. Comportamiento y reglas</h2></div>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El trigger completo debe ser clicable.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Permite múltiples paneles abiertos salvo que el flujo pida modo exclusivo.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa títulos breves y descriptivos.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No ocultes acciones críticas ni pasos obligatorios.</li>
+        </ul>
+      </section>
+    </div>
+    <div class="col-12 col-lg-6">
+      <section class="component-section h-100" aria-labelledby="accordion-a11y-title">
+        <div class="component-section__header"><h2 id="accordion-a11y-title" class="mp-h2">7. Accesibilidad</h2></div>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El trigger es un <code>button</code> con <code>aria-expanded</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El panel usa <code>role="region"</code> y referencia al trigger.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><kbd>Tab</kbd>, <kbd>Enter</kbd> y <kbd>Space</kbd> deben funcionar nativamente.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Focus visible en todos los modos de color.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="component-section" aria-labelledby="accordion-code-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="accordion-code-title" class="mp-h2">8. Visualizador</h2>
+        <p class="mp-body-m">HTML del fragmento y estilos completos del componente. No incluye estilos propios del portal.</p>
+      </div>
+    </div>
+    <div class="ct-downloads button-downloads" aria-label="Descargar estilos de accordion">
+      <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-accordion-download="html"><i class="icon icon-article icon-16" aria-hidden="true"></i> HTML</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-accordion-download="css"><i class="icon icon-article icon-16" aria-hidden="true"></i> CSS</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-accordion-download="sass"><i class="icon icon-article icon-16" aria-hidden="true"></i> Sass</button>
+    </div>
+    <div class="code-block">
+      <div class="code-tabs" role="tablist" aria-label="Código del componente">
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-accordion-code-tab="html" aria-selected="true">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-accordion-code-tab="css" aria-selected="false">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-accordion-code-tab="sass" aria-selected="false">Sass</button>
+      </div>
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-accordion-copy-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="accordion-code-html" class="active"></pre>
+        <pre id="accordion-code-css"></pre>
+        <pre id="accordion-code-sass"></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="accordion-qa-title">
+    <div class="component-section__header">
+      <h2 id="accordion-qa-title" class="mp-h2">9. Checklist QA</h2>
+    </div>
+    <ul class="component-list">
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Trigger usa texto mínimo de 16 px y componente real <code>mp-accordion</code>.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Chevron 24 px rota al abrir/cerrar.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Hover y focus son evidentes en los estados interactivos.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El panel actualiza <code>aria-expanded</code> y altura al interactuar.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Light, Dark y High Contrast mantienen contraste correcto.</li>
+    </ul>
+  </section>
+</article>

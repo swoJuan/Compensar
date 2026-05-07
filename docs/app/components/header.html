@@ -1,0 +1,190 @@
+<article class="component-doc-page app-header-doc" data-component-doc="app-header">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">App</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Header App</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="app-header-title">
+    <h1 id="app-header-title" class="mp-h1">Header App</h1>
+    <p class="mp-body-l">Barra superior móvil para pantallas App. Incluye zona segura, navegación contextual, marca o título y acciones rápidas.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">App · .NET MAUI</span>
+      <span class="component-chip">Figma: 4485:16287</span>
+      <span class="component-chip">Altura: 88 px</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-header-summary">
+    <div class="component-section__header">
+      <h2 id="app-header-summary" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Como cabezote principal en pantallas App.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para mostrar marca en home o título en vistas internas.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando se requiere acción rápida como notificaciones.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Respeta la zona segura superior del dispositivo.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Usa título corto o marca clara, con iconos de 32 px y contraste alto.</p>
+            <div class="app-header-phone app-header-phone--compact">
+              <header class="app-mobile-header app-mobile-header--detail" aria-label="Header de pantalla">
+                <button class="app-header-action" type="button" aria-label="Volver"><i class="icon icon-arrow-left" aria-hidden="true"></i></button>
+                <h2 class="app-header-title">Consentimiento</h2>
+                <button class="app-header-action" type="button" aria-label="Notificaciones"><i class="icon icon-bell" aria-hidden="true"></i></button>
+              </header>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No cargues el header con textos largos ni acciones que compitan por el centro visual.</p>
+            <div class="app-header-bad-example">Autorizaciones y consentimientos de medicina prepagada pendientes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-header-anatomy">
+    <div class="component-section__header">
+      <h2 id="app-header-anatomy" class="mp-h2">2. Anatomía interactiva</h2>
+    </div>
+    <div class="segmented-control" role="group" aria-label="Anatomía Header App">
+      <button type="button" class="mp-btn mp-btn--terciario" data-app-header-anatomy="home" aria-pressed="true">Home</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-app-header-anatomy="detail" aria-pressed="false">Interna</button>
+    </div>
+    <div class="app-header-anatomy-stage">
+      <span class="app-header-measure app-header-measure--safe">Safe area 48 px</span>
+      <span class="app-header-measure app-header-measure--bar">Barra 40 px</span>
+      <span class="app-header-measure app-header-measure--padding">Padding 16 px</span>
+      <div class="app-header-callout app-header-callout--left"><strong>Acción izquierda</strong><span class="mp-body-s">Menú en home o volver en pantallas internas.</span></div>
+      <div class="app-header-callout app-header-callout--center"><strong>Zona central</strong><span class="mp-body-s">Logo o título con máximo una línea.</span></div>
+      <div class="app-header-callout app-header-callout--right"><strong>Acción derecha</strong><span class="mp-body-s">Campana u otra acción contextual.</span></div>
+      <div class="app-header-phone" id="app-header-anatomy-preview"></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-header-playground">
+    <div class="component-section__header">
+      <div>
+        <h2 id="app-header-playground" class="mp-h2">3. Playground</h2>
+        <p class="mp-body-m">Configura variante, título y acción derecha para validar el header en contexto móvil.</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-xl-5">
+        <div class="component-control-panel app-header-controls">
+          <div>
+            <label class="mp-label" for="app-header-variant">Variante</label>
+            <select class="mp-input-field mp-select" id="app-header-variant" data-app-header-control="variant">
+              <option value="home">Home / marca</option>
+              <option value="detail">Interna / título</option>
+            </select>
+          </div>
+          <div>
+            <label class="mp-label" for="app-header-title-field">Título</label>
+            <input class="mp-input-field" id="app-header-title-field" data-app-header-control="title" value="Consentimiento" maxlength="24">
+          </div>
+          <div>
+            <label class="mp-label" for="app-header-left">Acción izquierda</label>
+            <select class="mp-input-field mp-select" id="app-header-left" data-app-header-control="left">
+              <option value="menu">Menú</option>
+              <option value="back">Volver</option>
+              <option value="none">Sin acción</option>
+            </select>
+          </div>
+          <label class="mp-toggle-row">
+            <input type="checkbox" data-app-header-control="notification" checked>
+            <span>Mostrar notificaciones</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-12 col-xl-7">
+        <div class="app-header-preview-shell">
+          <div class="app-header-phone" id="app-header-preview" role="region" aria-label="Vista previa Header App"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-header-variants">
+    <div class="component-section__header">
+      <h2 id="app-header-variants" class="mp-h2">4. Variantes</h2>
+    </div>
+    <div class="app-header-variant-grid">
+      <article class="app-header-variant-card">
+        <h3 class="mp-h3">Home</h3>
+        <div class="app-header-phone"><header class="app-mobile-header app-mobile-header--home"><button class="app-header-action" type="button" aria-label="Abrir menú"><i class="icon icon-align-justify" aria-hidden="true"></i></button><div class="app-header-brand" aria-label="Compensar medicina prepagada"><span class="app-header-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></span><span class="app-header-brand-name">compensar</span><span class="app-header-divider"></span><span class="app-header-brand-service">medicina<br>prepagada</span></div><button class="app-header-action" type="button" aria-label="Notificaciones"><i class="icon icon-bell" aria-hidden="true"></i></button></header></div>
+      </article>
+      <article class="app-header-variant-card">
+        <h3 class="mp-h3">Pantalla interna</h3>
+        <div class="app-header-phone"><header class="app-mobile-header app-mobile-header--detail"><button class="app-header-action" type="button" aria-label="Volver"><i class="icon icon-arrow-left" aria-hidden="true"></i></button><h2 class="app-header-title">Consentimiento</h2><button class="app-header-action" type="button" aria-label="Notificaciones"><i class="icon icon-bell" aria-hidden="true"></i></button></header></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-header-states">
+    <div class="component-section__header">
+      <h2 id="app-header-states" class="mp-h2">5. Estados</h2>
+    </div>
+    <div class="app-header-state-grid">
+      <article><h3 class="mp-h3">Default</h3><button class="app-header-action app-header-action--sample" type="button"><i class="icon icon-bell" aria-hidden="true"></i></button></article>
+      <article><h3 class="mp-h3">Pressed</h3><button class="app-header-action app-header-action--sample is-pressed" type="button"><i class="icon icon-bell" aria-hidden="true"></i></button></article>
+      <article><h3 class="mp-h3">Focus</h3><button class="app-header-action app-header-action--sample is-focus" type="button"><i class="icon icon-bell" aria-hidden="true"></i></button></article>
+      <article><h3 class="mp-h3">Disabled</h3><button class="app-header-action app-header-action--sample" type="button" disabled><i class="icon icon-bell" aria-hidden="true"></i></button></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-header-code">
+    <div class="component-section__header">
+      <div>
+        <h2 id="app-header-code" class="mp-h2">6. Visualizador</h2>
+        <p class="mp-body-m">Fragmentos de referencia para implementación nativa App con recursos del sistema.</p>
+      </div>
+    </div>
+    <div class="button-code-panel">
+      <div class="button-code-tabs" role="tablist" aria-label="Código Header App">
+        <button type="button" class="mp-btn mp-btn--terciario active" role="tab" data-app-header-code-tab="xaml" aria-selected="true" onclick="event.stopPropagation(); window.appHeaderDocs?.switchCodeTabFromButton(this)">XAML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-app-header-code-tab="csharp" aria-selected="false" onclick="event.stopPropagation(); window.appHeaderDocs?.switchCodeTabFromButton(this)">C#</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-app-header-code-tab="tokens" aria-selected="false" onclick="event.stopPropagation(); window.appHeaderDocs?.switchCodeTabFromButton(this)">Tokens</button>
+        <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-app-header-copy-code><i class="icon icon-share icon-16" aria-hidden="true"></i>Copiar código</button>
+      </div>
+      <pre id="app-header-code-xaml" class="active"><code>&lt;Grid Style="{StaticResource MpAppHeader}"&gt;
+  &lt;Button Style="{StaticResource MpHeaderBackAction}" /&gt;
+  &lt;Label Text="Consentimiento"
+         Style="{StaticResource MpHeaderTitle}" /&gt;
+  &lt;Button Style="{StaticResource MpHeaderNotificationAction}" /&gt;
+&lt;/Grid&gt;</code></pre>
+      <pre id="app-header-code-csharp"><code>public partial class MpHeaderView : ContentView
+{
+    public static readonly BindableProperty TitleProperty =
+        BindableProperty.Create(nameof(Title), typeof(string), typeof(MpHeaderView), string.Empty);
+
+    public string Title
+    {
+        get =&gt; (string)GetValue(TitleProperty);
+        set =&gt; SetValue(TitleProperty, value);
+    }
+}</code></pre>
+      <pre id="app-header-code-tokens"><code>&lt;Color x:Key="MpHeaderBackground"&gt;#FF6600&lt;/Color&gt;
+&lt;Color x:Key="MpHeaderForeground"&gt;#FFFFFF&lt;/Color&gt;
+&lt;x:Double x:Key="MpHeaderSafeAreaTop"&gt;48&lt;/x:Double&gt;
+&lt;x:Double x:Key="MpHeaderContentHeight"&gt;40&lt;/x:Double&gt;
+&lt;x:Double x:Key="MpHeaderHorizontalPadding"&gt;16&lt;/x:Double&gt;
+&lt;x:Double x:Key="MpHeaderIconSize"&gt;32&lt;/x:Double&gt;
+&lt;x:Double x:Key="MpHeaderTitleSize"&gt;18&lt;/x:Double&gt;</code></pre>
+    </div>
+  </section>
+</article>

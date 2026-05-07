@@ -1,0 +1,62 @@
+@use '../../core/abstracts' as *;
+
+.app-dropdown-sheet-layout {
+  display: grid;
+  grid-template-columns: minmax(rem(320px), rem(430px)) minmax(0, 1fr);
+  gap: var(--space-24);
+  align-items: stretch;
+}
+
+.app-dropdown-sheet-stage {
+  min-height: rem(520px);
+  display: grid;
+  place-items: center;
+  padding: var(--space-24);
+  border: rem(1px) solid var(--doc-card-border, var(--use-border-subtle));
+  border-radius: rem(10px);
+  background:
+    linear-gradient(color-mix(in srgb, var(--use-border-subtle) 34%, transparent) rem(1px), transparent rem(1px)),
+    linear-gradient(90deg, color-mix(in srgb, var(--use-border-subtle) 34%, transparent) rem(1px), transparent rem(1px)),
+    var(--use-surface-white);
+  background-size: rem(16px) rem(16px);
+}
+
+.app-dropdown-device {
+  position: relative;
+  width: min(100%, rem(390px));
+  min-height: rem(472px);
+  overflow: hidden;
+  border: rem(1px) solid var(--use-border-subtle, #e0e0e0);
+  border-radius: rem(28px);
+  background: var(--use-surface-theme-gray-5, #f8f7f7);
+}
+
+.app-dropdown-field {
+  position: absolute;
+  top: var(--space-32);
+  right: var(--space-16);
+  left: var(--space-16);
+}
+
+.app-dropdown-sheet {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.app-dropdown-sheet-notes {
+  display: grid;
+  align-content: start;
+  gap: var(--space-16);
+  padding: var(--space-16);
+  border: rem(1px) solid var(--doc-card-border, var(--use-border-subtle));
+  border-radius: rem(8px);
+  background: var(--use-surface-white);
+}
+
+@include lg-down {
+  .app-dropdown-sheet-layout {
+    grid-template-columns: 1fr;
+  }
+}

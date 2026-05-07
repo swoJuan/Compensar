@@ -126,6 +126,23 @@ const accordionDocs = (() => {
   border-top-width: 2px;
 }
 
+[data-theme="high-contrast"] .mp-accordion__trigger:hover,
+[data-theme="high-contrast"] .mp-accordion__trigger.mp-accordion__trigger--is-hover {
+  background: var(--use-primary-default, #ffff00);
+  color: var(--base-neutral-black, #000000);
+}
+
+[data-theme="high-contrast"] .mp-accordion__trigger:hover .mp-accordion__icon,
+[data-theme="high-contrast"] .mp-accordion__trigger.mp-accordion__trigger--is-hover .mp-accordion__icon {
+  color: var(--base-neutral-black, #000000);
+}
+
+[data-theme="high-contrast"] .mp-accordion__trigger:focus-visible,
+[data-theme="high-contrast"] .mp-accordion__trigger.mp-accordion__trigger--is-focus {
+  outline-width: 3px;
+  outline-color: var(--use-primary-default, #ffff00);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mp-accordion__panel,
   .mp-accordion__icon {

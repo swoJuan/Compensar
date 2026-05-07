@@ -4962,7 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
-    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'tabs' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion' || sectionId === 'demo/core');
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'tabs' || sectionId === 'header' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion' || sectionId === 'demo/core' || sectionId === 'guidelines/high-contrast' || sectionId === 'guidelines/dark-mode' || sectionId === 'guidelines/form-patterns');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -5081,6 +5081,11 @@
         window.tabsDocs.initTabsDoc(document);
       });
     }
+    if (window.emptyStateDocs) {
+      requestAnimationFrame(function() {
+        window.emptyStateDocs.initEmptyStateDoc(document);
+      });
+    }
     if (window.loadingDocs) {
       requestAnimationFrame(function() {
         window.loadingDocs.initLoadingDocs(document);
@@ -5094,6 +5099,21 @@
     if (window.accordionDocs) {
       requestAnimationFrame(function() {
         window.accordionDocs.initAccordionDocs(document);
+      });
+    }
+    if (window.stepperDocs) {
+      requestAnimationFrame(function() {
+        window.stepperDocs.initStepperDocs(document);
+      });
+    }
+    if (window.appTabsDocs) {
+      requestAnimationFrame(function() {
+        window.appTabsDocs.initAppTabsDoc(document);
+      });
+    }
+    if (window.appHeaderDocs) {
+      requestAnimationFrame(function() {
+        window.appHeaderDocs.initAppHeaderDoc(document);
       });
     }
   }
@@ -5123,7 +5143,7 @@
     'iconos-intro':       'docs/web/components/icons-intro.html',
     'iconos-conectar':    'docs/web/components/icons-connect.html',
     'iconos-libreria':    'docs/web/components/icons-library.html',
-    'accordion':          'docs/web/components/accordion.html',
+    'accordion':          'docs/transversales/components/accordion.html',
     'botones':            'docs/transversales/components/buttons.html',
     'inputs':             'docs/transversales/components/inputs.html',
     'dropdown':           'docs/transversales/components/dropdown.html',
@@ -5134,14 +5154,16 @@
     'cards':              'docs/transversales/components/cards.html',
     'paginacion':         'docs/transversales/components/pagination.html',
     'tables':             'docs/transversales/components/tables.html',
-    'badges':             'docs/web/components/badges.html',
+    'badges':             'docs/transversales/components/badges.html',
     'tabs':               'docs/transversales/components/tabs.html',
     'empty-state':        'docs/web/components/empty-state.html',
-    'loading':            'docs/web/components/loading.html',
+    'loading':            'docs/transversales/components/loading.html',
     'breadcrumb':         'docs/web/components/breadcrumb.html',
     'tokens-texto':       'docs/tokens/tokens-text.html',
     'tokens-tablas':      'docs/tokens/tokens-tables.html',
-    'guidelines/high-contrast': 'docs/guidelines/high-contrast.html',
+    'guidelines/high-contrast':  'docs/guidelines/high-contrast.html',
+    'guidelines/dark-mode':      'docs/guidelines/dark-mode.html',
+    'guidelines/form-patterns':  'docs/guidelines/form-patterns.html',
   };
 
   /* Rutas específicas de App (.NET MAUI) — sobreescriben ROUTES cuando PLATFORM='app' */
@@ -5150,6 +5172,12 @@
     'tipografia':         'docs/transversales/fundamentos/typography.html',
     'espaciado':          'docs/transversales/fundamentos/spacing.html',
     'layout':             'docs/app/fundamentos/layout.html',
+    'tabs':               'docs/app/components/tabs.html',
+    'header':             'docs/app/components/header.html',
+    'dropdown':           'docs/app/components/dropdown.html',
+    'accordion':          'docs/transversales/components/accordion.html',
+    'badges':             'docs/transversales/components/badges.html',
+    'loading':            'docs/transversales/components/loading.html',
   };
 
   function resolveRoute(sectionId) {
@@ -5360,11 +5388,11 @@
       items: [
         { id: 'accordion', label: 'Accordion',                icon: 'rows' },
         { id: 'alertas',   label: 'Alertas',                  icon: 'warning' },
-        { id: 'badges',    label: 'Badge / Chip / Tag',       icon: 'tag' },
         { id: 'botones',   label: 'Botones',                  icon: 'hand-pointing' },
         { id: 'breadcrumb', label: 'Breadcrumb',              icon: 'caret-right' },
         { id: 'cards',     label: 'Cards',                    icon: 'credit-card' },
         { id: 'seleccion', label: 'Checkbox / Radio / Switch',icon: 'check-square' },
+        { id: 'badges',    label: 'Chips / Tags / Badges',    icon: 'tag' },
         { id: 'dropdown',  label: 'Dropdown / Select',        icon: 'caret-circle-down' },
         { id: 'empty-state', label: 'Empty State',            icon: 'package' },
         { id: 'inputs',    label: 'Inputs',                   icon: 'placeholder' },
@@ -5386,7 +5414,9 @@
     {
       label: 'Guidelines',
       items: [
-        { id: 'guidelines/high-contrast', label: 'High Contrast', icon: 'eye' }
+        { id: 'guidelines/high-contrast',  label: 'High Contrast',  icon: 'eye' },
+        { id: 'guidelines/dark-mode',      label: 'Dark Mode',      icon: 'dark_mode' },
+        { id: 'guidelines/form-patterns',  label: 'Form Patterns',  icon: 'checks' }
       ]
     }
   ];
@@ -5425,7 +5455,7 @@
             var a = document.createElement('a');
             a.className = 'sidebar-link sidebar-sublink';
             a.href = '#' + sub.id;
-            a.innerHTML = '<i class="icon icon-circle icon-12" aria-hidden="true"></i> ' + sub.label;
+            a.innerHTML = '<i class="icon icon-circle icon-16" aria-hidden="true"></i> ' + sub.label;
             subNav.appendChild(a);
           });
           sectionEl.appendChild(subNav);

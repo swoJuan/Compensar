@@ -42,19 +42,16 @@
 .ct-figma-link .material-symbols-rounded { font-size: rem(15px); }
 
 .ct-use-rule {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-8);
-  background: var(--ui-surface-alt);
-  border: rem(1px) solid var(--ui-border);
-  border-radius: rem(12px);
-  padding: rem(12px);
-  font-size: rem(16px);
-  color: var(--ui-text);
   max-width: rem(680px);
 }
-.ct-use-rule .material-symbols-rounded { font-size: rem(18px); color: var(--ui-accent); flex-shrink: 0; margin-top: rem(1px); }
-.ct-use-rule code { font-family: var(--font-code); font-size: rem(11.5px); background: var(--ui-surface-alt); padding: rem(1px) rem(5px); border-radius: rem(4px); }
+
+.ct-use-rule .mp-alert__body code {
+  font-family: var(--font-code);
+  font-size: rem(11.5px);
+  background: var(--ui-surface-alt);
+  padding: rem(1px) rem(5px);
+  border-radius: rem(4px);
+}
 
 /* Grupos */
 .ct-use-group {

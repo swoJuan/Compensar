@@ -37,7 +37,8 @@
 .breadcrumb-doc .component-preview-panel {
   min-height: rem(220px);
   display: grid;
-  place-items: center;
+  align-items: center;
+  justify-items: start;
 }
 
 .breadcrumb-anatomy-stage {
@@ -150,7 +151,8 @@
 }
 
 .breadcrumb-playground-code {
-  margin-top: var(--space-12);
+  margin-top: var(--space-16);
+  width: 100%;
 }
 
 .breadcrumb-mode-demo[data-theme='dark'] {

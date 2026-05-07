@@ -1,0 +1,664 @@
+<article class="component-doc-page fp-doc" data-guideline-doc="form-patterns">
+
+  <!-- Breadcrumb -->
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Guidelines</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Form Patterns</span></li>
+    </ol>
+  </nav>
+
+  <!-- Hero -->
+  <section class="component-hero" aria-labelledby="fp-title">
+    <h1 id="fp-title" class="mp-h1">Form Patterns</h1>
+    <p class="mp-body-l">Guía de estructura, layout y componentes para construir formularios accesibles y de alta conversión. Incluye el componente <code>mp-stepper</code> para flujos multi-paso.</p>
+    <div class="component-meta" aria-label="Metadatos">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Web · ZT Drupal</span>
+      <span class="component-chip">Componente: mp-stepper</span>
+      <span class="component-chip">WCAG AA</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       1. RESUMEN
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="fp-summary-title">
+    <div class="component-section__header">
+      <h2 id="fp-summary-title" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Principios</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Labels siempre visibles — nunca reemplazar con placeholder.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Campos obligatorios marcados con <code>*</code> y leyenda al inicio.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Agrupar campos relacionados en secciones con título en MAYÚSCULAS.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Acción primaria (enviar) a la derecha; terciaria (cancelar) a la izquierda.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Feedback de validación inline — no solo al hacer submit.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usar <code>mp-stepper</code> en flujos de más de 2 pasos o con 7+ campos.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Label visible sobre el campo, estado de error con icono y texto.</p>
+            <div class="component-example-actions component-example-actions--stack" style="gap:12px">
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <label class="mp-label" for="fp-ex-do-1"><span class="mp-label__required">*</span> Nombre y apellidos</label>
+                <input class="mp-input-field" id="fp-ex-do-1" type="text" placeholder="Vanesa García">
+              </div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <label class="mp-label" for="fp-ex-do-2"><span class="mp-label__required">*</span> Correo electrónico</label>
+                <input class="mp-input-field error" id="fp-ex-do-2" type="email" aria-invalid="true" aria-describedby="fp-ex-do-2-err">
+                <span class="mp-input-helper error" id="fp-ex-do-2-err"><i class="icon icon-warning-circle icon-16" aria-hidden="true"></i> Campo obligatorio</span>
+              </div>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No uses placeholder como label ni indiques error solo con color.</p>
+            <div class="component-example-actions component-example-actions--stack" style="gap:8px">
+              <input class="mp-input-field" type="text" placeholder="Nombre y apellidos *">
+              <input class="mp-input-field" type="email" placeholder="Correo electrónico *" style="border-color:red">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       2. STEPPER — ANATOMÍA INTERACTIVA
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="fp-stepper-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="fp-stepper-title" class="mp-h2">2. Stepper — Anatomía interactiva</h2>
+        <p class="mp-body-m">El componente <code>mp-stepper</code> indica el avance en formularios multi-paso mediante barras de progreso proporcionales.</p>
+      </div>
+    </div>
+
+    <!-- Segmented control -->
+    <div class="segmented-control" role="group" aria-label="Estado del stepper">
+      <button type="button" class="mp-btn mp-btn--terciario" data-stepper-anatomy="paso1" aria-pressed="false">Paso 1</button>
+      <button type="button" class="mp-btn mp-btn--terciario is-active" data-stepper-anatomy="paso2" aria-pressed="true">Paso 2</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-stepper-anatomy="paso3" aria-pressed="false">Paso 3</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-stepper-anatomy="compact" aria-pressed="false">Compact</button>
+    </div>
+
+    <!-- Anatomy stage -->
+    <div class="stepper-anatomy-stage">
+      <!-- Callouts -->
+      <div class="stepper-doc-callout stepper-doc-callout--head">
+        <strong>Head</strong>
+        <span><code>.mp-stepper__head</code> — contenedor del count y título del paso.</span>
+      </div>
+      <div class="stepper-doc-callout stepper-doc-callout--count">
+        <strong>Count + Title</strong>
+        <span><code>.mp-stepper__count</code> texto secundario. <code>.mp-stepper__title</code> heading semántico.</span>
+      </div>
+      <div class="stepper-doc-callout stepper-doc-callout--track">
+        <strong>Track</strong>
+        <span><code>.mp-stepper__track</code> — fila flex de barras, <code>role="progressbar"</code> con <code>aria-valuenow</code>.</span>
+      </div>
+      <div class="stepper-doc-callout stepper-doc-callout--bars">
+        <strong>Barras</strong>
+        <span><code>.is-done</code> completado · <code>.is-current</code> activo · sin clase = pendiente.</span>
+      </div>
+      <div class="stepper-doc-callout stepper-doc-callout--compact-note">
+        <strong>Compact</strong>
+        <span><code>.mp-stepper--compact</code> oculta el head. Usar cuando el título del paso vive fuera del stepper.</span>
+      </div>
+
+      <!-- Measures -->
+      <span class="stepper-measure stepper-measure--bar-h">2 px — alto barra</span>
+      <span class="stepper-measure stepper-measure--total" data-stepper-measure="total">3 barras</span>
+
+      <!-- Live preview rendered by stepper-docs.js -->
+      <div class="stepper-anatomy-preview" id="stepper-anatomy-preview"></div>
+    </div>
+
+    <!-- Toggle controles -->
+    <div class="component-controls">
+      <label class="button-doc-toggle"><input type="checkbox" data-stepper-toggle="measures" checked> Medidas</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-stepper-toggle="labels" checked> Etiquetas</label>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       3. VARIANTES
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="fp-variants-title">
+    <div class="component-section__header">
+      <h2 id="fp-variants-title" class="mp-h2">3. Variantes</h2>
+    </div>
+
+    <div class="row g-3" style="margin-bottom:32px">
+
+      <div class="col-12 col-md-6 col-xl-4">
+        <div class="component-example-card">
+          <p class="component-example-card__label">Paso 1 de 3 — inicio</p>
+          <div class="mp-stepper" role="group" aria-label="Paso 1 de 3">
+            <div class="mp-stepper__head">
+              <span class="mp-stepper__count">Paso 1 de 3</span>
+              <h3 class="mp-stepper__title">Datos personales</h3>
+            </div>
+            <div class="mp-stepper__track" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3">
+              <div class="mp-stepper__bar is-current"></div>
+              <div class="mp-stepper__bar"></div>
+              <div class="mp-stepper__bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4">
+        <div class="component-example-card">
+          <p class="component-example-card__label">Paso 2 de 3 — en progreso</p>
+          <div class="mp-stepper" role="group" aria-label="Paso 2 de 3">
+            <div class="mp-stepper__head">
+              <span class="mp-stepper__count">Paso 2 de 3</span>
+              <h3 class="mp-stepper__title">Elige la fecha y hora</h3>
+            </div>
+            <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="3">
+              <div class="mp-stepper__bar is-done"></div>
+              <div class="mp-stepper__bar is-current"></div>
+              <div class="mp-stepper__bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4">
+        <div class="component-example-card">
+          <p class="component-example-card__label">Paso 3 de 3 — último</p>
+          <div class="mp-stepper" role="group" aria-label="Paso 3 de 3">
+            <div class="mp-stepper__head">
+              <span class="mp-stepper__count">Paso 3 de 3</span>
+              <h3 class="mp-stepper__title">Confirmación y envío</h3>
+            </div>
+            <div class="mp-stepper__track" role="progressbar" aria-valuenow="3" aria-valuemin="1" aria-valuemax="3">
+              <div class="mp-stepper__bar is-done"></div>
+              <div class="mp-stepper__bar is-done"></div>
+              <div class="mp-stepper__bar is-current"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4">
+        <div class="component-example-card">
+          <p class="component-example-card__label">5 pasos — intermedio</p>
+          <div class="mp-stepper" role="group" aria-label="Paso 3 de 5">
+            <div class="mp-stepper__head">
+              <span class="mp-stepper__count">Paso 3 de 5</span>
+              <h3 class="mp-stepper__title">Información médica</h3>
+            </div>
+            <div class="mp-stepper__track" role="progressbar" aria-valuenow="3" aria-valuemin="1" aria-valuemax="5">
+              <div class="mp-stepper__bar is-done"></div>
+              <div class="mp-stepper__bar is-done"></div>
+              <div class="mp-stepper__bar is-current"></div>
+              <div class="mp-stepper__bar"></div>
+              <div class="mp-stepper__bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4">
+        <div class="component-example-card">
+          <p class="component-example-card__label">Compact — solo barras</p>
+          <div class="mp-stepper mp-stepper--compact" role="group" aria-label="Paso 2 de 4">
+            <div class="mp-stepper__head"><span class="mp-stepper__count">Paso 2 de 4</span></div>
+            <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="4">
+              <div class="mp-stepper__bar is-done"></div>
+              <div class="mp-stepper__bar is-current"></div>
+              <div class="mp-stepper__bar"></div>
+              <div class="mp-stepper__bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Modos de color -->
+    <h3 class="mp-h3" style="margin-bottom:16px">Modos de color</h3>
+    <div class="row g-3" style="margin-bottom:32px">
+      <div class="col-12 col-md-4">
+        <div class="component-example-card" data-theme="light">
+          <p class="component-example-card__label">Light</p>
+          <div class="mp-stepper" role="group" aria-label="Light">
+            <div class="mp-stepper__head"><span class="mp-stepper__count">Paso 2 de 3</span><h3 class="mp-stepper__title">Elige la fecha</h3></div>
+            <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="3">
+              <div class="mp-stepper__bar is-done"></div><div class="mp-stepper__bar is-current"></div><div class="mp-stepper__bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="component-example-card" data-theme="dark">
+          <p class="component-example-card__label">Dark</p>
+          <div class="mp-stepper" role="group" aria-label="Dark">
+            <div class="mp-stepper__head"><span class="mp-stepper__count">Paso 2 de 3</span><h3 class="mp-stepper__title">Elige la fecha</h3></div>
+            <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="3">
+              <div class="mp-stepper__bar is-done"></div><div class="mp-stepper__bar is-current"></div><div class="mp-stepper__bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="component-example-card" data-theme="high-contrast">
+          <p class="component-example-card__label">High Contrast</p>
+          <div class="mp-stepper" role="group" aria-label="HC">
+            <div class="mp-stepper__head"><span class="mp-stepper__count">Paso 2 de 3</span><h3 class="mp-stepper__title">Elige la fecha</h3></div>
+            <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="3">
+              <div class="mp-stepper__bar is-done"></div><div class="mp-stepper__bar is-current"></div><div class="mp-stepper__bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Código -->
+    <div class="code-block">
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" onclick="copyCode(this)">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copiar
+        </button>
+        <pre class="active">&lt;!-- Stepper estándar --&gt;
+&lt;div class="mp-stepper" role="group" aria-label="Progreso del formulario"&gt;
+  &lt;div class="mp-stepper__head"&gt;
+    &lt;span class="mp-stepper__count"&gt;Paso 2 de 3&lt;/span&gt;
+    &lt;h2 class="mp-stepper__title"&gt;Elige la fecha y hora&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class="mp-stepper__track"
+       role="progressbar"
+       aria-valuenow="2"
+       aria-valuemin="1"
+       aria-valuemax="3"
+       aria-label="Paso 2 de 3"&gt;
+    &lt;div class="mp-stepper__bar is-done"&gt;&lt;/div&gt;
+    &lt;div class="mp-stepper__bar is-current"&gt;&lt;/div&gt;
+    &lt;div class="mp-stepper__bar"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Variante compact --&gt;
+&lt;div class="mp-stepper mp-stepper--compact" role="group" aria-label="Paso 2 de 4"&gt;
+  &lt;div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="4"&gt;
+    &lt;div class="mp-stepper__bar is-done"&gt;&lt;/div&gt;
+    &lt;div class="mp-stepper__bar is-current"&gt;&lt;/div&gt;
+    &lt;div class="mp-stepper__bar"&gt;&lt;/div&gt;
+    &lt;div class="mp-stepper__bar"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       4. ESTRUCTURA BASE — demo interactivo
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="fp-estructura-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="fp-estructura-title" class="mp-h2">4. Estructura base de formulario</h2>
+        <p class="mp-body-m">Demo interactivo: Reembolso de medicamentos. Interactúa con los campos, selects y botones.</p>
+      </div>
+    </div>
+
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-4">
+        <h3 class="mp-h3" style="margin-bottom:12px">Grilla de campos</h3>
+        <ul class="component-list" style="margin-bottom:24px">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><strong>1 col</strong> — campos largos (nombre, descripción).</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><strong>2 col</strong> — campos relacionados (tipo doc / número).</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><strong>3 col</strong> — campos cortos en la misma fila.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Gap entre campos: <code>16 px</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Gap entre secciones: <code>32 px</code>.</li>
+        </ul>
+        <h3 class="mp-h3" style="margin-bottom:12px">Orden recomendado</h3>
+        <ul class="component-list" style="margin-bottom:24px">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Breadcrumb de contexto.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Título + descripción del formulario.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Alert informativo si aplica.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Secciones con título en MAYÚSCULAS.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Acciones al final.</li>
+        </ul>
+        <h3 class="mp-h3" style="margin-bottom:12px">Acciones</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Primario (enviar) a la derecha.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Terciario (cancelar) a la izquierda.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Máximo 3 acciones visibles.</li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-lg-8">
+        <div class="component-example-card" style="padding:28px">
+
+          <nav class="mp-breadcrumb" aria-label="Breadcrumb" style="margin-bottom:16px">
+            <ol class="mp-breadcrumb__list">
+              <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i></a></li>
+              <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#">Servicios</a></li>
+              <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current">Reembolso de medicamentos</span></li>
+            </ol>
+          </nav>
+
+          <div style="margin-bottom:16px">
+            <h2 class="mp-h4" style="margin-bottom:4px">Reembolso de medicamentos</h2>
+            <p class="mp-body-l" style="color:var(--use-text-secondary);margin:0">Diligencia el formulario para gestionar el reembolso de tus medicamentos.</p>
+          </div>
+
+          <div class="mp-alert mp-alert--info" role="status" style="margin-bottom:24px">
+            <i class="icon icon-info icon-32 mp-alert__icon" aria-hidden="true"></i>
+            <div class="mp-alert__content">
+              <p class="mp-alert__title">Importante</p>
+              <p class="mp-alert__body">Si eres usuario de programas especiales (VIH, cáncer, artritis), solicita el reembolso directamente a miprescompensar@compensarsalud.com.</p>
+            </div>
+          </div>
+
+          <form novalidate style="display:flex;flex-direction:column;gap:32px">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <p class="fp-form-label-section">Datos personales</p>
+              <div style="display:grid;grid-template-columns:1fr;gap:16px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp3-nombre"><span class="mp-label__required">*</span> Nombre y apellidos</label>
+                  <input class="mp-input-field" id="fp3-nombre" type="text" placeholder="Vanesa María García" autocomplete="name">
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp3-tipo"><span class="mp-label__required">*</span> Tipo de identificación</label>
+                  <select class="mp-input-field mp-select" id="fp3-tipo">
+                    <option value="">Selecciona</option>
+                    <option selected>Cédula de ciudadanía</option>
+                    <option>Cédula de extranjería</option>
+                    <option>Pasaporte</option>
+                  </select>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp3-num"><span class="mp-label__required">*</span> Número de identificación</label>
+                  <input class="mp-input-field" id="fp3-num" type="text" placeholder="11.111.111.111" inputmode="numeric">
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp3-email"><span class="mp-label__required">*</span> Correo electrónico</label>
+                  <input class="mp-input-field error" id="fp3-email" type="email" placeholder="correo@ejemplo.com" aria-invalid="true" aria-describedby="fp3-email-err">
+                  <span class="mp-input-helper error" id="fp3-email-err"><i class="icon icon-warning-circle icon-16" aria-hidden="true"></i> Campo obligatorio</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp3-tel"><span class="mp-label__required">*</span> Teléfono celular</label>
+                  <input class="mp-input-field" id="fp3-tel" type="tel" placeholder="311 111 1111">
+                  <span class="mp-input-helper">Máximo 10 dígitos</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <p class="fp-form-label-section">Adjunta los documentos requeridos</p>
+              <p class="mp-body-l" style="color:var(--use-text-secondary);margin:0">Sube o arrastra tu archivo (PDF, JPG o PNG · Máx. 5 MB)</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp3-docid"><span class="mp-label__required">*</span> Documento de identidad</label>
+                  <label class="fp-upload-zone" for="fp3-docid" tabindex="0" role="button">
+                    <i class="icon icon-cloud-upload icon-32" style="color:var(--use-text-tertiary)" aria-hidden="true"></i>
+                    <span style="font-size:13px;color:var(--use-text-secondary)">Arrastra o <span style="color:var(--use-primary-default);font-weight:600">selecciona</span></span>
+                    <span style="font-size:11px;color:var(--use-text-tertiary)">PDF, JPG, PNG · Máx. 5 MB</span>
+                  </label>
+                  <input type="file" id="fp3-docid" accept=".pdf,.jpg,.png" class="visually-hidden">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp3-formula"><span class="mp-label__required">*</span> Fórmula médica</label>
+                  <label class="fp-upload-zone" for="fp3-formula" tabindex="0" role="button">
+                    <i class="icon icon-cloud-upload icon-32" style="color:var(--use-text-tertiary)" aria-hidden="true"></i>
+                    <span style="font-size:13px;color:var(--use-text-secondary)">Arrastra o <span style="color:var(--use-primary-default);font-weight:600">selecciona</span></span>
+                    <span style="font-size:11px;color:var(--use-text-tertiary)">PDF, JPG, PNG · Máx. 5 MB</span>
+                  </label>
+                  <input type="file" id="fp3-formula" accept=".pdf,.jpg,.png" class="visually-hidden">
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="background:var(--use-surface-theme-gray-5);border-radius:var(--radius-xs);padding:16px">
+                <p class="mp-body-l" style="font-weight:700;margin-bottom:8px">Nota</p>
+                <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px">
+                  <li class="mp-body-l" style="color:var(--use-text-secondary)">El reembolso aplica solo para la orden médica adjunta.</li>
+                  <li class="mp-body-l" style="color:var(--use-text-secondary)">El tiempo estimado de respuesta es de 72 horas hábiles.</li>
+                </ul>
+              </div>
+              <label class="mp-choice" style="align-items:flex-start;background:var(--use-surface-theme-gray-5);border-radius:var(--radius-xs);padding:12px">
+                <input class="mp-choice__input" type="checkbox" id="fp3-consent">
+                <span class="mp-choice__control" aria-hidden="true"></span>
+                <span class="mp-choice__label mp-body-l">Autorizo a Compensar EPS el tratamiento de mis datos personales conforme a la Ley 1581 de 2012.</span>
+              </label>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:20px;border-top:1px solid var(--use-border-subtle)">
+              <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button"><i class="icon icon-arrow-left icon-20" aria-hidden="true"></i>Regresar</button>
+              <button class="mp-btn mp-btn--primario mp-btn--icon-right" type="submit">Enviar solicitud<i class="icon icon-paper-plane icon-20" aria-hidden="true"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       5. FORMULARIO MULTI-PASO
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="fp-multistep-title">
+    <div class="component-section__header">
+      <div>
+        <h2 id="fp-multistep-title" class="mp-h2">5. Formulario multi-paso</h2>
+        <p class="mp-body-m">Patrón para flujos con más de 7 campos o con dependencias lógicas. El stepper siempre al inicio de cada paso.</p>
+      </div>
+    </div>
+
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-4">
+        <h3 class="mp-h3" style="margin-bottom:12px">Cuándo usar</h3>
+        <ul class="component-list" style="margin-bottom:24px">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Más de 7–8 campos en total.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Secciones con dependencias lógicas entre pasos.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Flujos de agendamiento, afiliación o radicación.</li>
+        </ul>
+        <h3 class="mp-h3" style="margin-bottom:12px">Reglas de navegación</h3>
+        <ul class="component-list" style="margin-bottom:24px">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Stepper siempre al inicio del paso.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>"Regresar" no borra datos ingresados.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Validar antes de avanzar al paso siguiente.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Ofrecer guardar borrador en flujos largos.</li>
+        </ul>
+        <h3 class="mp-h3" style="margin-bottom:12px">Último paso</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mostrar resumen antes del envío final.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Confirmar con modal si la acción es irreversible.</li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-lg-8">
+        <div class="component-example-card" style="padding:28px">
+          <div class="mp-stepper" role="group" aria-label="Progreso" style="margin-bottom:24px">
+            <div class="mp-stepper__head">
+              <span class="mp-stepper__count">Paso 2 de 3</span>
+              <h3 class="mp-stepper__title">Elige la fecha y hora</h3>
+            </div>
+            <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="3">
+              <div class="mp-stepper__bar is-done"></div>
+              <div class="mp-stepper__bar is-current"></div>
+              <div class="mp-stepper__bar"></div>
+            </div>
+          </div>
+
+          <form novalidate style="display:flex;flex-direction:column;gap:32px">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <p class="fp-form-label-section">Especialidad</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp4-esp"><span class="mp-label__required">*</span> Especialidad</label>
+                  <select class="mp-input-field mp-select" id="fp4-esp">
+                    <option>Medicina general</option><option>Pediatría</option><option>Odontología</option>
+                  </select>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp4-sede"><span class="mp-label__required">*</span> Sede</label>
+                  <select class="mp-input-field mp-select" id="fp4-sede">
+                    <option>Bogotá Centro</option><option>Bogotá Sur</option><option>Bogotá Norte</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <p class="fp-form-label-section">Fecha y hora</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp4-fecha"><span class="mp-label__required">*</span> Fecha preferida</label>
+                  <input class="mp-input-field" id="fp4-fecha" type="date" value="2026-05-15">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label class="mp-label" for="fp4-hora"><span class="mp-label__required">*</span> Hora preferida</label>
+                  <select class="mp-input-field mp-select" id="fp4-hora">
+                    <option>9:00 a.m.</option><option selected>10:00 a.m.</option><option>11:00 a.m.</option>
+                  </select>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <label class="mp-label" for="fp4-motivo">Motivo de consulta</label>
+                <textarea class="mp-input-field mp-input-field--textarea" id="fp4-motivo" rows="3" placeholder="Describe brevemente el motivo de tu consulta…"></textarea>
+                <span class="mp-input-helper">Máximo 300 caracteres</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:20px;border-top:1px solid var(--use-border-subtle)">
+              <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button"><i class="icon icon-arrow-left icon-20" aria-hidden="true"></i>Regresar</button>
+              <div style="display:flex;gap:12px">
+                <button class="mp-btn mp-btn--secundario" type="button">Guardar borrador</button>
+                <button class="mp-btn mp-btn--primario mp-btn--icon-right" type="button">Continuar<i class="icon icon-arrow-right icon-20" aria-hidden="true"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       6. DO / DON'T
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="fp-rules-title">
+    <div class="component-section__header">
+      <h2 id="fp-rules-title" class="mp-h2">6. Comportamiento y reglas</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--do h-100">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+            <i class="icon icon-check-circle icon-20" style="color:var(--use-state-success-text,#0d6e3a)" aria-hidden="true"></i>
+            <h3 class="mp-h3" style="margin:0">Sí hacer</h3>
+          </div>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Label visible sobre cada campo.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Campos obligatorios con <code>*</code> y leyenda visible.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Error inline con icono + texto descriptivo.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Agrupar campos en secciones.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Stepper en flujos de más de 2 pasos.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Regresar sin perder datos ingresados.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--dont h-100">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+            <i class="icon icon-x-circle icon-20" style="color:var(--use-state-error-text,#b91c1c)" aria-hidden="true"></i>
+            <h3 class="mp-h3" style="margin:0">No hacer</h3>
+          </div>
+          <ul class="component-list">
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>Usar el placeholder como reemplazo del label.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>Pedir información innecesaria o duplicada.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>Validar solo al hacer submit.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>Ocultar el stepper en pasos intermedios.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>Más de 3 acciones en la barra de botones.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>Reiniciar el formulario al navegar entre pasos.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       7. ACCESIBILIDAD + QA
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="fp-a11y-title">
+    <div class="component-section__header">
+      <h2 id="fp-a11y-title" class="mp-h2">7. Accesibilidad y checklist QA</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3" style="margin-bottom:12px">Accesibilidad</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Label siempre visible — nunca reemplazar con placeholder.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Altura mínima 44 px en campos y botones (WCAG).</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Errores: <code>aria-invalid="true"</code> + <code>aria-describedby</code> al mensaje.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mensaje de error = icono + texto, nunca solo color.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>mp-stepper__track</code> con <code>role="progressbar"</code> y <code>aria-valuenow/min/max</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Selects: clase combinada <code>mp-input-field mp-select</code>.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3" style="margin-bottom:12px">Checklist QA</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Labels visibles y asociados con <code>for</code>/<code>id</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Campos obligatorios con <code>*</code> y leyenda al inicio.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Errores: <code>aria-invalid</code>, icono y texto descriptivo.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Stepper actualiza <code>aria-valuenow</code> al navegar.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>"Regresar" no borra datos ya ingresados.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Se ve correctamente en Light, Dark y High Contrast.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Focus ring visible con navegación por teclado.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Código ══════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="fp-code-title">
+    <div class="component-section__header">
+      <h2 id="fp-code-title" class="mp-h2">8. Código</h2>
+    </div>
+    <div class="code-block">
+      <div class="code-tabs" role="tablist" aria-label="Código del componente">
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-stepper-code-tab="html" aria-selected="true">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-stepper-code-tab="css" aria-selected="false">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-stepper-code-tab="sass" aria-selected="false">Sass</button>
+      </div>
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-stepper-copy-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="stepper-code-html" class="active"></pre>
+        <pre id="stepper-code-css"></pre>
+        <pre id="stepper-code-sass"></pre>
+      </div>
+    </div>
+    <div class="component-example-card__actions" style="margin-top:var(--space-12);display:flex;gap:var(--space-8)">
+      <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button" data-stepper-download="html">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>HTML
+      </button>
+      <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button" data-stepper-download="css">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>CSS
+      </button>
+      <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button" data-stepper-download="sass">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>Sass
+      </button>
+    </div>
+  </section>
+
+</article>

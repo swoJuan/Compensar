@@ -139,3 +139,12 @@
   text-transform: uppercase;
   opacity:        0.55;
 }
+
+// ── Visualizador ─────────────────────────────────────────────
+[data-component-doc='empty-state'] .button-code-panel pre {
+  display: none;
+}
+
+[data-component-doc='empty-state'] .button-code-panel pre.active {
+  display: block;
+}

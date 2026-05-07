@@ -321,9 +321,9 @@
     </div>
     <div class="button-code-panel">
       <div class="button-code-tabs" role="tablist" aria-label="Código de empty state">
-        <button type="button" class="mp-btn mp-btn--terciario active" role="tab" data-est-code-tab="html" aria-selected="true">HTML</button>
-        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-est-code-tab="scss" aria-selected="false">SCSS</button>
-        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-est-code-tab="angular" aria-selected="false">Angular</button>
+        <button type="button" class="mp-btn mp-btn--terciario active" role="tab" data-est-code-tab="html" aria-selected="true" onclick="event.stopPropagation(); window.emptyStateDocs?.setCodeTabFromButton(this)">HTML</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-est-code-tab="scss" aria-selected="false" onclick="event.stopPropagation(); window.emptyStateDocs?.setCodeTabFromButton(this)">SCSS</button>
+        <button type="button" class="mp-btn mp-btn--terciario" role="tab" data-est-code-tab="angular" aria-selected="false" onclick="event.stopPropagation(); window.emptyStateDocs?.setCodeTabFromButton(this)">Angular</button>
         <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left button-copy" data-est-copy-code>
           <i class="icon icon-share icon-16" aria-hidden="true"></i>
           Copiar código

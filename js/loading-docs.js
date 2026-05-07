@@ -331,6 +331,23 @@ $mp-loading-reduced-duration: 2.4s;
     });
   }
 
+  function setCodeTab(page, tabName = 'html') {
+    if (!page) return;
+    page.querySelectorAll('[data-loading-code-tab]').forEach((item) => {
+      const active = item.dataset.loadingCodeTab === tabName;
+      item.classList.toggle('active', active);
+      item.setAttribute('aria-selected', String(active));
+    });
+    page.querySelectorAll('#loading-code-html, #loading-code-css, #loading-code-sass').forEach((pre) => {
+      pre.classList.toggle('active', pre.id === `loading-code-${tabName}`);
+    });
+  }
+
+  function setCodeTabFromButton(button) {
+    if (!button) return;
+    setCodeTab(findPage(button), button.dataset.loadingCodeTab);
+  }
+
   function renderStaticDemos(page) {
     if (!page) return;
     const demos = {
@@ -371,6 +388,17 @@ $mp-loading-reduced-duration: 2.4s;
     URL.revokeObjectURL(url);
   }
 
+  function downloadFromButton(button) {
+    if (!button) return;
+    const type = button.dataset.loadingDownload;
+    if (type === 'html') downloadFile('mp-loading.html', downloadableHtml(), 'text/html');
+    if (type === 'css') downloadFile('mp-loading.css', exportCss, 'text/css');
+    if (type === 'sass') downloadFile('mp-loading.scss', exportSass, 'text/x-scss');
+    if (type === 'animation-css') downloadFile('mp-loading-animation.css', animationCss, 'text/css');
+    if (type === 'animation-sass') downloadFile('mp-loading-animation.scss', animationSass, 'text/x-scss');
+    flashButton(button, 'Descargado');
+  }
+
   function downloadableHtml() {
     return `<!doctype html>
 <html lang="es">
@@ -401,16 +429,7 @@ ${buildLoadingHtml({ text: 'Estamos buscando opciones para ti...' })}
 
       const tab = event.target.closest('[data-loading-code-tab]');
       if (tab) {
-        const page = findPage(tab);
-        page.querySelectorAll('[data-loading-code-tab]').forEach((item) => {
-          const active = item === tab;
-          item.classList.toggle('active', active);
-          item.setAttribute('aria-selected', String(active));
-        });
-        page.querySelectorAll('#loading-code-html, #loading-code-css, #loading-code-sass').forEach((pre) => {
-          pre.classList.toggle('active', pre.id === `loading-code-${tab.dataset.loadingCodeTab}`);
-        });
-        renderPlayground(page);
+        setCodeTabFromButton(tab);
         return;
       }
 
@@ -428,13 +447,7 @@ ${buildLoadingHtml({ text: 'Estamos buscando opciones para ti...' })}
 
       const download = event.target.closest('[data-loading-download]');
       if (download) {
-        const type = download.dataset.loadingDownload;
-        if (type === 'html') downloadFile('mp-loading.html', downloadableHtml(), 'text/html');
-        if (type === 'css') downloadFile('mp-loading.css', exportCss, 'text/css');
-        if (type === 'sass') downloadFile('mp-loading.scss', exportSass, 'text/x-scss');
-        if (type === 'animation-css') downloadFile('mp-loading-animation.css', animationCss, 'text/css');
-        if (type === 'animation-sass') downloadFile('mp-loading-animation.scss', animationSass, 'text/x-scss');
-        flashButton(download, 'Descargado');
+        downloadFromButton(download);
       }
     });
 
@@ -453,6 +466,7 @@ ${buildLoadingHtml({ text: 'Estamos buscando opciones para ti...' })}
     const page = root.querySelector('[data-component-doc="loading"]');
     if (!page || page.dataset.loadingInitialized === 'true') return;
     renderStaticCode(page);
+    setCodeTab(page, 'html');
     renderStaticDemos(page);
     renderAnatomy(page, 'default');
     renderPlayground(page);
@@ -467,7 +481,7 @@ ${buildLoadingHtml({ text: 'Estamos buscando opciones para ti...' })}
     renderPlayground(page);
   }
 
-  return { initLoadingDocs, bindLoadingDelegated, syncTheme };
+  return { initLoadingDocs, bindLoadingDelegated, syncTheme, setCodeTabFromButton, downloadFromButton };
 })();
 
 window.loadingDocs = loadingDocs;
