@@ -1,0 +1,278 @@
+@use '../../core/abstracts' as *;
+
+// ============================================================
+//  portal/pages/_app-intro.scss
+//  Intro page — App (MAUI) section
+// ============================================================
+
+// ── Hero ──────────────────────────────────────────────────
+.intro-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-8);
+  align-items: center;
+  background: var(--use-surface-theme-gray-5);
+  border: rem(1px) solid var(--ui-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-8);
+  margin-bottom: var(--space-8);
+  overflow: hidden;
+  position: relative;
+
+  @include md-down {
+    grid-template-columns: 1fr;
+  }
+}
+
+.intro-hero-content { min-width: 0; }
+
+.intro-version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  background: color-mix(in srgb, var(--ui-accent) 10%, transparent);
+  color: var(--ui-accent);
+  font-weight: 700;
+  font-size: rem(13px);
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+
+  .material-symbols-rounded { font-size: rem(16px); }
+}
+
+.intro-title {
+  color: var(--use-text-heading, var(--use-text-primary));
+  line-height: 1.1;
+  margin-bottom: var(--space-2);
+}
+
+.intro-subtitle {
+  color: var(--ui-accent);
+  margin-bottom: var(--space-4);
+}
+
+.intro-desc {
+  color: var(--ui-text-muted);
+  max-width: rem(520px);
+  margin-bottom: var(--space-24);
+}
+
+.intro-tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.intro-tech {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  background: var(--use-surface-white);
+  border: rem(1px) solid var(--ui-border);
+  color: var(--ui-text);
+  font-size: rem(13px);
+  font-weight: 600;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-xs);
+
+  .material-symbols-rounded {
+    font-size: rem(16px);
+    color: var(--ui-accent);
+  }
+}
+
+// ── Visual decoration ─────────────────────────────────────
+.intro-hero-visual {
+  position: relative;
+  width: rem(160px);
+  height: rem(160px);
+  flex-shrink: 0;
+
+  @include md-down { display: none; }
+}
+
+.intro-visual-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: rem(1.5px) solid var(--use-primary-default);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ring-1 { width: rem(80px);  height: rem(80px);  opacity: .35; }
+.ring-2 { width: rem(120px); height: rem(120px); opacity: .2; }
+.ring-3 { width: rem(160px); height: rem(160px); opacity: .1; }
+
+.intro-visual-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: rem(48px);
+  color: var(--use-primary-default);
+  opacity: .6;
+}
+
+// ── Objective ─────────────────────────────────────────────
+.intro-objective {
+  display: flex;
+  gap: var(--space-24);
+  align-items: flex-start;
+  background: var(--use-surface-theme-gray-5);
+  border: rem(1px) solid var(--ui-border);
+  border-left: rem(4px) solid var(--use-primary-default);
+  border-radius: var(--radius-xs);
+  padding: var(--space-24) var(--space-32);
+  margin-bottom: var(--space-8);
+
+  @include sm-down {
+    flex-direction: column;
+    gap: var(--space-16);
+    padding: var(--space-20);
+  }
+}
+
+.intro-objective-icon {
+  width: var(--space-40);
+  height: var(--space-40);
+  background: color-mix(in srgb, var(--ui-accent) 10%, transparent);
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  .material-symbols-rounded { color: var(--ui-accent); }
+}
+
+.intro-objective-title {
+  color: var(--ui-text);
+  margin-bottom: var(--space-2);
+}
+
+.intro-objective-text {
+  color: var(--ui-text-muted);
+  strong { color: var(--ui-text); }
+}
+
+// ── Cards ─────────────────────────────────────────────────
+.intro-cards-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: rem(11px);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted);
+  margin-bottom: var(--space-4);
+
+  .material-symbols-rounded {
+    font-size: rem(18px);
+    color: var(--ui-accent);
+  }
+}
+
+.intro-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(rem(260px), 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.intro-card {
+  background: var(--use-surface-theme-gray-5);
+  border: rem(1px) solid var(--ui-border);
+  border-radius: var(--radius-xs);
+  padding: var(--space-24);
+  transition: box-shadow .15s, transform .15s;
+
+  &:hover {
+    box-shadow: var(--shadow-2);
+    transform: translateY(rem(-2px));
+  }
+}
+
+.intro-card-icon {
+  font-size: rem(28px);
+  color: var(--ui-accent);
+  margin-bottom: var(--space-8);
+  display: block;
+}
+
+.intro-card h3 {
+  color: var(--ui-text);
+  margin-bottom: var(--space-2);
+}
+
+.intro-card p { color: var(--ui-text-muted); }
+
+// ── Stack tecnológico ─────────────────────────────────────
+.intro-stack {
+  margin-top: var(--space-8);
+  padding: var(--space-32);
+  background: var(--use-surface-theme-gray-5);
+  border: rem(1.5px) solid var(--ui-border);
+  border-radius: var(--radius-xs);
+}
+
+.intro-stack-title {
+  color: var(--ui-text);
+  margin: 0 0 var(--space-24);
+}
+
+.intro-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+
+  @include sm-down { grid-template-columns: 1fr; }
+}
+
+.intro-stack-item {
+  display: flex;
+  gap: var(--space-16);
+  align-items: flex-start;
+  padding: var(--space-16);
+  background: var(--use-surface-white);
+  border-radius: var(--radius-xs);
+  border: rem(1px) solid var(--ui-border);
+}
+
+.intro-stack-icon {
+  width: rem(40px);
+  height: rem(40px);
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &--maui  {
+    background: color-mix(in srgb, var(--use-primary-default) 12%, transparent);
+    color: var(--use-primary-default);
+  }
+  &--xaml  {
+    background: color-mix(in srgb, var(--base-blue-80, #1a73e8) 12%, transparent);
+    color: var(--base-blue-80, #1a73e8);
+  }
+  &--figma {
+    background: color-mix(in srgb, var(--use-primary-default) 12%, transparent);
+    color: var(--use-primary-default);
+  }
+  &--shell {
+    background: color-mix(in srgb, var(--base-blue-70, #2563eb) 12%, transparent);
+    color: var(--base-blue-70, #2563eb);
+  }
+}
+
+.intro-stack-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.intro-stack-name { color: var(--ui-text); font-weight: 700; }
+.intro-stack-desc { color: var(--ui-text-muted); font-size: rem(14px); }

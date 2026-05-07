@@ -91,3 +91,182 @@
   min-height: 200px;
   justify-content: center;
 }
+
+// ── Spec table ────────────────────────────────────────────
+.component-spec-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--use-border-subtle);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.component-spec-table__row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-16);
+  align-items: baseline;
+  padding: var(--space-12) var(--space-16);
+  border-bottom: 1px solid var(--use-border-subtle);
+
+  &:last-child { border-bottom: none; }
+
+  &--highlight {
+    background: color-mix(in srgb, var(--use-primary-default) 6%, transparent);
+  }
+}
+
+.component-spec-table__label {
+  font-weight: 700;
+  color: var(--use-text-primary);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.component-spec-table__value {
+  color: var(--use-text-secondary);
+  line-height: 1.5;
+
+  code, kbd {
+    font-size: 12px;
+    font-family: var(--font-code, 'Roboto Mono', monospace);
+    background: color-mix(in srgb, var(--use-primary-default) 10%, transparent);
+    color: var(--use-primary-default);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+}
+
+@include md-down {
+  .component-spec-table__row {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+// ── Phone mockup ─────────────────────────────────────────
+.sidebar-phone-mockup {
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-phone-mockup__screen {
+  width: min(300px, 100%);
+  height: 520px;
+  background: var(--use-surface-theme-gray-5, #f5f4f4);
+  border-radius: rem(28px);
+  border: rem(3px) solid var(--use-border-default);
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-phone-mockup__app-bg {
+  flex: 1;
+  padding: var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.sidebar-phone-mockup__list-item {
+  height: 64px;
+  background: var(--use-surface-white);
+  border: 1px solid var(--use-border-subtle);
+  border-radius: 8px;
+  opacity: .5;
+}
+
+.sidebar-phone-mockup__sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--use-surface-white);
+  border-radius: rem(16px) rem(16px) 0 0;
+  box-shadow: 0 -4px 24px rgba(0,0,0,.12);
+  display: flex;
+  flex-direction: column;
+  max-height: 78%;
+}
+
+.sidebar-phone-mockup__drag-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--use-border-default);
+  border-radius: 2px;
+  margin: 8px auto 0;
+}
+
+.sidebar-phone-mockup__sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-12) var(--space-16) var(--space-8);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--use-text-primary);
+  border-bottom: 1px solid var(--use-border-subtle);
+}
+
+.sidebar-phone-mockup__close-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--use-surface-theme-gray-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--use-text-primary);
+}
+
+.sidebar-phone-mockup__sheet-body {
+  flex: 1;
+  overflow: hidden;
+  padding: var(--space-12) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.sidebar-phone-mockup__chip-row {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.sidebar-phone-mockup__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.sidebar-phone-mockup__row-icon {
+  width: 22px;
+  height: 22px;
+  background: var(--use-surface-theme-blue-30, #e6f1fb);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--use-text-primary);
+}
+
+.sidebar-phone-mockup__row-lines { flex: 1; }
+
+.sidebar-phone-mockup__line {
+  height: 10px;
+  background: var(--use-surface-theme-gray-10, #e8e6e6);
+  border-radius: 4px;
+  &--short { width: 65%; }
+}
+
+.sidebar-phone-mockup__sheet-footer {
+  padding: var(--space-10) var(--space-16) var(--space-12);
+  border-top: 1px solid var(--use-border-subtle);
+}

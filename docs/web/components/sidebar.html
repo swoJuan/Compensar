@@ -1,0 +1,471 @@
+<article class="component-doc-page sidebar-doc" data-component-doc="sidebar">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Componentes</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Sidebar / Overlay</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="sidebar-title">
+    <h1 id="sidebar-title" class="mp-h1">Sidebar / Overlay</h1>
+    <p class="mp-body-l">Panel lateral que emerge desde la derecha de la pantalla para mostrar detalles, confirmar acciones o presentar flujos secundarios sin abandonar la página actual. En móvil se convierte en bottom sheet.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Categoría: overlay</span>
+      <span class="component-chip">Figma: 4715:5763</span>
+    </div>
+  </section>
+
+  <!-- ══ 1. Resumen ══════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="sidebar-summary-title">
+    <div class="component-section__header">
+      <h2 id="sidebar-summary-title" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para mostrar detalles de un ítem de lista (centro médico, cita, servicio) sin navegar a otra página.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para confirmar o revisar información antes de una acción crítica.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para flujos secundarios de 1-3 pasos que no justifican una página completa.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando el contexto detrás del panel debe mantenerse visible en desktop.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Usa el sidebar para detalles contextuales que complementan la vista actual.</p>
+            <div class="component-example-actions">
+              <span class="mp-badge mp-badge--success">Detalle de centro médico</span>
+              <span class="mp-badge mp-badge--success">Confirmar cita</span>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No uses el sidebar para flujos complejos de más de 3 pasos — navega a una página dedicada.</p>
+            <div class="component-example-actions">
+              <span class="mp-badge mp-badge--error">Formulario de 5 pasos</span>
+              <span class="mp-badge mp-badge--error">Onboarding completo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2. Anatomía interactiva ══════════════════════════════ -->
+  <section class="component-section" aria-labelledby="sidebar-anatomy-title">
+    <div class="component-section__header">
+      <h2 id="sidebar-anatomy-title" class="mp-h2">2. Anatomía interactiva</h2>
+    </div>
+
+    <div class="segmented-control" role="group" aria-label="Variante de sidebar">
+      <button type="button" class="mp-btn mp-btn--terciario is-active" data-sidebar-anatomy="detail" aria-pressed="true">Detalle</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-sidebar-anatomy="image" aria-pressed="false">Con imagen</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-sidebar-anatomy="confirm" aria-pressed="false">Confirmación</button>
+    </div>
+
+    <div class="sidebar-anatomy-stage">
+      <!-- Callouts -->
+      <div class="sidebar-doc-callout sidebar-doc-callout--header">
+        <strong>Header</strong>
+        <span>Título + botón cerrar. Alto mínimo 64 px.</span>
+      </div>
+      <div class="sidebar-doc-callout sidebar-doc-callout--close">
+        <strong>mp-sidebar__close</strong>
+        <span>Botón 40×40 px, foco visible, Escape cierra.</span>
+      </div>
+      <div class="sidebar-doc-callout sidebar-doc-callout--body">
+        <strong>Body</strong>
+        <span>Área scrollable con secciones separadas por borde.</span>
+      </div>
+      <div class="sidebar-doc-callout sidebar-doc-callout--footer">
+        <strong>Footer</strong>
+        <span>Acciones principales. Sticky al fondo. Alto mínimo 80 px.</span>
+      </div>
+
+      <div class="sidebar-anatomy-preview" id="sidebar-anatomy-preview"></div>
+    </div>
+
+    <div class="component-controls">
+      <label class="button-doc-toggle"><input type="checkbox" data-sidebar-toggle="labels" checked> Etiquetas</label>
+    </div>
+  </section>
+
+  <!-- ══ 3. Variantes ═════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="sidebar-variants-title">
+    <div class="component-section__header">
+      <h2 id="sidebar-variants-title" class="mp-h2">3. Variantes</h2>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Variante: Detalle de centro / servicio -->
+      <div class="col-12">
+        <div class="component-example-card">
+          <div class="component-example-card__header">
+            <h3 class="component-example-card__title">Detalle (con imagen)</h3>
+            <p class="component-example-card__desc">Muestra información de un centro médico: foto, estado, horarios y datos de contacto.</p>
+          </div>
+          <div class="component-example-card__demo">
+            <div class="sidebar-demo-wrapper">
+              <p class="mp-body-m" style="color:var(--use-text-secondary);text-align:center;margin:0">El panel emerge desde la derecha</p>
+              <button class="mp-btn mp-btn--primario" type="button" data-sidebar-open="sidebar-demo-detail">
+                <i class="icon icon-sidebar-simple icon-20" aria-hidden="true"></i>
+                Abrir panel de detalle
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Variante: Confirmación -->
+      <div class="col-12">
+        <div class="component-example-card">
+          <div class="component-example-card__header">
+            <h3 class="component-example-card__title">Confirmación</h3>
+            <p class="component-example-card__desc">Resumen previo a una acción crítica (confirmar cita, pago, cancelación).</p>
+          </div>
+          <div class="component-example-card__demo">
+            <div class="sidebar-demo-wrapper">
+              <p class="mp-body-m" style="color:var(--use-text-secondary);text-align:center;margin:0">El panel emerge desde la derecha</p>
+              <button class="mp-btn mp-btn--primario" type="button" data-sidebar-open="sidebar-demo-confirm">
+                <i class="icon icon-check-circle icon-20" aria-hidden="true"></i>
+                Abrir panel de confirmación
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 4. Comportamiento ════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="sidebar-behavior-title">
+    <div class="component-section__header">
+      <h2 id="sidebar-behavior-title" class="mp-h2">4. Comportamiento</h2>
+    </div>
+
+    <!-- Tabla de especificaciones -->
+    <div class="component-spec-table">
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label">Apertura</span>
+        <span class="component-spec-table__value"><code>translateX(100%)</code> → <code>translateX(0)</code>, 280 ms, <code>cubic-bezier(.4,0,.2,1)</code></span>
+      </div>
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label">Cierre</span>
+        <span class="component-spec-table__value">Clic en backdrop · Clic en ✕ · Tecla <kbd>Escape</kbd></span>
+      </div>
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label">Scroll</span>
+        <span class="component-spec-table__value">Body del panel scrollable — página detrás bloqueada (<code>overscroll-behavior: contain</code>)</span>
+      </div>
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label">Clase activa</span>
+        <span class="component-spec-table__value">Agregar <code>.is-open</code> al <code>.mp-sidebar</code> para mostrar</span>
+      </div>
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label">Ancho desktop</span>
+        <span class="component-spec-table__value"><code>--mp-sidebar-width: 480px</code> — ajustable con custom property</span>
+      </div>
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label">Alto máx. mobile</span>
+        <span class="component-spec-table__value"><code>max-height: 90dvh</code> — evita cubrir toda la pantalla</span>
+      </div>
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label">z-index</span>
+        <span class="component-spec-table__value"><code>400</code> — sobre headers y tooltips, bajo modales de alerta</span>
+      </div>
+      <div class="component-spec-table__row component-spec-table__row--highlight">
+        <span class="component-spec-table__label">Responsive ≤ 768 px</span>
+        <span class="component-spec-table__value">Bottom sheet — emerge desde abajo: <code>translateY(100%)</code> → <code>translateY(0)</code>, border-radius arriba</span>
+      </div>
+    </div>
+
+    <!-- Demo responsive -->
+    <div style="margin-top:var(--space-32)">
+      <h3 class="mp-h3" style="margin-bottom:var(--space-16)">Demo responsive (bottom sheet)</h3>
+      <div class="row g-4 align-items-start">
+        <div class="col-12 col-lg-4">
+          <p class="mp-body-m" style="color:var(--use-text-secondary)">En pantallas ≤ 768 px el panel cambia a bottom sheet: sale de abajo, ocupa el ancho completo y tiene borde redondeado solo arriba. El backdrop y el cierre por Escape funcionan igual.</p>
+          <ul class="component-list" style="margin-top:var(--space-16)">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>border-radius: 16px 16px 0 0</code></li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>width: 100%</code></li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>max-height: 90dvh</code></li>
+          </ul>
+        </div>
+        <div class="col-12 col-lg-8">
+          <!-- Mockup de teléfono con bottom sheet -->
+          <div class="sidebar-phone-mockup">
+            <div class="sidebar-phone-mockup__screen">
+              <div class="sidebar-phone-mockup__app-bg">
+                <div class="sidebar-phone-mockup__list-item"></div>
+                <div class="sidebar-phone-mockup__list-item"></div>
+                <div class="sidebar-phone-mockup__list-item"></div>
+              </div>
+              <div class="sidebar-phone-mockup__sheet">
+                <div class="sidebar-phone-mockup__drag-handle"></div>
+                <div class="sidebar-phone-mockup__sheet-header">
+                  <span>Calle 94</span>
+                  <div class="sidebar-phone-mockup__close-btn"><i class="icon icon-x icon-16"></i></div>
+                </div>
+                <div class="sidebar-phone-mockup__sheet-body">
+                  <div class="sidebar-phone-mockup__chip-row">
+                    <span class="mp-badge mp-badge--success" style="font-size:10px">Abierto</span>
+                    <span class="mp-badge mp-badge--info" style="font-size:10px">24 horas</span>
+                  </div>
+                  <div class="sidebar-phone-mockup__row">
+                    <div class="sidebar-phone-mockup__row-icon"><i class="icon icon-map-pin icon-12"></i></div>
+                    <div class="sidebar-phone-mockup__row-lines">
+                      <div class="sidebar-phone-mockup__line sidebar-phone-mockup__line--short"></div>
+                    </div>
+                  </div>
+                  <div class="sidebar-phone-mockup__row">
+                    <div class="sidebar-phone-mockup__row-icon"><i class="icon icon-clock icon-12"></i></div>
+                    <div class="sidebar-phone-mockup__row-lines">
+                      <div class="sidebar-phone-mockup__line"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sidebar-phone-mockup__sheet-footer">
+                  <button class="mp-btn mp-btn--primario" style="width:100%;font-size:13px;height:36px">Agendar cita</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 5. Do / Don't ════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="sidebar-dodont-title">
+    <div class="component-section__header">
+      <h2 id="sidebar-dodont-title" class="mp-h2">5. Do / Don't</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--do">
+          <div class="component-example-card__header">
+            <i class="icon icon-check-circle icon-20" style="color:var(--use-state-success-text,#0d6e3a)" aria-hidden="true"></i>
+            <h3 class="component-example-card__title">Do</h3>
+          </div>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mantén el título del panel corto (1 línea máx).</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El footer debe tener 1 acción primaria clara.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cierra el panel automáticamente tras completar la acción.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Preserva el foco en el panel al abrirlo (<code>focus</code> en el botón cerrar).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--dont">
+          <div class="component-example-card__header">
+            <i class="icon icon-x-circle icon-20" style="color:var(--use-state-error-text,#b91c1c)" aria-hidden="true"></i>
+            <h3 class="component-example-card__title">Don't</h3>
+          </div>
+          <ul class="component-list">
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No apiles sidebars encima de otro sidebar.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No uses el sidebar para contenido que el usuario necesita comparar con la página de fondo.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No bloquees el scroll del body con <code>overflow: hidden</code> si hay campos de formulario en el panel (iOS bug).</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No olvides manejar <kbd>Escape</kbd> para accesibilidad de teclado.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 6. Accesibilidad ══════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="sidebar-a11y-title">
+    <div class="component-section__header">
+      <h2 id="sidebar-a11y-title" class="mp-h2">6. Accesibilidad</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>role="dialog"</code> + <code>aria-modal="true"</code> en <code>.mp-sidebar</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>aria-label</code> o <code>aria-labelledby</code> apuntando al título del panel.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Al abrir, mover el foco al primer elemento interactivo (botón cerrar o primer campo).</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Al cerrar, restaurar el foco al elemento que lo abrió.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Implementar <strong>focus trap</strong>: Tab y Shift+Tab deben circular dentro del panel.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><kbd>Escape</kbd> cierra el panel siempre.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El backdrop tiene <code>aria-hidden="true"</code> — no es interactivo para lectores de pantalla.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Contraste mínimo 4.5:1 en todo texto sobre el fondo del panel.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 7. Checklist QA ══════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="sidebar-qa-title">
+    <div class="component-section__header">
+      <h2 id="sidebar-qa-title" class="mp-h2">7. Checklist QA</h2>
+    </div>
+    <ul class="component-list">
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Panel entra con animación suave desde la derecha (desktop) o desde abajo (mobile).</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Backdrop oscurece el fondo y cierra el panel al hacer clic.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i><kbd>Escape</kbd> cierra el panel desde cualquier elemento interno.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El body del panel scrollea independientemente de la página.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El footer permanece visible (sticky) al hacer scroll dentro del body.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>En mobile, el panel ocupa máximo 90dvh y tiene border-radius arriba.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Focus ring visible al navegar con teclado.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Se ve correctamente en Light, Dark y High Contrast.</li>
+    </ul>
+  </section>
+
+  <!-- ══ 8. Código ════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="sidebar-code-title">
+    <div class="component-section__header">
+      <h2 id="sidebar-code-title" class="mp-h2">8. Código</h2>
+    </div>
+    <div class="code-block">
+      <div class="code-tabs" role="tablist" aria-label="Código del componente">
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-sidebar-code-tab="html" aria-selected="true">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-sidebar-code-tab="css" aria-selected="false">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-sidebar-code-tab="sass" aria-selected="false">Sass</button>
+      </div>
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-sidebar-copy-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="sidebar-code-html" class="active"></pre>
+        <pre id="sidebar-code-css"></pre>
+        <pre id="sidebar-code-sass"></pre>
+      </div>
+    </div>
+    <div style="display:flex;gap:var(--space-8);margin-top:var(--space-12)">
+      <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button" data-sidebar-download="html">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>HTML
+      </button>
+      <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button" data-sidebar-download="css">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>CSS
+      </button>
+      <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button" data-sidebar-download="sass">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>Sass
+      </button>
+    </div>
+  </section>
+
+</article>
+
+<!-- ── Sidebars de demo (fuera del article, dentro del fragmento) ── -->
+<div class="mp-sidebar" id="sidebar-demo-detail" role="dialog" aria-modal="true" aria-label="Detalle del centro médico">
+  <div class="mp-sidebar__backdrop"></div>
+  <div class="mp-sidebar__panel">
+    <div class="mp-sidebar__header">
+      <span class="mp-sidebar__title">Calle 94</span>
+      <button class="mp-sidebar__close" type="button" aria-label="Cerrar panel">
+        <i class="icon icon-x icon-20" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="mp-sidebar__image">
+      <button class="mp-sidebar__image-nav mp-sidebar__image-nav--prev" type="button" aria-label="Imagen anterior"><i class="icon icon-caret-left icon-20"></i></button>
+      <button class="mp-sidebar__image-nav mp-sidebar__image-nav--next" type="button" aria-label="Imagen siguiente"><i class="icon icon-caret-right icon-20"></i></button>
+      <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=640&q=80" alt="Centro médico Calle 94">
+    </div>
+    <div class="mp-sidebar__body">
+      <div class="mp-sidebar__section">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span class="mp-badge mp-badge--success">Abierto</span>
+          <span class="mp-badge mp-badge--info">24 horas</span>
+        </div>
+        <div class="mp-sidebar__row">
+          <div class="mp-sidebar__row-icon"><i class="icon icon-clock icon-16" aria-hidden="true"></i></div>
+          <div class="mp-sidebar__row-content">
+            <p class="mp-sidebar__row-value">Cierra a las 7:00 pm</p>
+          </div>
+        </div>
+      </div>
+      <div class="mp-sidebar__section">
+        <p class="mp-sidebar__section-title">Ubicación y contacto</p>
+        <div class="mp-sidebar__row">
+          <div class="mp-sidebar__row-icon"><i class="icon icon-map-pin icon-16" aria-hidden="true"></i></div>
+          <div class="mp-sidebar__row-content">
+            <p class="mp-sidebar__row-value">Transversal Pereira # 23-45, Piso 2</p>
+          </div>
+        </div>
+        <div class="mp-sidebar__row">
+          <div class="mp-sidebar__row-icon"><i class="icon icon-phone icon-16" aria-hidden="true"></i></div>
+          <div class="mp-sidebar__row-content">
+            <p class="mp-sidebar__row-value">321 123 4578</p>
+          </div>
+        </div>
+      </div>
+      <div class="mp-sidebar__section">
+        <p class="mp-sidebar__section-title">Horarios de atención</p>
+        <div class="mp-sidebar__schedule">
+          <div class="mp-sidebar__schedule-row"><span>Lunes a Viernes</span><span>6:00 am – 10:30 pm</span></div>
+          <div class="mp-sidebar__schedule-row"><span>Sábados</span><span>6:00 am – 10:30 am</span></div>
+          <div class="mp-sidebar__schedule-row mp-sidebar__schedule-row--closed"><span>Domingos y Festivos</span><span>No hay atención</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="mp-sidebar__footer">
+      <button class="mp-btn mp-btn--primario" type="button">Agendar cita</button>
+    </div>
+  </div>
+</div>
+
+<div class="mp-sidebar" id="sidebar-demo-confirm" role="dialog" aria-modal="true" aria-label="Confirmar cita">
+  <div class="mp-sidebar__backdrop"></div>
+  <div class="mp-sidebar__panel">
+    <div class="mp-sidebar__header">
+      <span class="mp-sidebar__title">Confirma tu cita</span>
+      <button class="mp-sidebar__close" type="button" aria-label="Cerrar panel">
+        <i class="icon icon-x icon-20" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="mp-sidebar__body">
+      <p class="mp-body-m" style="color:var(--use-text-secondary)">Revisa que la información sea correcta y si estás de acuerdo, presiona confirmar.</p>
+      <div class="mp-sidebar__section">
+        <p class="mp-sidebar__section-title">Doctor</p>
+        <div class="mp-sidebar__row">
+          <div class="mp-sidebar__row-icon"><i class="icon icon-user icon-16" aria-hidden="true"></i></div>
+          <div class="mp-sidebar__row-content">
+            <p class="mp-sidebar__row-value" style="font-weight:700">Dra. Mariana Zapata</p>
+            <p class="mp-sidebar__row-value" style="font-size:14px;color:var(--use-text-secondary)">Medicina General</p>
+          </div>
+        </div>
+      </div>
+      <div class="mp-sidebar__section">
+        <div class="mp-sidebar__row">
+          <div class="mp-sidebar__row-icon"><i class="icon icon-calendar icon-16" aria-hidden="true"></i></div>
+          <div class="mp-sidebar__row-content">
+            <p class="mp-sidebar__row-label">Fecha y hora</p>
+            <p class="mp-sidebar__row-value">Jueves, 01 de Enero 2026 — 8:00 am</p>
+          </div>
+        </div>
+        <div class="mp-sidebar__row">
+          <div class="mp-sidebar__row-icon"><i class="icon icon-map-pin icon-16" aria-hidden="true"></i></div>
+          <div class="mp-sidebar__row-content">
+            <p class="mp-sidebar__row-label">Ubicación</p>
+            <p class="mp-sidebar__row-value">San Roque — Cajicá</p>
+          </div>
+        </div>
+        <div class="mp-sidebar__row">
+          <div class="mp-sidebar__row-icon"><i class="icon icon-tag icon-16" aria-hidden="true"></i></div>
+          <div class="mp-sidebar__row-content">
+            <p class="mp-sidebar__row-label">Modalidad</p>
+            <p class="mp-sidebar__row-value">Cita presencial</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mp-sidebar__footer mp-sidebar__footer--space-between">
+      <button class="mp-btn mp-btn--secundario" type="button">Regresar</button>
+      <button class="mp-btn mp-btn--primario" type="button">Confirmar</button>
+    </div>
+  </div>
+</div>

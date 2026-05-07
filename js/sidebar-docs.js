@@ -333,20 +333,20 @@ ${imageHtml}    <div class="mp-sidebar__body">
       });
     });
 
-    /* demo trigger */
+    /* demo trigger — buscar paneles en scope (document) porque están fuera del <article> */
     page.querySelectorAll('[data-sidebar-open]').forEach(btn => {
       btn.addEventListener('click', () => {
-        const target = page.querySelector('#' + btn.dataset.sidebarOpen);
+        const target = scope.querySelector('#' + btn.dataset.sidebarOpen);
         if (target) {
           target.classList.add('is-open');
           target.querySelector('.mp-sidebar__close')?.focus();
         }
       });
     });
-    page.querySelectorAll('.mp-sidebar__close, .mp-sidebar__backdrop').forEach(el => {
+    scope.querySelectorAll('.mp-sidebar__close, .mp-sidebar__backdrop').forEach(el => {
       el.addEventListener('click', () => el.closest('.mp-sidebar')?.classList.remove('is-open'));
     });
-    page.querySelectorAll('.mp-sidebar').forEach(sb => {
+    scope.querySelectorAll('.mp-sidebar').forEach(sb => {
       sb.addEventListener('keydown', e => {
         if (e.key === 'Escape') sb.classList.remove('is-open');
       });

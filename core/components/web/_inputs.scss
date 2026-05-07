@@ -343,7 +343,8 @@
 
 // ── Textarea ─────────────────────────────────────────────
 // Figma: min-height 112px · padding 8px 16px · resize vertical
-.mp-input-field.mp-textarea {
+.mp-input-field.mp-textarea,
+.mp-input-field.mp-input-field--textarea {
   height: auto;
   min-height: rem(112px);
   padding: $space-8 rem(16px);
@@ -397,6 +398,11 @@
     background: var(--base-neutral-100-negro);
     color: var(--base-neutral-white);
     --mp-inp-border: var(--base-neutral-70);
+  }
+
+  .mp-input-field.mp-textarea,
+  .mp-input-field.mp-input-field--textarea {
+    padding: $space-8 rem(16px);
   }
 
   .mp-input-field::placeholder {

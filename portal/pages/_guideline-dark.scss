@@ -109,6 +109,11 @@
   }
 }
 
+.gdm-doc .gdm-field .mp-label {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 // El demo data-theme="dark" aplica el tema oscuro real
 // usando la misma lógica que [data-theme='dark'] en _theme.scss
 .gdm-demo[data-theme='dark'] {

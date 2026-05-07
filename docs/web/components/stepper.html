@@ -1,0 +1,375 @@
+<article class="component-doc-page stepper-doc" data-component-doc="stepper">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Componentes</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Stepper</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="stepper-title">
+    <h1 id="stepper-title" class="mp-h1">Stepper</h1>
+    <p class="mp-body-l">Indica el progreso del usuario a través de un flujo de pasos secuenciales. Muestra cuántos pasos tiene el proceso, cuál es el actual y cuántos han sido completados.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Versión 1.0</span>
+      <span class="component-chip">Web</span>
+      <span class="component-chip">Categoría: navegación</span>
+      <span class="component-chip">Figma: 4693:4707</span>
+    </div>
+  </section>
+
+  <!-- ══ 1. Resumen ══════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="stepper-summary-title">
+    <div class="component-section__header">
+      <h2 id="stepper-summary-title" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Flujos de formulario con 2 o más pasos secuenciales.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Procesos donde el usuario necesita saber cuánto falta para terminar.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Flujos de checkout, agendamiento o registro multi-paso.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando el orden de los pasos es fijo y no se puede saltar.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Usa el stepper al inicio de un formulario multi-paso para orientar al usuario.</p>
+            <div class="component-example-actions">
+              <div class="mp-stepper">
+                <div class="mp-stepper__head">
+                  <span class="mp-stepper__count">Paso 2 de 3</span>
+                  <h3 class="mp-stepper__title">Elige la fecha y hora</h3>
+                </div>
+                <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="3">
+                  <div class="mp-stepper__bar is-done"></div>
+                  <div class="mp-stepper__bar is-current"></div>
+                  <div class="mp-stepper__bar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No uses el stepper en flujos de 1 solo paso — no aporta valor visual.</p>
+            <div class="component-example-actions">
+              <span class="mp-badge mp-badge--warning">Formulario de contacto simple</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2. Anatomía interactiva ══════════════════════════════ -->
+  <section class="component-section" aria-labelledby="stepper-anatomy-title">
+    <div class="component-section__header">
+      <h2 id="stepper-anatomy-title" class="mp-h2">2. Anatomía interactiva</h2>
+    </div>
+
+    <div class="segmented-control" role="group" aria-label="Estado del stepper">
+      <button type="button" class="mp-btn mp-btn--terciario" data-stepper-anatomy="paso1" aria-pressed="false">Paso 1</button>
+      <button type="button" class="mp-btn mp-btn--terciario is-active" data-stepper-anatomy="paso2" aria-pressed="true">Paso 2</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-stepper-anatomy="paso3" aria-pressed="false">Paso 3</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-stepper-anatomy="compact" aria-pressed="false">Compact</button>
+    </div>
+
+    <div class="stepper-anatomy-stage">
+      <div class="stepper-doc-callout stepper-doc-callout--head">
+        <strong>mp-stepper__head</strong>
+        <span>Contador de paso + título del paso actual.</span>
+      </div>
+      <div class="stepper-doc-callout stepper-doc-callout--count">
+        <strong>mp-stepper__count</strong>
+        <span>«Paso N de Total» — texto secundario.</span>
+      </div>
+      <div class="stepper-doc-callout stepper-doc-callout--track">
+        <strong>mp-stepper__track</strong>
+        <span><code>role="progressbar"</code> con <code>aria-valuenow/min/max</code>.</span>
+      </div>
+      <div class="stepper-doc-callout stepper-doc-callout--bars">
+        <strong>mp-stepper__bar</strong>
+        <span><code>.is-done</code> · <code>.is-current</code> · pendiente.</span>
+      </div>
+      <div class="stepper-doc-callout stepper-doc-callout--compact-note">
+        <strong>mp-stepper--compact</strong>
+        <span>Solo barras, sin head. Para espacios reducidos.</span>
+      </div>
+
+      <div class="stepper-anatomy-preview" id="stepper-anatomy-preview"></div>
+    </div>
+
+    <div class="component-controls">
+      <label class="button-doc-toggle"><input type="checkbox" data-stepper-toggle="measures" checked> Medidas</label>
+      <label class="button-doc-toggle"><input type="checkbox" data-stepper-toggle="labels" checked> Etiquetas</label>
+    </div>
+  </section>
+
+  <!-- ══ 3. Variantes ═════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="stepper-variants-title">
+    <div class="component-section__header">
+      <h2 id="stepper-variants-title" class="mp-h2">3. Variantes</h2>
+    </div>
+    <div class="row g-4">
+
+      <!-- Default: 3 pasos -->
+      <div class="col-12">
+        <div class="component-example-card">
+          <div class="component-example-card__header">
+            <h3 class="component-example-card__title">Default — 3 pasos</h3>
+            <p class="component-example-card__desc">Con head (contador + título) y track de barras. El paso actual tiene barra de color primario.</p>
+          </div>
+          <div class="component-example-card__demo">
+            <div class="mp-stepper">
+              <div class="mp-stepper__head">
+                <span class="mp-stepper__count">Paso 2 de 3</span>
+                <h3 class="mp-stepper__title">Elige la fecha y hora</h3>
+              </div>
+              <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="3" aria-label="Paso 2 de 3">
+                <div class="mp-stepper__bar is-done"></div>
+                <div class="mp-stepper__bar is-current"></div>
+                <div class="mp-stepper__bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 pasos -->
+      <div class="col-12">
+        <div class="component-example-card">
+          <div class="component-example-card__header">
+            <h3 class="component-example-card__title">5 pasos — Paso 3 activo</h3>
+            <p class="component-example-card__desc">El número de barras escala con el total de pasos del flujo.</p>
+          </div>
+          <div class="component-example-card__demo">
+            <div class="mp-stepper">
+              <div class="mp-stepper__head">
+                <span class="mp-stepper__count">Paso 3 de 5</span>
+                <h3 class="mp-stepper__title">Documentos requeridos</h3>
+              </div>
+              <div class="mp-stepper__track" role="progressbar" aria-valuenow="3" aria-valuemin="1" aria-valuemax="5" aria-label="Paso 3 de 5">
+                <div class="mp-stepper__bar is-done"></div>
+                <div class="mp-stepper__bar is-done"></div>
+                <div class="mp-stepper__bar is-current"></div>
+                <div class="mp-stepper__bar"></div>
+                <div class="mp-stepper__bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compact -->
+      <div class="col-12">
+        <div class="component-example-card">
+          <div class="component-example-card__header">
+            <h3 class="component-example-card__title">Compact — Solo barras</h3>
+            <p class="component-example-card__desc">Agrega <code>mp-stepper--compact</code> para ocultar el head. Útil en headers o espacios reducidos.</p>
+          </div>
+          <div class="component-example-card__demo">
+            <div class="mp-stepper mp-stepper--compact">
+              <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="4" aria-label="Paso 2 de 4">
+                <div class="mp-stepper__bar is-done"></div>
+                <div class="mp-stepper__bar is-current"></div>
+                <div class="mp-stepper__bar"></div>
+                <div class="mp-stepper__bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color modes -->
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card">
+          <div class="component-example-card__header">
+            <h3 class="component-example-card__title">Dark mode</h3>
+          </div>
+          <div class="component-example-card__demo" data-theme="dark" style="background:var(--use-background-page)">
+            <div class="mp-stepper">
+              <div class="mp-stepper__head">
+                <span class="mp-stepper__count">Paso 2 de 3</span>
+                <h3 class="mp-stepper__title">Elige la fecha y hora</h3>
+              </div>
+              <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="3">
+                <div class="mp-stepper__bar is-done"></div>
+                <div class="mp-stepper__bar is-current"></div>
+                <div class="mp-stepper__bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card">
+          <div class="component-example-card__header">
+            <h3 class="component-example-card__title">High Contrast</h3>
+          </div>
+          <div class="component-example-card__demo" data-theme="high-contrast" style="background:var(--use-background-page)">
+            <div class="mp-stepper">
+              <div class="mp-stepper__head">
+                <span class="mp-stepper__count">Paso 2 de 3</span>
+                <h3 class="mp-stepper__title">Elige la fecha y hora</h3>
+              </div>
+              <div class="mp-stepper__track" role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="3">
+                <div class="mp-stepper__bar is-done"></div>
+                <div class="mp-stepper__bar is-current"></div>
+                <div class="mp-stepper__bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 4. Custom properties ═════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="stepper-props-title">
+    <div class="component-section__header">
+      <h2 id="stepper-props-title" class="mp-h2">4. Custom properties</h2>
+    </div>
+    <div class="component-spec-table">
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label"><code>--mp-stepper-done</code></span>
+        <span class="component-spec-table__value">Color de las barras completadas. Default: <code>var(--use-primary-default)</code></span>
+      </div>
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label"><code>--mp-stepper-current</code></span>
+        <span class="component-spec-table__value">Color de la barra activa. Default: <code>var(--use-primary-default)</code></span>
+      </div>
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label"><code>--mp-stepper-pending</code></span>
+        <span class="component-spec-table__value">Color de barras pendientes. Default: <code>var(--use-border-default)</code></span>
+      </div>
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label"><code>--mp-stepper-gap</code></span>
+        <span class="component-spec-table__value">Separación entre barras. Default: <code>12px</code></span>
+      </div>
+      <div class="component-spec-table__row">
+        <span class="component-spec-table__label"><code>--mp-stepper-h</code></span>
+        <span class="component-spec-table__value">Alto de cada barra. Default: <code>2px</code> (High Contrast: <code>3px</code>)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 5. Do / Don't ════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="stepper-dodont-title">
+    <div class="component-section__header">
+      <h2 id="stepper-dodont-title" class="mp-h2">5. Do / Don't</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--do">
+          <div class="component-example-card__header">
+            <i class="icon icon-check-circle icon-20" style="color:var(--use-state-success-text,#0d6e3a)" aria-hidden="true"></i>
+            <h3 class="component-example-card__title">Do</h3>
+          </div>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa entre 2 y 6 pasos — más de 6 fragmenta demasiado el flujo.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El título del paso debe describir la acción principal de esa pantalla.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Actualiza <code>aria-valuenow</code> al navegar entre pasos.</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usa <code>mp-stepper--compact</code> dentro de un header de página.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--dont">
+          <div class="component-example-card__header">
+            <i class="icon icon-x-circle icon-20" style="color:var(--use-state-error-text,#b91c1c)" aria-hidden="true"></i>
+            <h3 class="component-example-card__title">Don't</h3>
+          </div>
+          <ul class="component-list">
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No uses el stepper para navegación no lineal donde el usuario puede saltar pasos.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No cambies el color de las barras fuera del sistema de tokens.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No omitas el <code>role="progressbar"</code> — es requerido para accesibilidad.</li>
+            <li><i class="icon icon-x icon-16" aria-hidden="true"></i>No uses texto largo en el título del paso — máximo 4-5 palabras.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 6. Accesibilidad ══════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="stepper-a11y-title">
+    <div class="component-section__header">
+      <h2 id="stepper-a11y-title" class="mp-h2">6. Accesibilidad</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>role="progressbar"</code> en <code>.mp-stepper__track</code>.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>aria-valuenow</code> = paso actual, <code>aria-valuemin="1"</code>, <code>aria-valuemax</code> = total.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>aria-label</code> descriptivo: <em>"Paso 2 de 3"</em>.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El stepper es solo informativo — no es interactivo ni recibe foco.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El contraste de las barras cumple WCAG AA en todos los temas.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>En High Contrast, el alto de barra sube a 3 px para mayor visibilidad.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 7. Checklist QA ══════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="stepper-qa-title">
+    <div class="component-section__header">
+      <h2 id="stepper-qa-title" class="mp-h2">7. Checklist QA</h2>
+    </div>
+    <ul class="component-list">
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Las barras completadas (<code>.is-done</code>) muestran color primario.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>La barra activa (<code>.is-current</code>) muestra color primario.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Las barras pendientes muestran color de borde sutil.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El head muestra el número y título del paso actual correctamente.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i><code>aria-valuenow</code> se actualiza al navegar entre pasos.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>La variante compact oculta el head completamente.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Se ve correctamente en Light, Dark y High Contrast.</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Las barras son equitativas en ancho (flex: 1 cada una).</li>
+    </ul>
+  </section>
+
+  <!-- ══ 8. Código ════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="stepper-code-title">
+    <div class="component-section__header">
+      <h2 id="stepper-code-title" class="mp-h2">8. Código</h2>
+    </div>
+    <div class="code-block">
+      <div class="code-tabs" role="tablist" aria-label="Código del componente">
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-stepper-code-tab="html" aria-selected="true">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-stepper-code-tab="css" aria-selected="false">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-stepper-code-tab="sass" aria-selected="false">Sass</button>
+      </div>
+      <div class="code-content">
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-stepper-copy-code>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Copiar
+        </button>
+        <pre id="stepper-code-html" class="active"></pre>
+        <pre id="stepper-code-css"></pre>
+        <pre id="stepper-code-sass"></pre>
+      </div>
+    </div>
+    <div style="display:flex;gap:var(--space-8);margin-top:var(--space-12)">
+      <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button" data-stepper-download="html">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>HTML
+      </button>
+      <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button" data-stepper-download="css">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>CSS
+      </button>
+      <button class="mp-btn mp-btn--terciario mp-btn--icon-left" type="button" data-stepper-download="sass">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>Sass
+      </button>
+    </div>
+  </section>
+
+</article>

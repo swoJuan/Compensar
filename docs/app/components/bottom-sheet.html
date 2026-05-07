@@ -1,0 +1,197 @@
+<article class="component-doc-page app-bottom-sheet-doc" data-component-doc="app-bottom-sheet">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">App</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Bottom Sheet</span></li>
+    </ol>
+  </nav>
+
+  <section class="component-hero" aria-labelledby="app-bottom-sheet-title">
+    <h1 id="app-bottom-sheet-title" class="mp-h1">Bottom Sheet</h1>
+    <p class="mp-body-l">Panel inferior móvil para listas, filtros y selecciones contextuales. Se ancla al borde inferior, mantiene el foco en la tarea y evita navegar a otra pantalla cuando la decisión es breve.</p>
+    <div class="component-meta" aria-label="Metadatos del componente">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">App · .NET MAUI</span>
+      <span class="component-chip">Figma: 4489:16322</span>
+      <span class="component-chip">Uso: listas / filtros</span>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-bottom-sheet-summary">
+    <div class="component-section__header">
+      <h2 id="app-bottom-sheet-summary" class="mp-h2">1. Resumen</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3">Cuándo usarlo</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para seleccionar una opción desde una lista extensa.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para filtros de citas, servicios o resultados en móvil.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando la tarea debe permanecer en el contexto actual.</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando se necesita búsqueda, scroll interno o acciones de aplicar/limpiar.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="component-example-card component-example-card--split h-100">
+          <div>
+            <h3 class="mp-h3">Do</h3>
+            <p class="mp-body-m">Usa un sheet con handle, contenido claro y opciones táctiles de 56 px.</p>
+            <div class="app-bottom-sheet-device">
+              <div class="mp-bottom-sheet mp-bottom-sheet--list" role="dialog" aria-modal="true" aria-label="Seleccionar especialidad">
+                <button class="mp-bottom-sheet__header" type="button" aria-label="Arrastrar"><span class="mp-bottom-sheet__handle"></span></button>
+                <div class="mp-bottom-sheet__content">
+                  <label class="mp-bottom-sheet__search"><input aria-label="Buscar especialidad" placeholder="Buscar"><i class="icon icon-magnifying-glass" aria-hidden="true"></i></label>
+                  <div class="mp-bottom-sheet__list">
+                    <button class="mp-bottom-sheet__option" type="button">Dermatología</button>
+                    <button class="mp-bottom-sheet__option" type="button">Endocrinología</button>
+                    <button class="mp-bottom-sheet__option" type="button">Gastroenterología</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="component-divider" aria-hidden="true"></span>
+          <div>
+            <h3 class="mp-h3">Don't</h3>
+            <p class="mp-body-m">No lo uses para flujos largos ni para ocultar acciones críticas sin jerarquía.</p>
+            <div class="component-support component-support--warning">
+              <i class="component-support__icon icon icon-warning icon-20" aria-hidden="true"></i>
+              <p class="mp-body-s">Si hay más de tres pasos consecutivos, usa una pantalla dedicada.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-bottom-sheet-anatomy">
+    <div class="component-section__header">
+      <h2 id="app-bottom-sheet-anatomy" class="mp-h2">2. Anatomía interactiva</h2>
+    </div>
+    <div class="segmented-control" role="group" aria-label="Anatomía Bottom Sheet">
+      <button type="button" class="mp-btn mp-btn--terciario" data-app-bottom-sheet-anatomy="list" aria-pressed="true">Lista</button>
+      <button type="button" class="mp-btn mp-btn--terciario" data-app-bottom-sheet-anatomy="filters" aria-pressed="false">Filtros</button>
+    </div>
+    <div class="app-bottom-sheet-stage">
+      <span class="app-bottom-sheet-measure app-bottom-sheet-measure--radius">Radio 16 px</span>
+      <span class="app-bottom-sheet-measure app-bottom-sheet-measure--item">Item 56 px</span>
+      <span class="app-bottom-sheet-measure app-bottom-sheet-measure--padding">Padding 12-16 px</span>
+      <div class="app-bottom-sheet-callout app-bottom-sheet-callout--handle"><strong>Handle</strong><span class="mp-body-s">Indica que el panel se puede arrastrar o cerrar.</span></div>
+      <div class="app-bottom-sheet-callout app-bottom-sheet-callout--content"><strong>Contenido</strong><span class="mp-body-s">Lista, búsqueda, chips o grupos de filtros.</span></div>
+      <div class="app-bottom-sheet-callout app-bottom-sheet-callout--actions"><strong>Acciones</strong><span class="mp-body-s">Aplicar y limpiar solo cuando el sheet recopila filtros.</span></div>
+      <div class="app-bottom-sheet-device" id="app-bottom-sheet-anatomy-preview"></div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-bottom-sheet-playground">
+    <div class="component-section__header">
+      <div>
+        <h2 id="app-bottom-sheet-playground" class="mp-h2">3. Playground</h2>
+        <p class="mp-body-m">Configura la variante y el contenido para validar listas o filtros dentro del panel inferior.</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-xl-5">
+        <div class="component-control-panel app-bottom-sheet-controls">
+          <div>
+            <label class="mp-label" for="app-bottom-sheet-variant">Variante</label>
+            <select class="mp-input-field mp-select" id="app-bottom-sheet-variant" data-app-bottom-sheet-control="variant">
+              <option value="list">Lista con búsqueda</option>
+              <option value="filters">Filtros</option>
+            </select>
+          </div>
+          <div>
+            <label class="mp-label" for="app-bottom-sheet-title-field">Título filtros</label>
+            <input class="mp-input-field" id="app-bottom-sheet-title-field" data-app-bottom-sheet-control="title" value="Filtrar por" maxlength="32">
+          </div>
+          <div>
+            <label class="mp-label" for="app-bottom-sheet-query">Placeholder búsqueda</label>
+            <input class="mp-input-field" id="app-bottom-sheet-query" data-app-bottom-sheet-control="query" value="Buscar" maxlength="32">
+          </div>
+          <div>
+            <label class="mp-label" for="app-bottom-sheet-theme">Modo</label>
+            <select class="mp-input-field mp-select" id="app-bottom-sheet-theme" data-app-bottom-sheet-control="theme">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="high-contrast">Alto contraste</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-7">
+        <div class="app-bottom-sheet-preview-shell" id="app-bottom-sheet-preview-shell" data-theme="light">
+          <div class="app-bottom-sheet-device" id="app-bottom-sheet-preview" role="region" aria-label="Vista previa Bottom Sheet"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-bottom-sheet-variants">
+    <div class="component-section__header">
+      <h2 id="app-bottom-sheet-variants" class="mp-h2">4. Variantes</h2>
+    </div>
+    <div class="app-bottom-sheet-variant-grid">
+      <article class="app-bottom-sheet-card">
+        <h3 class="mp-h3">Lista</h3>
+        <div class="app-bottom-sheet-device" data-app-bottom-sheet-demo="list"></div>
+      </article>
+      <article class="app-bottom-sheet-card">
+        <h3 class="mp-h3">Filtros</h3>
+        <div class="app-bottom-sheet-device" data-app-bottom-sheet-demo="filters"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-bottom-sheet-states">
+    <div class="component-section__header">
+      <h2 id="app-bottom-sheet-states" class="mp-h2">5. Estados</h2>
+    </div>
+    <div class="app-bottom-sheet-state-grid">
+      <article class="app-bottom-sheet-card"><h3 class="mp-h3">Default</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-state="default"></div></article>
+      <article class="app-bottom-sheet-card"><h3 class="mp-h3">Hover</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-state="hover"></div></article>
+      <article class="app-bottom-sheet-card"><h3 class="mp-h3">Focus</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-state="focus"></div></article>
+      <article class="app-bottom-sheet-card"><h3 class="mp-h3">Seleccionado</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-state="selected"></div></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-bottom-sheet-modes">
+    <div class="component-section__header">
+      <h2 id="app-bottom-sheet-modes" class="mp-h2">6. Modos</h2>
+    </div>
+    <div class="app-bottom-sheet-mode-grid">
+      <article class="app-bottom-sheet-card" data-theme="light"><h3 class="mp-h3">Light</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-mode="light"></div></article>
+      <article class="app-bottom-sheet-card" data-theme="dark"><h3 class="mp-h3">Dark</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-mode="dark"></div></article>
+      <article class="app-bottom-sheet-card" data-theme="high-contrast"><h3 class="mp-h3">Alto contraste</h3><div class="app-bottom-sheet-device" data-app-bottom-sheet-mode="high-contrast"></div></article>
+    </div>
+  </section>
+
+  <section class="component-section" aria-labelledby="app-bottom-sheet-code">
+    <div class="component-section__header">
+      <div>
+        <h2 id="app-bottom-sheet-code" class="mp-h2">7. Visualizador</h2>
+        <p class="mp-body-m">Fragmento HTML y estilos completos del componente. El CSS pertenece al core; los estilos de esta página son solo documentación.</p>
+      </div>
+    </div>
+    <div class="ct-downloads button-downloads" aria-label="Descargar Bottom Sheet">
+      <span class="ct-downloads-label"><i class="icon icon-download icon-16" aria-hidden="true"></i> Descargar</span>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-app-bottom-sheet-download="html"><i class="icon icon-article icon-16" aria-hidden="true"></i> HTML</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-app-bottom-sheet-download="css"><i class="icon icon-article icon-16" aria-hidden="true"></i> CSS</button>
+      <button type="button" class="mp-btn mp-btn--secundario mp-btn--icon-left ct-download-btn ct-download-btn--sm" data-app-bottom-sheet-download="sass"><i class="icon icon-article icon-16" aria-hidden="true"></i> Sass</button>
+    </div>
+    <div class="code-block">
+      <div class="code-tabs" role="tablist" aria-label="Código Bottom Sheet">
+        <button class="mp-btn mp-btn--terciario code-tab active" type="button" data-app-bottom-sheet-code-tab="html" aria-selected="true">HTML</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-app-bottom-sheet-code-tab="css" aria-selected="false">CSS</button>
+        <button class="mp-btn mp-btn--terciario code-tab" type="button" data-app-bottom-sheet-code-tab="sass" aria-selected="false">Sass</button>
+        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-app-bottom-sheet-copy-code><i class="icon icon-share icon-16" aria-hidden="true"></i> Copiar</button>
+      </div>
+      <div class="code-content">
+        <pre id="app-bottom-sheet-code-html" class="active"></pre>
+        <pre id="app-bottom-sheet-code-css"></pre>
+        <pre id="app-bottom-sheet-code-sass"></pre>
+      </div>
+    </div>
+  </section>
+</article>

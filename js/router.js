@@ -100,6 +100,12 @@ const router = (() => {
       icon: 'award_star',
       group: 'app'
     },
+    'app/componentes/bottom-sheet': {
+      label: 'Bottom Sheet',
+      path: 'app/components/bottom-sheet.html',
+      icon: 'bottom_panel_open',
+      group: 'app'
+    },
     'app/componentes/dropdown': {
       label: 'Dropdown / Select App',
       path: 'app/components/dropdown.html',
@@ -341,6 +347,7 @@ const router = (() => {
         section === 'web/componentes/dropdown' ||
         section === 'web/componentes/badges' ||
         section === 'app/componentes/badges' ||
+        section === 'app/componentes/bottom-sheet' ||
         section === 'app/componentes/dropdown' ||
         section === 'web/componentes/tabs' ||
         section === 'app/componentes/tabs' ||
@@ -415,6 +422,9 @@ const router = (() => {
       }
       if (window.appHeaderDocs) {
         window.requestAnimationFrame(() => window.appHeaderDocs.initAppHeaderDoc(document));
+      }
+      if (window.appBottomSheetDocs) {
+        window.requestAnimationFrame(() => window.appBottomSheetDocs.initAppBottomSheetDoc(document));
       }
 
       return true;

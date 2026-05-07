@@ -180,6 +180,11 @@
   text-transform: uppercase;
 }
 
+[data-theme='dark'] .mp-label {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .mp-hint {
   font-size: var(--mp-hint-size);
   font-family: var(--font-body);

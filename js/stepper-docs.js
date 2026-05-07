@@ -197,7 +197,8 @@ ${buildStepperHtml({ total: 3, current: 2 })}
 
   /* ── Init ─────────────────────────────────────────────── */
   function initStepperDocs(scope = document) {
-    const page = scope.querySelector('[data-guideline-doc="form-patterns"]');
+    const page = scope.querySelector('[data-component-doc="stepper"]') ||
+                 scope.querySelector('[data-guideline-doc="form-patterns"]');
     if (!page) return;
 
     /* anatomy segmented control */

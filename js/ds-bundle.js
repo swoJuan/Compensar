@@ -4962,7 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
-    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'tabs' || sectionId === 'header' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion' || sectionId === 'demo/core' || sectionId === 'guidelines/high-contrast' || sectionId === 'guidelines/dark-mode' || sectionId === 'guidelines/form-patterns');
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'bottom-sheet' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'tabs' || sectionId === 'header' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion' || sectionId === 'demo/core' || sectionId === 'guidelines/high-contrast' || sectionId === 'guidelines/dark-mode' || sectionId === 'guidelines/form-patterns' || sectionId === 'sidebar' || sectionId === 'stepper');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -5106,6 +5106,11 @@
         window.stepperDocs.initStepperDocs(document);
       });
     }
+    if (window.sidebarDocs) {
+      requestAnimationFrame(function() {
+        window.sidebarDocs.initSidebarDocs(document);
+      });
+    }
     if (window.appTabsDocs) {
       requestAnimationFrame(function() {
         window.appTabsDocs.initAppTabsDoc(document);
@@ -5114,6 +5119,11 @@
     if (window.appHeaderDocs) {
       requestAnimationFrame(function() {
         window.appHeaderDocs.initAppHeaderDoc(document);
+      });
+    }
+    if (window.appBottomSheetDocs) {
+      requestAnimationFrame(function() {
+        window.appBottomSheetDocs.initAppBottomSheetDoc(document);
       });
     }
   }
@@ -5159,6 +5169,8 @@
     'empty-state':        'docs/web/components/empty-state.html',
     'loading':            'docs/transversales/components/loading.html',
     'breadcrumb':         'docs/web/components/breadcrumb.html',
+    'sidebar':            'docs/web/components/sidebar.html',
+    'stepper':           'docs/web/components/stepper.html',
     'tokens-texto':       'docs/tokens/tokens-text.html',
     'tokens-tablas':      'docs/tokens/tokens-tables.html',
     'guidelines/high-contrast':  'docs/guidelines/high-contrast.html',
@@ -5174,6 +5186,7 @@
     'layout':             'docs/app/fundamentos/layout.html',
     'tabs':               'docs/app/components/tabs.html',
     'header':             'docs/app/components/header.html',
+    'bottom-sheet':       'docs/app/components/bottom-sheet.html',
     'dropdown':           'docs/app/components/dropdown.html',
     'accordion':          'docs/transversales/components/accordion.html',
     'badges':             'docs/transversales/components/badges.html',
@@ -5399,6 +5412,8 @@
         { id: 'loading',   label: 'Loading',                  icon: 'spinner' },
         { id: 'modales',   label: 'Modales',                  icon: 'browser' },
         { id: 'paginacion',label: 'Paginación',               icon: 'number-circle-one' },
+        { id: 'sidebar',   label: 'Sidebar / Overlay',        icon: 'sidebar-simple' },
+        { id: 'stepper',   label: 'Stepper',                    icon: 'flow-arrow' },
         { id: 'tables',    label: 'Tables',                   icon: 'table' },
         { id: 'tabs',      label: 'Tabs',                     icon: 'browsers' },
         { id: 'toast',     label: 'Toast',                    icon: 'bell' }
