@@ -13003,7 +13003,6 @@ body.component-doc-full #main-content {
   border-radius: 1rem;
   text-decoration: none;
   color: var(--ui-text);
-  cursor: pointer;
   -webkit-transition: border-color 0.2s, -webkit-box-shadow 0.2s, -webkit-transform 0.15s;
   transition: border-color 0.2s, -webkit-box-shadow 0.2s, -webkit-transform 0.15s;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
@@ -13121,10 +13120,10 @@ body.component-doc-full #main-content {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-top: 1.5rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--ui-border);
 }
@@ -13160,9 +13159,14 @@ body.component-doc-full #main-content {
   border-color: transparent;
 }
 
+.portal-card-access {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
 .portal-card-arrow {
   font-size: 1.25rem;
-  color: var(--ui-text-muted);
+  color: currentColor;
   -webkit-transition: color 0.2s, -webkit-transform 0.2s;
   transition: color 0.2s, -webkit-transform 0.2s;
   transition: color 0.2s, transform 0.2s;
@@ -13172,14 +13176,6 @@ body.component-doc-full #main-content {
 .portal-card:hover .portal-card-arrow {
   -webkit-transform: translateX(3px);
           transform: translateX(3px);
-}
-
-.portal-card--drupal:hover .portal-card-arrow {
-  color: var(--base-brand-80);
-}
-
-.portal-card--app:hover .portal-card-arrow {
-  color: var(--product-accent-100);
 }
 
 /* ── Footer del portal ─────────────────────────────── */

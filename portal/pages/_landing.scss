@@ -95,7 +95,6 @@
   border-radius: rem(16px);
   text-decoration: none;
   color: var(--ui-text);
-  cursor: pointer;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   position: relative;
   overflow: hidden;
@@ -184,8 +183,8 @@
 .portal-card-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: rem(24px);
+  justify-content: flex-start;
+  margin-top: rem(16px);
   padding-top: rem(16px);
   border-top: 1px solid var(--ui-border);
 }
@@ -214,19 +213,17 @@
   border-color: transparent;
 }
 
+.portal-card-access {
+  align-self: flex-start;
+}
+
 .portal-card-arrow {
   font-size: rem(20px);
-  color: var(--ui-text-muted);
+  color: currentColor;
   transition: color 0.2s, transform 0.2s;
 }
 .portal-card:hover .portal-card-arrow {
   transform: translateX(3px);
-}
-.portal-card--drupal:hover .portal-card-arrow {
-  color: var(--base-brand-80);
-}
-.portal-card--app:hover .portal-card-arrow {
-  color: var(--product-accent-100);
 }
 
 /* ── Footer del portal ─────────────────────────────── */
