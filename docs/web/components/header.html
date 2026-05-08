@@ -4,166 +4,291 @@
       <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
       <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
       <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Componentes</a></li>
-      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Header</span></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Header / Navigation</span></li>
     </ol>
   </nav>
 
+  <!-- HERO -->
   <section class="component-hero" aria-labelledby="web-header-title">
-    <h1 id="web-header-title" class="mp-h1">Header Web / Drupal</h1>
-    <p class="mp-body-l">Organiza la navegación principal del portal público y la zona transaccional: marca, búsqueda, acciones clave, menú horizontal y adaptación responsive.</p>
-    <div class="component-meta" aria-label="Metadatos del componente">
+    <p class="section-eyebrow mp-body-s">3.3 — Patrones de navegación</p>
+    <h1 id="web-header-title" class="mp-h1">Navigation patterns</h1>
+    <p class="mp-body-l">Define cómo se organiza y presenta la navegación según el contexto del producto. La navegación debe responder al tipo de usuario, sus objetivos y la profundidad del contenido.</p>
+    <div class="component-meta" aria-label="Metadatos">
       <span class="component-chip component-chip--success">Estado: estable</span>
-      <span class="component-chip">Versión 1.0</span>
-      <span class="component-chip">Web / Drupal</span>
+      <span class="component-chip">Web / Drupal / ZT</span>
       <span class="component-chip">Categoría: navegación</span>
-      <span class="component-chip">Figma: 4705:5362</span>
     </div>
   </section>
 
-  <section class="component-section" aria-labelledby="web-header-summary-title">
-    <div class="component-section__header">
-      <h2 id="web-header-summary-title" class="mp-h2">1. Resumen</h2>
-    </div>
-    <div class="row g-4 web-header-summary">
-      <div class="col-12 col-lg-6">
-        <h3 class="mp-h3">Cuándo usarlo</h3>
-        <ul class="component-list">
-          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Como navegación global del portal público Drupal.</li>
-          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando el usuario debe explorar categorías, servicios y accesos de negocio.</li>
-          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Para zona transaccional con menú de módulos y acceso rápido al dashboard.</li>
-          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cuando el responsive debe pasar a drawer o menú lateral sin perder acciones clave.</li>
-        </ul>
-      </div>
-      <div class="col-12 col-lg-6">
-        <div class="component-example-card component-example-card--split h-100">
-          <div>
-            <h3 class="mp-h3">Do</h3>
-            <p class="mp-body-m">Prioriza categorías cortas, buscador visible y una acción principal clara.</p>
-            <div class="component-example-actions">
-              <span class="mp-badge mp-badge--success">Afíliate</span>
-              <span class="mp-badge mp-badge--info">Buscar servicios</span>
-            </div>
-          </div>
-          <span class="component-divider" aria-hidden="true"></span>
-          <div>
-            <h3 class="mp-h3">Don't</h3>
-            <p class="mp-body-m">No satures el primer nivel con enlaces largos o acciones duplicadas.</p>
-            <div class="component-example-actions">
-              <span class="mp-badge mp-badge--warning">Menú sobrecargado</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="component-section" aria-labelledby="web-header-anatomy-title">
-    <div class="component-section__header">
-      <h2 id="web-header-anatomy-title" class="mp-h2">2. Anatomía interactiva</h2>
-    </div>
-
-    <div class="segmented-control" role="group" aria-label="Variante de header">
-      <button type="button" class="mp-btn mp-btn--terciario" data-web-header-anatomy="public" aria-pressed="true">Portal público</button>
-      <button type="button" class="mp-btn mp-btn--terciario" data-web-header-anatomy="dropdown" aria-pressed="false">Submenú</button>
-      <button type="button" class="mp-btn mp-btn--terciario" data-web-header-anatomy="mobile" aria-pressed="false">Responsive</button>
-      <button type="button" class="mp-btn mp-btn--terciario" data-web-header-anatomy="zt" aria-pressed="false">ZT</button>
-    </div>
-
-    <div class="web-header-anatomy-stage">
-      <span class="web-header-measure web-header-measure--height">Header 120-160 px</span>
-      <span class="web-header-measure web-header-measure--gap">Gap 16 px</span>
-      <div class="web-header-callout web-header-callout--brand"><strong>Marca</strong><span>Logo, servicio y acceso a home.</span></div>
-      <div class="web-header-callout web-header-callout--search"><strong>Búsqueda</strong><span>Disponible en desktop; se integra al drawer móvil.</span></div>
-      <div class="web-header-callout web-header-callout--nav"><strong>Navegación</strong><span>Primer nivel claro, subniveles agrupados.</span></div>
-      <div class="web-header-callout web-header-callout--cta"><strong>Acción clave</strong><span>Afiliación, oficina virtual o acceso transaccional.</span></div>
-      <div class="web-header-anatomy-preview" id="web-header-anatomy-preview"></div>
-    </div>
-  </section>
-
-  <section class="component-section" aria-labelledby="web-header-playground-title">
+  <!-- ══ 3.4.1 — PORTAL PÚBLICO ══════════════════════════════ -->
+  <section class="component-section" aria-labelledby="wh-public-title">
     <div class="component-section__header">
       <div>
-        <h2 id="web-header-playground-title" class="mp-h2">3. Playground</h2>
-        <p class="mp-body-m">Configura variante, buscador, CTA, submenú y drawer. El código muestra el fragmento real del componente.</p>
+        <h2 id="wh-public-title" class="mp-h2">3.4.1 — Portal público (Drupal)</h2>
+        <p class="mp-body-m">Patrón orientado a exploración, descubrimiento y acceso a información general. Se utiliza en experiencias abiertas, sin autenticación, donde el usuario recorre servicios, beneficios y canales de atención.</p>
       </div>
     </div>
 
-    <div class="row g-4">
-      <div class="col-12 col-xl-4">
-        <div class="component-control-panel web-header-control-panel">
-          <div>
-            <label class="mp-label" for="web-header-variant">Variante</label>
-            <select class="mp-input-field mp-select" id="web-header-variant" data-web-header-control="variant">
-              <option value="public" selected>Portal público</option>
-              <option value="dropdown">Portal con submenú</option>
-              <option value="mobile">Responsive drawer</option>
-              <option value="zt">Zona transaccional</option>
-            </select>
+    <figure class="wh-screenshot-block">
+      <img src="https://www.figma.com/api/mcp/asset/6343037d-e72d-4f67-ac8f-c2719b03083a"
+           alt="Vista desktop del header del portal público Compensar"
+           class="wh-screenshot wh-screenshot--wide" loading="lazy">
+      <figcaption class="wh-screenshot-caption">Vista desktop</figcaption>
+    </figure>
+
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-8">
+        <div class="row g-4">
+          <div class="col-12 col-md-6">
+            <article class="component-example-card h-100">
+              <h3 class="mp-h3">Objetivo</h3>
+              <p class="mp-body-m mb-2">Permitir que el usuario:</p>
+              <ul class="component-list">
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>explore el sitio con facilidad</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>entienda la oferta de servicios</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>llegue rápidamente a contenidos clave</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>acceda a acciones estratégicas del negocio</li>
+              </ul>
+            </article>
           </div>
-          <div>
-            <label class="mp-label" for="web-header-cta">Acción principal</label>
-            <input class="mp-input-field" id="web-header-cta" data-web-header-control="cta" value="Afíliate" maxlength="24">
+          <div class="col-12 col-md-6">
+            <article class="component-example-card h-100">
+              <h3 class="mp-h3">Estructura</h3>
+              <p class="mp-body-m mb-2">Elementos principales:</p>
+              <ul class="component-list">
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Logo</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Buscador</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>CTA principal</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Navegación horizontal (nv1)</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Menú desplegable por categoría (nv2)</li>
+              </ul>
+            </article>
           </div>
-          <label class="button-doc-toggle"><input type="checkbox" data-web-header-control="search" checked> Mostrar buscador</label>
-          <label class="button-doc-toggle"><input type="checkbox" data-web-header-control="dropdown"> Mostrar submenú</label>
-          <label class="button-doc-toggle"><input type="checkbox" data-web-header-control="open"> Drawer abierto</label>
+          <div class="col-12">
+            <article class="component-example-card">
+              <h3 class="mp-h3">Responsive</h3>
+              <p class="mp-body-m mb-2">En pantallas pequeñas, la navegación se transforma en un patrón compacto:</p>
+              <ul class="component-list">
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Menú hamburguesa o drawer</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Priorizar accesos principales</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mantener visibles las acciones clave del negocio</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Se despliega de izquierda a derecha</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Se cierra al presionar la X o fuera del drawer</li>
+              </ul>
+            </article>
+          </div>
         </div>
       </div>
-      <div class="col-12 col-xl-8">
-        <div class="web-header-preview-panel" id="web-header-playground-preview"></div>
+      <div class="col-12 col-lg-4">
+        <figure class="wh-screenshot-block">
+          <img src="https://www.figma.com/api/mcp/asset/887d7965-43db-4fbf-ba3e-8614f49b81c3"
+               alt="Vista responsive del header del portal público"
+               class="wh-screenshot" loading="lazy">
+          <figcaption class="wh-screenshot-caption">Vista responsive</figcaption>
+        </figure>
       </div>
     </div>
 
-    <div class="code-block">
-      <div class="code-content">
-        <button class="mp-btn mp-btn--secundario mp-btn--icon-left copy-btn" type="button" data-web-header-copy-playground>
-          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
-          Copiar
-        </button>
-        <pre id="web-header-playground-code" class="active"></pre>
+    <div class="row g-4 mt-0">
+      <div class="col-12 col-lg-4">
+        <div class="component-example-card h-100">
+          <h3 class="mp-h3 mb-2">Comportamiento</h3>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Navegación horizontal, visible en desktop</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cada categoría puede desplegar subniveles</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El usuario explora sin perder contexto</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El CTA principal se mantiene siempre visible</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="component-example-card h-100">
+          <h3 class="mp-h3 mb-2">Uso recomendado</h3>
+          <p class="mp-body-m mb-2">Usar este patrón cuando:</p>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El contenido es público</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El usuario necesita explorar</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Existen múltiples categorías de información</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Se busca impulsar acciones como afiliación o contacto</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="component-example-card h-100">
+          <h3 class="mp-h3 mb-2">Reglas de uso</h3>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Priorizar categorías claras y reconocibles</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mantener labels cortos</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Evitar sobrecargar el primer nivel</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Submenús agrupados por tema</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Protagonismo a acciones como "Afíliate"</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="component-section" aria-labelledby="web-header-variants-title">
+  <!-- ══ 3.4.2 — ZONA TRANSACCIONAL (ZT) ════════════════════ -->
+  <section class="component-section" aria-labelledby="wh-zt-title">
     <div class="component-section__header">
-      <h2 id="web-header-variants-title" class="mp-h2">4. Variantes</h2>
+      <div>
+        <h2 id="wh-zt-title" class="mp-h2">3.4.2 — Zona transaccional (ZT)</h2>
+        <p class="mp-body-m">Patrón orientado a ejecución de tareas y acceso frecuente a funcionalidades. Se utiliza en experiencias autenticadas donde el usuario necesita resolver acciones concretas de forma rápida y clara.</p>
+      </div>
     </div>
-    <div class="web-header-variant-grid">
-      <article class="web-header-variant-card"><h3 class="mp-h3">Portal público</h3><p class="mp-body-s">Logo, búsqueda, CTA y navegación horizontal.</p><div data-web-header-variant-demo="public"></div></article>
-      <article class="web-header-variant-card"><h3 class="mp-h3">Responsive drawer</h3><p class="mp-body-s">Menú móvil con búsqueda y accesos priorizados.</p><div data-web-header-variant-demo="mobile"></div></article>
-      <article class="web-header-variant-card"><h3 class="mp-h3">Zona transaccional</h3><p class="mp-body-s">Header superior más navegación lateral de módulos.</p><div data-web-header-variant-demo="zt"></div></article>
+
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-md-4">
+        <figure class="wh-screenshot-block">
+          <img src="https://www.figma.com/api/mcp/asset/59228cee-f9a9-4cd5-b828-292b4af03886"
+               alt="ZT — menú sin colapsar" class="wh-screenshot" loading="lazy">
+          <figcaption class="wh-screenshot-caption">Vista desktop — menú sin colapsar</figcaption>
+        </figure>
+      </div>
+      <div class="col-12 col-md-4">
+        <figure class="wh-screenshot-block">
+          <img src="https://www.figma.com/api/mcp/asset/ac1997f0-2913-44dc-a53a-228204b95735"
+               alt="ZT — menú colapsado" class="wh-screenshot" loading="lazy">
+          <figcaption class="wh-screenshot-caption">Vista desktop — menú colapsado</figcaption>
+        </figure>
+      </div>
+      <div class="col-12 col-md-4">
+        <figure class="wh-screenshot-block">
+          <img src="https://www.figma.com/api/mcp/asset/4d40c4e1-aff4-42a3-bd7f-15c96df08a7e"
+               alt="ZT — colapsado con hover" class="wh-screenshot" loading="lazy">
+          <figcaption class="wh-screenshot-caption">Vista desktop — colapsado + hover</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-7">
+        <div class="row g-4">
+          <div class="col-12 col-md-6">
+            <article class="component-example-card h-100">
+              <h3 class="mp-h3">Objetivo</h3>
+              <p class="mp-body-m mb-2">Permitir que el usuario:</p>
+              <ul class="component-list">
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>acceda rápidamente a tareas frecuentes</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>navegue entre módulos funcionales</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>mantenga contexto dentro del sistema</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>reduzca pasos innecesarios</li>
+              </ul>
+            </article>
+          </div>
+          <div class="col-12 col-md-6">
+            <article class="component-example-card h-100">
+              <h3 class="mp-h3">Estructura</h3>
+              <p class="mp-body-m mb-2">Elementos principales:</p>
+              <ul class="component-list">
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Header superior</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Botón de menú</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Navegación lateral o drawer</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Módulos principales con subniveles</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Accesos rápidos al home o dashboard</li>
+              </ul>
+            </article>
+          </div>
+          <div class="col-12">
+            <article class="component-example-card">
+              <h3 class="mp-h3">Responsive</h3>
+              <p class="mp-body-m mb-2">En dispositivos pequeños:</p>
+              <ul class="component-list">
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>La navegación se abre desde un botón de menú</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El contenido no depende de hover</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El drawer se puede cerrar fácilmente</li>
+                <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El usuario identifica claramente dónde está</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-5">
+        <div class="row g-4">
+          <div class="col-6">
+            <figure class="wh-screenshot-block">
+              <img src="https://www.figma.com/api/mcp/asset/fa6d308b-cda8-4ef6-a685-7af18ecda3c1"
+                   alt="Menú ZT en móvil" class="wh-screenshot" loading="lazy">
+              <figcaption class="wh-screenshot-caption">Menú en móvil</figcaption>
+            </figure>
+          </div>
+          <div class="col-6">
+            <figure class="wh-screenshot-block">
+              <img src="https://www.figma.com/api/mcp/asset/4262c301-aad9-4b13-bee5-fec47c86e03d"
+                   alt="Menú ZT desplegado en móvil" class="wh-screenshot" loading="lazy">
+              <figcaption class="wh-screenshot-caption">Menú desplegado en móvil</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-0">
+      <div class="col-12 col-lg-4">
+        <div class="component-example-card h-100">
+          <h3 class="mp-h3 mb-2">Comportamiento</h3>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Menú lateral con módulos expandibles</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Sección activa claramente identificada</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Versión compacta con solo iconos disponible</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>En móvil, se presenta como drawer lateral</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="component-example-card h-100">
+          <h3 class="mp-h3 mb-2">Uso recomendado</h3>
+          <p class="mp-body-m mb-2">Usar este patrón cuando:</p>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El usuario está autenticado</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Existen múltiples tareas operativas</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Hay navegación frecuente entre módulos</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>El sistema necesita escalar funcionalmente</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="component-example-card h-100">
+          <h3 class="mp-h3 mb-2">Reglas de uso</h3>
+          <ul class="component-list">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Priorizar tareas frecuentes al inicio</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Jerarquía clara entre niveles</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Resaltar estado activo</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Evitar menús demasiado profundos</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>En versión colapsada, iconos claros y consistentes</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="component-section" aria-labelledby="web-header-states-title">
-    <div class="component-section__header">
-      <h2 id="web-header-states-title" class="mp-h2">5. Estados</h2>
+  <!-- ══ ACCESIBILIDAD ═══════════════════════════════════════ -->
+  <section class="component-section wh-a11y-section" aria-labelledby="wh-a11y-title">
+    <div class="wh-a11y-header">
+      <div class="wh-a11y-icon" aria-hidden="true">
+        <img src="https://www.figma.com/api/mcp/asset/1c726755-5722-454e-b1d6-a0614e5486c4"
+             alt="" width="40" height="40">
+      </div>
+      <h2 id="wh-a11y-title" class="mp-h2">Accesibilidad</h2>
     </div>
-    <div class="web-header-state-grid">
-      <article class="web-header-state-card"><h3 class="mp-h3">Default</h3><p class="mp-body-s">Navegación disponible.</p><div data-web-header-state-demo="default"></div></article>
-      <article class="web-header-state-card"><h3 class="mp-h3">Hover</h3><p class="mp-body-s">El item comunica interacción.</p><div data-web-header-state-demo="hover"></div></article>
-      <article class="web-header-state-card"><h3 class="mp-h3">Focus</h3><p class="mp-body-s">Visible al navegar con teclado.</p><div data-web-header-state-demo="focus"></div></article>
-    </div>
+    <ul class="component-list mt-2">
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Focus visible obligatorio en todos los elementos interactivos</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Navegación por teclado completa (Tab, Enter, Escape)</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Estado activo con <code>aria-current="page"</code></li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No depender solo del color para comunicar estado</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Áreas clicables mínimo 44×44 px</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>En móvil, evitar patrones dependientes de hover</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usar <code>aria-expanded</code> en submenús y drawers</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Cerrar drawer con Escape y devolver foco al botón disparador</li>
+    </ul>
   </section>
 
-  <section class="component-section" aria-labelledby="web-header-responsive-title">
-    <div class="component-section__header">
-      <h2 id="web-header-responsive-title" class="mp-h2">6. Responsive y comportamiento</h2>
-    </div>
-    <div class="web-header-guideline-list">
-      <div class="web-header-guideline-item"><h3 class="mp-h3">Desktop</h3><p class="mp-body-m">Mantiene navegación horizontal, buscador visible, CTA principal y submenús agrupados por categoría.</p></div>
-      <div class="web-header-guideline-item"><h3 class="mp-h3">Mobile</h3><p class="mp-body-m">Pasa a drawer o menú lateral, conserva acciones de negocio y permite cerrar con X, overlay o tecla Escape.</p></div>
-      <div class="web-header-guideline-item"><h3 class="mp-h3">ZT</h3><p class="mp-body-m">El menú lateral agrupa módulos transaccionales; el header superior conserva identidad, búsqueda y sesión.</p></div>
-      <div class="web-header-guideline-item"><h3 class="mp-h3">Accesibilidad</h3><p class="mp-body-m">Usa <code>nav</code>, labels claros, foco visible y estados <code>aria-expanded</code> cuando haya submenús o drawer.</p></div>
-    </div>
-  </section>
-
+  <!-- ══ VISUALIZADOR ════════════════════════════════════════ -->
   <section class="component-section" aria-labelledby="web-header-code-title">
     <div class="component-section__header">
       <div>
-        <h2 id="web-header-code-title" class="mp-h2">7. Visualizador</h2>
-        <p class="mp-body-m">HTML del fragmento y estilos completos del componente. No incluye estilos propios del portal.</p>
+        <h2 id="web-header-code-title" class="mp-h2">Visualizador</h2>
+        <p class="mp-body-m">HTML del fragmento y estilos completos del componente.</p>
       </div>
     </div>
     <div class="ct-downloads button-downloads" aria-label="Descargar estilos de header web">

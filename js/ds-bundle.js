@@ -4962,7 +4962,7 @@
 
   /* ── onSectionReady ──────────────────────────────────── */
   function onSectionReady(sectionId) {
-    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'bottom-sheet' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'avatar' || sectionId === 'tabs' || sectionId === 'header' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion' || sectionId === 'demo/core' || sectionId === 'guidelines/high-contrast' || sectionId === 'guidelines/dark-mode' || sectionId === 'guidelines/form-patterns' || sectionId === 'guidelines/motion-animation' || sectionId === 'guidelines/responsive-breakpoints' || sectionId === 'sidebar' || sectionId === 'stepper');
+    document.body.classList.toggle('component-doc-full', sectionId === 'botones' || sectionId === 'inputs' || sectionId === 'dropdown' || sectionId === 'bottom-sheet' || sectionId === 'seleccion' || sectionId === 'alertas' || sectionId === 'toast' || sectionId === 'modales' || sectionId === 'cards' || sectionId === 'tables' || sectionId === 'badges' || sectionId === 'tabs' || sectionId === 'header' || sectionId === 'loading' || sectionId === 'breadcrumb' || sectionId === 'accordion' || sectionId === 'demo/core' || sectionId === 'guidelines/high-contrast' || sectionId === 'guidelines/dark-mode' || sectionId === 'guidelines/form-patterns' || sectionId === 'guidelines/motion-animation' || sectionId === 'guidelines/responsive-breakpoints' || sectionId === 'guidelines/search-filters' || sectionId === 'sidebar' || sectionId === 'stepper');
     openAccordionFor(sectionId);
     // Re-exponer globals para onclick inline en fragmentos
     window.showToast       = showToast;
@@ -5194,6 +5194,7 @@
     'guidelines/form-patterns':  'docs/guidelines/form-patterns.html',
     'guidelines/motion-animation': 'docs/guidelines/motion-animation.html',
     'guidelines/responsive-breakpoints': 'docs/guidelines/responsive-breakpoints.html',
+    'guidelines/search-filters': 'docs/guidelines/search-filters.html',
   };
 
   /* Rutas específicas de App (.NET MAUI) — sobreescriben ROUTES cuando PLATFORM='app' */
@@ -5428,6 +5429,7 @@
         { id: 'badges',    label: 'Chips / Tags / Badges',    icon: 'tag' },
         { id: 'dropdown',  label: 'Dropdown / Select',        icon: 'caret-circle-down' },
         { id: 'empty-state', label: 'Empty State',            icon: 'package' },
+        { id: 'header',    label: 'Header',                   icon: 'browser' },
         { id: 'inputs',    label: 'Inputs',                   icon: 'placeholder' },
         { id: 'loading',   label: 'Loading',                  icon: 'spinner' },
         { id: 'modales',   label: 'Modales',                  icon: 'browser' },
@@ -5457,7 +5459,8 @@
         { id: 'guidelines/dark-mode',      label: 'Dark Mode',      icon: 'dark_mode' },
         { id: 'guidelines/form-patterns',  label: 'Form Patterns',  icon: 'checks' },
         { id: 'guidelines/motion-animation', label: 'Motion / Animación', icon: 'spinner' },
-        { id: 'guidelines/responsive-breakpoints', label: 'Responsive / Breakpoints', icon: 'layout' }
+        { id: 'guidelines/responsive-breakpoints', label: 'Responsive / Breakpoints', icon: 'layout' },
+        { id: 'guidelines/search-filters', label: 'Search & Filters', icon: 'magnifying-glass' }
       ]
     }
   ];

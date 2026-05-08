@@ -41,7 +41,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: var(--space-28, 1.75rem);
+  gap: var(--space-24);
   min-height: rem(248px);
   padding: var(--space-32) var(--space-24);
   border-radius: rem(24px);
@@ -163,7 +163,7 @@
 .alert-type-note {
   display: flex;
   gap: var(--space-8);
-  margin-top: var(--space-20);
+  margin-top: var(--space-16);
   padding: var(--space-12) var(--space-16);
   border: rem(1px) solid var(--doc-card-border);
   border-radius: rem(8px);

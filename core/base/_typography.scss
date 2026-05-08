@@ -178,6 +178,7 @@
   line-height: var(--mp-label-lh);
   letter-spacing: $ls-label;
   text-transform: uppercase;
+  color: var(--use-text-primary);
 }
 
 [data-theme='dark'] .mp-label {

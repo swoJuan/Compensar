@@ -52,10 +52,10 @@
 
 .gdm-rule__list {
   margin: 0;
-  padding-left: var(--space-20);
+  padding-left: var(--space-16);
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-8);
 
   li {
     font-size: 13px;
@@ -121,6 +121,7 @@
 
   .gdm-demo__label {
     border-bottom-color: rgba(255, 255, 255, .12);
+     background-color: var(--use-surface-white, #292929);
   }
 
   .gdm-demo__body {
@@ -164,7 +165,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-8);
-  padding: var(--space-14) var(--space-20);
+  padding: var(--space-16) var(--space-16);
   border-radius: var(--radius-xs);
   border: 1px solid var(--use-border-subtle);
 
@@ -291,10 +292,10 @@
 
 .gdm-a11y__list {
   margin: 0;
-  padding-left: var(--space-20);
+  padding-left: var(--space-16);
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-8);
 
   li {
     font-size: 13px;

@@ -176,7 +176,7 @@
         <div class="sh-card-name">Botón hover</div>
         <div class="sh-card-use">Botón primario naranja — estado hover</div>
         <div class="sh-token-row">
-          <code class="sh-chip" onclick="copyToClipboard('--shadow-boton--hover','Token copiado')">--shadow-boton--hover</code>
+          <code class="sh-chip" onclick="copyToClipboard('--shadow-btn-hover','Token copiado')">--shadow-btn-hover</code>
           <button class="sh-copy-val" onclick="copyToClipboard('0.125rem 0.125rem 0.1875rem rgba(255,157,92,1)','Valor copiado')">
             <span class="material-symbols-rounded">content_copy</span>
           </button>
@@ -195,7 +195,7 @@
         <div class="sh-card-name">Botón especial hover</div>
         <div class="sh-card-use">Botón especial violeta — estado hover</div>
         <div class="sh-token-row">
-          <code class="sh-chip" onclick="copyToClipboard('--shadow-button-especial-hover','Token copiado')">--shadow-button-especial-hover</code>
+          <code class="sh-chip" onclick="copyToClipboard('--shadow-button-special-hover','Token copiado')">--shadow-button-special-hover</code>
           <button class="sh-copy-val" onclick="copyToClipboard('0.125rem 0.125rem 0.1875rem rgba(162,141,218,1)','Valor copiado')">
             <span class="material-symbols-rounded">content_copy</span>
           </button>
@@ -214,7 +214,7 @@
         <div class="sh-card-name">Botón pressed</div>
         <div class="sh-card-use">Cualquier botón — estado activo / presionado</div>
         <div class="sh-token-row">
-          <code class="sh-chip" onclick="copyToClipboard('--shadow--boton--pressed','Token copiado')">--shadow--boton--pressed</code>
+          <code class="sh-chip" onclick="copyToClipboard('--shadow-button-pressed','Token copiado')">--shadow-button-pressed</code>
           <button class="sh-copy-val" onclick="copyToClipboard('inset 0 0.25rem 0.25rem rgba(0,0,0,0.25)','Valor copiado')">
             <span class="material-symbols-rounded">content_copy</span>
           </button>
@@ -262,9 +262,9 @@
 }
 
 <span class="comm">/* Botones con estados */</span>
-<span class="sel">.btn-primary:hover</span>   { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-boton--hover)</span>; }
-<span class="sel">.btn-primary:active</span>  { <span class="prop">box-shadow</span>: <span class="val">var(--shadow--boton--pressed)</span>; }
-<span class="sel">.btn-especial:hover</span>  { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-especial-hover)</span>; }</pre>
+<span class="sel">.btn-primary:hover</span>   { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-btn-hover)</span>; }
+<span class="sel">.btn-primary:active</span>  { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-pressed)</span>; }
+<span class="sel">.btn-especial:hover</span>  { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-special-hover)</span>; }</pre>
       <pre id="sh-scss"><span class="comm">// Tarjeta básica</span>
 <span class="sel">.cmp-card</span> {
   <span class="prop">box-shadow</span>: <span class="val">var(--shadow-1)</span>;
@@ -280,12 +280,12 @@
 
 <span class="comm">// Botón con estados</span>
 <span class="sel">.cmp-btn--primary</span> {
-  <span class="kw">&:hover</span>  { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-boton--hover)</span>; }
-  <span class="kw">&:active</span> { <span class="prop">box-shadow</span>: <span class="val">var(--shadow--boton--pressed)</span>; }
+  <span class="kw">&:hover</span>  { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-btn-hover)</span>; }
+  <span class="kw">&:active</span> { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-pressed)</span>; }
 }
 
 <span class="sel">.cmp-btn--especial</span> {
-  <span class="kw">&:hover</span> { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-especial-hover)</span>; }
+  <span class="kw">&:hover</span> { <span class="prop">box-shadow</span>: <span class="val">var(--shadow-button-special-hover)</span>; }
 }</pre>
     </div>
   </div>
@@ -301,9 +301,9 @@ var SH_TOKENS = [
   { token:'shadow/elevation-4', var:'--shadow-4', value:'0 1.25rem 3.125rem rgba(0,0,0,0.2)', px:'0px 20px 50px', cls:'shadow-4', group:'Elevación', use:'Overlays de mayor importancia' },
   { token:'shadow/header', var:'--shadow-header', value:'0 0.25rem 0.25rem rgba(0,0,0,0.25)', px:'0px 4px 4px', cls:'shadow-header', group:'UI', use:'Header de navegación' },
   { token:'shadow/generic', var:'--sombra-1', value:'0 0.25rem 0.25rem rgba(0,0,0,0.25)', px:'0px 4px 4px', cls:'sombra-1', group:'UI', use:'Alias genérico de sombra fija' },
-  { token:'shadow/button-hover', var:'--shadow-boton--hover', value:'0.125rem 0.125rem 0.1875rem rgba(255,157,92,1)', px:'2px 2px 3px', cls:'shadow-btn-hover', group:'Interacción', use:'Botón primario — estado hover' },
-  { token:'shadow/button-especial-hover', var:'--shadow-button-especial-hover', value:'0.125rem 0.125rem 0.1875rem rgba(162,141,218,1)', px:'2px 2px 3px', cls:'shadow-btn-especial-hover', group:'Interacción', use:'Botón especial — estado hover' },
-  { token:'shadow/button-pressed', var:'--shadow--boton--pressed', value:'inset 0 0.25rem 0.25rem rgba(0,0,0,0.25)', px:'0px 4px 4px', cls:'shadow-btn-pressed', group:'Interacción', use:'Botón — estado pressed (inset)' },
+  { token:'shadow/button-hover', var:'--shadow-btn-hover', value:'0.125rem 0.125rem 0.1875rem rgba(255,157,92,1)', px:'2px 2px 3px', cls:'shadow-btn-hover', group:'Interacción', use:'Botón primario — estado hover' },
+  { token:'shadow/button-especial-hover', var:'--shadow-button-special-hover', value:'0.125rem 0.125rem 0.1875rem rgba(162,141,218,1)', px:'2px 2px 3px', cls:'shadow-btn-especial-hover', group:'Interacción', use:'Botón especial — estado hover' },
+  { token:'shadow/button-pressed', var:'--shadow-button-pressed', value:'inset 0 0.25rem 0.25rem rgba(0,0,0,0.25)', px:'0px 4px 4px', cls:'shadow-btn-pressed', group:'Interacción', use:'Botón — estado pressed (inset)' },
 ];
 
 function shTrigger(content, filename, type) {
@@ -404,7 +404,7 @@ window.shDownloadSCSS = function() {
     '// @use "shadow-tokens" as *;',
     '//',
     '// .mi-componente {',
-    '//   box-shadow: var(--shadow-card);     ← en CSS puro',
+    '//   box-shadow: var(--shadow-1);     ← en CSS puro',
     '//   @include shadow-card;               ← con el mixin',
     '// }',
     '// ════════════════════════════════════════════════════════════════════',
@@ -481,7 +481,7 @@ window.shDownloadJSON = function() {
       source:      'Figma · Compensar v2 – Sistema de diseño',
       description: 'Tokens de elevación e interacción. Comunican profundidad y respuesta táctil sin usar bordes.',
       usage: {
-        correct:   'box-shadow: var(--shadow-card)',
+        correct:   'box-shadow: var(--shadow-1)',
         incorrect: 'box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.12) /* 0px 8px 24px */  <-  nunca hardcoded',
         rule:      'Usar siempre el token. Nunca valores box-shadow directos.'
       },

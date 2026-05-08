@@ -1,0 +1,189 @@
+<article class="component-doc-page sf-doc" data-guideline-doc="search-filters">
+  <nav class="mp-breadcrumb component-doc-nav" aria-label="Breadcrumb">
+    <ol class="mp-breadcrumb__list">
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion"><i class="icon icon-house mp-breadcrumb__home" aria-hidden="true"></i><span class="visually-hidden">Inicio</span></a></li>
+      <li class="mp-breadcrumb__item"><a class="mp-breadcrumb__link" href="#introduccion">Sistema de diseño</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><a class="mp-breadcrumb__link" href="#">Guidelines</a></li>
+      <li class="mp-breadcrumb__item"><i class="icon icon-caret-right mp-breadcrumb__separator" aria-hidden="true"></i><span class="mp-breadcrumb__current" aria-current="page">Search &amp; Filters</span></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-hero" aria-labelledby="sf-title">
+    <p class="section-eyebrow mp-body-s">3.2 — Patrones de interacción</p>
+    <h1 id="sf-title" class="mp-h1">Search &amp; Filters</h1>
+    <p class="mp-body-l">Permite a los usuarios encontrar información de forma rápida mediante búsqueda y filtrado. Se utiliza para reducir resultados y facilitar la toma de decisiones.</p>
+    <div class="component-meta" aria-label="Metadatos">
+      <span class="component-chip component-chip--success">Estado: estable</span>
+      <span class="component-chip">Web / App</span>
+      <span class="component-chip">Lógica AND</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. DEMO — Barra de búsqueda + filtros activos
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="sf-demo">
+    <div class="component-section__header">
+      <h2 id="sf-demo" class="mp-h2">Demo</h2>
+    </div>
+
+    <!-- Bloque filtros -->
+    <div class="sf-filter-block">
+      <div class="sf-filter-row">
+        <div class="sf-field">
+          <div class="mp-input-field sf-input-placeholder">
+            <i class="icon icon-magnifying-glass icon-16 sf-search-icon" aria-hidden="true"></i>
+            <span class="sf-placeholder-text">Buscar por nombre</span>
+          </div>
+        </div>
+        <div class="sf-field">
+          <div class="mp-input-field sf-input-placeholder sf-select">
+            <span class="sf-placeholder-text">Especialidad</span>
+            <i class="icon icon-caret-down icon-16" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="sf-field">
+          <div class="mp-input-field sf-input-placeholder sf-select">
+            <span class="sf-placeholder-text">Bogotá DC</span>
+            <i class="icon icon-caret-down icon-16" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+      <div class="sf-chips-row">
+        <div class="sf-chips">
+          <span class="mp-badge mp-badge--violet sf-chip">Bogotá DC <i class="icon icon-x icon-12" aria-hidden="true"></i></span>
+          <span class="mp-badge mp-badge--violet sf-chip">Oftalmología <i class="icon icon-x icon-12" aria-hidden="true"></i></span>
+          <span class="mp-badge mp-badge--violet sf-chip">Neurología <i class="icon icon-x icon-12" aria-hidden="true"></i></span>
+          <span class="mp-badge mp-badge--violet sf-chip">Psiquiatra <i class="icon icon-x icon-12" aria-hidden="true"></i></span>
+          <span class="mp-badge mp-badge--violet sf-chip">Pediatría <i class="icon icon-x icon-12" aria-hidden="true"></i></span>
+          <button class="mp-button mp-button--ghost mp-button--sm sf-clear-btn">Limpiar filtros</button>
+        </div>
+        <p class="sf-result-count">Encontramos <strong>0</strong> opciones para ti</p>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="sf-empty-state">
+      <div class="sf-empty-icon">
+        <i class="icon icon-magnifying-glass icon-32" aria-hidden="true"></i>
+      </div>
+      <p class="mp-h5 sf-empty-title">No encontramos resultados con los filtros seleccionados</p>
+      <p class="mp-body-m sf-empty-desc">Intenta ajustar o eliminar algunos filtros para ver más opciones</p>
+    </div>
+
+    <!-- Estructura base + Tipos de filtros -->
+    <div class="row g-4 mt-0">
+      <div class="col-12 col-lg-6">
+        <article class="component-example-card h-100">
+          <h3 class="mp-h3">Estructura base</h3>
+          <ul class="component-list mt-2">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Input de búsqueda</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Filtros (chips / dropdown / select)</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Resultados (cards o tabla)</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Paginación (opcional)</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Empty / loading</li>
+          </ul>
+        </article>
+      </div>
+      <div class="col-12 col-lg-6">
+        <article class="component-example-card h-100">
+          <h3 class="mp-h3">Tipos de filtros</h3>
+          <ul class="component-list mt-2">
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Filtros simples (una opción)</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Filtros múltiples (varias opciones)</li>
+            <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Filtros combinados</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. LÓGICA DE FILTROS
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section" aria-labelledby="sf-logica">
+    <div class="component-section__header">
+      <h2 id="sf-logica" class="mp-h2">Lógica de filtros</h2>
+    </div>
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-6">
+        <p class="mp-body-m">Cuando el usuario selecciona múltiples filtros, el sistema aplica una lógica de tipo: <strong>AND (Y lógico)</strong></p>
+        <div class="sf-behavior-block mt-3">
+          <p class="mp-h3 mb-1">Comportamiento</p>
+          <p class="mp-body-m" style="font-style:italic">Cada filtro aplicado hace la búsqueda más específica</p>
+          <ul class="component-list mt-2">
+            <li><i class="icon icon-plus icon-16" aria-hidden="true"></i>Agregar filtro → reduce resultados</li>
+            <li><i class="icon icon-minus icon-16" aria-hidden="true"></i>Quitar filtro → amplía resultados</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="sf-example-table">
+          <div class="sf-example-cell">
+            <p class="mp-h3 mb-2">Ejemplo</p>
+            <p class="mp-body-m mb-1">Filtros seleccionados:</p>
+            <ul class="component-list">
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i><strong>Ciudad:</strong>&nbsp;Bogota D.C</li>
+              <li><i class="icon icon-check icon-16" aria-hidden="true"></i><strong>Especialidad:</strong>&nbsp;Cardiología</li>
+            </ul>
+          </div>
+          <div class="sf-example-divider" aria-hidden="true"></div>
+          <div class="sf-example-cell">
+            <p class="mp-h3 mb-2">Resultados</p>
+            <p class="mp-body-m">Centros en Bogota D.C <strong>Y</strong><br>que tengan Cardiología</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. COMPORTAMIENTO + REGLAS DE USO
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section sf-rules-section" aria-labelledby="sf-comportamiento">
+    <div class="component-section__header">
+      <h2 id="sf-comportamiento" class="mp-h2">Comportamiento y reglas</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3 mb-2">Comportamiento</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>La búsqueda filtra resultados en tiempo real o al ejecutar acción</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los filtros reducen el conjunto de resultados</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Los resultados se actualizan automáticamente al aplicar filtros</li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-6">
+        <h3 class="mp-h3 mb-2">Reglas de uso</h3>
+        <ul class="component-list">
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Usar filtros cuando hay muchos resultados</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No usar filtros innecesarios</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Priorizar filtros relevantes</li>
+          <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Mantener claridad en las opciones</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. ACCESIBILIDAD
+  ══════════════════════════════════════════════════════════ -->
+  <section class="component-section sf-a11y-section" aria-labelledby="sf-a11y">
+    <div class="sf-a11y-header">
+      <div class="sf-a11y-icon" aria-hidden="true">
+        <i class="icon icon-accessibility icon-24"></i>
+      </div>
+      <h2 id="sf-a11y" class="mp-h2">Accesibilidad</h2>
+    </div>
+    <ul class="component-list mt-2">
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Focus visible en todos los filtros y el input de búsqueda</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Labels claros y asociados correctamente con <code>for</code> / <code>aria-label</code></li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Filtros seleccionados visibles y con estado comunicado vía <code>aria-pressed</code></li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>No depender solo del color para indicar estado activo</li>
+      <li><i class="icon icon-check icon-16" aria-hidden="true"></i>Anunciar cambios de resultados con <code>aria-live="polite"</code></li>
+    </ul>
+  </section>
+</article>

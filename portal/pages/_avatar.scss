@@ -1,12 +1,23 @@
 @use '../../core/abstracts' as *;
 
 .avatar-doc {
+  --doc-max-width: #{rem(1100px)};
   display: grid;
   gap: var(--space-24);
+  width: 100%;
+  max-width: var(--doc-max-width);
+  overflow-x: clip;
 
   .component-hero,
   .component-section {
     margin-bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .row {
+    min-width: 0;
   }
 }
 

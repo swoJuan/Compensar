@@ -96,7 +96,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-16);
-  margin-bottom: var(--space-20, 1.25rem);
+  margin-bottom: var(--space-16);
 }
 
 .component-section__header p {
@@ -126,6 +126,10 @@
 .component-section p {
   margin: 0;
   color: var(--use-text-secondary);
+}
+
+[data-theme='high-contrast'] .component-doc-page [class*='measure'] {
+  color: var(--base-neutral-black, #000000);
 }
 
 .component-grid-2 {
@@ -179,6 +183,17 @@
 
 .component-divider {
   background: var(--doc-card-border);
+}
+
+@include md-down {
+  .component-example-card--split {
+    grid-template-columns: 1fr;
+  }
+
+  .component-example-card--split .component-divider {
+    height: rem(1px);
+    width: auto;
+  }
 }
 
 .component-example-actions {
@@ -621,7 +636,7 @@
 .button-text-link-card {
   display: grid;
   gap: var(--space-12);
-  padding: var(--space-20);
+  padding: var(--space-16);
   border: 0;
   border-radius: rem(10px);
 }

@@ -199,8 +199,8 @@ const router = (() => {
     'web/componentes/header': {
       label: 'Header',
       path: 'web/components/header.html',
-      icon: 'web_asset',
-      group: 'hidden'
+      icon: 'browser',
+      group: 'web-componentes'
     },
     'web/componentes/inputs': {
       label: 'Inputs',
@@ -328,6 +328,12 @@ const router = (() => {
       icon: 'view_quilt',
       group: 'guidelines'
     },
+    'guidelines/search-filters': {
+      label: 'Search & Filters',
+      path: 'guidelines/search-filters.html',
+      icon: 'magnifying_glass',
+      group: 'guidelines'
+    },
     'qa/checklist': {
       label: 'Checklist QA',
       path: 'qa/checklist.html',
@@ -400,9 +406,7 @@ const router = (() => {
         section === 'web/componentes/inputs' ||
         section === 'web/componentes/dropdown' ||
         section === 'web/componentes/badges' ||
-        section === 'web/componentes/avatar' ||
         section === 'web/componentes/header' ||
-        section === 'app/componentes/avatar' ||
         section === 'app/componentes/badges' ||
         section === 'app/componentes/bottom-sheet' ||
         section === 'app/componentes/dropdown' ||
@@ -420,6 +424,7 @@ const router = (() => {
         section === 'guidelines/form-patterns' ||
         section === 'guidelines/motion-animation' ||
         section === 'guidelines/responsive-breakpoints' ||
+        section === 'guidelines/search-filters' ||
         section === 'demo/core'
       );
 
