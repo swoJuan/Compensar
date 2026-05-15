@@ -1,6 +1,6 @@
 /* ============================================================
    COMPENSAR ICON SYSTEM — icons.css
-   Archivo único: @font-face + clase base + tamaños + 955 clases
+   Archivo único: @font-face + clase base + tamaños + 1002 clases
    
    Uso: <i class="icon icon-{nombre} icon-{tamaño}"></i>
    Ejemplo: <i class="icon icon-heart icon-24" aria-hidden="true"></i>
@@ -49,7 +49,7 @@
 .icon-40 { font-size: 40px; }
 .icon-48 { font-size: 48px; }
 .icon-64 { font-size: 64px; }
-/* ── Named icon classes (955 iconos) ──────────────────── */
+/* ── Named icon classes (1001 iconos) ──────────────────── */
 
 .icon-warning-octagon::before { content: "\f398"; }
 .icon-warning-circle::before { content: "\f399"; }
@@ -933,6 +933,7 @@
 .icon-tongue::before { content: "\f004"; }
 .icon-tissue-paper::before { content: "\f005"; }
 .icon-thread::before { content: "\f006"; }
+.icon-thermometer::before { content: "\f3c4"; }
 .icon-thermometer::before { content: "\f007"; }
 .icon-stethoscope::before { content: "\f008"; }
 .icon-stethoscope-02::before { content: "\f009"; }
@@ -1007,3 +1008,51 @@
 .icon-bandage::before { content: "\f04e"; }
 .icon-ampoule::before { content: "\f04f"; }
 .icon-aids::before { content: "\f050"; }
+
+/* ── Nuevos iconos (v2 — 46 clases añadidas) ─────────────────────────── */
+.icon-wind::before { content: "\f204"; }
+.icon-waves::before { content: "\f3bc"; }
+.icon-umbrella-simple::before { content: "\f3bd"; }
+.icon-umbrella::before { content: "\f3be"; }
+.icon-tree-evergreen::before { content: "\f3bf"; }
+.icon-tree::before { content: "\f3c0"; }
+.icon-thermometer-simple::before { content: "\f3c1"; }
+.icon-thermometer-hot::before { content: "\f3c2"; }
+.icon-thermometer-cold::before { content: "\f3c3"; }
+.icon-sun-horizon::before { content: "\f3c5"; }
+.icon-sun-dim::before { content: "\f3c6"; }
+.icon-sun::before { content: "\f3c7"; }
+.icon-star-four::before { content: "\f3c8"; }
+.icon-sparkle::before { content: "\f3c9"; }
+.icon-snowflake::before { content: "\f3ca"; }
+.icon-rainbow-cloud::before { content: "\f3cb"; }
+.icon-rainbow::before { content: "\f3cc"; }
+.icon-planet::before { content: "\f3cd"; }
+.icon-paw-print::before { content: "\f3ce"; }
+.icon-mountains::before { content: "\f3cf"; }
+.icon-moon-stars::before { content: "\f3d0"; }
+.icon-moon::before { content: "\f3d1"; }
+.icon-leaf::before { content: "\f3d2"; }
+.icon-flower-lotus::before { content: "\f3d3"; }
+.icon-flower::before { content: "\f3d4"; }
+.icon-flame::before { content: "\f3d5"; }
+.icon-fish-simple::before { content: "\f3d6"; }
+.icon-fish::before { content: "\f3d7"; }
+.icon-fire-simple::before { content: "\f3d8"; }
+.icon-fire::before { content: "\f3d9"; }
+.icon-drop::before { content: "\f3da"; }
+.icon-dog::before { content: "\f3db"; }
+.icon-cloud-sun::before { content: "\f3dc"; }
+.icon-cloud-snow::before { content: "\f3dd"; }
+.icon-cloud-rain::before { content: "\f3de"; }
+.icon-cloud-moon::before { content: "\f3df"; }
+.icon-cloud-lightning::before { content: "\f3e0"; }
+.icon-cloud-fog::before { content: "\f3e1"; }
+.icon-cloud::before { content: "\f3e2"; }
+.icon-cat::before { content: "\f3e3"; }
+.icon-campfire::before { content: "\f3e4"; }
+.icon-cactus::before { content: "\f3e5"; }
+.icon-butterfly::before { content: "\f3e6"; }
+.icon-bird::before { content: "\f3e7"; }
+.icon-atom::before { content: "\f3e8"; }
+.icon-check-circle::before { content: "\f3bb"; }

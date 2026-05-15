@@ -3,7 +3,7 @@
 <div class="section-header">
   <div class="section-eyebrow">1.8.3</div>
   <h1 class="section-title">Librería de iconos</h1>
-  <p class="section-desc">955 iconos del sistema Compensar. Busca por nombre en español o inglés, filtra por categoría y copia el snippet HTML directamente desde el popover.</p>
+  <p class="section-desc">1001 iconos del sistema Compensar. Busca por nombre en español o inglés, filtra por categoría y copia el snippet HTML directamente desde el popover.</p>
 </div>
 
 <!-- JSZip para la descarga ZIP -->
@@ -28,7 +28,7 @@
 <!-- Stats strip -->
 <div class="ic-stats-strip">
   <div class="ic-stat">
-    <span class="ic-stat-num" id="ic-count-badge">955</span>
+    <span class="ic-stat-num" id="ic-count-badge">1001</span>
     <span class="ic-stat-lbl">iconos</span>
   </div>
   <div class="ic-stat-div"></div>
@@ -57,7 +57,7 @@
     </button>
   </div>
   <div class="ic-search-footer">
-    <span id="ic-results-count" class="ic-results-count">955 resultados</span>
+    <span id="ic-results-count" class="ic-results-count">1001 resultados</span>
     <div class="ic-cat-pills" id="ic-cat-pills">
       <button class="mp-btn mp-btn--terciario ic-cat-pill active" onclick="icFilterCat(this,'')">Todos</button>
       <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'security')">Seguridad</button>
@@ -68,6 +68,7 @@
       <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'chart')">Gráficas</button>
       <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'map')">Mapas</button>
       <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'device')">Dispositivos</button>
+      <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'nature')">Naturaleza</button>
     </div>
   </div>
 </div>
@@ -1132,7 +1133,54 @@ const ICONS=[
   {n:"blood-bag",c:"icon-blood-bag",u:"f04d"},
   {n:"bandage",c:"icon-bandage",u:"f04e"},
   {n:"ampoule",c:"icon-ampoule",u:"f04f"},
-  {n:"aids",c:"icon-aids",u:"f050"}
+  {n:"aids",c:"icon-aids",u:"f050"},
+  /* ── Nuevos iconos v2 — Naturaleza, clima y animales ── */
+  {n:"Wind",c:"icon-wind",u:"f204"},
+  {n:"Waves",c:"icon-waves",u:"f3bc"},
+  {n:"UmbrellaSimple",c:"icon-umbrella-simple",u:"f3bd"},
+  {n:"Umbrella",c:"icon-umbrella",u:"f3be"},
+  {n:"TreeEvergreen",c:"icon-tree-evergreen",u:"f3bf"},
+  {n:"Tree",c:"icon-tree",u:"f3c0"},
+  {n:"ThermometerSimple",c:"icon-thermometer-simple",u:"f3c1"},
+  {n:"ThermometerHot",c:"icon-thermometer-hot",u:"f3c2"},
+  {n:"ThermometerCold",c:"icon-thermometer-cold",u:"f3c3"},
+  {n:"SunHorizon",c:"icon-sun-horizon",u:"f3c5"},
+  {n:"SunDim",c:"icon-sun-dim",u:"f3c6"},
+  {n:"Sun",c:"icon-sun",u:"f3c7"},
+  {n:"StarFour",c:"icon-star-four",u:"f3c8"},
+  {n:"Sparkle",c:"icon-sparkle",u:"f3c9"},
+  {n:"Snowflake",c:"icon-snowflake",u:"f3ca"},
+  {n:"RainbowCloud",c:"icon-rainbow-cloud",u:"f3cb"},
+  {n:"Rainbow",c:"icon-rainbow",u:"f3cc"},
+  {n:"Planet",c:"icon-planet",u:"f3cd"},
+  {n:"PawPrint",c:"icon-paw-print",u:"f3ce"},
+  {n:"Mountains",c:"icon-mountains",u:"f3cf"},
+  {n:"MoonStars",c:"icon-moon-stars",u:"f3d0"},
+  {n:"Moon",c:"icon-moon",u:"f3d1"},
+  {n:"Leaf",c:"icon-leaf",u:"f3d2"},
+  {n:"FlowerLotus",c:"icon-flower-lotus",u:"f3d3"},
+  {n:"Flower",c:"icon-flower",u:"f3d4"},
+  {n:"Flame",c:"icon-flame",u:"f3d5"},
+  {n:"FishSimple",c:"icon-fish-simple",u:"f3d6"},
+  {n:"Fish",c:"icon-fish",u:"f3d7"},
+  {n:"FireSimple",c:"icon-fire-simple",u:"f3d8"},
+  {n:"Fire",c:"icon-fire",u:"f3d9"},
+  {n:"Drop",c:"icon-drop",u:"f3da"},
+  {n:"Dog",c:"icon-dog",u:"f3db"},
+  {n:"CloudSun",c:"icon-cloud-sun",u:"f3dc"},
+  {n:"CloudSnow",c:"icon-cloud-snow",u:"f3dd"},
+  {n:"CloudRain",c:"icon-cloud-rain",u:"f3de"},
+  {n:"CloudMoon",c:"icon-cloud-moon",u:"f3df"},
+  {n:"CloudLightning",c:"icon-cloud-lightning",u:"f3e0"},
+  {n:"CloudFog",c:"icon-cloud-fog",u:"f3e1"},
+  {n:"Cloud",c:"icon-cloud",u:"f3e2"},
+  {n:"Cat",c:"icon-cat",u:"f3e3"},
+  {n:"Campfire",c:"icon-campfire",u:"f3e4"},
+  {n:"Cactus",c:"icon-cactus",u:"f3e5"},
+  {n:"Butterfly",c:"icon-butterfly",u:"f3e6"},
+  {n:"Bird",c:"icon-bird",u:"f3e7"},
+  {n:"Atom",c:"icon-atom",u:"f3e8"},
+  {n:"CheckCircle",c:"icon-check-circle",u:"f3bb"}
 ];
 
 (function(){
@@ -1181,7 +1229,22 @@ const SYN = {
   'tiempo':['clock','hourglass','timer'],'reloj':['clock','alarm'],
   'lista':['list','rows'],'tabla':['table'],
   'gráfico':['chart','graph'],'estadística':['chart'],
-  'sol':['sun'],'luna':['moon'],'nube':['cloud'],
+  'sol':['sun','sun-horizon','sun-dim'],'luna':['moon','moon-stars'],'nube':['cloud','cloud-rain','cloud-snow','cloud-sun','cloud-moon','cloud-lightning','cloud-fog'],
+  'viento':['wind'],'olas':['waves'],'paraguas':['umbrella'],
+  'árbol':['tree','tree-evergreen'],'temperatura':['thermometer'],
+  'termómetro':['thermometer'],'amanecer':['sun-horizon'],
+  'estrella':['star','star-four'],'destello':['sparkle'],
+  'nieve':['snowflake'],'copo':['snowflake'],'arcoíris':['rainbow'],
+  'planeta':['planet'],'huella':['paw-print'],'pata':['paw-print'],
+  'montaña':['mountains'],'cerro':['mountains'],
+  'hoja':['leaf'],'flor':['flower','flower-lotus'],'loto':['flower-lotus'],
+  'llama':['flame','fire'],'fuego':['flame','fire','campfire'],
+  'pez':['fish'],'gota':['drop'],'agua':['drop','waves'],
+  'perro':['dog'],'gato':['cat'],'animal':['dog','cat','bird','fish','butterfly'],
+  'pájaro':['bird'],'ave':['bird'],'mariposa':['butterfly'],
+  'fogata':['campfire'],'camping':['campfire'],'cactus':['cactus'],
+  'átomo':['atom'],'ciencia':['atom'],'naturaleza':['tree','leaf','flower','sun','moon','cloud'],
+  'clima':['cloud','sun','moon','snowflake','wind','rainbow'],
   'bloquear':['lock'],'desbloquear':['lock-open'],
   'privado':['lock','eye-slash'],'público':['globe','eye'],
   'carrito':['shopping-cart'],'bolsa':['shopping-bag','handbag'],
@@ -1296,6 +1359,36 @@ window.icClearSearch = function(){
   renderGrid(ICONS);
 };
 
+/* ── Category keywords map ─────────────────────────────── */
+// Los términos se comparan como segmentos exactos dentro del class name (icon-TERM o icon-TERM-xxx)
+// Esto evita falsos positivos: 'cat' no matchea 'identification', 'planet' no matchea 'airplane-tilt', etc.
+const CAT_KEYWORDS = {
+  'security': ['shield','lock','key','password','fingerprint','detective','prohibit','warning','keyhole','vault','wall'],
+  'health':   ['heart','pill','syringe','stethoscope','hospital','medical','dental','covid','clinic','cardiogram','caduceus','brain','bone','blood','bandage','ampoule','aids','prescription','skull','wheelchair','ear','first-aid','virus','eye','tooth','dna'],
+  'user':     ['user','person','avatar','gender','baby','child','address-book','identification','handshake'],
+  'arrow':    ['arrow','caret','chevron'],
+  'file':     ['file','folder','clipboard','note','archive','receipt'],
+  'chart':    ['chart','graph','trend','presentation','statistics'],
+  'map':      ['map','globe','navigation','compass','location','pin','flag','earth'],
+  'device':   ['device','desktop','laptop','monitor','phone','tablet','keyboard','mouse','printer','scanner','television','projector','cpu','hard-drive','usb','camera','headphone'],
+  'nature':   ['wind','waves','umbrella','tree','thermometer','sun','sparkle','snowflake','rainbow','planet','paw','mountains','moon','leaf','flower','flame','fish','fire','drop','dog','cloud','cat','campfire','cactus','butterfly','bird','atom','star-four']
+};
+
+// Verifica si algún término coincide como segmento exacto en el class name
+// Ej: 'cat' matchea 'icon-cat' pero NO 'icon-identification-card'
+function matchesCatTerm(cls, terms){
+  // Eliminar el prefijo 'icon-' y dividir en segmentos por '-'
+  const segments = cls.replace(/^icon-/, '').split('-');
+  return terms.some(term => {
+    const termParts = term.split('-');
+    // Buscar la secuencia de partes del término dentro de los segmentos del class
+    for(let i = 0; i <= segments.length - termParts.length; i++){
+      if(termParts.every((p, j) => segments[i + j] === p)) return true;
+    }
+    return false;
+  });
+}
+
 /* ── Category filter ───────────────────────────────────── */
 let activeCat = '';
 window.icFilterCat = function(btn, cat){
@@ -1308,7 +1401,8 @@ window.icFilterCat = function(btn, cat){
     renderGrid(ICONS);
     return;
   }
-  const filtered = ICONS.filter(ic => normStr(ic.n + ' ' + ic.c).includes(normStr(cat)));
+  const terms = CAT_KEYWORDS[cat] || [cat];
+  const filtered = ICONS.filter(ic => matchesCatTerm(ic.c, terms));
   renderGrid(filtered);
 };
 
