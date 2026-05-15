@@ -28,7 +28,7 @@
 <!-- Stats strip -->
 <div class="ic-stats-strip">
   <div class="ic-stat">
-    <span class="ic-stat-num" id="ic-count-badge">1001</span>
+    <span class="ic-stat-num" id="ic-count-badge">0</span>
     <span class="ic-stat-lbl">iconos</span>
   </div>
   <div class="ic-stat-div"></div>
@@ -57,7 +57,7 @@
     </button>
   </div>
   <div class="ic-search-footer">
-    <span id="ic-results-count" class="ic-results-count">1001 resultados</span>
+    <span id="ic-results-count" class="ic-results-count">0 resultados</span>
     <div class="ic-cat-pills" id="ic-cat-pills">
       <button class="mp-btn mp-btn--terciario ic-cat-pill active" onclick="icFilterCat(this,'')">Todos</button>
       <button class="mp-btn mp-btn--terciario ic-cat-pill" onclick="icFilterCat(this,'security')">Seguridad</button>
@@ -177,6 +177,8 @@
 </section>
 
 <script>
+
+(function(){
 
 const ICONS=[
   {n:"WarningOctagon",c:"icon-warning-octagon",u:"f398"},
@@ -615,7 +617,7 @@ const ICONS=[
   {n:"CheckSquareOffset",c:"icon-check-square-offset",u:"f201"},
   {n:"CheckSquare",c:"icon-check-square",u:"f202"},
   {n:"Checks",c:"icon-checks",u:"f203"},
-  {n:"CheckCircle",c:"icon-check-circle",u:"f204"},
+  {n:"CheckCircleLegacy",c:"icon-check-circle-legacy",u:"f204"},
   {n:"Check",c:"icon-check",u:"f205"},
   {n:"CellSignalX",c:"icon-cell-signal-x",u:"f206"},
   {n:"CellSignalSlash",c:"icon-cell-signal-slash",u:"f207"},
@@ -758,9 +760,9 @@ const ICONS=[
   {n:"AlignTopSimple",c:"icon-align-top-simple",u:"f1bb"},
   {n:"AlignTop",c:"icon-align-top",u:"f1bc"},
   {n:"AlignRightSimple",c:"icon-align-right-simple",u:"f1bd"},
-  {n:"AlignRight",c:"icon-align-right",u:"f1be"},
+  {n:"AlignRightAlt",c:"icon-align-right-alt",u:"f1be"},
   {n:"AlignLeftSimple",c:"icon-align-left-simple",u:"f1bf"},
-  {n:"AlignLeft",c:"icon-align-left",u:"f1c0"},
+  {n:"AlignLeftAlt",c:"icon-align-left-alt",u:"f1c0"},
   {n:"AlignCenterVerticalSimple",c:"icon-align-center-vertical-simple",u:"f1c1"},
   {n:"AlignCenterVertical",c:"icon-align-center-vertical",u:"f1c2"},
   {n:"AlignCenterHorizontalSimple",c:"icon-align-center-horizontal-simple",u:"f1c3"},
@@ -1054,7 +1056,7 @@ const ICONS=[
   {n:"CaretCircleRight",c:"icon-caret-circle-right",u:"f0be"},
   {n:"ArrowArcLeft",c:"icon-arrow-arc-left",u:"f0bf"},
   {n:"x-ray",c:"icon-x-ray",u:"f000"},
-  {n:"wheelchair",c:"icon-wheelchair",u:"f001"},
+  {n:"wheelchairLegacy",c:"icon-wheelchair-legacy",u:"f001"},
   {n:"vaccine",c:"icon-vaccine",u:"f002"},
   {n:"treatment",c:"icon-treatment",u:"f003"},
   {n:"tongue",c:"icon-tongue",u:"f004"},
@@ -1064,14 +1066,14 @@ const ICONS=[
   {n:"stethoscope",c:"icon-stethoscope",u:"f008"},
   {n:"stethoscope-02",c:"icon-stethoscope-02",u:"f009"},
   {n:"sperm",c:"icon-sperm",u:"f00a"},
-  {n:"skull",c:"icon-skull",u:"f00b"},
+  {n:"skullLegacy",c:"icon-skull-legacy",u:"f00b"},
   {n:"safe",c:"icon-safe",u:"f00c"},
   {n:"pulse-rectangle-02",c:"icon-pulse-rectangle-02",u:"f00d"},
   {n:"pulse-rectangle-01",c:"icon-pulse-rectangle-01",u:"f00e"},
   {n:"pulse-02",c:"icon-pulse-02",u:"f00f"},
   {n:"pulse-01",c:"icon-pulse-01",u:"f010"},
   {n:"protection-mask",c:"icon-protection-mask",u:"f011"},
-  {n:"prescription",c:"icon-prescription",u:"f012"},
+  {n:"prescriptionLegacy",c:"icon-prescription-legacy",u:"f012"},
   {n:"patient",c:"icon-patient",u:"f013"},
   {n:"nose",c:"icon-nose",u:"f014"},
   {n:"mortar",c:"icon-mortar",u:"f015"},
@@ -1100,9 +1102,9 @@ const ICONS=[
   {n:"hand-sanitizer",c:"icon-hand-sanitizer",u:"f02c"},
   {n:"give-pill",c:"icon-give-pill",u:"f02d"},
   {n:"give-blood",c:"icon-give-blood",u:"f02e"},
-  {n:"first-aid-kit",c:"icon-first-aid-kit",u:"f02f"},
-  {n:"eye",c:"icon-eye",u:"f030"},
-  {n:"ear",c:"icon-ear",u:"f031"},
+  {n:"first-aid-kitLegacy",c:"icon-first-aid-kit-legacy",u:"f02f"},
+  {n:"eyeLegacy",c:"icon-eye-legacy",u:"f030"},
+  {n:"earLegacy",c:"icon-ear-legacy",u:"f031"},
   {n:"dropper",c:"icon-dropper",u:"f032"},
   {n:"doctor-03",c:"icon-doctor-03",u:"f033"},
   {n:"doctor-02",c:"icon-doctor-02",u:"f034"},
@@ -1183,7 +1185,13 @@ const ICONS=[
   {n:"CheckCircle",c:"icon-check-circle",u:"f3bb"}
 ];
 
-(function(){
+function dedupeIconsByClass(list){
+  const byClass = new Map();
+  list.forEach(ic => byClass.set(ic.c, ic));
+  return Array.from(byClass.values());
+}
+
+const ICONS_CLEAN = dedupeIconsByClass(ICONS);
 
 /* ── Synonyms dictionary ───────────────────────────────── */
 const SYN = {
@@ -1287,7 +1295,7 @@ function renderStylePreview(){
 }
 
 /* ── Grid rendering ────────────────────────────────────── */
-let currentIcons = ICONS;
+let currentIcons = ICONS_CLEAN;
 let activePopIcon = null;
 
 function renderGrid(list){
@@ -1329,7 +1337,7 @@ window.icSearch = function(q){
   clearBtn.hidden = !q;
   
   if(!q.trim()){
-    renderGrid(ICONS);
+    renderGrid(ICONS_CLEAN);
     return;
   }
   
@@ -1343,7 +1351,7 @@ window.icSearch = function(q){
     }
   }
   
-  const results = ICONS.filter(ic=>{
+  const results = ICONS_CLEAN.filter(ic=>{
     const name = normStr(ic.n);
     const cls  = normStr(ic.c);
     const uni  = ic.u.toLowerCase();
@@ -1356,7 +1364,7 @@ window.icSearch = function(q){
 window.icClearSearch = function(){
   document.getElementById('ic-search').value = '';
   document.getElementById('ic-search-clear').hidden = true;
-  renderGrid(ICONS);
+  renderGrid(ICONS_CLEAN);
 };
 
 /* ── Category keywords map ─────────────────────────────── */
@@ -1398,11 +1406,11 @@ window.icFilterCat = function(btn, cat){
   document.getElementById('ic-search').value = '';
   document.getElementById('ic-search-clear').hidden = true;
   if(!cat){
-    renderGrid(ICONS);
+    renderGrid(ICONS_CLEAN);
     return;
   }
   const terms = CAT_KEYWORDS[cat] || [cat];
-  const filtered = ICONS.filter(ic => matchesCatTerm(ic.c, terms));
+  const filtered = ICONS_CLEAN.filter(ic => matchesCatTerm(ic.c, terms));
   renderGrid(filtered);
 };
 
@@ -1526,9 +1534,9 @@ window.icCopySnippet = function(){
 /* ── CSS font-face block ───────────────────────────────── */
 const FONT_CSS = `@font-face {
   font-family: "CompensarIcons";
-  src: url("./icons/fonts/compensar-icons.woff2") format("woff2"),
-       url("./icons/fonts/compensar-icons.woff")  format("woff"),
-       url("./icons/fonts/compensar-icons.ttf")   format("truetype");
+  src: url("fonts/compensar-icons.woff2") format("woff2"),
+       url("fonts/compensar-icons.woff")  format("woff"),
+       url("fonts/compensar-icons.ttf")   format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -1546,6 +1554,7 @@ const FONT_CSS = `@font-face {
 }
 
 /* Tamaños — uso: <i class="icon icon-nombre icon-24"></i> */
+.icon-12 { font-size: 12px; }
 .icon-16 { font-size: 16px; }
 .icon-20 { font-size: 20px; }
 .icon-24 { font-size: 24px; }
@@ -1559,13 +1568,13 @@ const FONT_CSS = `@font-face {
 window.icDownloadCSS = function(){
   let css = `/* ============================================================
    ICON SYSTEM — Compensar Medicina Prepagada
-   Fuente: IcoMoon · 1001 iconos
+   Fuente: IcoMoon · ${ICONS_CLEAN.length} iconos
    ============================================================ */
 
 ` + FONT_CSS + `
 /* Named classes (convenience) */
 `;
-  ICONS.forEach(ic=>{
+  ICONS_CLEAN.forEach(ic=>{
     css += `.${ic.c}::before { content: "\\${ic.u}"; }\n`;
   });
   const blob = new Blob([css],{type:'text/css'});
@@ -1581,7 +1590,7 @@ window.icDownloadJSON = function(){
       syns[en].push(es);
     });
   }
-  const out = { icons: ICONS.map(ic=>({
+  const out = { icons: ICONS_CLEAN.map(ic=>({
     name: ic.n, class: ic.c, unicode: ic.u,
     htmlEntity: `&#x${ic.u};`,
     synonyms: (() => {
@@ -1625,17 +1634,26 @@ window.icDownloadZIP = async function(){
 
   // CSS
   let css = `/* Icon System — Compensar Medicina Prepagada */\n\n` + FONT_CSS;
-  ICONS.forEach(ic=>{ css += `.${ic.c}::before { content: "\\${ic.u}"; }\n`; });
+  ICONS_CLEAN.forEach(ic=>{ css += `.${ic.c}::before { content: "\\${ic.u}"; }\n`; });
   folder.file('icons.css', css);
 
   // JSON
-  const jsonData = { icons: ICONS.map(ic=>({name:ic.n,class:ic.c,unicode:ic.u,htmlEntity:`&#x${ic.u};`})) };
+  const jsonData = { icons: ICONS_CLEAN.map(ic=>({name:ic.n,class:ic.c,unicode:ic.u,htmlEntity:`&#x${ic.u};`})) };
   folder.file('icon-system.json', JSON.stringify(jsonData,null,2));
+
+  // selection.json for IcoMoon roundtrip
+  try {
+    const selectionRes = await fetch('./icons/selection.json');
+    if (selectionRes.ok) {
+      const selectionText = await selectionRes.text();
+      folder.file('selection.json', selectionText);
+    }
+  } catch (e) { /* optional file */ }
 
   // README
   const readme = `ICON SYSTEM — Compensar Medicina Prepagada
 ==========================================
-Generado con IcoMoon · ${ICONS.length} iconos
+Generado con IcoMoon · ${ICONS_CLEAN.length} iconos
 
 ESTRUCTURA
 ----------
@@ -1644,8 +1662,9 @@ icons/
 │   ├── compensar-icons.woff2   (fuente principal)
 │   ├── compensar-icons.woff  (fallback)
 │   └── compensar-icons.ttf     (fallback legacy)
-├── icons.css            (@font-face + clase base + tamaños + 1001 clases)
-└── icon-system.json     (datos de todos los iconos)
+├── icons.css            (@font-face + clase base + tamaños + ${ICONS_CLEAN.length} clases)
+├── icon-system.json     (datos de todos los iconos)
+└── selection.json       (fuente de verdad para IcoMoon)
 
 INSTALACIÓN
 -----------
@@ -1683,7 +1702,7 @@ ACTUALIZAR EL SET
 
 /* ── Init ──────────────────────────────────────────────── */
 function icInit() {
-  renderGrid(ICONS);
+  renderGrid(ICONS_CLEAN);
 }
 
 if (document.readyState === 'loading') {

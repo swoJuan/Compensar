@@ -5320,11 +5320,34 @@
         old.remove();
       });
 
-      // Re-ejecutar scripts inline del fragmento
+      // Re-ejecutar scripts del fragmento con guardas anti-duplicado
+      // 1) src externos: se inyectan solo si no existen ya en <head>
+      // 2) inline: se ejecutan una sola vez por carga de fragmento
+      var inlineSeen = new Set();
       content.querySelectorAll('script').forEach(function(old) {
+        if (old.src) {
+          var src = old.getAttribute('src');
+          if (src && document.head.querySelector('script[src="' + src + '"]')) {
+            old.remove();
+            return;
+          }
+          var ext = document.createElement('script');
+          Array.from(old.attributes).forEach(function(a) { ext.setAttribute(a.name, a.value); });
+          document.head.appendChild(ext);
+          old.remove();
+          return;
+        }
+
+        var code = old.textContent || '';
+        var sig = code.trim();
+        if (!sig || inlineSeen.has(sig)) {
+          old.remove();
+          return;
+        }
+        inlineSeen.add(sig);
+
         var s = document.createElement('script');
-        if (old.src) { s.src = old.src; }
-        else { s.textContent = old.textContent; }
+        s.textContent = code;
         document.head.appendChild(s);
         old.remove();
       });

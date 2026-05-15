@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo carga iconos</title>
+  <link rel="stylesheet" href="./css/icons.css">
+  <style>
+    :root {
+      --bg: #f2f6ff;
+      --bg-2: #e8f8ef;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #5f6f8f;
+      --line: #d8e0f0;
+      --ok: #0f8a3d;
+      --warn: #b66d0a;
+      --nature: #0f6a3f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1100px 600px at -10% -10%, #d8e8ff 0%, transparent 65%),
+        radial-gradient(900px 500px at 110% -20%, #d9f8e5 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 8px 28px rgba(19, 41, 92, 0.08);
+    }
+
+    h1 { margin: 0 0 8px; font-size: 26px; }
+    h2 { margin: 0 0 10px; font-size: 18px; }
+    p  { margin: 0 0 10px; color: var(--muted); }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .status {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .row {
+      border: 1px solid var(--line);
+      border-left-width: 6px;
+      border-radius: 8px;
+      padding: 10px;
+      background: #fff;
+      white-space: pre-wrap;
+      font-size: 13px;
+    }
+
+    .ok { border-left-color: var(--ok); }
+    .warn { border-left-color: var(--warn); }
+
+    .sizes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+    }
+
+    .size-item {
+      border: 1px dashed var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      background: #fbfcff;
+    }
+
+    .size-item i { display: inline-block; }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #edf2ff;
+      color: #2d3d6f;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+
+    .icon-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      background: #fff;
+      min-height: 124px;
+      display: grid;
+      align-content: center;
+      gap: 8px;
+    }
+
+    .icon-card i {
+      display: inline-block;
+      color: #0e1d38;
+      line-height: 1;
+    }
+
+    .icon-card.nature i {
+      color: var(--nature);
+    }
+
+    .name {
+      font-size: 12px;
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      color: #1f3f2c;
+      background: #e4f7eb;
+      border: 1px solid #c3ead2;
+      border-radius: 999px;
+      padding: 1px 6px;
+      margin: 0 auto;
+    }
+
+    .legend {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 14px; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>Validacion de carga de iconos</h1>
+      <p>Estructura de prueba tipo proyecto: demo.html + css/icons.css + css/fonts/*. Reemplaza solo css/icons.css y css/fonts con lo que descargues y vuelve a abrir.</p>
+      <div class="mono">Ruta CSS activa: ./css/icons.css
+Ruta fuentes esperada desde CSS: ./css/fonts/compensar-icons.woff2</div>
+      <div class="status" id="status"></div>
+    </section>
+
+    <section class="card">
+      <h2>Tamaños (mismo icono)</h2>
+      <p>Referencia rapida de render en distintos tamaños.</p>
+      <div class="sizes" id="sizes"></div>
+    </section>
+
+    <section class="card">
+      <h2>Nature (muchos iconos)</h2>
+      <p>Set principal para validar categoria nature con varias clases reales.</p>
+      <div class="legend">
+        <span class="pill">Color nature</span>
+        <span class="pill">Tamanos mezclados</span>
+        <span class="pill">Clases reales del set</span>
+      </div>
+      <div class="grid" id="natureGrid"></div>
+    </section>
+
+    <section class="card">
+      <h2>Mix general</h2>
+      <p>Muestra adicional para validar que no se rompieron otras categorias.</p>
+      <div class="grid" id="mixGrid"></div>
+    </section>
+  </main>
+
+  <script>
+    const natureIcons = [
+      "icon-tree-evergreen","icon-tree","icon-sun","icon-sun-dim","icon-sun-horizon",
+      "icon-moon","icon-moon-stars","icon-leaf","icon-flower","icon-flower-lotus",
+      "icon-butterfly","icon-bird","icon-cloud","icon-cloud-rain","icon-cloud-sun",
+      "icon-cloud-moon","icon-cloud-snow","icon-cloud-lightning","icon-cloud-fog","icon-wind",
+      "icon-waves","icon-planet","icon-rainbow","icon-rainbow-cloud","icon-snowflake",
+      "icon-fire","icon-fire-simple","icon-flame","icon-campfire","icon-mountains",
+      "icon-paw-print","icon-fish","icon-fish-simple","icon-drop","icon-drop-half"
+    ];
+
+    const mixIcons = [
+      "icon-house","icon-user-circle","icon-lock","icon-key","icon-info","icon-warning",
+      "icon-calendar","icon-heart","icon-globe","icon-map-pin","icon-bell-ringing","icon-magnifying-glass",
+      "icon-check-circle","icon-shield","icon-fingerprint","icon-navigation-arrow","icon-chat-teardrop",
+      "icon-credit-card","icon-file","icon-folder"
+    ];
+
+    const sizeClasses = ["icon-12","icon-16","icon-20","icon-24","icon-32","icon-40","icon-48","icon-64"];
+
+    function addStatus(level, title, detail) {
+      const container = document.getElementById("status");
+      const row = document.createElement("div");
+      row.className = "row " + level;
+      row.textContent = title + "\n" + detail;
+      container.appendChild(row);
+    }
+
+    function renderSizes() {
+      const host = document.getElementById("sizes");
+      sizeClasses.forEach(sz => {
+        const d = document.createElement("div");
+        d.className = "size-item";
+        d.innerHTML = '<div class="pill">' + sz + '</div><div><i class="icon icon-leaf ' + sz + '" aria-hidden="true"></i></div>';
+        host.appendChild(d);
+      });
+    }
+
+    function renderGrid(hostId, list, nature) {
+      const host = document.getElementById(hostId);
+      list.forEach((cls, idx) => {
+        const size = sizeClasses[idx % sizeClasses.length];
+        const card = document.createElement("article");
+        card.className = "icon-card" + (nature ? " nature" : "");
+        card.innerHTML =
+          '<i class="icon ' + cls + ' ' + size + '" aria-hidden="true"></i>' +
+          (nature ? '<span class="badge">nature</span>' : '') +
+          '<div class="name">' + cls + '</div>' +
+          '<div class="name">' + size + '</div>';
+        host.appendChild(card);
+      });
+    }
+
+    async function validateAssets() {
+      const cssUrl = new URL("./css/icons.css", location.href).href;
+      let cssText = "";
+
+      try {
+        const r = await fetch(cssUrl, { cache: "no-store" });
+        if (!r.ok) {
+          addStatus("warn", "CSS no accesible", cssUrl + "\nHTTP " + r.status);
+          return;
+        }
+        cssText = await r.text();
+        addStatus("ok", "CSS cargado", cssUrl);
+      } catch (err) {
+        addStatus("warn", "Error al leer CSS", String(err));
+        return;
+      }
+
+      const urls = [...cssText.matchAll(/url\((?:"|')?([^"')]+)(?:"|')?\)/g)].map(m => m[1]);
+      if (!urls.length) {
+        addStatus("warn", "Sin rutas de fuente", "No se detectaron url(...) en @font-face");
+      } else {
+        addStatus("ok", "Rutas de fuente detectadas", urls.join("\n"));
+      }
+
+      for (const rel of urls) {
+        try {
+          const abs = new URL(rel, cssUrl).href;
+          const rr = await fetch(abs, { cache: "no-store" });
+          if (rr.ok) addStatus("ok", "Fuente accesible", abs);
+          else addStatus("warn", "Fuente no accesible", abs + "\nHTTP " + rr.status);
+        } catch (err) {
+          addStatus("warn", "Error fuente", rel + "\n" + String(err));
+        }
+      }
+
+      const classCount = (cssText.match(/::before\s*\{/g) || []).length;
+      addStatus("ok", "Reglas de icono detectadas", "Total ::before en CSS: " + classCount);
+
+      const hasNatureCore = ["icon-leaf","icon-tree","icon-sun","icon-moon","icon-cloud-rain"]
+        .every(c => new RegExp("\\." + c + "::before").test(cssText));
+      addStatus(hasNatureCore ? "ok" : "warn", "Check nature core", hasNatureCore ? "Clases base nature presentes" : "Faltan clases nature base");
+
+      const ready = await document.fonts.load('24px "CompensarIcons"');
+      const check = document.fonts.check('24px "CompensarIcons"');
+      addStatus(ready.length > 0 && check ? "ok" : "warn", "Font API", (ready.length > 0 && check) ? "CompensarIcons cargada" : "No confirmada por Font API");
+    }
+
+    renderSizes();
+    renderGrid("natureGrid", natureIcons, true);
+    renderGrid("mixGrid", mixIcons, false);
+    validateAssets();
+  </script>
+</body>
+</html>

@@ -1,46 +1,27 @@
-/* ============================================================
-   COMPENSAR ICON SYSTEM — icons.css
-   Archivo único: @font-face + clase base + tamaños + 1002 clases
-   
-   Uso: <i class="icon icon-{nombre} icon-{tamaño}"></i>
-   Ejemplo: <i class="icon icon-heart icon-24" aria-hidden="true"></i>
-
-   Tamaños disponibles: icon-12 icon-16 icon-20 icon-24 icon-32 icon-40 icon-48 icon-64
-   ============================================================ */
+/* Icon System — Compensar Medicina Prepagada */
 
 @font-face {
-    font-family: "CompensarIcons";
-    src: url("fonts/compensar-icons.woff2") format("woff2"),
-        url("fonts/compensar-icons.ttf") format("truetype"),
-        url("fonts/compensar-icons.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
+  font-family: "CompensarIcons";
+  src: url("fonts/compensar-icons.woff2") format("woff2"),
+       url("fonts/compensar-icons.woff")  format("woff"),
+       url("fonts/compensar-icons.ttf")   format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
-@font-palette-values --palette0 {
-    font-family: "CompensarIcons";
-    base-palette: 0
-}
+
 .icon {
-    /* Use !important to prevent extensions from overriding this font. */
-    font-family: "CompensarIcons" !important;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.palette0 {
-    font-palette: --palette0;
-    color: currentColor;
+  font-family: "CompensarIcons" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Tamaños de icono ─────────────────────────────────── */
-/* Uso: <i class="icon icon-name icon-24"></i>            */
+/* Tamaños — uso: <i class="icon icon-nombre icon-24"></i> */
 .icon-12 { font-size: 12px; }
 .icon-16 { font-size: 16px; }
 .icon-20 { font-size: 20px; }
@@ -49,8 +30,6 @@
 .icon-40 { font-size: 40px; }
 .icon-48 { font-size: 48px; }
 .icon-64 { font-size: 64px; }
-/* ── Named icon classes (1001 iconos) ──────────────────── */
-
 .icon-warning-octagon::before { content: "\f398"; }
 .icon-warning-circle::before { content: "\f399"; }
 .icon-warning::before { content: "\f39a"; }
@@ -156,7 +135,7 @@
 .icon-calendar-blank::before { content: "\f363"; }
 .icon-calendar::before { content: "\f364"; }
 .icon-alarm::before { content: "\f365"; }
-.icon-wheelchair::before { content: "\f323"; }
+.icon-wheelchair::before { content: "\f001"; }
 .icon-user-switch::before { content: "\f324"; }
 .icon-users-three::before { content: "\f325"; }
 .icon-user-square::before { content: "\f326"; }
@@ -274,7 +253,7 @@
 .icon-eject-simple::before { content: "\f311"; }
 .icon-eject::before { content: "\f312"; }
 .icon-ear-slash::before { content: "\f313"; }
-.icon-ear::before { content: "\f314"; }
+.icon-ear::before { content: "\f031"; }
 .icon-disc::before { content: "\f315"; }
 .icon-corners-out::before { content: "\f316"; }
 .icon-corners-in::before { content: "\f317"; }
@@ -352,7 +331,7 @@
 .icon-toilet::before { content: "\f280"; }
 .icon-test-tube::before { content: "\f281"; }
 .icon-syringe::before { content: "\f282"; }
-.icon-prescription::before { content: "\f283"; }
+.icon-prescription::before { content: "\f012"; }
 .icon-pill::before { content: "\f284"; }
 .icon-lifebuoy::before { content: "\f285"; }
 .icon-humbleicons_eye-close::before { content: "\f286"; }
@@ -360,7 +339,7 @@
 .icon-hand-soap::before { content: "\f288"; }
 .icon-fluent_eye-20-filled::before { content: "\f289"; }
 .icon-flask::before { content: "\f28a"; }
-.icon-first-aid-kit::before { content: "\f28b"; }
+.icon-first-aid-kit::before { content: "\f02f"; }
 .icon-first-aid::before { content: "\f28c"; }
 .icon-face-mask::before { content: "\f28d"; }
 .icon-eye-o::before { content: "\f28e"; }
@@ -378,7 +357,7 @@
 .icon-spiral::before { content: "\f258"; }
 .icon-spade::before { content: "\f259"; }
 .icon-soccer-ball::before { content: "\f25a"; }
-.icon-skull::before { content: "\f25b"; }
+.icon-skull::before { content: "\f00b"; }
 .icon-scroll::before { content: "\f25c"; }
 .icon-puzzle-piece::before { content: "\f25d"; }
 .icon-poker-chip::before { content: "\f25e"; }
@@ -487,9 +466,7 @@
 .icon-check-square-offset::before { content: "\f201"; }
 .icon-check-square::before { content: "\f202"; }
 .icon-checks::before { content: "\f203"; }
-.icon-check-circle-legacy::before { content: "\f204"; }
-.icon-check-circle::before,
-.icon-checkcircle::before { content: "\f3bb"; }
+.icon-check-circle::before { content: "\f3bb"; }
 .icon-check::before { content: "\f205"; }
 .icon-cell-signal-x::before { content: "\f206"; }
 .icon-cell-signal-slash::before { content: "\f207"; }
@@ -546,9 +523,9 @@
 .icon-radio-button::before { content: "\f23a"; }
 .icon-app-window::before { content: "\f23b"; }
 .icon-qr-code::before { content: "\f23c"; }
-.icon-align-right::before { content: "\f23d"; }
+.icon-align-right::before { content: "\f1be"; }
 .icon-power::before { content: "\f23e"; }
-.icon-align-left::before { content: "\f23f"; }
+.icon-align-left::before { content: "\f1c0"; }
 .icon-plugs-connected::before { content: "\f240"; }
 .icon-align-justify::before { content: "\f241"; }
 .icon-plugs::before { content: "\f242"; }
@@ -610,7 +587,7 @@
 .icon-eyedropper-sample::before { content: "\f1a5"; }
 .icon-eyedropper::before { content: "\f1a6"; }
 .icon-eye-closed::before { content: "\f1a7"; }
-.icon-eye::before { content: "\f1a8"; }
+.icon-eye::before { content: "\f030"; }
 .icon-eraser::before { content: "\f1a9"; }
 .icon-drop-half-bottom::before { content: "\f1aa"; }
 .icon-drop-half::before { content: "\f1ab"; }
@@ -632,9 +609,7 @@
 .icon-align-top-simple::before { content: "\f1bb"; }
 .icon-align-top::before { content: "\f1bc"; }
 .icon-align-right-simple::before { content: "\f1bd"; }
-.icon-align-right-alt::before { content: "\f1be"; }
 .icon-align-left-simple::before { content: "\f1bf"; }
-.icon-align-left-alt::before { content: "\f1c0"; }
 .icon-align-center-vertical-simple::before { content: "\f1c1"; }
 .icon-align-center-vertical::before { content: "\f1c2"; }
 .icon-align-center-horizontal-simple::before { content: "\f1c3"; }
@@ -928,25 +903,21 @@
 .icon-caret-circle-right::before { content: "\f0be"; }
 .icon-arrow-arc-left::before { content: "\f0bf"; }
 .icon-x-ray::before { content: "\f000"; }
-.icon-wheelchair-legacy::before { content: "\f001"; }
 .icon-vaccine::before { content: "\f002"; }
 .icon-treatment::before { content: "\f003"; }
 .icon-tongue::before { content: "\f004"; }
 .icon-tissue-paper::before { content: "\f005"; }
 .icon-thread::before { content: "\f006"; }
-.icon-thermometer::before { content: "\f3c4"; }
-.icon-thermometer-legacy::before { content: "\f007"; }
+.icon-thermometer::before { content: "\f007"; }
 .icon-stethoscope::before { content: "\f008"; }
 .icon-stethoscope-02::before { content: "\f009"; }
 .icon-sperm::before { content: "\f00a"; }
-.icon-skull-legacy::before { content: "\f00b"; }
 .icon-safe::before { content: "\f00c"; }
 .icon-pulse-rectangle-02::before { content: "\f00d"; }
 .icon-pulse-rectangle-01::before { content: "\f00e"; }
 .icon-pulse-02::before { content: "\f00f"; }
 .icon-pulse-01::before { content: "\f010"; }
 .icon-protection-mask::before { content: "\f011"; }
-.icon-prescription-legacy::before { content: "\f012"; }
 .icon-patient::before { content: "\f013"; }
 .icon-nose::before { content: "\f014"; }
 .icon-mortar::before { content: "\f015"; }
@@ -975,9 +946,6 @@
 .icon-hand-sanitizer::before { content: "\f02c"; }
 .icon-give-pill::before { content: "\f02d"; }
 .icon-give-blood::before { content: "\f02e"; }
-.icon-first-aid-kit-legacy::before { content: "\f02f"; }
-.icon-eye-legacy::before { content: "\f030"; }
-.icon-ear-legacy::before { content: "\f031"; }
 .icon-dropper::before { content: "\f032"; }
 .icon-doctor-03::before { content: "\f033"; }
 .icon-doctor-02::before { content: "\f034"; }
@@ -1009,8 +977,6 @@
 .icon-bandage::before { content: "\f04e"; }
 .icon-ampoule::before { content: "\f04f"; }
 .icon-aids::before { content: "\f050"; }
-
-/* ── Nuevos iconos (v2 — 46 clases añadidas) ─────────────────────────── */
 .icon-wind::before { content: "\f204"; }
 .icon-waves::before { content: "\f3bc"; }
 .icon-umbrella-simple::before { content: "\f3bd"; }
@@ -1056,4 +1022,3 @@
 .icon-butterfly::before { content: "\f3e6"; }
 .icon-bird::before { content: "\f3e7"; }
 .icon-atom::before { content: "\f3e8"; }
-.icon-check-circle::before { content: "\f3bb"; }
