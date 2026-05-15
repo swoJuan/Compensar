@@ -139,7 +139,15 @@
   --radius-sm: var(--border-radius-sm);
   --radius-md: var(--border-radius-md);
   --radius-lg: var(--border-radius-lg);
+  --radius-xl: #{radius-tokens.$border-radius-md};    // 1.5rem — 24px; faltaba, usado en _icons.scss
   --radius-full: var(--border-radius-lg);
+  --radius-pill: #{radius-tokens.$border-radius-lg}; // 2rem — alias pill; faltaba, usado en _icons.scss
+
+  // Base neutral 100 alias — la clave del mapa Figma contiene paréntesis
+  // ('base/neutral/100 (Negro)') lo que genera un nombre CSS inválido
+  // --base-neutral-100-(negro). Se define aquí manualmente para que todas
+  // las referencias a var(--base-neutral-100-negro) resuelvan correctamente.
+  --base-neutral-100-negro: #111111;
 
   // Spacing tokens — --space-2 through --space-128 are generated
   // by the @each loop above from spacing-tokens.$tokens-light.
