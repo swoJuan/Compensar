@@ -1,6 +1,6 @@
 /* ============================================================
    COMPENSAR ICON SYSTEM — icons.css
-   Archivo único: @font-face + clase base + tamaños + 1002 clases
+   Archivo único: @font-face + clase base + tamaños + 1027 clases
    
    Uso: <i class="icon icon-{nombre} icon-{tamaño}"></i>
    Ejemplo: <i class="icon icon-heart icon-24" aria-hidden="true"></i>
@@ -49,7 +49,7 @@
 .icon-40 { font-size: 40px; }
 .icon-48 { font-size: 48px; }
 .icon-64 { font-size: 64px; }
-/* ── Named icon classes (1001 iconos) ──────────────────── */
+/* ── Named icon classes (1024 iconos, +23 nuevos 2026-06-05) ──────────────────── */
 
 .icon-warning-octagon::before { content: "\f398"; }
 .icon-warning-circle::before { content: "\f399"; }
@@ -1057,3 +1057,32 @@
 .icon-bird::before { content: "\f3e7"; }
 .icon-atom::before { content: "\f3e8"; }
 .icon-check-circle::before { content: "\f3bb"; }
+
+/* ── Nuevos íconos agregados (24) — IcoMoon update 2026-06-05 ── */
+/* ⚠️  5 íconos omitidos por conflicto de nombre CSS             ── */
+/* ── alarm, person, image, article, credit_card                 ── */
+/* ── eyeglasses: nuevo glifo expuesto como .icon-eyeglasses-mp  ── */
+.icon-text-increase::before { content: "\f3e9"; }
+.icon-text-decrease::before { content: "\f3ea"; }
+.icon-stethoscope1::before { content: "\f3eb"; }
+.icon-smart-display::before { content: "\f3ec"; }
+.icon-search::before { content: "\f3ed"; }
+.icon-pin-drop::before { content: "\f3ee"; }
+.icon-filter-list::before { content: "\f3f8"; }
+.icon-filter-alt::before { content: "\f3f9"; }
+.icon-ecg-heart::before { content: "\f3fb"; }
+.icon-dentistry::before { content: "\f3fc"; }
+.icon-delete::before { content: "\f3fd"; }
+.icon-contrast::before { content: "\f3ff"; }
+.icon-centro-relevo::before { content: "\f400"; }
+.icon-call::before { content: "\f401"; }
+.icon-biotech::before { content: "\f402"; }
+.icon-manufacturing::before { content: "\f3f1"; }
+.icon-mixture-med::before { content: "\f3f0"; }
+.icon-group::before { content: "\f3f7"; }
+.icon-health-cross::before { content: "\f3f6"; }
+.icon-keyboard-arrow-right::before { content: "\f3f4"; }
+.icon-landscape-2::before { content: "\f3f3"; }
+.icon-lsc::before { content: "\f3f2"; }
+.icon-apartment::before { content: "\f404"; }
+.icon-eyeglasses-mp::before { content: "\f3fa"; }
