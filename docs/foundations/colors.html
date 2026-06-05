@@ -2224,6 +2224,99 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
     }
   }
 
+  // ── CT_SEMANTIC_MODES ─────────────────────────────────────────────────────
+  // Overrides de modo dark y high-contrast para tokens semánticos use/*.
+  // Extraído de js/tokens.js (TOKENS[].modes) — solo tokens que difieren de light.
+  // No modificar nombres; actualizar al sincronizar Figma tokens.
+  // ──────────────────────────────────────────────────────────────────────────
+  const CT_SEMANTIC_MODES = {
+    '--use-background-page':              { dark: 'var(--base-neutral-100-negro)', hc: 'var(--base-neutral-black)' },
+    '--use-primary-default':              { dark: '#ff9d5c',                       hc: '#ffff00' },
+    '--use-primary-hover':               { dark: '#e65c00',                       hc: '#e6e600' },
+    '--use-primary-active':              { dark: 'var(--base-brand-100)',          hc: '#cccc00' },
+    '--use-primary-default-dark':        { dark: '#ff9d5c',                       hc: '#ffff00' },
+    '--use-text-link':                   { dark: '#ff9d5c',                       hc: '#ffff00' },
+    '--use-border-default':              { dark: 'var(--base-neutral-80)',         hc: 'var(--base-neutral-white)' },
+    '--use-border-strong':               { dark: 'var(--base-neutral-20)',         hc: 'var(--base-neutral-white)' },
+    '--use-border-subtle':               { dark: 'var(--base-neutral-60)',         hc: 'var(--base-neutral-white)' },
+    '--use-border-hover':                { dark: 'var(--use-primary-active)',      hc: 'var(--base-neutral-white)' },
+    '--use-border-violet-dark':          { dark: 'var(--product-violet-10)',       hc: 'var(--base-neutral-white)' },
+    '--use-border-violet':               { dark: 'var(--product-violet-90)',       hc: 'var(--base-neutral-white)' },
+    '--use-focus-border':                { dark: '#ff9d5c',                       hc: 'var(--base-neutral-white)' },
+    '--use-focus-outline':               { dark: '#ff9d5c',                       hc: 'var(--base-neutral-white)' },
+    '--use-text-primary':                 { dark: 'var(--base-neutral-10)',         hc: 'var(--base-neutral-white)' },
+    '--use-text-secondary':               { dark: 'var(--base-neutral-20)',         hc: 'var(--base-neutral-10)' },
+    '--use-text-tertiary':                { dark: 'var(--base-neutral-50)',         hc: 'var(--base-neutral-20)' },
+    '--use-text-inverse':                 { dark: 'var(--base-neutral-100-negro)', hc: 'var(--base-neutral-black)' },
+    '--use-text-theme-violet':            { dark: 'var(--product-violet-30)',       hc: 'var(--base-neutral-white)' },
+    '--use-text-theme-yellow':            { dark: 'var(--base-yellow-30)',          hc: 'var(--base-neutral-white)' },
+    '--use-text-theme-orange':            { dark: 'var(--base-orange-10)',          hc: 'var(--base-neutral-white)' },
+    '--use-text-theme-blue':              { dark: 'var(--base-blue-30)',            hc: 'var(--base-neutral-white)' },
+    '--use-text-theme-red':               { dark: 'var(--base-red-30)',             hc: 'var(--base-neutral-white)' },
+    '--use-text-theme-green-1':           { dark: 'var(--base-green-1-30)',         hc: 'var(--base-neutral-white)' },
+    '--use-text-theme-green-2':           { dark: 'var(--base-green-2-10)',         hc: 'var(--base-neutral-white)' },
+    '--use-text-on-dark-secondary':       { dark: 'var(--base-neutral-20)',         hc: 'var(--base-neutral-50)' },
+    '--use-state-success-bg':             { dark: 'var(--base-green-1-80)',         hc: 'var(--base-green-1-100)' },
+    '--use-state-success-text':           { dark: 'var(--base-neutral-10)',         hc: 'var(--base-neutral-white)' },
+    '--use-state-success-border':         { dark: 'var(--base-green-1-70)',         hc: 'var(--base-green-1-70)' },
+    '--use-state-success-icon':           { dark: 'var(--base-green-1-40)',         hc: 'var(--base-green-1-40)' },
+    '--use-state-error-bg':               { dark: 'var(--base-red-90)',             hc: 'var(--base-red-100)' },
+    '--use-state-error-text':             { dark: 'var(--base-neutral-10)',         hc: 'var(--base-neutral-white)' },
+    '--use-state-error-text-error-field': { dark: 'var(--base-neutral-10)',         hc: 'var(--base-neutral-white)' },
+    '--use-state-error-icon':             { dark: 'var(--base-neutral-10)',         hc: 'var(--base-neutral-white)' },
+    '--use-state-error-border':           { dark: 'var(--base-red-70)',             hc: 'var(--base-red-70)' },
+    '--use-state-error-mandatory':        { dark: 'var(--base-red-70)',             hc: 'var(--base-red-70)' },
+    '--use-state-warning-bg':             { dark: 'var(--base-yellow-90)',          hc: 'var(--base-yellow-100)' },
+    '--use-state-warning-text':           { dark: 'var(--base-neutral-10)',         hc: 'var(--base-neutral-white)' },
+    '--use-state-warning-border':         { dark: 'var(--base-yellow-70)',          hc: 'var(--base-yellow-70)' },
+    '--use-state-warning-icon-color':     { dark: 'var(--use-text-inverse)',        hc: 'var(--use-text-inverse)' },
+    '--use-state-info-bg':                { dark: 'var(--base-blue-90)',            hc: 'var(--base-blue-100)' },
+    '--use-state-info-text':              { dark: 'var(--base-neutral-10)',         hc: 'var(--base-neutral-white)' },
+    '--use-state-info-border':            { dark: 'var(--base-blue-70)',            hc: 'var(--base-blue-70)' },
+    '--use-state-info-icon':              { dark: 'var(--base-blue-70)',            hc: 'var(--base-blue-70)' },
+    '--use-surface-surface':              { dark: 'var(--base-neutral-70)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-subtle':               { dark: 'var(--product-gray-80)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-orange':               { dark: 'var(--base-orange-60)',          hc: 'var(--base-neutral-black)' },
+    '--use-surface-cyan-blue':            { dark: 'var(--base-cyan-blue-80)',       hc: 'var(--base-neutral-black)' },
+    '--use-surface-violet':               { dark: 'var(--product-violet-80)',       hc: 'var(--base-neutral-black)' },
+    '--use-surface-white':                { dark: 'var(--base-neutral-90)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-green':                { dark: 'var(--base-green-1-90)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-green-2':              { dark: 'var(--base-green-1-90)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-blue-dark-30':   { dark: 'var(--base-blue-80)',            hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-blue-dark-40':   { dark: 'var(--base-blue-50)',            hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-blue-dark-50':   { dark: 'var(--base-blue-60)',            hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-blue-dark-60':   { dark: 'var(--base-blue-60)',            hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-blue-dark-90':   { dark: 'var(--base-blue-30)',            hc: 'var(--base-neutral-white)' },
+    '--use-surface-theme-gray-5':         { dark: 'var(--product-gray-90)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-gray-10':        { dark: 'var(--product-gray-80)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-gray-20':        { dark: 'var(--product-gray-70)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-green-1-30':     { dark: 'var(--base-green-1-80)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-green-1-40':     { dark: 'var(--base-green-1-50)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-green-1-50':     { dark: 'var(--base-green-1-60)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-green-2-10':     { dark: 'var(--base-green-2-100)',        hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-green-2-20':     { dark: 'var(--base-green-2-60)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-green-2-40':     { dark: 'var(--base-green-2-60)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-green-2-60':     { dark: 'var(--base-green-2-20)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-neutral-30':     { dark: 'var(--base-neutral-70)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-orange-10':      { dark: 'var(--base-orange-100)',         hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-orange-20':      { dark: 'var(--base-orange-40)',          hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-orange-40':      { dark: 'var(--base-orange-60)',          hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-orange-60':      { dark: 'var(--base-orange-10)',          hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-red-30':         { dark: 'var(--base-red-80)',             hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-red-40':         { dark: 'var(--base-red-50)',             hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-red-50':         { dark: 'var(--base-red-60)',             hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-red-60':         { dark: 'var(--base-red-60)',             hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-violet-5':       { dark: 'var(--product-violet-90)',       hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-violet-10':      { dark: 'var(--product-violet-80)',       hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-violet-20':      { dark: 'var(--product-violet-70)',       hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-violet-60':      { dark: 'var(--product-violet-10)',       hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-violet-70':      { dark: 'var(--product-violet-20)',       hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-yellow-30':      { dark: 'var(--base-yellow-90)',          hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-yellow-50':      { dark: 'var(--base-yellow-60)',          hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-yellow-60':      { dark: 'var(--base-yellow-70)',          hc: 'var(--base-neutral-black)' },
+    '--use-surface-theme-yellow-70':      { dark: 'var(--base-yellow-70)',          hc: 'var(--base-neutral-black)' },
+  };
+
   async function ctRenderFromSources() {
     try {
       const [abstractText, utilsText] = await Promise.all([
@@ -2248,6 +2341,13 @@ document.getElementById('colorSearch')?.addEventListener('input', function() {
             highContrast: value,
           }
         };
+      });
+
+      Object.entries(CT_SEMANTIC_MODES).forEach(([css, override]) => {
+        if (merged[css]) {
+          merged[css].modes.dark = override.dark;
+          merged[css].modes.highContrast = override.hc;
+        }
       });
 
       const items = Object.values(merged);
